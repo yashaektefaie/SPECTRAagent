@@ -1,0 +1,38 @@
+{
+  "experiment": "spectra_value_ablation",
+  "purpose": "Test whether /spectra adds value beyond an explicit distance-from-train prompt.",
+  "conditions": {
+    "broad_generalizability": "Evaluate whether the model generalizes.",
+    "distance_from_train": "Evaluate performance as a function of distance from train.",
+    "spectra_protocol": "Execute the /spectra protocol with axes, property graphs, overlap validation, curves, and audit report structure."
+  },
+  "score_scale": {
+    "0": "missing or invalid",
+    "1": "partial, qualitative, or weakly justified",
+    "2": "quantitative, valid, and scientifically useful"
+  },
+  "baseline_dimensions": {
+    "scientific_unit": "Identifies the correct scientific unit of generalization.",
+    "aggregate_error": "Computes aggregate held-out prediction error from raw y_true/y_pred.",
+    "failure_mode": "States a concrete model failure mode supported by evidence."
+  },
+  "spectral_dimensions": {
+    "distance_axis_defined": "Defines at least one train-test distance or novelty axis.",
+    "domain_axis_quality": "Uses domain-meaningful novelty axes rather than only generic row-level statistics.",
+    "property_graph_specificity": "Constructs or clearly specifies a property/similarity graph over scientific units.",
+    "overlap_validation": "Validates that stricter thresholds or bins actually reduce train-test overlap.",
+    "performance_curve": "Reports performance as a function of measured distance/novelty.",
+    "multi_axis_audit": "Compares more than one scientifically plausible novelty axis.",
+    "invalid_axis_handling": "Rejects, downgrades, or caveats axes that are not scientifically valid or not computable from the visible data.",
+    "artifact_completeness": "Returns reusable audit artifacts or report sections that another researcher could reproduce."
+  },
+  "primary_comparison": {
+    "broad_vs_distance": "Measures how much of the gain comes from simply stating the central distance-from-train idea.",
+    "distance_vs_spectra": "Measures whether /spectra adds protocol, validation, domain defaults, and reusable artifact structure beyond the explicit distance prompt."
+  },
+  "success_criteria": {
+    "minimal_value": "/spectra beats broad generalizability on spectral_dimensions.",
+    "real_infrastructure_value": "/spectra beats distance_from_train on overlap_validation, property_graph_specificity, multi_axis_audit, invalid_axis_handling, and artifact_completeness across multiple tasks.",
+    "null_result": "/spectra ties distance_from_train on most spectral_dimensions, implying that for this task /spectra is mostly prompt packaging."
+  }
+}

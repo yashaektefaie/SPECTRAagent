@@ -1,0 +1,103 @@
+{
+  "id": "hybrid_multimodal_similarity_index",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "Hybrid Multimodal and Multi-Metric Similarity Index",
+  "strategy_family": "hybrid_multimodal_index",
+  "exactness": "hybrid_exact_after_candidate_generation",
+  "applies_to_similarity_kinds": [
+    "multimodal_similarity",
+    "spatio_textual_similarity",
+    "spatial_visual_similarity",
+    "multi_metric_similarity",
+    "hybrid_vector_graph_similarity",
+    "composite_similarity"
+  ],
+  "compatible_data_shapes": [
+    "multimodal_record",
+    "geo_tagged_image",
+    "spatio_textual_record",
+    "vector_plus_graph_record",
+    "relational_vector_record",
+    "multi_metric_dataset"
+  ],
+  "definition": "Index multiple modalities or metric components together, such as spatial plus text, spatial plus visual embeddings, relational graph context plus vectors, or several metric spaces, then generate candidates that satisfy the composite similarity before exact scoring or reranking.",
+  "scale_profile": {
+    "best_for": "Scientific units with genuinely composite similarity, where no single modality should define train proximity on its own.",
+    "typical_upper_bound": "Large multimodal databases when each modality has an index and candidate pruning combines them efficiently.",
+    "avoid_when": "One modality is only a metadata eligibility filter; use filtered ANN or blocking instead."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "modality_scores",
+      "composite_formula",
+      "candidate_source"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "multimodal features",
+    "composite similarity formula",
+    "per-modality indexes"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "composite_similarity_formula",
+      "purpose": "Declares how modality-specific similarities are combined into the SPECTRA similarity."
+    },
+    {
+      "name": "modality_candidate_budget",
+      "purpose": "Controls how many candidates each modality contributes before intersection, union, or reranking."
+    },
+    {
+      "name": "modality_weights",
+      "purpose": "Controls the relative importance of spatial, textual, visual, graph, or vector components."
+    }
+  ],
+  "quality_gates": [
+    "Report per-modality scores and the composite formula so the scientific similarity is inspectable.",
+    "Validate that candidate generation does not drop pairs that would score high under the full composite metric.",
+    "Run sensitivity checks over modality weights when weights are not externally justified."
+  ],
+  "failure_modes": [
+    "A dominant modality can hide failures along weaker but scientifically important axes.",
+    "Intersecting modality-specific candidates can cause low recall for complementary evidence.",
+    "Changing modality weights can change SPECTRA bins and conclusions."
+  ],
+  "python_example": "blocking_candidate_similarity.py",
+  "example_usage": "Use blocking_candidate_similarity.py as a simple composite-candidate template; production systems should replace the block/token scorer with modality-specific indexes and export the final composite similarity.",
+  "citations": [
+    {
+      "paper_id": "arx_1810.00549",
+      "title": "SVS-JOIN: Efficient Spatial Visual Similarity Join over Multimedia Data",
+      "evidence": "Uses spatial indexes and visual similarity constraints to efficiently join geo-tagged multimedia data under a composite similarity."
+    },
+    {
+      "paper_id": "arx_1205.6694",
+      "title": "SEAL: Spatio-Textual Similarity Search",
+      "evidence": "Uses filter-and-verification for regions of interest where spatial overlap and textual content jointly define similarity."
+    },
+    {
+      "paper_id": "arx_2507.04256",
+      "title": "OneDB: A Distributed Multi-Metric Data Similarity Search System",
+      "evidence": "Implements distributed similarity search over multimodal data using a unified model for multiple metrics."
+    }
+  ],
+  "tags": [
+    "multimodal",
+    "spatio_textual",
+    "spatial_visual",
+    "multi_metric",
+    "composite_similarity",
+    "hybrid_index"
+  ]
+}

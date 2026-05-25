@@ -1,0 +1,77 @@
+{
+  "id": "nucleotide_contiguous_mutation_region",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "nucleotide_sequence",
+  "scientific_unit": "mutant_sequence",
+  "task_family": [
+    "fitness prediction",
+    "deep mutational scanning",
+    "nucleotide foundation model evaluation"
+  ],
+  "similarity_name": "Mutation-position distance from training variants",
+  "similarity_kind": "sequence_distance",
+  "definition": "For DMS-like datasets with a wild-type reference, describe each variant by its mutated positions. Use distance to the nearest mutated training position or region, or normalized sequence identity/Hamming similarity, as the SPECTRA axis. Contiguous-region holdouts become one discrete version of this broader positional novelty axis.",
+  "spectra_axis": {
+    "name": "nearest_train_mutation_region_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_sequence_or_position_similarity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "sequence"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/sequence_hamming_similarity.py",
+  "example_usage": "python sequence_hamming_similarity.py --train train.csv --eval eval.csv --out pairwise_similarity.csv --sequence-col sequence",
+  "citations": [
+    {
+      "paper_id": "arx_2511.02888",
+      "title": "NABench: Large-Scale Benchmarks of Nucleotide Foundation Models for Fitness Prediction",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/arx_2511.02888/content.lines",
+          "lines": "L42-L43",
+          "summary": "The paper contrasts random cross-validation with contiguous cross-validation over wild-type sequence blocks to test extrapolation to unseen mutational regions."
+        },
+        {
+          "path": "/papers/arx_2511.02888/content.lines",
+          "lines": "L60-L61",
+          "summary": "The paper reports a performance gap between random CV and contiguous CV, emphasizing sensitivity to OOD sequence regions."
+        },
+        {
+          "path": "/papers/arx_2511.02888/content.lines",
+          "lines": "L95",
+          "summary": "The paper tracks mutation depth across DMS assays, supporting mutation count as an additional sequence novelty descriptor."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Plain Hamming similarity ignores structural context and epistasis.",
+    "Contiguous position holdouts require a meaningful wild-type coordinate system.",
+    "SELEX libraries may not have a wild-type reference, making contiguous CV inappropriate."
+  ],
+  "quality_gates": [
+    "Separate DMS and SELEX datasets before choosing this axis.",
+    "Report whether sequences are aligned and equal length.",
+    "Audit both mutation count and nearest mutated-region distance where possible."
+  ],
+  "tags": [
+    "nucleotide",
+    "sequence",
+    "hamming",
+    "contiguous_cv",
+    "nabench"
+  ]
+}

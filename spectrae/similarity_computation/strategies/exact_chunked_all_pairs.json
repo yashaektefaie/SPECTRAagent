@@ -1,0 +1,87 @@
+{
+  "id": "exact_chunked_all_pairs",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "Exact Chunked All-Pairs Similarity",
+  "strategy_family": "chunked_exact",
+  "exactness": "exact",
+  "applies_to_similarity_kinds": [
+    "metric_distance",
+    "kernel_similarity",
+    "cosine_similarity",
+    "jaccard_similarity",
+    "domain_specific_pairwise_function"
+  ],
+  "compatible_data_shapes": [
+    "small_to_medium_dataset",
+    "dense_vector",
+    "sparse_vector",
+    "tabular",
+    "sequence",
+    "any_pairwise_callable"
+  ],
+  "definition": "Compute every required train-eval pair exactly, but stream the computation in chunks and write a sparse or long pairwise file instead of holding the full matrix in memory. This is the calibration baseline for SPECTRA audits and for measuring recall of approximate methods.",
+  "scale_profile": {
+    "best_for": "Exact train-eval similarity when the number of pairs is tractable or when a gold-standard subset is needed.",
+    "typical_upper_bound": "Millions to low hundreds of millions of pairs, depending on the cost of the pairwise function and available compute.",
+    "avoid_when": "The pairwise function is expensive and the train-eval product is too large for scheduled chunked jobs."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "pairwise similarity function or vector features"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "chunk_size",
+      "purpose": "Controls memory footprint for score blocks."
+    },
+    {
+      "name": "top_k_or_threshold",
+      "purpose": "Optionally drops unneeded low-similarity edges while preserving the SPECTRA audit axis."
+    }
+  ],
+  "quality_gates": [
+    "Verify that chunked results match direct computation on a small sample.",
+    "Report whether all pairs, top-k edges, or thresholded edges were retained.",
+    "Ensure every evaluation unit has enough train-neighbor coverage for the planned spectral bins."
+  ],
+  "failure_modes": [
+    "All-pairs work may still be infeasible for very large datasets.",
+    "Top-k truncation can distort low-overlap tails if k is too small.",
+    "A non-vectorized pairwise function can dominate runtime even with chunking."
+  ],
+  "python_example": "dense_vector_topk_similarity.py",
+  "example_usage": "python dense_vector_topk_similarity.py --train train.csv --eval eval.csv --out pairwise_similarity.csv --vector-prefix emb_ --metric cosine --top-k 50",
+  "citations": [
+    {
+      "paper_id": "arx_1807.05614",
+      "title": "ANN-Benchmarks: A Benchmarking Tool for Approximate Nearest Neighbor Algorithms",
+      "evidence": "The benchmark compares approximate methods against exact nearest-neighbor ground truth and reports quality/performance tradeoffs."
+    },
+    {
+      "paper_id": "arx_2401.08281",
+      "title": "The Faiss library",
+      "evidence": "Faiss describes batched vector search, k-nearest-neighbor search, range search, and CPU/GPU execution."
+    }
+  ],
+  "tags": [
+    "baseline",
+    "exact",
+    "chunking",
+    "calibration",
+    "pairwise_similarity"
+  ]
+}

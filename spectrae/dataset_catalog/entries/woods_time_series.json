@@ -1,0 +1,76 @@
+{
+  "id": "woods_time_series",
+  "version": "0.1.0",
+  "status": "active",
+  "title": "WOODS Time-Series OOD Generalization Benchmarks",
+  "domains": ["time_series", "distribution_shift", "sensor_ml", "sequential_data"],
+  "data_types": ["time series", "sequence", "domain annotation", "classification label"],
+  "scientific_units": ["time_series", "subject_trial", "domain", "sequence_sample"],
+  "compatible_model_families": ["time series classifier", "sensor model", "sequence model", "domain generalization algorithm"],
+  "source": {
+    "homepage": "https://woods-benchmarks.github.io/",
+    "repository": "https://github.com/jc-audet/WOODS",
+    "data_urls": [
+      {
+        "description": "WOODS project site",
+        "url": "https://woods-benchmarks.github.io/",
+        "access_notes": "Lists datasets and links framework/documentation."
+      },
+      {
+        "description": "WOODS documentation",
+        "url": "https://woods.readthedocs.io/",
+        "access_notes": "Use to recover official dataset download and benchmark commands."
+      }
+    ]
+  },
+  "access": {
+    "mode": "repository",
+    "authentication": "varies_by_dataset",
+    "instructions": [
+      "Use the WOODS framework to select one benchmark dataset and inspect its upstream access requirements.",
+      "Record dataset name, modality, domain labels, split, sequence length, sampling rate, and labels.",
+      "Use official domain splits as operating points, then construct SPECTRA curves using temporal/subject/device/domain support."
+    ]
+  },
+  "scale": {
+    "download_size": "variable across ten time-series benchmarks; selected dataset first",
+    "spectra_default": "selected_official_dataset"
+  },
+  "expected_fields": ["series_id", "time_series", "label", "domain", "subject_id", "device_id", "split"],
+  "recommended_axes": [
+    {
+      "name": "domain_support",
+      "definition": "Similarity of WOODS domain labels such as subject, device, source, environment, or temporal domain.",
+      "prospective": true
+    },
+    {
+      "name": "temporal_shape_similarity",
+      "definition": "Dynamic time warping, shapelet, embedding, or frequency-feature similarity to training series.",
+      "prospective": true
+    },
+    {
+      "name": "sensor_or_subject_similarity",
+      "definition": "Support over subject, device, channel, activity, or acquisition metadata when available.",
+      "prospective": true
+    }
+  ],
+  "useful_for": [
+    "Broad time-series OOD SPECTRA audits beyond UCR/UEA shape-only examples.",
+    "Testing domain-generalization algorithms on sequential data.",
+    "Exploring whether official WOODS domains are points on a continuous signal-support curve."
+  ],
+  "leakage_risks": [
+    "Subject or recording-session leakage can inflate performance.",
+    "Domain labels can encode the benchmark split and should be treated as operating points.",
+    "Some component datasets may have separate licenses or access constraints."
+  ],
+  "related_benchmark_capsules": [],
+  "related_memory_entries": [],
+  "paperclip_provenance": {
+    "search_ids": ["s_20d1c9ef", "s_ebdb52dc", "s_bcaa8d4e"],
+    "map_ids": ["m_06adbca5", "m_6070b7e2"],
+    "paper_ids": ["arx_2203.09978"],
+    "notes": "Paperclip identified WOODS as a time-series OOD benchmark; official site lists ten sequential benchmarks and framework/documentation links."
+  },
+  "tags": ["woods", "time_series", "ood", "domain_generalization", "sequential_data"]
+}

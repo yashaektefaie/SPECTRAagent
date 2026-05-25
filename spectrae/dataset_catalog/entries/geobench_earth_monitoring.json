@@ -1,0 +1,81 @@
+{
+  "id": "geobench_earth_monitoring",
+  "version": "0.1.0",
+  "status": "active",
+  "title": "GEO-Bench Earth-Monitoring Foundation-Model Benchmark",
+  "domains": ["earth_observation", "remote_sensing", "geospatial_ml", "foundation_models"],
+  "data_types": ["satellite image", "multispectral image", "SAR image", "hyperspectral image", "segmentation mask", "classification label"],
+  "scientific_units": ["image_chip", "geographic_tile", "segmentation_region", "earth_monitoring_task"],
+  "compatible_model_families": ["earth observation foundation model", "remote sensing model", "vision model", "geospatial segmentation model"],
+  "source": {
+    "homepage": "https://github.com/ServiceNow/geo-bench",
+    "repository": "https://github.com/ServiceNow/geo-bench",
+    "data_urls": [
+      {
+        "description": "GEO-Bench arXiv paper",
+        "url": "https://arxiv.org/abs/2306.03831",
+        "access_notes": "Use for task definitions and benchmark motivation."
+      },
+      {
+        "description": "NeurIPS Datasets and Benchmarks paper",
+        "url": "https://papers.nips.cc/paper_files/paper/2023/file/a0644215d9cff6646fa334dfa5d29c5a-Paper-Datasets_and_Benchmarks.pdf",
+        "access_notes": "Use for dataset/task description and citation."
+      }
+    ]
+  },
+  "access": {
+    "mode": "repository",
+    "authentication": "varies_by_component_dataset",
+    "instructions": [
+      "Use the official repository loader and inspect access requirements for the selected task.",
+      "Start with one classification or segmentation task whose data can be fetched without special credentials.",
+      "Record task name, sensor/modality, bands, geographic region, timestamp/season, label taxonomy, and split."
+    ]
+  },
+  "scale": {
+    "download_size": "multi-task earth-observation benchmark; component datasets vary in size and access",
+    "spectra_default": "selected_public_task_first"
+  },
+  "expected_fields": ["sample_id", "task", "sensor", "bands", "geographic_region", "timestamp", "label", "split"],
+  "recommended_axes": [
+    {
+      "name": "geographic_support",
+      "definition": "Distance or region overlap between train and test image chips.",
+      "prospective": true
+    },
+    {
+      "name": "sensor_modality_support",
+      "definition": "Similarity across multispectral, SAR, hyperspectral, elevation, or cloud-probability modalities.",
+      "prospective": true
+    },
+    {
+      "name": "land_cover_or_task_taxonomy_support",
+      "definition": "Similarity in class hierarchy, label prevalence, and task semantics.",
+      "prospective": true
+    },
+    {
+      "name": "seasonal_and_temporal_support",
+      "definition": "Temporal, seasonal, or acquisition-date distance from training observations.",
+      "prospective": true
+    }
+  ],
+  "useful_for": [
+    "Auditing earth-observation foundation models across task, geography, sensor, and season.",
+    "Testing whether geospatial benchmark splits are points on continuous spatial/sensor novelty curves.",
+    "Providing a broad non-biology SPECTRA capsule."
+  ],
+  "leakage_risks": [
+    "Nearby or overlapping tiles can leak spatial context.",
+    "Component datasets may have different label schemas and split semantics.",
+    "Pretrained earth-observation models may have seen the same public imagery."
+  ],
+  "related_benchmark_capsules": [],
+  "related_memory_entries": [],
+  "paperclip_provenance": {
+    "search_ids": ["s_4d7eeb00", "s_2974afed"],
+    "map_ids": ["m_9d30698a", "m_c52d8c04"],
+    "paper_ids": ["arx_2306.03831"],
+    "notes": "Paperclip found GEO-Bench in earth-observation foundation-model searches; official repository confirms a reusable benchmark loader and task suite."
+  },
+  "tags": ["geo_bench", "earth_observation", "remote_sensing", "foundation_models", "geospatial"]
+}

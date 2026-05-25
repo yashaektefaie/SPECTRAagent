@@ -1,0 +1,61 @@
+{
+  "id": "systema_zenodo",
+  "version": "0.1.0",
+  "status": "active",
+  "title": "Systema Perturbation-Response Evaluation Resources",
+  "domains": ["single_cell_perturbation", "perturbation_biology"],
+  "data_types": ["single-cell expression", "genetic perturbation", "benchmark archive"],
+  "scientific_units": ["genetic_perturbation_condition", "perturbed_cell"],
+  "compatible_model_families": ["perturbation response model", "single-cell foundation model"],
+  "source": {
+    "homepage": "https://www.nature.com/articles/s41587-025-02777-8",
+    "repository": "https://github.com/mlbio-epfl/systema",
+    "data_urls": [
+      {
+        "description": "Systema source-code archive",
+        "url": "https://doi.org/10.5281/zenodo.15746994",
+        "access_notes": "Use upstream archive instructions for exact reproduction."
+      }
+    ]
+  },
+  "access": {
+    "mode": "zenodo",
+    "authentication": "none_expected",
+    "instructions": [
+      "Inspect the Systema repository for evaluation definitions.",
+      "Download the source-code archive or data resources through upstream instructions.",
+      "Preserve reference choices and systematic-variation controls in SPECTRA manifests."
+    ]
+  },
+  "expected_fields": ["perturbation", "cell_state", "expression", "reference", "dataset", "batch"],
+  "recommended_axes": [
+    {
+      "name": "systematic_variation_similarity",
+      "definition": "Similarity over perturbation-independent systematic variation signatures.",
+      "prospective": true
+    },
+    {
+      "name": "gene_network_distance",
+      "definition": "Pathway, GO, or interaction-network distance between perturbation targets.",
+      "prospective": true
+    },
+    {
+      "name": "batch_dataset_context",
+      "definition": "Shared dataset, assay, batch, or cell-line context used as a control axis.",
+      "prospective": true
+    }
+  ],
+  "useful_for": [
+    "Auditing whether perturbation models learn perturbation-specific signal or systematic variation.",
+    "Testing hidden biological and technical confounders.",
+    "Mechanism-debt follow-ups after surface perturbation support curves."
+  ],
+  "leakage_risks": [
+    "Reference-choice leakage can make models look better than they are.",
+    "Batch and systematic variation can dominate perturbation-specific signal.",
+    "Gene-expression-derived axes may be post-hoc if computed on held-out responses."
+  ],
+  "related_benchmark_capsules": ["systema"],
+  "related_memory_entries": [],
+  "tags": ["systema", "single_cell", "perturbation", "systematic_variation", "zenodo"]
+}

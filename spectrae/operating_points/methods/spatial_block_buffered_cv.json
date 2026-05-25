@@ -1,0 +1,37 @@
+{
+  "id": "spatial_block_buffered_cv",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "operating_point_name": "Spatial Block and Buffered Cross-Validation",
+  "method_family": "spatial_holdout",
+  "scientific_unit": "spatial_sample",
+  "data_types": ["geospatial", "environmental", "ecology", "remote_sensing", "spatiotemporal"],
+  "target_novelty_axis": "geographic_distance_or_spatial_autocorrelation",
+  "deployment_question": "How does the model perform at locations separated from the training region?",
+  "curve_region": "low_overlap",
+  "definition": "Hold out spatially contiguous regions, optionally with exclusion buffers around test blocks, to reduce spatial autocorrelation leakage between train and test.",
+  "split_operator": {"type": "spatial_block_or_buffered_cv", "heldout_unit": "spatial_block", "spectra_mapping": "forces a minimum geographic or environmental distance from train to test"},
+  "required_inputs": ["sample_id", "coordinates or spatial block id", "block size or buffer distance"],
+  "recommended_similarity_axes": ["geographic_distance", "environmental_similarity", "adversarial_validation_dissimilarity"],
+  "output_contract": {"mode": "split_assignment", "required_columns": ["sample_id", "split", "role"], "optional_columns": ["spatial_block", "buffer_distance"]},
+  "implementation_recipe": [
+    "Choose spatial blocks or folds based on coordinates and target prediction scale.",
+    "Optionally remove training samples inside a buffer around held-out blocks.",
+    "Report spatial distance and environmental feature overlap between train and test."
+  ],
+  "quality_gates": [
+    "Use a block size matched to spatial autocorrelation length or deployment scale.",
+    "Check train/test label and covariate balance after buffering.",
+    "Compare random CV with spatial CV to quantify optimism."
+  ],
+  "failure_modes": [
+    "Overly large buffers can starve the training set.",
+    "Blocks can confound geography with unobserved environmental gradients.",
+    "Coordinates may leak through spatially encoded predictors."
+  ],
+  "citations": [
+    {"paper_id": "arx_2303.07334", "title": "Assessing the performance of spatial cross-validation approaches", "evidence": "Finds that spatially contiguous assessment sets with exclusion buffers improve estimates for spatially structured data."},
+    {"paper_id": "arx_2005.14263", "title": "Estimating the Prediction Performance of Spatial Models via Spatial k-Fold Cross Validation", "evidence": "Shows spatial k-fold validation reduces optimistic bias caused by spatial autocorrelation."}
+  ],
+  "tags": ["spatial", "buffered_cv", "spatial_block", "geography"]
+}

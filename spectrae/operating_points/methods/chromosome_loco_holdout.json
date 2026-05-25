@@ -1,0 +1,37 @@
+{
+  "id": "chromosome_loco_holdout",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "operating_point_name": "Leave-One-Chromosome-Out Holdout",
+  "method_family": "genomic_locus_holdout",
+  "scientific_unit": "genomic_locus_or_sequence",
+  "data_types": ["regulatory_dna", "genomics", "enhancer_promoter", "epigenomics"],
+  "target_novelty_axis": "chromosome_or_genomic_region",
+  "deployment_question": "How does the model generalize to genomic regions or chromosomes absent from training?",
+  "curve_region": "low_overlap",
+  "definition": "Hold out all examples from one chromosome or genomic region while training on the remaining chromosomes or regions.",
+  "split_operator": {"type": "leave_chromosome_out", "heldout_unit": "chromosome", "spectra_mapping": "sets same-chromosome overlap to zero and reduces locus-specific leakage"},
+  "required_inputs": ["sample_id", "chromosome", "genomic coordinates"],
+  "recommended_similarity_axes": ["chromosome_identity", "genomic_distance", "sequence_similarity", "regulatory_context_similarity"],
+  "output_contract": {"mode": "split_assignment", "required_columns": ["sample_id", "split", "role"], "optional_columns": ["chromosome", "heldout_chromosome"]},
+  "implementation_recipe": [
+    "Assign complete chromosomes or large genomic regions to test folds.",
+    "Train only on non-held-out chromosomes.",
+    "Report whether homologous/repetitive sequences remain across chromosomes."
+  ],
+  "quality_gates": [
+    "Prevent locus-specific average leakage across cell types or assays.",
+    "Report genomic distance and sequence similarity to training examples.",
+    "Check label balance across held-out chromosomes."
+  ],
+  "failure_modes": [
+    "Chromosome identity is coarse and can confound gene density or assay coverage.",
+    "Repeats or paralogous sequence motifs can leak across chromosomes.",
+    "A held-out chromosome can have too few positives."
+  ],
+  "citations": [
+    {"paper_id": "arx_2504.00306", "title": "LOCO-EPI: Leave-one-chromosome-out as a benchmarking paradigm", "evidence": "Introduces LOCO evaluation for enhancer-promoter interaction prediction and reports standard methods overestimate performance."},
+    {"paper_id": "bio_38329c3b6c11", "title": "A pitfall for machine learning methods aiming to predict across cell types", "evidence": "Shows models can memorize locus-specific averages, motivating genomic-region holdouts."}
+  ],
+  "tags": ["genomics", "chromosome", "loco", "regulatory_dna"]
+}

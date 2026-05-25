@@ -1,0 +1,78 @@
+{
+  "id": "microbiome_beta_diversity_similarity",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "microbiome_or_community_composition",
+  "scientific_unit": "microbial_community_sample",
+  "task_family": [
+    "microbiome host trait prediction",
+    "ecological community analysis",
+    "metagenomics"
+  ],
+  "similarity_name": "Microbiome beta-diversity or compositional similarity",
+  "similarity_kind": "community_composition_similarity",
+  "definition": "Compare community-composition samples using Bray-Curtis similarity, UniFrac-derived similarity, generalized UniFrac, or another beta-diversity distance. This audits whether model performance depends on overlap in taxonomic abundance, community membership, or phylogenetic composition.",
+  "spectra_axis": {
+    "name": "max_train_microbiome_beta_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_beta_diversity_similarity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "taxon_abundance_columns"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/composition_braycurtis_similarity.py",
+  "example_usage": "python composition_braycurtis_similarity.py --train train_microbiome.csv --eval eval_microbiome.csv --out pairwise_similarity.csv --feature-cols-prefix taxon_",
+  "citations": [
+    {
+      "paper_id": "PMC3413390",
+      "title": "Associating microbiome composition with environmental covariates using generalized UniFrac distances",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC3413390/content.lines",
+          "lines": "L5-L14",
+          "summary": "The paper motivates distance-based analysis of microbiome composition and generalized UniFrac distances."
+        },
+        {
+          "path": "/papers/PMC3413390/content.lines",
+          "lines": "L16-L20",
+          "summary": "It defines UniFrac distances between microbial communities using phylogenetic branch length and abundance."
+        },
+        {
+          "path": "/papers/PMC3413390/content.lines",
+          "lines": "L53-L55",
+          "summary": "It concludes that generalized UniFrac detects a wider range of biologically relevant community changes."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Bray-Curtis ignores phylogeny; UniFrac requires a valid phylogenetic tree and consistent taxonomic preprocessing.",
+    "Sequencing depth, rarefaction, compositionality, and batch effects can alter beta-diversity distances.",
+    "Taxonomic overlap may not capture functional or strain-level novelty."
+  ],
+  "quality_gates": [
+    "Report abundance transform, filtering, normalization, and beta-diversity metric.",
+    "Use UniFrac or generalized UniFrac when phylogenetic relationships are scientifically important.",
+    "Audit batch, study, geography, and host covariates separately from taxonomic similarity."
+  ],
+  "tags": [
+    "microbiome",
+    "community_composition",
+    "bray_curtis",
+    "unifrac",
+    "beta_diversity",
+    "metagenomics"
+  ]
+}

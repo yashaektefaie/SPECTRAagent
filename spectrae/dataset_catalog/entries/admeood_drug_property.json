@@ -1,0 +1,71 @@
+{
+  "id": "admeood_drug_property",
+  "version": "0.1.0",
+  "status": "needs_source_verification",
+  "title": "ADMEOOD Drug Property OOD Benchmark",
+  "domains": ["molecular_ml", "drug_discovery", "admet", "distribution_shift"],
+  "data_types": ["SMILES", "ADME property table", "confidence/noise environment", "molecular property label"],
+  "scientific_units": ["molecule_property_pair", "compound", "measurement_environment"],
+  "compatible_model_families": ["molecular property predictor", "graph neural network", "ADMET model", "fingerprint baseline"],
+  "source": {
+    "homepage": "https://arxiv.org/abs/2310.07253",
+    "repository": "",
+    "data_urls": [
+      {
+        "description": "ADMEOOD arXiv paper",
+        "url": "https://arxiv.org/abs/2310.07253",
+        "access_notes": "Official data/repository URL must be verified before automatic use."
+      }
+    ]
+  },
+  "access": {
+    "mode": "mixed",
+    "authentication": "unknown_verify_before_use",
+    "instructions": [
+      "Verify the official ADMEOOD data location before constructing an audit.",
+      "If data are available, record property name, molecule identifier, SMILES, label, confidence/noise environment, concept-conflict flag, and split.",
+      "Use this entry as a Dataset Scout candidate, not a default download, until source location and license are confirmed."
+    ]
+  },
+  "scale": {
+    "download_size": "reported as 27 ADME properties; exact packaged size/source requires verification",
+    "spectra_default": "source_verification_then_selected_property"
+  },
+  "expected_fields": ["smiles", "property_name", "label", "environment", "confidence_level", "split", "measurement_source"],
+  "recommended_axes": [
+    {
+      "name": "chemical_similarity",
+      "definition": "Molecular fingerprint, scaffold, or descriptor similarity to training compounds.",
+      "prospective": true
+    },
+    {
+      "name": "noise_confidence_environment",
+      "definition": "Similarity over confidence/noise environments defined by measurement reliability.",
+      "prospective": true
+    },
+    {
+      "name": "concept_conflict_drift",
+      "definition": "Similarity or grouping by inconsistent-label or concept-conflict regimes.",
+      "prospective": true
+    }
+  ],
+  "useful_for": [
+    "Drug-property OOD audits when source package is verified.",
+    "Testing whether molecular models degrade across measurement-noise and concept-conflict environments.",
+    "Complementing DrugOOD and WelQrate with ADME-property-specific shifts."
+  ],
+  "leakage_risks": [
+    "Source and license are not yet verified in the catalog.",
+    "Repeated molecules across properties can leak compound identity.",
+    "Noise/conflict annotations may be post-hoc if derived from held-out labels."
+  ],
+  "related_benchmark_capsules": [],
+  "related_memory_entries": [],
+  "paperclip_provenance": {
+    "search_ids": ["s_731e9b16", "s_e0dc18d1"],
+    "map_ids": ["m_5d9b27a0"],
+    "paper_ids": ["arx_2310.07253"],
+    "notes": "Paperclip identified ADMEOOD as a drug-property OOD benchmark with noise shift and concept-conflict drift; official data source needs verification."
+  },
+  "tags": ["admeood", "admet", "molecular_ml", "ood", "noise_shift"]
+}

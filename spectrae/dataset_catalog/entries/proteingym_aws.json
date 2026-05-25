@@ -1,0 +1,75 @@
+{
+  "id": "proteingym_aws",
+  "version": "0.1.0",
+  "status": "active",
+  "title": "ProteinGym Deep Mutational Scanning and Clinical Variant Benchmarks",
+  "domains": ["protein_engineering", "sequence_fitness", "scientific_ml"],
+  "data_types": ["protein sequence", "mutation table", "fitness score", "clinical variant"],
+  "scientific_units": ["protein_variant", "mutation", "assay", "protein_family"],
+  "compatible_model_families": ["protein language model", "protein fitness predictor", "sequence model", "mutation effect predictor"],
+  "source": {
+    "homepage": "https://proteingym.org/",
+    "repository": "https://github.com/OATML-Markslab/ProteinGym",
+    "data_urls": [
+      {
+        "description": "ProteinGym Open Data on AWS registry",
+        "url": "https://registry.opendata.aws/proteingym/",
+        "access_notes": "Provides parquet datasets and benchmark assets for ProteinGym."
+      },
+      {
+        "description": "ProteinGym official repository",
+        "url": "https://github.com/OATML-Markslab/ProteinGym",
+        "access_notes": "Use repository metadata and scripts for benchmark-compatible loading."
+      }
+    ]
+  },
+  "access": {
+    "mode": "mixed",
+    "authentication": "none_expected_for_public_assets",
+    "instructions": [
+      "Start with one DMS assay or one protein family rather than loading every ProteinGym asset.",
+      "Record assay ID, wild-type sequence, mutation notation, fitness column, and benchmark version.",
+      "When using clinical variants, record source database and phenotype semantics separately from DMS fitness."
+    ]
+  },
+  "scale": {
+    "download_size": "millions of variants across many assays; task-specific subsets are recommended",
+    "spectra_default": "single_assay_or_family_subset"
+  },
+  "expected_fields": ["assay_id", "wildtype_sequence", "mutant", "mutated_sequence", "fitness", "protein_family", "source"],
+  "recommended_axes": [
+    {
+      "name": "sequence_identity",
+      "definition": "Protein sequence identity or edit distance to training variants.",
+      "prospective": true
+    },
+    {
+      "name": "mutation_position_support",
+      "definition": "Distance from training-mutated positions, mutation count, or local sequence context support.",
+      "prospective": true
+    },
+    {
+      "name": "structural_site_similarity",
+      "definition": "Distance to active sites, domains, or structural neighborhoods when structures or annotations are available.",
+      "prospective": true
+    },
+    {
+      "name": "assay_family_similarity",
+      "definition": "Similarity across DMS assays, protein families, measurement protocols, or phenotype types.",
+      "prospective": true
+    }
+  ],
+  "useful_for": [
+    "Auditing protein language models and mutation-effect predictors.",
+    "Testing whether random variant splits overstate extrapolation to unseen positions or proteins.",
+    "Constructing sequence, structure, and assay-context SPECTRA curves."
+  ],
+  "leakage_risks": [
+    "Variants from the same assay or protein can leak family-specific context.",
+    "Training on single mutants can leak information into multiple-mutant evaluation if mutation support is ignored.",
+    "Clinical and DMS labels have different semantics and should not be mixed without a declared task."
+  ],
+  "related_benchmark_capsules": [],
+  "related_memory_entries": [],
+  "tags": ["proteingym", "protein", "dms", "mutation_effect", "sequence_fitness"]
+}

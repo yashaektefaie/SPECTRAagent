@@ -1,0 +1,90 @@
+{
+  "id": "imaging_histogram_radiomics_similarity",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "medical_or_scientific_image",
+  "scientific_unit": "image_or_region_of_interest",
+  "task_family": [
+    "medical imaging",
+    "radiomics",
+    "image-domain shift"
+  ],
+  "similarity_name": "Histogram or radiomics feature similarity",
+  "similarity_kind": "image_feature_distribution_similarity",
+  "definition": "Represent each image or ROI by normalized intensity histograms, quantitative radiomics features, or feature-domain summaries, then compute histogram or embedding similarity. This audits whether image-model performance depends on scanner/protocol-induced image distribution overlap.",
+  "spectra_axis": {
+    "name": "image_histogram_or_radiomics_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_histogram_or_feature_similarity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "histogram_or_radiomics_feature_columns"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/histogram_js_similarity.py",
+  "example_usage": "python histogram_js_similarity.py --train train_images.csv --eval eval_images.csv --out pairwise_similarity.csv --hist-cols-prefix hist_",
+  "citations": [
+    {
+      "paper_id": "PMC8472571",
+      "title": "Making Radiomics More Reproducible across Scanner and Imaging Protocol Variations: A Review of Harmonization Methods",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC8472571/content.lines",
+          "lines": "L9-L16",
+          "summary": "The review explains that radiomic features vary across scanners, acquisition protocols, and reconstruction settings."
+        },
+        {
+          "path": "/papers/PMC8472571/content.lines",
+          "lines": "L21-L28",
+          "summary": "The paper discusses standardization and harmonization across scanner/protocol variation."
+        }
+      ]
+    },
+    {
+      "paper_id": "PMC5852401",
+      "title": "Characterization of Diffusion Metric Map Similarity in Data From a Clinical Data Repository Using Histogram Distances",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC5852401/content.lines",
+          "lines": "L7-L16",
+          "summary": "The paper uses histogram distance metrics to characterize similarity of MRI-derived metric maps across acquisition settings."
+        },
+        {
+          "path": "/papers/PMC5852401/content.lines",
+          "lines": "L82-L94",
+          "summary": "Histogram distance is proposed as a practical way to determine whether repository images are sufficiently similar for reuse."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Histogram similarity ignores spatial organization unless radiomics or texture features are included.",
+    "ROI segmentation, binning, and normalization choices can dominate the result.",
+    "Image feature similarity can conflate disease phenotype with scanner/protocol effects."
+  ],
+  "quality_gates": [
+    "Report binning, intensity normalization, ROI definition, and radiomics extractor version.",
+    "Run scanner/protocol metadata similarity alongside feature-distribution similarity.",
+    "Check whether low-similarity bins are enriched for site, scanner, or label prevalence."
+  ],
+  "tags": [
+    "imaging",
+    "radiomics",
+    "histogram",
+    "scanner",
+    "protocol",
+    "jensen_shannon"
+  ]
+}

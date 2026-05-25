@@ -1,0 +1,79 @@
+{
+  "id": "topological_persistence_diagram_similarity",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "topological_signature",
+  "scientific_unit": "persistence_diagram_or_topological_summary",
+  "task_family": [
+    "topological data analysis",
+    "shape classification",
+    "scientific geometry learning"
+  ],
+  "similarity_name": "Persistence-diagram Wasserstein or bottleneck similarity",
+  "similarity_kind": "topological_signature_distance",
+  "definition": "Represent each sample by a persistence diagram or derived topological summary, compute a diagram distance such as bottleneck, Wasserstein, sliced Wasserstein, or a stable persistence kernel, and transform distance into similarity. For SPECTRA, this audits generalization across topological novelty rather than raw coordinates or images alone.",
+  "spectra_axis": {
+    "name": "topological_persistence_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_topological_similarity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "precomputed_persistence_distance_or_kernel"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/metric_to_similarity.py",
+  "example_usage": "python metric_to_similarity.py --input persistence_distances.csv --out pairwise_similarity.csv --metric-kind distance --metric-col sw_distance --distance-method exp --scale 1.0",
+  "citations": [
+    {
+      "paper_id": "arx_1706.03358",
+      "title": "Sliced Wasserstein Kernel for Persistence Diagrams",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/arx_1706.03358/content.lines",
+          "lines": "L4-L11",
+          "summary": "The paper motivates persistence diagrams as stable descriptors and defines sliced Wasserstein kernels for comparing them."
+        },
+        {
+          "path": "/papers/arx_1706.03358/content.lines",
+          "lines": "L18-L23",
+          "summary": "It describes diagram distances, bottleneck distance, stability, and topological descriptors."
+        },
+        {
+          "path": "/papers/arx_1706.03358/content.lines",
+          "lines": "L143-L143",
+          "summary": "The paper concludes that the sliced Wasserstein kernel is stable, discriminative, and practical for persistence diagrams."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "The chosen filtration determines what topology is visible.",
+    "Diagram distances can be expensive and sensitive to noise thresholds.",
+    "Topological similarity may complement, not replace, domain-specific physical or biological similarity."
+  ],
+  "quality_gates": [
+    "Report filtration, homology dimensions, diagram preprocessing, distance or kernel, and scale conversion.",
+    "Check sensitivity to persistence thresholding and subsampling.",
+    "Compare topological similarity against simpler geometric or embedding similarities."
+  ],
+  "tags": [
+    "topological_data_analysis",
+    "persistence_diagram",
+    "wasserstein",
+    "bottleneck",
+    "shape",
+    "tda"
+  ]
+}
+

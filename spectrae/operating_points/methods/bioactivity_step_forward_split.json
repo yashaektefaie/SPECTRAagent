@@ -1,0 +1,37 @@
+{
+  "id": "bioactivity_step_forward_split",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "operating_point_name": "Bioactivity Step-Forward Split",
+  "method_family": "temporal_or_novelty_step_forward",
+  "scientific_unit": "compound_activity_record",
+  "data_types": ["bioactivity", "drug_discovery", "small_molecule"],
+  "target_novelty_axis": "discovery_order_or_novelty_step",
+  "deployment_question": "How does the model perform as drug discovery moves forward into newer or more novel compounds?",
+  "curve_region": "axis_specific",
+  "definition": "Use k-fold n-step-forward validation or related sequential designs to train on earlier/less novel bioactivity records and evaluate on later/more novel records.",
+  "split_operator": {"type": "n_step_forward_cv", "heldout_unit": "time_or_novelty_step", "spectra_mapping": "samples ordered operating points along time or novelty"},
+  "required_inputs": ["sample_id", "compound id", "activity label", "time or novelty order"],
+  "recommended_similarity_axes": ["time_distance", "chemical_similarity", "assay_similarity"],
+  "output_contract": {"mode": "split_assignment", "required_columns": ["sample_id", "split", "role"], "optional_columns": ["step", "cutoff"]},
+  "implementation_recipe": [
+    "Order records by assay date, publication time, project stage, or novelty rank.",
+    "Train on records before the step and evaluate on the next held-out step.",
+    "Repeat across folds and report degradation across steps."
+  ],
+  "quality_gates": [
+    "Make the order variable explicit and auditable.",
+    "Control for assay and target leakage.",
+    "Report chemical similarity between each future step and training data."
+  ],
+  "failure_modes": [
+    "Dates can be missing or inconsistent across assays.",
+    "Later records may differ in assay protocol as well as chemical novelty.",
+    "Retrospective curation can leak future knowledge."
+  ],
+  "citations": [
+    {"paper_id": "bio_6e7f3b6776e2", "title": "Step Forward Cross Validation for Bioactivity Prediction", "evidence": "Tests k-fold n-step-forward cross-validation and reports better OOD validation insight than random splits."},
+    {"paper_id": "PMC11150475", "title": "Benchmarking compound activity prediction for real-world drug discovery applications", "evidence": "Constructs a real-world compound activity benchmark with assay-level performance variation."}
+  ],
+  "tags": ["bioactivity", "step_forward", "drug_discovery", "temporal"]
+}

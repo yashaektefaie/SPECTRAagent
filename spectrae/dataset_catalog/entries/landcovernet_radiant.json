@@ -1,0 +1,86 @@
+{
+  "id": "landcovernet_radiant",
+  "version": "0.1.0",
+  "status": "active",
+  "title": "LandCoverNet Global Land-Cover Training Dataset",
+  "domains": ["earth_observation", "remote_sensing", "land_cover", "geospatial_ml"],
+  "data_types": ["Sentinel-1 image", "Sentinel-2 image", "Landsat-8 image", "land-cover label", "geographic metadata"],
+  "scientific_units": ["image_chip", "geographic_tile", "land_cover_polygon", "continent_region"],
+  "compatible_model_families": ["land-cover classifier", "remote sensing model", "earth observation foundation model", "geospatial segmentation model"],
+  "source": {
+    "homepage": "https://www.earthdata.nasa.gov/about/competitive-programs/access/radiant-mlhub",
+    "repository": "https://github.com/RadiantMLHub",
+    "data_urls": [
+      {
+        "description": "Source Cooperative LandCoverNet record",
+        "url": "https://staging.source.coop/radiantearth/landcovernet/landcovernet_sa/README.md",
+        "access_notes": "Regional Source Cooperative record with dataset documentation and object paths."
+      },
+      {
+        "description": "Radiant MLHub documentation PDF",
+        "url": "https://radiant-mlhub.s3-us-west-2.amazonaws.com/landcovernet/Documentation.pdf",
+        "access_notes": "Dataset documentation and citation details."
+      },
+      {
+        "description": "LandCoverNet arXiv paper",
+        "url": "https://arxiv.org/abs/2012.03111",
+        "access_notes": "Use for benchmark motivation and dataset construction details."
+      }
+    ]
+  },
+  "access": {
+    "mode": "data_portal",
+    "authentication": "none_or_api_key_depending_on_portal",
+    "instructions": [
+      "Use Radiant MLHub or Source Cooperative records rather than scraping imagery from arbitrary mirrors.",
+      "Record region/continent, chip ID, coordinates, sensor, year, spectral bands, label map, and split.",
+      "Start with one continent or region to test SPECTRA axes before expanding globally."
+    ]
+  },
+  "scale": {
+    "download_size": "8,941 chips of 256 x 256 pixels across 300 geographically diverse tiles, with matched multi-sensor imagery",
+    "spectra_default": "continent_or_region_subset"
+  },
+  "expected_fields": ["chip_id", "continent", "region", "latitude", "longitude", "sensor", "bands", "land_cover_label", "split"],
+  "recommended_axes": [
+    {
+      "name": "geographic_distance",
+      "definition": "Geodesic, tile, region, or continent distance from training chips.",
+      "prospective": true
+    },
+    {
+      "name": "sensor_support",
+      "definition": "Similarity and overlap across Sentinel-1, Sentinel-2, and Landsat-8 observations.",
+      "prospective": true
+    },
+    {
+      "name": "land_cover_taxonomy_support",
+      "definition": "Class hierarchy and label-prevalence support for land-cover categories.",
+      "prospective": true
+    },
+    {
+      "name": "biome_or_environmental_support",
+      "definition": "Climate, biome, vegetation, or environmental-distance support if auxiliary metadata are joined.",
+      "prospective": true
+    }
+  ],
+  "useful_for": [
+    "A concrete, scoped geospatial generalization dataset beyond WILDS PovertyMap.",
+    "Testing whether land-cover models degrade with geography, sensor, and ecological novelty.",
+    "Constructing prospective spatial splits with explicit near-tile leakage checks."
+  ],
+  "leakage_risks": [
+    "Adjacent chips from the same tile can leak spatial context.",
+    "Multi-sensor views of the same location can leak if treated as independent samples.",
+    "Label-source artifacts and regional class prevalence can masquerade as model generalization."
+  ],
+  "related_benchmark_capsules": [],
+  "related_memory_entries": [],
+  "paperclip_provenance": {
+    "search_ids": ["s_4d7eeb00", "s_5110991d"],
+    "map_ids": ["m_9d30698a", "m_f8743c48"],
+    "paper_ids": ["arx_2012.03111", "PMC10703991"],
+    "notes": "Paperclip identified LandCoverNet and related global land-cover resources; official NASA/Radiant/Source Cooperative pages confirm portable access and scale."
+  },
+  "tags": ["landcovernet", "radiant_mlhub", "remote_sensing", "land_cover", "geospatial"]
+}

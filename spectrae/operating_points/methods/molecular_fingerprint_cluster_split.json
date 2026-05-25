@@ -1,0 +1,37 @@
+{
+  "id": "molecular_fingerprint_cluster_split",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "operating_point_name": "Molecular Fingerprint Cluster Split",
+  "method_family": "molecular_cluster_holdout",
+  "scientific_unit": "molecule",
+  "data_types": ["small_molecule", "virtual_screening", "molecular_property"],
+  "target_novelty_axis": "fingerprint_similarity_cluster",
+  "deployment_question": "How does the model perform on chemical clusters separated by fingerprint similarity?",
+  "curve_region": "low_overlap",
+  "definition": "Cluster molecules with a fingerprint similarity rule, such as Butina/Taylor-Butina or chemical similarity clustering, then hold out clusters to reduce train-test structural overlap.",
+  "split_operator": {"type": "cluster_holdout", "heldout_unit": "fingerprint_cluster", "spectra_mapping": "samples a lower-overlap chemical similarity operating point than random or scaffold splits"},
+  "required_inputs": ["sample_id", "molecular fingerprints", "clustering threshold or cluster ids"],
+  "recommended_similarity_axes": ["morgan_tanimoto", "cluster_identity", "nearest_train_similarity"],
+  "output_contract": {"mode": "split_assignment", "required_columns": ["sample_id", "split", "role"], "optional_columns": ["cluster_id", "threshold"]},
+  "implementation_recipe": [
+    "Compute molecular fingerprints with recorded settings.",
+    "Cluster molecules using a similarity threshold or precomputed similarity graph.",
+    "Assign whole clusters to train or test and report residual nearest-train similarity."
+  ],
+  "quality_gates": [
+    "Report fingerprint type, radius, bit length, and clustering threshold.",
+    "Check cluster size imbalance.",
+    "Compare the split against scaffold and continuous SPECTRA curves."
+  ],
+  "failure_modes": [
+    "A single threshold can produce unstable or giant clusters.",
+    "Fingerprint choice changes the operating point.",
+    "Activity cliffs may remain within low-overlap clusters."
+  ],
+  "citations": [
+    {"paper_id": "PMC12153141", "title": "UMAP-based clustering split for rigorous evaluation of AI models for virtual screening", "evidence": "Compares Butina clustering against scaffold and UMAP splits for virtual-screening evaluation."},
+    {"paper_id": "PMC12529777", "title": "Evaluating Machine Learning Models for Molecular Property Prediction on OOD Data", "evidence": "Finds chemical similarity clustering is a challenging OOD generation strategy."}
+  ],
+  "tags": ["molecule", "butina", "fingerprint", "cluster_split"]
+}

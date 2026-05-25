@@ -1,0 +1,86 @@
+{
+  "id": "open_catalyst_oc20",
+  "version": "0.1.0",
+  "status": "active",
+  "title": "Open Catalyst 2020 Adsorbate-Surface DFT Benchmark",
+  "domains": ["materials_science", "catalysis", "geometric_deep_learning", "atomistic_simulation"],
+  "data_types": ["atomic structure", "adsorbate", "surface slab", "DFT energy", "force", "relaxation trajectory", "challenge split"],
+  "scientific_units": ["adsorbate_surface_system", "relaxation_trajectory", "bulk_material", "surface", "adsorbate"],
+  "compatible_model_families": ["graph neural network", "equivariant neural network", "machine-learned interatomic potential", "materials foundation model"],
+  "source": {
+    "homepage": "https://fair-chem.github.io/catalysts/datasets/oc20.html",
+    "repository": "https://github.com/Open-Catalyst-Project/Open-Catalyst-Dataset",
+    "data_urls": [
+      {
+        "description": "OC20 dataset documentation",
+        "url": "https://fair-chem.github.io/catalysts/datasets/oc20.html",
+        "access_notes": "Official documentation for downloading and processing OC20."
+      },
+      {
+        "description": "OC20 paper",
+        "url": "https://pubs.acs.org/doi/10.1021/acscatal.0c04525",
+        "access_notes": "Use for dataset construction, task definitions, and citation."
+      },
+      {
+        "description": "OC20 arXiv paper",
+        "url": "https://arxiv.org/abs/2010.09990",
+        "access_notes": "Open paper copy; useful for scale and challenge split details."
+      }
+    ]
+  },
+  "access": {
+    "mode": "mixed",
+    "authentication": "none_expected; full downloads are very large",
+    "instructions": [
+      "Do not download the full OC20 dataset by default.",
+      "Start with metadata, official validation/test split manifests, or a small split/category subset.",
+      "Record system ID, adsorbate, surface, bulk composition, atomistic structure, energy/force target, split category, and relaxation step."
+    ]
+  },
+  "scale": {
+    "download_size": "very large; OC20 includes about 1.28M DFT relaxations and hundreds of millions of single-point evaluations",
+    "spectra_default": "metadata_or_validation_split_subset_first"
+  },
+  "expected_fields": ["system_id", "adsorbate", "surface", "bulk_composition", "atomic_structure", "energy", "forces", "split"],
+  "recommended_axes": [
+    {
+      "name": "adsorbate_similarity",
+      "definition": "Chemical similarity over adsorbate formula, bonding, element composition, and molecular graph.",
+      "prospective": true
+    },
+    {
+      "name": "surface_and_bulk_similarity",
+      "definition": "Similarity over surface composition, crystal structure, facet, and element set.",
+      "prospective": true
+    },
+    {
+      "name": "oc20_split_category",
+      "definition": "Official ID/OOD Ads/OOD Cat/OOD Both challenge categories treated as operating points on a novelty curve.",
+      "prospective": true
+    },
+    {
+      "name": "local_atomic_environment_support",
+      "definition": "Nearest-neighbor support over graph, coordination, SOAP-like, or learned atomistic representations.",
+      "prospective": true
+    }
+  ],
+  "useful_for": [
+    "Auditing atomistic and materials foundation models under adsorbate/surface novelty.",
+    "Turning official OC20 OOD challenge splits into continuous SPECTRA curves.",
+    "Providing a major non-bio scientific ML benchmark where full-data use must be explicitly scoped."
+  ],
+  "leakage_risks": [
+    "The same bulk, surface, adsorbate, or relaxation family can appear across splits.",
+    "Relaxation trajectory frames are highly correlated and should not be split naively.",
+    "Pretrained atomistic models may already include OC20 or close derivatives."
+  ],
+  "related_benchmark_capsules": [],
+  "related_memory_entries": [],
+  "paperclip_provenance": {
+    "search_ids": ["s_6b5119bf"],
+    "map_ids": ["m_f8b6693f"],
+    "paper_ids": ["arx_2010.09990", "arx_2206.08917", "arx_2509.17862"],
+    "notes": "Paperclip surfaced OC20/OC22/OC25 as recurring catalyst generalization datasets; official Open Catalyst documentation confirms OC20 access and scale."
+  },
+  "tags": ["oc20", "open_catalyst", "catalysis", "materials", "atomistic_simulation"]
+}

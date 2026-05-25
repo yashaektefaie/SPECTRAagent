@@ -1,0 +1,79 @@
+{
+  "id": "survival_metric_learned_patient_similarity",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "time_to_event_clinical_data",
+  "scientific_unit": "patient_with_survival_outcome",
+  "task_family": [
+    "survival analysis",
+    "clinical risk prediction",
+    "nearest-neighbor interpretability"
+  ],
+  "similarity_name": "Survival metric-learned patient similarity",
+  "similarity_kind": "learned_patient_metric_similarity",
+  "definition": "Represent patients by baseline or longitudinal covariates and compare them with a clinically motivated or learned metric for time-to-event prediction, such as weighted nearest-neighbor kernels or Mahalanobis-like distances. For SPECTRA, this audits whether survival-model performance depends on evaluation patients having close analogs in the training cohort under the metric used for survival prediction.",
+  "spectra_axis": {
+    "name": "survival_patient_metric_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_survival_metric_similarity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "patient_covariates_or_precomputed_survival_metric"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/tabular_mahalanobis_similarity.py",
+  "example_usage": "python tabular_mahalanobis_similarity.py --train train_patients.csv --eval eval_patients.csv --out pairwise_similarity.csv --feature-cols-prefix cov_",
+  "citations": [
+    {
+      "paper_id": "PMC10606222",
+      "title": "Distance-Metric Learning for Personalized Survival Analysis",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC10606222/content.lines",
+          "lines": "L6-L12",
+          "summary": "The paper proposes weighted nearest neighbors for personalized survival prediction and learns a distance metric."
+        },
+        {
+          "path": "/papers/PMC10606222/content.lines",
+          "lines": "L23-L24",
+          "summary": "It formalizes patient similarity with kernel weights derived from a learned metric in covariate space."
+        },
+        {
+          "path": "/papers/PMC10606222/content.lines",
+          "lines": "L58-L58",
+          "summary": "The paper emphasizes nearest-neighbor interpretability for survival analysis."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Learning the similarity metric from survival outcomes can leak label information into an audit axis if not done inside training folds.",
+    "Censoring, competing risks, and non-proportional hazards can make one patient metric misleading.",
+    "A metric optimized for prediction may not be the same as a clinically meaningful novelty axis."
+  ],
+  "quality_gates": [
+    "State whether the metric was fixed a priori, learned only on training data, or learned retrospectively.",
+    "Report censoring distribution, time horizon, covariates, scaling, and missingness handling.",
+    "Compare to simple clinical-tabular and temporal/site similarity axes."
+  ],
+  "tags": [
+    "survival",
+    "time_to_event",
+    "patient_similarity",
+    "metric_learning",
+    "nearest_neighbor",
+    "clinical"
+  ]
+}
+

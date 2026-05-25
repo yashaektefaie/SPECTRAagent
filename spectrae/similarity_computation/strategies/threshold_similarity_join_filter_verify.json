@@ -1,0 +1,93 @@
+{
+  "id": "threshold_similarity_join_filter_verify",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "Threshold Similarity Join with Filter-and-Verify",
+  "strategy_family": "similarity_join",
+  "exactness": "hybrid_exact_after_candidate_generation",
+  "applies_to_similarity_kinds": [
+    "jaccard_similarity",
+    "cosine_similarity",
+    "edit_similarity",
+    "set_overlap",
+    "string_similarity"
+  ],
+  "compatible_data_shapes": [
+    "set_features",
+    "token_bag",
+    "string_records",
+    "multiset",
+    "sparse_vector"
+  ],
+  "definition": "When SPECTRA needs a thresholded graph rather than top-k neighbors, use similarity-join methods such as prefix filtering, bitmap filters, locality-sensitive filtering, or distributed joins to enumerate all train-eval pairs above a threshold, then verify each candidate with the exact similarity.",
+  "scale_profile": {
+    "best_for": "Building binary or thresholded weighted SPECTRA graphs where every edge above a threshold should be recovered.",
+    "typical_upper_bound": "Millions to billions of candidate records in optimized implementations or distributed systems.",
+    "avoid_when": "Only nearest-neighbor overlap is needed; top-k ANN is usually simpler."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "candidate_source",
+      "threshold"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "tokenized sets or sparse features",
+    "similarity threshold"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "threshold",
+      "purpose": "Defines the emitted SPECTRA graph edge set."
+    },
+    {
+      "name": "prefix_ordering",
+      "purpose": "Controls filtering power through rare-token ordering."
+    },
+    {
+      "name": "approximate_recall_target",
+      "purpose": "Optional recall target for randomized joins."
+    }
+  ],
+  "quality_gates": [
+    "Verify candidate pairs with the exact similarity function before output.",
+    "Report threshold, candidate reduction, and exact or approximate recall guarantee.",
+    "Check whether threshold choice leaves enough edges for SPECTRA split construction."
+  ],
+  "failure_modes": [
+    "Low thresholds can create too many candidate pairs.",
+    "Approximate joins require recall calibration before interpreting missing edges.",
+    "Prefix filtering performs poorly when rare tokens are absent or uninformative."
+  ],
+  "python_example": "set_similarity_threshold_join.py",
+  "example_usage": "python set_similarity_threshold_join.py --train train.csv --eval eval.csv --out pairwise_similarity.csv --set-col terms --threshold 0.5",
+  "citations": [
+    {
+      "paper_id": "arx_1707.06814",
+      "title": "Scalable and Robust Set Similarity Join",
+      "evidence": "Contrasts exact prefix-filtering joins with randomized set similarity joins and reports recall/speed tradeoffs."
+    },
+    {
+      "paper_id": "arx_1711.07295",
+      "title": "Bitmap Filter: Speeding up Exact Set Similarity Joins with Bitwise Operations",
+      "evidence": "Uses bitwise filters to accelerate exact set similarity joins."
+    }
+  ],
+  "tags": [
+    "similarity_join",
+    "threshold_graph",
+    "prefix_filter",
+    "filter_verify",
+    "set_similarity"
+  ]
+}

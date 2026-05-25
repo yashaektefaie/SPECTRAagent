@@ -1,0 +1,96 @@
+{
+  "id": "dense_embedding_hnsw_topk",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "Dense Embedding HNSW Top-k Search",
+  "strategy_family": "approximate_nearest_neighbor",
+  "exactness": "approximate",
+  "applies_to_similarity_kinds": [
+    "cosine_similarity",
+    "inner_product_similarity",
+    "euclidean_distance",
+    "embedding_similarity"
+  ],
+  "compatible_data_shapes": [
+    "dense_vector",
+    "embedding",
+    "text_embedding",
+    "image_embedding",
+    "protein_embedding",
+    "single_cell_embedding"
+  ],
+  "definition": "Build a hierarchical navigable small-world graph over training embeddings and query evaluation embeddings for approximate top-k train neighbors. Use the returned edges as SPECTRA pairwise similarities after measuring recall on an exact subset.",
+  "scale_profile": {
+    "best_for": "Large dense embedding tables where exact train-eval matrix multiplication is too expensive.",
+    "typical_upper_bound": "Hundreds of thousands to many millions of vectors on a single machine, depending on memory.",
+    "avoid_when": "The audit requires exact low-similarity tails rather than nearest-neighbor overlap."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "ann_recall_at_k"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "dense embeddings",
+    "distance or similarity metric"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "k",
+      "purpose": "Number of train neighbors retained per evaluation unit."
+    },
+    {
+      "name": "M",
+      "purpose": "HNSW graph degree controlling memory and recall."
+    },
+    {
+      "name": "ef_construction",
+      "purpose": "Index build quality parameter."
+    },
+    {
+      "name": "ef_search",
+      "purpose": "Query-time recall/speed tradeoff."
+    }
+  ],
+  "quality_gates": [
+    "Measure recall@k against exact search on a representative subset.",
+    "Report HNSW parameters and whether vectors were normalized.",
+    "Check that nearest-neighbor coverage remains adequate in the most novel eval region."
+  ],
+  "failure_modes": [
+    "Approximate misses can make samples look spuriously distant from train.",
+    "Embedding similarity may encode leakage if embeddings were trained with labels or test data.",
+    "Memory grows with graph degree and vector count."
+  ],
+  "python_example": "dense_vector_topk_similarity.py",
+  "example_usage": "Use dense_vector_topk_similarity.py for an exact local prototype, then replace its scorer with FAISS/HNSW while keeping the same CSV columns.",
+  "citations": [
+    {
+      "paper_id": "arx_1603.09320",
+      "title": "Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs",
+      "evidence": "Introduces HNSW as a multi-layer graph for approximate nearest-neighbor search with high recall and efficient routing."
+    },
+    {
+      "paper_id": "arx_1807.05614",
+      "title": "ANN-Benchmarks: A Benchmarking Tool for Approximate Nearest Neighbor Algorithms",
+      "evidence": "Frames ANN selection as a quality/performance tradeoff and evaluates recall for k-nearest-neighbor methods."
+    }
+  ],
+  "tags": [
+    "ann",
+    "hnsw",
+    "dense_embedding",
+    "top_k",
+    "large_scale"
+  ]
+}

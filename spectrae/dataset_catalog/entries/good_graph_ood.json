@@ -1,0 +1,65 @@
+{
+  "id": "good_graph_ood",
+  "version": "0.1.0",
+  "status": "active",
+  "title": "GOOD Graph Out-of-Distribution Benchmark",
+  "domains": ["graph_ml", "distribution_shift", "ai4science"],
+  "data_types": ["graph", "node feature table", "edge list", "domain annotation"],
+  "scientific_units": ["graph", "node", "edge", "domain"],
+  "compatible_model_families": ["graph neural network", "geometric deep learning model", "graph foundation model"],
+  "source": {
+    "homepage": "https://github.com/divelab/GOOD",
+    "repository": "https://github.com/divelab/GOOD",
+    "data_urls": [
+      {
+        "description": "GOOD official repository",
+        "url": "https://github.com/divelab/GOOD",
+        "access_notes": "Use official loaders to recover split metadata and domain selections."
+      }
+    ]
+  },
+  "access": {
+    "mode": "repository",
+    "authentication": "none_expected",
+    "instructions": [
+      "Install or inspect the GOOD package and choose one graph dataset/domain selection.",
+      "Use official split metadata as operating points, then build SPECTRA curves around graph similarity or domain support.",
+      "Record graph task type, domain selection, covariate/concept shift label, and random seed."
+    ]
+  },
+  "scale": {
+    "download_size": "variable by graph dataset; begin with one official dataset/domain selection",
+    "spectra_default": "selected_official_dataset"
+  },
+  "expected_fields": ["graph_id", "node_features", "edge_index", "label", "domain", "split", "shift_type"],
+  "recommended_axes": [
+    {
+      "name": "graph_structural_similarity",
+      "definition": "Graph kernel, WL-feature, substructure, or learned graph-embedding similarity.",
+      "prospective": true
+    },
+    {
+      "name": "domain_support",
+      "definition": "Distance from training domain labels or domain-feature centroids.",
+      "prospective": true
+    },
+    {
+      "name": "local_neighborhood_similarity",
+      "definition": "Node or ego-graph neighborhood overlap for node-level tasks.",
+      "prospective": true
+    }
+  ],
+  "useful_for": [
+    "Auditing graph model generalization beyond biology and chemistry.",
+    "Testing whether benchmark OOD splits sample one point on a broader graph novelty curve.",
+    "Comparing covariate and concept shift behavior in SPECTRA terms."
+  ],
+  "leakage_risks": [
+    "Node-level tasks can leak through graph connectivity if train/test masking is ignored.",
+    "Domain labels may be too close to the official split definition and should be contextualized as operating points.",
+    "Learned graph embeddings must not be fitted on held-out labels."
+  ],
+  "related_benchmark_capsules": ["gess"],
+  "related_memory_entries": [],
+  "tags": ["good", "graphs", "ood", "geometric_deep_learning", "domain_shift"]
+}

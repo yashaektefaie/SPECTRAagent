@@ -1,0 +1,66 @@
+{
+  "id": "regulatory_dna_chromosome_holdout",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "regulatory_dna",
+  "scientific_unit": "genomic_interval",
+  "task_family": [
+    "regulatory DNA prediction",
+    "chromatin accessibility",
+    "DNA language model evaluation"
+  ],
+  "similarity_name": "Chromosome or genomic-region overlap",
+  "similarity_kind": "metadata_group",
+  "definition": "Use chromosome or genomic interval membership as a coarse generalization axis. Same chromosome or nearby genomic intervals are high-overlap; held-out chromosomes or far genomic intervals are lower-overlap evaluation units.",
+  "spectra_axis": {
+    "name": "chromosome_or_region_overlap",
+    "axis_type": "similarity",
+    "aggregation": "same_group_or_distance_to_nearest_interval",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "chromosome"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/tabular_group_similarity.py",
+  "example_usage": "python tabular_group_similarity.py --train train.csv --eval eval.csv --out pairwise_similarity.csv --group-col chromosome",
+  "citations": [
+    {
+      "paper_id": "PMC12340898",
+      "title": "DART-Eval: A Comprehensive DNA Language Model Evaluation Benchmark on Regulatory DNA",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC12340898/content.lines",
+          "lines": "L389-L390",
+          "summary": "The paper defines a train/validation/test split using held-out chromosomes for regulatory DNA evaluation."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Chromosome identity is coarse and does not measure local regulatory syntax.",
+    "Same-chromosome intervals can still be biologically unrelated.",
+    "Held-out chromosomes can confound sequence composition, annotation density, and cell-type coverage."
+  ],
+  "quality_gates": [
+    "Report chromosome membership for train, validation, and test.",
+    "Also audit sequence composition, motif content, and regulatory element class.",
+    "Avoid mixing interval-level and variant-level units without explicit identifiers."
+  ],
+  "tags": [
+    "regulatory_dna",
+    "chromosome",
+    "genomics",
+    "dart_eval"
+  ]
+}

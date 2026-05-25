@@ -1,0 +1,108 @@
+{
+  "experiment": "boom_molecular_agent_ablation",
+  "date": "2026-05-12",
+  "task": "anonymous_molecular_property_generalization",
+  "task_dir": "/ewsc/yektefai/spectra_paper_results_20260512/agent_trials/boom_molecular_ood",
+  "rubric": "experiments/iterative_agent_behavior/rubric.json",
+  "conditions": {
+    "vanilla": {
+      "report": "/ewsc/yektefai/spectra_paper_results_20260512/agent_trials/boom_molecular_ood/vanilla/report.json",
+      "summary": "General coding workflow only; no SPECTRA protocol, registries, CLI, benchmark runners, or prior BOOM/SPECTRA outputs."
+    },
+    "cli_only": {
+      "report": "/ewsc/yektefai/spectra_paper_results_20260512/agent_trials/boom_molecular_ood/cli_only/report.json",
+      "summary": "Allowed to use the deterministic SPECTRA CLI/audit engine after constructing its own axis; no registries or full /spectra procedure."
+    },
+    "cli_plus_registries": {
+      "report": "/ewsc/yektefai/spectra_paper_results_20260512/agent_trials/boom_molecular_ood/cli_plus_registries/report.json",
+      "summary": "Allowed to use SPECTRA CLI plus similarity-definition and computation-strategy registries; no full /spectra procedure."
+    },
+    "full_spectra": {
+      "report": "/ewsc/yektefai/spectra_paper_results_20260512/agent_trials/boom_molecular_ood/full_spectra/report.json",
+      "summary": "Allowed to use full /spectra protocol, registries, procedures, and deterministic audit tools."
+    }
+  },
+  "score_scale": {
+    "0": "missing or invalid",
+    "1": "partial, qualitative, or weakly justified",
+    "2": "quantitative, valid, and scientifically useful"
+  },
+  "scores": {
+    "vanilla": {
+      "scientific_unit": 2,
+      "initial_similarity_hypothesis": 2,
+      "property_graph_specificity": 1,
+      "overlap_validation": 2,
+      "performance_curve": 2,
+      "curve_scoring": 2,
+      "failed_axis_reporting": 2,
+      "adaptive_next_axis": 1,
+      "leakage_risk_classification": 2,
+      "selected_axis_defensibility": 2,
+      "metric_reporting": 0,
+      "audit_artifact_quality": 1,
+      "total": 19,
+      "max": 24,
+      "evidence": "The vanilla agent identified molecule-level generalization, computed Morgan, scaffold, descriptor, and target-support axes, classified target support as post-hoc, and found monotonic novelty degradation. It did not compute AUSPC or produce standardized SPECTRA audit cards."
+    },
+    "cli_only": {
+      "scientific_unit": 2,
+      "initial_similarity_hypothesis": 2,
+      "property_graph_specificity": 2,
+      "overlap_validation": 2,
+      "performance_curve": 2,
+      "curve_scoring": 2,
+      "failed_axis_reporting": 1,
+      "adaptive_next_axis": 1,
+      "leakage_risk_classification": 2,
+      "selected_axis_defensibility": 2,
+      "metric_reporting": 2,
+      "audit_artifact_quality": 2,
+      "total": 22,
+      "max": 24,
+      "evidence": "The CLI-only agent constructed Morgan fingerprint novelty, ran the deterministic SPECTRA audit, computed AUSPC, and produced audit artifacts. It reported fewer registry-informed alternatives and less explicit adaptive search than full /spectra."
+    },
+    "cli_plus_registries": {
+      "scientific_unit": 2,
+      "initial_similarity_hypothesis": 2,
+      "property_graph_specificity": 2,
+      "overlap_validation": 2,
+      "performance_curve": 2,
+      "curve_scoring": 2,
+      "failed_axis_reporting": 2,
+      "adaptive_next_axis": 1,
+      "leakage_risk_classification": 2,
+      "selected_axis_defensibility": 2,
+      "metric_reporting": 2,
+      "audit_artifact_quality": 2,
+      "total": 23,
+      "max": 24,
+      "evidence": "The CLI+registry agent selected a registry-backed Morgan Tanimoto axis, ran sensitivity axes including scaffold, physicochemical descriptors, and Morgan radius-3, computed AUSPC for several axes, and reported weaker/confounded axes."
+    },
+    "full_spectra": {
+      "scientific_unit": 2,
+      "initial_similarity_hypothesis": 2,
+      "property_graph_specificity": 2,
+      "overlap_validation": 2,
+      "performance_curve": 2,
+      "curve_scoring": 2,
+      "failed_axis_reporting": 2,
+      "adaptive_next_axis": 2,
+      "leakage_risk_classification": 2,
+      "selected_axis_defensibility": 2,
+      "metric_reporting": 2,
+      "audit_artifact_quality": 2,
+      "total": 24,
+      "max": 24,
+      "evidence": "The full /spectra agent ran a structured hypothesis loop over Morgan, scaffold, descriptor, post-hoc target, and invalid residual axes; selected descriptor_neighborhood as the strongest prospective axis; computed AUSPC; and produced per-axis audit artifacts."
+    }
+  },
+  "key_results": {
+    "aggregate_model_behavior": "All conditions found partial aggregate held-out performance with RMSE about 0.193 and R2 about 0.155 over 1,440 eval molecules.",
+    "vanilla_result": "Vanilla found the main molecular novelty failure without SPECTRA: Morgan and descriptor novelty curves were monotonic, exact duplicate leakage was absent, and target-support shift was correctly caveated as post-hoc.",
+    "cli_only_result": "CLI-only converted the Morgan novelty axis into deterministic SPECTRA artifacts and computed negative-RMSE AUSPC -0.2221.",
+    "cli_plus_registries_result": "CLI+registries selected registry-backed Morgan Tanimoto and evaluated scaffold, physicochemical descriptor, and Morgan radius sensitivity axes; selected-axis AUSPC was -0.2268.",
+    "full_spectra_result": "Full /spectra selected descriptor_neighborhood; RMSE increased from 0.1929 overall to 0.3088 in the high-novelty descriptor subset, with AUSPC -0.2696.",
+    "main_delta": "On this easy molecular task, /spectra did not uniquely discover the generalization failure. Its value was stronger artifact standardization, explicit hypothesis-loop behavior, registry-backed alternatives, and clearer prospective/post-hoc classification."
+  }
+}

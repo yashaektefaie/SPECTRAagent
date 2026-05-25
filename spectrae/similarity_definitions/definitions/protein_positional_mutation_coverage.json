@@ -1,0 +1,72 @@
+{
+  "id": "protein_positional_mutation_coverage",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "protein_sequence",
+  "scientific_unit": "protein_variant",
+  "task_family": [
+    "protein fitness prediction",
+    "variant effect prediction",
+    "positional extrapolation"
+  ],
+  "similarity_name": "Mutated-position coverage Jaccard similarity",
+  "similarity_kind": "set_similarity",
+  "definition": "Represent each variant by the set of mutated positions, or by position:amino-acid tokens when substitution identity matters, then compute Jaccard similarity to training variants. This audits whether performance depends on seeing the same sites or substitutions during training.",
+  "spectra_axis": {
+    "name": "mutated_position_set_overlap",
+    "axis_type": "similarity",
+    "aggregation": "max_train_jaccard",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "mutated_position_set"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/set_jaccard_similarity.py",
+  "example_usage": "python set_jaccard_similarity.py --train train_variants.csv --eval eval_variants.csv --out pairwise_similarity.csv --set-col mutated_positions",
+  "citations": [
+    {
+      "paper_id": "PMC12278695",
+      "title": "Investigating the determinants of performance in machine learning for protein fitness prediction",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC12278695/content.lines",
+          "lines": "L32-L33",
+          "summary": "The paper defines positional extrapolation as predicting mutation effects at sites or amino acids not exposed during training."
+        },
+        {
+          "path": "/papers/PMC12278695/content.lines",
+          "lines": "L88-L90",
+          "summary": "The experiments train with a site fixed and test on alternative amino acids at that site to measure positional extrapolation."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Position overlap ignores sequence background and long-range epistasis.",
+    "A position-only set is too coarse when substitution identity is central.",
+    "Requires a consistent coordinate system across variants."
+  ],
+  "quality_gates": [
+    "Choose position-only or position:amino-acid tokens before running the audit.",
+    "Report how wild-type/reference residues were assigned.",
+    "Run a separate sequence-distance curve when background sequence context varies."
+  ],
+  "tags": [
+    "protein",
+    "positional_extrapolation",
+    "mutation_sites",
+    "jaccard",
+    "fitness"
+  ]
+}

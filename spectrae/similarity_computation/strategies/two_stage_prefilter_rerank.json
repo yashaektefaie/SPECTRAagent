@@ -1,0 +1,95 @@
+{
+  "id": "two_stage_prefilter_rerank",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "Two-Stage Prefilter and Exact Rerank",
+  "strategy_family": "generic_prefilter_rerank",
+  "exactness": "hybrid_exact_after_candidate_generation",
+  "applies_to_similarity_kinds": [
+    "expensive_pairwise_similarity",
+    "alignment_score",
+    "graph_kernel",
+    "wasserstein_distance",
+    "shape_distance",
+    "learned_similarity"
+  ],
+  "compatible_data_shapes": [
+    "graph",
+    "sequence",
+    "time_series",
+    "point_cloud",
+    "structured_object",
+    "multimodal_sample"
+  ],
+  "definition": "Use a cheap proxy similarity, sketch, embedding, metadata filter, or coarse feature index to generate candidate train neighbors, then compute the scientifically preferred expensive similarity exactly on those candidates.",
+  "scale_profile": {
+    "best_for": "Domains where the defensible scientific similarity is expensive but a calibrated proxy can recover candidates.",
+    "typical_upper_bound": "Depends on proxy recall and exact reranking cost.",
+    "avoid_when": "No proxy can be calibrated against the intended similarity."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "candidate_source",
+      "proxy_similarity"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "cheap proxy features",
+    "expensive exact similarity function"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "proxy_candidate_k",
+      "purpose": "Number of candidates passed to exact reranking."
+    },
+    {
+      "name": "proxy_threshold",
+      "purpose": "Optional lower bound for candidate inclusion."
+    },
+    {
+      "name": "exact_rerank_budget",
+      "purpose": "Caps expensive pairwise computations."
+    }
+  ],
+  "quality_gates": [
+    "Measure proxy candidate recall against exact all-pairs on a subset.",
+    "Report proxy features separately from final exact similarity values.",
+    "Run sensitivity analysis over candidate budget."
+  ],
+  "failure_modes": [
+    "Proxy bias can erase the very novelty region SPECTRA should audit.",
+    "Candidate budgets can create artificial plateaus in the spectral curve.",
+    "Exact rerank cost can still be too high for large candidate sets."
+  ],
+  "python_example": "minhash_lsh_jaccard.py",
+  "example_usage": "Use minhash_lsh_jaccard.py as a transparent two-stage example: LSH proposes candidates and exact Jaccard reranks them before SPECTRA audit.",
+  "citations": [
+    {
+      "paper_id": "arx_0810.5434",
+      "title": "Improved seed design for protein similarity search",
+      "evidence": "Uses a seed prefilter before more expensive sequence similarity evaluation."
+    },
+    {
+      "paper_id": "arx_0811.3301",
+      "title": "A new lower bound for dynamic time warping",
+      "evidence": "Uses cheap bounds before expensive DTW computations, illustrating the general prefilter-rerank pattern."
+    }
+  ],
+  "tags": [
+    "generic",
+    "prefilter",
+    "exact_rerank",
+    "expensive_similarity",
+    "calibration"
+  ]
+}

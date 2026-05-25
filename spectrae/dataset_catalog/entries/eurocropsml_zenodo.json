@@ -1,0 +1,81 @@
+{
+  "id": "eurocropsml_zenodo",
+  "version": "0.1.0",
+  "status": "active",
+  "title": "EuroCropsML Few-Shot Crop-Type Time-Series Benchmark",
+  "domains": ["geospatial_ml", "remote_sensing", "time_series", "agriculture"],
+  "data_types": ["Sentinel-2 time series", "crop type label", "parcel metadata", "country region"],
+  "scientific_units": ["agricultural_parcel", "crop_type_time_series", "country_region"],
+  "compatible_model_families": ["remote sensing model", "time series classifier", "geospatial model", "vision model"],
+  "source": {
+    "homepage": "https://github.com/dida-do/eurocropsml",
+    "repository": "https://github.com/dida-do/eurocropsml",
+    "data_urls": [
+      {
+        "description": "EuroCropsML Zenodo record",
+        "url": "https://doi.org/10.5281/zenodo.15095445",
+        "access_notes": "Scientific Data paper and official docs point to the Zenodo release."
+      },
+      {
+        "description": "EuroCropsML paper",
+        "url": "https://www.nature.com/articles/s41597-025-04952-7",
+        "access_notes": "Use for dataset construction and benchmark semantics."
+      }
+    ]
+  },
+  "access": {
+    "mode": "mixed",
+    "authentication": "none_expected",
+    "instructions": [
+      "Use the official GitHub package or Zenodo release rather than rebuilding from raw country shapefiles.",
+      "Record country, region, parcel ID, time stamps, spectral bands, crop label hierarchy, split, and version.",
+      "Start with one or two countries/regions when running iterative SPECTRA exploration."
+    ]
+  },
+  "scale": {
+    "download_size": "large but analysis-ready remote-sensing time-series benchmark; subset by country/region first",
+    "spectra_default": "country_region_subset"
+  },
+  "expected_fields": ["parcel_id", "country", "region", "timestamps", "spectral_bands", "crop_type", "split"],
+  "recommended_axes": [
+    {
+      "name": "geographic_region_similarity",
+      "definition": "Country, region, and geographic distance from training parcels.",
+      "prospective": true
+    },
+    {
+      "name": "crop_taxonomy_similarity",
+      "definition": "Crop class hierarchy or semantic distance between crop labels.",
+      "prospective": true
+    },
+    {
+      "name": "phenological_time_series_similarity",
+      "definition": "Similarity in seasonal spectral trajectories or time-series embeddings.",
+      "prospective": true
+    },
+    {
+      "name": "label_prior_shift",
+      "definition": "Distance in crop-class prevalence across countries or regions.",
+      "prospective": true
+    }
+  ],
+  "useful_for": [
+    "Geospatial/time-series SPECTRA audits beyond WILDS PovertyMap.",
+    "Testing transnational transfer and few-shot crop-type generalization.",
+    "Exploring whether temporal trajectory similarity or geography better explains performance decay."
+  ],
+  "leakage_risks": [
+    "Nearby parcels and duplicated geometries can leak spatial context.",
+    "Crop label taxonomies differ across countries and may require harmonization.",
+    "Class-prior shift can masquerade as representation failure."
+  ],
+  "related_benchmark_capsules": [],
+  "related_memory_entries": [],
+  "paperclip_provenance": {
+    "search_ids": ["s_5c956f9a", "s_bcaa8d4e"],
+    "map_ids": ["m_a029787f", "m_6070b7e2"],
+    "paper_ids": ["arx_2407.17458", "PMC12009327"],
+    "notes": "Paperclip identified EuroCropsML as a ready-to-use Sentinel-2 crop-type benchmark for transnational/few-shot transfer; official sources confirm GitHub and Zenodo access."
+  },
+  "tags": ["eurocropsml", "remote_sensing", "crop_type", "few_shot", "geospatial_time_series"]
+}

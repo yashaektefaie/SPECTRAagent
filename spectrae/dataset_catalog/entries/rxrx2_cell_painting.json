@@ -1,0 +1,71 @@
+{
+  "id": "rxrx2_cell_painting",
+  "version": "0.1.0",
+  "status": "active",
+  "title": "RxRx2 Cell Painting Compound Perturbation Dataset",
+  "domains": ["bioimage_analysis", "cell_painting", "drug_discovery", "batch_effects"],
+  "data_types": ["cell painting image", "compound treatment table", "replicate experiment", "metadata table"],
+  "scientific_units": ["well", "field_of_view", "compound_treatment", "experiment_batch"],
+  "compatible_model_families": ["bioimage classifier", "cell painting model", "morphology foundation model", "compound profiling model"],
+  "source": {
+    "homepage": "https://www.rxrx.ai/rxrx2",
+    "repository": "",
+    "data_urls": [
+      {
+        "description": "RxRx2 official data page",
+        "url": "https://www.rxrx.ai/rxrx2",
+        "access_notes": "Official page reports a complete dataset download and metadata."
+      }
+    ]
+  },
+  "access": {
+    "mode": "data_portal",
+    "authentication": "none_expected",
+    "instructions": [
+      "Inspect metadata and use a compound/experiment-stratified slice before downloading the complete image archive.",
+      "Record experiment, plate, well, site, cell type, compound, dose, and replicate metadata.",
+      "Use image embeddings or morphology profiles for early SPECTRA passes; only pull raw images when needed."
+    ]
+  },
+  "scale": {
+    "download_size": "official complete image download is roughly 185GB; not a default autonomous full pull",
+    "spectra_default": "metadata_or_sampled_images_first"
+  },
+  "expected_fields": ["image", "compound_id", "concentration", "experiment", "plate", "well", "site", "replicate", "split"],
+  "recommended_axes": [
+    {
+      "name": "compound_identity_and_structure",
+      "definition": "Compound identity, chemical fingerprint, scaffold, or dose support.",
+      "prospective": true
+    },
+    {
+      "name": "experiment_batch_support",
+      "definition": "Experiment, plate, well, replicate, and acquisition-setting similarity.",
+      "prospective": true
+    },
+    {
+      "name": "morphology_embedding_support",
+      "definition": "Frozen image-encoder or Cell Painting profile similarity to training examples.",
+      "prospective": true
+    }
+  ],
+  "useful_for": [
+    "Cell Painting generalization audits across compound, dose, replicate, and batch.",
+    "Follow-up to BBBC021 and RxRx1 when larger compound-perturbation scale is needed.",
+    "Testing whether image models learn compound biology or experiment-specific morphology artifacts."
+  ],
+  "leakage_risks": [
+    "Replicates, wells, and fields can leak image-acquisition context across splits.",
+    "Compound identity, dose, and batch can be confounded.",
+    "Large raw image archive can overrun storage if downloaded by default."
+  ],
+  "related_benchmark_capsules": [],
+  "related_memory_entries": [],
+  "paperclip_provenance": {
+    "search_ids": ["s_b3dc0bbb"],
+    "map_ids": ["m_dd4da469"],
+    "paper_ids": ["bio_bf7d083171cb"],
+    "notes": "Paperclip extraction from DeepPaint identified RxRx2 as a high-content Cell Painting dataset with replicate-experiment variation and direct official data access."
+  },
+  "tags": ["rxrx2", "cell_painting", "recursion", "bioimage", "compound_perturbation"]
+}

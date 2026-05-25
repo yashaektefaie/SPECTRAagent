@@ -1,0 +1,91 @@
+{
+  "id": "mass_spectrometry_sparse_cosine_acceleration",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "Mass-Spectrometry Sparse Cosine Acceleration",
+  "strategy_family": "domain_specific_sparse_matrix",
+  "exactness": "hybrid_exact_after_candidate_generation",
+  "applies_to_similarity_kinds": [
+    "mass_spectrum_cosine_similarity",
+    "modified_cosine_similarity",
+    "spectral_library_similarity",
+    "peak_list_similarity"
+  ],
+  "compatible_data_shapes": [
+    "mass_spectrometry_spectrum",
+    "msms_peak_list",
+    "spectral_library",
+    "sparse_peak_vector"
+  ],
+  "definition": "Convert peak lists to normalized sparse matrices or GPU batches, use m/z tolerance-aware sparse matrix products or GPU kernels to compute candidate spectral cosine scores, and optionally rerank top hits with precise greedy or modified cosine.",
+  "scale_profile": {
+    "best_for": "Repository-scale MS/MS library searches and molecular-networking audits.",
+    "typical_upper_bound": "Tens of billions of comparisons with GPU or sparse-matrix batching in specialized implementations.",
+    "avoid_when": "Low-resolution spectra require wide tolerance windows that make binned approximations diverge from exact peak matching."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "matching_ions",
+      "precursor_shift"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "peak lists with mz and intensity",
+    "mz tolerance or bin width"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "mz_tolerance_or_bin_width",
+      "purpose": "Controls peak alignment precision."
+    },
+    {
+      "name": "score_threshold_or_k",
+      "purpose": "Controls retained library hits."
+    },
+    {
+      "name": "rerank_precise_cosine",
+      "purpose": "Controls whether fast candidates are rescored with exact peak matching."
+    }
+  ],
+  "quality_gates": [
+    "Compare accelerated scores to a reference cosine implementation on a subset.",
+    "Report tolerance, bin width, intensity scaling, and normalization.",
+    "Rerank top hits with precise cosine when binning could affect conclusions."
+  ],
+  "failure_modes": [
+    "Wide m/z tolerance can inflate binned cosine scores.",
+    "Precursor-shift handling changes the biological or chemical interpretation.",
+    "Dense output matrices are infeasible; threshold or top-k storage is required."
+  ],
+  "python_example": "sparse_peak_cosine_topk.py",
+  "example_usage": "python sparse_peak_cosine_topk.py --train train.csv --eval eval.csv --out pairwise_similarity.csv --peak-col peaks --bin-width 0.001 --top-k 50",
+  "citations": [
+    {
+      "paper_id": "PMC10439109",
+      "title": "BLINK enables ultrafast tandem mass spectrometry cosine similarity scoring",
+      "evidence": "Uses sparse matrix operations for tandem mass-spectrometry cosine scoring and reports large speedups over loop-based scoring."
+    },
+    {
+      "paper_id": "PMC11886821",
+      "title": "SimMS: a GPU-accelerated cosine similarity implementation for tandem mass spectrometry",
+      "evidence": "Implements GPU-accelerated greedy and modified cosine scoring for MS/MS spectra with large speedups and high agreement with MatchMS."
+    }
+  ],
+  "tags": [
+    "mass_spectrometry",
+    "sparse_cosine",
+    "gpu",
+    "spectral_library",
+    "domain_index"
+  ]
+}

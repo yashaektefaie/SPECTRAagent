@@ -1,0 +1,95 @@
+{
+  "id": "ehr_concept_relatedness_similarity",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "electronic_health_record",
+  "scientific_unit": "patient_or_encounter",
+  "task_family": [
+    "clinical prediction",
+    "EHR representation learning",
+    "patient similarity"
+  ],
+  "similarity_name": "Clinical concept set or ontology relatedness",
+  "similarity_kind": "clinical_concept_similarity",
+  "definition": "Represent each patient or encounter by diagnosis, symptom, medication, procedure, or SNOMED/UMLS concept sets. Use set overlap as a baseline, or concept embeddings/ontology relatedness when available, to audit whether EHR model performance depends on clinical-history overlap with training patients.",
+  "spectra_axis": {
+    "name": "max_train_ehr_concept_relatedness",
+    "axis_type": "similarity",
+    "aggregation": "max_train_concept_similarity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "clinical_concept_set"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/set_jaccard_similarity.py",
+  "example_usage": "python set_jaccard_similarity.py --train train_ehr.csv --eval eval_ehr.csv --out pairwise_similarity.csv --set-col concept_codes",
+  "citations": [
+    {
+      "paper_id": "arx_2107.08189",
+      "title": "BEDS-Bench: Behavior of EHR-models under Distributional Shift--A Benchmark",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/arx_2107.08189/content.lines",
+          "lines": "L21-L29",
+          "summary": "BEDS-Bench motivates evaluating EHR models under distributional shifts that affect clinical deployment."
+        },
+        {
+          "path": "/papers/arx_2107.08189/content.lines",
+          "lines": "L43-L74",
+          "summary": "The benchmark partitions EHR data into intentionally dissimilar subsets, including demographic slices."
+        }
+      ]
+    },
+    {
+      "paper_id": "arx_2010.16218",
+      "title": "Biomedical Concept Relatedness - A large EHR-based benchmark",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/arx_2010.16218/content.lines",
+          "lines": "L4-L13",
+          "summary": "The paper frames EHR concept relatedness across diagnoses, symptoms, and medications as distinct from exact string matching."
+        },
+        {
+          "path": "/papers/arx_2010.16218/content.lines",
+          "lines": "L28-L31",
+          "summary": "Concept pairs are sampled from EHR co-occurrence and mapped to SNOMED-CT IDs."
+        },
+        {
+          "path": "/papers/arx_2010.16218/content.lines",
+          "lines": "L97-L106",
+          "summary": "The benchmark evaluates embedding and fuzzy Jaccard similarity for biomedical concept relatedness."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Simple set overlap ignores code hierarchy, negation, temporality, and severity.",
+    "Concept coding practices vary across sites and over time.",
+    "Patient similarity can encode protected attributes or care-access bias."
+  ],
+  "quality_gates": [
+    "Report vocabulary, code mapping, lookback window, and whether concepts are diagnosis-only or multimodal.",
+    "Use ontology rollups or embeddings when exact-code overlap is too sparse.",
+    "Audit temporal/site similarity separately to avoid hiding deployment shift inside concept overlap."
+  ],
+  "tags": [
+    "ehr",
+    "clinical",
+    "snomed",
+    "umls",
+    "concept_relatedness",
+    "patient_similarity"
+  ]
+}

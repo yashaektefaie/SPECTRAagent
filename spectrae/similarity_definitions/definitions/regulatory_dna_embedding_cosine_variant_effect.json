@@ -1,0 +1,77 @@
+{
+  "id": "regulatory_dna_embedding_cosine_variant_effect",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "regulatory_dna",
+  "scientific_unit": "variant_or_sequence",
+  "task_family": [
+    "variant effect prediction",
+    "DNA language model evaluation",
+    "counterfactual regulatory prediction"
+  ],
+  "similarity_name": "DNA embedding cosine distance",
+  "similarity_kind": "embedding_distance",
+  "definition": "Compute embeddings for DNA sequences or allele-specific sequence contexts and use cosine similarity or distance as the overlap/novelty axis. For train-eval SPECTRA audits, compare each evaluation sequence embedding to training sequence embeddings; for counterfactual variant tasks, allele-embedding distance can be used as a variant perturbation magnitude axis.",
+  "spectra_axis": {
+    "name": "dna_embedding_cosine_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_cosine_similarity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "embedding"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/embedding_cosine_similarity.py",
+  "example_usage": "python embedding_cosine_similarity.py --train train_embeddings.csv --eval eval_embeddings.csv --out pairwise_similarity.csv --embedding-cols-prefix emb_",
+  "citations": [
+    {
+      "paper_id": "PMC12340898",
+      "title": "DART-Eval: A Comprehensive DNA Language Model Evaluation Benchmark on Regulatory DNA",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC12340898/content.lines",
+          "lines": "L50-L52",
+          "summary": "The paper evaluates motif recognition using cosine embedding distance from neutral sequence backgrounds to positive and negative motif sequences."
+        },
+        {
+          "path": "/papers/PMC12340898/content.lines",
+          "lines": "L74",
+          "summary": "The paper uses cosine distance between allele sequence embeddings as a zero-shot variant effect score."
+        },
+        {
+          "path": "/papers/PMC12340898/content.lines",
+          "lines": "L467-L468",
+          "summary": "The appendix specifies cosine distance as the embedding distance metric."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Embedding distance may underperform likelihood or fine-tuned models for regulatory DNA tasks.",
+    "Cosine geometry depends on model layer, pooling, context length, and tokenization.",
+    "Variant-effect allele distance is not automatically a train-eval novelty measure."
+  ],
+  "quality_gates": [
+    "Record model, layer, pooling method, and context window.",
+    "Compare embedding axes against simpler motif or sequence-composition axes.",
+    "For variant tasks, separate train-eval novelty from allele perturbation magnitude."
+  ],
+  "tags": [
+    "regulatory_dna",
+    "embedding",
+    "cosine",
+    "variant_effect",
+    "dart_eval"
+  ]
+}

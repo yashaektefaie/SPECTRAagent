@@ -1,0 +1,103 @@
+{
+  "id": "structured_edit_distance_filter_verify",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "Structured Edit-Distance Filter-and-Verify Search",
+  "strategy_family": "structured_edit_distance",
+  "exactness": "hybrid_exact_after_candidate_generation",
+  "applies_to_similarity_kinds": [
+    "graph_edit_distance",
+    "tree_edit_distance",
+    "json_edit_distance",
+    "ast_edit_distance",
+    "phylogenetic_tree_distance",
+    "structured_object_similarity"
+  ],
+  "compatible_data_shapes": [
+    "graph",
+    "tree",
+    "json_document",
+    "abstract_syntax_tree",
+    "phylogenetic_tree",
+    "structured_record_graph"
+  ],
+  "definition": "Generate candidates for expensive structured edit distances using lower bounds, q-gram or subtree indexes, metric indexes, sorted upper bounds, embeddings, or structural signatures, then verify or rerank with the desired graph, tree, JSON, AST, or phylogenetic edit distance.",
+  "scale_profile": {
+    "best_for": "Structured scientific units where exact edit distance is meaningful but too expensive for all train-eval pairs.",
+    "typical_upper_bound": "Thousands to millions of structured objects depending on graph size, label vocabulary, and bound tightness.",
+    "avoid_when": "The structure can be faithfully represented as a simple vector or when exact edit distance is not scientifically justified."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "edit_distance",
+      "lower_bound",
+      "candidate_source"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "structured objects",
+    "edit cost model",
+    "candidate generation rule"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "edit_cost_model",
+      "purpose": "Defines insertion, deletion, substitution, and attribute costs."
+    },
+    {
+      "name": "candidate_threshold_or_k",
+      "purpose": "Controls the candidate set size before exact verification."
+    },
+    {
+      "name": "structural_signature",
+      "purpose": "Selects q-grams, subtree features, anchors, embeddings, or metric pivots."
+    }
+  ],
+  "quality_gates": [
+    "Report the edit cost model because it is part of the scientific similarity definition.",
+    "Verify that lower bounds are admissible when exact threshold guarantees are claimed.",
+    "Compare candidate recall against brute-force edit distance on a small subset."
+  ],
+  "failure_modes": [
+    "Generic structural signatures can miss domain-critical attributes.",
+    "Non-uniform edit costs may break assumptions made by an index or lower bound.",
+    "Approximate candidates can systematically miss unusual structures in the novel SPECTRA bins."
+  ],
+  "python_example": "string_qgram_edit_join.py",
+  "example_usage": "Use string_qgram_edit_join.py only as a minimal filter-and-verify template; structured implementations should replace q-grams and Levenshtein verification with graph, tree, JSON, AST, or phylogeny-specific distance code.",
+  "citations": [
+    {
+      "paper_id": "arx_2110.01283",
+      "title": "Metric Indexing for Graph Similarity Search",
+      "evidence": "Uses metric indexing and lower/upper bounds for graph similarity search under graph edit distance variants."
+    },
+    {
+      "paper_id": "arx_1709.06810",
+      "title": "Efficient Graph Edit Distance Computation and Verification via Anchor-aware Lower Bound Estimation",
+      "evidence": "Introduces anchor-aware lower bounds to reduce graph edit-distance verification cost."
+    },
+    {
+      "paper_id": "arx_2201.08099",
+      "title": "JEDI: These aren't the JSON documents you're looking for",
+      "evidence": "Defines an edit-based JSON distance and uses indexing and bounds to accelerate similarity queries over structured documents."
+    }
+  ],
+  "tags": [
+    "graph_edit_distance",
+    "tree_edit_distance",
+    "json",
+    "ast",
+    "filter_verify",
+    "structured_data"
+  ]
+}

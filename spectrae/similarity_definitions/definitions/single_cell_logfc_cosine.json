@@ -1,0 +1,78 @@
+{
+  "id": "single_cell_logfc_cosine",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "single_cell_perturbation",
+  "scientific_unit": "perturbation_response",
+  "task_family": [
+    "perturbation response prediction",
+    "mode collapse detection",
+    "cellular perturbation benchmarking"
+  ],
+  "similarity_name": "Perturbation-response LogFC cosine similarity",
+  "similarity_kind": "response_similarity",
+  "definition": "Aggregate single-cell perturbation responses into response vectors, commonly log fold-change vectors over selected genes, and compute cosine similarity between response profiles. For SPECTRA, this can audit whether evaluation perturbations have response profiles close to any training perturbation response, or whether predictions collapse to generic profiles.",
+  "spectra_axis": {
+    "name": "logfc_response_cosine_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_cosine_similarity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "logfc_feature_columns"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/embedding_cosine_similarity.py",
+  "example_usage": "python embedding_cosine_similarity.py --train train_logfc.csv --eval eval_logfc.csv --out pairwise_similarity.csv --embedding-cols-prefix gene_",
+  "citations": [
+    {
+      "paper_id": "arx_2408.10609",
+      "title": "PerturBench: Benchmarking Machine Learning Models for Cellular Perturbation Analysis",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/arx_2408.10609/content.lines",
+          "lines": "L54-L56",
+          "summary": "The paper compares predicted and observed perturbation aggregates, including population mean and LogFC, and uses cosine similarity."
+        },
+        {
+          "path": "/papers/arx_2408.10609/content.lines",
+          "lines": "L167-L171",
+          "summary": "The paper visualizes cosine similarity matrices between perturbation-covariate LogFC profiles and uses them to diagnose collapse."
+        },
+        {
+          "path": "/papers/arx_2408.10609/content.lines",
+          "lines": "L181-L184",
+          "summary": "The paper defines a matrix-distance metric between predicted and observed cosine similarity matrices."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Requires observed response vectors, so it may not be available for fully blind deployment targets.",
+    "Cosine similarity can ignore absolute magnitude shifts.",
+    "Gene selection and normalization can dominate the measured response geometry."
+  ],
+  "quality_gates": [
+    "Record gene set, normalization, and aggregation method.",
+    "Report both fit metrics and rank or matrix-distance metrics.",
+    "Avoid using held-out labels to choose the audit axis before evaluation unless clearly marked as retrospective."
+  ],
+  "tags": [
+    "single_cell",
+    "perturbation",
+    "logfc",
+    "cosine",
+    "mode_collapse",
+    "perturbench"
+  ]
+}

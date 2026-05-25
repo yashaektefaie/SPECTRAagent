@@ -1,0 +1,61 @@
+{
+  "id": "dart_eval_synapse",
+  "version": "0.1.0",
+  "status": "needs_auth",
+  "title": "DART-Eval Regulatory DNA Benchmark Data",
+  "domains": ["regulatory_dna", "genomics_foundation_models"],
+  "data_types": ["DNA sequence", "regulatory variant", "regulatory annotation"],
+  "scientific_units": ["regulatory_sequence", "variant", "sequence_label_pair"],
+  "compatible_model_families": ["DNA foundation model", "nucleotide language model", "regulatory sequence model"],
+  "source": {
+    "homepage": "https://arxiv.org/abs/2412.05430",
+    "repository": "https://github.com/kundajelab/DART-Eval",
+    "data_urls": [
+      {
+        "description": "DART-Eval Synapse project",
+        "url": "https://www.synapse.org/DART_Eval_Benchmark",
+        "access_notes": "Synapse authentication and accepted terms may be required."
+      }
+    ]
+  },
+  "access": {
+    "mode": "synapse_auth",
+    "authentication": "synapse_required",
+    "instructions": [
+      "Inspect the DART-Eval repository for task definitions and loaders.",
+      "Authenticate with Synapse and download processed task files and genome references through upstream instructions.",
+      "Record Synapse IDs, genome build, and exact task versions in the constructed dataset manifest."
+    ]
+  },
+  "expected_fields": ["sequence", "label", "task_name", "cell_type", "variant_id", "chromosome", "position"],
+  "recommended_axes": [
+    {
+      "name": "motif_disruption",
+      "definition": "Similarity over disrupted TF motif families or motif-delta profiles.",
+      "prospective": true
+    },
+    {
+      "name": "cell_type_regulatory_context",
+      "definition": "Cell-type or assay context distance based on regulatory profiles.",
+      "prospective": true
+    },
+    {
+      "name": "gc_kmer_control",
+      "definition": "GC/CpG/k-mer composition similarity used as a control axis, not a terminal mechanism.",
+      "prospective": true
+    }
+  ],
+  "useful_for": [
+    "Auditing DNA foundation models against regulatory-context shifts.",
+    "Testing whether model claims transfer to counterfactual variant-effect tasks.",
+    "Hard agent-discovery benchmarks where external motif resources matter."
+  ],
+  "leakage_risks": [
+    "Chromosome and genomic coordinate leakage.",
+    "Reverse-complement and duplicate sequence leakage.",
+    "GC or k-mer proxies can masquerade as biological regulatory mechanism."
+  ],
+  "related_benchmark_capsules": ["dart_eval"],
+  "related_memory_entries": [],
+  "tags": ["dart_eval", "regulatory_dna", "synapse", "motif", "dna_language_model"]
+}

@@ -1,0 +1,66 @@
+{
+  "id": "dc_tap_final_table",
+  "version": "0.1.0",
+  "status": "active",
+  "title": "DC-TAP Distal Candidate Target-Gene Perturbation Results",
+  "domains": ["regulatory_dna", "perturbation_biology", "enhancer_gene_linking"],
+  "data_types": ["distal regulatory perturbation", "element-gene pair", "chromatin category"],
+  "scientific_units": ["element_gene_cell_type_pair"],
+  "compatible_model_families": ["DNA foundation model", "regulatory sequence model", "enhancer-gene prediction model"],
+  "source": {
+    "homepage": "https://github.com/EngreitzLab/DC_TAP_Paper",
+    "repository": "https://github.com/EngreitzLab/DC_TAP_Paper",
+    "data_urls": [
+      {
+        "description": "Final DC-TAP sequence results with chromatin categories",
+        "url": "https://raw.githubusercontent.com/EngreitzLab/DC_TAP_Paper/main/results/formatted_dc_tap_results/Table_S3_Final_DC_TAP_Seq_Results_w_Chromatin_Categories_on_resized_and_merged_elements_250908_append.tsv",
+        "access_notes": "Raw GitHub-hosted TSV; verify current commit or archive hash for publication."
+      },
+      {
+        "description": "DC-TAP column descriptions",
+        "url": "https://raw.githubusercontent.com/EngreitzLab/DC_TAP_Paper/main/resources/formatting_dc_tap_results/columns_of_Final_DC_TAP_Seq_Results_table.txt",
+        "access_notes": "Use to validate schema and label definitions."
+      }
+    ]
+  },
+  "access": {
+    "mode": "direct_download",
+    "authentication": "none_expected",
+    "instructions": [
+      "Download the final results table and column descriptions from the DC-TAP repository.",
+      "Pin commit or file hash for reproducible releases.",
+      "Validate label definitions, chromatin categories, element-gene distances, and target-gene ubiquity before constructing splits."
+    ]
+  },
+  "expected_fields": ["element_id", "gene", "cell_type", "distance", "label", "chromatin_category", "assay_power"],
+  "recommended_axes": [
+    {
+      "name": "element_gene_distance_bin",
+      "definition": "Distance-conditioned element-gene deployment axis, e.g. less than 10 kb, 10-to-100 kb, and at least 100 kb.",
+      "prospective": true
+    },
+    {
+      "name": "chromatin_category_match",
+      "definition": "Match or stratify chromatin category when testing distance effects.",
+      "prospective": true
+    },
+    {
+      "name": "sequence_overlap_control",
+      "definition": "Measure sequence-window overlap between train and evaluation element windows.",
+      "prospective": true
+    }
+  ],
+  "useful_for": [
+    "Testing DNA model representations on distal regulatory deployment settings.",
+    "Constructing element-gene-cell-type SPECTRA split candidates.",
+    "Mechanism follow-up after sequence/composition proxy findings."
+  ],
+  "leakage_risks": [
+    "Some columns may encode label-definition or assay-power leakage.",
+    "Positive support can collapse under strict matching.",
+    "Distance is a deployment proxy and needs controls before model-specific mechanism claims."
+  ],
+  "related_benchmark_capsules": ["dart_eval"],
+  "related_memory_entries": ["caduceus_external_perturbational_memory"],
+  "tags": ["dc_tap", "enhancer_gene", "regulatory_dna", "distal_element", "caduceus"]
+}

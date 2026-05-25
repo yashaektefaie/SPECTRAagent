@@ -1,0 +1,100 @@
+{
+  "experiment": "spectra_value_ablation",
+  "date": "2026-05-11",
+  "agent_visible_bundle": {
+    "model": "/ewsc/yektefai/spectra_assets/boom_numeric_pilot/artifacts/model.pkl",
+    "train": "/ewsc/yektefai/spectra_assets/hard_blind_molecular_model_eval/agent_visible/train.csv",
+    "eval_predictions": "/ewsc/yektefai/spectra_assets/hard_blind_molecular_model_eval/agent_visible/eval_predictions.csv",
+    "metadata": "/ewsc/yektefai/spectra_assets/hard_blind_molecular_model_eval/agent_visible/metadata.json"
+  },
+  "conditions": {
+    "broad_generalizability": {
+      "agent_id": "019e1769-7380-7d21-ada2-df15670f90ae",
+      "baseline_dimensions": {
+        "scientific_unit": 2,
+        "aggregate_error": 2,
+        "failure_mode": 2
+      },
+      "spectral_dimensions": {
+        "distance_axis_defined": 2,
+        "domain_axis_quality": 2,
+        "property_graph_specificity": 1,
+        "overlap_validation": 1,
+        "performance_curve": 2,
+        "multi_axis_audit": 2,
+        "invalid_axis_handling": 2,
+        "artifact_completeness": 1
+      },
+      "baseline_total": 6,
+      "spectral_total": 13,
+      "total": 19,
+      "max_total": 22,
+      "summary": "The broad prompt unexpectedly produced a strong audit: it loaded the model, reproduced predictions, computed Morgan Tanimoto nearest-neighbor similarity, Murcko scaffold overlap, descriptor checks, and similarity-binned errors. It did not organize the work as explicit reusable property graphs or validate spectral thresholds as completely as /spectra."
+    },
+    "distance_from_train": {
+      "agent_id": "019e1769-b1e4-7432-b292-e293ca3aabe2",
+      "baseline_dimensions": {
+        "scientific_unit": 2,
+        "aggregate_error": 2,
+        "failure_mode": 2
+      },
+      "spectral_dimensions": {
+        "distance_axis_defined": 2,
+        "domain_axis_quality": 2,
+        "property_graph_specificity": 1,
+        "overlap_validation": 2,
+        "performance_curve": 2,
+        "multi_axis_audit": 1,
+        "invalid_axis_handling": 2,
+        "artifact_completeness": 1
+      },
+      "baseline_total": 6,
+      "spectral_total": 13,
+      "total": 19,
+      "max_total": 22,
+      "summary": "The explicit distance prompt produced a clean Morgan Tanimoto distance curve and validated that distance quintiles reduced nearest-neighbor similarity and scaffold overlap. It was focused and technically solid, but less multi-axis and less artifact-complete than /spectra."
+    },
+    "spectra_protocol": {
+      "agent_id": "019e1769-e82a-7820-ae44-3774d0d9d49c",
+      "baseline_dimensions": {
+        "scientific_unit": 2,
+        "aggregate_error": 2,
+        "failure_mode": 2
+      },
+      "spectral_dimensions": {
+        "distance_axis_defined": 2,
+        "domain_axis_quality": 2,
+        "property_graph_specificity": 2,
+        "overlap_validation": 2,
+        "performance_curve": 2,
+        "multi_axis_audit": 2,
+        "invalid_axis_handling": 2,
+        "artifact_completeness": 2
+      },
+      "baseline_total": 6,
+      "spectral_total": 16,
+      "total": 22,
+      "max_total": 22,
+      "summary": "The /spectra prompt produced the most complete audit: fingerprint, scaffold/skeleton, descriptor, functional-group, and target-support axes; explicit bipartite, membership, kNN, and target-support graphs; threshold-level overlap validation; and multiple performance-vs-novelty curves."
+    }
+  },
+  "shared_core_finding": {
+    "overall_eval": {
+      "mae": 0.155118266,
+      "rmse": 0.192915895,
+      "r2": 0.154806079,
+      "bias_pred_minus_true": -0.114425166
+    },
+    "finding": "All three conditions found limited generalization: the model predicts well near training-like molecules but error increases with lower train-test molecular similarity and target/support novelty."
+  },
+  "distance_control_result": "The explicit distance-from-train prompt already captured the main spectral curve, so /spectra is not needed merely to make an agent plot error against train distance on this molecular task.",
+  "spectra_incremental_value": "The /spectra condition added value by enforcing a fuller audit standard: multiple axes, explicit property graphs, threshold-level overlap validation, rejection of scaffold novelty as insufficient for this split, and reusable audit structure.",
+  "claim_supported": "/spectra improves protocol completeness beyond a direct distance-from-train prompt in this single molecular run.",
+  "claim_not_supported": "This run does not support the claim that broad or distance-prompted agents cannot discover the core spectral generalization failure.",
+  "caveats": [
+    "This is one task with one agent sample per condition.",
+    "All conditions were allowed to use the same Python/RDKit-capable environment, which made the broad condition unusually strong.",
+    "The hard-blind artifact still includes y_true, so target-support failure is visible after prediction labels are inspected.",
+    "The value claim now needs replication across tasks where broad prompts do not naturally infer the right domain distance."
+  ]
+}

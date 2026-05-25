@@ -1,0 +1,70 @@
+{
+  "id": "mimic_eicu_physionet",
+  "version": "0.1.0",
+  "status": "needs_auth",
+  "title": "MIMIC-IV and eICU PhysioNet Clinical EHR Resources",
+  "domains": ["clinical_ai", "electronic_health_records", "site_generalization"],
+  "data_types": ["clinical time series", "EHR table", "diagnosis table", "medication table", "outcome label"],
+  "scientific_units": ["patient", "hospital_admission", "icu_stay", "hospital_unit"],
+  "compatible_model_families": ["clinical prediction model", "EHR foundation model", "time series model", "tabular model"],
+  "source": {
+    "homepage": "https://physionet.org/",
+    "repository": "https://github.com/mit-lcp",
+    "data_urls": [
+      {
+        "description": "MIMIC-IV PhysioNet page",
+        "url": "https://physionet.org/content/mimiciv/",
+        "access_notes": "Credentialed PhysioNet access and a data use agreement are required."
+      },
+      {
+        "description": "eICU Collaborative Research Database PhysioNet page",
+        "url": "https://physionet.org/content/eicu-crd/",
+        "access_notes": "Credentialed PhysioNet access and a data use agreement are required."
+      }
+    ]
+  },
+  "access": {
+    "mode": "data_portal",
+    "authentication": "physionet_credentialed_access_required",
+    "instructions": [
+      "Do not download or expose data unless the user has valid PhysioNet credentialed access and has signed the required data use agreement.",
+      "Use official PhysioNet project pages and MIT-LCP code repositories to construct permitted tasks.",
+      "Record cohort definition, time window, outcome definition, table versions, and site/unit availability."
+    ]
+  },
+  "scale": {
+    "download_size": "large controlled-access relational datasets; not suitable for automatic public pulls",
+    "spectra_default": "metadata_plan_or_user_authorized_subset"
+  },
+  "expected_fields": ["patient_id", "admission_id", "stay_id", "timestamp", "features", "outcome", "site_or_unit", "cohort"],
+  "recommended_axes": [
+    {
+      "name": "site_and_unit_similarity",
+      "definition": "Hospital, ICU unit, or care-setting support when available and permitted by the dataset schema.",
+      "prospective": true
+    },
+    {
+      "name": "temporal_similarity",
+      "definition": "Admission time, care-era, or deployment-time distance from training data.",
+      "prospective": true
+    },
+    {
+      "name": "phenotype_and_care_pathway_similarity",
+      "definition": "Diagnosis, procedure, medication, and trajectory similarity for patient cohorts.",
+      "prospective": true
+    }
+  ],
+  "useful_for": [
+    "Clinical deployment generalization audits when credentialed access exists.",
+    "Testing site, time, phenotype, and care-process shifts.",
+    "Connecting SPECTRA to clinical external validation questions."
+  ],
+  "leakage_risks": [
+    "Patient identifiers and repeated admissions must not cross splits.",
+    "Outcome windows can leak future information through post-outcome measurements.",
+    "Credentialed health data must not be sent to external APIs or shared outside the permitted environment."
+  ],
+  "related_benchmark_capsules": [],
+  "related_memory_entries": [],
+  "tags": ["mimic_iv", "eicu", "physionet", "clinical_ai", "credentialed_access"]
+}

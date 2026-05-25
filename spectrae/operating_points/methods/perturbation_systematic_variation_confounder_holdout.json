@@ -1,0 +1,37 @@
+{
+  "id": "perturbation_systematic_variation_confounder_holdout",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "operating_point_name": "Perturbation Systematic-Variation Holdout",
+  "method_family": "confounder_holdout",
+  "scientific_unit": "perturbation_profile",
+  "data_types": ["single_cell", "perturbation_response", "high_dimensional_biology"],
+  "target_novelty_axis": "batch_systematic_variation_or_background_state",
+  "deployment_question": "Does the model predict perturbation-specific effects beyond systematic variation, batch, or background cell state?",
+  "curve_region": "axis_specific",
+  "definition": "Hold out or stratify by systematic variation sources such as batch, donor, cell cycle, dataset, background state, or perturbation-effect magnitude to test whether the model learns perturbation-specific signal.",
+  "split_operator": {"type": "confounder_or_effect_stratified_holdout", "heldout_unit": "confounder_level_or_effect_regime", "spectra_mapping": "targets an operating point where confounder overlap is reduced or response signal differs"},
+  "required_inputs": ["sample_id", "confounder labels or latent state", "perturbation_id", "response profile"],
+  "recommended_similarity_axes": ["batch_similarity", "baseline_state_similarity", "response_effect_similarity", "perturbation_specific_signal"],
+  "output_contract": {"mode": "split_assignment", "required_columns": ["sample_id", "split", "role"], "optional_columns": ["confounder_level", "effect_bin"]},
+  "implementation_recipe": [
+    "Identify systematic variation sources and perturbation-specific effect measures.",
+    "Construct held-out confounder levels or effect bins.",
+    "Report performance separately for perturbation-specific signal and systematic background."
+  ],
+  "quality_gates": [
+    "Include simple baselines that exploit only systematic variation.",
+    "Report metrics sensitive to perturbation-specific effects.",
+    "Check whether preprocessing removes or amplifies confounders."
+  ],
+  "failure_modes": [
+    "A model can perform well by predicting batch or baseline state.",
+    "Confounder labels can be incomplete.",
+    "Effect-size bins may induce label distribution shift."
+  ],
+  "citations": [
+    {"paper_id": "PMC12016270", "title": "Benchmarking foundation cell models for post-perturbation RNA-seq prediction", "evidence": "Finds simple baselines outperform foundation models and notes low perturbation-specific variance in benchmark datasets."},
+    {"paper_id": "bio_c5703f786fe0", "title": "Evaluating Single-Cell Perturbation Response Models Is Far from Straightforward", "evidence": "Argues existing evaluation metrics can misrepresent perturbation-response model performance."}
+  ],
+  "tags": ["perturbation", "confounding", "systematic_variation", "batch"]
+}

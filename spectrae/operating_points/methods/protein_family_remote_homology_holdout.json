@@ -1,0 +1,37 @@
+{
+  "id": "protein_family_remote_homology_holdout",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "operating_point_name": "Protein Family or Remote-Homology Holdout",
+  "method_family": "protein_family_holdout",
+  "scientific_unit": "protein",
+  "data_types": ["protein", "enzyme", "protein_function", "protein_interaction"],
+  "target_novelty_axis": "family_superfamily_or_remote_homology",
+  "deployment_question": "How does the model transfer to protein families or remote homologs not represented in training?",
+  "curve_region": "extreme_low_overlap",
+  "definition": "Hold out protein families, superfamilies, or remote-homology groups rather than only enforcing a pairwise identity threshold.",
+  "split_operator": {"type": "family_holdout", "heldout_unit": "family_or_superfamily", "spectra_mapping": "targets an extreme sequence/function novelty point beyond near-homology exclusion"},
+  "required_inputs": ["sample_id", "protein sequence", "family or superfamily annotation"],
+  "recommended_similarity_axes": ["family_identity", "remote_homology_score", "sequence_identity", "structure_similarity"],
+  "output_contract": {"mode": "split_assignment", "required_columns": ["sample_id", "split", "role"], "optional_columns": ["family_id", "superfamily_id"]},
+  "implementation_recipe": [
+    "Assign proteins to family or superfamily annotations.",
+    "Hold out complete families or superfamilies.",
+    "Check residual structure or remote-homology similarity to training proteins."
+  ],
+  "quality_gates": [
+    "Use curated family annotations where possible.",
+    "Report both sequence identity and family overlap.",
+    "Avoid mixing proteins from the same functional family across splits."
+  ],
+  "failure_modes": [
+    "Family annotations may be incomplete or inconsistent.",
+    "Remote structural similarity can remain despite sequence family holdout.",
+    "Function labels can be family-confounded."
+  ],
+  "citations": [
+    {"paper_id": "arx_2602.16504", "title": "GRIMM: Genetic Stratification for Inference in Molecular Modeling", "evidence": "Introduces genetic stratification to prevent similar enzyme sequences from appearing in both train and test."},
+    {"paper_id": "PMC2031906", "title": "A comprehensive system for evaluation of remote sequence similarity detection", "evidence": "Builds evaluation sets for remote sequence similarity detection with multiple perspectives."}
+  ],
+  "tags": ["protein", "family_holdout", "remote_homology", "enzyme"]
+}

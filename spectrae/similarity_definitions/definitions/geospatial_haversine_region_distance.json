@@ -1,0 +1,79 @@
+{
+  "id": "geospatial_haversine_region_distance",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "geospatial_observation",
+  "scientific_unit": "location_or_region_sample",
+  "task_family": [
+    "climate downscaling",
+    "remote sensing",
+    "spatial generalization"
+  ],
+  "similarity_name": "Geodesic distance to training locations",
+  "similarity_kind": "spatial_distance",
+  "definition": "Use latitude and longitude to compute great-circle distance between evaluation and training locations, then transform distance into a bounded similarity with an exponential, inverse, or linear kernel. This audits whether model performance degrades as evaluation geography moves away from observed training regions.",
+  "spectra_axis": {
+    "name": "max_train_geographic_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_haversine_kernel_similarity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "lat",
+    "lon"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/geospatial_haversine_similarity.py",
+  "example_usage": "python geospatial_haversine_similarity.py --train train_locations.csv --eval eval_locations.csv --out pairwise_similarity.csv --scale-km 1000",
+  "citations": [
+    {
+      "paper_id": "PMC12852169",
+      "title": "Benchmarking the geographic generalization of deep learning models for precipitation downscaling",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC12852169/content.lines",
+          "lines": "L20-L24",
+          "summary": "RainShift defines geographically separated training and evaluation regions for testing spatial generalization."
+        },
+        {
+          "path": "/papers/PMC12852169/content.lines",
+          "lines": "L39-L42",
+          "summary": "The paper finds geographical variation dominates generalization performance under regional distribution shifts."
+        },
+        {
+          "path": "/papers/PMC12852169/content.lines",
+          "lines": "L78-L81",
+          "summary": "The benchmark formalizes disjoint training and evaluation areas and hierarchical training regions."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Physical distance is not always climatic, ecological, or socioeconomic similarity.",
+    "Longitude wraparound, projection, and region extent must be handled carefully.",
+    "Spatial autocorrelation can inflate confidence if nearby samples are overrepresented."
+  ],
+  "quality_gates": [
+    "Report the distance kernel and scale in kilometers.",
+    "Also test domain-relevant covariates such as climate zone, elevation, land cover, or sensor type when available.",
+    "Avoid random spatial splits that place near-neighbor locations across train and evaluation sets."
+  ],
+  "tags": [
+    "geospatial",
+    "climate",
+    "remote_sensing",
+    "haversine",
+    "rainshift",
+    "spatial_generalization"
+  ]
+}

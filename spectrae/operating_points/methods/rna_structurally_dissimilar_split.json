@@ -1,0 +1,37 @@
+{
+  "id": "rna_structurally_dissimilar_split",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "operating_point_name": "RNA Structurally Dissimilar Split",
+  "method_family": "structure_dissimilarity_holdout",
+  "scientific_unit": "rna_structure",
+  "data_types": ["rna", "biomolecular_structure", "structure_prediction"],
+  "target_novelty_axis": "structural_similarity",
+  "deployment_question": "How does the model perform on RNA structures structurally dissimilar from the training set?",
+  "curve_region": "low_overlap",
+  "definition": "Construct train/test partitions that reduce structural similarity between held-out RNA structures and training structures.",
+  "split_operator": {"type": "structure_dissimilarity_holdout", "heldout_unit": "structure_cluster_or_dissimilar_set", "spectra_mapping": "targets low structural-similarity regions rather than random sequence overlap"},
+  "required_inputs": ["sample_id", "structure or structural features", "structure similarity or cluster id"],
+  "recommended_similarity_axes": ["structure_similarity", "sequence_identity", "motif_overlap"],
+  "output_contract": {"mode": "split_assignment", "required_columns": ["sample_id", "split", "role"], "optional_columns": ["structure_cluster"]},
+  "implementation_recipe": [
+    "Compute or import structural similarity between RNA examples.",
+    "Cluster structures or solve for a dissimilar held-out set.",
+    "Report structural and sequence similarity across train/test."
+  ],
+  "quality_gates": [
+    "Separate structural dissimilarity from sequence dissimilarity.",
+    "Report structure-quality filters and similarity metric.",
+    "Check whether common motifs leak across splits."
+  ],
+  "failure_modes": [
+    "Sparse structural data can make clusters unstable.",
+    "Structure similarity metrics can be sensitive to alignment choices.",
+    "Held-out structures may differ in experimental quality."
+  ],
+  "citations": [
+    {"paper_id": "bio_8a5dcc186dd2", "title": "RNA3DB: A structurally-dissimilar dataset split", "evidence": "Creates structurally dissimilar splits for RNA structure prediction benchmarking."},
+    {"paper_id": "arx_2310.08677", "title": "GeSS: Benchmarking Geometric Deep Learning under Scientific Distribution Shifts", "evidence": "Motivates structure-aware shift evaluation in scientific geometric data."}
+  ],
+  "tags": ["rna", "structure", "dissimilar_split", "biomolecular"]
+}

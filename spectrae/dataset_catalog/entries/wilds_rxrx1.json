@@ -1,0 +1,70 @@
+{
+  "id": "wilds_rxrx1",
+  "version": "0.1.0",
+  "status": "active",
+  "title": "WILDS RxRx1 Batch-Shift Cellular Microscopy Dataset",
+  "domains": ["bioimage_analysis", "cell_imaging", "batch_effects", "distribution_shift"],
+  "data_types": ["fluorescence microscopy image", "cell image", "batch metadata", "genetic perturbation label"],
+  "scientific_units": ["well", "field_of_view", "experiment_batch", "cell_type"],
+  "compatible_model_families": ["bioimage classifier", "cell microscopy model", "vision model", "morphology foundation model"],
+  "source": {
+    "homepage": "https://wilds.stanford.edu/datasets/",
+    "repository": "https://github.com/p-lambda/wilds",
+    "data_urls": [
+      {
+        "description": "WILDS datasets page",
+        "url": "https://wilds.stanford.edu/datasets/",
+        "access_notes": "Use WILDS package and dataset documentation for official split metadata."
+      },
+      {
+        "description": "WILDS get started instructions",
+        "url": "https://wilds.stanford.edu/get_started/",
+        "access_notes": "Image datasets can have high disk I/O; plan local storage before full download."
+      }
+    ]
+  },
+  "access": {
+    "mode": "repository",
+    "authentication": "none_expected",
+    "instructions": [
+      "Use the WILDS package to access RxRx1 and official batch-domain metadata.",
+      "Start with precomputed embeddings or a batch-stratified image sample for SPECTRA exploration.",
+      "Record experiment, plate, well, site, cell type, perturbation label, and split metadata."
+    ]
+  },
+  "scale": {
+    "download_size": "multi-GB microscopy image dataset; use sampled images or embeddings for repeated audits",
+    "spectra_default": "sampled_images_or_precomputed_embeddings"
+  },
+  "expected_fields": ["image", "label", "experiment", "plate", "well", "site", "cell_type", "split"],
+  "recommended_axes": [
+    {
+      "name": "batch_and_plate_similarity",
+      "definition": "Experiment, batch, plate, well, or acquisition-support similarity.",
+      "prospective": true
+    },
+    {
+      "name": "morphology_embedding_similarity",
+      "definition": "Frozen image-encoder or morphology-profile similarity to training examples.",
+      "prospective": true
+    },
+    {
+      "name": "channel_intensity_style_similarity",
+      "definition": "Train-fitted channel-intensity, staining, and imaging-style features.",
+      "prospective": true
+    }
+  ],
+  "useful_for": [
+    "Batch-effect and acquisition-shift audits in microscopy.",
+    "Testing whether official batch shifts are one operating point on a morphology or style curve.",
+    "Comparing biological perturbation support against image-acquisition support."
+  ],
+  "leakage_risks": [
+    "Fields from the same well or plate can leak acquisition context.",
+    "Batch, cell type, and perturbation labels can be confounded.",
+    "Image embeddings may encode acquisition artifacts more strongly than biology."
+  ],
+  "related_benchmark_capsules": [],
+  "related_memory_entries": [],
+  "tags": ["wilds", "rxrx1", "microscopy", "batch_shift", "cell_imaging"]
+}

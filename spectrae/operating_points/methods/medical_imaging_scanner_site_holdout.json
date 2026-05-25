@@ -1,0 +1,37 @@
+{
+  "id": "medical_imaging_scanner_site_holdout",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "operating_point_name": "Medical Imaging Scanner/Site Holdout",
+  "method_family": "imaging_acquisition_holdout",
+  "scientific_unit": "medical_image",
+  "data_types": ["medical_image", "radiology", "mri", "ct", "xray"],
+  "target_novelty_axis": "scanner_site_protocol_or_image_contrast",
+  "deployment_question": "How does the image model perform on scanners, sites, protocols, or contrasts absent from training?",
+  "curve_region": "low_overlap",
+  "definition": "Hold out all images from specific scanner vendors, acquisition protocols, hospitals, image contrasts, or centers to test acquisition-domain transfer.",
+  "split_operator": {"type": "scanner_or_protocol_holdout", "heldout_unit": "scanner_site_protocol", "spectra_mapping": "sets same-acquisition-domain overlap to zero for held-out imaging domains"},
+  "required_inputs": ["sample_id", "image", "site/scanner/protocol metadata", "label"],
+  "recommended_similarity_axes": ["scanner_identity", "protocol_similarity", "image_histogram_similarity", "site_similarity"],
+  "output_contract": {"mode": "split_assignment", "required_columns": ["sample_id", "split", "role"], "optional_columns": ["scanner_id", "site_id", "protocol"]},
+  "implementation_recipe": [
+    "Select the acquisition domain to hold out.",
+    "Assign all images from held-out scanner/site/protocol to test.",
+    "Audit image intensity, protocol, and population differences."
+  ],
+  "quality_gates": [
+    "Prevent scanner/site normalization leakage.",
+    "Report per-site and per-scanner metrics.",
+    "Check whether labels or disease prevalence are site-confounded."
+  ],
+  "failure_modes": [
+    "Scanner holdout can be confounded with patient population or disease prevalence.",
+    "Image preprocessing can leak test-domain statistics.",
+    "A model may learn site artifacts instead of pathology."
+  ],
+  "citations": [
+    {"paper_id": "arx_2409.04368", "title": "The Impact of Scanner Domain Shift on Deep Learning Performance in Medical Imaging", "evidence": "Experimentally evaluates scanner-domain shift and reports degraded deep learning performance."},
+    {"paper_id": "arx_1910.04597", "title": "Machine Learning with Multi-Site Imaging Data", "evidence": "Shows scanner differences create bias and can lead to overestimated performance."}
+  ],
+  "tags": ["medical_imaging", "scanner", "site", "protocol"]
+}

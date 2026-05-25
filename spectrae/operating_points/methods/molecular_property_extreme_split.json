@@ -1,0 +1,37 @@
+{
+  "id": "molecular_property_extreme_split",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "operating_point_name": "Molecular Property-Extreme Split",
+  "method_family": "property_range_holdout",
+  "scientific_unit": "molecule",
+  "data_types": ["small_molecule", "materials", "molecular_property"],
+  "target_novelty_axis": "target_or_property_extremeness",
+  "deployment_question": "How does the model extrapolate to molecules or materials in extreme property regimes?",
+  "curve_region": "extreme_low_overlap",
+  "definition": "Hold out samples in high-value, low-value, or otherwise rare property regimes to test extrapolation beyond the central training distribution.",
+  "split_operator": {"type": "property_quantile_holdout", "heldout_unit": "property_bin", "spectra_mapping": "targets low support along the target/property axis rather than only structural novelty"},
+  "required_inputs": ["sample_id", "property value", "holdout quantile or threshold"],
+  "recommended_similarity_axes": ["property_distance", "feature_similarity", "nearest_train_target_support"],
+  "output_contract": {"mode": "split_assignment", "required_columns": ["sample_id", "split", "role"], "optional_columns": ["property_bin", "threshold"]},
+  "implementation_recipe": [
+    "Define the property threshold or quantile before model fitting.",
+    "Train on central or non-extreme regimes and test on the held-out extreme regime.",
+    "Report whether the property itself was used to define the split and whether this is allowed for the study objective."
+  ],
+  "quality_gates": [
+    "Distinguish target extrapolation from covariate novelty.",
+    "Report target support and calibration in extreme bins.",
+    "Avoid using test labels for model selection."
+  ],
+  "failure_modes": [
+    "Splitting on the target can change the task into extrapolation rather than deployment simulation.",
+    "Extreme bins can have too few samples.",
+    "Regression metrics can be dominated by target range."
+  ],
+  "citations": [
+    {"paper_id": "arx_2505.01912", "title": "BOOM: Benchmarking Out-Of-distribution Molecular Property Predictions", "evidence": "Introduces OOD molecular property prediction tasks where models struggle under broader distribution shifts."},
+    {"paper_id": "arx_2502.05970", "title": "Known Unknowns: Out-of-Distribution Property Prediction in Materials and Molecules", "evidence": "Studies property prediction outside the training distribution, including extreme-value regimes."}
+  ],
+  "tags": ["property_extreme", "extrapolation", "molecule", "materials"]
+}

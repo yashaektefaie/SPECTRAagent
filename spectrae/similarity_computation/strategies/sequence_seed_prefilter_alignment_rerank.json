@@ -1,0 +1,91 @@
+{
+  "id": "sequence_seed_prefilter_alignment_rerank",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "Sequence Seed Prefilter with Alignment Reranking",
+  "strategy_family": "seed_extend_sequence_search",
+  "exactness": "hybrid_exact_after_candidate_generation",
+  "applies_to_similarity_kinds": [
+    "sequence_identity",
+    "alignment_score",
+    "kmer_similarity",
+    "edit_distance",
+    "homology_similarity"
+  ],
+  "compatible_data_shapes": [
+    "protein_sequence",
+    "nucleotide_sequence",
+    "rna_sequence",
+    "mutational_sequence_library"
+  ],
+  "definition": "Use exact or spaced seeds, k-mers, or minimizers to generate likely homologous train candidates, then compute the intended alignment, edit-distance, or identity score only for those candidates.",
+  "scale_profile": {
+    "best_for": "Sequence datasets where alignments are expensive but seed overlap is a reliable prefilter.",
+    "typical_upper_bound": "Millions of sequences with suitable seed indexing and length filters.",
+    "avoid_when": "Remote homology or low-complexity regions make seed sensitivity unreliable without calibration."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "candidate_source"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "biological sequences",
+    "alignment or identity scorer"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "seed_pattern",
+      "purpose": "Controls sensitivity and selectivity of candidate retrieval."
+    },
+    {
+      "name": "kmer_size",
+      "purpose": "Length of exact seed or k-mer tokens."
+    },
+    {
+      "name": "alignment_band_or_gap_parameters",
+      "purpose": "Controls exact reranking behavior."
+    }
+  ],
+  "quality_gates": [
+    "Estimate seed sensitivity on known similar pairs or an exact subset.",
+    "Report sequence filtering, low-complexity handling, and alignment parameters.",
+    "Confirm that hard SPECTRA bins do not simply contain sequences missed by the prefilter."
+  ],
+  "failure_modes": [
+    "Seed filters can miss remote or gapped relationships.",
+    "Low-complexity sequences can create excessive candidate lists.",
+    "Length-normalization choices can change the similarity interpretation."
+  ],
+  "python_example": "minhash_lsh_jaccard.py",
+  "example_usage": "Tokenize sequences into k-mers, run minhash_lsh_jaccard.py for candidates, then replace the final score with sequence identity or alignment similarity when needed.",
+  "citations": [
+    {
+      "paper_id": "arx_0810.5434",
+      "title": "Improved seed design for protein similarity search",
+      "evidence": "Discusses seed-based protein similarity search, sensitivity/selectivity tradeoffs, and reducing hash-table accesses."
+    },
+    {
+      "paper_id": "bio_710f3a5039b0aec8eb382357f465dca01ee5e810",
+      "title": "SubseqHash2: highly-sensitive seed-based sequence similarity search",
+      "evidence": "Uses seed-based candidate generation for sequence similarity search on error-prone sequences."
+    }
+  ],
+  "tags": [
+    "sequence",
+    "seed_extend",
+    "alignment",
+    "kmer",
+    "prefilter_rerank"
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "id": "drugood_chembl",
+  "version": "0.1.0",
+  "status": "active",
+  "title": "DrugOOD ChEMBL-Derived Drug Discovery OOD Benchmark",
+  "domains": ["molecular_ml", "drug_discovery", "domain_generalization"],
+  "data_types": ["SMILES", "bioactivity table", "assay environment", "protein target"],
+  "scientific_units": ["molecule_assay_pair", "molecule", "assay"],
+  "compatible_model_families": ["molecular property predictor", "graph neural network", "drug discovery model", "fingerprint baseline"],
+  "source": {
+    "homepage": "https://drugood.github.io/",
+    "repository": "https://github.com/tencent-ailab/DrugOOD",
+    "data_urls": [
+      {
+        "description": "DrugOOD project page",
+        "url": "https://drugood.github.io/",
+        "access_notes": "Project page links realized exemplar datasets and curator details."
+      },
+      {
+        "description": "DrugOOD code repository",
+        "url": "https://github.com/tencent-ailab/DrugOOD",
+        "access_notes": "Use official loaders and configuration files where possible."
+      }
+    ]
+  },
+  "access": {
+    "mode": "repository",
+    "authentication": "none_expected",
+    "instructions": [
+      "Use the DrugOOD repository and project page to select a realized exemplar dataset.",
+      "Record task, noise level, domain annotation, ChEMBL version, and split definition.",
+      "Start with one curated subset rather than reconstructing all ChEMBL-derived data from scratch."
+    ]
+  },
+  "scale": {
+    "download_size": "variable by realized dataset; use one selected subset for first audits",
+    "spectra_default": "selected_curated_subset"
+  },
+  "expected_fields": ["smiles", "label", "domain", "assay_id", "target_id", "split", "noise_level"],
+  "recommended_axes": [
+    {
+      "name": "assay_environment_similarity",
+      "definition": "Similarity of assay or measurement environments using assay IDs, target IDs, or metadata embeddings.",
+      "prospective": true
+    },
+    {
+      "name": "chemical_scaffold_similarity",
+      "definition": "Molecular fingerprint or scaffold similarity between test molecules and training molecules.",
+      "prospective": true
+    },
+    {
+      "name": "target_family_similarity",
+      "definition": "Protein target family or sequence similarity when target annotations are available.",
+      "prospective": true
+    }
+  ],
+  "useful_for": [
+    "Targeted operating-point and full-curve audits for drug-discovery domain generalization.",
+    "Testing whether assay-domain shifts or chemical novelty drive molecular model failure.",
+    "Comparing SPECTRA curves against established DrugOOD environment splits."
+  ],
+  "leakage_risks": [
+    "Duplicate or near-duplicate molecules can cross environment splits.",
+    "Assay labels can encode target or measurement artifacts.",
+    "Reconstructed ChEMBL subsets must pin source version and preprocessing."
+  ],
+  "related_benchmark_capsules": ["boom"],
+  "related_memory_entries": ["boom_numeric_mini_audit_memory"],
+  "tags": ["drugood", "chembl", "molecules", "domain_generalization", "assay_shift"]
+}

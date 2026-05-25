@@ -1,0 +1,78 @@
+{
+  "id": "rna_structural_component_similarity",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "rna_structure",
+  "scientific_unit": "rna_chain_or_structure",
+  "task_family": [
+    "RNA structure prediction",
+    "structure modeling",
+    "sequence-structure generalization"
+  ],
+  "similarity_name": "RNA sequence-cluster and structural-component similarity",
+  "similarity_kind": "group_similarity",
+  "definition": "Assign RNA chains to sequence clusters and structurally dissimilar components, then compute binary or hierarchical group similarity. This audits whether structure-prediction performance depends on structural homology or near-redundant sequence families crossing train and evaluation sets.",
+  "spectra_axis": {
+    "name": "rna_structural_component_overlap",
+    "axis_type": "similarity",
+    "aggregation": "same_component_or_sequence_cluster",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "sequence_cluster",
+    "structural_component"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/tabular_group_similarity.py",
+  "example_usage": "python tabular_group_similarity.py --train train_rna.csv --eval eval_rna.csv --out pairwise_similarity.csv --group-col structural_component",
+  "citations": [
+    {
+      "paper_id": "PMC10862857",
+      "title": "RNA3DB: A structurally-dissimilar dataset split for training and benchmarking deep learning models for RNA structure prediction",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC10862857/content.lines",
+          "lines": "L20-L23",
+          "summary": "The paper argues that structurally dissimilar splits are needed to test generalization and avoid data leakage."
+        },
+        {
+          "path": "/papers/PMC10862857/content.lines",
+          "lines": "L27-L45",
+          "summary": "RNA3DB builds sequence clusters and structural components from sequence and structural homology."
+        },
+        {
+          "path": "/papers/PMC10862857/content.lines",
+          "lines": "L50-L75",
+          "summary": "The paper motivates component grouping to prevent leakage of structural information into the test set."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Binary group similarity is coarse and depends on the clustering thresholds.",
+    "Structural homology annotations may lag new RNA families or hybrid chains.",
+    "A continuous structural distance may be preferable when reliable alignments are available."
+  ],
+  "quality_gates": [
+    "Report sequence-clustering and structural-homology thresholds.",
+    "Check both sequence-cluster and structural-component overlap.",
+    "Treat chains that overlap multiple families or components explicitly."
+  ],
+  "tags": [
+    "rna",
+    "structure",
+    "homology",
+    "rna3db",
+    "structural_split"
+  ]
+}

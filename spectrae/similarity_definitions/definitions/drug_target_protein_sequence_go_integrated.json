@@ -1,0 +1,78 @@
+{
+  "id": "drug_target_protein_sequence_go_integrated",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "drug_target_pair",
+  "scientific_unit": "target_protein",
+  "task_family": [
+    "drug target affinity prediction",
+    "target generalization",
+    "protein functional similarity"
+  ],
+  "similarity_name": "Integrated protein sequence and GO similarity",
+  "similarity_kind": "composite_similarity",
+  "definition": "Compute target-protein sequence similarity and Gene Ontology functional similarity, then combine them as an integrated similarity using noisy-or style composition, 1 - product(1 - component_similarity). Use this when target relatedness, rather than ligand structure alone, may drive apparent affinity performance.",
+  "spectra_axis": {
+    "name": "integrated_target_protein_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_integrated_similarity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "target_sequence_similarity_csv",
+    "target_go_similarity_csv"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/composite_pairwise_similarity.py",
+  "example_usage": "python composite_pairwise_similarity.py --inputs target_sequence_pairwise.csv target_go_pairwise.csv --method noisy_or --out pairwise_similarity.csv",
+  "citations": [
+    {
+      "paper_id": "PMC11526688",
+      "title": "BASE: a web service for providing compound-protein binding affinity prediction datasets with reduced similarity bias",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC11526688/content.lines",
+          "lines": "L51-L55",
+          "summary": "The study calculates target-protein sequence similarity and functional similarity based on Gene Ontology biological process terms."
+        },
+        {
+          "path": "/papers/PMC11526688/content.lines",
+          "lines": "L56-L59",
+          "summary": "The paper combines sequence and functional similarities into an integrated metric and filters training samples by similarity to the test set."
+        },
+        {
+          "path": "/papers/PMC11526688/content.lines",
+          "lines": "L112-L119",
+          "summary": "Performance declines as target similarity cutoffs are lowered, motivating similarity-aware evaluation."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "GO annotations can be incomplete or biased toward well-studied targets.",
+    "The integrated score can hide whether sequence or function is driving the curve.",
+    "Functional similarity should be recomputed for the ontology version and species in use."
+  ],
+  "quality_gates": [
+    "Report sequence alignment method, GO namespace, semantic similarity method, and ontology version.",
+    "Plot sequence-only, GO-only, and integrated curves.",
+    "Control for training-set size changes when filtering by target similarity."
+  ],
+  "tags": [
+    "drug_target_affinity",
+    "target_similarity",
+    "gene_ontology",
+    "sequence_similarity",
+    "base"
+  ]
+}

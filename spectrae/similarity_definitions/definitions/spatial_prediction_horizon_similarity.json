@@ -1,0 +1,78 @@
+{
+  "id": "spatial_prediction_horizon_similarity",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "spatial_or_environmental_prediction",
+  "scientific_unit": "spatial_observation_or_prediction_location",
+  "task_family": [
+    "spatial machine learning",
+    "environmental prediction",
+    "remote sensing"
+  ],
+  "similarity_name": "Spatial prediction-horizon distance",
+  "similarity_kind": "spatial_distance_similarity",
+  "definition": "Compute the spatial, spatiotemporal, vertical, stream-network, or other task-specific prediction distance from each evaluation location to the training set. This is a SPECTRA-style audit for whether error increases as the intended prediction horizon moves away from observed training support.",
+  "spectra_axis": {
+    "name": "nearest_train_spatial_horizon_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_spatial_similarity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "spatial_coordinates_or_precomputed_distance"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/geospatial_haversine_similarity.py",
+  "example_usage": "python geospatial_haversine_similarity.py --train train_locations.csv --eval eval_locations.csv --out pairwise_similarity.csv --scale-km 100",
+  "citations": [
+    {
+      "paper_id": "arx_2111.08478",
+      "title": "Spatial machine-learning model diagnostics: a model-agnostic distance-based approach",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/arx_2111.08478/content.lines",
+          "lines": "L6-L12",
+          "summary": "The paper proposes prediction-distance profiles to assess spatial machine learning models."
+        },
+        {
+          "path": "/papers/arx_2111.08478/content.lines",
+          "lines": "L19-L31",
+          "summary": "Spatial leave-one-out records separation distance and performance as a function of distance."
+        },
+        {
+          "path": "/papers/arx_2111.08478/content.lines",
+          "lines": "L108-L123",
+          "summary": "The paper argues model assessment should relate performance to intended spatial prediction distance."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Euclidean or haversine distance may be wrong for streams, roads, vertical geology, or anisotropic processes.",
+    "Spatial distance can be confounded with environmental covariates and sampling density.",
+    "Interpolation and transfer are different scientific objectives and should not be collapsed."
+  ],
+  "quality_gates": [
+    "Report the distance metric and why it matches the prediction horizon.",
+    "Compare prediction-distance curves to environmental-feature and domain-metadata curves.",
+    "Report train/evaluation sampling density and nearest-neighbor distance distributions."
+  ],
+  "tags": [
+    "spatial",
+    "geospatial",
+    "prediction_horizon",
+    "environmental_prediction",
+    "distance_profile",
+    "remote_sensing"
+  ]
+}

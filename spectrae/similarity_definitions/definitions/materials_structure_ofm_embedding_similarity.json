@@ -1,0 +1,78 @@
+{
+  "id": "materials_structure_ofm_embedding_similarity",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "material_crystal_structure",
+  "scientific_unit": "material_structure",
+  "task_family": [
+    "materials property prediction",
+    "crystal graph learning",
+    "structure extrapolation"
+  ],
+  "similarity_name": "Structural descriptor or latent embedding similarity",
+  "similarity_kind": "embedding_similarity",
+  "definition": "Represent each crystal by a structural descriptor, such as orbital field matrix features, local atomic-environment features, or a learned graph-model latent vector, then compute cosine similarity between evaluation and training structures.",
+  "spectra_axis": {
+    "name": "max_train_structure_embedding_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_cosine_similarity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "structure_feature_columns"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/embedding_cosine_similarity.py",
+  "example_usage": "python embedding_cosine_similarity.py --train train_structures.csv --eval eval_structures.csv --out pairwise_similarity.csv --embedding-cols-prefix struct_",
+  "citations": [
+    {
+      "paper_id": "arx_2401.08032",
+      "title": "Structure-Based Out-of-Distribution Materials Property Prediction: A Benchmark Study",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/arx_2401.08032/content.lines",
+          "lines": "L13-L20",
+          "summary": "The paper argues random splits overestimate materials-property performance because of redundancy and high train-test similarity."
+        },
+        {
+          "path": "/papers/arx_2401.08032/content.lines",
+          "lines": "L33-L42",
+          "summary": "OOD target sets are constructed from sparse regions of structure or property space using structural features and clustering."
+        },
+        {
+          "path": "/papers/arx_2401.08032/content.lines",
+          "lines": "L75",
+          "summary": "Latent spaces combine structure and composition information and cluster materials with similar properties."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Learned embeddings can encode model biases and should not be treated as ground-truth structural distance.",
+    "Descriptor choice changes the scientific meaning of distance.",
+    "Feature scaling and missing structural data can dominate similarity."
+  ],
+  "quality_gates": [
+    "Record descriptor type, feature normalization, and whether features are learned or hand-engineered.",
+    "Compare composition-only and structure-only curves.",
+    "Check that near-duplicate structures are not leaking across train and evaluation sets."
+  ],
+  "tags": [
+    "materials",
+    "crystal_structure",
+    "ofm",
+    "graph_embedding",
+    "matbench",
+    "ood"
+  ]
+}

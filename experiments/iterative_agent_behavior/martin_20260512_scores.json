@@ -1,0 +1,135 @@
+{
+  "experiment": "iterative_spectra_agent_behavior",
+  "date": "2026-05-12",
+  "task": "anonymous_sequence_fitness_generalization",
+  "task_dir": "/ewsc/yektefai/spectra_agent_trials/iterative_martin_20260512",
+  "rubric": "experiments/iterative_agent_behavior/rubric.json",
+  "conditions": {
+    "vanilla": {
+      "report": "/ewsc/yektefai/spectra_agent_trials/iterative_martin_20260512/vanilla/report.json",
+      "instructions": "Use normal scientific model-evaluation workflow. Do not use SPECTRA protocol, docs, registries, benchmark runners, or prior SPECTRA outputs."
+    },
+    "spectra": {
+      "report": "/ewsc/yektefai/spectra_agent_trials/iterative_martin_20260512/spectra/report.json",
+      "instructions": "Use /spectra. Treat each novelty axis as a similarity hypothesis, validate overlap, score curves, record failed axes, and separate prospective from post-hoc axes."
+    }
+  },
+  "score_scale": {
+    "0": "missing or invalid",
+    "1": "partial, qualitative, or weakly justified",
+    "2": "quantitative, valid, and scientifically useful"
+  },
+  "scores": {
+    "vanilla": {
+      "scientific_unit": {
+        "score": 2,
+        "evidence": "Correctly identified individual mutated nucleotide sequence variants with scalar fitness values."
+      },
+      "initial_similarity_hypothesis": {
+        "score": 2,
+        "evidence": "Considered exact sequence/mutant overlap, mutation-center distance, Hamming distance, local context, and position quartiles."
+      },
+      "property_graph_specificity": {
+        "score": 1,
+        "evidence": "Computed nearest center and Hamming distances, but did not emit an explicit reusable pairwise similarity graph."
+      },
+      "overlap_validation": {
+        "score": 2,
+        "evidence": "Quantified exact train/eval overlap, center overlap, context overlap, Hamming counts, and nearest-center distance distribution."
+      },
+      "performance_curve": {
+        "score": 2,
+        "evidence": "Reported performance by Hamming bins, nearest-center-distance bins, local context, and position quartiles."
+      },
+      "curve_scoring": {
+        "score": 2,
+        "evidence": "Classified axes as not evaluable, weak/non-monotonic, or localized variation."
+      },
+      "failed_axis_reporting": {
+        "score": 2,
+        "evidence": "Explicitly reported exact overlap, center/context seen, Hamming distance, and center-distance limitations."
+      },
+      "adaptive_next_axis": {
+        "score": 0,
+        "evidence": "Compared axes in a static analysis but did not record an iterative trace or next-axis decisions driven by prior curve failures."
+      },
+      "leakage_risk_classification": {
+        "score": 1,
+        "evidence": "Checked duplicate leakage, but did not classify axes as prospective, post-hoc explanatory, or invalid."
+      },
+      "selected_axis_defensibility": {
+        "score": 1,
+        "evidence": "Defensibly declined a clean degradation conclusion, but did not select or formalize a final audit axis."
+      },
+      "metric_reporting": {
+        "score": 0,
+        "evidence": "Reported aggregate and binned errors, but did not compute AUSPC or an equivalent spectral summary."
+      },
+      "audit_artifact_quality": {
+        "score": 1,
+        "evidence": "Produced a useful JSON report and annotated evaluation CSV, but not a standardized audit-card/artifact set."
+      },
+      "total": 17,
+      "max": 24
+    },
+    "spectra": {
+      "scientific_unit": {
+        "score": 2,
+        "evidence": "Correctly identified mutated nucleotide sequence variants as the scientific unit."
+      },
+      "initial_similarity_hypothesis": {
+        "score": 2,
+        "evidence": "Defined candidate hypotheses for mutation-position support, sequence identity, mutation-centered window identity, mutation depth, local GC support, fitness support, and absolute error."
+      },
+      "property_graph_specificity": {
+        "score": 2,
+        "evidence": "Emitted pairwise similarity CSVs and graph definitions for each computable axis."
+      },
+      "overlap_validation": {
+        "score": 2,
+        "evidence": "Validated monotonic nondecreasing novelty and overlap behavior per SPECTRA audit."
+      },
+      "performance_curve": {
+        "score": 2,
+        "evidence": "Produced performance-vs-novelty curves for multiple axes through SPECTRA audit outputs."
+      },
+      "curve_scoring": {
+        "score": 2,
+        "evidence": "Scored axes as not_explanatory, not_evaluable, or monotonic_supported with RMSE, slope, and correlation summaries."
+      },
+      "failed_axis_reporting": {
+        "score": 2,
+        "evidence": "Recorded failed/non-evaluable axes and next actions."
+      },
+      "adaptive_next_axis": {
+        "score": 2,
+        "evidence": "After position support failed and sequence identity collapsed, tested local-window identity, mutation depth, local GC, and post-hoc controls."
+      },
+      "leakage_risk_classification": {
+        "score": 2,
+        "evidence": "Separated prospective axes from post-hoc explanatory and invalid axes, including y_true/y_pred-derived axes."
+      },
+      "selected_axis_defensibility": {
+        "score": 2,
+        "evidence": "Selected mutation_centered_window_identity_similarity as a prospective local-context axis and stated limitations."
+      },
+      "metric_reporting": {
+        "score": 2,
+        "evidence": "Computed AUSPC/equivalent negative RMSE area for supported axes."
+      },
+      "audit_artifact_quality": {
+        "score": 2,
+        "evidence": "Produced report.json plus per-axis pairwise similarities, audit cards, split stats, performance tables, reports, and plots."
+      },
+      "total": 24,
+      "max": 24
+    }
+  },
+  "key_results": {
+    "aggregate_model_behavior": "Both agents found the model behaves like a near-constant predictor with held-out RMSE about 0.0763 and R2 about -0.008.",
+    "vanilla_result": "The vanilla agent found no convincing novelty-degradation curve. Most intuitive axes were constant or non-evaluable, and nearest-center-distance bins were weak/non-monotonic.",
+    "spectra_result": "The /spectra agent selected a prospective mutation-centered local-window identity axis. RMSE increased from 0.0763 overall to 0.0899 on the lowest-overlap subset, with negative-RMSE AUSPC -0.0936.",
+    "main_delta": "/spectra changed the output from a static generalization analysis into an iterative similarity-hypothesis audit with explicit failed axes, leakage classification, AUSPC, and reusable artifacts.",
+    "caveat": "The predictions are nearly constant, so the selected curve may reflect y_true distribution differences across local sequence contexts rather than a model-specific degradation mechanism."
+  }
+}

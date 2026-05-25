@@ -1,0 +1,79 @@
+{
+  "id": "cell_morphology_profile_similarity",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "cell_morphology_profile",
+  "scientific_unit": "cellular_perturbation_or_well",
+  "task_family": [
+    "image-based profiling",
+    "cell painting",
+    "perturbation mechanism prediction"
+  ],
+  "similarity_name": "Cell morphology profile similarity",
+  "similarity_kind": "phenotypic_profile_similarity",
+  "definition": "Aggregate microscopy-derived morphology features, CellProfiler profiles, or learned image embeddings for wells, compounds, genes, or perturbations, then compare profiles with cosine, Pearson correlation, or a learned phenotypic distance. For SPECTRA, this audits whether model performance depends on evaluation perturbations having morphology profiles close to training perturbations.",
+  "spectra_axis": {
+    "name": "cell_morphology_profile_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_morphology_similarity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "morphology_feature_columns_or_embeddings"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/embedding_cosine_similarity.py",
+  "example_usage": "python embedding_cosine_similarity.py --train train_morphology.csv --eval eval_morphology.csv --out pairwise_similarity.csv --embedding-cols-prefix morph_",
+  "citations": [
+    {
+      "paper_id": "PMC11166567",
+      "title": "Three million images and morphological profiles of cells treated with matched chemical and genetic perturbations",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC11166567/content.lines",
+          "lines": "L7-L17",
+          "summary": "The paper frames image-based profiles as a way to identify genetic and chemical perturbations with similar impacts on cell morphology."
+        },
+        {
+          "path": "/papers/PMC11166567/content.lines",
+          "lines": "L257-L262",
+          "summary": "The supplementary material reports cosine similarities between compound and genetic perturbation profiles."
+        },
+        {
+          "path": "/papers/PMC11166567/content.lines",
+          "lines": "L702-L718",
+          "summary": "The paper discusses quantitative similarity of cell images and image-based profiles for perturbation impact."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Morphology profiles can be dominated by plate, site, cell line, dose, time point, segmentation, and normalization choices.",
+    "Profile similarity may reflect toxicity or cell-cycle state rather than the mechanism of interest.",
+    "Single-cell and well-level aggregation can produce different similarity geometries."
+  ],
+  "quality_gates": [
+    "Report assay, cell line, time point, dose, feature extraction method, aggregation, and normalization.",
+    "Run batch/site/cell-line curves alongside morphology-similarity curves.",
+    "Check replicate retrieval or positive-control enrichment before using the axis for model auditing."
+  ],
+  "tags": [
+    "cell_painting",
+    "morphology",
+    "image_based_profiling",
+    "cellprofiler",
+    "phenotypic_similarity",
+    "perturbation"
+  ]
+}
+

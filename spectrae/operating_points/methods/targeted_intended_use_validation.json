@@ -1,0 +1,37 @@
+{
+  "id": "targeted_intended_use_validation",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "operating_point_name": "Targeted Intended-Use Validation",
+  "method_family": "target_population_validation",
+  "scientific_unit": "deployment_population_sample",
+  "data_types": ["clinical_record", "public_health_record", "patient_cohort", "operational_dataset"],
+  "target_novelty_axis": "intended_population_setting_or_use_case",
+  "deployment_question": "How does the model perform in the exact population and setting where it will be used?",
+  "curve_region": "axis_specific",
+  "definition": "Construct validation data to match the intended deployment population, setting, measurement process, and decision context. This is a targeted operating point rather than a generic hardest split.",
+  "split_operator": {"type": "target_population_holdout", "heldout_unit": "deployment_setting", "spectra_mapping": "selects the curve point corresponding to the intended-use distribution"},
+  "required_inputs": ["sample_id", "deployment setting definition", "eligibility criteria", "time or site labels"],
+  "recommended_similarity_axes": ["population_similarity", "setting_similarity", "measurement_protocol_similarity"],
+  "output_contract": {"mode": "split_assignment", "required_columns": ["sample_id", "split", "role"], "optional_columns": ["target_setting", "eligibility_rule"]},
+  "implementation_recipe": [
+    "Write the intended-use population, setting, and prediction time before splitting.",
+    "Select validation samples that satisfy that target definition.",
+    "Report whether training data did or did not include the target setting."
+  ],
+  "quality_gates": [
+    "Pre-specify the target setting and eligibility rule.",
+    "Report calibration, clinical utility, and subgroup performance inside the target setting.",
+    "Distinguish target validation from broad external generalizability."
+  ],
+  "failure_modes": [
+    "A validation set can be external but irrelevant to the intended use.",
+    "Target setting data can be too small for stable estimates.",
+    "Eligibility changes after deployment can move the operating point."
+  ],
+  "citations": [
+    {"paper_id": "PMC9773429", "title": "Targeted validation: validating clinical prediction models in their intended population and setting", "evidence": "Defines targeted validation as validation in the intended population and setting."},
+    {"paper_id": "PMC10163568", "title": "Perspectives on validation of clinical predictive algorithms", "evidence": "Distinguishes temporal, geographical, and domain generalizability for clinical algorithms."}
+  ],
+  "tags": ["targeted_validation", "intended_use", "clinical", "deployment"]
+}

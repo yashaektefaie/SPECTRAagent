@@ -1,0 +1,47 @@
+{
+  "schema_version": "0.1.0",
+  "required_fields": [
+    "id",
+    "version",
+    "status",
+    "title",
+    "domains",
+    "data_types",
+    "scientific_units",
+    "compatible_model_families",
+    "source",
+    "access",
+    "expected_fields",
+    "recommended_axes",
+    "useful_for",
+    "leakage_risks",
+    "related_benchmark_capsules",
+    "related_memory_entries",
+    "tags"
+  ],
+  "status_values": [
+    "active",
+    "needs_auth",
+    "needs_source_verification",
+    "planned",
+    "deprecated"
+  ],
+  "access_modes": [
+    "direct_download",
+    "repository",
+    "data_portal",
+    "synapse_auth",
+    "huggingface",
+    "zenodo",
+    "competition_portal",
+    "mixed"
+  ],
+  "forbidden_path_patterns": [
+    "/ewsc/",
+    "/home/unix/",
+    "/tmp/",
+    "spectra_caduceus_",
+    "spectra_assets/"
+  ],
+  "notes": "Dataset catalog entries must be portable. Do not include local absolute paths, run directories, or machine-specific caches."
+}

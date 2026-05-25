@@ -1,0 +1,66 @@
+{
+  "id": "boom",
+  "title": "BOOM: Benchmarking Out-Of-distribution Molecular Property Predictions of Machine Learning Models",
+  "tier": "launch_anchor",
+  "community": "molecular_ml_drug_discovery",
+  "status": "active_demo",
+  "paper": {
+    "url": "https://openreview.net/forum?id=QoBxQrvFRd",
+    "pdf_url": "https://arxiv.org/pdf/2505.01912.pdf",
+    "arxiv_url": "https://arxiv.org/abs/2505.01912",
+    "year": 2025
+  },
+  "code": {
+    "repo_url": "https://github.com/FLASK-LLNL/BOOM",
+    "fetch_default": true
+  },
+  "data": [
+    {
+      "name": "BOOM benchmark datasets",
+      "url": "https://github.com/FLASK-LLNL/BOOM",
+      "fetch_default": false,
+      "reason": "Benchmark data may be large; fetch through the upstream instructions."
+    }
+  ],
+  "scientific_unit": "molecule",
+  "original_evaluation": [
+    "OOD molecular property prediction across BOOM benchmark tasks",
+    "Model-task comparisons over common molecular property prediction settings"
+  ],
+  "core_generalization_finding": "Molecular property prediction models can struggle under chemically meaningful OOD shifts.",
+  "spectra_demo_hook": "Turn BOOM-style OOD benchmarks into continuous audits over chemical novelty and property extrapolation.",
+  "recommended_novelty_axes": [
+    {
+      "name": "chemical_distance",
+      "property_graph": "Morgan fingerprint Tanimoto similarity",
+      "graph_type": "weighted",
+      "priority": "primary"
+    },
+    {
+      "name": "scaffold_novelty",
+      "property_graph": "shared Bemis-Murcko scaffold or scaffold similarity",
+      "graph_type": "binary_or_weighted",
+      "priority": "primary"
+    },
+    {
+      "name": "property_extremeness",
+      "property_graph": "distance in target property value from training support",
+      "graph_type": "weighted",
+      "priority": "secondary"
+    },
+    {
+      "name": "embedding_distance",
+      "property_graph": "distance in learned molecular representation space",
+      "graph_type": "weighted",
+      "priority": "secondary"
+    }
+  ],
+  "expected_artifacts": [
+    "audit_card.json",
+    "spectral_properties.json",
+    "split_stats.csv",
+    "performance_by_overlap.csv",
+    "spectral_curve.png",
+    "report.md"
+  ]
+}

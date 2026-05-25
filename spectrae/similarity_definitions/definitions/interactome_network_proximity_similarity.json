@@ -1,0 +1,75 @@
+{
+  "id": "interactome_network_proximity_similarity",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "biological_network_entity_set",
+  "scientific_unit": "entity_set_pair",
+  "task_family": [
+    "drug repurposing",
+    "network medicine",
+    "target-disease generalization"
+  ],
+  "similarity_name": "Interactome entity-set proximity",
+  "similarity_kind": "network_set_proximity",
+  "definition": "Represent each sample by a set of biological entities, such as drug targets, disease genes, pathway members, or perturbation targets. Compute shortest-path proximity between sets on a biological interaction network and transform distance into similarity. For SPECTRA, this audits whether evaluation examples are close to training examples in network medicine space.",
+  "spectra_axis": {
+    "name": "interactome_set_proximity_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_network_proximity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "entity_set",
+    "network_edge_list"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/network_set_proximity_similarity.py",
+  "example_usage": "python network_set_proximity_similarity.py --edges interactome.csv --train train_sets.csv --eval eval_sets.csv --out pairwise_similarity.csv --set-col targets --scale 2.0",
+  "citations": [
+    {
+      "paper_id": "PMC4740350",
+      "title": "Network-based in silico drug efficacy screening",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC4740350/content.lines",
+          "lines": "L9-L15",
+          "summary": "The paper introduces drug-disease proximity between drug targets and disease proteins in the interactome."
+        },
+        {
+          "path": "/papers/PMC4740350/content.lines",
+          "lines": "L18-L21",
+          "summary": "It compares shortest-path, closest, kernel, center, and separation measures and reports proximity-based similarity for repurposing."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Coverage and bias in the interaction network can strongly affect distances.",
+    "Shortest-path proximity does not distinguish activation, inhibition, tissue context, or causal direction.",
+    "Entity annotations are often incomplete and should not be treated as a complete mechanism."
+  ],
+  "quality_gates": [
+    "Report network source, version, directedness, and disconnected-node handling.",
+    "Report whether proximity is raw shortest-path distance, closest distance, z-scored against random sets, or another statistic.",
+    "Check sensitivity to high-degree nodes and to the number of entities in each set."
+  ],
+  "tags": [
+    "interactome",
+    "network_medicine",
+    "drug_targets",
+    "disease_genes",
+    "shortest_path",
+    "set_proximity"
+  ]
+}
+

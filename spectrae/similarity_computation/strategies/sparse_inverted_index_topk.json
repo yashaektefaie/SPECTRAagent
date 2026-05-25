@@ -1,0 +1,91 @@
+{
+  "id": "sparse_inverted_index_topk",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "Sparse Inverted-Index Top-k Similarity Search",
+  "strategy_family": "sparse_inverted_index",
+  "exactness": "hybrid_exact_after_candidate_generation",
+  "applies_to_similarity_kinds": [
+    "cosine_similarity",
+    "inner_product_similarity",
+    "weighted_jaccard_similarity",
+    "sparse_mips"
+  ],
+  "compatible_data_shapes": [
+    "sparse_vector",
+    "bag_of_words",
+    "count_vector",
+    "tfidf",
+    "sparse_omics",
+    "high_dimensional_sparse_features"
+  ],
+  "definition": "Build an inverted index from nonzero training features, accumulate candidate scores only for train items sharing informative features with an evaluation item, and retain the exact or approximate top-k candidates.",
+  "scale_profile": {
+    "best_for": "Sparse high-dimensional features where most train-eval dot products are zero or obviously small.",
+    "typical_upper_bound": "Millions of sparse vectors when postings lists remain selective.",
+    "avoid_when": "Features are dense, uninformative, or every item shares most features."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "candidate_source"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "sparse feature vectors"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "posting_pruning",
+      "purpose": "Drops very common or low-weight features that create large candidate sets."
+    },
+    {
+      "name": "score_upper_bound",
+      "purpose": "Prunes candidates that cannot enter the top-k."
+    },
+    {
+      "name": "k",
+      "purpose": "Number of retained train neighbors."
+    }
+  ],
+  "quality_gates": [
+    "Compare top-k recall with exact sparse multiplication on a subset.",
+    "Report feature normalization and pruning rules.",
+    "Check whether rare-feature artifacts dominate the nearest-neighbor graph."
+  ],
+  "failure_modes": [
+    "Common features can create near-all-pairs candidate explosion.",
+    "Aggressive pruning can remove biologically or scientifically meaningful weak overlap.",
+    "Sparse MIPS scores are sensitive to vector norm choices."
+  ],
+  "python_example": "dense_vector_topk_similarity.py",
+  "example_usage": "Use dense_vector_topk_similarity.py for small sparse matrices exported as columns; for production replace with an inverted-index scorer that emits the same CSV columns.",
+  "citations": [
+    {
+      "paper_id": "arx_2301.10622",
+      "title": "Approximate Nearest Neighbor Search for Sparse Data in Less Space",
+      "evidence": "Studies approximate top-k maximum inner product search for sparse vectors and memory/latency/accuracy tradeoffs."
+    },
+    {
+      "paper_id": "arx_2509.24815",
+      "title": "Seismic: Efficient and Scalable Sparse Vector Search with Inverted Indexing",
+      "evidence": "Describes scalable sparse-vector nearest-neighbor search using inverted indexing."
+    }
+  ],
+  "tags": [
+    "sparse_vector",
+    "inverted_index",
+    "mips",
+    "top_k",
+    "candidate_pruning"
+  ]
+}

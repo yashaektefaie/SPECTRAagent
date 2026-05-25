@@ -1,0 +1,61 @@
+{
+  "id": "boom_benchmark_datasets",
+  "version": "0.1.0",
+  "status": "active",
+  "title": "BOOM Molecular OOD Benchmark Datasets",
+  "domains": ["molecular_ml", "drug_discovery", "ai4science"],
+  "data_types": ["SMILES", "molecular property table", "small molecule"],
+  "scientific_units": ["molecule"],
+  "compatible_model_families": ["molecular property predictor", "graph neural network", "fingerprint baseline"],
+  "source": {
+    "homepage": "https://openreview.net/forum?id=QoBxQrvFRd",
+    "repository": "https://github.com/FLASK-LLNL/BOOM",
+    "data_urls": [
+      {
+        "description": "BOOM repository with benchmark data instructions",
+        "url": "https://github.com/FLASK-LLNL/BOOM",
+        "access_notes": "Follow upstream instructions; do not assume small downloads."
+      }
+    ]
+  },
+  "access": {
+    "mode": "repository",
+    "authentication": "none_expected",
+    "instructions": [
+      "Clone or inspect the BOOM repository.",
+      "Follow upstream data-download instructions for the desired task.",
+      "Verify train/validation/test split labels and molecule identifiers before constructing SPECTRA splits."
+    ]
+  },
+  "expected_fields": ["smiles", "target", "split", "task_name", "molecule_id"],
+  "recommended_axes": [
+    {
+      "name": "chemical_distance",
+      "definition": "Morgan fingerprint Tanimoto or another molecule fingerprint similarity to train.",
+      "prospective": true
+    },
+    {
+      "name": "scaffold_novelty",
+      "definition": "Bemis-Murcko scaffold identity or scaffold fingerprint similarity.",
+      "prospective": true
+    },
+    {
+      "name": "property_extremeness",
+      "definition": "Distance from training target-property support; diagnostic or post-hoc unless used only on training labels for split construction.",
+      "prospective": false
+    }
+  ],
+  "useful_for": [
+    "Molecular OOD generalization curves.",
+    "Testing whether chemical novelty explains property prediction degradation.",
+    "Sanity-checking SPECTRA split and curve machinery."
+  ],
+  "leakage_risks": [
+    "Target-property support is post-hoc if computed with held-out labels.",
+    "SMILES duplicates, salts, stereochemistry, and canonicalization can create hidden leakage.",
+    "Random and scaffold split labels should be treated as operating points, not the full curve."
+  ],
+  "related_benchmark_capsules": ["boom"],
+  "related_memory_entries": ["boom_numeric_mini_audit_memory"],
+  "tags": ["boom", "molecules", "ood", "chemical_novelty", "smiles"]
+}

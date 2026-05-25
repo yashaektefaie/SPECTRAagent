@@ -1,0 +1,97 @@
+{
+  "id": "streaming_similarity_join_sketch",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "Streaming Similarity Join with Sketches",
+  "strategy_family": "streaming_similarity_join",
+  "exactness": "approximate",
+  "applies_to_similarity_kinds": [
+    "jaccard_similarity",
+    "weighted_jaccard_similarity",
+    "cosine_similarity",
+    "l2_distance",
+    "streaming_set_similarity",
+    "multiset_similarity"
+  ],
+  "compatible_data_shapes": [
+    "data_stream",
+    "sliding_window_stream",
+    "set_stream",
+    "multiset_stream",
+    "dynamic_graph_stream",
+    "online_embedding_stream"
+  ],
+  "definition": "Maintain sketches, stream indexes, or sliding-window candidate structures so pairwise similarities are emitted incrementally as data arrive. Use this when SPECTRA audits must be recomputed over time, over rolling train windows, or over data streams too large to materialize.",
+  "scale_profile": {
+    "best_for": "Online or rolling-window audits where train membership changes over time and full recomputation is too expensive.",
+    "typical_upper_bound": "High-throughput streams when sketch size and window state fit memory.",
+    "avoid_when": "A static exact train-eval matrix is small enough to compute once or when approximation error cannot be validated."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "window_id",
+      "event_time",
+      "sketch_size",
+      "estimated_error"
+    ]
+  },
+  "required_inputs": [
+    "stream identifiers",
+    "stream features",
+    "window definition",
+    "similarity sketch parameters"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "window_size",
+      "purpose": "Defines the rolling train set or time horizon used for similarity comparisons."
+    },
+    {
+      "name": "sketch_size",
+      "purpose": "Controls memory use and approximation variance."
+    },
+    {
+      "name": "similarity_threshold_or_k",
+      "purpose": "Controls whether the stream join emits thresholded pairs or top-k neighbors."
+    }
+  ],
+  "quality_gates": [
+    "Compare sketch estimates with exact similarities on sampled windows.",
+    "Report how late-arriving or reordered events are handled.",
+    "Check whether temporal drift changes the interpretation of the SPECTRA distance axis."
+  ],
+  "failure_modes": [
+    "Sketch variance can erase signal near SPECTRA bin boundaries.",
+    "Window definitions can leak future data if event time and processing time are confused.",
+    "High churn streams can produce unstable neighbor coverage."
+  ],
+  "python_example": "minhash_lsh_jaccard.py",
+  "example_usage": "Use minhash_lsh_jaccard.py on a saved window as a static prototype; streaming systems should emit the same columns plus window metadata.",
+  "citations": [
+    {
+      "paper_id": "arx_1601.04814",
+      "title": "Streaming Similarity Self-Join",
+      "evidence": "Defines similarity self-join over continuous streams and studies scalable indexing for time-dependent similarity."
+    },
+    {
+      "paper_id": "arx_1711.02476",
+      "title": "SWOOP: Top-k Similarity Joins over Set Streams",
+      "evidence": "Targets top-k similarity joins over set-valued streams using indexes and filters to avoid exhaustive comparisons."
+    }
+  ],
+  "tags": [
+    "streaming",
+    "sliding_window",
+    "similarity_join",
+    "sketch",
+    "online_audit"
+  ]
+}

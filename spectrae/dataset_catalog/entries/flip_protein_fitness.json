@@ -1,0 +1,81 @@
+{
+  "id": "flip_protein_fitness",
+  "version": "0.1.0",
+  "status": "active",
+  "title": "FLIP Fitness Landscape Inference for Proteins Benchmark",
+  "domains": ["protein_engineering", "sequence_fitness", "scientific_ml"],
+  "data_types": ["protein sequence", "fitness landscape", "mutation table"],
+  "scientific_units": ["protein_variant", "protein_sequence", "fitness_measurement"],
+  "compatible_model_families": ["protein language model", "protein fitness predictor", "sequence model", "mutation effect predictor"],
+  "source": {
+    "homepage": "https://benchmark.protein.properties",
+    "repository": "",
+    "data_urls": [
+      {
+        "description": "FLIP benchmark data and scripts",
+        "url": "https://benchmark.protein.properties",
+        "access_notes": "Paperclip and the FLIP paper describe scripts/data as freely accessible through this benchmark site."
+      },
+      {
+        "description": "FLIP OpenReview paper",
+        "url": "https://openreview.net/forum?id=p2dMLEwL8tF",
+        "access_notes": "Use paper and supplementary materials to recover split semantics."
+      }
+    ]
+  },
+  "access": {
+    "mode": "data_portal",
+    "authentication": "none_expected",
+    "instructions": [
+      "Use the FLIP benchmark site to select GB1, AAV, or thermostability rather than downloading unrelated assets.",
+      "Record task, split name, wild-type sequence, mutation notation, fitness column, and benchmark version.",
+      "Prefer provided biologically motivated splits as operating points, then construct SPECTRA curves over mutation and sequence support."
+    ]
+  },
+  "scale": {
+    "download_size": "lightweight to moderate by selected landscape; use one landscape first",
+    "spectra_default": "single_landscape_or_split"
+  },
+  "expected_fields": ["task_name", "wildtype_sequence", "mutant", "sequence", "fitness", "split"],
+  "recommended_axes": [
+    {
+      "name": "mutation_depth",
+      "definition": "Number of substitutions or edits separating a variant from the wild type and from training variants.",
+      "prospective": true
+    },
+    {
+      "name": "mutation_position_support",
+      "definition": "Support for mutated positions or local sequence windows in the training set.",
+      "prospective": true
+    },
+    {
+      "name": "sequence_identity",
+      "definition": "Protein sequence identity or edit distance to nearest training variants.",
+      "prospective": true
+    },
+    {
+      "name": "fitness_extrapolation",
+      "definition": "High-fitness or low-fitness target support; diagnostic unless based only on training labels for split construction.",
+      "prospective": false
+    }
+  ],
+  "useful_for": [
+    "Testing protein fitness extrapolation beyond random variant splits.",
+    "Comparing random, mutational-depth, position, and cluster operating points.",
+    "Lightweight sequence-fitness SPECTRA examples complementary to ProteinGym."
+  ],
+  "leakage_risks": [
+    "Variants from the same combinatorial library can leak position and mutational context.",
+    "Fitness-derived axes are post-hoc if held-out labels are used.",
+    "Downsampling nonfunctional variants can change the deployment distribution."
+  ],
+  "related_benchmark_capsules": [],
+  "related_memory_entries": [],
+  "paperclip_provenance": {
+    "search_ids": ["s_ac058eed", "s_b1997b23"],
+    "map_ids": ["m_8847498b", "m_901f3fda"],
+    "paper_ids": ["bio_affc181e6c77", "bio_9a20e8276c95"],
+    "notes": "Paperclip identified FLIP as a protein fitness benchmark with GB1, AAV, and thermostability tasks and extrapolative split settings."
+  },
+  "tags": ["flip", "protein", "fitness_landscape", "mutation_depth", "sequence_fitness"]
+}

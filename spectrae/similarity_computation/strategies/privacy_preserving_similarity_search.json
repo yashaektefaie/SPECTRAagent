@@ -1,0 +1,102 @@
+{
+  "id": "privacy_preserving_similarity_search",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "Privacy-Preserving and Federated Similarity Search",
+  "strategy_family": "privacy_preserving_similarity",
+  "exactness": "approximate",
+  "applies_to_similarity_kinds": [
+    "genomic_similarity",
+    "embedding_similarity",
+    "near_neighbor_similarity",
+    "encrypted_vector_similarity",
+    "federated_record_similarity"
+  ],
+  "compatible_data_shapes": [
+    "federated_genomic_data",
+    "multi_site_clinical_records",
+    "encrypted_vector",
+    "private_embedding",
+    "distributed_sensitive_dataset"
+  ],
+  "definition": "Use secure locality-sensitive indexes, encrypted distance comparison, homomorphic or secure multiparty protocols, or federated hashing to find near-neighbor pairs without centralizing raw sensitive data. This is relevant when SPECTRA needs cross-site train-eval similarity under privacy constraints.",
+  "scale_profile": {
+    "best_for": "Clinical, genomic, and institutional audits where train and eval records live across parties that cannot share raw data.",
+    "typical_upper_bound": "Large multi-party datasets when candidate generation is sublinear and cryptographic verification is restricted to candidates.",
+    "avoid_when": "All data can be legally and scientifically centralized; ordinary exact or ANN search is simpler and easier to inspect."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "privacy_protocol",
+      "site_pair",
+      "candidate_source",
+      "recall_estimate"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "private features or encrypted sketches",
+    "privacy protocol",
+    "similarity threshold or top k"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "privacy_protocol",
+      "purpose": "Selects secure LSH, encrypted distance comparison, homomorphic encryption, or secure multiparty computation."
+    },
+    {
+      "name": "sketch_or_bucket_size",
+      "purpose": "Controls candidate recall and privacy leakage tradeoffs."
+    },
+    {
+      "name": "verification_budget",
+      "purpose": "Limits expensive secure pair verification to likely candidates."
+    }
+  ],
+  "quality_gates": [
+    "Document the threat model and what information is revealed by sketches, buckets, scores, or pair outputs.",
+    "Estimate recall against a non-private or locally exact subset when possible.",
+    "Check that site identity, missingness, or batch structure does not become a hidden similarity proxy."
+  ],
+  "failure_modes": [
+    "Privacy constraints can hide enough detail to make the SPECTRA axis hard to validate.",
+    "Hash bucket collisions or encryption-compatible approximations can bias similarity estimates.",
+    "Pairwise outputs themselves may leak sensitive membership or relatedness information."
+  ],
+  "python_example": "dense_vector_topk_similarity.py",
+  "example_usage": "Use dense_vector_topk_similarity.py only as a local non-private reference; a privacy-preserving implementation should emit the same pairwise CSV after secure candidate generation or verification.",
+  "citations": [
+    {
+      "paper_id": "PMC12708578",
+      "title": "A framework for privacy-preserving similarity search of massive multi-party genomic data",
+      "evidence": "Combines privacy-enhanced LSH with federated genomic analysis to find similar records without sharing raw data."
+    },
+    {
+      "paper_id": "arx_1612.01835",
+      "title": "Sub-Linear Privacy-Preserving Near-Neighbor Search",
+      "evidence": "Introduces secure locality-sensitive indexing for sublinear private near-neighbor search."
+    },
+    {
+      "paper_id": "PMC11529841",
+      "title": "Secure discovery of genetic relatives across large-scale and distributed genomic data sets",
+      "evidence": "Uses federated hashing and secure protocols to identify related genomic records across distributed datasets."
+    }
+  ],
+  "tags": [
+    "privacy_preserving",
+    "federated",
+    "secure_lsh",
+    "encrypted_similarity",
+    "genomic",
+    "clinical"
+  ]
+}

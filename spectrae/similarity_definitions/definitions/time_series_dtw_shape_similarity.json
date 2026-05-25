@@ -1,0 +1,84 @@
+{
+  "id": "time_series_dtw_shape_similarity",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "time_series",
+  "scientific_unit": "temporal_sample_or_recording",
+  "task_family": [
+    "time series classification",
+    "temporal forecasting",
+    "biomedical signal analysis"
+  ],
+  "similarity_name": "Dynamic time warping shape similarity",
+  "similarity_kind": "time_series_similarity",
+  "definition": "Compute dynamic time warping distance between evaluation and training sequences and transform it to a bounded similarity. This axis is useful when the timing of a pattern can shift but the temporal shape remains scientifically meaningful.",
+  "spectra_axis": {
+    "name": "max_train_dtw_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_dtw_kernel_similarity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "series"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/time_series_dtw_similarity.py",
+  "example_usage": "python time_series_dtw_similarity.py --train train_series.csv --eval eval_series.csv --out pairwise_similarity.csv --series-col series --scale 1.0",
+  "citations": [
+    {
+      "paper_id": "arx_2203.09978",
+      "title": "WOODS: Benchmarks for Out-of-Distribution Generalization in Time Series",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/arx_2203.09978/content.lines",
+          "lines": "L15-L24",
+          "summary": "WOODS identifies time-series OOD generalization as underexplored and reports large generalization gaps."
+        },
+        {
+          "path": "/papers/arx_2203.09978/content.lines",
+          "lines": "L35-L66",
+          "summary": "The benchmark describes source, time, device, demographic, and procedural distribution shifts."
+        }
+      ]
+    },
+    {
+      "paper_id": "PMC12749777",
+      "title": "Similarity measure of time series based on Angle-distance Penalized Metric Dynamic Time Warping",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC12749777/content.lines",
+          "lines": "L6-L16",
+          "summary": "The paper frames DTW as a widely used time-series similarity method and defines its distance matrix and path."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "DTW can align biologically or physically implausible time warps if unconstrained.",
+    "Amplitude normalization and sampling rate differences can dominate the distance.",
+    "For forecasting tasks, temporal order leakage must be prevented."
+  ],
+  "quality_gates": [
+    "Report interpolation, normalization, sampling rate, and warping-window constraints.",
+    "Use a time-respecting train/evaluation split when forecasting future data.",
+    "Compare DTW similarity to simpler lag, season, or device/domain metadata axes."
+  ],
+  "tags": [
+    "time_series",
+    "dtw",
+    "temporal_shift",
+    "woods",
+    "signal"
+  ]
+}

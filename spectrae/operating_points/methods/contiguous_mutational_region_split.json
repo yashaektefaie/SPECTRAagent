@@ -1,0 +1,37 @@
+{
+  "id": "contiguous_mutational_region_split",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "operating_point_name": "Contiguous Mutational Region Split",
+  "method_family": "sequence_extrapolation_holdout",
+  "scientific_unit": "mutated_sequence",
+  "data_types": ["dna", "rna", "protein", "fitness_landscape", "nucleotide_assay"],
+  "target_novelty_axis": "mutational_position_or_sequence_region",
+  "deployment_question": "How does the model extrapolate to unseen contiguous regions of mutation space?",
+  "curve_region": "low_overlap",
+  "definition": "Hold out contiguous mutational regions, positions, or sequence neighborhoods rather than randomly mixing mutations across train and test.",
+  "split_operator": {"type": "contiguous_region_holdout", "heldout_unit": "mutation_region", "spectra_mapping": "samples lower mutational-neighborhood overlap than random mutation splits"},
+  "required_inputs": ["sample_id", "wildtype sequence", "mutations or sequence", "region definition"],
+  "recommended_similarity_axes": ["hamming_distance", "mutation_position_distance", "sequence_identity", "assay_similarity"],
+  "output_contract": {"mode": "split_assignment", "required_columns": ["sample_id", "split", "role"], "optional_columns": ["heldout_region", "mutation_count"]},
+  "implementation_recipe": [
+    "Map mutations to positions or sequence regions.",
+    "Hold out contiguous positions, windows, or regions from training.",
+    "Report sequence distance to nearest training mutants."
+  ],
+  "quality_gates": [
+    "Clarify whether the task is interpolation among mutations or extrapolation to unseen regions.",
+    "Check mutation-count and label distributions across splits.",
+    "Report nearest-train sequence distance."
+  ],
+  "failure_modes": [
+    "Contiguous regions can differ in assay coverage or functional importance.",
+    "Combinatorial mutations can cross region boundaries.",
+    "Hamming distance alone may miss structural or epistatic effects."
+  ],
+  "citations": [
+    {"paper_id": "arx_2511.02888", "title": "NABench: Large-Scale Benchmarks of Nucleotide Foundation Models for Fitness Prediction", "evidence": "Contrasts random cross-validation with contiguous cross-validation for extrapolation to unseen mutational regions."},
+    {"paper_id": "PMC11289474", "title": "Neural network extrapolation to distant regions of the protein fitness landscape", "evidence": "Studies model extrapolation to distant protein fitness landscape regions."}
+  ],
+  "tags": ["sequence", "contiguous", "mutation", "fitness"]
+}

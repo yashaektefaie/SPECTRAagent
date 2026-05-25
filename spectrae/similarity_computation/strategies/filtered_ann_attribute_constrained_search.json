@@ -1,0 +1,101 @@
+{
+  "id": "filtered_ann_attribute_constrained_search",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "Filtered ANN with Attribute and Range Constraints",
+  "strategy_family": "filtered_ann",
+  "exactness": "approximate",
+  "applies_to_similarity_kinds": [
+    "cosine_similarity",
+    "inner_product_similarity",
+    "euclidean_distance",
+    "embedding_similarity",
+    "filtered_vector_similarity"
+  ],
+  "compatible_data_shapes": [
+    "dense_vector",
+    "embedding",
+    "clinical_embedding_with_metadata",
+    "geospatial_embedding",
+    "time_windowed_embedding",
+    "attribute_filtered_vector"
+  ],
+  "definition": "Build a vector index that applies metadata, categorical, temporal, spatial, or numeric range filters during nearest-neighbor search rather than treating filtering as a separate post-processing step. Use it when the scientific audit needs train neighbors inside a matched cohort, site, time window, assay, tissue, population, or covariate slice.",
+  "scale_profile": {
+    "best_for": "Large embedding audits where each eval sample should only compare against eligible train samples under scientific or data-governance constraints.",
+    "typical_upper_bound": "Millions to billions of vectors depending on filter selectivity, index family, and memory budget.",
+    "avoid_when": "Filters are trivial, highly selective enough for exact search, or scientifically inappropriate because they hide the novelty axis being audited."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "filter_predicate",
+      "ann_recall_at_k",
+      "candidate_count"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "dense vectors",
+    "filter attributes",
+    "filter predicate"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "filter_predicate",
+      "purpose": "Declares the metadata, range, temporal, or cohort constraint applied before or during search."
+    },
+    {
+      "name": "k",
+      "purpose": "Number of eligible train neighbors retained per evaluation sample."
+    },
+    {
+      "name": "filter_execution_mode",
+      "purpose": "Controls pre-filter, post-filter, hybrid, or integrated filtered-index search."
+    },
+    {
+      "name": "search_budget",
+      "purpose": "Controls recall and latency under selective filters."
+    }
+  ],
+  "quality_gates": [
+    "Report the exact filter predicate and justify why it belongs in the similarity computation rather than the novelty axis.",
+    "Measure recall@k against exact filtered search on representative slices, including rare filters.",
+    "Check that filter selectivity does not leave eval samples with too few train neighbors for stable SPECTRA bins."
+  ],
+  "failure_modes": [
+    "Post-filtering ordinary ANN results can miss eligible nearest neighbors under selective filters.",
+    "Filtering on a variable that should be audited can remove the generalization signal.",
+    "Rare attribute combinations can produce unstable distances or empty candidate sets."
+  ],
+  "python_example": "dense_vector_topk_similarity.py",
+  "example_usage": "Use dense_vector_topk_similarity.py as an exact reference after applying the same eligibility predicate; production filtered ANN should emit the same SPECTRA columns and include the filter predicate.",
+  "citations": [
+    {
+      "paper_id": "arx_2412.02448",
+      "title": "UNIFY: A Unified Index for Range Filtered Approximate Nearest Neighbors Search",
+      "evidence": "Studies unified indexing for high-dimensional ANN queries with range filters rather than relying only on pre-filter or post-filter strategies."
+    },
+    {
+      "paper_id": "arx_2402.00943",
+      "title": "Approximate Nearest Neighbor Search with Window Filters",
+      "evidence": "Formulates ANN search with label-window constraints, a direct analogue of filtered train-neighbor retrieval for SPECTRA audits."
+    }
+  ],
+  "tags": [
+    "filtered_ann",
+    "metadata_filter",
+    "range_filter",
+    "cohort_filter",
+    "vector_search",
+    "large_scale"
+  ]
+}

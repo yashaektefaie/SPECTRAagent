@@ -1,0 +1,78 @@
+{
+  "id": "mass_spectrometry_spectral_cosine_similarity",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "mass_spectrometry_spectrum",
+  "scientific_unit": "msms_spectrum_or_feature",
+  "task_family": [
+    "metabolomics",
+    "spectral library matching",
+    "molecular networking"
+  ],
+  "similarity_name": "MS/MS spectral cosine or learned spectral similarity",
+  "similarity_kind": "sparse_spectral_similarity",
+  "definition": "Compare tandem mass spectra using peak-list cosine, modified cosine, Spec2Vec, or another spectral similarity score. This audits whether predictions or annotations rely on evaluation spectra that are close to known training/library spectra.",
+  "spectra_axis": {
+    "name": "max_train_spectral_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_msms_similarity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "peak_list"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/spectrum_cosine_similarity.py",
+  "example_usage": "python spectrum_cosine_similarity.py --train train_spectra.csv --eval eval_spectra.csv --out pairwise_similarity.csv --peaks-col peaks --tolerance 0.01",
+  "citations": [
+    {
+      "paper_id": "PMC7909622",
+      "title": "Spec2Vec: Improved mass spectral similarity scoring through learning of structural relationships",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC7909622/content.lines",
+          "lines": "L8-L14",
+          "summary": "The paper states that spectral similarity is central to library matching and molecular networking."
+        },
+        {
+          "path": "/papers/PMC7909622/content.lines",
+          "lines": "L21-L30",
+          "summary": "It compares spectral similarity scores against structural similarity and library-matching performance."
+        },
+        {
+          "path": "/papers/PMC7909622/content.lines",
+          "lines": "L33-L45",
+          "summary": "It highlights computational and structural-analogue retrieval advantages of learned spectral embeddings."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Raw cosine is sensitive to peak filtering, mass tolerance, intensity normalization, adducts, and instrument conditions.",
+    "Modified cosine and Spec2Vec may be more appropriate for structurally related but non-identical molecules.",
+    "Spectral similarity is not identical to molecular structural similarity."
+  ],
+  "quality_gates": [
+    "Report preprocessing, peak filtering, tolerance, intensity transform, precursor handling, and ion mode.",
+    "Compare raw cosine with modified cosine or learned spectral embeddings when annotations permit.",
+    "Check whether instrument, collision energy, or batch effects dominate spectral similarity."
+  ],
+  "tags": [
+    "mass_spectrometry",
+    "msms",
+    "metabolomics",
+    "spectral_cosine",
+    "spec2vec",
+    "molecular_networking"
+  ]
+}

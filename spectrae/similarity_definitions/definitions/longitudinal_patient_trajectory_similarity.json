@@ -1,0 +1,79 @@
+{
+  "id": "longitudinal_patient_trajectory_similarity",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "longitudinal_ehr",
+  "scientific_unit": "patient_trajectory",
+  "task_family": [
+    "clinical risk prediction",
+    "patient trajectory modeling",
+    "longitudinal generalization"
+  ],
+  "similarity_name": "Longitudinal patient trajectory alignment",
+  "similarity_kind": "trajectory_alignment_similarity",
+  "definition": "Represent each patient by an ordered trajectory of visits, events, codes, measurements, or learned visit states, then compare trajectories with dynamic time warping, subsequence alignment, edit distance, or related alignment scores. For SPECTRA, this audits whether predictions degrade for evaluation trajectories that are temporally or pathophysiologically unlike the training trajectories.",
+  "spectra_axis": {
+    "name": "patient_trajectory_alignment_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_trajectory_similarity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "event_sequence_or_time_series"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/event_sequence_alignment_similarity.py",
+  "example_usage": "python event_sequence_alignment_similarity.py --train train_trajectories.csv --eval eval_trajectories.csv --out pairwise_similarity.csv --sequence-col events",
+  "citations": [
+    {
+      "paper_id": "arx_1803.00744",
+      "title": "Clinically Meaningful Comparisons Over Time: An Approach to Measuring Patient Similarity based on Subsequence Alignment",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/arx_1803.00744/content.lines",
+          "lines": "L4-L11",
+          "summary": "The paper defines patient similarity using subsequence alignment to compare longitudinal patient data under heterogeneous disease progression."
+        },
+        {
+          "path": "/papers/arx_1803.00744/content.lines",
+          "lines": "L47-L61",
+          "summary": "It compares snapshot, global DTW, prefix/suffix matching, and subsequence matching, with subsequence matching performing best."
+        },
+        {
+          "path": "/papers/arx_1803.00744/content.lines",
+          "lines": "L68-L70",
+          "summary": "The authors emphasize variable-length patient time series and heterogeneous rates of decline."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Alignment scores depend on event vocabulary, visit aggregation, time binning, and missing-data handling.",
+    "Pure sequence alignment can ignore event severity, dosage, and irregular time gaps unless encoded explicitly.",
+    "If outcomes are used to tune the alignment metric, label leakage must be reported."
+  ],
+  "quality_gates": [
+    "Report sequence construction, time binning, token normalization, gap penalties, and whether timestamps are used.",
+    "Compare against a static tabular patient-similarity curve when both inputs exist.",
+    "Check sensitivity to rare-code filtering and visit-length differences."
+  ],
+  "tags": [
+    "ehr",
+    "patient_trajectory",
+    "longitudinal",
+    "dynamic_time_warping",
+    "sequence_alignment",
+    "clinical"
+  ]
+}
+

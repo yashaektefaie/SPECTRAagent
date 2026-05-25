@@ -1,0 +1,59 @@
+{
+  "id": "gess",
+  "title": "GeSS: Benchmarking Geometric Deep Learning under Scientific Applications with Distribution Shifts",
+  "tier": "expansion",
+  "community": "ai4science_benchmarks",
+  "status": "optional_demo",
+  "paper": {
+    "url": "https://arxiv.org/abs/2310.08677",
+    "pdf_url": "https://arxiv.org/pdf/2310.08677.pdf",
+    "year": 2024
+  },
+  "code": {
+    "repo_url": null,
+    "fetch_default": false
+  },
+  "data": [
+    {
+      "name": "GeSS benchmark resources",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2024/hash/a8063075b00168dc39bc81683619f1a8-Abstract-Datasets_and_Benchmarks_Track.html",
+      "fetch_default": false,
+      "reason": "Fetch through upstream benchmark instructions when available."
+    }
+  ],
+  "scientific_unit": "scientific graph or geometric sample",
+  "original_evaluation": [
+    "Distribution shifts across particle physics, materials science, and biochemistry",
+    "Conditional, covariate, and concept shift settings for geometric deep learning"
+  ],
+  "core_generalization_finding": "Scientific geometric deep learning models need evaluation across explicit distribution shifts.",
+  "spectra_demo_hook": "Turn GeSS shift scenarios into reusable overlap-controlled audit curves.",
+  "recommended_novelty_axes": [
+    {
+      "name": "covariate_shift_distance",
+      "property_graph": "distance over scientific sample descriptors or graph features",
+      "graph_type": "weighted",
+      "priority": "primary"
+    },
+    {
+      "name": "conditional_shift_distance",
+      "property_graph": "distance over condition labels or environmental variables",
+      "graph_type": "weighted",
+      "priority": "primary"
+    },
+    {
+      "name": "concept_shift_axis",
+      "property_graph": "task-specific label-mechanism or target-regime similarity",
+      "graph_type": "weighted",
+      "priority": "secondary"
+    }
+  ],
+  "expected_artifacts": [
+    "audit_card.json",
+    "spectral_properties.json",
+    "split_stats.csv",
+    "performance_by_overlap.csv",
+    "spectral_curve.png",
+    "report.md"
+  ]
+}

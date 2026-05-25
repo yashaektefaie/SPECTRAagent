@@ -1,0 +1,37 @@
+{
+  "id": "random_iid_split_baseline",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "operating_point_name": "Random IID Split Baseline",
+  "method_family": "random_resampling",
+  "scientific_unit": "sample",
+  "data_types": ["generic", "molecule", "sequence", "clinical_record", "image", "graph"],
+  "target_novelty_axis": "none_or_uncontrolled_train_overlap",
+  "deployment_question": "How does the model perform when train and test are sampled from the same observed mixture?",
+  "curve_region": "high_overlap",
+  "definition": "Randomly assign examples to train, validation, and test without explicitly controlling scientific similarity, group membership, time, site, or domain. In SPECTRA this is a baseline operating point that often lies near the high-overlap end of the curve.",
+  "split_operator": {"type": "random_partition", "heldout_unit": "sample", "spectra_mapping": "sample a high-overlap reference point before constructing harder novelty points"},
+  "required_inputs": ["sample_id", "random seed", "split proportions"],
+  "recommended_similarity_axes": ["nearest_train_similarity", "duplicate_or_group_overlap", "domain_overlap"],
+  "output_contract": {"mode": "split_assignment", "required_columns": ["sample_id", "split", "role"], "optional_columns": ["fold_id", "random_seed"]},
+  "implementation_recipe": [
+    "Shuffle samples with a recorded seed.",
+    "Assign samples according to the requested proportions or folds.",
+    "After splitting, measure train-test similarity and group overlap rather than assuming IID behavior."
+  ],
+  "quality_gates": [
+    "Report the random seed and split proportions.",
+    "Measure duplicate, near-duplicate, and group leakage with a domain similarity axis.",
+    "Do not use this as the only generalization claim when deployment is non-IID."
+  ],
+  "failure_modes": [
+    "Near-duplicates or related samples can occur in both train and test.",
+    "Performance can be optimistic when deployment requires novel structures, sites, times, or groups.",
+    "Class balance can hide domain imbalance."
+  ],
+  "citations": [
+    {"paper_id": "PMC12153141", "title": "UMAP-based clustering split for rigorous evaluation of AI models for virtual screening", "evidence": "Reports that random splits are easier than scaffold, Butina, or UMAP-based molecular splits."},
+    {"paper_id": "PMC10578201", "title": "GraphPart: homology partitioning for biological sequence analysis", "evidence": "Motivates homology-aware partitioning because random splits can place related biological sequences across train and test."}
+  ],
+  "tags": ["random", "iid", "baseline", "high_overlap"]
+}

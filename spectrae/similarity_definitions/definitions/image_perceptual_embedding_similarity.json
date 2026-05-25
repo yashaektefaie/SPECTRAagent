@@ -1,0 +1,78 @@
+{
+  "id": "image_perceptual_embedding_similarity",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "image",
+  "scientific_unit": "image_patch_scan_or_tile",
+  "task_family": [
+    "medical imaging",
+    "computer vision",
+    "image synthesis or segmentation"
+  ],
+  "similarity_name": "Perceptual or self-supervised image-embedding similarity",
+  "similarity_kind": "image_embedding_similarity",
+  "definition": "Encode images, patches, or tiles with a domain-appropriate supervised, self-supervised, or foundation image encoder and compute train-eval embedding similarity. This audits visual/perceptual support overlap, especially when pixel or histogram distances do not capture the semantic image shift.",
+  "spectra_axis": {
+    "name": "max_train_image_embedding_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_image_embedding_cosine",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "image_embedding_columns_or_encoder"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/embedding_cosine_similarity.py",
+  "example_usage": "python embedding_cosine_similarity.py --train train_image_embeddings.csv --eval eval_image_embeddings.csv --out pairwise_similarity.csv --embedding-cols-prefix emb_",
+  "citations": [
+    {
+      "paper_id": "arx_2212.01577",
+      "title": "A Domain-specific Perceptual Metric via Contrastive Self-supervised Representation: Applications on Natural and Medical Images",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/arx_2212.01577/content.lines",
+          "lines": "L4-L19",
+          "summary": "The paper motivates representation-based perceptual similarity and domain-specific self-supervised image encoders."
+        },
+        {
+          "path": "/papers/arx_2212.01577/content.lines",
+          "lines": "L31-L45",
+          "summary": "It computes perceptual similarity using feature maps from pretrained networks."
+        },
+        {
+          "path": "/papers/arx_2212.01577/content.lines",
+          "lines": "L92-L100",
+          "summary": "Domain-specific representations better capture medical image similarity and can extend to 3D vision."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Embedding similarity inherits biases and domain coverage of the encoder.",
+    "Perceptual similarity can disagree with clinically or scientifically relevant similarity.",
+    "Patch-level and scan-level aggregation choices can change the axis."
+  ],
+  "quality_gates": [
+    "Report encoder, pretraining data, layer/pooling choice, patch extraction, and aggregation method.",
+    "Compare against scanner/protocol metadata and histogram/radiomics similarity in medical imaging.",
+    "Inspect nearest neighbors to detect shortcut features such as borders, compression, or acquisition artifacts."
+  ],
+  "tags": [
+    "image",
+    "perceptual_similarity",
+    "embedding",
+    "medical_image",
+    "self_supervised",
+    "vision"
+  ]
+}

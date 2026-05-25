@@ -1,0 +1,74 @@
+{
+  "id": "genotype_ibd_ibs_similarity",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "genotype_or_population_genomics",
+  "scientific_unit": "individual_or_genome",
+  "task_family": [
+    "population genomics",
+    "genotype prediction",
+    "genetic relatedness auditing"
+  ],
+  "similarity_name": "Genotype identity-by-state or identity-by-descent similarity",
+  "similarity_kind": "genetic_relatedness_similarity",
+  "definition": "Compare individuals using genome-wide allele-sharing measures such as identity-by-state (IBS), identity-by-descent (IBD), kinship, or relatedness coefficients. For SPECTRA, this audits whether genetic prediction performance depends on evaluation genomes being close to training genomes by ancestry, family relationship, or shared haplotypes.",
+  "spectra_axis": {
+    "name": "genetic_relatedness_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_genetic_relatedness",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "genotype_markers_or_precomputed_ibd_ibs"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/genotype_ibs_similarity.py",
+  "example_usage": "python genotype_ibs_similarity.py --train train_genotypes.csv --eval eval_genotypes.csv --out pairwise_similarity.csv --marker-cols-prefix snp_",
+  "citations": [
+    {
+      "paper_id": "PMC3178600",
+      "title": "Inference of Relationships in Population Data Using Identity-by-Descent and Identity-by-State",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC3178600/content.lines",
+          "lines": "L10-L18",
+          "summary": "The paper describes relatedness assessment using IBD and IBS allele-sharing proportions over SNP genotype data."
+        },
+        {
+          "path": "/papers/PMC3178600/content.lines",
+          "lines": "L52-L56",
+          "summary": "It reports IBS and IBD methods for population structure, outliers, and pairwise relationships."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Naive IBS can be confounded by ancestry, genotyping platform, linkage disequilibrium, and missingness.",
+    "IBD estimation may require phasing, windows, or population-specific calibration.",
+    "Genetic relatedness is sensitive and may require privacy-preserving handling."
+  ],
+  "quality_gates": [
+    "Report genotype encoding, marker filtering, missingness thresholds, LD pruning, and ancestry handling.",
+    "Separate family relatedness from population-structure similarity when possible.",
+    "Use established tools for production IBD/kinship estimates; the bundled script is a simple dosage IBS example."
+  ],
+  "tags": [
+    "genotype",
+    "ibs",
+    "ibd",
+    "kinship",
+    "population_structure",
+    "genomics"
+  ]
+}
+

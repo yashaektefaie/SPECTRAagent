@@ -1,0 +1,32 @@
+{
+  "schema_version": "0.1.0",
+  "required_fields": [
+    "paper",
+    "scientific_unit",
+    "models",
+    "original_evaluation",
+    "discovered_novelty_axes",
+    "property_graphs",
+    "spectral_split_protocol",
+    "performance_overlap_curve",
+    "auspc",
+    "core_reproduced_claim",
+    "additional_spectra_finding",
+    "citation"
+  ],
+  "artifact_fields": [
+    "split_stats_path",
+    "performance_by_overlap_path",
+    "curve_plot_path",
+    "report_path"
+  ],
+  "rubric": [
+    "axis_discovery",
+    "split_construction",
+    "curve_generation",
+    "metric_reporting",
+    "finding_recovery",
+    "new_insight",
+    "citation_report_quality"
+  ]
+}

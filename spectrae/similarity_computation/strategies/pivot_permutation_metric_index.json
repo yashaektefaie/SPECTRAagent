@@ -1,0 +1,95 @@
+{
+  "id": "pivot_permutation_metric_index",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "Pivot, Permutation, and Ptolemaic Metric Indexing",
+  "strategy_family": "metric_space_index",
+  "exactness": "hybrid_exact_after_candidate_generation",
+  "applies_to_similarity_kinds": [
+    "metric_distance",
+    "expensive_distance",
+    "edit_distance",
+    "trajectory_distance",
+    "distribution_distance",
+    "arbitrary_metric_similarity"
+  ],
+  "compatible_data_shapes": [
+    "metric_space",
+    "structured_object",
+    "string",
+    "trajectory",
+    "graph",
+    "distribution"
+  ],
+  "definition": "Use distances to pivots, permutation signatures, or Ptolemaic inequalities to prune expensive metric-distance comparisons. Candidate pairs are then verified with the exact metric before converting distance to SPECTRA similarity.",
+  "scale_profile": {
+    "best_for": "Structured scientific objects with an expensive metric distance and no natural vector coordinates.",
+    "typical_upper_bound": "Large collections when metric pruning is effective and intrinsic dimension is moderate.",
+    "avoid_when": "Distance concentration makes pivot pruning collapse to near-linear scan."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "metric_distance",
+      "candidate_source"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "metric distance function",
+    "pivot or permutation configuration"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "pivot_count",
+      "purpose": "Controls pruning power and preprocessing cost."
+    },
+    {
+      "name": "candidate_radius_or_k",
+      "purpose": "Defines retained exact-verification candidates."
+    },
+    {
+      "name": "pivot_selection_rule",
+      "purpose": "Controls whether pivots cover the metric space effectively."
+    }
+  ],
+  "quality_gates": [
+    "Verify exact distances for all emitted candidates.",
+    "Report pivot selection and candidate-pruning statistics.",
+    "Measure recall or exactness on a brute-force subset."
+  ],
+  "failure_modes": [
+    "High intrinsic dimension can make pivot indexes ineffective.",
+    "Bad pivot choice can miss useful pruning opportunities.",
+    "Non-metric distances invalidate triangle- or Ptolemy-based pruning."
+  ],
+  "python_example": "dense_vector_topk_similarity.py",
+  "example_usage": "Use dense_vector_topk_similarity.py only as an output-contract reference; production pivot indexes should verify exact metric distances and emit the same SPECTRA columns.",
+  "citations": [
+    {
+      "paper_id": "arx_2005.03468",
+      "title": "Indexing Metric Spaces for Exact Similarity Search",
+      "evidence": "Surveys and compares metric indexing techniques for exact similarity search across data distributions."
+    },
+    {
+      "paper_id": "arx_1506.03163",
+      "title": "Permutation Search Methods are Efficient, Yet Faster Search is Possible",
+      "evidence": "Studies permutation-based methods for approximate k-nearest-neighbor search in metric spaces."
+    }
+  ],
+  "tags": [
+    "metric_space",
+    "pivot_index",
+    "permutation_index",
+    "ptolemaic",
+    "expensive_distance"
+  ]
+}

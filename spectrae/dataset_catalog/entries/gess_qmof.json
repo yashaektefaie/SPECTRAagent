@@ -1,0 +1,61 @@
+{
+  "id": "gess_qmof",
+  "version": "0.1.0",
+  "status": "active",
+  "title": "GeSS QMOF Scientific Distribution-Shift Resource",
+  "domains": ["materials_science", "geometric_deep_learning", "ai4science"],
+  "data_types": ["material structure", "geometric graph", "scientific shift benchmark"],
+  "scientific_units": ["material_structure", "geometric_sample"],
+  "compatible_model_families": ["geometric deep learning model", "materials property predictor", "graph neural network"],
+  "source": {
+    "homepage": "https://arxiv.org/abs/2310.08677",
+    "repository": null,
+    "data_urls": [
+      {
+        "description": "GeSS benchmark information",
+        "url": "https://proceedings.neurips.cc/paper_files/paper/2024/hash/a8063075b00168dc39bc81683619f1a8-Abstract-Datasets_and_Benchmarks_Track.html",
+        "access_notes": "Use upstream paper and benchmark instructions for data links."
+      }
+    ]
+  },
+  "access": {
+    "mode": "data_portal",
+    "authentication": "none_or_upstream_specific",
+    "instructions": [
+      "Start from the GeSS paper and official benchmark resources.",
+      "Select QMOF or another manageable shift setting before download.",
+      "Preserve shift labels, fidelity labels, composition, structure, and graph features."
+    ]
+  },
+  "expected_fields": ["structure", "formula", "composition", "property", "shift_label", "fidelity"],
+  "recommended_axes": [
+    {
+      "name": "composition_similarity",
+      "definition": "Elemental composition or formula similarity.",
+      "prospective": true
+    },
+    {
+      "name": "local_structure_similarity",
+      "definition": "Local atomic environment, SOAP, OFM, or graph-structure similarity.",
+      "prospective": true
+    },
+    {
+      "name": "fidelity_shift",
+      "definition": "Distance or category change in simulation/DFT fidelity or data-generating process.",
+      "prospective": true
+    }
+  ],
+  "useful_for": [
+    "Extending SPECTRA beyond biology.",
+    "Testing scientific distribution shifts with physical or data-generating process axes.",
+    "Hard agent-discovery capsules where the axis is not a simple schema label."
+  ],
+  "leakage_risks": [
+    "Shift labels may directly reveal the intended evaluation axis.",
+    "Target-property-derived similarity can be post-hoc.",
+    "Composition and structure axes need careful separation from label mechanisms."
+  ],
+  "related_benchmark_capsules": ["gess"],
+  "related_memory_entries": [],
+  "tags": ["gess", "qmof", "materials", "geometric_deep_learning", "scientific_shift"]
+}

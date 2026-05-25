@@ -1,0 +1,107 @@
+{
+  "id": "boom_numeric_mini_audit_memory",
+  "version": "0.1.0",
+  "status": "reusable_seed",
+  "reuse_priority": "medium",
+  "title": "BOOM Numeric Molecular OOD Mini-Audit Memory",
+  "domains": [
+    "molecular_ml",
+    "drug_discovery",
+    "ai4science"
+  ],
+  "data_types": [
+    "SMILES",
+    "small molecule",
+    "molecular property prediction"
+  ],
+  "scientific_units": [
+    "molecule"
+  ],
+  "model_families": [
+    "molecular property predictor",
+    "fingerprint baseline",
+    "OOD molecular benchmark model"
+  ],
+  "models": [
+    "RandomForestRegressor",
+    "Morgan fingerprint baseline"
+  ],
+  "resource_records": [
+    {
+      "name": "BOOM 10k density pilot files",
+      "kind": "local_dataset",
+      "source": "BOOM 10k DFT density and heat-of-formation data with OOD split labels.",
+      "catalog_entry_ids": [
+        "boom_benchmark_datasets"
+      ],
+      "access_notes": "This was a measured pilot, not a full BOOM reproduction. Fresh runs should fetch BOOM through upstream repository instructions."
+    }
+  ],
+  "similarity_axes": [
+    {
+      "name": "max_morgan_tanimoto_to_train",
+      "status": "supported_posthoc_subset_curve",
+      "definition": "For each test molecule, compute maximum Morgan fingerprint Tanimoto similarity to the BOOM training split and evaluate error as maximum train similarity decreases.",
+      "quality_gates": [
+        "Use a chemically meaningful fingerprint when RDKit is available.",
+        "Report ID versus OOD performance separately.",
+        "Label this as post-hoc fixed-training OOD subset evidence unless new SPECTRA splits are generated and models retrained."
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "chemical_overlap_rmse_curve",
+      "claim": "Within the BOOM 10k density OOD split, lower chemical overlap to the training set corresponded to higher RMSE for a RandomForest Morgan-fingerprint baseline.",
+      "evidence": [
+        "ID RMSE was 0.0443.",
+        "OOD all RMSE was 0.2296.",
+        "OOD RMSE increased from 0.2317 at max Tanimoto <= 0.8 to 0.2534 at max Tanimoto <= 0.5.",
+        "AUSPC was -0.24096112142647133."
+      ],
+      "limitations": [
+        "Fixed training set.",
+        "One property task.",
+        "One lightweight baseline.",
+        "Post-hoc OOD subset curve rather than generated SPECTRA train/test splits."
+      ],
+      "status": "supported_pilot"
+    }
+  ],
+  "reuse_guidance": [
+    "Use this entry as a molecule-domain smoke test for SPECTRA curves and report formatting.",
+    "For a stronger molecular result, generate overlap-controlled train/test splits and retrain models per split.",
+    "If RDKit is unavailable, classify Morgan/scaffold axes as not evaluable rather than silently substituting a weaker string proxy."
+  ],
+  "do_not_repeat": [
+    "Do not claim this pilot is a full BOOM reproduction.",
+    "Do not treat fixed-training OOD binning as the final SPECTRA benchmark mode.",
+    "Do not use this as evidence that vanilla agents cannot discover molecular OOD failure."
+  ],
+  "artifact_paths": [
+    {
+      "label": "BOOM mini-audit doc",
+      "path": "docs/boom_numeric_mini_audit.md",
+      "status": "repo_doc"
+    },
+    {
+      "label": "BOOM dataset catalog entry",
+      "path": "dataset_catalog:boom_benchmark_datasets",
+      "status": "portable_catalog_reference"
+    },
+    {
+      "label": "BOOM mini-audit runner",
+      "path": "spectrae/benchmark_runners/boom_numeric_mini_audit.py",
+      "status": "repo_code"
+    }
+  ],
+  "tags": [
+    "boom",
+    "molecules",
+    "morgan_tanimoto",
+    "ood",
+    "chemical_novelty",
+    "fixed_training_curve",
+    "pilot"
+  ]
+}

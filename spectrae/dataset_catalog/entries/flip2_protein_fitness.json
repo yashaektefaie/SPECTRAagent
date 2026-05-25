@@ -1,0 +1,81 @@
+{
+  "id": "flip2_protein_fitness",
+  "version": "0.1.0",
+  "status": "active",
+  "title": "FLIP2 Protein Fitness Landscape Benchmark",
+  "domains": ["protein_engineering", "sequence_fitness", "scientific_ml"],
+  "data_types": ["protein sequence", "fitness landscape", "mutation table", "enzyme assay"],
+  "scientific_units": ["protein_variant", "protein_sequence", "assay_variant", "wildtype_protein"],
+  "compatible_model_families": ["protein language model", "protein fitness predictor", "sequence model", "mutation effect predictor"],
+  "source": {
+    "homepage": "https://flip.protein.properties/",
+    "repository": "",
+    "data_urls": [
+      {
+        "description": "FLIP2 project site",
+        "url": "https://flip.protein.properties/",
+        "access_notes": "Project site links paper, code, Zenodo, and downloads."
+      },
+      {
+        "description": "FLIP2 Zenodo record",
+        "url": "https://doi.org/10.5281/zenodo.18433203",
+        "access_notes": "Paperclip extraction reported redistributed benchmark data under CC-BY 4.0."
+      }
+    ]
+  },
+  "access": {
+    "mode": "mixed",
+    "authentication": "none_expected_for_public_assets",
+    "instructions": [
+      "Use the FLIP2 project site to select one dataset and split family before broader downloads.",
+      "Record dataset name, split category, split name, wild-type protein, mutation notation, sequence, and fitness column.",
+      "Use official number, position, mutation, fitness, and wild-type split families as operating points for SPECTRA curves."
+    ]
+  },
+  "scale": {
+    "download_size": "multiple protein fitness datasets; use one dataset/split family first",
+    "spectra_default": "single_dataset_split_family"
+  },
+  "expected_fields": ["dataset_name", "split_category", "wildtype_sequence", "mutant", "sequence", "fitness", "split"],
+  "recommended_axes": [
+    {
+      "name": "mutation_number_generalization",
+      "definition": "Distance by number of mutations from wild type and from observed training variants.",
+      "prospective": true
+    },
+    {
+      "name": "mutation_position_generalization",
+      "definition": "Support for positions or local sequence windows mutated in train versus test.",
+      "prospective": true
+    },
+    {
+      "name": "mutation_identity_generalization",
+      "definition": "Support for specific amino-acid substitutions or substitution classes in training.",
+      "prospective": true
+    },
+    {
+      "name": "wildtype_scaffold_generalization",
+      "definition": "Similarity across wild-type proteins, homologs, or scaffold families.",
+      "prospective": true
+    }
+  ],
+  "useful_for": [
+    "Modern protein-engineering SPECTRA benchmark with explicit split categories.",
+    "Testing whether protein language models extrapolate to unseen mutations, positions, higher mutational burden, or wild types.",
+    "Dataset Scout examples where a benchmark already exposes multiple operating points."
+  ],
+  "leakage_risks": [
+    "Within-landscape variants can share strong local mutational context.",
+    "Split category labels should be contextualized as operating points, not the complete curve.",
+    "Fitness split axes are post-hoc unless constructed with training-only targets."
+  ],
+  "related_benchmark_capsules": [],
+  "related_memory_entries": [],
+  "paperclip_provenance": {
+    "search_ids": ["s_ac058eed", "s_bdecd278", "s_b1997b23"],
+    "map_ids": ["m_8847498b", "m_901f3fda"],
+    "paper_ids": ["bio_0c983fd06ce8"],
+    "notes": "Paperclip and official-source check identified FLIP2 as seven new protein fitness datasets with split categories for number, position, mutation, fitness, and wild-type generalization."
+  },
+  "tags": ["flip2", "protein", "fitness_landscape", "protein_language_model", "mutation_generalization"]
+}

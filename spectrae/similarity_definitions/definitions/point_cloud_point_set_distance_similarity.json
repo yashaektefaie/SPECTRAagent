@@ -1,0 +1,78 @@
+{
+  "id": "point_cloud_point_set_distance_similarity",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "point_cloud_or_point_set",
+  "scientific_unit": "point_cloud_shape_or_structure",
+  "task_family": [
+    "3d vision",
+    "morphology",
+    "spatial structure prediction"
+  ],
+  "similarity_name": "Point-set distance similarity",
+  "similarity_kind": "point_cloud_distance_similarity",
+  "definition": "Compare point-cloud or point-set samples using Chamfer distance, Earth Mover's Distance, sliced Wasserstein distance, or a domain-specific geometric distance, then transform distance to similarity. This audits whether performance degrades for shapes or structures geometrically far from the training set.",
+  "spectra_axis": {
+    "name": "max_train_point_cloud_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_point_set_similarity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "point_coordinates"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/point_cloud_chamfer_similarity.py",
+  "example_usage": "python point_cloud_chamfer_similarity.py --train train_clouds.csv --eval eval_clouds.csv --out pairwise_similarity.csv --points-col points --scale 1.0",
+  "citations": [
+    {
+      "paper_id": "arx_2102.04014",
+      "title": "Point-set Distances for Learning Representations of 3D Point Clouds",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/arx_2102.04014/content.lines",
+          "lines": "L4-L12",
+          "summary": "The paper studies point-cloud distances including Chamfer, Earth Mover's, and sliced Wasserstein distances."
+        },
+        {
+          "path": "/papers/arx_2102.04014/content.lines",
+          "lines": "L21-L38",
+          "summary": "It defines Chamfer discrepancy and EMD for point clouds and motivates more discriminative Wasserstein variants."
+        },
+        {
+          "path": "/papers/arx_2102.04014/content.lines",
+          "lines": "L90-L119",
+          "summary": "Sliced Wasserstein is evaluated across reconstruction, transfer, registration, and generation tasks."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Chamfer distance can be insensitive to distributional differences and outliers.",
+    "EMD and Wasserstein variants can be computationally expensive.",
+    "Point alignment, scale normalization, and coordinate frames can dominate similarity."
+  ],
+  "quality_gates": [
+    "Report point preprocessing, alignment, scaling, distance metric, and distance-to-similarity transform.",
+    "Use EMD or sliced Wasserstein when point density and global geometry matter.",
+    "Check sensitivity to subsampling and registration errors."
+  ],
+  "tags": [
+    "point_cloud",
+    "chamfer",
+    "earth_movers_distance",
+    "sliced_wasserstein",
+    "3d",
+    "geometry"
+  ]
+}

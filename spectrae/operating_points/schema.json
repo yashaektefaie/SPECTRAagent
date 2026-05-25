@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.1.0",
+  "description": "Schema for SPECTRA targeted operating-point methods. These entries describe established split or validation operators that sample a specific region of a broader spectral generalization curve.",
+  "required_fields": [
+    "id",
+    "version",
+    "status",
+    "operating_point_name",
+    "method_family",
+    "scientific_unit",
+    "data_types",
+    "target_novelty_axis",
+    "deployment_question",
+    "curve_region",
+    "definition",
+    "split_operator",
+    "required_inputs",
+    "recommended_similarity_axes",
+    "output_contract",
+    "implementation_recipe",
+    "quality_gates",
+    "failure_modes",
+    "citations",
+    "tags"
+  ],
+  "status_values": [
+    "human_reviewed",
+    "draft",
+    "experimental"
+  ],
+  "curve_region_values": [
+    "high_overlap",
+    "medium_overlap",
+    "low_overlap",
+    "extreme_low_overlap",
+    "axis_specific",
+    "baseline"
+  ],
+  "recommended_output_contract": {
+    "mode": "split_assignment",
+    "required_columns": [
+      "sample_id",
+      "split",
+      "role"
+    ],
+    "optional_columns": [
+      "fold_id",
+      "operating_point_id",
+      "heldout_group",
+      "novelty_axis",
+      "expected_curve_region"
+    ],
+    "interpretation": "Rows assign samples to train/validation/test roles for a targeted deployment regime. Methods should also report how the split maps onto the SPECTRA similarity or novelty axis."
+  }
+}

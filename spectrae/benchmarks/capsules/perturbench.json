@@ -1,0 +1,65 @@
+{
+  "id": "perturbench",
+  "title": "PerturBench: Benchmarking Machine Learning Models for Cellular Perturbation Analysis",
+  "tier": "launch_anchor",
+  "community": "single_cell_perturbation",
+  "status": "active_demo",
+  "paper": {
+    "url": "https://arxiv.org/abs/2408.10609",
+    "pdf_url": "https://arxiv.org/pdf/2408.10609.pdf",
+    "year": 2024
+  },
+  "code": {
+    "repo_url": "https://github.com/altoslabs/perturbench",
+    "fetch_default": true
+  },
+  "data": [
+    {
+      "name": "Processed PerturBench datasets",
+      "url": "https://huggingface.co/datasets/altoslabs/perturbench",
+      "fetch_default": false,
+      "reason": "Processed h5ad datasets may be large; fetch explicitly when reproducing."
+    }
+  ],
+  "scientific_unit": "cellular perturbation task instance",
+  "original_evaluation": [
+    "Modular perturbation-response benchmark tasks",
+    "Metrics and failure-mode analysis for cellular perturbation models"
+  ],
+  "core_generalization_finding": "Perturbation-response models need task designs that mirror deployment settings with unobserved perturbation effects.",
+  "spectra_demo_hook": "Extend PerturBench tasks with automatic spectral audits across perturbation and covariate novelty.",
+  "recommended_novelty_axes": [
+    {
+      "name": "unseen_perturbation_distance",
+      "property_graph": "gene, drug, or perturbation embedding distance",
+      "graph_type": "weighted",
+      "priority": "primary"
+    },
+    {
+      "name": "cell_type_distance",
+      "property_graph": "distance between cell-state or cell-type embeddings",
+      "graph_type": "weighted",
+      "priority": "primary"
+    },
+    {
+      "name": "perturbation_ontology_distance",
+      "property_graph": "distance in perturbation ontology or pathway annotations",
+      "graph_type": "weighted",
+      "priority": "secondary"
+    },
+    {
+      "name": "combinatorial_novelty",
+      "property_graph": "overlap between train/test single and combination perturbation components",
+      "graph_type": "binary_or_weighted",
+      "priority": "secondary"
+    }
+  ],
+  "expected_artifacts": [
+    "audit_card.json",
+    "spectral_properties.json",
+    "split_stats.csv",
+    "performance_by_overlap.csv",
+    "spectral_curve.png",
+    "report.md"
+  ]
+}

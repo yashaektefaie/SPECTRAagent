@@ -1,0 +1,76 @@
+{
+  "id": "single_cell_covariate_transfer",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "single_cell_perturbation",
+  "scientific_unit": "perturbation_covariate_context",
+  "task_family": [
+    "perturbation response prediction",
+    "covariate transfer",
+    "cellular perturbation benchmarking"
+  ],
+  "similarity_name": "Shared biological covariate context",
+  "similarity_kind": "metadata_group",
+  "definition": "Represent each perturbation-response example by its biological state or covariate tuple, such as cell line, tissue, treatment condition, donor, or co-culture state. Same covariate context is high-overlap; held-out covariates or covariate tuples define lower-overlap transfer evaluation.",
+  "spectra_axis": {
+    "name": "covariate_context_overlap",
+    "axis_type": "similarity",
+    "aggregation": "same_group",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "covariate"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/tabular_group_similarity.py",
+  "example_usage": "python tabular_group_similarity.py --train train.csv --eval eval.csv --out pairwise_similarity.csv --group-col covariate",
+  "citations": [
+    {
+      "paper_id": "arx_2408.10609",
+      "title": "PerturBench: Benchmarking Machine Learning Models for Cellular Perturbation Analysis",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/arx_2408.10609/content.lines",
+          "lines": "L21-L22",
+          "summary": "The paper defines covariate transfer as predicting perturbation effects in covariates where they were not observed."
+        },
+        {
+          "path": "/papers/arx_2408.10609/content.lines",
+          "lines": "L27-L30",
+          "summary": "The paper creates biologically relevant tasks over perturbation modality, covariates, combinatorial perturbations, and missing data."
+        },
+        {
+          "path": "/papers/arx_2408.10609/content.lines",
+          "lines": "L132-L133",
+          "summary": "The paper describes split parameters for holding out covariates and fractions of perturbations per cell type."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Binary covariate overlap ignores degrees of biological relatedness between cell states.",
+    "Batch, donor, and assay technology may be hidden confounders.",
+    "A covariate split does not test unseen perturbation identity unless perturbations are also held out."
+  ],
+  "quality_gates": [
+    "Define the exact covariate tuple before computing overlap.",
+    "Report whether held-out perturbations were seen in other covariates.",
+    "Audit perturbation identity overlap separately from covariate overlap."
+  ],
+  "tags": [
+    "single_cell",
+    "perturbation",
+    "covariate_transfer",
+    "perturbench"
+  ]
+}

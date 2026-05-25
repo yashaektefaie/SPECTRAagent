@@ -1,0 +1,65 @@
+{
+  "id": "ucr_uea_time_series",
+  "version": "0.1.0",
+  "status": "active",
+  "title": "UCR/UEA Time Series Classification Archives",
+  "domains": ["time_series", "sensor_ml", "benchmarking"],
+  "data_types": ["univariate time series", "multivariate time series", "classification label"],
+  "scientific_units": ["time_series", "sensor_trace", "subject_trial"],
+  "compatible_model_families": ["time series classifier", "sensor model", "sequence model", "foundation time series model"],
+  "source": {
+    "homepage": "https://www.timeseriesclassification.com/",
+    "repository": "",
+    "data_urls": [
+      {
+        "description": "UCR/UEA time series archive",
+        "url": "https://www.timeseriesclassification.com/",
+        "access_notes": "Use official archive downloads and dataset metadata."
+      }
+    ]
+  },
+  "access": {
+    "mode": "data_portal",
+    "authentication": "none_expected",
+    "instructions": [
+      "Choose one dataset with clear scientific or sensor semantics, not only a generic benchmark name.",
+      "Load official train/test files and inspect whether subject, device, or trial metadata are available.",
+      "If metadata are absent, restrict claims to shape-support or temporal-pattern support rather than biological or deployment mechanisms."
+    ]
+  },
+  "scale": {
+    "download_size": "usually lightweight by dataset",
+    "spectra_default": "full_selected_dataset"
+  },
+  "expected_fields": ["series_id", "time_series", "label", "split", "subject_id", "device_id", "trial_id"],
+  "recommended_axes": [
+    {
+      "name": "dtw_shape_similarity",
+      "definition": "Dynamic time warping or shapelet-feature similarity to training time series.",
+      "prospective": true
+    },
+    {
+      "name": "frequency_content_similarity",
+      "definition": "Similarity in train-fitted spectral, autocorrelation, or frequency-domain features.",
+      "prospective": true
+    },
+    {
+      "name": "subject_or_device_support",
+      "definition": "Subject, device, trial, or acquisition-condition support when metadata exist.",
+      "prospective": true
+    }
+  ],
+  "useful_for": [
+    "Lightweight SPECTRA examples for time-series models.",
+    "Testing whether time-series classifiers generalize across shape, frequency, subject, or device novelty.",
+    "Developing approximate pairwise similarity strategies for long sequences."
+  ],
+  "leakage_risks": [
+    "Many archive datasets lack the metadata needed for mechanistic deployment claims.",
+    "Duplicate or near-duplicate series can cross official splits.",
+    "Shape similarity alone is a proxy unless connected to subject, device, or scientific context."
+  ],
+  "related_benchmark_capsules": [],
+  "related_memory_entries": [],
+  "tags": ["ucr", "uea", "time_series", "sensor", "dtw"]
+}

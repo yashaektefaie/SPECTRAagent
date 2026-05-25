@@ -1,0 +1,78 @@
+{
+  "id": "protein_mutational_regime_hamming",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "protein_sequence",
+  "scientific_unit": "protein_variant",
+  "task_family": [
+    "protein fitness prediction",
+    "variant effect prediction",
+    "protein engineering"
+  ],
+  "similarity_name": "Mutational-regime Hamming identity",
+  "similarity_kind": "sequence_similarity",
+  "definition": "For fixed-length aligned protein variants, compute normalized Hamming identity between evaluation and training sequences. The resulting SPECTRA axis is the maximum sequence identity to the training set, or equivalently one minus the minimum normalized mutational distance.",
+  "spectra_axis": {
+    "name": "max_train_protein_sequence_identity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_identity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "aligned_sequence"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/sequence_hamming_similarity.py",
+  "example_usage": "python sequence_hamming_similarity.py --train train_variants.csv --eval eval_variants.csv --out pairwise_similarity.csv --sequence-col aligned_sequence",
+  "citations": [
+    {
+      "paper_id": "PMC12278695",
+      "title": "Investigating the determinants of performance in machine learning for protein fitness prediction",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC12278695/content.lines",
+          "lines": "L15-L16",
+          "summary": "The paper defines mutational regimes by the number of mutations from a reference sequence and uses them to separate interpolation from extrapolation."
+        },
+        {
+          "path": "/papers/PMC12278695/content.lines",
+          "lines": "L23-L25",
+          "summary": "The benchmark stratifies train and test data by mutational regime and shows extrapolation performance decreases with ruggedness."
+        },
+        {
+          "path": "/papers/PMC12278695/content.lines",
+          "lines": "L49",
+          "summary": "On the GB1 landscape, extrapolation performance decreases as the extrapolation distance grows."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Requires aligned fixed-length sequences or a domain-appropriate alignment step.",
+    "Hamming identity treats all amino acid substitutions equally and ignores structural context.",
+    "Indels and recombination require alignment-aware or embedding-based alternatives."
+  ],
+  "quality_gates": [
+    "Report the reference or alignment used to define the sequence coordinates.",
+    "Audit performance by mutation depth as well as nearest-train sequence identity.",
+    "Check whether training and evaluation sets share close homologs or assay-specific variants."
+  ],
+  "tags": [
+    "protein",
+    "fitness",
+    "mutation_distance",
+    "hamming",
+    "proteingym",
+    "flip"
+  ]
+}

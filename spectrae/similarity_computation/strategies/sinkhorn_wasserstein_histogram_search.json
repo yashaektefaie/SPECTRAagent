@@ -1,0 +1,94 @@
+{
+  "id": "sinkhorn_wasserstein_histogram_search",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "Sinkhorn or Sliced-Wasserstein Histogram Search",
+  "strategy_family": "optimal_transport_approximation",
+  "exactness": "approximate",
+  "applies_to_similarity_kinds": [
+    "wasserstein_distance",
+    "earth_movers_distance",
+    "optimal_transport_distance",
+    "histogram_similarity",
+    "distribution_similarity"
+  ],
+  "compatible_data_shapes": [
+    "histogram",
+    "probability_distribution",
+    "image_histogram",
+    "single_cell_distribution",
+    "point_cloud_distribution",
+    "graph_node_feature_distribution"
+  ],
+  "definition": "Approximate expensive optimal-transport distances with entropic Sinkhorn iterations, Nyström acceleration, sliced Wasserstein variants, or learned OT embeddings, then convert distances to SPECTRA similarities or nearest-neighbor edges.",
+  "scale_profile": {
+    "best_for": "Distribution-valued samples where bin geometry matters and simple L1/cosine distances miss transport structure.",
+    "typical_upper_bound": "Large histogram collections when vectorized Sinkhorn, sliced projections, or OT embeddings are used.",
+    "avoid_when": "The ground metric is not defensible or regularization would erase the shift being audited."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "ot_distance",
+      "regularization"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "normalized histograms or distributions",
+    "ground cost matrix or bin geometry"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "regularization",
+      "purpose": "Controls the speed/fidelity tradeoff in entropic OT."
+    },
+    {
+      "name": "iterations",
+      "purpose": "Controls Sinkhorn convergence."
+    },
+    {
+      "name": "distance_to_similarity_scale",
+      "purpose": "Controls conversion from transport distance to similarity."
+    }
+  ],
+  "quality_gates": [
+    "Report the ground metric and regularization strength.",
+    "Compare with exact OT or a high-iteration reference on a subset.",
+    "Check that distance-to-similarity scaling preserves the intended spectral ordering."
+  ],
+  "failure_modes": [
+    "Strong regularization can over-smooth meaningful distribution differences.",
+    "Poorly chosen ground costs make OT scientifically arbitrary.",
+    "Sinkhorn can be numerically unstable for sparse histograms without safeguards."
+  ],
+  "python_example": "histogram_sinkhorn_topk.py",
+  "example_usage": "python histogram_sinkhorn_topk.py --train train.csv --eval eval.csv --out pairwise_similarity.csv --histogram-prefix bin_ --epsilon 0.1 --top-k 50",
+  "citations": [
+    {
+      "paper_id": "arx_1306.0895",
+      "title": "Sinkhorn Distances: Lightspeed Computation of Optimal Transportation Distances",
+      "evidence": "Introduces entropic OT solved with Sinkhorn-Knopp matrix scaling and reports large speedups over classical transport solvers."
+    },
+    {
+      "paper_id": "arx_1905.10124",
+      "title": "Sliced Gromov-Wasserstein",
+      "evidence": "Introduces sliced Gromov-Wasserstein as a faster alternative for comparing distributions in different metric spaces."
+    }
+  ],
+  "tags": [
+    "optimal_transport",
+    "sinkhorn",
+    "wasserstein",
+    "histogram",
+    "distribution_similarity"
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "id": "protein_binding_pocket_similarity",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "protein_binding_site",
+  "scientific_unit": "binding_pocket",
+  "task_family": [
+    "protein-ligand binding",
+    "drug discovery",
+    "structure-based generalization"
+  ],
+  "similarity_name": "Protein binding-pocket geometric similarity",
+  "similarity_kind": "local_structure_similarity",
+  "definition": "Represent each protein binding site as a local pocket geometry, atom cloud, surface, residue set, or pocket descriptor, then compare pockets by 3D alignment kernels, shape overlap, atomic-property fields, or precomputed pocket-similarity tools. For SPECTRA, this audits whether ligand-binding or function predictions generalize to pockets that are locally unlike training pockets even when global protein similarity is low.",
+  "spectra_axis": {
+    "name": "protein_pocket_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_pocket_similarity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "pocket_structure_or_precomputed_pocket_similarity"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/metric_to_similarity.py",
+  "example_usage": "python metric_to_similarity.py --input pocket_scores.csv --out pairwise_similarity.csv --metric-kind similarity --metric-col pocket_similarity",
+  "citations": [
+    {
+      "paper_id": "PMC2838872",
+      "title": "A new protein binding pocket similarity measure based on comparison of clouds of atoms in 3D: application to ligand prediction",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC2838872/content.lines",
+          "lines": "L9-L17",
+          "summary": "The paper motivates local binding-pocket comparison when proteins lack global sequence or structure similarity."
+        },
+        {
+          "path": "/papers/PMC2838872/content.lines",
+          "lines": "L23-L28",
+          "summary": "It defines pocket similarity from atom clouds and convolution kernels."
+        },
+        {
+          "path": "/papers/PMC2838872/content.lines",
+          "lines": "L124-L124",
+          "summary": "The authors state the method compares binding sites in 3D even without overall sequence or structure similarity."
+        }
+      ]
+    },
+    {
+      "paper_id": "PMC9604425",
+      "title": "Estimating the Similarity between Protein Pockets",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC9604425/content.lines",
+          "lines": "search_result",
+          "summary": "Paperclip returned a review of computational methods for comparing protein binding sites and estimating druggability."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Pocket definitions vary across tools and can change under apo/holo conformation differences.",
+    "Local pocket similarity may disagree with sequence, global structure, or ligand chemical similarity.",
+    "Accurate pocket comparison often requires specialized software beyond the bundled generic metric converter."
+  ],
+  "quality_gates": [
+    "Report pocket extraction method, ligand/holo assumptions, atom or surface features, alignment method, and score scale.",
+    "Compare pocket similarity with global protein-structure and ligand-similarity curves where possible.",
+    "Check sensitivity to apo/holo structures, pocket-radius cutoffs, and missing residues."
+  ],
+  "tags": [
+    "protein",
+    "binding_pocket",
+    "ligand_binding",
+    "local_structure",
+    "drug_discovery",
+    "pocket_similarity"
+  ]
+}
+

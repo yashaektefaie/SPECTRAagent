@@ -1,0 +1,78 @@
+{
+  "id": "experimental_batch_protocol_similarity",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "high_throughput_experiment",
+  "scientific_unit": "experimental_sample_or_well",
+  "task_family": [
+    "high-throughput biology",
+    "cell profiling",
+    "batch effect correction"
+  ],
+  "similarity_name": "Experimental batch and protocol similarity",
+  "similarity_kind": "metadata_or_distribution_similarity",
+  "definition": "Represent each sample by batch, plate, well position, cell type, assay protocol, reagent lot, instrument, and acquisition date when available. Compute metadata similarity or domain-level distribution similarity to audit whether performance depends on technical execution overlap rather than biological signal.",
+  "spectra_axis": {
+    "name": "experimental_batch_protocol_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_batch_protocol_similarity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "batch_or_protocol_metadata"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/metadata_distance_similarity.py",
+  "example_usage": "python metadata_distance_similarity.py --train train_assays.csv --eval eval_assays.csv --out pairwise_similarity.csv --columns batch_id plate_id cell_type protocol instrument",
+  "citations": [
+    {
+      "paper_id": "arx_2301.05768",
+      "title": "RxRx1: A Dataset for Evaluating Experimental Batch Correction Methods",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/arx_2301.05768/content.lines",
+          "lines": "L7-L16",
+          "summary": "RxRx1 is designed to evaluate batch correction across microscopy images from many experimental batches and cell types."
+        },
+        {
+          "path": "/papers/arx_2301.05768/content.lines",
+          "lines": "L23-L40",
+          "summary": "The paper records plate, imaging, perturbation, cell type, and batch structure and defines batch-separated vs batch-stratified splits."
+        },
+        {
+          "path": "/papers/arx_2301.05768/content.lines",
+          "lines": "L44-L50",
+          "summary": "The benchmark measures perturbation accuracy on unseen batches and whether embeddings remain batch-invariant."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Metadata may be incomplete and does not capture all latent technical variation.",
+    "Batch, cell type, treatment, and date can be confounded.",
+    "Exact metadata matching can be too brittle when protocol variables are continuous."
+  ],
+  "quality_gates": [
+    "Report all batch/protocol fields and known confounders.",
+    "Compare metadata similarity with feature-distribution similarity across batches.",
+    "Audit whether biological labels are balanced across technical domains."
+  ],
+  "tags": [
+    "batch_effect",
+    "protocol",
+    "high_throughput",
+    "cell_painting",
+    "rxrx1",
+    "assay"
+  ]
+}

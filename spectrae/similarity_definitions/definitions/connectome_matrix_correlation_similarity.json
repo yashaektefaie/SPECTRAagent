@@ -1,0 +1,74 @@
+{
+  "id": "connectome_matrix_correlation_similarity",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "brain_connectome",
+  "scientific_unit": "subject_connectivity_matrix",
+  "task_family": [
+    "neuroimaging classification",
+    "connectomics",
+    "brain biomarker generalization"
+  ],
+  "similarity_name": "Connectome edge-vector correlation",
+  "similarity_kind": "matrix_profile_similarity",
+  "definition": "Represent each subject or condition by a functional or structural connectivity matrix, flatten the comparable edge weights, and compute correlation or cosine similarity between edge vectors. For SPECTRA, this audits whether brain-model performance depends on evaluation connectomes being close to training connectomes.",
+  "spectra_axis": {
+    "name": "connectome_edge_vector_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_connectome_correlation",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "connectivity_edge_columns"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/vector_correlation_similarity.py",
+  "example_usage": "python vector_correlation_similarity.py --train train_connectomes.csv --eval eval_connectomes.csv --out pairwise_similarity.csv --feature-cols-prefix edge_",
+  "citations": [
+    {
+      "paper_id": "arx_1304.3880",
+      "title": "Learning and comparing functional connectomes across subjects",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/arx_1304.3880/content.lines",
+          "lines": "L9-L18",
+          "summary": "The review frames functional connectomes as brain interaction graphs and discusses strategies for comparing them across subjects."
+        },
+        {
+          "path": "/papers/arx_1304.3880/content.lines",
+          "lines": "L98-L101",
+          "summary": "The paper shows subject-level correlation matrices and inter-subject variability as a basis for comparing connectomes."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Connectivity estimates are sensitive to parcellation, denoising, motion, scanner, and global signal choices.",
+    "Flattened edge correlation ignores graph topology unless topology-aware metrics are added.",
+    "Subject similarity can be confounded by acquisition site or demographic variables."
+  ],
+  "quality_gates": [
+    "Report parcellation, preprocessing, edge definition, and whether negative edges were retained.",
+    "Run scanner/site and motion curves alongside connectome-similarity curves when available.",
+    "Check whether matrix size or global connectivity strength alone explains the similarity axis."
+  ],
+  "tags": [
+    "connectome",
+    "fmri",
+    "brain_network",
+    "matrix_correlation",
+    "neuroimaging",
+    "functional_connectivity"
+  ]
+}
+

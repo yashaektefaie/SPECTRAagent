@@ -1,0 +1,78 @@
+{
+  "id": "clinical_tabular_patient_similarity",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "clinical_tabular_patient_data",
+  "scientific_unit": "patient_or_encounter",
+  "task_family": [
+    "clinical prediction",
+    "patient similarity",
+    "external validation"
+  ],
+  "similarity_name": "Mixed clinical covariate or patient similarity",
+  "similarity_kind": "tabular_covariate_similarity",
+  "definition": "Represent patients or encounters using clinically meaningful covariates such as demographics, labs, diagnoses, medications, and utilization features. Compute mixed feature similarity, regularized Mahalanobis similarity, or a clinically weighted patient-similarity score to audit whether predictions degrade for patients unlike those in the training set.",
+  "spectra_axis": {
+    "name": "max_train_patient_covariate_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_patient_similarity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "clinical_covariate_columns"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/tabular_mahalanobis_similarity.py",
+  "example_usage": "python tabular_mahalanobis_similarity.py --train train.csv --eval eval.csv --out pairwise_similarity.csv --feature-cols-prefix cov_ --regularization 1e-4",
+  "citations": [
+    {
+      "paper_id": "PMC6788002",
+      "title": "Measurement and application of patient similarity in personalized predictive modeling based on electronic medical records",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC6788002/content.lines",
+          "lines": "L8-L18",
+          "summary": "The paper motivates individualized prediction using similar patients from EHR features."
+        },
+        {
+          "path": "/papers/PMC6788002/content.lines",
+          "lines": "L22-L32",
+          "summary": "It compares common patient similarity measures and shows similar-patient cohorts improve prediction with fewer samples."
+        },
+        {
+          "path": "/papers/PMC6788002/content.lines",
+          "lines": "L51-L68",
+          "summary": "Patient similarity is computed by combining feature-level similarities for labs, age, sex, and diagnoses."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Clinical covariate similarity can encode protected attributes, access patterns, or site artifacts.",
+    "Mahalanobis distance assumes numeric, scaled features and can be unstable with sparse or high-dimensional data.",
+    "Clinical similarity is not causal transportability."
+  ],
+  "quality_gates": [
+    "Report feature list, scaling, missingness handling, and protected-attribute treatment.",
+    "Evaluate separate curves for demographics, labs, diagnosis sets, and site/time domains before combining.",
+    "Check whether low-similarity groups are clinically meaningful and sufficiently powered."
+  ],
+  "tags": [
+    "clinical",
+    "patient_similarity",
+    "tabular",
+    "covariate_shift",
+    "mahalanobis",
+    "ehr"
+  ]
+}

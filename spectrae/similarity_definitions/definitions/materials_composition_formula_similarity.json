@@ -1,0 +1,72 @@
+{
+  "id": "materials_composition_formula_similarity",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "material",
+  "scientific_unit": "chemical_formula_or_material",
+  "task_family": [
+    "materials property prediction",
+    "materials discovery",
+    "composition extrapolation"
+  ],
+  "similarity_name": "Elemental composition vector similarity",
+  "similarity_kind": "feature_similarity",
+  "definition": "Parse each material formula into normalized elemental fractions and compute cosine similarity or L1-overlap between evaluation and training compositions. This axis asks whether property performance depends on chemical-composition overlap with known systems.",
+  "spectra_axis": {
+    "name": "max_train_composition_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_formula_similarity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "formula"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/formula_composition_similarity.py",
+  "example_usage": "python formula_composition_similarity.py --train train_materials.csv --eval eval_materials.csv --out pairwise_similarity.csv --formula-col formula",
+  "citations": [
+    {
+      "paper_id": "arx_2406.06489",
+      "title": "Probing Out-of-Distribution Generalization in Machine Learning for Materials",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/arx_2406.06489/content.lines",
+          "lines": "L29-L31",
+          "summary": "The paper separates compositional and structural origins of OOD failures and links poor performance to chemical dissimilarity."
+        },
+        {
+          "path": "/papers/arx_2406.06489/content.lines",
+          "lines": "L83-L86",
+          "summary": "The method uses compositional features from chemical formula and structural features from crystal structures to interpret bias."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "The simple parser does not handle parentheses, hydrates, disorder, oxidation states, or fractional occupancy syntax.",
+    "Formula similarity ignores crystal structure and synthesis context.",
+    "Element fraction overlap may be too coarse for materials where oxidation state or local environment matters."
+  ],
+  "quality_gates": [
+    "Normalize formulas consistently and record parser limitations.",
+    "Run a structure-based curve separately when structural data are available.",
+    "Check whether held-out elements or rare chemistries dominate low-similarity bins."
+  ],
+  "tags": [
+    "materials",
+    "composition",
+    "formula",
+    "ood",
+    "elemental_similarity"
+  ]
+}

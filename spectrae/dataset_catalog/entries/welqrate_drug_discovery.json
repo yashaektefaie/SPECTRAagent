@@ -1,0 +1,76 @@
+{
+  "id": "welqrate_drug_discovery",
+  "version": "0.1.0",
+  "status": "active",
+  "title": "WelQrate Small-Molecule Drug Discovery Benchmark",
+  "domains": ["molecular_ml", "drug_discovery", "virtual_screening"],
+  "data_types": ["SMILES", "bioactivity assay", "small molecule", "screening label"],
+  "scientific_units": ["molecule_assay_pair", "compound", "assay"],
+  "compatible_model_families": ["molecular property predictor", "virtual screening model", "graph neural network", "fingerprint baseline"],
+  "source": {
+    "homepage": "https://www.welqrate.org/",
+    "repository": "",
+    "data_urls": [
+      {
+        "description": "WelQrate official project page",
+        "url": "https://www.welqrate.org/",
+        "access_notes": "Project page links downloads, curation source code, and experiment source code."
+      },
+      {
+        "description": "WelQrate arXiv paper",
+        "url": "https://arxiv.org/abs/2411.09820",
+        "access_notes": "Use paper for curation and split/evaluation semantics."
+      }
+    ]
+  },
+  "access": {
+    "mode": "data_portal",
+    "authentication": "none_expected",
+    "instructions": [
+      "Use the official WelQrate download or package and pin dataset version.",
+      "Record assay ID, molecule identifier, SMILES/InChIKey, activity label, split scheme, and curation source.",
+      "Treat WelQrate's split schemes as operating points and construct SPECTRA curves over chemical and assay-support axes."
+    ]
+  },
+  "scale": {
+    "download_size": "moderate curated benchmark collection; full official release should be feasible after version pinning",
+    "spectra_default": "selected_dataset_or_full_release"
+  },
+  "expected_fields": ["smiles", "inchikey", "assay_id", "label", "split", "dataset_name", "activity_value"],
+  "recommended_axes": [
+    {
+      "name": "chemical_structure_similarity",
+      "definition": "Morgan fingerprint Tanimoto, scaffold identity, or chemical descriptor similarity to training compounds.",
+      "prospective": true
+    },
+    {
+      "name": "assay_and_target_support",
+      "definition": "Assay, target, or screen-source support when metadata are available.",
+      "prospective": true
+    },
+    {
+      "name": "activity_prevalence_and_hit_rate",
+      "definition": "Training-support distance for low-hit-rate screening settings; diagnostic unless based only on train labels.",
+      "prospective": false
+    }
+  ],
+  "useful_for": [
+    "Drug-discovery SPECTRA audits focused on realistic virtual-screening evaluation.",
+    "Testing chemical novelty versus assay/source curation effects.",
+    "Comparing WelQrate split schemes with full SPECTRA chemical-support curves."
+  ],
+  "leakage_risks": [
+    "Molecule duplicates and salt/stereochemistry canonicalization can leak across splits.",
+    "Assay curation and confirmatory/counter-screen information can leak label semantics if used incorrectly.",
+    "Hit-rate imbalance can dominate metrics and must be reported with split statistics."
+  ],
+  "related_benchmark_capsules": ["boom"],
+  "related_memory_entries": ["boom_numeric_mini_audit_memory"],
+  "paperclip_provenance": {
+    "search_ids": ["s_731e9b16", "s_e0dc18d1"],
+    "map_ids": ["m_5d9b27a0"],
+    "paper_ids": ["arx_2411.09820", "PMC11601797"],
+    "notes": "Paperclip identified WelQrate as a curated small-molecule drug-discovery benchmark; official source reports nine datasets, downloads, and split/evaluation framework."
+  },
+  "tags": ["welqrate", "drug_discovery", "virtual_screening", "molecular_ml", "bioactivity"]
+}

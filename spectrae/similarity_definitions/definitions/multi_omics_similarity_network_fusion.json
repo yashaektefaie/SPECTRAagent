@@ -1,0 +1,86 @@
+{
+  "id": "multi_omics_similarity_network_fusion",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "multi_omics_sample",
+  "scientific_unit": "patient_sample_or_cell",
+  "task_family": [
+    "multi-omics integration",
+    "cancer subtype prediction",
+    "multimodal biological generalization"
+  ],
+  "similarity_name": "Multi-omics similarity network fusion",
+  "similarity_kind": "multi_view_sample_similarity",
+  "definition": "Construct a sample-sample similarity network within each omics view using normalized distances or kernels, then fuse the view-specific networks into one cross-sample similarity matrix. For SPECTRA, this audits whether an evaluation patient, cell, or biospecimen is close to training samples across complementary molecular modalities rather than only one feature table.",
+  "spectra_axis": {
+    "name": "multi_omics_fused_sample_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_fused_similarity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "omics_view_embeddings_or_precomputed_similarities"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/metric_to_similarity.py",
+  "example_usage": "python metric_to_similarity.py --input fused_snf_pairwise.csv --out pairwise_similarity.csv --metric-kind similarity --metric-col fused_similarity",
+  "citations": [
+    {
+      "paper_id": "PMC11576078",
+      "title": "A metagene based similarity network fusion approach for multi-omics data integration identified novel subtypes in renal cell carcinoma",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC11576078/content.lines",
+          "lines": "L33-L34",
+          "summary": "The paper describes similarity-based multi-omics integration that transforms each data type into a sample similarity matrix and fuses networks."
+        },
+        {
+          "path": "/papers/PMC11576078/content.lines",
+          "lines": "L44-L45",
+          "summary": "The method constructs sample similarity networks with a kernel and integrates them through message passing."
+        }
+      ]
+    },
+    {
+      "paper_id": "PMC11576078",
+      "title": "A metagene based similarity network fusion approach for multi-omics data integration identified novel subtypes in renal cell carcinoma",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC11576078/content.lines",
+          "lines": "L108-L109",
+          "summary": "The authors state that metagene-based fusion improves patient similarity calculation and can extend to other multimodal datasets."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Fusion can hide which modality drives overlap unless view-specific curves are also reported.",
+    "Kernel bandwidths, feature filtering, missing-data handling, and batch correction can dominate the similarity matrix.",
+    "SNF-style similarities are transductive if fitted on train and evaluation samples together; report that choice explicitly."
+  ],
+  "quality_gates": [
+    "Report each omics view, preprocessing, kernel, neighbor count, and fusion method.",
+    "Run per-view SPECTRA curves before or alongside the fused curve.",
+    "Check whether technical batch or cohort labels explain fused similarity."
+  ],
+  "tags": [
+    "multi_omics",
+    "similarity_network_fusion",
+    "sample_similarity",
+    "multimodal",
+    "patient_similarity",
+    "cancer_subtyping"
+  ]
+}
+

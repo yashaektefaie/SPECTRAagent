@@ -1,0 +1,87 @@
+{
+  "id": "drug_target_ligand_target_composite",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "drug_target_pair",
+  "scientific_unit": "compound_target_pair",
+  "task_family": [
+    "drug target affinity prediction",
+    "binding affinity prediction",
+    "drug discovery"
+  ],
+  "similarity_name": "Composite ligand-target pair similarity",
+  "similarity_kind": "composite_similarity",
+  "definition": "Compute a ligand similarity, such as molecular fingerprint Tanimoto, and a target similarity, such as protein sequence identity or embedding cosine. Combine the two pairwise similarity files with a conservative minimum or weighted mean so that a test compound-target pair is considered close to training only when the relevant scientific components are close.",
+  "spectra_axis": {
+    "name": "max_train_ligand_target_pair_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_composite_similarity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "ligand_similarity_csv",
+    "target_similarity_csv"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/composite_pairwise_similarity.py",
+  "example_usage": "python composite_pairwise_similarity.py --inputs ligand_pairwise.csv target_pairwise.csv --method min --out pairwise_similarity.csv",
+  "citations": [
+    {
+      "paper_id": "arx_2504.09481",
+      "title": "Rethinking the generalization of drug target affinity prediction algorithms via similarity aware evaluation",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/arx_2504.09481/content.lines",
+          "lines": "L22-L28",
+          "summary": "The paper defines pairwise sample similarity, aggregates similarity to the training set, and uses Morgan fingerprints with Tanimoto in the main example."
+        },
+        {
+          "path": "/papers/arx_2504.09481/content.lines",
+          "lines": "L128-L130",
+          "summary": "The appendix compares multiple fingerprint and similarity-measure choices for similarity-aware evaluation."
+        }
+      ]
+    },
+    {
+      "paper_id": "PMC11526688",
+      "title": "BASE: a web service for providing compound-protein binding affinity prediction datasets with reduced similarity bias",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC11526688/content.lines",
+          "lines": "L52-L59",
+          "summary": "The paper computes sequence, functional, and integrated target-protein similarities and filters training data by similarity cutoffs."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "The right composition rule depends on whether novelty is ligand-driven, target-driven, or interaction-driven.",
+    "Ligand-only similarity can miss protein-family leakage; target-only similarity can miss analog series leakage.",
+    "Pairwise matrices can be large and may require sparse storage for million-scale libraries."
+  ],
+  "quality_gates": [
+    "Report component similarities and the composition rule.",
+    "Plot separate ligand-only, target-only, and composite SPECTRA curves.",
+    "Check that repeated compounds, repeated targets, and assay identifiers are handled explicitly."
+  ],
+  "tags": [
+    "drug_target_affinity",
+    "dta",
+    "ligand",
+    "protein",
+    "composite_similarity",
+    "sae",
+    "base"
+  ]
+}

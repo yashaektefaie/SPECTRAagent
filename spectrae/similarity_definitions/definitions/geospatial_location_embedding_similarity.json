@@ -1,0 +1,78 @@
+{
+  "id": "geospatial_location_embedding_similarity",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "geospatial_observation",
+  "scientific_unit": "located_observation",
+  "task_family": [
+    "GeoAI",
+    "spatial representation learning",
+    "geographic bias evaluation"
+  ],
+  "similarity_name": "Location-encoder embedding similarity",
+  "similarity_kind": "embedding_similarity",
+  "definition": "Encode each sample location with a spatial representation model or handcrafted location features, then compute cosine similarity between evaluation and training location embeddings. Use this when raw distance is too coarse and geography interacts with task-specific covariates.",
+  "spectra_axis": {
+    "name": "max_train_location_embedding_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_cosine_similarity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "location_embedding_columns"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/embedding_cosine_similarity.py",
+  "example_usage": "python embedding_cosine_similarity.py --train train_geo.csv --eval eval_geo.csv --out pairwise_similarity.csv --embedding-cols-prefix loc_",
+  "citations": [
+    {
+      "paper_id": "arx_2406.15658",
+      "title": "TorchSpatial: A Location Encoding Framework and Benchmark for Spatial Representation Learning",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/arx_2406.15658/content.lines",
+          "lines": "L9-L18",
+          "summary": "TorchSpatial introduces a location encoding benchmark and metrics for geographic bias across geo-aware tasks."
+        },
+        {
+          "path": "/papers/arx_2406.15658/content.lines",
+          "lines": "L87-L92",
+          "summary": "The framework implements 2D and 3D location encoders, including methods that preserve spherical surface distance."
+        },
+        {
+          "path": "/papers/arx_2406.15658/content.lines",
+          "lines": "L99-L105",
+          "summary": "The paper connects model performance patterns to spatial autocorrelation and geographic bias."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Location embeddings may encode sampling bias and label priors rather than causal scientific mechanisms.",
+    "Embedding similarity is only interpretable if the encoder and training data are documented.",
+    "Different location encoders can produce different novelty orderings."
+  ],
+  "quality_gates": [
+    "Report the location encoder and whether it was trained on evaluation labels or metadata.",
+    "Compare embedding similarity to raw geographic distance.",
+    "Audit performance by geographic region to detect systematic hot spots or cold spots."
+  ],
+  "tags": [
+    "geospatial",
+    "location_encoder",
+    "geoai",
+    "torchspatial",
+    "embedding",
+    "geographic_bias"
+  ]
+}

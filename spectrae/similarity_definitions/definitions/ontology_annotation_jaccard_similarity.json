@@ -1,0 +1,90 @@
+{
+  "id": "ontology_annotation_jaccard_similarity",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "ontology_annotated_biological_entity",
+  "scientific_unit": "gene_protein_phenotype_or_perturbation",
+  "task_family": [
+    "functional genomics",
+    "perturbation response",
+    "ontology-based prediction"
+  ],
+  "similarity_name": "Ontology annotation overlap or semantic similarity",
+  "similarity_kind": "ontology_similarity",
+  "definition": "Represent each entity by ontology annotations, such as GO terms, pathway terms, phenotype terms, or perturbation classes. Use Jaccard overlap as a lightweight baseline or a semantic-similarity matrix from an ontology package when DAG-aware similarity is available.",
+  "spectra_axis": {
+    "name": "ontology_annotation_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_ontology_similarity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "ontology_term_set"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/set_jaccard_similarity.py",
+  "example_usage": "python set_jaccard_similarity.py --train train_entities.csv --eval eval_entities.csv --out pairwise_similarity.csv --set-col ontology_terms",
+  "citations": [
+    {
+      "paper_id": "PMC11406866",
+      "title": "simona: a comprehensive R package for semantic similarity analysis on bio-ontologies",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC11406866/content.lines",
+          "lines": "L17-L25",
+          "summary": "The paper describes ontology semantic similarity for genes, biological entities, and groups of terms."
+        },
+        {
+          "path": "/papers/PMC11406866/content.lines",
+          "lines": "L56-L61",
+          "summary": "The paper defines group-to-group semantic similarity and implements efficient ontology traversal."
+        },
+        {
+          "path": "/papers/PMC11406866/content.lines",
+          "lines": "L118-L124",
+          "summary": "The paper compares annotation-based and topology-based semantic similarity methods for broader ontology use."
+        }
+      ]
+    },
+    {
+      "paper_id": "PMC2367622",
+      "title": "Metrics for GO based protein semantic similarity: a systematic evaluation",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC2367622/content.lines",
+          "lines": "L7-L14",
+          "summary": "The paper frames Gene Ontology annotations as a basis for functional comparison of gene products."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Jaccard overlap ignores ontology depth and parent-child relationships.",
+    "Semantic similarity scores depend on ontology version, annotation source, and information-content method.",
+    "Ontology annotations can encode study bias and missingness."
+  ],
+  "quality_gates": [
+    "Report ontology, namespace, version, annotation source, and similarity method.",
+    "Use DAG-aware semantic similarity when ontology hierarchy matters.",
+    "Run sensitivity analysis against a simple set-overlap baseline."
+  ],
+  "tags": [
+    "ontology",
+    "gene_ontology",
+    "semantic_similarity",
+    "pathway",
+    "perturbation",
+    "jaccard"
+  ]
+}

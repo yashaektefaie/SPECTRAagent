@@ -1,0 +1,78 @@
+{
+  "id": "medical_imaging_scanner_protocol_domain",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "medical_image",
+  "scientific_unit": "patient_image_or_scan",
+  "task_family": [
+    "medical image classification",
+    "medical image segmentation",
+    "clinical deployment"
+  ],
+  "similarity_name": "Scanner and acquisition-protocol domain similarity",
+  "similarity_kind": "metadata_similarity",
+  "definition": "Represent each image by scanner manufacturer/model, modality, site, protocol parameters, and acquisition settings when available. Compute exact-match or mixed metadata similarity to audit whether performance depends on scanner-domain overlap with the training set.",
+  "spectra_axis": {
+    "name": "scanner_protocol_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_metadata_similarity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "scanner_or_site_metadata"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/metadata_distance_similarity.py",
+  "example_usage": "python metadata_distance_similarity.py --train train_images.csv --eval eval_images.csv --out pairwise_similarity.csv --columns modality scanner_manufacturer site protocol",
+  "citations": [
+    {
+      "paper_id": "arx_2409.04368",
+      "title": "The Impact of Scanner Domain Shift on Deep Learning Performance in Medical Imaging: an Experimental Study",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/arx_2409.04368/content.lines",
+          "lines": "L5-L19",
+          "summary": "The paper shows scanner domain shift can substantially degrade medical-imaging model performance across modalities."
+        },
+        {
+          "path": "/papers/arx_2409.04368/content.lines",
+          "lines": "L25-L32",
+          "summary": "The study splits data by scanner domain and evaluates same-scanner versus different-scanner performance."
+        },
+        {
+          "path": "/papers/arx_2409.04368/content.lines",
+          "lines": "L72-L73",
+          "summary": "The appendix studies performance as target-domain images are progressively mixed into training."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Scanner metadata may be missing, anonymized, or inconsistent across datasets.",
+    "Exact manufacturer matching ignores continuous acquisition parameters and reconstruction software.",
+    "Site and scanner can be confounded with patient population or label prevalence."
+  ],
+  "quality_gates": [
+    "Report scanner fields, modality, site, and any protocol parameters used.",
+    "Stratify by patient where applicable to avoid patient-level leakage.",
+    "Run a separate clinical-demographic or temporal axis when scanner is confounded with population."
+  ],
+  "tags": [
+    "medical_imaging",
+    "scanner_shift",
+    "domain_shift",
+    "site",
+    "protocol",
+    "clinical_ai"
+  ]
+}

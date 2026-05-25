@@ -1,0 +1,66 @@
+{
+  "id": "encode_ccre_screen",
+  "version": "0.1.0",
+  "status": "active",
+  "title": "ENCODE SCREEN cCRE Regulatory Annotation Resources",
+  "domains": ["regulatory_dna", "genomics"],
+  "data_types": ["cCRE annotation", "genomic interval", "regulatory sequence"],
+  "scientific_units": ["regulatory_element", "sequence_window", "genomic_interval"],
+  "compatible_model_families": ["DNA foundation model", "regulatory sequence model", "nucleotide language model"],
+  "source": {
+    "homepage": "https://screen.encodeproject.org/",
+    "repository": null,
+    "data_urls": [
+      {
+        "description": "ENCODE SCREEN portal",
+        "url": "https://screen.encodeproject.org/",
+        "access_notes": "Use the portal and ENCODE file metadata for current cCRE releases."
+      },
+      {
+        "description": "ENCODE file example used in prior SPECTRA resource acquisition",
+        "url": "https://www.encodeproject.org/files/ENCFF968BZL/@@download/ENCFF968BZL.tsv",
+        "access_notes": "Verify accession, release, assembly, and cCRE version before reuse."
+      }
+    ]
+  },
+  "access": {
+    "mode": "data_portal",
+    "authentication": "none_expected",
+    "instructions": [
+      "Use ENCODE portal metadata to select the intended cCRE release and genome assembly.",
+      "Record ENCODE accessions, cCRE version, assembly, interval definitions, and any resizing/windowing.",
+      "If joining to sequences, retrieve genome reference through a documented source and preserve coordinate transforms."
+    ]
+  },
+  "expected_fields": ["chromosome", "start", "end", "ccre_id", "ccre_class", "biosample", "assembly"],
+  "recommended_axes": [
+    {
+      "name": "regulatory_element_class",
+      "definition": "Shared or different cCRE class such as enhancer-like or promoter-like category.",
+      "prospective": true
+    },
+    {
+      "name": "local_regulatory_context",
+      "definition": "Density or neighborhood of cCRE annotations around a sequence window.",
+      "prospective": true
+    },
+    {
+      "name": "composition_control",
+      "definition": "GC/CpG/length/k-mer similarity used as a control for regulatory-class claims.",
+      "prospective": true
+    }
+  ],
+  "useful_for": [
+    "Constructing coordinate-backed regulatory sequence hypothesis-test datasets.",
+    "Translating DNA model embedding signals into regulatory annotation hypotheses.",
+    "Testing local cCRE support and composition-regime explanations."
+  ],
+  "leakage_risks": [
+    "Overlapping windows and duplicate cCRE IDs can leak across splits.",
+    "cCRE class can be confounded with GC/CpG/length composition.",
+    "Genome assembly and coordinate mismatches can create invalid joins."
+  ],
+  "related_benchmark_capsules": ["dart_eval"],
+  "related_memory_entries": ["caduceus_external_perturbational_memory", "caduceus_strict_sequence_memory"],
+  "tags": ["encode", "screen", "ccre", "regulatory_dna", "coordinates"]
+}

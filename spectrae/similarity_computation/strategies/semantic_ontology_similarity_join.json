@@ -1,0 +1,102 @@
+{
+  "id": "semantic_ontology_similarity_join",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "Semantic Ontology and Taxonomic Similarity Join",
+  "strategy_family": "semantic_ontology_join",
+  "exactness": "hybrid_exact_after_candidate_generation",
+  "applies_to_similarity_kinds": [
+    "ontology_semantic_similarity",
+    "taxonomic_similarity",
+    "semantic_overlap_similarity",
+    "knowledge_graph_path_similarity",
+    "information_content_similarity"
+  ],
+  "compatible_data_shapes": [
+    "ontology_annotated_samples",
+    "gene_ontology_terms",
+    "phenotype_terms",
+    "taxonomic_labels",
+    "knowledge_graph_annotations",
+    "semantic_feature_sets"
+  ],
+  "definition": "Exploit ontology structure, taxonomic prefixes, semantic-overlap filters, information-content bounds, or knowledge-graph path summaries to avoid all-pairs semantic comparison over annotated objects. Verify or rerank candidates with the intended ontology or taxonomic similarity.",
+  "scale_profile": {
+    "best_for": "Biomedical, ecological, phenotype, and knowledge-graph audits where annotations are sets of ontology or taxonomy terms and exact semantic comparison is expensive.",
+    "typical_upper_bound": "Large annotation tables when the ontology graph and feature frequencies can be indexed.",
+    "avoid_when": "Annotations are flat tokens and ordinary Jaccard or weighted MinHash is the declared scientific similarity."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "ontology",
+      "semantic_measure",
+      "candidate_source"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "ontology annotations",
+    "ontology graph or taxonomy",
+    "semantic similarity measure"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "semantic_measure",
+      "purpose": "Selects overlap, path, information-content, earth-mover, or graph-based semantic similarity."
+    },
+    {
+      "name": "candidate_filter",
+      "purpose": "Controls taxonomic prefixes, ancestor filters, semantic overlap bounds, or graph-neighborhood constraints."
+    },
+    {
+      "name": "top_k_or_threshold",
+      "purpose": "Controls output sparsity and verification work."
+    }
+  ],
+  "quality_gates": [
+    "Report ontology version and whether ancestors, evidence codes, and information-content weights were used.",
+    "Check exact semantic scores on a subset of pruned pairs to estimate false negatives.",
+    "Verify that high-level ancestor terms do not dominate similarity for sparsely annotated samples."
+  ],
+  "failure_modes": [
+    "Ontology updates can change pairwise similarities and audit reproducibility.",
+    "Generic ancestor overlap can make broad annotations look spuriously similar.",
+    "Semantic filters may miss distant but meaningful graph-path relationships."
+  ],
+  "python_example": "weighted_jaccard_topk.py",
+  "example_usage": "Use weighted_jaccard_topk.py after expanding ontology terms to weighted ancestor features as a simple prototype; production systems should preserve the declared semantic measure in the output metadata.",
+  "citations": [
+    {
+      "paper_id": "arx_2304.10572",
+      "title": "KOIOS: Top-k Semantic Overlap Set Search",
+      "evidence": "Uses filters to efficiently find top-k semantically similar sets under semantic overlap."
+    },
+    {
+      "paper_id": "arx_1810.12123",
+      "title": "Efficient Taxonomic Similarity Joins with Adaptive Overlap Constraint",
+      "evidence": "Uses taxonomic knowledge and adaptive prefix filtering to prune semantic similarity joins."
+    },
+    {
+      "paper_id": "arx_1001.2625",
+      "title": "Finding top-k similar pairs of objects annotated with terms from an ontology",
+      "evidence": "Studies efficient top-k similarity search for ontology-annotated objects under multiple semantic distance measures."
+    }
+  ],
+  "tags": [
+    "ontology",
+    "semantic_similarity",
+    "taxonomic",
+    "knowledge_graph",
+    "gene_ontology",
+    "phenotype"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "experiment": "iterative_spectra_agent_behavior",
+  "purpose": "Test whether /spectra changes agent behavior from one-shot generalization analysis to iterative similarity-hypothesis search.",
+  "conditions": {
+    "vanilla": "Use normal scientific reproduction and extension workflow.",
+    "spectra": "Use /spectra with registry-backed similarity definitions, computation strategies, curve scoring, failed-axis reporting, and audit-card output."
+  },
+  "score_scale": {
+    "0": "missing or invalid",
+    "1": "partial, qualitative, or weakly justified",
+    "2": "quantitative, valid, and scientifically useful"
+  },
+  "dimensions": {
+    "scientific_unit": "Identifies the correct scientific unit of generalization.",
+    "initial_similarity_hypothesis": "Defines a defensible first train-test similarity or novelty axis.",
+    "property_graph_specificity": "Constructs or clearly specifies the property/similarity graph over scientific units.",
+    "overlap_validation": "Validates that stricter thresholds reduce measured train-test overlap.",
+    "performance_curve": "Reports performance as a function of measured distance or novelty.",
+    "curve_scoring": "Classifies the curve as monotonic, localized, weak, non-explanatory, or not evaluable.",
+    "failed_axis_reporting": "Reports axes that failed, were weak, or were not evaluable rather than silently dropping them.",
+    "adaptive_next_axis": "Uses the previous curve result to choose the next similarity definition or computation strategy.",
+    "leakage_risk_classification": "Separates prospective axes from post-hoc explanatory axes that use labels, predictions, or evaluation information.",
+    "selected_axis_defensibility": "Selects a final axis with a clear scientific rationale and limitations.",
+    "metric_reporting": "Computes or correctly plans AUSPC or an equivalent spectral generalization summary.",
+    "audit_artifact_quality": "Produces a reusable audit card/report another scientist could reproduce."
+  },
+  "primary_comparison": {
+    "behavioral_delta": "Measures whether /spectra causes the agent to iterate over similarity hypotheses and report failed axes.",
+    "infrastructure_value": "Measures whether registry-backed defaults and deterministic audit artifacts add value beyond asking for performance as a function of distance."
+  },
+  "success_criteria": {
+    "strong": "/spectra beats vanilla on curve_scoring, failed_axis_reporting, adaptive_next_axis, leakage_risk_classification, and audit_artifact_quality across multiple domains.",
+    "partial": "/spectra improves artifact structure but not axis choice or adaptive search.",
+    "null": "/spectra ties vanilla on most iterative dimensions, implying the skill is mostly prompt packaging for these tasks."
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "id": "molecular_fingerprint_tanimoto_index",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "Molecular Fingerprint Tanimoto Search Index",
+  "strategy_family": "domain_specific_index",
+  "exactness": "hybrid_exact_after_candidate_generation",
+  "applies_to_similarity_kinds": [
+    "tanimoto_similarity",
+    "jaccard_similarity",
+    "binary_fingerprint_similarity",
+    "molecular_fingerprint_similarity"
+  ],
+  "compatible_data_shapes": [
+    "molecule",
+    "binary_fingerprint",
+    "chemical_fingerprint",
+    "small_molecule_library"
+  ],
+  "definition": "Use molecular fingerprints and a Tanimoto-aware candidate index, tree, bit-bound pruning rule, or MinHash LSH sketch to avoid evaluating every molecule pair. Exact Tanimoto can be used for reranking emitted neighbors.",
+  "scale_profile": {
+    "best_for": "Large molecule libraries represented by sparse or bit-vector fingerprints.",
+    "typical_upper_bound": "Millions of molecules with appropriate fingerprint and index choices.",
+    "avoid_when": "The molecular similarity definition is not fingerprint-based or when scaffold-level audit axes are required instead."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "fingerprint_type"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "binary molecular fingerprints"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "fingerprint_type",
+      "purpose": "Defines the molecular feature space, for example Morgan, ECFP, or MHFP."
+    },
+    {
+      "name": "tanimoto_threshold_or_k",
+      "purpose": "Controls retained similarity edges."
+    },
+    {
+      "name": "lsh_or_tree_parameters",
+      "purpose": "Controls candidate retrieval speed and recall."
+    }
+  ],
+  "quality_gates": [
+    "Compute exact Tanimoto for final emitted candidates.",
+    "Benchmark candidate recall on an exact subset.",
+    "Report fingerprint radius, bit length, and collision-sensitive choices."
+  ],
+  "failure_modes": [
+    "Fingerprint collisions can make unrelated molecules look similar.",
+    "A top-k fingerprint graph may not control scaffold leakage by itself.",
+    "LSH settings can miss moderately similar compounds near the audit threshold."
+  ],
+  "python_example": "bitset_tanimoto_topk.py",
+  "example_usage": "python bitset_tanimoto_topk.py --train train.csv --eval eval.csv --out pairwise_similarity.csv --fingerprint-col fingerprint --top-k 50",
+  "citations": [
+    {
+      "paper_id": "PMC2830925",
+      "title": "A tree-based method for rapid screening of chemical fingerprints",
+      "evidence": "Uses tree and bound-based ideas to reduce explicit Tanimoto computations for large chemical databases."
+    },
+    {
+      "paper_id": "PMC6755601",
+      "title": "MHFP6: a molecular fingerprint for fast, scalable chemical similarity search",
+      "evidence": "Combines molecular fingerprints with MinHash/LSH to enable faster approximate nearest-neighbor search over compounds."
+    }
+  ],
+  "tags": [
+    "molecule",
+    "fingerprint",
+    "tanimoto",
+    "chemical_search",
+    "domain_index"
+  ]
+}

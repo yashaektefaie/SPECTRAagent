@@ -1,0 +1,81 @@
+{
+  "id": "causalbench_single_cell_grn",
+  "version": "0.1.0",
+  "status": "active",
+  "title": "CausalBench Perturb-seq Gene-Regulatory-Network Benchmark",
+  "domains": ["single_cell_perturbation", "causal_inference", "gene_regulatory_networks", "systems_biology"],
+  "data_types": ["Perturb-seq expression", "intervention label", "cell-line metadata", "gene-network prior", "benchmark split"],
+  "scientific_units": ["single_cell", "perturbation_target", "gene", "gene_pair", "regulatory_edge"],
+  "compatible_model_families": ["gene regulatory network inference", "single-cell perturbation model", "causal discovery model", "single-cell foundation model"],
+  "source": {
+    "homepage": "https://github.com/causalbench/causalbench",
+    "repository": "https://github.com/causalbench/causalbench",
+    "data_urls": [
+      {
+        "description": "Communications Biology paper",
+        "url": "https://www.nature.com/articles/s42003-025-07764-y",
+        "access_notes": "Paper and source point to the public benchmark framework and source data."
+      },
+      {
+        "description": "CausalBench arXiv paper",
+        "url": "https://arxiv.org/abs/2210.17283",
+        "access_notes": "Use for benchmark semantics, train regimes, and citation."
+      }
+    ]
+  },
+  "access": {
+    "mode": "repository",
+    "authentication": "none_expected_for_code; upstream source licenses vary",
+    "instructions": [
+      "Use the official CausalBench repository to recover download/preprocessing commands and versioned benchmark splits.",
+      "Start with one cell line and one training regime before expanding to all benchmark settings.",
+      "Record source dataset, cell line, intervention target, guide/perturbation identity, expression representation, network-prior source, and split."
+    ]
+  },
+  "scale": {
+    "download_size": "large single-cell perturbation benchmark; reported real-world tasks exceed 200,000 training samples",
+    "spectra_default": "selected_cell_line_and_training_regime"
+  },
+  "expected_fields": ["cell_id", "cell_line", "perturbation_target", "expression_vector", "intervention_status", "network_prior", "split"],
+  "recommended_axes": [
+    {
+      "name": "perturbation_target_support",
+      "definition": "Distance from training perturbation targets using gene family, pathway, protein interaction, or gene-embedding similarity.",
+      "prospective": true
+    },
+    {
+      "name": "cell_line_support",
+      "definition": "Cell-line or cellular-context similarity, including K562/RPE1 transfer when both are used.",
+      "prospective": true
+    },
+    {
+      "name": "network_neighborhood_support",
+      "definition": "Similarity of candidate edges or target genes in known interaction/regulatory-prior neighborhoods.",
+      "prospective": true
+    },
+    {
+      "name": "expression_state_support",
+      "definition": "Nearest-neighbor support in basal or perturbed expression space.",
+      "prospective": true
+    }
+  ],
+  "useful_for": [
+    "Testing whether a single-cell or causal-discovery model generalizes to unseen perturbation targets.",
+    "Auditing whether GRN-inference performance depends on prior-network support.",
+    "Building spectral curves over perturbation, cell-line, and biological-network novelty."
+  ],
+  "leakage_risks": [
+    "Guide identity, perturbation target, and target family can leak across splits.",
+    "Cell line can become a split label rather than a biological novelty axis.",
+    "External prior networks may overlap with labels or evaluation edges."
+  ],
+  "related_benchmark_capsules": [],
+  "related_memory_entries": [],
+  "paperclip_provenance": {
+    "search_ids": ["s_8c2cafec", "s_c8099614"],
+    "map_ids": ["m_ee210067", "m_50d01e90"],
+    "paper_ids": ["PMC11897147", "arx_2210.17283", "arx_2308.15395"],
+    "notes": "Paperclip repeatedly surfaced CausalBench as a real-world single-cell perturbation benchmark for network inference; official repository and paper confirm public benchmark code and source-data links."
+  },
+  "tags": ["causalbench", "perturb_seq", "single_cell", "grn", "causal_inference"]
+}

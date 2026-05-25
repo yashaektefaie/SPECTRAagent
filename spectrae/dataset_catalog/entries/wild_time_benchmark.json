@@ -1,0 +1,76 @@
+{
+  "id": "wild_time_benchmark",
+  "version": "0.1.0",
+  "status": "active",
+  "title": "Wild-Time Temporal Distribution-Shift Benchmark",
+  "domains": ["temporal_shift", "distribution_shift", "tabular_ml", "clinical_ai", "nlp"],
+  "data_types": ["timestamped example", "domain label", "task label", "temporal split"],
+  "scientific_units": ["timestamped_sample", "time_period", "domain"],
+  "compatible_model_families": ["temporal model", "tabular model", "text classifier", "clinical prediction model", "vision model"],
+  "source": {
+    "homepage": "https://wild-time.github.io/",
+    "repository": "https://github.com/huaxiuyao/Wild-Time",
+    "data_urls": [
+      {
+        "description": "Wild-Time project site",
+        "url": "https://wild-time.github.io/",
+        "access_notes": "Project site links benchmark code and paper."
+      },
+      {
+        "description": "Wild-Time GitHub repository",
+        "url": "https://github.com/huaxiuyao/Wild-Time",
+        "access_notes": "Use official loaders and task documentation."
+      }
+    ]
+  },
+  "access": {
+    "mode": "repository",
+    "authentication": "varies_by_task",
+    "instructions": [
+      "Use public Wild-Time tasks first and inspect each task's upstream access requirements.",
+      "Record timestamp, domain/time split, task name, features, labels, and source dataset license.",
+      "Treat provided temporal splits as operating points and construct continuous time-distance/support curves when possible."
+    ]
+  },
+  "scale": {
+    "download_size": "variable by task; use one public task first",
+    "spectra_default": "selected_public_task"
+  },
+  "expected_fields": ["sample_id", "timestamp", "time_period", "features", "label", "task_name", "split"],
+  "recommended_axes": [
+    {
+      "name": "temporal_distance",
+      "definition": "Distance in time between test samples and the nearest or distributional support of training samples.",
+      "prospective": true
+    },
+    {
+      "name": "time_period_domain_support",
+      "definition": "Similarity of coarse eras, seasons, years, or temporal environments.",
+      "prospective": true
+    },
+    {
+      "name": "feature_distribution_over_time",
+      "definition": "Train-fitted feature or embedding distribution support as time advances.",
+      "prospective": true
+    }
+  ],
+  "useful_for": [
+    "Auditing deployment-time generalization across multiple modalities.",
+    "Testing whether temporal splits represent a continuous performance decay over time.",
+    "Dataset Scout fallback when a model claim is explicitly about robustness over time."
+  ],
+  "leakage_risks": [
+    "Some tasks may include protected or credentialed upstream data.",
+    "Randomizing across time can leak future distribution information.",
+    "Temporal labels may be confounded with changes in class prevalence or annotation policy."
+  ],
+  "related_benchmark_capsules": [],
+  "related_memory_entries": [],
+  "paperclip_provenance": {
+    "search_ids": ["s_ebdb52dc", "s_bcaa8d4e"],
+    "map_ids": ["m_6070b7e2"],
+    "paper_ids": ["arx_2211.14238"],
+    "notes": "Paperclip identified Wild-Time as a temporal distribution-shift benchmark; official sources identify the project site and GitHub."
+  },
+  "tags": ["wild_time", "temporal_shift", "distribution_shift", "time", "deployment"]
+}

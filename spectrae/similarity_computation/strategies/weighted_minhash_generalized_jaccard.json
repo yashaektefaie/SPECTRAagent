@@ -1,0 +1,92 @@
+{
+  "id": "weighted_minhash_generalized_jaccard",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "Weighted MinHash for Generalized Jaccard Similarity",
+  "strategy_family": "hashing_sketch_lsh",
+  "exactness": "hybrid_exact_after_candidate_generation",
+  "applies_to_similarity_kinds": [
+    "weighted_jaccard_similarity",
+    "generalized_jaccard_similarity",
+    "probability_jaccard_similarity",
+    "weighted_set_overlap"
+  ],
+  "compatible_data_shapes": [
+    "weighted_set_features",
+    "tfidf",
+    "count_vector",
+    "weighted_ontology_terms",
+    "weighted_graph_substructures",
+    "abundance_profiles"
+  ],
+  "definition": "Use consistent weighted sampling, BagMinHash, ProbMinHash, or related weighted MinHash sketches to estimate generalized Jaccard similarity for real-valued nonnegative feature sets, then retrieve and rerank candidate train neighbors.",
+  "scale_profile": {
+    "best_for": "Large weighted bags or abundance profiles where binarizing features would discard important weights.",
+    "typical_upper_bound": "Millions of sparse weighted sets when sketch size is chosen for the needed variance.",
+    "avoid_when": "Negative features or signed embeddings are required; use cosine/MIPS methods instead."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "sketch_size",
+      "candidate_source"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "nonnegative weighted feature sets"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "sketch_size",
+      "purpose": "Controls estimator variance."
+    },
+    {
+      "name": "weighted_minhash_variant",
+      "purpose": "Selects CWS, ICWS, BagMinHash, ProbMinHash, or another implementation."
+    },
+    {
+      "name": "lsh_band_parameters",
+      "purpose": "Controls candidate threshold and recall."
+    }
+  ],
+  "quality_gates": [
+    "Compare approximate weighted Jaccard to exact weighted Jaccard on a subset.",
+    "Report how zero, missing, and negative values were handled.",
+    "Retain enough sketch size for the spectral thresholds of interest."
+  ],
+  "failure_modes": [
+    "Weights with extreme dynamic range can dominate collisions.",
+    "Binarizing weighted features silently changes the scientific similarity definition.",
+    "Sketch variance can blur narrow SPECTRA bins."
+  ],
+  "python_example": "weighted_jaccard_topk.py",
+  "example_usage": "python weighted_jaccard_topk.py --train train.csv --eval eval.csv --out pairwise_similarity.csv --feature-col weighted_terms --top-k 50",
+  "citations": [
+    {
+      "paper_id": "arx_1811.04633",
+      "title": "A Review for Weighted MinHash Algorithms",
+      "evidence": "Reviews weighted MinHash algorithms for estimating generalized Jaccard similarity of weighted sets at large scale."
+    },
+    {
+      "paper_id": "arx_1802.03914",
+      "title": "BagMinHash - Minwise Hashing Algorithm for Weighted Sets",
+      "evidence": "Introduces BagMinHash as an efficient minwise hashing algorithm for weighted sets."
+    }
+  ],
+  "tags": [
+    "weighted_minhash",
+    "generalized_jaccard",
+    "weighted_sets",
+    "sketching",
+    "lsh"
+  ]
+}

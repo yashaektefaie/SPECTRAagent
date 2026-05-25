@@ -1,0 +1,48 @@
+{
+  "schema_version": "0.1.0",
+  "description": "Schema for SPECTRA similarity computation strategies. These entries describe how to compute or approximate pairwise similarity files after an agent has chosen a scientific similarity definition.",
+  "required_fields": [
+    "id",
+    "version",
+    "status",
+    "computation_name",
+    "strategy_family",
+    "exactness",
+    "applies_to_similarity_kinds",
+    "compatible_data_shapes",
+    "definition",
+    "scale_profile",
+    "output_contract",
+    "required_inputs",
+    "tunable_parameters",
+    "quality_gates",
+    "failure_modes",
+    "python_example",
+    "citations",
+    "tags"
+  ],
+  "recommended_output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "candidate_source"
+    ],
+    "interpretation": "Rows encode train-eval similarity edges. Larger similarity values should mean more train-like evaluation samples unless the downstream audit explicitly declares a distance axis."
+  },
+  "status_values": [
+    "human_reviewed",
+    "draft",
+    "experimental"
+  ],
+  "exactness_values": [
+    "exact",
+    "approximate",
+    "hybrid_exact_after_candidate_generation"
+  ]
+}

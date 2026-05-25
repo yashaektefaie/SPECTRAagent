@@ -1,0 +1,37 @@
+{
+  "id": "drug_target_cold_start_split",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "operating_point_name": "Cold Drug / Cold Target Split",
+  "method_family": "entity_cold_start",
+  "scientific_unit": "drug_target_pair",
+  "data_types": ["drug_target_interaction", "drug_target_affinity", "bioactivity"],
+  "target_novelty_axis": "drug_identity_target_identity_or_pair_identity",
+  "deployment_question": "How does the model perform on unseen drugs, unseen targets, or unseen drug-target pairs?",
+  "curve_region": "low_overlap",
+  "definition": "Split interaction data by holding out all records for drugs, targets, or drug-target pairs, creating cold-start settings that test entity-level transfer.",
+  "split_operator": {"type": "entity_holdout", "heldout_unit": "drug_id_target_id_or_pair", "spectra_mapping": "sets same-entity train overlap to zero along the chosen entity axis"},
+  "required_inputs": ["sample_id", "drug_id", "target_id", "interaction or affinity label"],
+  "recommended_similarity_axes": ["drug_similarity", "target_sequence_similarity", "pair_composite_similarity"],
+  "output_contract": {"mode": "split_assignment", "required_columns": ["sample_id", "split", "role"], "optional_columns": ["heldout_entity_type", "heldout_entity_id"]},
+  "implementation_recipe": [
+    "Choose cold-drug, cold-target, cold-pair, or double-cold setting.",
+    "Assign all records containing held-out entities to the test split.",
+    "Measure residual drug and target similarity to training entities."
+  ],
+  "quality_gates": [
+    "Report which entity axis is held out.",
+    "Check whether targets or drugs have close homologs/analogs in train.",
+    "Avoid mixing cold-start evaluation with random pair leakage."
+  ],
+  "failure_modes": [
+    "Cold pair is easier than cold drug or cold target if both entities appear separately in training.",
+    "Protein family or chemical analog leakage can remain.",
+    "Sparse entities can create unstable estimates."
+  ],
+  "citations": [
+    {"paper_id": "bio_8432816075a0", "title": "Improving the Assessment of Deep Learning Models in Drug-Target Interaction Prediction", "evidence": "Proposes separating test samples by drug and target to better assess OOD drug-target prediction."},
+    {"paper_id": "arx_2504.09481", "title": "Rethinking the generalization of drug target affinity prediction via similarity aware evaluation", "evidence": "Shows standard DTA evaluation can overstate performance and recommends similarity-aware evaluation."}
+  ],
+  "tags": ["drug_target", "cold_start", "entity_holdout", "affinity"]
+}

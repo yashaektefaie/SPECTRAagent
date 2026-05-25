@@ -1,0 +1,86 @@
+{
+  "id": "domain_distribution_mmd_similarity",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "domain_labeled_tabular_or_embedding_data",
+  "scientific_unit": "sample_with_domain_membership",
+  "task_family": [
+    "covariate shift",
+    "domain generalization",
+    "dataset shift detection"
+  ],
+  "similarity_name": "Domain-level MMD distribution similarity",
+  "similarity_kind": "distributional_similarity",
+  "definition": "Group samples by domain, batch, site, time bin, or environment, compute a distribution distance such as Maximum Mean Discrepancy over feature or embedding columns, then assign each train-eval pair the similarity between their domains. This audits support overlap at the domain level rather than only sample-neighbor similarity.",
+  "spectra_axis": {
+    "name": "domain_distribution_similarity",
+    "axis_type": "similarity",
+    "aggregation": "domain_pair_mmd_kernel_similarity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "domain",
+    "feature_columns"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/domain_distribution_similarity.py",
+  "example_usage": "python domain_distribution_similarity.py --train train.csv --eval eval.csv --out pairwise_similarity.csv --domain-col site --feature-cols-prefix feat_",
+  "citations": [
+    {
+      "paper_id": "arx_2111.10344",
+      "title": "Maximum Mean Discrepancy for Generalization in the Presence of Distribution and Missingness Shift",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/arx_2111.10344/content.lines",
+          "lines": "L11-L15",
+          "summary": "The paper proposes using MMD between training and test sets to address covariate and missingness shift."
+        },
+        {
+          "path": "/papers/arx_2111.10344/content.lines",
+          "lines": "L26-L30",
+          "summary": "The method introduces MMD as the core distributional discrepancy."
+        }
+      ]
+    },
+    {
+      "paper_id": "arx_2208.02896",
+      "title": "Interpretable Distribution Shift Detection using Optimal Transport",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/arx_2208.02896/content.lines",
+          "lines": "L4-L12",
+          "summary": "The paper uses optimal transport to detect and characterize train-test distribution shifts."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "MMD is domain-level; it does not identify which individual training sample explains an evaluation sample.",
+    "Feature scaling and kernel bandwidth strongly affect the distance.",
+    "Small domains produce noisy distribution estimates."
+  ],
+  "quality_gates": [
+    "Report domain definition, feature columns, scaling, kernel, gamma, and sample counts per domain.",
+    "Run sensitivity analysis over kernel bandwidth or use median-distance heuristics.",
+    "Use this alongside a sample-level nearest-neighbor axis when both are meaningful."
+  ],
+  "tags": [
+    "mmd",
+    "distribution_shift",
+    "covariate_shift",
+    "domain",
+    "optimal_transport",
+    "support_overlap"
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "id": "environment_confounder_domain_similarity",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "scientific_dataset_with_environments",
+  "scientific_unit": "sample_environment_or_domain",
+  "task_family": [
+    "domain generalization",
+    "causal generalization",
+    "confounder shift"
+  ],
+  "similarity_name": "Environment and confounder metadata similarity",
+  "similarity_kind": "causal_environment_similarity",
+  "definition": "Represent each sample by environment-defining metadata such as site, time period, instrument, geography, protocol, demographic stratum, intervention regime, or known nuisance factor. Use exact, ordinal, or mixed metadata similarity to audit whether performance depends on the same environments seen during training.",
+  "spectra_axis": {
+    "name": "environment_confounder_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_environment_similarity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "environment_metadata"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/metadata_distance_similarity.py",
+  "example_usage": "python metadata_distance_similarity.py --train train.csv --eval eval.csv --out pairwise_similarity.csv --columns environment site time_bin protocol demographic_group",
+  "citations": [
+    {
+      "paper_id": "arx_2206.08452",
+      "title": "GOOD: A Graph Out-of-Distribution Benchmark",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/arx_2206.08452/content.lines",
+          "lines": "L29-L40",
+          "summary": "GOOD uses domain features and latent environment variables to construct covariate and concept shifts."
+        }
+      ]
+    },
+    {
+      "paper_id": "arx_2203.09978",
+      "title": "WOODS: Benchmarks for Out-of-Distribution Generalization in Time Series",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/arx_2203.09978/content.lines",
+          "lines": "L35-L66",
+          "summary": "WOODS defines source domains, time domains, device shifts, demographic shifts, and procedural shifts in time series."
+        }
+      ]
+    },
+    {
+      "paper_id": "arx_2107.08189",
+      "title": "BEDS-Bench: Behavior of EHR-models under Distributional Shift--A Benchmark",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/arx_2107.08189/content.lines",
+          "lines": "L25-L43",
+          "summary": "BEDS-Bench motivates EHR evaluation under population, practice, health-system, and data-format shifts."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Environment labels are often proxies, not causal variables.",
+    "Multiple environments can be confounded and should not be collapsed without justification.",
+    "Exact metadata similarity can miss continuous domain drift."
+  ],
+  "quality_gates": [
+    "Name which metadata are hypothesized causal, spurious, or nuisance factors.",
+    "Run separate curves for distinct environment axes before combining them.",
+    "Check whether labels and sample counts are balanced across environment bins."
+  ],
+  "tags": [
+    "environment",
+    "confounder",
+    "domain_generalization",
+    "causal_shift",
+    "metadata",
+    "ood"
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "id": "cross_species_tf_binding_morale",
+  "version": "0.1.0",
+  "status": "active",
+  "title": "MORALE Cross-Species Transcription-Factor Binding Benchmark",
+  "domains": ["regulatory_genomics", "cross_species_generalization", "dna_sequence_modeling", "domain_adaptation"],
+  "data_types": ["DNA sequence", "TF ChIP-seq binding label", "species label", "cell-type or tissue metadata", "genomic coordinate"],
+  "scientific_units": ["sequence_window", "transcription_factor", "species", "genomic_locus"],
+  "compatible_model_families": ["DNA language model", "regulatory sequence model", "TF binding predictor", "domain adaptation model"],
+  "source": {
+    "homepage": "https://doi.org/10.1101/2025.05.21.655414",
+    "repository": "https://github.com/loudrxiv/frustrating",
+    "data_urls": [
+      {
+        "description": "Zenodo archive",
+        "url": "https://zenodo.org/records/15555423",
+        "access_notes": "Archive for the MORALE cross-species TF binding study."
+      },
+      {
+        "description": "Code repository",
+        "url": "https://github.com/loudrxiv/frustrating",
+        "access_notes": "Use to recover preprocessing, species/TF lists, and benchmark splits."
+      }
+    ]
+  },
+  "access": {
+    "mode": "mixed",
+    "authentication": "none_expected_for_code_archive; upstream ENCODE/ChIP resources may vary",
+    "instructions": [
+      "Use the repository/archive to identify species, transcription factors, cell types, coordinates, labels, and original source resources.",
+      "Start with one transcription factor and one source-target species pair before expanding to the full benchmark.",
+      "Record genome build, coordinate system, sequence window size, species, TF, cell type/tissue, binding label, and split."
+    ]
+  },
+  "scale": {
+    "download_size": "variable multi-species regulatory genomics resource; start with a selected TF/species pair",
+    "spectra_default": "selected_tf_species_pair"
+  },
+  "expected_fields": ["sequence_id", "sequence", "species", "transcription_factor", "cell_type", "genomic_coordinate", "binding_label", "split"],
+  "recommended_axes": [
+    {
+      "name": "species_similarity",
+      "definition": "Evolutionary or phylogenetic distance between source and target species.",
+      "prospective": true
+    },
+    {
+      "name": "motif_and_tf_family_support",
+      "definition": "Support in motif syntax, TF family, motif occurrence, and motif grammar relative to training sequences.",
+      "prospective": true
+    },
+    {
+      "name": "sequence_composition_and_repeat_support",
+      "definition": "k-mer, GC, CpG, low-complexity, and repeat-family support across species.",
+      "prospective": true
+    },
+    {
+      "name": "orthologous_locus_support",
+      "definition": "Whether target loci align to or are orthologous with source-species regulatory loci.",
+      "prospective": true
+    }
+  ],
+  "useful_for": [
+    "Testing whether regulatory sequence models learn species-invariant TF binding rules or species-specific sequence artifacts.",
+    "Providing a DART-like external biology axis for DNA foundation-model generalization audits.",
+    "Contrasting sequence-similarity, motif-syntax, and species-distance explanations."
+  ],
+  "leakage_risks": [
+    "Orthologous or lifted-over loci can leak equivalent regulatory examples across species.",
+    "Repeat-family and GC composition can masquerade as regulatory mechanism.",
+    "TF identity and motif family can dominate if target TFs overlap too strongly with training TFs."
+  ],
+  "related_benchmark_capsules": [],
+  "related_memory_entries": [],
+  "paperclip_provenance": {
+    "search_ids": ["s_68eb3407"],
+    "map_ids": ["m_1af5f230"],
+    "paper_ids": ["PMC12154900", "PMC8896468", "bio_5d8c210471c8"],
+    "notes": "Paperclip surfaced cross-species TF binding as a recurring regulatory-genomics generalization setting; official repository and Zenodo archive provide a portable entry point."
+  },
+  "tags": ["morale", "tf_binding", "cross_species", "regulatory_genomics", "domain_adaptation"]
+}

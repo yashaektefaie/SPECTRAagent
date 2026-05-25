@@ -1,0 +1,66 @@
+{
+  "id": "umap_virtual_screening_nci60",
+  "version": "0.1.0",
+  "status": "active",
+  "title": "UMAP Virtual Screening and NCI-60 Activity Resources",
+  "domains": ["molecular_ml", "drug_discovery", "virtual_screening"],
+  "data_types": ["SMILES", "molecule-cell-line activity", "NCI-60 screening data"],
+  "scientific_units": ["molecule_cell_line_activity_measurement"],
+  "compatible_model_families": ["virtual screening model", "molecular property predictor", "cell-line activity model"],
+  "source": {
+    "homepage": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12153141/",
+    "repository": "https://github.com/Rong830/UMAP_split_for_VS",
+    "data_urls": [
+      {
+        "description": "Reproducibility archive",
+        "url": "https://zenodo.org/records/14736486",
+        "access_notes": "Archive may contain larger data files; fetch explicitly."
+      },
+      {
+        "description": "NCI-60 screening data portal",
+        "url": "https://dtp.cancer.gov/discovery_development/nci-60/",
+        "access_notes": "Follow NCI data use and download instructions."
+      }
+    ]
+  },
+  "access": {
+    "mode": "mixed",
+    "authentication": "none_expected",
+    "instructions": [
+      "Inspect the UMAP split repository and Zenodo archive for reproducibility files.",
+      "Download NCI-60 screening data through the NCI portal if raw activity data are needed.",
+      "Track molecule identifiers, cell lines, activity labels, and split construction method."
+    ]
+  },
+  "expected_fields": ["smiles", "compound_id", "cell_line", "activity", "split", "cluster"],
+  "recommended_axes": [
+    {
+      "name": "chemical_distance",
+      "definition": "Morgan fingerprint Tanimoto similarity.",
+      "prospective": true
+    },
+    {
+      "name": "umap_cluster_distance",
+      "definition": "Distance or adjacency over molecular UMAP clusters.",
+      "prospective": true
+    },
+    {
+      "name": "bioactivity_neighbor_overlap",
+      "definition": "Shared activity-neighborhood labels within a cell line; diagnostic if derived from held-out activity.",
+      "prospective": false
+    }
+  ],
+  "useful_for": [
+    "Showing that random/scaffold/Butina/UMAP splits are operating points on a broader SPECTRA curve.",
+    "Virtual-screening chemical novelty audits.",
+    "Molecule-cell-line activity generalization."
+  ],
+  "leakage_risks": [
+    "Activity-neighborhood axes can leak held-out labels.",
+    "Cell-line-specific label imbalance can dominate chemical novelty.",
+    "Molecule canonicalization and duplicate compounds need explicit checks."
+  ],
+  "related_benchmark_capsules": ["umap_virtual_screening"],
+  "related_memory_entries": [],
+  "tags": ["umap_split", "virtual_screening", "nci60", "molecules", "chemical_cluster"]
+}

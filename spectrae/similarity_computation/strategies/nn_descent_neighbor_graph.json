@@ -1,0 +1,93 @@
+{
+  "id": "nn_descent_neighbor_graph",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "NN-Descent Approximate Neighbor-Graph Construction",
+  "strategy_family": "neighbor_graph_construction",
+  "exactness": "approximate",
+  "applies_to_similarity_kinds": [
+    "embedding_similarity",
+    "cosine_similarity",
+    "euclidean_distance",
+    "arbitrary_pairwise_distance",
+    "knn_graph_similarity"
+  ],
+  "compatible_data_shapes": [
+    "dense_vector",
+    "embedding",
+    "custom_metric",
+    "single_cell_embedding",
+    "image_embedding",
+    "biological_embedding"
+  ],
+  "definition": "Construct an approximate k-nearest-neighbor graph by iteratively improving candidate neighbor lists using the neighbors-of-neighbors principle. This is useful when SPECTRA needs a neighbor graph rather than independent point queries, especially for large embedding tables or custom distances.",
+  "scale_profile": {
+    "best_for": "Large datasets where the audit can use a kNN graph over train/eval points and exact all-pairs computation is infeasible.",
+    "typical_upper_bound": "Millions of points in optimized CPU/GPU implementations.",
+    "avoid_when": "Exact pairwise distances are required for all threshold levels and no recall calibration subset is available."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "knn_recall_at_k"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "vector features or pairwise distance callback",
+    "neighbor count k"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "k",
+      "purpose": "Number of neighbors retained per point."
+    },
+    {
+      "name": "iterations",
+      "purpose": "Controls convergence of neighbor-list refinement."
+    },
+    {
+      "name": "sample_rate",
+      "purpose": "Controls candidate expansion cost and recall."
+    }
+  ],
+  "quality_gates": [
+    "Measure recall@k against exact neighbors on a representative subset.",
+    "Report k, iterations, and convergence diagnostics.",
+    "Check that train-eval neighbor extraction is not contaminated by eval labels."
+  ],
+  "failure_modes": [
+    "Approximate graph errors can make samples appear spuriously novel.",
+    "Small k can miss medium-distance neighborhoods needed for low-overlap SPECTRA bins.",
+    "Graph construction can converge poorly when similarity is noisy or non-metric."
+  ],
+  "python_example": "dense_vector_topk_similarity.py",
+  "example_usage": "Use dense_vector_topk_similarity.py as an exact small-scale contract; production NN-Descent implementations should emit the same pairwise_similarity.csv columns.",
+  "citations": [
+    {
+      "paper_id": "arx_2112.06630",
+      "title": "Fast Single-Core K-Nearest Neighbor Graph Computation",
+      "evidence": "Optimizes NN-Descent for k-nearest-neighbor graph computation and reports substantial runtime improvements."
+    },
+    {
+      "paper_id": "arx_2103.15386",
+      "title": "Large-Scale Approximate k-NN Graph Construction on GPU",
+      "evidence": "Adapts NN-Descent for GPU-based large-scale kNN graph construction."
+    }
+  ],
+  "tags": [
+    "nn_descent",
+    "knn_graph",
+    "neighbor_graph",
+    "approximate",
+    "large_scale"
+  ]
+}

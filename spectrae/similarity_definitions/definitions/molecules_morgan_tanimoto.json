@@ -1,0 +1,85 @@
+{
+  "id": "molecules_morgan_tanimoto",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "small_molecule",
+  "scientific_unit": "molecule",
+  "task_family": [
+    "molecular property prediction",
+    "virtual screening",
+    "molecular OOD prediction"
+  ],
+  "similarity_name": "Morgan fingerprint Tanimoto train-neighbor similarity",
+  "similarity_kind": "fingerprint_similarity",
+  "definition": "Represent each molecule with a circular Morgan fingerprint, compute Tanimoto similarity between each evaluation molecule and all training molecules, and use either the full train-eval pairwise graph or the maximum train-neighbor similarity as the SPECTRA overlap axis.",
+  "spectra_axis": {
+    "name": "max_train_morgan_tanimoto",
+    "axis_type": "similarity",
+    "aggregation": "max_train_similarity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "smiles"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/molecule_morgan_tanimoto.py",
+  "example_usage": "python molecule_morgan_tanimoto.py --train train.csv --eval eval.csv --out pairwise_similarity.csv --train-id-col train_id --eval-id-col sample_id --smiles-col smiles",
+  "citations": [
+    {
+      "paper_id": "PMC12153141",
+      "title": "UMAP-based clustering split for rigorous evaluation of AI models for virtual screening on cancer cell lines",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC12153141/content.lines",
+          "lines": "L15",
+          "summary": "The paper states that chemical similarity is assessed with Tanimoto coefficients on Morgan fingerprints."
+        },
+        {
+          "path": "/papers/PMC12153141/content.lines",
+          "lines": "L56-L57",
+          "summary": "The paper computes each test molecule's maximum Tanimoto similarity to training molecules using radius-2, 2048-bit Morgan fingerprints."
+        }
+      ]
+    },
+    {
+      "paper_id": "arx_2505.01912",
+      "title": "BOOM: Benchmarking Out-Of-distribution Molecular Property Predictions of Machine Learning Models",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/arx_2505.01912/meta.json",
+          "lines": "abstract",
+          "summary": "BOOM motivates systematic molecular OOD prediction audits and reports substantially higher OOD error than in-distribution error."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Captures 2D structural resemblance, not assay, protein target, experimental protocol, or property-range shift.",
+    "Scaffold novelty can remain incomplete because different scaffolds may still have high fingerprint similarity.",
+    "Fingerprint radius and bit length affect measured overlap."
+  ],
+  "quality_gates": [
+    "Report fingerprint radius and bit length.",
+    "Plot the distribution of max train similarity by split or spectral bin.",
+    "Check whether high similarity persists across nominal scaffold or cluster splits."
+  ],
+  "tags": [
+    "molecules",
+    "tanimoto",
+    "morgan",
+    "fingerprint",
+    "virtual_screening",
+    "boom"
+  ]
+}

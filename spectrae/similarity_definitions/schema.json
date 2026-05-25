@@ -1,0 +1,32 @@
+{
+  "schema_version": "0.1.0",
+  "required_fields": [
+    "id",
+    "version",
+    "status",
+    "data_type",
+    "scientific_unit",
+    "task_family",
+    "similarity_name",
+    "similarity_kind",
+    "definition",
+    "spectra_axis",
+    "required_inputs",
+    "outputs",
+    "python_example",
+    "citations",
+    "limitations",
+    "quality_gates",
+    "tags"
+  ],
+  "status_values": [
+    "seed_mined",
+    "human_reviewed",
+    "deprecated"
+  ],
+  "output_modes": [
+    "pairwise",
+    "axis"
+  ],
+  "notes": "Seed-mined entries encode candidate definitions extracted from papers. Promote to human_reviewed only after a domain expert checks the evidence and implementation."
+}

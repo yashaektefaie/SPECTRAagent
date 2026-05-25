@@ -1,0 +1,70 @@
+{
+  "id": "matbench_materials",
+  "version": "0.1.0",
+  "status": "active",
+  "title": "Matbench Materials Property Benchmark Datasets",
+  "domains": ["materials_science", "scientific_ml", "tabular_materials"],
+  "data_types": ["composition", "crystal structure", "materials property table"],
+  "scientific_units": ["material", "composition", "crystal_structure"],
+  "compatible_model_families": ["materials property predictor", "graph neural network", "crystal graph model", "composition baseline"],
+  "source": {
+    "homepage": "https://matbench.materialsproject.org/",
+    "repository": "https://github.com/hackingmaterials/matbench",
+    "data_urls": [
+      {
+        "description": "Matbench website",
+        "url": "https://matbench.materialsproject.org/",
+        "access_notes": "Use the benchmark website and package for official task definitions."
+      },
+      {
+        "description": "matminer dataset documentation",
+        "url": "https://hackingmaterials.lbl.gov/matminer/dataset_summary.html",
+        "access_notes": "Matbench tasks are available through the materials ML Python ecosystem."
+      }
+    ]
+  },
+  "access": {
+    "mode": "repository",
+    "authentication": "none_expected",
+    "instructions": [
+      "Use the official Matbench or matminer loaders for a selected task.",
+      "Pin the task name, benchmark version, and official train/test folds before constructing extra SPECTRA splits.",
+      "Retain formula, structure, composition, property, and fold identifiers."
+    ]
+  },
+  "scale": {
+    "download_size": "lightweight to moderate by task",
+    "spectra_default": "full_selected_task"
+  },
+  "expected_fields": ["material_id", "composition", "structure", "target", "task_name", "fold"],
+  "recommended_axes": [
+    {
+      "name": "composition_similarity",
+      "definition": "Elemental composition, Magpie-feature, or formula-vector similarity to training materials.",
+      "prospective": true
+    },
+    {
+      "name": "structure_similarity",
+      "definition": "Crystal-structure, prototype, space-group, or local-environment similarity.",
+      "prospective": true
+    },
+    {
+      "name": "property_support",
+      "definition": "Distance from training target-property support; diagnostic unless based only on training labels for prospective construction.",
+      "prospective": false
+    }
+  ],
+  "useful_for": [
+    "Materials-science SPECTRA demos that are smaller than large simulation corpora.",
+    "Testing composition novelty versus structure novelty.",
+    "Building non-biology examples for scientific generalization auditing."
+  ],
+  "leakage_risks": [
+    "Formula duplicates and polymorphs can leak across folds.",
+    "Property-derived axes are post-hoc unless constructed from training-only labels.",
+    "Composition-only models and structure-aware models need separate axis interpretation."
+  ],
+  "related_benchmark_capsules": ["gess"],
+  "related_memory_entries": [],
+  "tags": ["matbench", "materials", "composition", "crystal_structure", "scientific_ml"]
+}

@@ -1,0 +1,61 @@
+{
+  "id": "perturbench_huggingface",
+  "version": "0.1.0",
+  "status": "active",
+  "title": "PerturBench Processed Perturbation Datasets",
+  "domains": ["single_cell_perturbation", "perturbation_biology"],
+  "data_types": ["single-cell expression", "perturbation response", "AnnData"],
+  "scientific_units": ["perturbation_condition", "perturbed_cell", "cell_perturbation_pair"],
+  "compatible_model_families": ["single-cell foundation model", "perturbation response model", "gene expression predictor"],
+  "source": {
+    "homepage": "https://arxiv.org/abs/2408.10609",
+    "repository": "https://github.com/altoslabs/perturbench",
+    "data_urls": [
+      {
+        "description": "Processed PerturBench datasets",
+        "url": "https://huggingface.co/datasets/altoslabs/perturbench",
+        "access_notes": "Dataset files can be large; choose a bounded task before downloading."
+      }
+    ]
+  },
+  "access": {
+    "mode": "huggingface",
+    "authentication": "none_or_huggingface_optional",
+    "instructions": [
+      "Inspect the repository task definitions before downloading data.",
+      "Download only the selected processed h5ad task files.",
+      "Record perturbation, cell type, covariate, and split metadata in the dataset manifest."
+    ]
+  },
+  "expected_fields": ["perturbation", "cell_type", "covariates", "expression", "split", "gene_id"],
+  "recommended_axes": [
+    {
+      "name": "perturbation_network_distance",
+      "definition": "GO, Reactome, KEGG, STRING, target-pathway, or embedding distance between perturbations.",
+      "prospective": true
+    },
+    {
+      "name": "cell_state_distance",
+      "definition": "Cell-state or cell-type embedding distance.",
+      "prospective": true
+    },
+    {
+      "name": "component_support",
+      "definition": "Fraction of combination perturbation components observed in training; useful but often schema-obvious.",
+      "prospective": true
+    }
+  ],
+  "useful_for": [
+    "Perturbation generalization audits beyond component-support demos.",
+    "Testing unseen perturbation, unseen cell type, and covariate-transfer settings.",
+    "Hard capsules where external pathway or gene-network structure matters."
+  ],
+  "leakage_risks": [
+    "Perturbation names may expose support structure.",
+    "Response-profile similarity is post-hoc/leaky for split design.",
+    "Batch, donor, cell type, and source-dataset covariates can dominate apparent perturbation effects."
+  ],
+  "related_benchmark_capsules": ["perturbench"],
+  "related_memory_entries": ["cross_domain_agent_ablation_memory"],
+  "tags": ["perturbench", "single_cell", "perturbation", "huggingface", "pathway"]
+}

@@ -1,0 +1,79 @@
+{
+  "id": "gene_expression_signature_connectivity_similarity",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "gene_expression_signature",
+  "scientific_unit": "biological_state_or_perturbation",
+  "task_family": [
+    "drug repurposing",
+    "transcriptomic perturbation modeling",
+    "functional signature matching"
+  ],
+  "similarity_name": "Gene-expression signature connectivity",
+  "similarity_kind": "ranked_signature_similarity",
+  "definition": "Represent each biological state, disease, compound, or perturbation by a differential gene-expression signature, ranked profile, or up/down gene set. Compare signatures using connectivity scores, enrichment statistics, Pearson or cosine correlation, or signed rank agreement. For SPECTRA, this audits whether transcriptomic predictions generalize to expression states unlike those seen during training.",
+  "spectra_axis": {
+    "name": "gene_expression_connectivity_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_signature_connectivity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "signature_vector_or_ranked_gene_list"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/vector_correlation_similarity.py",
+  "example_usage": "python vector_correlation_similarity.py --train train_signatures.csv --eval eval_signatures.csv --out pairwise_similarity.csv --feature-cols-prefix gene_",
+  "citations": [
+    {
+      "paper_id": "PMC2464610",
+      "title": "A simple and robust method for connecting small-molecule drugs using gene-expression signatures",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC2464610/content.lines",
+          "lines": "L6-L14",
+          "summary": "The paper describes connecting small molecules, genes, and diseases by matching gene-expression signatures against reference profiles."
+        },
+        {
+          "path": "/papers/PMC2464610/content.lines",
+          "lines": "L17-L30",
+          "summary": "It describes ranked reference profiles and connectivity scores ranging from negative to positive connection."
+        },
+        {
+          "path": "/papers/PMC2464610/content.lines",
+          "lines": "L70-L70",
+          "summary": "The authors emphasize statistical significance controls for connectivity-map style matching."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Cell type, dose, time point, normalization, and batch effects can dominate signature similarity.",
+    "Negative connectivity can mean useful reversal rather than low relevance; define whether the audit uses signed or absolute similarity.",
+    "Ranked-signature methods and dense-vector correlations answer related but different questions."
+  ],
+  "quality_gates": [
+    "Report signature construction, gene universe, ranking, scaling, and whether up/down directions are preserved.",
+    "Separate same-cell-line and cross-cell-line curves when metadata permit.",
+    "Run sensitivity analysis over signed correlation, absolute correlation, and enrichment-style connectivity if possible."
+  ],
+  "tags": [
+    "gene_expression",
+    "connectivity_map",
+    "signature_matching",
+    "transcriptomics",
+    "drug_repurposing",
+    "correlation"
+  ]
+}
+

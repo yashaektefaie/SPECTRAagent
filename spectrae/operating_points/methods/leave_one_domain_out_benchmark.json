@@ -1,0 +1,37 @@
+{
+  "id": "leave_one_domain_out_benchmark",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "operating_point_name": "Leave-One-Domain-Out Benchmark",
+  "method_family": "domain_holdout",
+  "scientific_unit": "domain_labeled_sample",
+  "data_types": ["generic", "image", "speech", "sensor", "single_cell", "clinical_record"],
+  "target_novelty_axis": "domain_identity",
+  "deployment_question": "How does the model perform on a target domain absent from training?",
+  "curve_region": "low_overlap",
+  "definition": "Train on one or more source domains and evaluate on an unseen domain. This samples a named low-overlap domain point rather than estimating the full continuous similarity curve.",
+  "split_operator": {"type": "leave_one_domain_out", "heldout_unit": "domain_id", "spectra_mapping": "same-domain train overlap is zero for the held-out domain"},
+  "required_inputs": ["sample_id", "domain_id", "target domain or folds"],
+  "recommended_similarity_axes": ["same_domain_overlap", "domain_embedding_similarity", "distribution_distance"],
+  "output_contract": {"mode": "split_assignment", "required_columns": ["sample_id", "split", "role"], "optional_columns": ["fold_id", "heldout_domain"]},
+  "implementation_recipe": [
+    "Define domains from acquisition setting, environment, source dataset, language, subject population, or task context.",
+    "For each fold, hold out one domain as test and train only on other domains.",
+    "Report per-domain performance rather than only an average."
+  ],
+  "quality_gates": [
+    "Separate validation-domain model selection from test-domain reporting.",
+    "Report worst-domain performance and performance gaps.",
+    "Measure whether held-out domains are actually dissimilar under the chosen SPECTRA axis."
+  ],
+  "failure_modes": [
+    "Test-domain leakage through pretraining, normalization, or model selection can invalidate the operating point.",
+    "A domain label may bundle multiple shifts and obscure causal interpretation.",
+    "Average performance can hide a catastrophic target domain."
+  ],
+  "citations": [
+    {"paper_id": "arx_2007.01434", "title": "In Search of Lost Domain Generalization", "evidence": "Standardizes domain generalization evaluation and emphasizes model selection under unseen-domain testing."},
+    {"paper_id": "arx_2204.08040", "title": "NICO++: Towards Better Benchmarking for Domain Generalization", "evidence": "Introduces a benchmark with many domains to evaluate domain generalization capability."}
+  ],
+  "tags": ["domain_generalization", "leave_domain_out", "ood", "worst_domain"]
+}

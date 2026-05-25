@@ -1,0 +1,77 @@
+{
+  "id": "gdl_shift_factor_distance",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "scientific_geometric_graph",
+  "scientific_unit": "scientific_sample_or_domain",
+  "task_family": [
+    "geometric deep learning",
+    "scientific distribution shift",
+    "AI4Science benchmark"
+  ],
+  "similarity_name": "Scientific shift-factor distance",
+  "similarity_kind": "distribution_shift_axis",
+  "definition": "Identify the scientific factor that induces distribution shift, such as particle pileup level, signal-track curvature, material fidelity level, assay, molecular size, or scaffold. Use distance or shared membership along that factor as the SPECTRA novelty axis.",
+  "spectra_axis": {
+    "name": "scientific_shift_factor_similarity",
+    "axis_type": "similarity",
+    "aggregation": "same_group_or_scaled_factor_distance",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "shift_factor"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/metadata_distance_similarity.py",
+  "example_usage": "python metadata_distance_similarity.py --train train.csv --eval eval.csv --out pairwise_similarity.csv --columns shift_factor",
+  "citations": [
+    {
+      "paper_id": "arx_2310.08677",
+      "title": "GeSS: Benchmarking Geometric Deep Learning under Scientific Applications with Distribution Shifts",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/arx_2310.08677/content.lines",
+          "lines": "L15-L17",
+          "summary": "The paper categorizes scientific shifts as conditional, covariate, or concept shifts and studies different levels of OOD information."
+        },
+        {
+          "path": "/papers/arx_2310.08677/content.lines",
+          "lines": "L36-L40",
+          "summary": "The paper tabulates scientific shift cases and says source subgroups are partitioned by the factor undergoing shift."
+        },
+        {
+          "path": "/papers/arx_2310.08677/content.lines",
+          "lines": "L46-L56",
+          "summary": "The paper defines concrete shift factors including pileup, signal curvature, material fidelity, assay, size, and scaffold."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Requires domain knowledge to identify the causal or nuisance factor being shifted.",
+    "Categorical factors need a justified distance if converted to a continuous axis.",
+    "Multiple shift factors may interact and should not be collapsed without checking."
+  ],
+  "quality_gates": [
+    "Name the shifted probability mechanism or scientific factor.",
+    "Report whether the factor is categorical, ordinal, scalar, or graph-valued.",
+    "Run separate SPECTRA curves for distinct shift mechanisms when feasible."
+  ],
+  "tags": [
+    "gdl",
+    "ai4science",
+    "distribution_shift",
+    "gess",
+    "shift_factor"
+  ]
+}

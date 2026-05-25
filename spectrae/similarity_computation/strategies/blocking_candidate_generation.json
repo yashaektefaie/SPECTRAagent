@@ -1,0 +1,90 @@
+{
+  "id": "blocking_candidate_generation",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "Blocking Candidate Generation for Pairwise Similarity",
+  "strategy_family": "blocking_filtering",
+  "exactness": "hybrid_exact_after_candidate_generation",
+  "applies_to_similarity_kinds": [
+    "record_similarity",
+    "metadata_similarity",
+    "entity_resolution_similarity",
+    "group_conditioned_similarity"
+  ],
+  "compatible_data_shapes": [
+    "tabular",
+    "metadata",
+    "entity_records",
+    "clinical_records",
+    "experimental_batches"
+  ],
+  "definition": "Partition train and evaluation records into blocks using keys, sorted neighborhoods, canopies, or metadata filters, then compute exact similarity only within candidate blocks. In SPECTRA, blocking is useful when the scientific similarity is conditional on matching site, assay, lineage, cohort, or another coarse attribute.",
+  "scale_profile": {
+    "best_for": "Record-like data where cheap keys remove impossible or irrelevant comparisons.",
+    "typical_upper_bound": "Millions of records when block sizes are controlled.",
+    "avoid_when": "The blocking key is itself the scientific generalization axis and would hide cross-block novelty."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "candidate_source"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "blocking columns or cheap blocking rule"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "blocking_key",
+      "purpose": "Defines candidate partitions."
+    },
+    {
+      "name": "max_block_size",
+      "purpose": "Prevents common keys from recreating all-pairs comparisons."
+    },
+    {
+      "name": "within_block_similarity",
+      "purpose": "Exact scorer applied to candidates in the same block."
+    }
+  ],
+  "quality_gates": [
+    "Report candidate reduction and estimated pair recall.",
+    "Check large blocks and split them or handle separately.",
+    "Confirm the blocking rule does not remove the novelty axis the audit is meant to measure."
+  ],
+  "failure_modes": [
+    "Bad keys can miss true similar pairs.",
+    "Very common keys can create oversized blocks.",
+    "Blocking on a leakage variable can make the audit too easy or scientifically invalid."
+  ],
+  "python_example": "blocking_candidate_similarity.py",
+  "example_usage": "python blocking_candidate_similarity.py --train train.csv --eval eval.csv --out pairwise_similarity.csv --block-cols site,assay --token-col features",
+  "citations": [
+    {
+      "paper_id": "arx_1905.06167",
+      "title": "A survey of blocking and filtering techniques for entity resolution",
+      "evidence": "Frames pairwise comparison as the dominant cost in entity resolution and surveys blocking/filtering to reduce candidates."
+    },
+    {
+      "paper_id": "arx_1010.3053",
+      "title": "Parallel Sorted Neighborhood Blocking with MapReduce",
+      "evidence": "Uses sorted-neighborhood blocking to reduce comparisons in parallel entity-resolution workflows."
+    }
+  ],
+  "tags": [
+    "blocking",
+    "entity_resolution",
+    "metadata",
+    "candidate_generation",
+    "tabular"
+  ]
+}

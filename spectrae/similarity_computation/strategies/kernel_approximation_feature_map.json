@@ -1,0 +1,92 @@
+{
+  "id": "kernel_approximation_feature_map",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "Kernel Approximation Feature Maps for Pairwise Similarity",
+  "strategy_family": "kernel_feature_sketch",
+  "exactness": "approximate",
+  "applies_to_similarity_kinds": [
+    "rbf_kernel",
+    "laplacian_kernel",
+    "polynomial_kernel",
+    "nystrom_kernel",
+    "random_fourier_feature_similarity"
+  ],
+  "compatible_data_shapes": [
+    "dense_vector",
+    "numeric_feature_vector",
+    "kernelized_samples",
+    "large_kernel_matrix"
+  ],
+  "definition": "Approximate an expensive kernel matrix with explicit random Fourier, orthogonal random, Tensor Sketch, or Nyström features. SPECTRA then computes pairwise similarity by dot product or cosine in the approximate feature space.",
+  "scale_profile": {
+    "best_for": "Large scientific datasets where the desired similarity is a positive-definite kernel but the full kernel matrix is too expensive to compute or store.",
+    "typical_upper_bound": "Millions of samples when the feature map dimension is controlled.",
+    "avoid_when": "The kernel approximation error cannot be validated near the SPECTRA thresholds of interest."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "feature_map_dimension",
+      "kernel_approximation_error"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "input features or kernel landmarks",
+    "kernel and feature-map parameters"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "feature_map_dimension",
+      "purpose": "Controls approximation accuracy and storage."
+    },
+    {
+      "name": "kernel_bandwidth_or_degree",
+      "purpose": "Defines the scientific kernel."
+    },
+    {
+      "name": "landmark_count",
+      "purpose": "Controls Nyström approximation quality."
+    }
+  ],
+  "quality_gates": [
+    "Compare approximate kernel values to exact kernel values on a subset.",
+    "Report feature-map dimension, random seed, and kernel parameters.",
+    "Check whether approximation error changes rank ordering near hard SPECTRA thresholds."
+  ],
+  "failure_modes": [
+    "Too few features can distort pairwise similarity rankings.",
+    "Kernel bandwidth choices can dominate the audit axis.",
+    "Landmark sampling can underrepresent rare or novel regions."
+  ],
+  "python_example": "dense_vector_topk_similarity.py",
+  "example_usage": "Export random-feature or Nyström feature columns with prefix emb_, then run dense_vector_topk_similarity.py to emit pairwise kernel similarities.",
+  "citations": [
+    {
+      "paper_id": "arx_1610.09072",
+      "title": "Orthogonal Random Features",
+      "evidence": "Shows that orthogonal random features can reduce kernel approximation error compared with standard random Fourier features."
+    },
+    {
+      "paper_id": "arx_1605.07583",
+      "title": "Recursive Sampling for the Nystrom Method",
+      "evidence": "Develops a linear-time Nyström approximation method using recursive sampling and ridge leverage scores."
+    }
+  ],
+  "tags": [
+    "kernel",
+    "random_fourier_features",
+    "nystrom",
+    "tensor_sketch",
+    "feature_map"
+  ]
+}

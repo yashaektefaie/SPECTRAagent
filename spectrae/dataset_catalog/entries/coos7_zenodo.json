@@ -1,0 +1,70 @@
+{
+  "id": "coos7_zenodo",
+  "version": "0.1.0",
+  "status": "active",
+  "title": "COOS-7 Cells Out-of-Sample Microscopy Dataset",
+  "domains": ["bioimage_analysis", "microscopy", "distribution_shift"],
+  "data_types": ["microscopy image", "cell image", "class label"],
+  "scientific_units": ["cell_image", "experiment", "sample"],
+  "compatible_model_families": ["bioimage classifier", "microscopy foundation model", "image encoder"],
+  "source": {
+    "homepage": "https://papers.nips.cc/paper/8461-the-cells-out-of-sample-coos-dataset-and-benchmarks-for-measuring-out-of-sample-generalization-of-image-classifiers",
+    "repository": "",
+    "data_urls": [
+      {
+        "description": "COOS-7 Zenodo record",
+        "url": "https://zenodo.org/record/3386336",
+        "access_notes": "Public Zenodo record referenced by the COOS paper."
+      },
+      {
+        "description": "COOS paper",
+        "url": "https://arxiv.org/abs/1906.07282",
+        "access_notes": "Use the paper to recover split semantics and experimental metadata."
+      }
+    ]
+  },
+  "access": {
+    "mode": "zenodo",
+    "authentication": "none_expected",
+    "instructions": [
+      "Download the Zenodo files or a task-specific subset after checking available disk.",
+      "Recover the original train/test and out-of-sample labels from the paper and metadata.",
+      "Keep experiment, sample, microscope/day, and class metadata available for leakage checks."
+    ]
+  },
+  "scale": {
+    "download_size": "several GB reported in prior COOS materials; feasible but not instant",
+    "spectra_default": "sampled_or_full_if_disk_available"
+  },
+  "expected_fields": ["image", "label", "sample_id", "experiment_id", "split", "acquisition_condition"],
+  "recommended_axes": [
+    {
+      "name": "experiment_reproduction_similarity",
+      "definition": "Whether cell images come from the same reproduced experiment, sample, day, or acquisition condition.",
+      "prospective": true
+    },
+    {
+      "name": "image_embedding_similarity",
+      "definition": "Nearest-neighbor support in a frozen image-encoder or morphology-feature space.",
+      "prospective": true
+    },
+    {
+      "name": "class_conditional_style_similarity",
+      "definition": "Image intensity, texture, and acquisition-style support within each biological class.",
+      "prospective": true
+    }
+  ],
+  "useful_for": [
+    "Bioimage out-of-sample generalization audits.",
+    "Testing whether image classifiers rely on acquisition style rather than class biology.",
+    "Small-to-medium hard discovery benchmark for SPECTRA agents."
+  ],
+  "leakage_risks": [
+    "Images from the same sample or experiment can leak acquisition artifacts.",
+    "Class and acquisition condition can be confounded.",
+    "Embedding similarity must be computed from frozen models or train-only fitted features."
+  ],
+  "related_benchmark_capsules": [],
+  "related_memory_entries": [],
+  "tags": ["coos7", "zenodo", "microscopy", "bioimage", "out_of_sample"]
+}

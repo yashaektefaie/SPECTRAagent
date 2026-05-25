@@ -1,0 +1,78 @@
+{
+  "id": "biological_sequence_alignment_homology",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "biological_sequence",
+  "scientific_unit": "dna_rna_or_protein_sequence",
+  "task_family": [
+    "sequence function prediction",
+    "homology-aware benchmarking",
+    "biological sequence classification"
+  ],
+  "similarity_name": "Alignment-based homology identity",
+  "similarity_kind": "sequence_alignment_similarity",
+  "definition": "Compute global or local alignment identity between evaluation and training sequences. Use this instead of fixed-position Hamming distance when sequences vary in length, contain indels, or need homology-aware train-eval separation.",
+  "spectra_axis": {
+    "name": "max_train_alignment_identity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_alignment_identity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "sequence"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/alignment_identity_similarity.py",
+  "example_usage": "python alignment_identity_similarity.py --train train_sequences.csv --eval eval_sequences.csv --out pairwise_similarity.csv --sequence-col sequence",
+  "citations": [
+    {
+      "paper_id": "PMC10578201",
+      "title": "GraphPart: homology partitioning for biological sequence analysis",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC10578201/content.lines",
+          "lines": "L14-L20",
+          "summary": "The paper argues that closely related sequence pairs crossing partitions overestimate predictive performance."
+        },
+        {
+          "path": "/papers/PMC10578201/content.lines",
+          "lines": "L28-L30",
+          "summary": "The homology partitioning problem is defined by maximum cross-partition sequence identity thresholds."
+        },
+        {
+          "path": "/papers/PMC10578201/content.lines",
+          "lines": "L60-L78",
+          "summary": "GraphPart evaluates maximum cross-partition pairwise identity and supports Needleman-Wunsch or MMseqs2 alignments."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "The bundled example is a simple global alignment and is not a replacement for BLAST, MMseqs2, or domain-specific alignment pipelines.",
+    "Percent identity can miss remote homology and structural convergence.",
+    "Thresholds differ across proteins, DNA, RNA, and task families."
+  ],
+  "quality_gates": [
+    "Report alignment method, scoring parameters, and whether local or global identity is used.",
+    "Use MMseqs2, BLAST, or HMM-based similarity for large or remote-homology datasets.",
+    "Plot the cross-split maximum identity distribution before interpreting the SPECTRA curve."
+  ],
+  "tags": [
+    "sequence",
+    "homology",
+    "alignment",
+    "identity",
+    "graphpart",
+    "biological_sequence"
+  ]
+}

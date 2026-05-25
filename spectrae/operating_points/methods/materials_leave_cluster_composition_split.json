@@ -1,0 +1,37 @@
+{
+  "id": "materials_leave_cluster_composition_split",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "operating_point_name": "Materials Leave-Cluster/Composition Split",
+  "method_family": "materials_composition_holdout",
+  "scientific_unit": "material",
+  "data_types": ["materials", "crystal", "composition", "structure"],
+  "target_novelty_axis": "composition_structure_or_material_family",
+  "deployment_question": "How does the model extrapolate to material families, composition clusters, or structures absent from training?",
+  "curve_region": "low_overlap",
+  "definition": "Cluster materials by composition, structure, kernel similarity, or material family and hold out clusters or composition regimes.",
+  "split_operator": {"type": "leave_cluster_out", "heldout_unit": "material_cluster_or_composition_regime", "spectra_mapping": "samples a low-overlap material-family or composition operating point"},
+  "required_inputs": ["sample_id", "composition or structure features", "cluster id or clustering rule"],
+  "recommended_similarity_axes": ["composition_similarity", "structure_similarity", "kernel_similarity", "element_overlap"],
+  "output_contract": {"mode": "split_assignment", "required_columns": ["sample_id", "split", "role"], "optional_columns": ["cluster_id", "composition_family"]},
+  "implementation_recipe": [
+    "Choose composition, structure, or kernel features.",
+    "Cluster materials or define composition regimes.",
+    "Hold out entire clusters and report residual nearest-train similarity."
+  ],
+  "quality_gates": [
+    "Report feature representation and clustering method.",
+    "Check whether held-out clusters correspond to meaningful material families.",
+    "Separate structure novelty from composition novelty."
+  ],
+  "failure_modes": [
+    "Composition-only splits may miss structural novelty.",
+    "Clusters can be dominated by common elements.",
+    "Some properties may be target-range shifted rather than composition shifted."
+  ],
+  "citations": [
+    {"paper_id": "arx_2206.08841", "title": "Random projections and Kernelised Leave One Cluster Out Cross-Validation", "evidence": "Uses kernelized leave-one-cluster-out cross-validation for materials property evaluation."},
+    {"paper_id": "arx_2401.08032", "title": "Structure-based out-of-distribution materials property prediction", "evidence": "Benchmarks GNNs on structure-based OOD materials property prediction."}
+  ],
+  "tags": ["materials", "composition", "structure", "leave_cluster_out"]
+}

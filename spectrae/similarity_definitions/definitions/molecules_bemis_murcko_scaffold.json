@@ -1,0 +1,76 @@
+{
+  "id": "molecules_bemis_murcko_scaffold",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "small_molecule",
+  "scientific_unit": "molecule",
+  "task_family": [
+    "molecular property prediction",
+    "virtual screening",
+    "scaffold generalization"
+  ],
+  "similarity_name": "Bemis-Murcko scaffold identity",
+  "similarity_kind": "metadata_group",
+  "definition": "Assign molecules to scaffold groups, usually Bemis-Murcko scaffolds, and treat same-scaffold train examples as high-overlap. For SPECTRA, scaffold identity is best used as one axis among others rather than as the sole proxy for molecular novelty.",
+  "spectra_axis": {
+    "name": "same_scaffold_overlap",
+    "axis_type": "similarity",
+    "aggregation": "same_group",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "scaffold"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/tabular_group_similarity.py",
+  "example_usage": "python tabular_group_similarity.py --train train.csv --eval eval.csv --out pairwise_similarity.csv --group-col scaffold",
+  "citations": [
+    {
+      "paper_id": "PMC12153141",
+      "title": "UMAP-based clustering split for rigorous evaluation of AI models for virtual screening on cancer cell lines",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC12153141/content.lines",
+          "lines": "L13",
+          "summary": "The paper describes scaffold splits as grouping molecules with the same core structure."
+        },
+        {
+          "path": "/papers/PMC12153141/content.lines",
+          "lines": "L53",
+          "summary": "The paper warns that different scaffolds can still correspond to highly similar molecules, leading to optimistic performance."
+        },
+        {
+          "path": "/papers/PMC12153141/content.lines",
+          "lines": "L57",
+          "summary": "The paper reports scaffold splits retain higher maximum train-neighbor similarity than Butina and UMAP splits."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Different scaffolds can be structurally and functionally similar.",
+    "Scaffold identity is binary and may miss smooth novelty gradients.",
+    "Scaffold definitions vary across cheminformatics toolkits."
+  ],
+  "quality_gates": [
+    "Pair scaffold identity with a continuous structure-similarity audit.",
+    "Report toolkit and scaffold extraction settings.",
+    "Check whether test scaffolds still have high nearest-train fingerprint similarity."
+  ],
+  "tags": [
+    "molecules",
+    "scaffold",
+    "bemis_murcko",
+    "metadata_group"
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "id": "dtw_lower_bound_pruning",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "DTW Lower-Bound Pruning and Early Abandoning",
+  "strategy_family": "metric_lower_bound_pruning",
+  "exactness": "hybrid_exact_after_candidate_generation",
+  "applies_to_similarity_kinds": [
+    "dynamic_time_warping_distance",
+    "time_series_shape_similarity",
+    "elastic_sequence_distance"
+  ],
+  "compatible_data_shapes": [
+    "time_series",
+    "longitudinal_signal",
+    "temporal_trajectory"
+  ],
+  "definition": "Use cheap lower bounds, envelopes, early abandoning, and progressive filtering to discard train series that cannot be among the nearest neighbors before computing full dynamic time warping distance.",
+  "scale_profile": {
+    "best_for": "Time-series similarity where exact DTW is scientifically desired but too expensive over all pairs.",
+    "typical_upper_bound": "Large time-series collections when lower bounds are tight and candidate pruning is strong.",
+    "avoid_when": "The distance is not lower-boundable or all series are so similar that pruning rarely triggers."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "dtw_distance"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "time series values",
+    "warping window or DTW constraints"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "warping_window",
+      "purpose": "Constrains alignments and affects both speed and scientific meaning."
+    },
+    {
+      "name": "lower_bound_type",
+      "purpose": "Selects LB_Keogh, improved bounds, or another valid lower bound."
+    },
+    {
+      "name": "top_k",
+      "purpose": "Number of nearest train series retained."
+    }
+  ],
+  "quality_gates": [
+    "Verify the lower bound never exceeds exact DTW on sampled pairs.",
+    "Report warping constraints and similarity transform from distance to similarity.",
+    "Compare pruned top-k results with exact DTW on a small subset."
+  ],
+  "failure_modes": [
+    "Loose lower bounds may provide little speedup.",
+    "Overly tight warping constraints can change the scientific distance definition.",
+    "Distance-to-similarity scaling can affect SPECTRA thresholds."
+  ],
+  "python_example": "dense_vector_topk_similarity.py",
+  "example_usage": "Use the dense-vector script only as an output-contract reference; production DTW search should emit the same columns after lower-bound pruning and exact DTW reranking.",
+  "citations": [
+    {
+      "paper_id": "arx_0811.3301",
+      "title": "A new lower bound for dynamic time warping",
+      "evidence": "Describes DTW as quadratic and uses lower bounds to avoid unnecessary full DTW computations."
+    },
+    {
+      "paper_id": "arx_2010.05371",
+      "title": "PrunedDTW: Time series dynamic time warping faster by pruning",
+      "evidence": "Studies early abandoning and pruning for faster DTW computation."
+    }
+  ],
+  "tags": [
+    "time_series",
+    "dtw",
+    "lower_bound",
+    "pruning",
+    "exact_rerank"
+  ]
+}

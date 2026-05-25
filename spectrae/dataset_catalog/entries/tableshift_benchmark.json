@@ -1,0 +1,65 @@
+{
+  "id": "tableshift_benchmark",
+  "version": "0.1.0",
+  "status": "active",
+  "title": "TableShift Tabular Distribution Shift Benchmark",
+  "domains": ["tabular_ml", "distribution_shift", "clinical_ai", "socioeconomic_prediction"],
+  "data_types": ["tabular feature table", "domain annotation", "classification label", "regression target"],
+  "scientific_units": ["row", "patient", "person", "site", "time_period"],
+  "compatible_model_families": ["tabular model", "clinical prediction model", "foundation tabular model", "linear baseline"],
+  "source": {
+    "homepage": "https://tableshift.org/",
+    "repository": "https://github.com/mlfoundations/tableshift",
+    "data_urls": [
+      {
+        "description": "TableShift official repository",
+        "url": "https://github.com/mlfoundations/tableshift",
+        "access_notes": "Repository documents public and credentialed benchmark datasets."
+      }
+    ]
+  },
+  "access": {
+    "mode": "mixed",
+    "authentication": "varies_by_task",
+    "instructions": [
+      "Use public TableShift tasks by default; only use credentialed tasks when the user has authorized access.",
+      "Record experiment identifier, split variable, feature coding, and upstream data source.",
+      "Treat official shifted splits as operating points and construct continuous feature/domain support curves when possible."
+    ]
+  },
+  "scale": {
+    "download_size": "mostly lightweight to moderate; some tasks require manual credentialed access",
+    "spectra_default": "public_tasks_first"
+  },
+  "expected_fields": ["row_id", "features", "label", "domain", "split", "experiment"],
+  "recommended_axes": [
+    {
+      "name": "domain_label_similarity",
+      "definition": "Site, year, region, hospital, survey, or data-source support, depending on task.",
+      "prospective": true
+    },
+    {
+      "name": "feature_distribution_similarity",
+      "definition": "Nearest-neighbor or density support in train-fitted tabular feature space.",
+      "prospective": true
+    },
+    {
+      "name": "subgroup_support",
+      "definition": "Intersectional subgroup support for clinically or socially meaningful covariates.",
+      "prospective": true
+    }
+  ],
+  "useful_for": [
+    "Testing SPECTRA outside sequence/image/molecule tasks.",
+    "Auditing site, time, population, and domain shifts in tabular settings.",
+    "Building lightweight operating-point versus full-curve examples."
+  ],
+  "leakage_risks": [
+    "Some public variables may encode the split variable too directly.",
+    "Protected or sensitive attributes require careful reporting and user authorization.",
+    "Manual credentialed tasks should not be assumed available."
+  ],
+  "related_benchmark_capsules": [],
+  "related_memory_entries": [],
+  "tags": ["tableshift", "tabular", "distribution_shift", "domain_shift", "operating_point"]
+}

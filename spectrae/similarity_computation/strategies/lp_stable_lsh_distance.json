@@ -1,0 +1,92 @@
+{
+  "id": "lp_stable_lsh_distance",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "p-Stable LSH for Lp Distance Search",
+  "strategy_family": "hashing_sketch_lsh",
+  "exactness": "hybrid_exact_after_candidate_generation",
+  "applies_to_similarity_kinds": [
+    "euclidean_distance",
+    "manhattan_distance",
+    "lp_distance",
+    "weighted_lp_distance",
+    "distance_to_similarity"
+  ],
+  "compatible_data_shapes": [
+    "dense_vector",
+    "sparse_vector",
+    "high_dimensional_vector",
+    "numeric_feature_vector"
+  ],
+  "definition": "Use p-stable random projections, weighted Lp hashes, or related LSH families to retrieve candidate train neighbors under L1/L2/Lp distances, then compute the exact distance for candidates and convert it to SPECTRA similarity.",
+  "scale_profile": {
+    "best_for": "High-dimensional numeric feature vectors where Euclidean, Manhattan, or weighted Lp distance is the scientific axis.",
+    "typical_upper_bound": "Millions of vectors when hash table count and bucket width are tuned.",
+    "avoid_when": "Cosine/angular similarity is the true axis; use angular LSH or vector ANN instead."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "lp_distance",
+      "lsh_recall_at_k"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "numeric vectors",
+    "Lp metric and distance-to-similarity transform"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "bucket_width",
+      "purpose": "Controls LSH collision radius."
+    },
+    {
+      "name": "num_tables",
+      "purpose": "Controls recall and candidate volume."
+    },
+    {
+      "name": "p",
+      "purpose": "Selects the Lp norm, commonly p=1 or p=2."
+    }
+  ],
+  "quality_gates": [
+    "Compare approximate candidates to exact Lp nearest neighbors on a subset.",
+    "Report vector scaling, feature weighting, and distance-to-similarity conversion.",
+    "Tune bucket width so hard SPECTRA bins retain adequate train-neighbor coverage."
+  ],
+  "failure_modes": [
+    "Feature scaling can dominate Lp distances.",
+    "Poor bucket width creates either empty buckets or too many candidates.",
+    "For high intrinsic dimension, LSH may require many tables for useful recall."
+  ],
+  "python_example": "dense_vector_topk_similarity.py",
+  "example_usage": "python dense_vector_topk_similarity.py --train train.csv --eval eval.csv --out pairwise_similarity.csv --vector-prefix feat_ --metric euclidean --top-k 50",
+  "citations": [
+    {
+      "paper_id": "arx_1306.3601",
+      "title": "Approximate Nearest Neighbor Search in lp",
+      "evidence": "Introduces locality-sensitive hashing algorithms for approximate nearest-neighbor search in Lp spaces."
+    },
+    {
+      "paper_id": "arx_2011.11907",
+      "title": "Efficient Approximate Nearest Neighbor Search for Multiple Weighted lp Distance Functions",
+      "evidence": "Develops WLSH for approximate nearest-neighbor search under multiple weighted Lp distances."
+    }
+  ],
+  "tags": [
+    "lp_distance",
+    "euclidean",
+    "manhattan",
+    "p_stable_lsh",
+    "numeric_vectors"
+  ]
+}

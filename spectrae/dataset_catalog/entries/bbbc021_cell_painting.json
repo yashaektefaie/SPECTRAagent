@@ -1,0 +1,75 @@
+{
+  "id": "bbbc021_cell_painting",
+  "version": "0.1.0",
+  "status": "active",
+  "title": "BBBC021 MCF7 Cell Painting Compound-Profiling Dataset",
+  "domains": ["bioimage_analysis", "cell_painting", "drug_discovery"],
+  "data_types": ["fluorescence microscopy image", "cell painting profile", "compound treatment table"],
+  "scientific_units": ["well", "field_of_view", "compound_concentration", "compound"],
+  "compatible_model_families": ["bioimage classifier", "cell painting model", "morphology foundation model", "compound profiling model"],
+  "source": {
+    "homepage": "https://bbbc.broadinstitute.org/BBBC021",
+    "repository": "",
+    "data_urls": [
+      {
+        "description": "Broad Bioimage Benchmark Collection entry",
+        "url": "https://bbbc.broadinstitute.org/BBBC021",
+        "access_notes": "Use the official BBBC page for image and metadata downloads."
+      },
+      {
+        "description": "BBBC image set index",
+        "url": "https://bbbc.broadinstitute.org/image_sets",
+        "access_notes": "BBBC021 is listed as a compound-profiling experiment with fluorescence images."
+      }
+    ]
+  },
+  "access": {
+    "mode": "data_portal",
+    "authentication": "none_expected",
+    "instructions": [
+      "Use the official BBBC021 page to download metadata and either raw images or derived profiles.",
+      "For a first SPECTRA pass, prefer morphology profiles or a stratified image sample before pulling every raw image.",
+      "Preserve plate, well, compound, concentration, replicate, and mechanism-of-action metadata in the manifest."
+    ]
+  },
+  "scale": {
+    "download_size": "moderate image collection; use profiles or a stratified image subset for quick audits",
+    "spectra_default": "precomputed_profiles_or_sampled_images"
+  },
+  "expected_fields": ["compound_id", "compound_name", "concentration", "plate", "well", "field_id", "image_path", "moa", "profile_features"],
+  "recommended_axes": [
+    {
+      "name": "compound_structure_similarity",
+      "definition": "Similarity between compound fingerprints or chemical scaffolds.",
+      "prospective": true
+    },
+    {
+      "name": "morphology_profile_similarity",
+      "definition": "Cosine or Euclidean similarity between Cell Painting profiles, computed without held-out labels.",
+      "prospective": true
+    },
+    {
+      "name": "plate_and_batch_similarity",
+      "definition": "Similarity induced by plate, batch, staining, and acquisition metadata.",
+      "prospective": true
+    },
+    {
+      "name": "concentration_support",
+      "definition": "Distance from training concentration support for a compound or mechanism class.",
+      "prospective": true
+    }
+  ],
+  "useful_for": [
+    "Testing whether morphology models generalize across compound, dose, plate, and mechanism shifts.",
+    "Separating biological morphology novelty from acquisition or plate artifacts.",
+    "Building small, interpretable bioimage SPECTRA capsules."
+  ],
+  "leakage_risks": [
+    "Replicate wells and fields from the same well can leak across splits.",
+    "Mechanism-of-action labels can be confounded with compound identity and concentration.",
+    "Plate and batch effects can create spurious spectral curves if not reported separately."
+  ],
+  "related_benchmark_capsules": [],
+  "related_memory_entries": [],
+  "tags": ["bbbc021", "cell_painting", "bioimage", "compound_profiling", "morphology"]
+}

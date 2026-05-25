@@ -1,0 +1,92 @@
+{
+  "id": "string_edit_similarity_join",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "String Edit-Distance Similarity Join",
+  "strategy_family": "similarity_join",
+  "exactness": "hybrid_exact_after_candidate_generation",
+  "applies_to_similarity_kinds": [
+    "edit_distance",
+    "levenshtein_similarity",
+    "string_similarity",
+    "tokenized_string_similarity"
+  ],
+  "compatible_data_shapes": [
+    "string",
+    "short_text",
+    "identifier",
+    "barcode",
+    "symbolic_sequence"
+  ],
+  "definition": "Use q-gram, partition, local-minimum, embedding, or prefix filters to generate candidate string pairs, then verify candidates with exact edit distance and emit pairs within a threshold or top-k most similar strings.",
+  "scale_profile": {
+    "best_for": "Large collections of short strings, identifiers, barcodes, or symbolic records where edit distance is the scientific similarity.",
+    "typical_upper_bound": "Millions of strings in optimized or distributed join implementations.",
+    "avoid_when": "Biological local alignment or homology is required; use sequence seed-and-extend instead."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "edit_distance",
+      "candidate_source"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "strings",
+    "edit-distance threshold or top-k"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "qgram_size",
+      "purpose": "Controls candidate-filter selectivity."
+    },
+    {
+      "name": "max_edit_distance",
+      "purpose": "Defines thresholded similarity edges."
+    },
+    {
+      "name": "partition_scheme",
+      "purpose": "Controls exactness and pruning for partition-based joins."
+    }
+  ],
+  "quality_gates": [
+    "Verify final distances with exact edit distance.",
+    "Report q-gram size, threshold, and string normalization.",
+    "Check recall against brute force on a small subset."
+  ],
+  "failure_modes": [
+    "Unicode normalization or casing can change distances.",
+    "Long strings with large thresholds can create many candidates.",
+    "Edit distance may not capture semantic similarity in natural-language text."
+  ],
+  "python_example": "string_qgram_edit_join.py",
+  "example_usage": "python string_qgram_edit_join.py --train train.csv --eval eval.csv --out pairwise_similarity.csv --text-col name --max-distance 2 --fallback-exact",
+  "citations": [
+    {
+      "paper_id": "arx_1111.7171",
+      "title": "PASS-JOIN: A Partition-based Method for Similarity Joins",
+      "evidence": "Introduces a partition-based method with inverted indexes for edit-distance string similarity joins."
+    },
+    {
+      "paper_id": "arx_1810.08833",
+      "title": "MinJoin: Efficient Edit Similarity Joins via Local Hash Minima",
+      "evidence": "Uses local hash minima and string partitioning for efficient exact edit similarity joins."
+    }
+  ],
+  "tags": [
+    "string",
+    "edit_distance",
+    "levenshtein",
+    "qgram",
+    "similarity_join"
+  ]
+}

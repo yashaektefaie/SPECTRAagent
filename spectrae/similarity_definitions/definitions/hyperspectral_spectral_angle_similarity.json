@@ -1,0 +1,78 @@
+{
+  "id": "hyperspectral_spectral_angle_similarity",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "hyperspectral_or_spectral_image",
+  "scientific_unit": "pixel_patch_or_spectrum",
+  "task_family": [
+    "hyperspectral classification",
+    "remote sensing",
+    "spectral target detection"
+  ],
+  "similarity_name": "Spectral angle or spectral-correlation similarity",
+  "similarity_kind": "spectral_signature_similarity",
+  "definition": "Represent each sample by its spectral-band vector and compute spectral angle, spectral angle cosine, or weighted spectral correlation similarity to the training set. This audits whether model performance depends on spectral-signature overlap rather than spatial or label metadata alone.",
+  "spectra_axis": {
+    "name": "max_train_spectral_angle_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_spectral_angle_cosine",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "spectral_band_columns"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/spectral_angle_similarity.py",
+  "example_usage": "python spectral_angle_similarity.py --train train_spectra.csv --eval eval_spectra.csv --out pairwise_similarity.csv --band-cols-prefix band_",
+  "citations": [
+    {
+      "paper_id": "PMC10713946",
+      "title": "Weighted spectral correlation angle target detection method for land-based hyperspectral imaging",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC10713946/content.lines",
+          "lines": "L7-L25",
+          "summary": "The paper motivates spectral similarity under imaging-condition uncertainty in hyperspectral target detection."
+        },
+        {
+          "path": "/papers/PMC10713946/content.lines",
+          "lines": "L30-L35",
+          "summary": "It describes spectral angle, spectral angle cosine, and distance-based spectral similarity measures."
+        },
+        {
+          "path": "/papers/PMC10713946/content.lines",
+          "lines": "L64-L83",
+          "summary": "Weighted spectral correlation angle improves robustness to same-object different-spectrum uncertainty."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Spectral signatures require consistent band calibration, atmospheric correction, and reflectance normalization.",
+    "Spatial context can dominate some hyperspectral tasks and should be audited separately.",
+    "Band weighting can encode target knowledge and must be declared."
+  ],
+  "quality_gates": [
+    "Report wavelength range, preprocessing, band alignment, normalization, and removed bands.",
+    "Run separate curves for spectral angle, spatial distance, acquisition condition, and sensor/domain when possible.",
+    "Check whether illumination or acquisition metadata explains the spectral similarity axis."
+  ],
+  "tags": [
+    "hyperspectral",
+    "remote_sensing",
+    "spectral_angle",
+    "spectral_signature",
+    "domain_shift",
+    "spectral_similarity"
+  ]
+}

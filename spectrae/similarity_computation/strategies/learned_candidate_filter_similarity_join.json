@@ -1,0 +1,92 @@
+{
+  "id": "learned_candidate_filter_similarity_join",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "Learned Candidate Filter for Similarity Join",
+  "strategy_family": "learned_filter",
+  "exactness": "approximate",
+  "applies_to_similarity_kinds": [
+    "vector_similarity_join",
+    "metric_similarity",
+    "embedding_similarity",
+    "high_dimensional_similarity"
+  ],
+  "compatible_data_shapes": [
+    "dense_vector",
+    "embedding",
+    "metric_space",
+    "high_dimensional_vector",
+    "filtered_ann"
+  ],
+  "definition": "Train or calibrate a lightweight predictor that estimates whether a candidate pair can be similar enough, then skip expensive searches or distance computations for pairs predicted to be irrelevant. Exact similarity should still be computed for retained candidates before SPECTRA uses them.",
+  "scale_profile": {
+    "best_for": "High-dimensional similarity joins where candidate generation or distance computation is repeatedly expensive and labeled/calibrated neighbor decisions are available.",
+    "typical_upper_bound": "Large vector joins when the filter has high recall and low false-positive rate.",
+    "avoid_when": "False negatives cannot be measured or the learned filter would be trained on information leaking from the evaluation labels."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "filter_score",
+      "filter_recall"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "candidate-pair features or vectors",
+    "filter calibration set"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "filter_threshold",
+      "purpose": "Controls false negatives and skipped comparisons."
+    },
+    {
+      "name": "calibration_sample_size",
+      "purpose": "Controls confidence in measured filter recall."
+    },
+    {
+      "name": "rerank_similarity",
+      "purpose": "Exact scorer applied to retained candidates."
+    }
+  ],
+  "quality_gates": [
+    "Measure false-negative rate on a held-out exact subset.",
+    "Report filter features and ensure no target leakage.",
+    "Use conservative thresholds for SPECTRA hard bins where missing edges matter most."
+  ],
+  "failure_modes": [
+    "False negatives can make models look less train-overlapped than they are.",
+    "A learned filter may fail under distribution shift, exactly where SPECTRA focuses.",
+    "Filter training can leak evaluation labels or metadata if not isolated."
+  ],
+  "python_example": "dense_vector_topk_similarity.py",
+  "example_usage": "Use dense_vector_topk_similarity.py as an exact reference set for calibrating learned filters; production filters should emit the same pairwise CSV after exact reranking.",
+  "citations": [
+    {
+      "paper_id": "arx_2402.13397",
+      "title": "Xling: A Learned Filter Framework for Accelerating High-Dimensional Approximate Similarity Join",
+      "evidence": "Introduces a learned filter framework that predicts neighbor presence and accelerates high-dimensional approximate similarity joins."
+    },
+    {
+      "paper_id": "arx_2204.10028",
+      "title": "A Learned Index for Exact Similarity Search in Metric Spaces",
+      "evidence": "Uses learned indexes with clustering and pivot-based transformations for efficient similarity search in metric spaces."
+    }
+  ],
+  "tags": [
+    "learned_filter",
+    "similarity_join",
+    "calibration",
+    "high_dimensional",
+    "approximate"
+  ]
+}

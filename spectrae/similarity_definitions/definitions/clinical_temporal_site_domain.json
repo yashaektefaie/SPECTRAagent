@@ -1,0 +1,72 @@
+{
+  "id": "clinical_temporal_site_domain",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "clinical_prediction",
+  "scientific_unit": "patient_or_encounter",
+  "task_family": [
+    "clinical prediction",
+    "external validation",
+    "healthcare model generalizability"
+  ],
+  "similarity_name": "Temporal, geographical, and domain validation distance",
+  "similarity_kind": "metadata_distance",
+  "definition": "Represent clinical examples by deployment-relevant metadata such as time period, hospital/site, geography, population, care setting, and phenotype definition. Use exact-match overlap, time distance, or site/domain distance to build SPECTRA curves over increasingly external validation settings.",
+  "spectra_axis": {
+    "name": "clinical_context_similarity",
+    "axis_type": "similarity",
+    "aggregation": "metadata_distance_to_train_context",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "site_or_time_or_domain"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/metadata_distance_similarity.py",
+  "example_usage": "python metadata_distance_similarity.py --train train.csv --eval eval.csv --out pairwise_similarity.csv --columns site year care_setting",
+  "citations": [
+    {
+      "paper_id": "PMC10163568",
+      "title": "Perspectives on validation of clinical predictive algorithms",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC10163568/content.lines",
+          "lines": "L11",
+          "summary": "The paper organizes clinical algorithm generalizability into temporal, geographical, and domain types."
+        },
+        {
+          "path": "/papers/PMC10163568/content.lines",
+          "lines": "L239-L259",
+          "summary": "The supplementary table gives temporal validation cohorts and external validation across countries, health systems, and hospital types."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Metadata distance is only meaningful if the chosen context variables reflect the intended deployment setting.",
+    "Site labels may proxy for many unmeasured differences including practice patterns and measurement systems.",
+    "Temporal splits can confound calendar drift with data pipeline changes."
+  ],
+  "quality_gates": [
+    "State the target deployment context before choosing distance variables.",
+    "Separate temporal, site/geographic, and domain axes when sample size permits.",
+    "Report calibration as well as discrimination across spectral bins."
+  ],
+  "tags": [
+    "clinical",
+    "temporal",
+    "geographical",
+    "domain",
+    "external_validation"
+  ]
+}

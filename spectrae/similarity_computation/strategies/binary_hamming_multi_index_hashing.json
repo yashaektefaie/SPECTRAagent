@@ -1,0 +1,92 @@
+{
+  "id": "binary_hamming_multi_index_hashing",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "Binary Hamming Multi-Index Hashing",
+  "strategy_family": "binary_code_index",
+  "exactness": "exact",
+  "applies_to_similarity_kinds": [
+    "hamming_similarity",
+    "binary_code_distance",
+    "weighted_hamming_distance",
+    "binary_embedding_similarity"
+  ],
+  "compatible_data_shapes": [
+    "binary_code",
+    "hash_code",
+    "binary_fingerprint",
+    "compressed_embedding",
+    "bit_vector"
+  ],
+  "definition": "Split binary codes into substrings and index each substring so Hamming-radius or top-k candidates can be found without scanning every code. Final Hamming distance is exact for emitted candidates.",
+  "scale_profile": {
+    "best_for": "Large collections of binary embeddings, hash codes, or bit-vector scientific fingerprints.",
+    "typical_upper_bound": "Millions to billions of binary codes when code length and radius are suitable.",
+    "avoid_when": "The scientific similarity is Jaccard/Tanimoto rather than Hamming; use bitset or MinHash strategies instead."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "hamming_distance",
+      "candidate_source"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "binary codes",
+    "bit length"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "num_substrings",
+      "purpose": "Controls multi-index granularity."
+    },
+    {
+      "name": "hamming_radius_or_k",
+      "purpose": "Defines retained neighbors or thresholded graph edges."
+    },
+    {
+      "name": "bit_weights",
+      "purpose": "Optional weights for weighted Hamming distance."
+    }
+  ],
+  "quality_gates": [
+    "Report bit length, code generation method, and whether Hamming or weighted Hamming was used.",
+    "Check exact Hamming distances after candidate retrieval.",
+    "Verify that binary compression preserves the scientific similarity of interest."
+  ],
+  "failure_modes": [
+    "Hamming distance on learned hash codes may not reflect scientific novelty.",
+    "Large Hamming radii can still produce many candidates.",
+    "Weighted Hamming indexes require careful handling of bit weights."
+  ],
+  "python_example": "binary_hamming_topk.py",
+  "example_usage": "python binary_hamming_topk.py --train train.csv --eval eval.csv --out pairwise_similarity.csv --code-col binary_code --top-k 50",
+  "citations": [
+    {
+      "paper_id": "arx_1307.2982",
+      "title": "Fast Exact Search in Hamming Space with Multi-Index Hashing",
+      "evidence": "Develops multi-index hashing for exact nearest-neighbor search in Hamming space with speedups over linear scans."
+    },
+    {
+      "paper_id": "arx_1912.05006",
+      "title": "Efficient Querying from Weighted Binary Codes",
+      "evidence": "Extends multi-index ideas to weighted binary codes for efficient nearest-neighbor querying."
+    }
+  ],
+  "tags": [
+    "hamming",
+    "binary_code",
+    "multi_index_hashing",
+    "bit_vector",
+    "exact"
+  ]
+}

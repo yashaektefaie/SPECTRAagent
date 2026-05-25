@@ -1,0 +1,78 @@
+{
+  "id": "graph_wasserstein_wl_kernel_similarity",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "graph_level_sample",
+  "scientific_unit": "graph",
+  "task_family": [
+    "graph classification",
+    "graph regression",
+    "scientific graph learning"
+  ],
+  "similarity_name": "Wasserstein Weisfeiler-Lehman graph kernel similarity",
+  "similarity_kind": "graph_kernel_similarity",
+  "definition": "Compare graph-level samples using Weisfeiler-Lehman labels, graph kernels, or Wasserstein distances between node-embedding distributions. This is distinct from node-neighborhood overlap: it audits generalization from whole training graphs to structurally novel evaluation graphs.",
+  "spectra_axis": {
+    "name": "max_train_graph_kernel_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_graph_kernel",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "precomputed_graph_kernel_or_distance"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/metric_to_similarity.py",
+  "example_usage": "python metric_to_similarity.py --input graph_kernel.csv --out pairwise_similarity.csv --metric-kind similarity --metric-col kernel",
+  "citations": [
+    {
+      "paper_id": "arx_1906.01277",
+      "title": "Wasserstein Weisfeiler-Lehman Graph Kernels",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/arx_1906.01277/content.lines",
+          "lines": "L16-L20",
+          "summary": "The paper defines a graph Wasserstein distance over node feature distributions and improves graph classification."
+        },
+        {
+          "path": "/papers/arx_1906.01277/content.lines",
+          "lines": "L26-L46",
+          "summary": "It reviews WL subtree kernels and describes comparing larger graph substructures."
+        },
+        {
+          "path": "/papers/arx_1906.01277/content.lines",
+          "lines": "L68-L73",
+          "summary": "The graph Wasserstein distance is converted into a graph kernel similarity for learning."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Graph kernels can be expensive and sensitive to node/edge attributes and graph preprocessing.",
+    "Kernel similarity may not align with the scientific shift factor if labels or metadata define novelty.",
+    "The bundled example expects a precomputed kernel or distance matrix."
+  ],
+  "quality_gates": [
+    "Report graph representation, node and edge attributes, WL iterations, distance metric, and kernel normalization.",
+    "Check whether graph size alone explains the similarity axis.",
+    "Compare graph-level kernel similarity to explicit domain or scaffold-like graph metadata when available."
+  ],
+  "tags": [
+    "graph",
+    "graph_kernel",
+    "weisfeiler_lehman",
+    "wasserstein",
+    "graph_level",
+    "optimal_transport"
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "id": "molecules_umap_cluster",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "small_molecule",
+  "scientific_unit": "molecule",
+  "task_family": [
+    "virtual screening",
+    "molecular property prediction",
+    "chemical space clustering"
+  ],
+  "similarity_name": "UMAP chemical-space cluster membership or distance",
+  "similarity_kind": "cluster_membership",
+  "definition": "Embed molecular fingerprints with UMAP, cluster the reduced features, and treat shared cluster membership or distance between UMAP coordinates as a train-eval chemical-space overlap axis. Same-cluster train examples are high-overlap; held-out or far clusters are more novel.",
+  "spectra_axis": {
+    "name": "umap_cluster_overlap",
+    "axis_type": "similarity",
+    "aggregation": "same_cluster_or_nearest_cluster",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "cluster_id"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/tabular_group_similarity.py",
+  "example_usage": "python tabular_group_similarity.py --train train.csv --eval eval.csv --out pairwise_similarity.csv --train-id-col train_id --eval-id-col sample_id --group-col cluster_id",
+  "citations": [
+    {
+      "paper_id": "PMC12153141",
+      "title": "UMAP-based clustering split for rigorous evaluation of AI models for virtual screening on cancer cell lines",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC12153141/content.lines",
+          "lines": "L13-L15",
+          "summary": "The paper describes UMAP clustering splits as a way to increase train-test molecular dissimilarity."
+        },
+        {
+          "path": "/papers/PMC12153141/content.lines",
+          "lines": "L27",
+          "summary": "The paper constructs seven UMAP clusters from reduced molecular fingerprint features and holds out clusters for evaluation."
+        },
+        {
+          "path": "/papers/PMC12153141/content.lines",
+          "lines": "L57-L58",
+          "summary": "The paper validates that UMAP splits have lower maximum train-neighbor Tanimoto similarity and occupy more distinct chemical-space regions."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "UMAP coordinates are stochastic unless seeds and hyperparameters are fixed.",
+    "Cluster membership is coarse; SPECTRA curves should also report continuous nearest-train fingerprint similarity when possible.",
+    "UMAP may preserve local/global structure differently across datasets."
+  ],
+  "quality_gates": [
+    "Persist UMAP parameters, random seed, and cluster count.",
+    "Validate UMAP cluster novelty with an independent nearest-train similarity distribution.",
+    "Avoid treating cluster labels as ordered distances unless an explicit cluster-distance metric is defined."
+  ],
+  "tags": [
+    "molecules",
+    "umap",
+    "cluster",
+    "virtual_screening",
+    "chemical_space"
+  ]
+}

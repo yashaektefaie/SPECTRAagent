@@ -1,0 +1,61 @@
+{
+  "id": "nabench_assays",
+  "version": "0.1.0",
+  "status": "active",
+  "title": "NABench Nucleotide Fitness Prediction Assays",
+  "domains": ["sequence_fitness", "genomics_foundation_models"],
+  "data_types": ["mutated DNA sequence", "mutated RNA sequence", "fitness assay"],
+  "scientific_units": ["mutated_sequence", "assay_variant"],
+  "compatible_model_families": ["nucleotide foundation model", "sequence fitness predictor", "language-model embedding predictor"],
+  "source": {
+    "homepage": "https://arxiv.org/abs/2511.02888",
+    "repository": "https://github.com/mrzzmrzz/NABench",
+    "data_urls": [
+      {
+        "description": "NABench repository and data instructions",
+        "url": "https://github.com/mrzzmrzz/NABench",
+        "access_notes": "Follow upstream repository instructions for assay files."
+      }
+    ]
+  },
+  "access": {
+    "mode": "repository",
+    "authentication": "none_expected",
+    "instructions": [
+      "Clone or inspect the NABench repository.",
+      "Select assays with sufficient support for train/test split construction.",
+      "Preserve reference sequence, mutation position, split protocol, and assay metadata."
+    ]
+  },
+  "expected_fields": ["sequence", "mutations", "mutation_positions", "fitness", "assay_name", "split"],
+  "recommended_axes": [
+    {
+      "name": "mutation_position_distance",
+      "definition": "Distance from held-out mutation positions to trained mutation positions.",
+      "prospective": true
+    },
+    {
+      "name": "local_sequence_context",
+      "definition": "Similarity of windows around mutated positions.",
+      "prospective": true
+    },
+    {
+      "name": "fitness_extremeness",
+      "definition": "Distance from training fitness support; diagnostic/post-hoc unless labels are restricted to training support.",
+      "prospective": false
+    }
+  ],
+  "useful_for": [
+    "Turning random versus contiguous splits into a full mutational spectrum.",
+    "Testing nucleotide model extrapolation to unobserved mutational regions.",
+    "Negative SPECTRA cases where performance failure is not cleanly novelty-specific."
+  ],
+  "leakage_risks": [
+    "Whole-sequence identity can collapse for single-mutant assays.",
+    "Fitness-derived axes are post-hoc if held-out labels are used.",
+    "Constant predictions can dominate curve interpretation."
+  ],
+  "related_benchmark_capsules": ["nabench"],
+  "related_memory_entries": ["cross_domain_agent_ablation_memory"],
+  "tags": ["nabench", "sequence_fitness", "mutation_position", "contiguous_split"]
+}

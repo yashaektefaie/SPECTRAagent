@@ -1,0 +1,37 @@
+{
+  "id": "spatiotemporal_forecast_horizon_split",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "operating_point_name": "Spatiotemporal Forecast-Horizon Split",
+  "method_family": "spatiotemporal_holdout",
+  "scientific_unit": "spatiotemporal_sample",
+  "data_types": ["spatiotemporal", "environmental", "sensor", "mobility", "ecology"],
+  "target_novelty_axis": "spatial_distance_temporal_horizon_or_both",
+  "deployment_question": "How does the model perform at future times, new locations, or both?",
+  "curve_region": "axis_specific",
+  "definition": "Hold out future time windows, spatial regions, or combined space-time blocks to match forecast or transfer deployment.",
+  "split_operator": {"type": "spatiotemporal_block_holdout", "heldout_unit": "space_time_block", "spectra_mapping": "samples a targeted point over spatial and temporal novelty axes"},
+  "required_inputs": ["sample_id", "coordinates", "timestamp", "forecast horizon or block definition"],
+  "recommended_similarity_axes": ["geographic_distance", "temporal_distance", "environmental_similarity", "space_time_distance"],
+  "output_contract": {"mode": "split_assignment", "required_columns": ["sample_id", "split", "role"], "optional_columns": ["space_block", "time_block", "forecast_horizon"]},
+  "implementation_recipe": [
+    "Define whether the deployment target is new-time, new-location, or new-time-and-location.",
+    "Construct held-out space-time blocks or forecast horizons.",
+    "Report spatial and temporal distance from test samples to training samples."
+  ],
+  "quality_gates": [
+    "Avoid random leakage across adjacent space-time neighbors.",
+    "Report block size and forecast horizon.",
+    "Check covariate drift across time and space."
+  ],
+  "failure_modes": [
+    "Space and time shifts can be confounded.",
+    "Short forecast horizons can remain high-overlap.",
+    "Large blocks can reduce sample size."
+  ],
+  "citations": [
+    {"paper_id": "arx_2110.12674", "title": "mlr3spatiotempcv: Spatiotemporal resampling methods", "evidence": "Provides unified spatiotemporal resampling strategies for machine learning."},
+    {"paper_id": "arx_2404.12575", "title": "Adversarial validation for geospatial machine learning prediction", "evidence": "Quantifies dissimilarity between geospatial training samples and prediction locations."}
+  ],
+  "tags": ["spatiotemporal", "forecast", "space_time", "horizon"]
+}

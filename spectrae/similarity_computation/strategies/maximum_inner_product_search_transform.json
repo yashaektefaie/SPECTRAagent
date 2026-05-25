@@ -1,0 +1,100 @@
+{
+  "id": "maximum_inner_product_search_transform",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "Maximum Inner Product Search Transforms",
+  "strategy_family": "maximum_inner_product_search",
+  "exactness": "approximate",
+  "applies_to_similarity_kinds": [
+    "inner_product_similarity",
+    "maximum_inner_product",
+    "dot_product_similarity",
+    "recommendation_score_similarity",
+    "sparse_inner_product"
+  ],
+  "compatible_data_shapes": [
+    "dense_vector",
+    "sparse_vector",
+    "embedding",
+    "recommendation_embedding",
+    "hybrid_sparse_dense_vector"
+  ],
+  "definition": "Use transformations, norm-range partitioning, asymmetric hashing, clustering, or quantization designed specifically for maximum inner-product search when dot product is the scientific similarity. This avoids incorrectly normalizing away vector norm when norm carries scientific meaning.",
+  "scale_profile": {
+    "best_for": "Large vector audits where the chosen similarity is dot product or score compatibility rather than cosine or Euclidean distance.",
+    "typical_upper_bound": "Millions to billions of vectors with approximate hashing, clustering, graph, or quantized indexes.",
+    "avoid_when": "Vectors are intentionally unit-normalized and cosine similarity is the actual scientific definition."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "inner_product",
+      "transform",
+      "recall_at_k"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "vectors",
+    "inner product scorer"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "transform_family",
+      "purpose": "Selects ALSH, norm partitioning, quantization, clustering, or sparse MIPS indexing."
+    },
+    {
+      "name": "norm_partition_count",
+      "purpose": "Controls norm buckets when norm-range methods are used."
+    },
+    {
+      "name": "search_budget",
+      "purpose": "Controls approximate recall and latency."
+    }
+  ],
+  "quality_gates": [
+    "Check whether norm is scientifically meaningful before converting MIPS to cosine search.",
+    "Measure recall@k against exact inner products on a subset.",
+    "Report vector normalization, norm partitioning, and any asymmetric transform."
+  ],
+  "failure_modes": [
+    "Cosine normalization can erase meaningful magnitude information.",
+    "Transforms may have weak recall for unusual vector norm distributions.",
+    "Sparse and dense inner-product indexes have different failure modes and should not be swapped silently."
+  ],
+  "python_example": "dense_vector_topk_similarity.py",
+  "example_usage": "Use dense_vector_topk_similarity.py with dot-product scoring as an exact reference; production MIPS systems should emit the same pairwise columns and report the transform used.",
+  "citations": [
+    {
+      "paper_id": "arx_1405.5869",
+      "title": "Asymmetric LSH for Sublinear Time Maximum Inner Product Search",
+      "evidence": "Introduces asymmetric locality-sensitive hashing to reduce MIPS to an approximate near-neighbor problem."
+    },
+    {
+      "paper_id": "arx_1810.09104",
+      "title": "Norm-Range Partition: A Universal Catalyst for LSH based Maximum Inner Product Search",
+      "evidence": "Partitions vectors by norm to improve LSH-based MIPS efficiency."
+    },
+    {
+      "paper_id": "arx_1509.01469",
+      "title": "Quantization based Fast Inner Product Search",
+      "evidence": "Uses quantization to accelerate approximate inner-product search."
+    }
+  ],
+  "tags": [
+    "mips",
+    "inner_product",
+    "alsh",
+    "norm_range",
+    "quantization",
+    "sparse_vector"
+  ]
+}

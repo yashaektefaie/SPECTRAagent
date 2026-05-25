@@ -1,0 +1,85 @@
+{
+  "id": "phylogenetic_patristic_distance_similarity",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "phylogenetic_or_taxonomic_sample",
+  "scientific_unit": "species_taxon_strain_or_sequence",
+  "task_family": [
+    "evolutionary biology",
+    "ecological prediction",
+    "phylogeny-aware generalization"
+  ],
+  "similarity_name": "Phylogenetic tree or patristic-distance similarity",
+  "similarity_kind": "tree_distance_similarity",
+  "definition": "Use patristic distance, tree-path distance, taxonomic distance, or a derived phylogenetic kernel to quantify how evolutionarily close each evaluation unit is to training units. This is useful when random splits overestimate performance because related taxa, strains, species, or homologs appear across train and test.",
+  "spectra_axis": {
+    "name": "max_train_phylogenetic_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_tree_distance_similarity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "precomputed_tree_distance"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/metric_to_similarity.py",
+  "example_usage": "python metric_to_similarity.py --input patristic_distance.csv --out pairwise_similarity.csv --metric-kind distance --metric-col patristic_distance --scale 1.0",
+  "citations": [
+    {
+      "paper_id": "PMC3413390",
+      "title": "Associating microbiome composition with environmental covariates using generalized UniFrac distances",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC3413390/content.lines",
+          "lines": "L13-L18",
+          "summary": "Phylogenetic distance measures compare communities using the phylogenetic relationships among species."
+        },
+        {
+          "path": "/papers/PMC3413390/content.lines",
+          "lines": "L31-L34",
+          "summary": "The paper uses patristic distances and phylogenetic trees to group OTUs into lineages."
+        }
+      ]
+    },
+    {
+      "paper_id": "arx_2111.08478",
+      "title": "Spatial machine-learning model diagnostics: a model-agnostic distance-based approach",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/arx_2111.08478/content.lines",
+          "lines": "L42-L46",
+          "summary": "The paper explicitly notes that distance-based assessment can use graph-theoretical distances in phylogenetic trees."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Phylogenetic distance depends on tree construction, branch lengths, rooting, and taxonomic resolution.",
+    "Evolutionary closeness may not reflect phenotype, function, or ecological niche.",
+    "Tree distances should not be mixed with sequence identity without clear scaling."
+  ],
+  "quality_gates": [
+    "Report tree source, branch-length model, taxonomic mapping, and distance transformation to similarity.",
+    "Check whether unresolved taxa or polytomies affect low-similarity samples.",
+    "Compare with sequence-alignment similarity and metadata axes when both are available."
+  ],
+  "tags": [
+    "phylogeny",
+    "patristic_distance",
+    "taxonomic_distance",
+    "tree_distance",
+    "ecology",
+    "evolution"
+  ]
+}

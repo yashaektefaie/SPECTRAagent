@@ -1,0 +1,77 @@
+{
+  "id": "protein_structure_tm_score_similarity",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "protein_structure",
+  "scientific_unit": "protein_chain_or_structure_model",
+  "task_family": [
+    "protein structure prediction",
+    "protein function prediction",
+    "structural homology"
+  ],
+  "similarity_name": "TM-score or RMSD structural similarity",
+  "similarity_kind": "structure_similarity",
+  "definition": "Use a structural alignment metric such as TM-score as a direct similarity, or convert RMSD/contact-map distance to a bounded similarity. This axis audits whether model performance depends on structural neighbors in the training set, even when sequence identity is low.",
+  "spectra_axis": {
+    "name": "max_train_protein_structure_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_tm_score_or_structure_similarity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "precomputed_structure_metric"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/metric_to_similarity.py",
+  "example_usage": "python metric_to_similarity.py --input tm_scores.csv --out pairwise_similarity.csv --metric-col tm_score --metric-kind similarity",
+  "citations": [
+    {
+      "paper_id": "PMC1084323",
+      "title": "TM-align: a protein structure alignment algorithm based on the TM-score",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC1084323/content.lines",
+          "lines": "L5-L8",
+          "summary": "TM-align uses TM-score for protein structure alignment and reports fold-level structural similarity."
+        },
+        {
+          "path": "/papers/PMC1084323/content.lines",
+          "lines": "L25-L32",
+          "summary": "The paper explains why TM-score balances alignment coverage and accuracy better than raw RMSD for global topology."
+        },
+        {
+          "path": "/papers/PMC1084323/content.lines",
+          "lines": "L38-L43",
+          "summary": "TM-align is used for large-scale sequence-independent structure comparisons and fold clustering."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Requires precomputed structure alignments or reliable predicted structures.",
+    "TM-score, RMSD, contact-map overlap, and fold labels answer different biological questions.",
+    "High structural similarity does not guarantee functional similarity."
+  ],
+  "quality_gates": [
+    "Report the structural alignment tool, normalization convention, and any sequence-identity filters.",
+    "Prefer TM-score for global topology and RMSD/contact overlap for local geometry when justified.",
+    "Run sequence-identity and structure-similarity curves separately when both inputs exist."
+  ],
+  "tags": [
+    "protein_structure",
+    "tm_score",
+    "rmsd",
+    "structural_homology",
+    "fold"
+  ]
+}

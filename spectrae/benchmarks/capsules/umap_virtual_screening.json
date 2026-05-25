@@ -1,0 +1,71 @@
+{
+  "id": "umap_virtual_screening",
+  "title": "UMAP-based clustering split for rigorous evaluation of AI models for virtual screening on cancer cell lines",
+  "tier": "launch_anchor",
+  "community": "molecular_ml_drug_discovery",
+  "status": "active_demo",
+  "paper": {
+    "url": "https://pubmed.ncbi.nlm.nih.gov/40495205/",
+    "open_access_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12153141/",
+    "year": 2025
+  },
+  "code": {
+    "repo_url": "https://github.com/Rong830/UMAP_split_for_VS",
+    "fetch_default": true
+  },
+  "data": [
+    {
+      "name": "Reproducibility archive",
+      "url": "https://zenodo.org/records/14736486",
+      "fetch_default": false,
+      "reason": "Archive may contain large datasets; fetch explicitly when reproducing."
+    },
+    {
+      "name": "NCI-60 screening data",
+      "url": "https://dtp.cancer.gov/discovery_development/nci-60/",
+      "fetch_default": false,
+      "reason": "Use upstream data instructions and licensing."
+    }
+  ],
+  "scientific_unit": "molecule-cell-line activity measurement",
+  "original_evaluation": [
+    "Random, scaffold, Butina, and UMAP clustering splits",
+    "Virtual-screening models across NCI-60 cancer cell line datasets"
+  ],
+  "core_generalization_finding": "Random, scaffold, and Butina splits can still leave high train-test similarity and overestimate virtual-screening performance.",
+  "spectra_demo_hook": "Generalize random/scaffold/Butina/UMAP comparisons into a full performance-over-novelty curve.",
+  "recommended_novelty_axes": [
+    {
+      "name": "chemical_distance",
+      "property_graph": "Morgan fingerprint Tanimoto similarity",
+      "graph_type": "weighted",
+      "priority": "primary"
+    },
+    {
+      "name": "umap_cluster_distance",
+      "property_graph": "distance or adjacency over molecular UMAP clusters",
+      "graph_type": "binary_or_weighted",
+      "priority": "primary"
+    },
+    {
+      "name": "bioactivity_neighbor_overlap",
+      "property_graph": "shared activity-neighborhood labels within a cell line",
+      "graph_type": "weighted",
+      "priority": "secondary"
+    },
+    {
+      "name": "scaffold_similarity",
+      "property_graph": "shared scaffold or scaffold fingerprint similarity",
+      "graph_type": "binary_or_weighted",
+      "priority": "secondary"
+    }
+  ],
+  "expected_artifacts": [
+    "audit_card.json",
+    "spectral_properties.json",
+    "split_stats.csv",
+    "performance_by_overlap.csv",
+    "spectral_curve.png",
+    "report.md"
+  ]
+}

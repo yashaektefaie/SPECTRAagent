@@ -1,0 +1,92 @@
+{
+  "id": "angular_random_projection_lsh",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "Angular Random-Projection LSH for Cosine Similarity",
+  "strategy_family": "hashing_sketch_lsh",
+  "exactness": "hybrid_exact_after_candidate_generation",
+  "applies_to_similarity_kinds": [
+    "cosine_similarity",
+    "angular_distance",
+    "dense_embedding_similarity",
+    "sparse_vector_cosine"
+  ],
+  "compatible_data_shapes": [
+    "dense_vector",
+    "sparse_vector",
+    "embedding",
+    "text_embedding",
+    "high_dimensional_vector"
+  ],
+  "definition": "Hash vectors with random hyperplanes, cross-polytope hashes, or feature-hashing Johnson-Lindenstrauss projections so nearby angular neighbors collide in buckets. Exact cosine can then be computed only for bucket candidates before emitting SPECTRA pairwise edges.",
+  "scale_profile": {
+    "best_for": "Large cosine or angular similarity audits when a simple, transparent ANN method is preferred over graph indexes.",
+    "typical_upper_bound": "Millions of vectors when bucket sizes are controlled by the number of bits and tables.",
+    "avoid_when": "Recall cannot be calibrated or the audit depends on non-nearest low-similarity tails."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "candidate_source",
+      "lsh_recall_at_k"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "dense or sparse vectors",
+    "cosine normalization rule"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "num_bits",
+      "purpose": "Controls bucket granularity within each table."
+    },
+    {
+      "name": "num_tables",
+      "purpose": "Controls recall by repeating independent hashes."
+    },
+    {
+      "name": "candidate_k",
+      "purpose": "Number of exact cosine reranked neighbors retained."
+    }
+  ],
+  "quality_gates": [
+    "Measure recall@k against exact cosine on a subset.",
+    "Report vector normalization and hash parameters.",
+    "Inspect bucket-size skew because large buckets erase speed gains."
+  ],
+  "failure_modes": [
+    "Sparse high-dimensional vectors may be better served by inverted indexes or MinHash.",
+    "Too many bits create empty buckets and false distance inflation.",
+    "Too few bits create huge buckets and near-exact brute force."
+  ],
+  "python_example": "random_projection_lsh_cosine.py",
+  "example_usage": "python random_projection_lsh_cosine.py --train train.csv --eval eval.csv --out pairwise_similarity.csv --vector-prefix emb_ --num-bits 16 --num-tables 8 --top-k 50",
+  "citations": [
+    {
+      "paper_id": "arx_1704.04684",
+      "title": "Generic LSH Families for the Angular Distance Based on Johnson-Lindenstrauss Projections and Feature Hashing LSH",
+      "evidence": "Describes angular LSH from Johnson-Lindenstrauss projections and feature hashing, and explains candidate retrieval by hashing similar items to the same bucket."
+    },
+    {
+      "paper_id": "arx_1602.06922",
+      "title": "Fast Cross-Polytope Locality-Sensitive Hashing",
+      "evidence": "Presents a fast cross-polytope LSH method for angular nearest-neighbor search."
+    }
+  ],
+  "tags": [
+    "cosine",
+    "angular",
+    "random_projection",
+    "simhash",
+    "lsh"
+  ]
+}

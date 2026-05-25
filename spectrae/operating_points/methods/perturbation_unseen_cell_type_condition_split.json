@@ -1,0 +1,37 @@
+{
+  "id": "perturbation_unseen_cell_type_condition_split",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "operating_point_name": "Unseen Cell-Type or Condition Perturbation Split",
+  "method_family": "perturbation_context_holdout",
+  "scientific_unit": "cell_perturbation_context",
+  "data_types": ["single_cell", "perturbation_response", "spatial_transcriptomics"],
+  "target_novelty_axis": "cell_type_condition_tissue_or_context",
+  "deployment_question": "How does the model predict perturbation response in a cell type, tissue, condition, or niche absent from training?",
+  "curve_region": "low_overlap",
+  "definition": "Hold out cellular contexts while preserving or varying perturbation identities to evaluate context transfer in perturbation response prediction.",
+  "split_operator": {"type": "leave_context_out", "heldout_unit": "cell_type_or_condition", "spectra_mapping": "sets same-context train overlap to zero while perturbation overlap may remain"},
+  "required_inputs": ["sample_id", "cell type or condition", "perturbation_id", "expression or response"],
+  "recommended_similarity_axes": ["cell_type_embedding_similarity", "condition_similarity", "perturbation_similarity", "baseline_state_similarity"],
+  "output_contract": {"mode": "split_assignment", "required_columns": ["sample_id", "split", "role"], "optional_columns": ["cell_type", "condition", "heldout_context"]},
+  "implementation_recipe": [
+    "Declare the context variable: cell type, tissue, condition, donor, or spatial niche.",
+    "Assign all observations from held-out contexts to test.",
+    "Stratify by perturbation overlap if testing context-only versus double-novel transfer."
+  ],
+  "quality_gates": [
+    "Report which perturbations are shared between train and held-out contexts.",
+    "Measure baseline expression similarity between contexts.",
+    "Check cell-count and response-magnitude balance."
+  ],
+  "failure_modes": [
+    "Context holdout can be confounded with batch or dataset source.",
+    "Rare cell types can produce unstable metrics.",
+    "Shared perturbations may make the split easier than true context-and-perturbation novelty."
+  ],
+  "citations": [
+    {"paper_id": "bio_1b3dbb227cee", "title": "PrePR-CT: Predicting Perturbation Responses in Unseen Cell Types", "evidence": "Targets transcriptional response prediction in unseen cell types."},
+    {"paper_id": "bio_009b27fd7099", "title": "A Systematic Comparison of Single-Cell Perturbation Response Prediction Models", "evidence": "Reports no model consistently generalizes across cell types across perturbation datasets."}
+  ],
+  "tags": ["perturbation", "cell_type", "condition", "context_holdout"]
+}

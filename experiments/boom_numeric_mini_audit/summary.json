@@ -1,0 +1,70 @@
+{
+  "experiment": "boom_numeric_mini_audit",
+  "date": "2026-05-07",
+  "capsule_id": "boom",
+  "task": "BOOM 10k density",
+  "model": "RandomForestRegressor over Morgan fingerprints",
+  "asset_dir": "/ewsc/yektefai/spectra_assets/boom_numeric_pilot",
+  "artifacts": {
+    "audit_card": "/ewsc/yektefai/spectra_assets/boom_numeric_pilot/artifacts/audit_card.json",
+    "split_stats": "/ewsc/yektefai/spectra_assets/boom_numeric_pilot/artifacts/split_stats.csv",
+    "performance_by_overlap": "/ewsc/yektefai/spectra_assets/boom_numeric_pilot/artifacts/performance_by_overlap.csv",
+    "curve_plot": "/ewsc/yektefai/spectra_assets/boom_numeric_pilot/artifacts/spectral_curve.svg",
+    "report": "/ewsc/yektefai/spectra_assets/boom_numeric_pilot/artifacts/report.md"
+  },
+  "sizes": {
+    "train": 8766,
+    "id": 440,
+    "ood": 1000
+  },
+  "id": {
+    "n": 440,
+    "mean_max_tanimoto": 0.5595291687668505,
+    "rmse": 0.04425166800519178,
+    "mae": 0.033813847071556186
+  },
+  "ood_curve": [
+    {
+      "subset": "ood_max_tanimoto_le_1_0",
+      "n": 1000,
+      "mean_max_tanimoto": 0.472561385451786,
+      "rmse": 0.22963059182905268,
+      "mae": 0.20849221033458776
+    },
+    {
+      "subset": "ood_max_tanimoto_le_0_8",
+      "n": 978,
+      "mean_max_tanimoto": 0.4631938619281822,
+      "rmse": 0.23166350262796948,
+      "mae": 0.21096774304757637
+    },
+    {
+      "subset": "ood_max_tanimoto_le_0_7",
+      "n": 931,
+      "mean_max_tanimoto": 0.4489078475583048,
+      "rmse": 0.23536488886926746,
+      "mae": 0.21492821080302765
+    },
+    {
+      "subset": "ood_max_tanimoto_le_0_6",
+      "n": 823,
+      "mean_max_tanimoto": 0.42297578300116984,
+      "rmse": 0.24335386288765185,
+      "mae": 0.2230842735052069
+    },
+    {
+      "subset": "ood_max_tanimoto_le_0_5",
+      "n": 653,
+      "mean_max_tanimoto": 0.39002127422827,
+      "rmse": 0.25340949263725665,
+      "mae": 0.23300420457612755
+    }
+  ],
+  "auspc": {
+    "computed": true,
+    "metric": "negative_rmse_area",
+    "novelty_axis": "1 - normalized_mean_max_tanimoto",
+    "value": -0.24096112142647133
+  },
+  "interpretation": "BOOM density OOD error is much higher than ID error, and OOD RMSE rises as train-test chemical overlap decreases."
+}

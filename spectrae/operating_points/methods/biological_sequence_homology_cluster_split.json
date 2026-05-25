@@ -1,0 +1,37 @@
+{
+  "id": "biological_sequence_homology_cluster_split",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "operating_point_name": "Biological Sequence Homology-Cluster Split",
+  "method_family": "sequence_homology_holdout",
+  "scientific_unit": "biological_sequence",
+  "data_types": ["protein", "dna", "rna", "peptide"],
+  "target_novelty_axis": "sequence_identity_or_homology",
+  "deployment_question": "How does the model perform on sequence families or homologous clusters absent from training?",
+  "curve_region": "low_overlap",
+  "definition": "Cluster sequences by homology, sequence identity, or a sequence similarity graph and assign complete clusters to train or test.",
+  "split_operator": {"type": "homology_cluster_holdout", "heldout_unit": "sequence_cluster", "spectra_mapping": "enforces low sequence-similarity train overlap at the selected identity threshold"},
+  "required_inputs": ["sample_id", "sequence", "similarity threshold or cluster id"],
+  "recommended_similarity_axes": ["sequence_identity", "alignment_score", "homology_cluster", "embedding_similarity"],
+  "output_contract": {"mode": "split_assignment", "required_columns": ["sample_id", "split", "role"], "optional_columns": ["cluster_id", "identity_threshold"]},
+  "implementation_recipe": [
+    "Compute pairwise sequence similarity or use a homology partitioning tool.",
+    "Build clusters or graph components at the chosen threshold.",
+    "Assign whole clusters to folds and report cross-split identity."
+  ],
+  "quality_gates": [
+    "Report identity threshold, alignment method, and clustering algorithm.",
+    "Measure maximum train-test sequence identity after splitting.",
+    "Check label and family balance across folds."
+  ],
+  "failure_modes": [
+    "Remote homology can remain below the identity threshold.",
+    "Large families can dominate split size.",
+    "Embedding similarity can reintroduce leakage if trained on labels or test sequences."
+  ],
+  "citations": [
+    {"paper_id": "PMC10578201", "title": "GraphPart: homology partitioning for biological sequence analysis", "evidence": "Partitions biological sequences to keep related sequences together while retaining more data than homology reduction."},
+    {"paper_id": "arx_2402.14482", "title": "SpanSeq: Similarity-based sequence data splitting", "evidence": "Introduces a sequence splitting method and reports random splitting inflates performance."}
+  ],
+  "tags": ["sequence", "homology", "cluster_split", "identity_threshold"]
+}

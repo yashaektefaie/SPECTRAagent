@@ -1,0 +1,37 @@
+{
+  "id": "graph_covariate_concept_shift_split",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "operating_point_name": "Graph Covariate/Concept Shift Split",
+  "method_family": "graph_distribution_shift",
+  "scientific_unit": "graph",
+  "data_types": ["graph", "geometric_deep_learning", "molecule_graph", "materials_graph", "scientific_graph"],
+  "target_novelty_axis": "graph_covariate_concept_or_environment_shift",
+  "deployment_question": "How does the graph model perform under a declared graph distribution shift?",
+  "curve_region": "axis_specific",
+  "definition": "Hold out graph environments, covariate regimes, concept regimes, size regimes, or scientific shift factors to test graph OOD generalization.",
+  "split_operator": {"type": "graph_shift_holdout", "heldout_unit": "environment_or_shift_factor", "spectra_mapping": "samples a named graph-distribution shift point on the novelty curve"},
+  "required_inputs": ["sample_id", "graph", "environment or shift factor label"],
+  "recommended_similarity_axes": ["graph_kernel_similarity", "graph_size_distance", "environment_similarity", "shift_factor_distance"],
+  "output_contract": {"mode": "split_assignment", "required_columns": ["sample_id", "split", "role"], "optional_columns": ["environment", "shift_type"]},
+  "implementation_recipe": [
+    "Define the shift as covariate, concept, conditional, size, or environment shift.",
+    "Assign graph environments or regimes to train and test according to the benchmark protocol.",
+    "Report performance by shift type and graph similarity to training graphs."
+  ],
+  "quality_gates": [
+    "Declare the shift taxonomy and held-out regime.",
+    "Check whether labels are balanced across graph environments.",
+    "Report graph-size and graph-structure overlap."
+  ],
+  "failure_modes": [
+    "Graph size can dominate the split and hide other shift factors.",
+    "Concept and covariate shifts can be entangled.",
+    "Synthetic shifts may not match scientific deployment."
+  ],
+  "citations": [
+    {"paper_id": "arx_2206.08452", "title": "GOOD: A Graph Out-of-Distribution Benchmark", "evidence": "Defines graph OOD benchmark settings and distinguishes covariate and concept shifts."},
+    {"paper_id": "arx_2310.08677", "title": "GeSS: Benchmarking Geometric Deep Learning under Scientific Distribution Shifts", "evidence": "Benchmarks geometric deep learning across scientific distribution shifts in multiple domains."}
+  ],
+  "tags": ["graph", "ood", "covariate_shift", "concept_shift", "gdl"]
+}

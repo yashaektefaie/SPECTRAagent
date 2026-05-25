@@ -1,0 +1,61 @@
+from setuptools import find_packages, setup
+
+setup(
+    name='spectrae',
+    version='1.1.0',
+    description='SPECTRA: spectral model evaluation and agent-native generalization audits',
+    long_description=open('README.md').read(),
+    long_description_content_type='text/markdown',
+    url='https://github.com/yashaektefaie/SPECTRAagent/',
+    author='Yasha Ektefaie',
+    author_email='yasha_ektefaie@g.harvard.edu',
+    license='MIT License',
+    packages=find_packages(),
+    package_data={
+        'spectrae': [
+            'procedures/*.md',
+            'procedures/examples/*.md',
+            'benchmarks/*.json',
+            'benchmarks/capsules/*.json',
+            'report_templates/*.md',
+            'similarity_definitions/*.json',
+            'similarity_definitions/definitions/*.json',
+            'similarity_definitions/examples/*.py',
+            'similarity_computation/*.json',
+            'similarity_computation/strategies/*.json',
+            'similarity_computation/examples/*.py',
+            'operating_points/*.json',
+            'operating_points/methods/*.json',
+            'spectra_memory/*.json',
+            'spectra_memory/entries/*.json',
+            'dataset_catalog/*.json',
+            'dataset_catalog/entries/*.json',
+        ],
+    },
+    extras_require={
+        'mcp': ['mcp[cli]>=1.8.0'],
+        'fastmcp': ['fastmcp>=2.0.0'],
+    },
+    entry_points={
+        'console_scripts': [
+            'spectra=spectrae.cli:main',
+        ],
+    },
+    install_requires=[
+        'networkx',
+        'h5py',
+        'numpy',
+        'torch',
+        'scikit-learn',
+        'scipy',
+        'pandas',
+        'tqdm',
+    ],
+
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+        'Intended Audience :: Science/Research',
+    ],
+)

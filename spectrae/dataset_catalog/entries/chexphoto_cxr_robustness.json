@@ -1,0 +1,81 @@
+{
+  "id": "chexphoto_cxr_robustness",
+  "version": "0.1.0",
+  "status": "needs_auth",
+  "title": "CheXphoto Chest X-Ray Photo Robustness Dataset",
+  "domains": ["medical_imaging", "chest_xray", "domain_shift", "clinical_ai"],
+  "data_types": ["chest radiograph", "natural photo transform", "synthetic image transform", "patient metadata", "pathology label"],
+  "scientific_units": ["chest_xray_image", "patient", "photo_transform", "pathology_label"],
+  "compatible_model_families": ["chest X-ray classifier", "medical vision model", "clinical foundation model", "vision-language medical model"],
+  "source": {
+    "homepage": "https://aimi.stanford.edu/datasets/chexphoto-chest-x-rays",
+    "repository": null,
+    "data_urls": [
+      {
+        "description": "Stanford Redivis dataset",
+        "url": "https://stanford.redivis.com/datasets/2qwg-aav2k243j",
+        "access_notes": "AIMI page links the dataset through Stanford Redivis; account/terms may be required."
+      },
+      {
+        "description": "Dataset DOI",
+        "url": "https://doi.org/10.71718/n3nj-2c03",
+        "access_notes": "Use for stable citation and source verification."
+      },
+      {
+        "description": "CheXphoto arXiv paper",
+        "url": "https://arxiv.org/abs/2007.06199",
+        "access_notes": "Use for benchmark semantics and transform definitions."
+      }
+    ]
+  },
+  "access": {
+    "mode": "data_portal",
+    "authentication": "Redivis_or_dataset_terms_likely_required",
+    "instructions": [
+      "Use the Stanford AIMI/Redivis source rather than unofficial mirrors.",
+      "Record patient ID, source CheXpert split, original CXR ID, transform type, natural-versus-synthetic flag, pathology labels, and split.",
+      "Start with validation/test metadata or a sampled transform subset before pulling all images."
+    ]
+  },
+  "scale": {
+    "download_size": "10,000+ transformed chest X-ray photos from CheXpert-derived images; account-gated portal likely",
+    "spectra_default": "metadata_or_sampled_transform_subset"
+  },
+  "expected_fields": ["image_id", "patient_id", "source_xray_id", "transform_type", "photo_type", "pathology_label", "split"],
+  "recommended_axes": [
+    {
+      "name": "acquisition_transform_support",
+      "definition": "Similarity of test images to training images by natural-photo, synthetic-photo, angle, glare, crop, blur, and display-artifact transforms.",
+      "prospective": true
+    },
+    {
+      "name": "source_xray_support",
+      "definition": "Whether the same or similar original radiograph appears in training under a different transform.",
+      "prospective": true
+    },
+    {
+      "name": "pathology_label_support",
+      "definition": "Class prevalence and co-occurrence support for each pathology label under transform shift.",
+      "prospective": true
+    }
+  ],
+  "useful_for": [
+    "Medical-imaging examples where the generalization axis is acquisition/process shift rather than anatomy alone.",
+    "Testing whether a CXR model is robust to photos of radiographs and synthetic display artifacts.",
+    "Demonstrating leakage-aware split construction over patient, original image, and transform identity."
+  ],
+  "leakage_risks": [
+    "The same original radiograph can appear under multiple transforms.",
+    "Patient overlap with CheXpert-derived training data can invalidate prospective claims.",
+    "Transform labels can become shortcuts if train/test split does not separate acquisition conditions cleanly."
+  ],
+  "related_benchmark_capsules": [],
+  "related_memory_entries": [],
+  "paperclip_provenance": {
+    "search_ids": ["s_6c9b4571", "s_42b782d8"],
+    "map_ids": ["m_7ebd871f", "m_47958686"],
+    "paper_ids": ["arx_2007.06199", "arx_2102.08660", "arx_2002.11379"],
+    "notes": "Paperclip identified CheXphoto/CheXternal as CXR generalization resources; official AIMI page verifies Redivis access, DOI, and dataset scale."
+  },
+  "tags": ["chexphoto", "chest_xray", "medical_imaging", "robustness", "acquisition_shift"]
+}

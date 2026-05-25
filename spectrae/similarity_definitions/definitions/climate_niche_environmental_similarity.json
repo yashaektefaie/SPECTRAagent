@@ -1,0 +1,79 @@
+{
+  "id": "climate_niche_environmental_similarity",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "ecological_or_environmental_niche",
+  "scientific_unit": "site_species_range_or_environmental_cell",
+  "task_family": [
+    "species distribution modeling",
+    "ecological transferability",
+    "climate generalization"
+  ],
+  "similarity_name": "Climate niche environmental similarity",
+  "similarity_kind": "environmental_niche_overlap",
+  "definition": "Represent each site, range, or ecological sample by environmental variables in climate or niche space, then compare overlap or novelty using metrics such as Schoener's D, Hellinger-based niche overlap, MESS, MOP, or distance in environmental principal-component space. For SPECTRA, this audits whether ecological and environmental models generalize to non-analogous climates or low-overlap niche regions.",
+  "spectra_axis": {
+    "name": "climate_niche_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_environmental_niche_similarity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "climate_or_environment_feature_columns"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/tabular_mahalanobis_similarity.py",
+  "example_usage": "python tabular_mahalanobis_similarity.py --train train_climate.csv --eval eval_climate.csv --out pairwise_similarity.csv --feature-cols-prefix bio_",
+  "citations": [
+    {
+      "paper_id": "PMC11227166",
+      "title": "Assessing climate niche similarity between persian fallow deer areas in Iran",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC11227166/content.lines",
+          "lines": "L6-L12",
+          "summary": "The paper assesses climate niche similarity and frames niches as environmental-space hypervolumes."
+        },
+        {
+          "path": "/papers/PMC11227166/content.lines",
+          "lines": "L39-L42",
+          "summary": "It computes environmental overlap with Schoener's D and discusses MESS, MOP, and ExDet for analogous environments and extrapolation."
+        },
+        {
+          "path": "/papers/PMC11227166/content.lines",
+          "lines": "L63-L69",
+          "summary": "The authors interpret near-zero climate overlap as substantial dissimilarity between origin and new areas."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Environmental similarity depends on variable selection, spatial resolution, temporal baseline, and accessible-area definition.",
+    "Niche overlap metrics can mix sampling availability with biological tolerance.",
+    "Geographic proximity and environmental similarity are different axes and should not be conflated."
+  ],
+  "quality_gates": [
+    "Report climate variables, resolution, temporal period, accessible-area mask, scaling, and extrapolation method.",
+    "Run separate curves for geographic distance and environmental niche similarity when both matter.",
+    "Check non-analogous conditions and variable-selection sensitivity."
+  ],
+  "tags": [
+    "climate",
+    "ecological_niche",
+    "environmental_similarity",
+    "species_distribution",
+    "non_analog_climate",
+    "transferability"
+  ]
+}
+

@@ -1,0 +1,70 @@
+{
+  "id": "wilds_camelyon17",
+  "version": "0.1.0",
+  "status": "active",
+  "title": "WILDS Camelyon17 Hospital-Shift Histopathology Dataset",
+  "domains": ["medical_imaging", "histopathology", "clinical_ai", "distribution_shift"],
+  "data_types": ["histopathology image patch", "hospital metadata", "tumor label"],
+  "scientific_units": ["image_patch", "patient_slide", "hospital"],
+  "compatible_model_families": ["medical image classifier", "histopathology foundation model", "vision model"],
+  "source": {
+    "homepage": "https://wilds.stanford.edu/datasets/",
+    "repository": "https://github.com/p-lambda/wilds",
+    "data_urls": [
+      {
+        "description": "WILDS datasets page",
+        "url": "https://wilds.stanford.edu/datasets/",
+        "access_notes": "Use WILDS package and dataset documentation for official split metadata."
+      },
+      {
+        "description": "WILDS get started instructions",
+        "url": "https://wilds.stanford.edu/get_started/",
+        "access_notes": "Use official download commands and evaluators."
+      }
+    ]
+  },
+  "access": {
+    "mode": "repository",
+    "authentication": "none_expected",
+    "instructions": [
+      "Use the WILDS package to access Camelyon17 and its official hospital-domain split.",
+      "Prefer a stratified patch subset or frozen image embeddings for exploratory SPECTRA runs.",
+      "Record hospital, patient/slide metadata when available, label, split, and preprocessing."
+    ]
+  },
+  "scale": {
+    "download_size": "multi-GB image dataset; avoid full repeated pulls during agent exploration",
+    "spectra_default": "sampled_images_or_precomputed_embeddings"
+  },
+  "expected_fields": ["image", "label", "hospital", "patient_id", "slide_id", "split"],
+  "recommended_axes": [
+    {
+      "name": "hospital_domain_similarity",
+      "definition": "Hospital/site support treated as an operating point and domain axis.",
+      "prospective": true
+    },
+    {
+      "name": "stain_style_similarity",
+      "definition": "Train-fitted color, stain, texture, or image-embedding similarity.",
+      "prospective": true
+    },
+    {
+      "name": "patient_slide_support",
+      "definition": "Patient or slide-level support to prevent patch-level leakage.",
+      "prospective": true
+    }
+  ],
+  "useful_for": [
+    "Clinical imaging external validation demos.",
+    "Testing whether hospital split is one operating point on an image-style novelty curve.",
+    "Auditing patch-level leakage and site-specific artifacts."
+  ],
+  "leakage_risks": [
+    "Patches from the same slide or patient must not cross splits.",
+    "Hospital identity can be confounded with label prevalence and staining style.",
+    "Patch-level metrics can overstate patient-level generalization."
+  ],
+  "related_benchmark_capsules": [],
+  "related_memory_entries": [],
+  "tags": ["wilds", "camelyon17", "histopathology", "hospital_shift", "medical_imaging"]
+}

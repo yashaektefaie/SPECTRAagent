@@ -1,0 +1,92 @@
+{
+  "id": "disk_backed_vector_ann_search",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "Disk-Backed Vector ANN and Similarity Join",
+  "strategy_family": "disk_backed_vector_index",
+  "exactness": "approximate",
+  "applies_to_similarity_kinds": [
+    "embedding_similarity",
+    "cosine_similarity",
+    "inner_product_similarity",
+    "euclidean_distance",
+    "vector_similarity_join"
+  ],
+  "compatible_data_shapes": [
+    "very_large_dense_vector",
+    "billion_scale_vector",
+    "ssd_resident_embedding_table",
+    "large_vector_join"
+  ],
+  "definition": "Store a vector index or vector-join structure on SSD/disk and optimize page layout, caching, and probabilistic pruning so SPECTRA can retrieve top-k or thresholded train-eval vector similarities when the corpus exceeds RAM.",
+  "scale_profile": {
+    "best_for": "Billion-scale or memory-constrained vector audits where in-memory FAISS/HNSW is not feasible.",
+    "typical_upper_bound": "Billion-scale dense-vector collections in disk-optimized systems.",
+    "avoid_when": "The dataset fits in memory; in-memory ANN or exact BLAS is simpler and easier to validate."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "index_version",
+      "ann_recall_at_k"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "dense vectors",
+    "disk-backed index configuration"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "page_size_or_layout",
+      "purpose": "Controls disk I/O granularity and locality."
+    },
+    {
+      "name": "cache_budget",
+      "purpose": "Controls memory used for hot vectors or graph nodes."
+    },
+    {
+      "name": "search_beam_or_pruning",
+      "purpose": "Controls recall/latency tradeoff."
+    }
+  ],
+  "quality_gates": [
+    "Measure recall@k against exact or in-memory search on a subset.",
+    "Report index version, storage layout, and cache budget.",
+    "Check reproducibility because disk-resident indexes may update asynchronously."
+  ],
+  "failure_modes": [
+    "I/O layout can dominate runtime and make results hardware-dependent.",
+    "OOD queries can have lower recall if the index assumes in-distribution routing.",
+    "Approximate pruning can bias hard SPECTRA bins."
+  ],
+  "python_example": "dense_vector_topk_similarity.py",
+  "example_usage": "Use dense_vector_topk_similarity.py as a small exact reference; disk-backed systems should export the same SPECTRA pairwise CSV after querying the SSD-resident index.",
+  "citations": [
+    {
+      "paper_id": "arx_2111.08566",
+      "title": "SPANN: Highly-efficient Billion-scale Approximate Nearest Neighbor Search",
+      "evidence": "Introduces a memory-disk hybrid system for billion-scale approximate nearest-neighbor search."
+    },
+    {
+      "paper_id": "arx_2508.18494",
+      "title": "DiskJoin: Large-scale Vector Similarity Join with SSD",
+      "evidence": "Introduces a disk-based algorithm for billion-scale vector similarity joins using I/O optimization, memory caching, and probabilistic pruning."
+    }
+  ],
+  "tags": [
+    "disk_ann",
+    "ssd",
+    "billion_scale",
+    "vector_join",
+    "large_scale"
+  ]
+}

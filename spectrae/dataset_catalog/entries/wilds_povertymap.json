@@ -1,0 +1,65 @@
+{
+  "id": "wilds_povertymap",
+  "version": "0.1.0",
+  "status": "active",
+  "title": "WILDS PovertyMap Satellite and Socioeconomic Prediction Dataset",
+  "domains": ["geospatial_ml", "satellite_imaging", "socioeconomic_prediction", "distribution_shift"],
+  "data_types": ["satellite image", "survey label", "geographic metadata", "regression target"],
+  "scientific_units": ["geographic_location", "survey_cluster", "country_region"],
+  "compatible_model_families": ["satellite image model", "geospatial model", "vision model", "regression model"],
+  "source": {
+    "homepage": "https://wilds.stanford.edu/datasets/",
+    "repository": "https://github.com/p-lambda/wilds",
+    "data_urls": [
+      {
+        "description": "WILDS datasets page",
+        "url": "https://wilds.stanford.edu/datasets/",
+        "access_notes": "Use WILDS package and dataset documentation for official split metadata."
+      }
+    ]
+  },
+  "access": {
+    "mode": "repository",
+    "authentication": "none_expected",
+    "instructions": [
+      "Use the WILDS package to load PovertyMap and official country/region folds.",
+      "Record country, region, latitude/longitude if available, time, image channels, and survey target.",
+      "Use sampled imagery or precomputed representations for iterative SPECTRA exploration."
+    ]
+  },
+  "scale": {
+    "download_size": "multi-GB satellite image dataset; use folds or embeddings for quick audits",
+    "spectra_default": "fold_subset_or_precomputed_embeddings"
+  },
+  "expected_fields": ["image", "target", "country", "region", "latitude", "longitude", "year", "fold"],
+  "recommended_axes": [
+    {
+      "name": "geographic_distance",
+      "definition": "Great-circle or region-level distance from training locations.",
+      "prospective": true
+    },
+    {
+      "name": "environmental_image_similarity",
+      "definition": "Similarity in satellite image embeddings, spectral bands, land-cover, or nightlights features.",
+      "prospective": true
+    },
+    {
+      "name": "socioeconomic_support",
+      "definition": "Distance from training survey target and covariate support; diagnostic unless only train labels are used for split construction.",
+      "prospective": false
+    }
+  ],
+  "useful_for": [
+    "Geospatial deployment generalization audits.",
+    "Testing whether country holdout corresponds to a continuous geographic or environmental novelty curve.",
+    "Non-biology SPECTRA demonstrations with real distribution shift."
+  ],
+  "leakage_risks": [
+    "Nearby survey clusters can leak geographic context.",
+    "Target-derived poverty axes are post-hoc unless constructed from train-only data.",
+    "Country labels can conflate geography, policy, image coverage, and survey process."
+  ],
+  "related_benchmark_capsules": [],
+  "related_memory_entries": [],
+  "tags": ["wilds", "povertymap", "geospatial", "satellite", "country_shift"]
+}

@@ -1,0 +1,107 @@
+{
+  "id": "time_series_matrix_profile_index",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "Time-Series Matrix Profile and Symbolic Index Search",
+  "strategy_family": "time_series_index",
+  "exactness": "hybrid_exact_after_candidate_generation",
+  "applies_to_similarity_kinds": [
+    "z_normalized_euclidean_distance",
+    "time_series_shape_similarity",
+    "subsequence_similarity",
+    "matrix_profile_distance",
+    "dynamic_time_warping_distance"
+  ],
+  "compatible_data_shapes": [
+    "time_series",
+    "longitudinal_signal",
+    "subsequence_windows",
+    "multivariate_time_series",
+    "sensor_trace",
+    "physiologic_signal"
+  ],
+  "definition": "Use matrix-profile algorithms, symbolic aggregate approximations, iSAX-style indexes, compact dictionaries, or time-series sketches to find nearest subsequences or data-series neighbors before optional exact reranking. This covers shape-based and subsequence audits that are not well represented by a simple DTW lower-bound search.",
+  "scale_profile": {
+    "best_for": "Long time-series collections, motif/discord style audits, and subsequence-level SPECTRA where the scientific unit is a window rather than an entire series.",
+    "typical_upper_bound": "Millions to billions of windows when indexable representations or distributed matrix-profile implementations are used.",
+    "avoid_when": "The scientific similarity is a simple fixed-length vector distance that can be handled by exact chunked search."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "window_start",
+      "window_length",
+      "distance",
+      "representation"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "time series values",
+    "window length or subsequence definition",
+    "distance or profile definition"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "window_length",
+      "purpose": "Sets the scientific unit and controls subsequence count."
+    },
+    {
+      "name": "normalization",
+      "purpose": "Declares whether windows are z-normalized, detrended, aligned, or compared in raw scale."
+    },
+    {
+      "name": "symbolic_resolution",
+      "purpose": "Controls SAX/iSAX or dictionary granularity."
+    },
+    {
+      "name": "rerank_distance",
+      "purpose": "Optional exact distance used after candidate generation."
+    }
+  ],
+  "quality_gates": [
+    "Report the window definition and whether samples represent full series or subsequences.",
+    "Validate approximate candidates against exact window search on a subset.",
+    "Check that z-normalization or detrending does not remove the scientific signal being audited."
+  ],
+  "failure_modes": [
+    "Changing window length changes the scientific unit of generalization.",
+    "Matrix-profile nearest windows can overemphasize local motifs and miss global series differences.",
+    "Symbolic discretization can collapse rare but important waveform features."
+  ],
+  "python_example": "dense_vector_topk_similarity.py",
+  "example_usage": "Represent fixed-length windows as vector rows and use dense_vector_topk_similarity.py as an exact reference; production matrix-profile or iSAX systems should emit the same sparse pairwise CSV.",
+  "citations": [
+    {
+      "paper_id": "arx_1901.05708",
+      "title": "Efficient Matrix Profile Computation Using Different Distance Functions",
+      "evidence": "Develops efficient matrix-profile computation under multiple distance functions for large time-series similarity analysis."
+    },
+    {
+      "paper_id": "arx_2112.12965",
+      "title": "Error-bounded Approximate Time Series Joins Using Compact Dictionary Representations of Time Series",
+      "evidence": "Uses compact dictionary representations for approximate inter-time-series similarity joins with error control."
+    },
+    {
+      "paper_id": "arx_1610.07328",
+      "title": "SSH: Sketch, Shingle, and Hash for Massive-Scale Time Series",
+      "evidence": "Uses sketching, shingling, and hashing to accelerate large-scale time-series similarity search."
+    }
+  ],
+  "tags": [
+    "time_series",
+    "matrix_profile",
+    "subsequence",
+    "sax",
+    "isax",
+    "large_scale"
+  ]
+}

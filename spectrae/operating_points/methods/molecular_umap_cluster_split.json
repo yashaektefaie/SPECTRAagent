@@ -1,0 +1,37 @@
+{
+  "id": "molecular_umap_cluster_split",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "operating_point_name": "Molecular UMAP Cluster Split",
+  "method_family": "molecular_embedding_cluster_holdout",
+  "scientific_unit": "molecule",
+  "data_types": ["small_molecule", "virtual_screening", "molecular_property"],
+  "target_novelty_axis": "low_dimensional_chemical_neighborhood",
+  "deployment_question": "How does the model perform on molecules in chemical neighborhoods absent from training?",
+  "curve_region": "low_overlap",
+  "definition": "Embed molecules with UMAP or a related manifold method, cluster the embedding, and hold out clusters as a harder molecular generalization point.",
+  "split_operator": {"type": "embedding_cluster_holdout", "heldout_unit": "umap_cluster", "spectra_mapping": "samples low-overlap regions of a molecular neighborhood graph"},
+  "required_inputs": ["sample_id", "molecular fingerprints or embeddings", "UMAP settings", "cluster ids"],
+  "recommended_similarity_axes": ["umap_cluster_distance", "fingerprint_tanimoto", "nearest_train_similarity"],
+  "output_contract": {"mode": "split_assignment", "required_columns": ["sample_id", "split", "role"], "optional_columns": ["umap_cluster", "umap_seed"]},
+  "implementation_recipe": [
+    "Compute molecular features and UMAP embedding with a fixed seed.",
+    "Cluster the embedding using a declared clustering algorithm.",
+    "Hold out clusters and audit train-neighbor similarity in original feature space."
+  ],
+  "quality_gates": [
+    "Record UMAP and clustering parameters.",
+    "Validate that held-out clusters have lower train-neighbor similarity than scaffold splits.",
+    "Check sensitivity to UMAP random seed."
+  ],
+  "failure_modes": [
+    "UMAP geometry is parameter-sensitive.",
+    "Low-dimensional clusters can distort original chemical distances.",
+    "Cluster sizes may be imbalanced."
+  ],
+  "citations": [
+    {"paper_id": "PMC12153141", "title": "UMAP-based clustering split for rigorous evaluation of AI models for virtual screening", "evidence": "Reports UMAP clustering creates a more challenging benchmark than random, scaffold, or Butina splits."},
+    {"paper_id": "PMC10046274", "title": "On the Best Way to Cluster NCI-60 Molecules", "evidence": "Compares molecular clustering methods and recommends UMAP clustering for NCI-60 molecules."}
+  ],
+  "tags": ["molecule", "umap", "cluster", "virtual_screening"]
+}

@@ -1,0 +1,95 @@
+{
+  "id": "faiss_ivf_pq_compressed_topk",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "FAISS IVF/PQ Compressed Top-k Search",
+  "strategy_family": "compressed_vector_index",
+  "exactness": "approximate",
+  "applies_to_similarity_kinds": [
+    "cosine_similarity",
+    "inner_product_similarity",
+    "euclidean_distance",
+    "embedding_similarity"
+  ],
+  "compatible_data_shapes": [
+    "dense_vector",
+    "embedding",
+    "billion_scale_vector",
+    "gpu_vector_search"
+  ],
+  "definition": "Use an inverted-file or product-quantized vector index to retrieve approximate top-k train neighbors for each evaluation embedding. This is useful when the embedding table is too large for exact storage or brute-force matrix multiplication.",
+  "scale_profile": {
+    "best_for": "Large dense-vector similarity where memory and latency matter more than exact pair enumeration.",
+    "typical_upper_bound": "Millions to billions of vectors with appropriate FAISS indexes and hardware.",
+    "avoid_when": "Quantization error could change the scientific interpretation and no exact-recall check is possible."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "ann_recall_at_k",
+      "index_type"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "dense embeddings",
+    "distance or similarity metric"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "nlist",
+      "purpose": "Number of coarse inverted-list partitions."
+    },
+    {
+      "name": "nprobe",
+      "purpose": "Number of partitions searched at query time."
+    },
+    {
+      "name": "pq_code_size",
+      "purpose": "Compression level for product quantization."
+    },
+    {
+      "name": "k",
+      "purpose": "Number of retained train neighbors."
+    }
+  ],
+  "quality_gates": [
+    "Benchmark recall@k against exact search on a subset.",
+    "Sweep nprobe or equivalent until the spectral curve is stable.",
+    "Report compression and normalization choices."
+  ],
+  "failure_modes": [
+    "Coarse partitioning can miss neighbors near partition boundaries.",
+    "Product quantization can distort fine similarity rankings.",
+    "GPU and CPU index variants may return slightly different tradeoffs."
+  ],
+  "python_example": "dense_vector_topk_similarity.py",
+  "example_usage": "Use dense_vector_topk_similarity.py as an exact-contract reference; in production emit the same columns from a FAISS IndexIVF, HNSW, or PQ search.",
+  "citations": [
+    {
+      "paper_id": "arx_2401.08281",
+      "title": "The Faiss library",
+      "evidence": "Describes FAISS as a toolkit for vector search, clustering, compression, CPU/GPU search, and indexes such as IVF, HNSW, and PQ."
+    },
+    {
+      "paper_id": "arx_1807.05614",
+      "title": "ANN-Benchmarks: A Benchmarking Tool for Approximate Nearest Neighbor Algorithms",
+      "evidence": "Supports recall-versus-throughput evaluation for approximate nearest-neighbor algorithms."
+    }
+  ],
+  "tags": [
+    "faiss",
+    "ivf",
+    "pq",
+    "compressed_index",
+    "large_scale"
+  ]
+}

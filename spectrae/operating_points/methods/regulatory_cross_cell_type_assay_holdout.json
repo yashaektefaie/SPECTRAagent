@@ -1,0 +1,37 @@
+{
+  "id": "regulatory_cross_cell_type_assay_holdout",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "operating_point_name": "Cross-Cell-Type or Cross-Assay Regulatory Holdout",
+  "method_family": "regulatory_context_holdout",
+  "scientific_unit": "regulatory_sequence_task",
+  "data_types": ["regulatory_dna", "epigenomics", "chromatin_accessibility"],
+  "target_novelty_axis": "cell_type_tissue_assay_or_regulatory_context",
+  "deployment_question": "How does the model transfer to unseen regulatory contexts such as cell type, tissue, assay, or variant-effect task?",
+  "curve_region": "axis_specific",
+  "definition": "Hold out cell types, tissues, assays, or task contexts to evaluate regulatory sequence models under context transfer.",
+  "split_operator": {"type": "context_holdout", "heldout_unit": "cell_type_or_assay", "spectra_mapping": "sets same-context train overlap to zero while sequence overlap may remain"},
+  "required_inputs": ["sample_id", "sequence or locus id", "cell type or assay id", "label"],
+  "recommended_similarity_axes": ["cell_type_similarity", "assay_similarity", "sequence_similarity", "genomic_distance"],
+  "output_contract": {"mode": "split_assignment", "required_columns": ["sample_id", "split", "role"], "optional_columns": ["cell_type", "assay_id", "heldout_context"]},
+  "implementation_recipe": [
+    "Choose whether the target novelty is cell type, tissue, assay, or task.",
+    "Hold out complete contexts and train on the remaining contexts.",
+    "Measure locus and sequence overlap separately from context overlap."
+  ],
+  "quality_gates": [
+    "Avoid leaving the same locus in train and test when testing locus generalization.",
+    "Report performance by task type and context.",
+    "Check whether embeddings or preprocessing used held-out context labels."
+  ],
+  "failure_modes": [
+    "Cross-context splits can still leak locus-specific signal.",
+    "Cell type and assay shifts can be confounded.",
+    "Zero-shot context labels may be unavailable at deployment."
+  ],
+  "citations": [
+    {"paper_id": "bio_2bc7f6bb6e6f", "title": "The ENCODE Imputation Challenge", "evidence": "Evaluates epigenomic imputation models across cell types and highlights complexity under data shifts."},
+    {"paper_id": "PMC12340898", "title": "DART-Eval: A Comprehensive DNA Language Model Evaluation Benchmark on Regulatory DNA", "evidence": "Benchmarks DNA language models across regulatory DNA tasks and reports inconsistent performance."}
+  ],
+  "tags": ["regulatory_dna", "cell_type", "assay", "context_holdout"]
+}

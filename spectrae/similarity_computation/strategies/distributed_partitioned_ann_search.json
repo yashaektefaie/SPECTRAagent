@@ -1,0 +1,92 @@
+{
+  "id": "distributed_partitioned_ann_search",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "Distributed Partitioned Approximate Similarity Search",
+  "strategy_family": "distributed_similarity_search",
+  "exactness": "approximate",
+  "applies_to_similarity_kinds": [
+    "embedding_similarity",
+    "cosine_similarity",
+    "inner_product_similarity",
+    "euclidean_distance",
+    "large_scale_ann"
+  ],
+  "compatible_data_shapes": [
+    "very_large_dense_vector",
+    "distributed_embedding_table",
+    "streaming_vector_database",
+    "large_scientific_corpus"
+  ],
+  "definition": "Partition a large training corpus across shards, build local vector indexes such as HNSW, route each evaluation query to a subset of partitions, and merge local top-k results into SPECTRA pairwise edges.",
+  "scale_profile": {
+    "best_for": "Vector similarity audits whose train corpus exceeds one-machine memory or latency targets.",
+    "typical_upper_bound": "Cluster-scale vector collections where shard routing and recall monitoring are available.",
+    "avoid_when": "The project cannot measure recall or ensure deterministic query/index versions."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "shard_id",
+      "ann_recall_at_k"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "dense embeddings",
+    "partitioning or shard routing rule"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "num_partitions",
+      "purpose": "Controls index size and routing granularity."
+    },
+    {
+      "name": "partitions_queried",
+      "purpose": "Controls recall and throughput."
+    },
+    {
+      "name": "local_ann_parameters",
+      "purpose": "Controls each shard's speed/recall behavior."
+    }
+  ],
+  "quality_gates": [
+    "Measure global recall@k against exact or less-partitioned search on a subset.",
+    "Report partition routing rule and number of queried partitions.",
+    "Record index versioning because SPECTRA curves should be reproducible."
+  ],
+  "failure_modes": [
+    "Shard routing can miss true neighbors in unqueried partitions.",
+    "Uneven partitions can create load imbalance and unstable latency.",
+    "Index updates can change pairwise edges between audit runs."
+  ],
+  "python_example": "dense_vector_topk_similarity.py",
+  "example_usage": "Use dense_vector_topk_similarity.py for a single-machine exact contract; distributed ANN systems should write the same pairwise_similarity.csv schema after merging shard results.",
+  "citations": [
+    {
+      "paper_id": "arx_1906.10602",
+      "title": "Pyramid: A general framework for distributed similarity search",
+      "evidence": "Describes distributed similarity search with HNSW, partitioning, selective partition queries, and throughput/quality tradeoffs."
+    },
+    {
+      "paper_id": "PMC11655291",
+      "title": "Approximate nearest neighbor graph construction and search for biological data",
+      "evidence": "Applies approximate nearest-neighbor graph/search ideas to large biological data settings."
+    }
+  ],
+  "tags": [
+    "distributed",
+    "ann",
+    "partitioning",
+    "hnsw",
+    "large_scale"
+  ]
+}

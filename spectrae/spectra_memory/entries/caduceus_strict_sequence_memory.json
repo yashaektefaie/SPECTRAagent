@@ -1,0 +1,169 @@
+{
+  "id": "caduceus_strict_sequence_memory",
+  "version": "0.1.0",
+  "status": "historical_result",
+  "reuse_priority": "high",
+  "title": "Strict Caduceus Original-Task Sequence Generalization Memory",
+  "domains": [
+    "regulatory_dna",
+    "sequence_modeling",
+    "genomics"
+  ],
+  "data_types": [
+    "DNA sequence",
+    "GenomicBenchmarks task",
+    "Nucleotide Transformer downstream task"
+  ],
+  "scientific_units": [
+    "sequence",
+    "task_specific_sequence_example"
+  ],
+  "model_families": [
+    "DNA foundation model",
+    "nucleotide language model",
+    "Caduceus-like sequence model"
+  ],
+  "models": [
+    "Caduceus",
+    "Caduceus-PS"
+  ],
+  "resource_records": [
+    {
+      "name": "Strict Caduceus visible bundle",
+      "kind": "local_bundle",
+      "source": "Bundle containing the Caduceus paper, repository, Caduceus-PS checkpoint, 8 GenomicBenchmarks tasks, 18 Nucleotide Transformer tasks, and long-range eQTL metadata.",
+      "catalog_entry_ids": [
+        "dart_eval_synapse",
+        "nabench_assays",
+        "encode_ccre_screen"
+      ],
+      "access_notes": "Reconstruct from public model/repository resources and portable dataset catalog entries. The historical bundle intentionally excluded DART-Eval conclusions and result tables."
+    },
+    {
+      "name": "Caduceus direct probe recovery",
+      "kind": "target_model_probe",
+      "source": "Manual recovery of a runnable Caduceus-PS environment after the initial agent reported the target model blocked.",
+      "portable_references": [
+        "Caduceus model paper and repository",
+        "Caduceus-PS checkpoint source named by the model authors"
+      ],
+      "access_notes": "Fresh runs should inspect available Python environments and the target repository before reporting a dependency blocker."
+    }
+  ],
+  "similarity_axes": [
+    {
+      "name": "exact_or_reverse_complement_identity",
+      "status": "data_screen_supported",
+      "definition": "Detect exact and reverse-complement train-test sequence duplicates across original downstream tasks.",
+      "quality_gates": [
+        "Canonicalize reverse complements.",
+        "Report duplicate fraction by task.",
+        "Treat as pre-benchmark screening unless followed by fresh behavioral probes."
+      ]
+    },
+    {
+      "name": "kmer_train_support",
+      "status": "mixed_behavioral_support",
+      "definition": "Measure local k-mer support of test examples from training sequences and test whether performance changes after high-support training examples are removed.",
+      "quality_gates": [
+        "Run fresh downstream model or baseline per split.",
+        "Separate k-mer control behavior from Caduceus frozen-embedding behavior.",
+        "Report non-explanatory tasks alongside supported tasks."
+      ]
+    },
+    {
+      "name": "length_gc_profile",
+      "status": "non_explanatory_in_fresh_comparison",
+      "definition": "Use coarse sequence-composition and length profile as a prospective axis for Caduceus frozen-probe degradation.",
+      "quality_gates": [
+        "Match or stratify labels where possible.",
+        "Do not treat small AUROC or MCC deltas as mechanism-level evidence.",
+        "Escalate to composition-regime or regulatory-context tests when stronger signals appear."
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "original_task_overlap_screen",
+      "claim": "The original Caduceus downstream evaluation bundle contained data-level overlap concerns, including exact train-test duplicates and high local k-mer support in several tasks.",
+      "evidence": [
+        "human_enhancers_ensembl had 38.02 percent duplicate test rows.",
+        "nucleotide_transformer enhancers and enhancers_types each had 25.00 percent duplicate test rows.",
+        "15-mer train-support curve was monotonic for 26 of 26 tasks."
+      ],
+      "limitations": [
+        "Data-level overlap is pre-benchmark evidence.",
+        "It does not by itself establish target-model failure."
+      ],
+      "status": "supported_data_screen"
+    },
+    {
+      "id": "direct_enhancers_probe_degradation",
+      "claim": "On nucleotide_transformer/enhancers, removing a small number of high-overlap training examples reduced frozen Caduceus probe MCC from 0.4602 to roughly 0.3924-0.4040.",
+      "evidence": [
+        "Original split retained 14968 training rows and achieved MCC 0.4602.",
+        "Removing train examples with estimated test similarity >= 0.95 retained 14861 rows and achieved MCC 0.3924.",
+        "Removing train examples with estimated test similarity >= 0.75 retained 14860 rows and achieved MCC 0.4040."
+      ],
+      "limitations": [
+        "One task.",
+        "Frozen-embedding logistic probe, not full fine-tuning.",
+        "Axis remains sequence-support level rather than mechanism-level regulatory insight."
+      ],
+      "status": "supported_bounded"
+    },
+    {
+      "id": "fresh_vanilla_vs_spectra_process_difference",
+      "claim": "In the fresh strict Caduceus comparison, the SPECTRA agent recovered the target Caduceus environment and produced standardized target-model artifacts, while the vanilla agent stopped at dependency blockage and surrogate analyses.",
+      "evidence": [
+        "SPECTRA found an environment that could load Caduceus-PS.",
+        "SPECTRA produced audit_card.json, performance_by_overlap.csv, split_stats.csv, retraining_manifest.csv, and hypothesis scores.",
+        "Vanilla produced useful overlap and surrogate artifacts but no direct Caduceus controlled-split metrics."
+      ],
+      "limitations": [
+        "The SPECTRA-tested axes were mostly non-explanatory for Caduceus frozen probes in that comparison.",
+        "This supports process quality, not unique discovery of a Caduceus failure."
+      ],
+      "status": "process_supported"
+    }
+  ],
+  "reuse_guidance": [
+    "For Caduceus-like sequence models, first check exact/reverse-complement overlap and k-mer support across all original tasks, but treat that as screening.",
+    "Before reporting a model blocker, inspect available micromamba environments; the historical pgt environment could load Caduceus with torch, transformers, and mamba_ssm.",
+    "Use nucleotide_transformer/enhancers as a known strict-bundle task where high-overlap removal produced a direct frozen-probe degradation.",
+    "Do not stop at k-mer support; route supported sequence-support axes toward composition, regulatory context, or external biological mechanism tests."
+  ],
+  "do_not_repeat": [
+    "Do not conclude that direct Caduceus execution is blocked until local environments and the repository have been inspected.",
+    "Do not present exact overlap or 15-mer support as model-failure evidence without fresh behavioral testing.",
+    "Do not let a representative subset replace all-task screening when the task bundle is available.",
+    "Do not treat surrogate k-mer baseline degradation as Caduceus-specific behavior."
+  ],
+  "artifact_paths": [
+    {
+      "label": "strict Caduceus result doc",
+      "path": "docs/caduceus_strict_spectra_20260513.md",
+      "status": "repo_doc"
+    },
+    {
+      "label": "fresh agent comparison doc",
+      "path": "docs/fresh_agent_comparison_caduceus_20260513.md",
+      "status": "repo_doc"
+    },
+    {
+      "label": "portable regulatory DNA dataset catalog",
+      "path": "dataset_catalog:dart_eval_synapse,encode_ccre_screen,nabench_assays",
+      "status": "portable_catalog_reference"
+    }
+  ],
+  "tags": [
+    "caduceus",
+    "dna_foundation_model",
+    "sequence_overlap",
+    "kmer_support",
+    "genomic_benchmarks",
+    "nucleotide_transformer",
+    "environment_recovery",
+    "frozen_probe"
+  ]
+}

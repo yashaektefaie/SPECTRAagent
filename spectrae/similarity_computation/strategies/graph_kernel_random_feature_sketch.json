@@ -1,0 +1,93 @@
+{
+  "id": "graph_kernel_random_feature_sketch",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "Graph Kernel Sketches and Random Feature Embeddings",
+  "strategy_family": "kernel_feature_sketch",
+  "exactness": "approximate",
+  "applies_to_similarity_kinds": [
+    "graph_kernel_similarity",
+    "weisfeiler_lehman_kernel",
+    "graph_edit_distance",
+    "wasserstein_graph_distance",
+    "graph_embedding_similarity"
+  ],
+  "compatible_data_shapes": [
+    "graph",
+    "molecular_graph",
+    "attributed_graph",
+    "road_network_graph",
+    "protein_interaction_graph"
+  ],
+  "definition": "Approximate expensive graph similarity by converting each graph into explicit WL feature histograms, hash graph-kernel features, random graph embeddings, or node-distribution sketches, then compute vector similarity between graph-level features.",
+  "scale_profile": {
+    "best_for": "Collections of many graphs where exact graph kernels, graph edit distance, or all-pairs node alignment is too expensive.",
+    "typical_upper_bound": "Thousands to millions of graphs depending on graph size and feature dimensionality.",
+    "avoid_when": "The audit requires exact graph edit distance and no approximation validation is possible."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "sketch_size",
+      "wl_iterations"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "graphs or graph feature sketches",
+    "graph feature extraction rule"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "wl_iterations",
+      "purpose": "Controls local neighborhood depth for WL features."
+    },
+    {
+      "name": "random_feature_count",
+      "purpose": "Controls approximation variance for random graph embeddings."
+    },
+    {
+      "name": "feature_hash_size",
+      "purpose": "Controls memory and collision rate for hash graph kernels."
+    }
+  ],
+  "quality_gates": [
+    "Compare approximate graph similarities with exact graph kernel or edit distance on a subset.",
+    "Report node/edge labels, WL depth, and feature hashing settings.",
+    "Check that graph-size effects are not the only driver of similarity."
+  ],
+  "failure_modes": [
+    "WL features can miss structural differences beyond the selected depth.",
+    "Feature hashing collisions can distort rare substructures.",
+    "Graph-size normalization choices can dominate SPECTRA curves."
+  ],
+  "python_example": "weighted_jaccard_topk.py",
+  "example_usage": "Export each graph's WL or substructure counts as weighted feature strings, then run weighted_jaccard_topk.py to emit pairwise graph similarities.",
+  "citations": [
+    {
+      "paper_id": "arx_1911.11119",
+      "title": "Scalable Global Alignment Graph Kernel Using Random Features",
+      "evidence": "Uses random graph embeddings to approximate global graph kernels and reduce complexity from quadratic to near-linear in the number of graphs."
+    },
+    {
+      "paper_id": "arx_1610.00064",
+      "title": "Faster Kernels for Graphs with Continuous Attributes via Hashing",
+      "evidence": "Introduces hash graph kernels that use LSH to apply scalable graph kernels to continuously attributed graphs."
+    }
+  ],
+  "tags": [
+    "graph",
+    "graph_kernel",
+    "weisfeiler_lehman",
+    "random_features",
+    "feature_hashing"
+  ]
+}

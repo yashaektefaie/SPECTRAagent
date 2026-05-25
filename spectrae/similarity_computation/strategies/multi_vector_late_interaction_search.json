@@ -1,0 +1,101 @@
+{
+  "id": "multi_vector_late_interaction_search",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "Multi-Vector Late-Interaction Search",
+  "strategy_family": "multi_vector_search",
+  "exactness": "approximate",
+  "applies_to_similarity_kinds": [
+    "maxsim_similarity",
+    "set_of_vectors_similarity",
+    "late_interaction_similarity",
+    "multi_vector_embedding_similarity",
+    "patch_embedding_similarity"
+  ],
+  "compatible_data_shapes": [
+    "set_of_vectors",
+    "token_embedding_set",
+    "image_patch_embeddings",
+    "protein_domain_embeddings",
+    "multi_instance_embedding",
+    "document_token_embeddings"
+  ],
+  "definition": "For samples represented by multiple vectors, retrieve candidate train samples using fixed-dimensional encodings, vector-set sketches, compressed late-interaction indexes, or multi-vector graph search, then compute the intended MaxSim or set-of-vectors score on candidates.",
+  "scale_profile": {
+    "best_for": "Audits where each scientific unit is a bag, sequence, region, document, image, protein, or cell represented by many local embeddings.",
+    "typical_upper_bound": "Large corpora with millions of objects when local vectors are compressed, pooled, or indexed with candidate generation.",
+    "avoid_when": "A single pooled embedding is already the chosen scientific similarity definition."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "candidate_source",
+      "maxsim_score",
+      "reranked"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "sets of local vectors",
+    "late interaction scorer"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "local_vector_budget",
+      "purpose": "Controls token, patch, domain, or instance vectors retained per sample."
+    },
+    {
+      "name": "candidate_count",
+      "purpose": "Controls how many train samples are reranked with the exact late-interaction scorer."
+    },
+    {
+      "name": "compression_or_encoding",
+      "purpose": "Selects pooling, fixed-dimensional encoding, residual compression, bit vectors, or graph search."
+    }
+  ],
+  "quality_gates": [
+    "Compare candidate recall and reranked scores against brute-force multi-vector scoring on a subset.",
+    "Report whether local vectors were pooled, token-pruned, quantized, or compressed.",
+    "Check that the chosen compression does not erase the local feature driving the scientific novelty axis."
+  ],
+  "failure_modes": [
+    "Pooling can hide local novelty even if global similarity remains high.",
+    "Candidate retrieval can miss train samples that only match through rare local vectors.",
+    "Late-interaction scores may not be symmetric, so the direction of train-eval comparison must be declared."
+  ],
+  "python_example": "dense_vector_topk_similarity.py",
+  "example_usage": "Use dense_vector_topk_similarity.py only for a pooled-vector baseline; production multi-vector search should export candidate-reranked MaxSim or set-of-vectors scores in the same SPECTRA format.",
+  "citations": [
+    {
+      "paper_id": "arx_2405.19504",
+      "title": "MUVERA: Multi-Vector Retrieval via Fixed Dimensional Encodings",
+      "evidence": "Approximates multi-vector retrieval using fixed-dimensional encodings, reducing candidate retrieval latency while preserving recall."
+    },
+    {
+      "paper_id": "arx_2210.15748",
+      "title": "DESSERT: An Efficient Algorithm for Vector Set Search with Vector Set Queries",
+      "evidence": "Introduces efficient search for sets of vectors with vector-set queries."
+    },
+    {
+      "paper_id": "arx_2501.17788",
+      "title": "WARP: An Efficient Engine for Multi-Vector Retrieval",
+      "evidence": "Uses compressed late-interaction retrieval and two-stage reduction to accelerate multi-vector scoring."
+    }
+  ],
+  "tags": [
+    "multi_vector",
+    "maxsim",
+    "late_interaction",
+    "set_of_vectors",
+    "patch_embeddings",
+    "token_embeddings"
+  ]
+}

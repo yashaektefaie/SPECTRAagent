@@ -1,0 +1,93 @@
+{
+  "id": "trajectory_metric_index_filter_refine",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "Trajectory Metric Index with Filter-and-Refine",
+  "strategy_family": "metric_tree_index",
+  "exactness": "exact",
+  "applies_to_similarity_kinds": [
+    "trajectory_distance",
+    "frechet_distance",
+    "hausdorff_distance",
+    "spatiotemporal_similarity",
+    "route_similarity"
+  ],
+  "compatible_data_shapes": [
+    "trajectory",
+    "spatiotemporal_path",
+    "gps_trace",
+    "road_network_path",
+    "animal_movement_track"
+  ],
+  "definition": "Index trajectories with metric-space structures, approximations, grid/geohash fingerprints, or filter-and-refine bounds. Candidate trajectories are retrieved cheaply, then the intended trajectory distance is computed exactly for final SPECTRA edges.",
+  "scale_profile": {
+    "best_for": "Large trajectory or route datasets where Frechet, Hausdorff, edit, or spatiotemporal distances are expensive.",
+    "typical_upper_bound": "Hundreds of thousands to millions of trajectories, depending on trajectory length and index quality.",
+    "avoid_when": "Temporal alignment and coordinate systems are inconsistent or the distance is not metric and no valid bounds exist."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "trajectory_distance",
+      "candidate_source"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "trajectory coordinates or grid tokens",
+    "trajectory distance function"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "approximation_radius",
+      "purpose": "Controls filter-and-refine candidate bounds."
+    },
+    {
+      "name": "grid_or_geohash_resolution",
+      "purpose": "Controls fingerprint granularity for cheap candidate search."
+    },
+    {
+      "name": "radius_or_k",
+      "purpose": "Defines retained neighbor edges."
+    }
+  ],
+  "quality_gates": [
+    "Verify that the approximation or index does not drop exact neighbors.",
+    "Report coordinate projection, time normalization, and distance function.",
+    "Compare index results with brute force on a subset."
+  ],
+  "failure_modes": [
+    "Map projection or time normalization can dominate the measured novelty.",
+    "Loose trajectory approximations can produce too many candidates.",
+    "Non-metric distances invalidate metric-tree pruning guarantees."
+  ],
+  "python_example": "minhash_lsh_jaccard.py",
+  "example_usage": "Discretize trajectories into grid or geohash tokens, run minhash_lsh_jaccard.py for candidates, then rerank with the selected trajectory distance.",
+  "citations": [
+    {
+      "paper_id": "arx_2408.07650",
+      "title": "Exact Trajectory Similarity Search With N-tree: An Efficient Metric Index for kNN and Range Queries",
+      "evidence": "Introduces a trajectory distance, N-tree metric index, kNN/range search, and filter-and-refine approximations for expensive trajectory similarity."
+    },
+    {
+      "paper_id": "arx_2005.13773",
+      "title": "A Practical Index Structure Supporting Frechet Proximity Queries Among Trajectories",
+      "evidence": "Develops an index structure for efficient exact and approximate Frechet distance queries on trajectories."
+    }
+  ],
+  "tags": [
+    "trajectory",
+    "metric_index",
+    "filter_refine",
+    "geospatial",
+    "spatiotemporal"
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "id": "metric_tree_radius_knn",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "Metric Tree Radius or kNN Search",
+  "strategy_family": "metric_tree_index",
+  "exactness": "exact",
+  "applies_to_similarity_kinds": [
+    "metric_distance",
+    "geospatial_distance",
+    "euclidean_distance",
+    "haversine_distance",
+    "radius_similarity"
+  ],
+  "compatible_data_shapes": [
+    "low_dimensional_vector",
+    "geospatial_coordinates",
+    "metric_space",
+    "spatial_points"
+  ],
+  "definition": "Use KD-tree, ball-tree, R-tree, or related metric/spatial indexes to answer exact radius or nearest-neighbor queries under metric assumptions, then convert distances to similarities for SPECTRA.",
+  "scale_profile": {
+    "best_for": "Low- to moderate-dimensional metric data and spatial coordinates.",
+    "typical_upper_bound": "Large point sets when dimensionality is low and triangle-inequality pruning is effective.",
+    "avoid_when": "High-dimensional embeddings where tree pruning collapses and ANN is more suitable."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "distance"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "metric coordinates",
+    "distance-to-similarity transform"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "radius_or_k",
+      "purpose": "Defines retained neighbor edges."
+    },
+    {
+      "name": "tree_leaf_size",
+      "purpose": "Controls index memory and query speed."
+    },
+    {
+      "name": "metric",
+      "purpose": "Defines the valid distance geometry."
+    }
+  ],
+  "quality_gates": [
+    "Verify the metric assumptions of the tree match the scientific distance.",
+    "Report distance-to-similarity scaling.",
+    "Check whether high dimensionality degrades pruning to near brute force."
+  ],
+  "failure_modes": [
+    "Metric trees are weak in high-dimensional spaces.",
+    "Incorrect coordinate projection can distort geospatial distances.",
+    "Radius cutoffs can leave isolated evaluation samples without train neighbors."
+  ],
+  "python_example": "dense_vector_topk_similarity.py",
+  "example_usage": "For low-dimensional coordinates, dense_vector_topk_similarity.py can prototype exact euclidean similarity; production code can use KDTree/BallTree and emit the same columns.",
+  "citations": [
+    {
+      "paper_id": "arx_1511.00628",
+      "title": "Ball*-tree: Efficient spatial indexing for constrained nearest-neighbor search",
+      "evidence": "Discusses exact nearest-neighbor and range search using spatial indexes and triangle-inequality pruning."
+    },
+    {
+      "paper_id": "arx_1906.10602",
+      "title": "Pyramid: A general framework for distributed similarity search",
+      "evidence": "Positions exact top-k search as costly at scale and motivates indexed or approximate spatial similarity search."
+    }
+  ],
+  "tags": [
+    "metric_tree",
+    "spatial",
+    "geospatial",
+    "radius_query",
+    "knn"
+  ]
+}

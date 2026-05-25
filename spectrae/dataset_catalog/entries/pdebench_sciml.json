@@ -1,0 +1,86 @@
+{
+  "id": "pdebench_sciml",
+  "version": "0.1.0",
+  "status": "active",
+  "title": "PDEBench Scientific Machine-Learning Simulation Benchmark",
+  "domains": ["scientific_ml", "pde_surrogates", "physics_simulation", "neural_operators"],
+  "data_types": ["PDE solution field", "simulation trajectory", "initial condition", "boundary condition", "PDE parameter", "grid metadata"],
+  "scientific_units": ["simulation_run", "spatiotemporal_field", "pde_task", "parameter_setting"],
+  "compatible_model_families": ["neural operator", "physics-informed neural network", "scientific surrogate model", "sequence-to-field model"],
+  "source": {
+    "homepage": "https://github.com/pdebench/PDEBench",
+    "repository": "https://github.com/pdebench/PDEBench",
+    "data_urls": [
+      {
+        "description": "DaRUS PDEBench data DOI",
+        "url": "https://darus.uni-stuttgart.de/dataset.xhtml?persistentId=doi:10.18419/darus-2986",
+        "access_notes": "Official DaRUS data repository; individual files can be very large."
+      },
+      {
+        "description": "PDEBench Hugging Face datasets",
+        "url": "https://huggingface.co/pdebench/datasets",
+        "access_notes": "Smaller hosted subsets are useful for quick SPECTRA smoke tests."
+      },
+      {
+        "description": "PDEBench arXiv paper",
+        "url": "https://arxiv.org/abs/2210.07182",
+        "access_notes": "Use for benchmark semantics and citation."
+      }
+    ]
+  },
+  "access": {
+    "mode": "mixed",
+    "authentication": "none_expected; full files can be large",
+    "instructions": [
+      "Do not download all PDEBench files by default.",
+      "Start with one equation family and a small parameter subset, or use the Hugging Face subsets for smoke tests.",
+      "Record equation family, PDE parameters, initial/boundary conditions, grid resolution, time horizon, variables, and split."
+    ]
+  },
+  "scale": {
+    "download_size": "large multi-file simulation benchmark; some individual HDF5 files are multi-GB",
+    "spectra_default": "selected_equation_parameter_subset"
+  },
+  "expected_fields": ["run_id", "pde_family", "parameters", "initial_condition", "boundary_condition", "solution_field", "time", "split"],
+  "recommended_axes": [
+    {
+      "name": "pde_parameter_distance",
+      "definition": "Distance in physical coefficients such as viscosity, advection speed, reaction parameters, or boundary parameters.",
+      "prospective": true
+    },
+    {
+      "name": "initial_condition_similarity",
+      "definition": "Similarity of initial fields using spectra, norms, summary statistics, or learned field embeddings.",
+      "prospective": true
+    },
+    {
+      "name": "regime_or_equation_family_support",
+      "definition": "Support over PDE family and regime, such as smooth, discontinuous, shock-dominated, turbulent, or multiphysics behavior.",
+      "prospective": true
+    },
+    {
+      "name": "spatiotemporal_resolution_support",
+      "definition": "Distance in grid resolution, time horizon, rollout length, and sampling cadence.",
+      "prospective": true
+    }
+  ],
+  "useful_for": [
+    "Testing whether neural operators generalize over physical parameters rather than only interpolate nearby simulations.",
+    "Constructing spectral curves for simulation surrogates over initial-condition and PDE-regime novelty.",
+    "Providing a physics-heavy SPECTRA example outside bio and molecules."
+  ],
+  "leakage_risks": [
+    "Different time windows from the same simulation run can leak trajectory identity.",
+    "Parameter grids can leak if train/test values are interleaved too densely.",
+    "Downsampled or regridded versions of the same field should not cross train/test splits."
+  ],
+  "related_benchmark_capsules": [],
+  "related_memory_entries": [],
+  "paperclip_provenance": {
+    "search_ids": ["s_ab5e3dfc", "s_54517283"],
+    "map_ids": ["m_4d843701"],
+    "paper_ids": ["arx_2210.07182"],
+    "notes": "Paperclip repeatedly surfaced PDEBench in SciML benchmark searches; a targeted map hit a transient Paperclip result lookup issue for s_54517283, so official DaRUS/GitHub/Hugging Face sources were used for access verification."
+  },
+  "tags": ["pdebench", "sciml", "pde", "neural_operator", "simulation"]
+}

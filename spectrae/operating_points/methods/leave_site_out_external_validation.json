@@ -1,0 +1,37 @@
+{
+  "id": "leave_site_out_external_validation",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "operating_point_name": "Leave-Site-Out External Validation",
+  "method_family": "site_external_validation",
+  "scientific_unit": "site_labeled_sample",
+  "data_types": ["clinical_record", "medical_image", "ehr", "hospital_cohort", "scanner_dataset"],
+  "target_novelty_axis": "site_or_institution",
+  "deployment_question": "How does the model perform at a hospital, scanner, center, or institution absent from training?",
+  "curve_region": "low_overlap",
+  "definition": "Hold out all samples from one or more sites and evaluate external performance on those sites. This targets institutional transportability and site-specific acquisition shift.",
+  "split_operator": {"type": "leave_site_out", "heldout_unit": "site_id", "spectra_mapping": "same-site train overlap is zero for the held-out site"},
+  "required_inputs": ["sample_id", "site_id", "heldout site or folds"],
+  "recommended_similarity_axes": ["same_site_overlap", "scanner_or_protocol_similarity", "population_distribution_distance"],
+  "output_contract": {"mode": "split_assignment", "required_columns": ["sample_id", "split", "role"], "optional_columns": ["site_id", "heldout_site"]},
+  "implementation_recipe": [
+    "Assign all samples from held-out sites to external test.",
+    "Train and tune without using held-out site labels.",
+    "Report calibration and discrimination for each site separately."
+  ],
+  "quality_gates": [
+    "Document whether site labels also encode scanner, clinician, geography, or population.",
+    "Prevent site-specific normalization leakage.",
+    "Report site-level sample sizes and outcome prevalence."
+  ],
+  "failure_modes": [
+    "A site split may confound acquisition protocol with patient mix.",
+    "Small sites produce high-variance estimates.",
+    "Pooling external sites can hide a failing deployment site."
+  ],
+  "citations": [
+    {"paper_id": "med_8030c1226c79", "title": "Evaluating the Portability of SepsisWatch", "evidence": "Performs multi-site external validation of a sepsis machine-learning model."},
+    {"paper_id": "arx_1807.00431", "title": "Confounding variables can degrade generalization performance of radiological deep learning models", "evidence": "Shows pneumonia models perform worse across hospitals and can exploit hospital-specific confounders."}
+  ],
+  "tags": ["site", "external_validation", "hospital", "scanner", "clinical"]
+}

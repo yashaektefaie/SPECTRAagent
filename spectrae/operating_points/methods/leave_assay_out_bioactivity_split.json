@@ -1,0 +1,37 @@
+{
+  "id": "leave_assay_out_bioactivity_split",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "operating_point_name": "Leave-Assay-Out Bioactivity Split",
+  "method_family": "assay_context_holdout",
+  "scientific_unit": "assay_measurement",
+  "data_types": ["bioactivity", "drug_discovery", "compound_activity"],
+  "target_novelty_axis": "assay_context_or_protocol",
+  "deployment_question": "How does the model transfer to a biological assay or assay context absent from training?",
+  "curve_region": "low_overlap",
+  "definition": "Hold out all measurements from one or more assays, assay families, protocols, or biological contexts to test assay transfer rather than compound-level interpolation.",
+  "split_operator": {"type": "leave_assay_out", "heldout_unit": "assay_id_or_context", "spectra_mapping": "sets same-assay train overlap to zero for held-out assays"},
+  "required_inputs": ["sample_id", "compound id", "assay id or assay metadata", "activity label"],
+  "recommended_similarity_axes": ["assay_text_similarity", "biological_context_similarity", "compound_similarity"],
+  "output_contract": {"mode": "split_assignment", "required_columns": ["sample_id", "split", "role"], "optional_columns": ["assay_id", "heldout_assay"]},
+  "implementation_recipe": [
+    "Define assays or assay contexts before splitting.",
+    "Assign complete assays or assay families to test.",
+    "Report compound overlap and assay-context similarity separately."
+  ],
+  "quality_gates": [
+    "Distinguish compound novelty from assay novelty.",
+    "Check whether compounds from held-out assays appear in training assays.",
+    "Report assay label prevalence and measurement protocol differences."
+  ],
+  "failure_modes": [
+    "Assay metadata can be noisy or incomplete.",
+    "A held-out assay may differ in target, protocol, and label distribution simultaneously.",
+    "Repeated compounds can make the split easier than true assay transfer."
+  ],
+  "citations": [
+    {"paper_id": "PMC12264928", "title": "Toward Assay-Aware Bioactivity Model(er)s", "evidence": "Shows assay context matters for protein-ligand interaction modeling and can be encoded with assay descriptors."},
+    {"paper_id": "PMC11150475", "title": "Benchmarking compound activity prediction for real-world drug discovery applications", "evidence": "Reports variable model performance across assays in a compound activity prediction benchmark."}
+  ],
+  "tags": ["assay", "bioactivity", "context_holdout", "drug_discovery"]
+}

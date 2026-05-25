@@ -1,0 +1,77 @@
+{
+  "id": "regulatory_dna_motif_bag_similarity",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "regulatory_dna",
+  "scientific_unit": "genomic_interval",
+  "task_family": [
+    "regulatory DNA prediction",
+    "motif discovery",
+    "cell-type specific activity"
+  ],
+  "similarity_name": "Bag-of-motifs cosine similarity",
+  "similarity_kind": "feature_similarity",
+  "definition": "Represent each regulatory sequence by a vector of known motif hits or motif scores, then compute cosine similarity between evaluation and training intervals. This axis measures overlap in known regulatory syntax rather than raw sequence identity.",
+  "spectra_axis": {
+    "name": "motif_bag_cosine_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_cosine_similarity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "motif_score_columns"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/embedding_cosine_similarity.py",
+  "example_usage": "python embedding_cosine_similarity.py --train train_motifs.csv --eval eval_motifs.csv --out pairwise_similarity.csv --embedding-cols-prefix motif_",
+  "citations": [
+    {
+      "paper_id": "PMC12340898",
+      "title": "DART-Eval: A Comprehensive DNA Language Model Evaluation Benchmark on Regulatory DNA",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC12340898/content.lines",
+          "lines": "L46-L52",
+          "summary": "The paper evaluates sensitivity to known transcription-factor motifs and groups performance by motif families."
+        },
+        {
+          "path": "/papers/PMC12340898/content.lines",
+          "lines": "L501-L505",
+          "summary": "The paper constructs bag-of-motifs embeddings from FIMO motif hits and motif-score summaries."
+        },
+        {
+          "path": "/papers/PMC12340898/content.lines",
+          "lines": "L87",
+          "summary": "The paper compares a motif-count baseline to model embedding spaces for cell-type specific activity."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Limited to known motif libraries and selected score thresholds.",
+    "Does not capture motif grammar, spacing, cooperative syntax, or unknown motifs.",
+    "Can confound cell-type annotations with motif library coverage."
+  ],
+  "quality_gates": [
+    "Record motif database, scanner, threshold, and aggregation rule.",
+    "Audit GC content and sequence length alongside motif overlap.",
+    "Check whether motif similarity explains model performance better than raw embedding similarity."
+  ],
+  "tags": [
+    "regulatory_dna",
+    "motif",
+    "fimo",
+    "hocomoco",
+    "dart_eval"
+  ]
+}

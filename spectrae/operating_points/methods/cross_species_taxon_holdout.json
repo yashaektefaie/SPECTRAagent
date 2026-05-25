@@ -1,0 +1,37 @@
+{
+  "id": "cross_species_taxon_holdout",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "operating_point_name": "Cross-Species or Taxon Holdout",
+  "method_family": "taxonomic_holdout",
+  "scientific_unit": "organism_labeled_sample",
+  "data_types": ["protein", "genome", "single_cell", "microbiome", "regulatory_dna"],
+  "target_novelty_axis": "species_taxon_or_phylogenetic_distance",
+  "deployment_question": "How does the model transfer to a species or taxonomic group absent from training?",
+  "curve_region": "low_overlap",
+  "definition": "Hold out one or more species, strains, clades, or taxonomic groups to evaluate transfer across evolutionary distance.",
+  "split_operator": {"type": "leave_taxon_out", "heldout_unit": "species_or_taxon", "spectra_mapping": "sets same-taxon overlap to zero and samples phylogenetic novelty"},
+  "required_inputs": ["sample_id", "species or taxon id", "sequence or features"],
+  "recommended_similarity_axes": ["phylogenetic_distance", "orthology_similarity", "sequence_similarity", "taxonomic_rank"],
+  "output_contract": {"mode": "split_assignment", "required_columns": ["sample_id", "split", "role"], "optional_columns": ["taxon_id", "heldout_taxon"]},
+  "implementation_recipe": [
+    "Choose the taxonomic rank matching deployment.",
+    "Assign all samples from held-out taxa to test.",
+    "Report phylogenetic distances from test taxa to training taxa."
+  ],
+  "quality_gates": [
+    "Clarify whether transfer is cross-strain, cross-species, or cross-clade.",
+    "Check label distribution and sampling effort by taxon.",
+    "Measure taxonomic and sequence-level similarity separately."
+  ],
+  "failure_modes": [
+    "Models may exploit taxonomic artifacts rather than the intended biology.",
+    "Uneven sampling across taxa can dominate performance.",
+    "Ortholog mapping can leak information across species."
+  ],
+  "citations": [
+    {"paper_id": "PMC8647222", "title": "The Power of Universal Contextualized Protein Embeddings in Cross-species Protein Function Prediction", "evidence": "Studies transfer of protein function prediction across species."},
+    {"paper_id": "PMC12184517", "title": "Cross-species modeling of plant genomes at single-nucleotide resolution", "evidence": "Evaluates genomic language models across plant species after evolutionary divergence."}
+  ],
+  "tags": ["species", "taxon", "cross_species", "phylogeny"]
+}

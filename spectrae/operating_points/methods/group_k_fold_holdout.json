@@ -1,0 +1,37 @@
+{
+  "id": "group_k_fold_holdout",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "operating_point_name": "Group K-Fold Holdout",
+  "method_family": "group_holdout",
+  "scientific_unit": "grouped_sample",
+  "data_types": ["generic", "patient_record", "donor_sample", "subject_time_series", "assay_record", "image"],
+  "target_novelty_axis": "group_identity_or_cluster_membership",
+  "deployment_question": "How does the model perform on groups that were not represented during training?",
+  "curve_region": "axis_specific",
+  "definition": "Partition data so all samples sharing a declared group identifier are held out together. This targets an operating point where within-group leakage is removed but between-group similarity may still vary.",
+  "split_operator": {"type": "leave_group_out_or_group_k_fold", "heldout_unit": "group_id", "spectra_mapping": "binary same-group similarity is forced to zero between train and test"},
+  "required_inputs": ["sample_id", "group_id", "fold count or heldout groups"],
+  "recommended_similarity_axes": ["same_group_overlap", "group_embedding_similarity", "nearest_train_similarity"],
+  "output_contract": {"mode": "split_assignment", "required_columns": ["sample_id", "split", "role"], "optional_columns": ["fold_id", "heldout_group"]},
+  "implementation_recipe": [
+    "Choose the grouping variable that would otherwise create leakage.",
+    "Assign whole groups, not individual samples, to folds.",
+    "Check label balance and group-size imbalance across folds."
+  ],
+  "quality_gates": [
+    "Justify why the group variable corresponds to the deployment unit.",
+    "Measure residual similarity across held-out groups.",
+    "Report group counts, sample counts, and label distribution per fold."
+  ],
+  "failure_modes": [
+    "Large groups can dominate a fold and produce unstable metrics.",
+    "Groups may be too coarse and confound the novelty axis with label prevalence.",
+    "Different groups can still be near-duplicates under another similarity definition."
+  ],
+  "citations": [
+    {"paper_id": "arx_2403.01874", "title": "A Survey on Evaluation of Out-of-Distribution Generalization", "evidence": "Surveys OOD evaluation protocols that hold out domains or groups to test generalization."},
+    {"paper_id": "PMC12662204", "title": "Distributional bias compromises leave-one-out cross-validation", "evidence": "Shows that leave-one-out style validation can be biased under distributional structure, motivating explicit group-aware checks."}
+  ],
+  "tags": ["group", "group_k_fold", "leave_group_out", "leakage_control"]
+}

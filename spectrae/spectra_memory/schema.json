@@ -1,0 +1,42 @@
+{
+  "schema_version": "0.1.0",
+  "required_fields": [
+    "id",
+    "version",
+    "status",
+    "title",
+    "domains",
+    "data_types",
+    "scientific_units",
+    "model_families",
+    "models",
+    "resource_records",
+    "similarity_axes",
+    "findings",
+    "reuse_guidance",
+    "do_not_repeat",
+    "artifact_paths",
+    "tags"
+  ],
+  "status_values": [
+    "paper_ready",
+    "historical_result",
+    "reusable_seed",
+    "process_evidence",
+    "negative_result",
+    "invalidated"
+  ],
+  "reuse_priority_values": [
+    "high",
+    "medium",
+    "low"
+  ],
+  "forbidden_path_patterns": [
+    "/ewsc/",
+    "/home/unix/",
+    "/tmp/",
+    "spectra_caduceus_",
+    "spectra_assets/"
+  ],
+  "notes": "SPECTRA memory entries preserve results and reusable artifacts from prior runs. They are not immutable truth; future agents should reuse them as priors, verify applicability, and preserve caveats."
+}

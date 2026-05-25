@@ -1,0 +1,66 @@
+{
+  "id": "nabench",
+  "title": "NABench: Large-Scale Benchmarks of Nucleotide Foundation Models for Fitness Prediction",
+  "tier": "launch_anchor",
+  "community": "genomics_foundation_models",
+  "status": "active_demo",
+  "paper": {
+    "url": "https://arxiv.org/abs/2511.02888",
+    "pdf_url": "https://arxiv.org/pdf/2511.02888.pdf",
+    "year": 2025
+  },
+  "code": {
+    "repo_url": "https://github.com/mrzzmrzz/NABench",
+    "fetch_default": true
+  },
+  "data": [
+    {
+      "name": "NABench benchmark data",
+      "url": "https://github.com/mrzzmrzz/NABench",
+      "fetch_default": false,
+      "reason": "Fetch through upstream instructions to avoid large implicit downloads."
+    }
+  ],
+  "scientific_unit": "mutated DNA or RNA sequence",
+  "original_evaluation": [
+    "Random cross-validation",
+    "Contiguous cross-validation for extrapolation to unseen mutational regions",
+    "Zero-shot, few-shot, transfer, and supervised model settings"
+  ],
+  "core_generalization_finding": "Random splits test interpolation, while contiguous splits better probe extrapolation to unseen mutational regions.",
+  "spectra_demo_hook": "Turn random-versus-contiguous evaluation into a full mutational generalization spectrum.",
+  "recommended_novelty_axes": [
+    {
+      "name": "mutational_distance",
+      "property_graph": "Hamming, edit, or mutational-set distance from training variants",
+      "graph_type": "weighted",
+      "priority": "primary"
+    },
+    {
+      "name": "positional_distance",
+      "property_graph": "distance between mutated positions along the reference sequence",
+      "graph_type": "weighted",
+      "priority": "primary"
+    },
+    {
+      "name": "assay_family_distance",
+      "property_graph": "shared assay, family, organism, or molecule-type metadata",
+      "graph_type": "binary_or_weighted",
+      "priority": "secondary"
+    },
+    {
+      "name": "fitness_extremeness",
+      "property_graph": "distance from training support in measured fitness values",
+      "graph_type": "weighted",
+      "priority": "secondary"
+    }
+  ],
+  "expected_artifacts": [
+    "audit_card.json",
+    "spectral_properties.json",
+    "split_stats.csv",
+    "performance_by_overlap.csv",
+    "spectral_curve.png",
+    "report.md"
+  ]
+}

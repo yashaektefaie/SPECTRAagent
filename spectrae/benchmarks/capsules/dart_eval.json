@@ -1,0 +1,71 @@
+{
+  "id": "dart_eval",
+  "title": "DART-Eval: A Comprehensive DNA Language Model Evaluation Benchmark on Regulatory DNA",
+  "tier": "launch_anchor",
+  "community": "genomics_foundation_models",
+  "status": "active_demo",
+  "paper": {
+    "url": "https://arxiv.org/abs/2412.05430",
+    "pdf_url": "https://arxiv.org/pdf/2412.05430.pdf",
+    "year": 2024
+  },
+  "code": {
+    "repo_url": "https://github.com/kundajelab/DART-Eval",
+    "fetch_default": true
+  },
+  "data": [
+    {
+      "name": "DART-Eval Synapse project",
+      "url": "https://www.synapse.org/DART_Eval_Benchmark",
+      "fetch_default": false,
+      "reason": "Data access uses Synapse; fetch through upstream instructions."
+    }
+  ],
+  "scientific_unit": "regulatory DNA sequence or variant",
+  "original_evaluation": [
+    "Zero-shot, probed, and fine-tuned DNA language model evaluation",
+    "Regulatory DNA tasks with confounder controls"
+  ],
+  "core_generalization_finding": "DNA language model performance depends strongly on task design, biological confounders, and evaluation setting.",
+  "spectra_demo_hook": "Audit where apparent regulatory prediction performance decays across sequence and regulatory novelty.",
+  "recommended_novelty_axes": [
+    {
+      "name": "sequence_identity",
+      "property_graph": "k-mer or alignment-based DNA sequence similarity",
+      "graph_type": "weighted",
+      "priority": "primary"
+    },
+    {
+      "name": "motif_disruption",
+      "property_graph": "shared motif disruption profile",
+      "graph_type": "binary_or_weighted",
+      "priority": "primary"
+    },
+    {
+      "name": "regulatory_element_class",
+      "property_graph": "shared enhancer, promoter, TFBS, or chromatin category",
+      "graph_type": "binary",
+      "priority": "secondary"
+    },
+    {
+      "name": "cell_type_distance",
+      "property_graph": "distance between cell-type-specific regulatory profiles",
+      "graph_type": "weighted",
+      "priority": "secondary"
+    },
+    {
+      "name": "gc_content_confounding",
+      "property_graph": "similarity over GC content and compositional features",
+      "graph_type": "weighted",
+      "priority": "control"
+    }
+  ],
+  "expected_artifacts": [
+    "audit_card.json",
+    "spectral_properties.json",
+    "split_stats.csv",
+    "performance_by_overlap.csv",
+    "spectral_curve.png",
+    "report.md"
+  ]
+}

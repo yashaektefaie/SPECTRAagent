@@ -1,0 +1,150 @@
+{
+  "id": "cross_domain_agent_ablation_memory",
+  "version": "0.1.0",
+  "status": "process_evidence",
+  "reuse_priority": "medium",
+  "title": "Cross-Domain Vanilla-vs-SPECTRA Agent Ablation Memory",
+  "domains": [
+    "molecular_ml",
+    "sequence_fitness",
+    "perturbation_biology",
+    "agent_evaluation"
+  ],
+  "data_types": [
+    "held-out predictions",
+    "visible train data",
+    "minimal metadata"
+  ],
+  "scientific_units": [
+    "molecule",
+    "mutated_sequence",
+    "perturbation_combination"
+  ],
+  "model_families": [
+    "scientific ML model",
+    "agent-executed audit"
+  ],
+  "models": [
+    "blinded molecular model",
+    "blinded sequence fitness model",
+    "blinded perturbation response model"
+  ],
+  "resource_records": [
+    {
+      "name": "Cross-domain blinded agent-ablation run",
+      "kind": "agent_benchmark",
+      "source": "Fresh vanilla and SPECTRA agents launched from scratch on three executable domains.",
+      "portable_references": [
+        "docs/cross_domain_agent_ablation_20260513.md"
+      ],
+      "access_notes": "Useful for process claims and rubric structure, not as evidence that SPECTRA uniquely discovers obvious failure axes."
+    },
+    {
+      "name": "Strict-naive vanilla follow-up",
+      "kind": "agent_benchmark",
+      "source": "Vanilla prompt only asked: Evaluate whether the model generalizes.",
+      "portable_references": [
+        "docs/cross_domain_agent_ablation_20260513.md"
+      ],
+      "access_notes": "Important negative control: vanilla agents still found schema-obvious axes."
+    }
+  ],
+  "similarity_axes": [
+    {
+      "name": "composition_weighted_jaccard",
+      "status": "molecular_spectra_selected",
+      "definition": "Schema-derived molecular novelty axis selected by the SPECTRA agent when RDKit-based axes were not evaluable.",
+      "quality_gates": [
+        "Validate decreasing overlap.",
+        "Classify RDKit-dependent axes as not evaluable if RDKit is unavailable.",
+        "Report target-support leakage separately."
+      ]
+    },
+    {
+      "name": "nearest_train_mutation_position_similarity",
+      "status": "sequence_negative_result",
+      "definition": "Use distance from held-out mutations to nearest training mutation positions as a sequence-fitness novelty axis.",
+      "quality_gates": [
+        "Report when the curve is non-explanatory.",
+        "Do not force monotonicity if predictions are globally poor or constant.",
+        "Classify label-derived axes as post-hoc."
+      ]
+    },
+    {
+      "name": "component_support_fraction",
+      "status": "perturbation_supported",
+      "definition": "For combination perturbations, measure what fraction of components appeared as supported training singles.",
+      "quality_gates": [
+        "Evaluate component support at the scientific-unit level.",
+        "Mark response-profile similarity as post-hoc or leaky for split design.",
+        "Report gene/cell support axes that collapse or are not evaluable."
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "spectra_improves_audit_quality",
+      "claim": "Across molecules, sequence fitness, and perturbation biology, SPECTRA agents produced more complete, reproducible, leakage-aware audit artifacts than vanilla agents.",
+      "evidence": [
+        "Initial blinded scores: molecules 24/24 versus 17/24, sequence fitness 23/24 versus 17/24, perturbation biology 24/24 versus 18/24.",
+        "SPECTRA produced pairwise files, split stats, performance curves, AUSPC/equivalent summaries, failed-axis reporting, leakage classification, and audit cards."
+      ],
+      "limitations": [
+        "The capsules exposed schema-obvious failure axes.",
+        "This supports audit quality and standardization rather than unique discovery."
+      ],
+      "status": "supported_process_claim"
+    },
+    {
+      "id": "vanilla_can_find_obvious_failures",
+      "claim": "Strict-naive vanilla agents still identified the main generalization failures in these capsules without being prompted with similarity or novelty language.",
+      "evidence": [
+        "Strict-naive scores: molecules 21/24, sequence fitness 22/24, perturbation biology 22/24.",
+        "Vanilla inferred SMILES overlap/target shift, mutation-position holdout/constant predictions, and perturbation component support."
+      ],
+      "limitations": [
+        "This result means these capsules are not hard agent-discovery benchmarks.",
+        "Future discovery claims need less schema-obvious tasks or model-paper-to-external-resource investigations."
+      ],
+      "status": "negative_for_unique_discovery_claim"
+    }
+  ],
+  "reuse_guidance": [
+    "Use this entry when designing with-/without-SPECTRA agent evaluations; keep the strict-naive vanilla prompt as the main control.",
+    "Report process metrics separately from unique-discovery claims.",
+    "Do not use schema-obvious capsules as proof that vanilla agents need SPECTRA to discover the failure.",
+    "Reuse the 12-dimension rubric for audit completeness scoring."
+  ],
+  "do_not_repeat": [
+    "Do not lead the vanilla agent with similarity, novelty, curve, or being-tested language.",
+    "Do not claim SPECTRA is necessary for discovery on these easy capsules.",
+    "Do not merge deterministic benchmark results with fresh-agent behavioral results without labeling the difference."
+  ],
+  "artifact_paths": [
+    {
+      "label": "cross-domain ablation doc",
+      "path": "docs/cross_domain_agent_ablation_20260513.md",
+      "status": "repo_doc"
+    },
+    {
+      "label": "cross-domain paper results doc",
+      "path": "docs/paper_results_20260513_cross_domain.md",
+      "status": "repo_doc"
+    },
+    {
+      "label": "dataset catalog entries for reproduced domains",
+      "path": "dataset_catalog:boom_benchmark_datasets,nabench_assays,perturbench_huggingface",
+      "status": "portable_catalog_reference"
+    }
+  ],
+  "tags": [
+    "agent_ablation",
+    "strict_naive_vanilla",
+    "audit_quality",
+    "rubric",
+    "molecules",
+    "sequence_fitness",
+    "perturbation_biology",
+    "process_claim"
+  ]
+}

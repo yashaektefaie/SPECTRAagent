@@ -1,0 +1,78 @@
+{
+  "id": "biomedical_text_semantic_similarity",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "biomedical_or_clinical_text",
+  "scientific_unit": "document_sentence_or_note",
+  "task_family": [
+    "biomedical NLP",
+    "clinical text classification",
+    "semantic search"
+  ],
+  "similarity_name": "Biomedical text embedding semantic similarity",
+  "similarity_kind": "text_embedding_similarity",
+  "definition": "Encode each text sample with a task-appropriate biomedical, clinical, or general sentence embedding model, then compute train-eval cosine similarity or a dataset-level median cosine distance. This audits whether NLP performance decays as semantic content, specialty, note type, or corpus style moves away from the training set.",
+  "spectra_axis": {
+    "name": "max_train_text_embedding_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_cosine_similarity",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "embedding_columns_or_text_encoder"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/embedding_cosine_similarity.py",
+  "example_usage": "python embedding_cosine_similarity.py --train train_text_embeddings.csv --eval eval_text_embeddings.csv --out pairwise_similarity.csv --embedding-cols-prefix emb_",
+  "citations": [
+    {
+      "paper_id": "arx_2008.06606",
+      "title": "Quantification of BERT Diagnosis Generalizability Across Medical Specialties Using Semantic Dataset Distance",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/arx_2008.06606/content.lines",
+          "lines": "L5-L12",
+          "summary": "The paper finds clinical NLP generalizability varies across specialties and correlates with train-test semantic similarity."
+        },
+        {
+          "path": "/papers/arx_2008.06606/content.lines",
+          "lines": "L26-L40",
+          "summary": "Semantic similarity between partitions is measured with cosine distances between sentence embeddings."
+        },
+        {
+          "path": "/papers/arx_2008.06606/content.lines",
+          "lines": "L58-L87",
+          "summary": "Median cosine distance separates internal, partial, and external train-test relations and is associated with AUC."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Embedding similarity depends on encoder choice and may miss label-specific semantic shifts.",
+    "Text style, metadata leakage, note templates, and institution-specific phrasing can dominate content similarity.",
+    "A single median distance can hide multimodal train-test overlap."
+  ],
+  "quality_gates": [
+    "Report encoder name, pooling strategy, preprocessing, and whether embeddings were trained on evaluation text.",
+    "Run curves by text domain metadata such as specialty, institution, note type, or time period when available.",
+    "Inspect nearest training texts for privacy leakage and shortcut artifacts."
+  ],
+  "tags": [
+    "text",
+    "nlp",
+    "clinical_notes",
+    "semantic_similarity",
+    "embedding",
+    "cosine"
+  ]
+}

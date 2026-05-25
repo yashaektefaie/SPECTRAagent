@@ -1,0 +1,86 @@
+{
+  "id": "scperturb_harmonized",
+  "version": "0.1.0",
+  "status": "active",
+  "title": "scPerturb Harmonized Single-Cell Perturbation Resource",
+  "domains": ["single_cell_perturbation", "transcriptomics", "multiomics", "systems_biology"],
+  "data_types": ["single-cell expression", "single-cell ATAC", "perturbation label", "cell metadata", "h5ad file"],
+  "scientific_units": ["single_cell", "perturbation", "gene_target", "cell_type", "dataset"],
+  "compatible_model_families": ["single-cell foundation model", "perturbation response model", "gene perturbation model", "multiomic model"],
+  "source": {
+    "homepage": "https://www.sanderlab.org/scPerturb/",
+    "repository": "https://github.com/sanderlab/scPerturb",
+    "data_urls": [
+      {
+        "description": "scPerturb Nature Methods paper",
+        "url": "https://www.nature.com/articles/s41592-023-02144-y",
+        "access_notes": "Paper describes harmonized data access and original source datasets."
+      },
+      {
+        "description": "RNA data Zenodo record",
+        "url": "https://doi.org/10.5281/zenodo.7041848",
+        "access_notes": "Harmonized RNA perturbation datasets."
+      },
+      {
+        "description": "ATAC data Zenodo record",
+        "url": "https://doi.org/10.5281/zenodo.7058381",
+        "access_notes": "Harmonized ATAC perturbation datasets."
+      }
+    ]
+  },
+  "access": {
+    "mode": "mixed",
+    "authentication": "none_expected_for_public_harmonized_files",
+    "instructions": [
+      "Use the scPerturb website or Zenodo records to select one harmonized h5ad dataset first.",
+      "Record original dataset, modality, cell type, perturbation, target gene, dose/time if present, QC fields, and split.",
+      "Expand to cross-dataset audits only after validating that perturbation labels and gene identifiers are harmonized."
+    ]
+  },
+  "scale": {
+    "download_size": "44 harmonized public single-cell perturbation datasets; individual h5ad files vary substantially",
+    "spectra_default": "selected_h5ad_dataset_first"
+  },
+  "expected_fields": ["cell_id", "dataset_id", "modality", "cell_type", "perturbation", "target_gene", "expression_or_accessibility", "split"],
+  "recommended_axes": [
+    {
+      "name": "perturbation_target_similarity",
+      "definition": "Gene, pathway, GO, protein-interaction, or embedding similarity between perturbation targets.",
+      "prospective": true
+    },
+    {
+      "name": "cell_type_and_dataset_support",
+      "definition": "Cell type, donor, technology, lab, or original-dataset similarity.",
+      "prospective": true
+    },
+    {
+      "name": "response_effect_similarity",
+      "definition": "Similarity of perturbation effect vectors or E-distance-style response distances.",
+      "prospective": false
+    },
+    {
+      "name": "modality_support",
+      "definition": "Support across RNA, ATAC, protein, or multiomic readouts.",
+      "prospective": true
+    }
+  ],
+  "useful_for": [
+    "Providing a broad public perturbation resource for SPECTRA Dataset Scout.",
+    "Testing whether perturbation-response models generalize across target genes, cell types, technologies, and datasets.",
+    "Letting SPECTRA agents pull a new dataset when a local benchmark lacks biological metadata."
+  ],
+  "leakage_risks": [
+    "The same perturbation target can appear in multiple datasets or cell types.",
+    "Dataset/lab/batch labels can dominate biological signal.",
+    "Response-effect similarity is post-hoc unless computed only on training labels or external biology."
+  ],
+  "related_benchmark_capsules": [],
+  "related_memory_entries": [],
+  "paperclip_provenance": {
+    "search_ids": ["s_8c2cafec", "s_c8099614"],
+    "map_ids": ["m_ee210067", "m_50d01e90"],
+    "paper_ids": ["bio_a8da6c526c1c", "PMC11897147"],
+    "notes": "Paperclip surfaced scPerturb as a harmonized perturbation data resource; official website and Nature Methods paper confirm 44 public perturbation-response datasets and Zenodo access."
+  },
+  "tags": ["scperturb", "single_cell", "perturbation", "h5ad", "multiomics"]
+}

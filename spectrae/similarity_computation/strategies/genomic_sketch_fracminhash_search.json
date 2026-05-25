@@ -1,0 +1,94 @@
+{
+  "id": "genomic_sketch_fracminhash_search",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "Genomic Sketch Search with Mash, Sourmash, or FracMinHash",
+  "strategy_family": "domain_specific_sketch",
+  "exactness": "approximate",
+  "applies_to_similarity_kinds": [
+    "kmer_jaccard_similarity",
+    "containment_similarity",
+    "mash_distance",
+    "fracminhash_similarity",
+    "genomic_sequence_similarity"
+  ],
+  "compatible_data_shapes": [
+    "genome",
+    "metagenome",
+    "read_set",
+    "sequence_kmers",
+    "microbial_sample"
+  ],
+  "definition": "Sketch k-mer sets with Mash, sourmash, FracMinHash, syncmers, or related genomic sketches to estimate Jaccard, containment, cosine, or Mash distance with low memory. Use sketches to search large sequence collections and emit nearest train references or thresholded matches.",
+  "scale_profile": {
+    "best_for": "Large genome, metagenome, or read-set comparisons where alignment or full k-mer comparison is too expensive.",
+    "typical_upper_bound": "Millions of sketches or petabyte-scale public metagenome searches in specialized systems.",
+    "avoid_when": "Fine-grained alignment, local rearrangement, or rare variant similarity is the required scientific axis."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "sketch_size",
+      "kmer_size",
+      "containment"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "sequences or k-mer sketches",
+    "k-mer size"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "kmer_size",
+      "purpose": "Controls taxonomic and mutation-scale sensitivity."
+    },
+    {
+      "name": "sketch_size_or_scale",
+      "purpose": "Controls variance and memory."
+    },
+    {
+      "name": "containment_vs_resemblance",
+      "purpose": "Selects whether asymmetric containment or symmetric resemblance drives SPECTRA."
+    }
+  ],
+  "quality_gates": [
+    "Report k-mer size, sketch size or scale, and hash settings.",
+    "Use confidence bounds or exact k-mer comparisons on a subset.",
+    "Choose containment versus resemblance based on the scientific unit."
+  ],
+  "failure_modes": [
+    "Small sketches are unstable for very low similarity.",
+    "Containment and resemblance answer different questions and should not be conflated.",
+    "Sequencing error and low-complexity k-mers can bias sketches."
+  ],
+  "python_example": "minhash_lsh_jaccard.py",
+  "example_usage": "Represent each sequence sample as a semicolon-delimited k-mer or sketch set and run minhash_lsh_jaccard.py to emit SPECTRA-compatible candidate similarities.",
+  "citations": [
+    {
+      "paper_id": "PMC4915045",
+      "title": "Mash: fast genome and metagenome distance estimation using MinHash",
+      "evidence": "Uses MinHash sketches of k-mer sets to estimate Jaccard and Mash distances for fast genome and metagenome comparison."
+    },
+    {
+      "paper_id": "PMC12082993",
+      "title": "Estimating similarity and distance using FracMinHash",
+      "evidence": "Develops FracMinHash theory and a fast parallel sketch generator for estimating pairwise similarity on genomic data."
+    }
+  ],
+  "tags": [
+    "genomics",
+    "mash",
+    "sourmash",
+    "fracminhash",
+    "kmer_sketch"
+  ]
+}

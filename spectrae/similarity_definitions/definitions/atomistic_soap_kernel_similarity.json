@@ -1,0 +1,78 @@
+{
+  "id": "atomistic_soap_kernel_similarity",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "atomistic_structure",
+  "scientific_unit": "atomic_environment_or_structure",
+  "task_family": [
+    "atomistic machine learning",
+    "materials property prediction",
+    "molecular structure generalization"
+  ],
+  "similarity_name": "SOAP atomic-environment kernel similarity",
+  "similarity_kind": "atomistic_kernel_similarity",
+  "definition": "Represent each atomic environment or whole structure with a symmetry-invariant atomistic descriptor such as SOAP, then use the SOAP kernel or a precomputed SOAP-derived distance as train-eval similarity. This is appropriate when novelty is structural and local chemical environment overlap matters more than formula overlap alone.",
+  "spectra_axis": {
+    "name": "max_train_soap_similarity",
+    "axis_type": "similarity",
+    "aggregation": "max_train_soap_kernel",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "precomputed_soap_kernel_or_distance"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/metric_to_similarity.py",
+  "example_usage": "python metric_to_similarity.py --input soap_metric.csv --out pairwise_similarity.csv --metric-kind similarity --metric-col soap_kernel",
+  "citations": [
+    {
+      "paper_id": "arx_1209.3140",
+      "title": "On representing chemical environments",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/arx_1209.3140/content.lines",
+          "lines": "L6-L9",
+          "summary": "The paper introduces SOAP as a similarity method for atomic neighbourhood environments with symmetry invariance."
+        },
+        {
+          "path": "/papers/arx_1209.3140/content.lines",
+          "lines": "L230-L256",
+          "summary": "SOAP is defined as a rotationally invariant smooth similarity kernel between atomic environments."
+        },
+        {
+          "path": "/papers/arx_1209.3140/content.lines",
+          "lines": "L318-L319",
+          "summary": "The authors report that SOAP gives faithful and robust atomistic representations for fitting potential energy surfaces."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "SOAP parameters, cutoffs, species handling, and structure aggregation choices affect the resulting axis.",
+    "The bundled example converts precomputed SOAP metrics; it does not compute SOAP descriptors itself.",
+    "Formula-level novelty and local-environment novelty can disagree and should often be reported separately."
+  ],
+  "quality_gates": [
+    "Report SOAP implementation, cutoff radius, radial/angular basis sizes, species treatment, and structure aggregation method.",
+    "Verify kernel values are bounded and comparable across train and evaluation structures.",
+    "Compare against formula-composition similarity when both composition and geometry matter."
+  ],
+  "tags": [
+    "soap",
+    "atomistic",
+    "materials",
+    "structure",
+    "kernel",
+    "atomic_environment"
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "id": "caduceus_external_perturbational_memory",
+  "version": "0.1.0",
+  "status": "paper_ready",
+  "reuse_priority": "high",
+  "title": "Caduceus External Perturbational Regulatory Generalization Memory",
+  "domains": [
+    "regulatory_dna",
+    "perturbation_biology",
+    "genomics"
+  ],
+  "data_types": [
+    "DNA sequence",
+    "distal regulatory element",
+    "element-gene-cell-type perturbational label",
+    "ENCODE-like regulatory annotation"
+  ],
+  "scientific_units": [
+    "element_gene_cell_type_pair",
+    "distal_regulatory_element_window"
+  ],
+  "model_families": [
+    "DNA foundation model",
+    "nucleotide language model",
+    "long-range genomic sequence model",
+    "Caduceus-like sequence model"
+  ],
+  "models": [
+    "Caduceus",
+    "Caduceus-Ph",
+    "kuleshov-group/caduceus-ph_seqlen-131k_d_model-256_n_layer-16"
+  ],
+  "resource_records": [
+    {
+      "name": "DC-TAP matched distal perturbational candidate",
+      "kind": "constructed_split",
+      "source": "Constructed inside the fresh Caduceus SPECTRA session from public/local distal enhancer-gene perturbational resources.",
+      "catalog_entry_ids": [
+        "dc_tap_final_table",
+        "encode_ccre_screen"
+      ],
+      "access_notes": "Most reusable as a hypothesis-test template. Reconstruct from the portable dataset catalog and revalidate source provenance before using in a new paper run."
+    },
+    {
+      "name": "CRISPR comparison perturbational companions",
+      "kind": "constructed_split",
+      "source": "Constructed as source-aware and source/sequence-bin matched companion tests in the same fresh Caduceus session.",
+      "catalog_entry_ids": [
+        "crispr_comparison_epcrispr",
+        "encode_ccre_screen"
+      ],
+      "access_notes": "Use as controls against overgeneralizing the DC-TAP curve into a broad pretrained-representation mechanism."
+    }
+  ],
+  "similarity_axes": [
+    {
+      "name": "distal_element_gene_distance_bin",
+      "status": "supported_deployment_axis",
+      "definition": "Compare 10-to-100 kb versus greater-than-or-equal-to-100 kb element-gene candidate bins after matching label, cell type, chromatin category, assay power, target-gene ubiquity, and measured 2048 bp sequence overlap.",
+      "quality_gates": [
+        "Exact sequence leakage is zero.",
+        "Measured 2048 bp train-eval overlap decreases from the nearer to the farther bin.",
+        "Controls-only model is reported beside Caduceus-plus-controls.",
+        "Do not use tested_negative_high_power as a predictor because it is label-definition leakage."
+      ]
+    },
+    {
+      "name": "source_aware_crispr_distance_companion",
+      "status": "weak_or_control_dominated",
+      "definition": "Repeat perturbational distance-bin analysis on CRISPR companion resources with source-aware matching and controls-only comparisons.",
+      "quality_gates": [
+        "Source/provenance matching is explicit.",
+        "Controls-only baseline is evaluated.",
+        "Curve support is not generalized unless replicated across companion resources."
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "matched_dc_tap_distance_fragility",
+      "claim": "Matched DC-TAP exposed a valid distance-conditioned deployment fragility curve: Caduceus plus controls AUROC dropped from 0.861 at 10-to-100 kb to 0.540 at greater-than-or-equal-to-100 kb.",
+      "evidence": [
+        "Rows per level: 67.",
+        "Positives per level: 10.",
+        "Measured overlap decreased from 0.0653 to 0.0387.",
+        "Curve score: monotonic."
+      ],
+      "limitations": [
+        "Low positive support.",
+        "Frozen 2048 bp element-centered Caduceus embeddings only.",
+        "Deployment fragility is not the same as a Caduceus-specific mechanism."
+      ],
+      "status": "supported_bounded"
+    },
+    {
+      "id": "not_caduceus_specific_increment",
+      "claim": "The same experiment did not show stable Caduceus-specific incremental signal beyond explicit controls.",
+      "evidence": [
+        "Caduceus-plus-controls versus controls-only delta AUROC was -0.0018 at 10-to-100 kb.",
+        "Caduceus-plus-controls versus controls-only delta AUROC was -0.1123 at greater-than-or-equal-to-100 kb.",
+        "CRISPR companions were weak or control-dominated."
+      ],
+      "limitations": [
+        "Does not test full fine-tuning.",
+        "Does not characterize all regulatory DNA tasks or all cell types.",
+        "Mechanism closure needs a higher-support resource where provenance and sequence/background bins can be matched without losing positives."
+      ],
+      "status": "negative_for_model_specific_mechanism"
+    }
+  ],
+  "reuse_guidance": [
+    "For Caduceus-like DNA foundation models, query this memory before constructing external regulatory or perturbational datasets.",
+    "Reuse the matched DC-TAP and CRISPR companion design as a template for element-gene-cell-type deployment curves.",
+    "Always compare target-model embeddings against controls-only baselines and treat distance as deployment difficulty unless a model-specific increment survives.",
+    "Promote higher-support public perturbational resources when the goal is mechanism closure rather than bounded deployment fragility."
+  ],
+  "do_not_repeat": [
+    "Do not treat tested_negative_high_power as a feature; it is label-definition leakage.",
+    "Do not broaden the DC-TAP result into a claim that Caduceus globally fails regulatory biology.",
+    "Do not stop at distance or sequence overlap if the question asks for biological mechanism.",
+    "Do not present frozen-probe evidence as full fine-tuning evidence."
+  ],
+  "artifact_paths": [
+    {
+      "label": "paper-ready finding summary",
+      "path": "docs/caduceus_spectra_paper_ready_finding.md",
+      "status": "repo_doc"
+    },
+    {
+      "label": "DC-TAP dataset catalog entry",
+      "path": "dataset_catalog:dc_tap_final_table",
+      "status": "portable_catalog_reference"
+    },
+    {
+      "label": "CRISPR comparison dataset catalog entry",
+      "path": "dataset_catalog:crispr_comparison_epcrispr",
+      "status": "portable_catalog_reference"
+    }
+  ],
+  "tags": [
+    "caduceus",
+    "dna_foundation_model",
+    "regulatory_dna",
+    "perturbational_genomics",
+    "dc_tap",
+    "crispr",
+    "distal_regulation",
+    "model_specific_controls",
+    "deployment_fragility"
+  ]
+}

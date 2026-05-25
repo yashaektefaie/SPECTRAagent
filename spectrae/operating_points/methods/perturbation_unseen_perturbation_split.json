@@ -1,0 +1,37 @@
+{
+  "id": "perturbation_unseen_perturbation_split",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "operating_point_name": "Unseen Perturbation Split",
+  "method_family": "perturbation_holdout",
+  "scientific_unit": "cell_perturbation",
+  "data_types": ["single_cell", "perturbation_response", "gene_perturbation", "drug_perturbation"],
+  "target_novelty_axis": "perturbation_identity_or_relationship",
+  "deployment_question": "How does the model predict responses to perturbations absent from training?",
+  "curve_region": "low_overlap",
+  "definition": "Hold out all observations for selected genetic, chemical, or combinatorial perturbations while training on other perturbations.",
+  "split_operator": {"type": "leave_perturbation_out", "heldout_unit": "perturbation_id", "spectra_mapping": "sets same-perturbation train overlap to zero; related perturbations may remain nearby"},
+  "required_inputs": ["sample_id", "perturbation_id", "cell state or expression", "response label or expression profile"],
+  "recommended_similarity_axes": ["perturbation_embedding_similarity", "target_pathway_similarity", "drug_similarity", "gene_network_distance"],
+  "output_contract": {"mode": "split_assignment", "required_columns": ["sample_id", "split", "role"], "optional_columns": ["perturbation_id", "heldout_perturbation"]},
+  "implementation_recipe": [
+    "Choose perturbations or perturbation classes to hold out.",
+    "Assign all cells or profiles under held-out perturbations to test.",
+    "Measure similarity from held-out perturbations to training perturbations."
+  ],
+  "quality_gates": [
+    "Report whether related genes, drugs, or pathways remain in training.",
+    "Separate unseen single perturbations from unseen combinations.",
+    "Evaluate response magnitude and direction, not only aggregate expression error."
+  ],
+  "failure_modes": [
+    "Unseen perturbations can still be near duplicates through pathway or chemical similarity.",
+    "Cell-state composition can differ between perturbations.",
+    "Metrics can reward predicting systematic variation rather than perturbation-specific effects."
+  ],
+  "citations": [
+    {"paper_id": "arx_2408.10609", "title": "PerturBench: Benchmarking Machine Learning Models for Cellular Perturbation Analysis", "evidence": "Benchmarks perturbation-response models with tasks reflecting deployment where perturbation effects are unobserved."},
+    {"paper_id": "PMC12322087", "title": "PerturbNet predicts single-cell responses to unseen chemical and genetic perturbations", "evidence": "Targets prediction for novel molecules and gene edits."}
+  ],
+  "tags": ["perturbation", "unseen_perturbation", "single_cell", "gene_drug"]
+}

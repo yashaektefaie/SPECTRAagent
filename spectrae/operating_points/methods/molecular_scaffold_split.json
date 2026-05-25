@@ -1,0 +1,37 @@
+{
+  "id": "molecular_scaffold_split",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "operating_point_name": "Molecular Scaffold Split",
+  "method_family": "molecular_structure_holdout",
+  "scientific_unit": "molecule",
+  "data_types": ["small_molecule", "drug_discovery", "molecular_property"],
+  "target_novelty_axis": "core_scaffold_identity",
+  "deployment_question": "How does the model perform on molecules with scaffolds absent from training?",
+  "curve_region": "medium_overlap",
+  "definition": "Assign molecules to scaffold groups, usually Bemis-Murcko scaffolds, and hold out scaffold groups from training.",
+  "split_operator": {"type": "group_holdout", "heldout_unit": "scaffold", "spectra_mapping": "sets same-scaffold train overlap to zero but does not guarantee low fingerprint similarity"},
+  "required_inputs": ["sample_id", "molecular structure", "scaffold id"],
+  "recommended_similarity_axes": ["scaffold_identity", "fingerprint_tanimoto", "chemical_cluster_distance"],
+  "output_contract": {"mode": "split_assignment", "required_columns": ["sample_id", "split", "role"], "optional_columns": ["scaffold_id"]},
+  "implementation_recipe": [
+    "Compute scaffold identifiers using a declared toolkit.",
+    "Assign whole scaffolds to train, validation, or test.",
+    "Measure continuous train-neighbor molecular similarity after splitting."
+  ],
+  "quality_gates": [
+    "Report scaffold extraction settings.",
+    "Check maximum train-neighbor fingerprint similarity in the test set.",
+    "Avoid claiming broad chemical novelty from scaffold identity alone."
+  ],
+  "failure_modes": [
+    "Different scaffolds can still be structurally similar.",
+    "Large scaffold groups can dominate folds.",
+    "Toolkit differences change the split."
+  ],
+  "citations": [
+    {"paper_id": "arx_2406.00873", "title": "Scaffold Splits Overestimate Virtual Screening Performance", "evidence": "Shows scaffold splitting can overestimate virtual-screening performance by leaving structurally similar molecules across splits."},
+    {"paper_id": "PMC12153141", "title": "UMAP-based clustering split for rigorous evaluation of AI models for virtual screening", "evidence": "Compares scaffold splitting with random, Butina, and UMAP splits and reports residual train-test similarity."}
+  ],
+  "tags": ["molecule", "scaffold", "bemis_murcko", "chemistry"]
+}

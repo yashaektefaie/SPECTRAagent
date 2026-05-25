@@ -1,0 +1,37 @@
+{
+  "id": "temporal_forward_split",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "operating_point_name": "Temporal Forward Split",
+  "method_family": "temporal_holdout",
+  "scientific_unit": "time_indexed_sample",
+  "data_types": ["clinical_record", "bioactivity_record", "sensor_event", "longitudinal_record", "molecule"],
+  "target_novelty_axis": "calendar_time_or_experimental_order",
+  "deployment_question": "How does the model perform on future data relative to the training period?",
+  "curve_region": "axis_specific",
+  "definition": "Train on earlier observations and evaluate on later observations, optionally with rolling or expanding windows. This targets the deployment point created by temporal drift.",
+  "split_operator": {"type": "time_ordered_holdout", "heldout_unit": "timestamp_or_period", "spectra_mapping": "future samples have zero future-to-train leakage and increasing temporal distance"},
+  "required_inputs": ["sample_id", "timestamp or experimental order", "cutoff time"],
+  "recommended_similarity_axes": ["time_distance", "domain_distribution_distance", "nearest_train_similarity"],
+  "output_contract": {"mode": "split_assignment", "required_columns": ["sample_id", "split", "role"], "optional_columns": ["time_bin", "cutoff_time"]},
+  "implementation_recipe": [
+    "Sort samples by timestamp or experimental acquisition order.",
+    "Choose a cutoff, rolling window, or n-step-forward protocol.",
+    "Train only on data available before the test period."
+  ],
+  "quality_gates": [
+    "Confirm preprocessing and feature construction use only pre-cutoff information.",
+    "Report temporal gaps, period sizes, and label prevalence by period.",
+    "Compare with the SPECTRA curve over temporal distance or feature drift."
+  ],
+  "failure_modes": [
+    "Feature engineering can leak future aggregate statistics.",
+    "Seasonality or intervention effects can confound temporal novelty with label shifts.",
+    "A single cutoff can be unrepresentative."
+  ],
+  "citations": [
+    {"paper_id": "PMC5770216", "title": "Validation of prediction models: examining temporal and geographic stability", "evidence": "Evaluates temporal and geographic stability of clinical prediction models."},
+    {"paper_id": "bio_6e7f3b6776e2", "title": "Step Forward Cross Validation for Bioactivity Prediction", "evidence": "Uses k-fold n-step-forward validation to evaluate out-of-distribution bioactivity prediction."}
+  ],
+  "tags": ["temporal", "forward_chaining", "future_holdout", "time_drift"]
+}

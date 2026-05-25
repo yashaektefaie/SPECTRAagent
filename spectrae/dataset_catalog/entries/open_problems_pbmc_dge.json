@@ -1,0 +1,66 @@
+{
+  "id": "open_problems_pbmc_dge",
+  "version": "0.1.0",
+  "status": "planned",
+  "title": "Open Problems PBMC Single-Cell Perturbation DGE Task",
+  "domains": ["single_cell_perturbation", "drug_response", "hard_agent_discovery"],
+  "data_types": ["single-cell differential expression", "compound perturbation", "PBMC"],
+  "scientific_units": ["compound_cell_type_pair", "perturbation_condition"],
+  "compatible_model_families": ["single-cell perturbation model", "drug response model", "foundation model embedding predictor"],
+  "source": {
+    "homepage": "https://www.kaggle.com/competitions/open-problems-single-cell-perturbations",
+    "repository": "https://github.com/openproblems-bio/task_perturbation_prediction",
+    "data_urls": [
+      {
+        "description": "Open Problems single-cell perturbation competition page",
+        "url": "https://www.kaggle.com/competitions/open-problems-single-cell-perturbations",
+        "access_notes": "Kaggle account, accepted competition rules, or mirrored public assets may be required."
+      },
+      {
+        "description": "Open Problems perturbation prediction task repository",
+        "url": "https://github.com/openproblems-bio/task_perturbation_prediction",
+        "access_notes": "Use repository loaders and metadata to verify exact file names and schema."
+      }
+    ]
+  },
+  "access": {
+    "mode": "competition_portal",
+    "authentication": "kaggle_or_public_mirror_may_be_required",
+    "instructions": [
+      "Use the official competition page or task repository to identify current data access instructions.",
+      "For hard blinded capsules, expose compound names or IDs but withhold SMILES from the vanilla-visible bundle.",
+      "Recover chemical structures, targets, pathways, and cell-state metadata as external resources during SPECTRA."
+    ]
+  },
+  "expected_fields": ["cell_type", "compound_name", "compound_id", "differential_expression", "smiles", "split"],
+  "recommended_axes": [
+    {
+      "name": "chemical_structure_similarity",
+      "definition": "Morgan, ChemBERTa, or other compound similarity after external structure recovery.",
+      "prospective": true
+    },
+    {
+      "name": "target_pathway_overlap",
+      "definition": "Drug target, pathway, LINCS, or mechanism-of-action relatedness.",
+      "prospective": true
+    },
+    {
+      "name": "cell_state_similarity",
+      "definition": "Cell-type ontology, baseline expression, or multiome-state similarity.",
+      "prospective": true
+    }
+  ],
+  "useful_for": [
+    "Hard agent-discovery tests where schema-obvious axes are insufficient.",
+    "Testing whether SPECTRA agents retrieve external chemical and pathway structure.",
+    "Single-cell drug perturbation generalization."
+  ],
+  "leakage_risks": [
+    "Visible SMILES makes chemical novelty too obvious for agent-discovery tests.",
+    "Public leaderboard/test labels can contaminate evaluation.",
+    "Drug and cell-type names may encode support if split construction is not blinded."
+  ],
+  "related_benchmark_capsules": [],
+  "related_memory_entries": [],
+  "tags": ["open_problems", "pbmc", "single_cell", "drug_perturbation", "hard_capsule"]
+}

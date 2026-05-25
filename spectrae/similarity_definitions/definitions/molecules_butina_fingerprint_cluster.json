@@ -1,0 +1,75 @@
+{
+  "id": "molecules_butina_fingerprint_cluster",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "small_molecule",
+  "scientific_unit": "molecule",
+  "task_family": [
+    "virtual screening",
+    "molecular property prediction"
+  ],
+  "similarity_name": "Butina fingerprint cluster membership",
+  "similarity_kind": "cluster_membership",
+  "definition": "Cluster molecules by fingerprint similarity with Butina-style clustering. Treat shared cluster membership as high train-eval overlap, or use cluster-derived folds as discrete novelty groups.",
+  "spectra_axis": {
+    "name": "butina_cluster_overlap",
+    "axis_type": "similarity",
+    "aggregation": "same_cluster",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "cluster_id"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/tabular_group_similarity.py",
+  "example_usage": "python tabular_group_similarity.py --train train.csv --eval eval.csv --out pairwise_similarity.csv --group-col cluster_id",
+  "citations": [
+    {
+      "paper_id": "PMC12153141",
+      "title": "UMAP-based clustering split for rigorous evaluation of AI models for virtual screening on cancer cell lines",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/PMC12153141/content.lines",
+          "lines": "L13",
+          "summary": "The paper describes Butina clustering as a split designed to create dissimilar molecule clusters from molecular fingerprints."
+        },
+        {
+          "path": "/papers/PMC12153141/content.lines",
+          "lines": "L26-L27",
+          "summary": "The paper notes Butina clusters based on molecular fingerprint similarity but can have weak cluster quality relative to UMAP."
+        },
+        {
+          "path": "/papers/PMC12153141/content.lines",
+          "lines": "L57",
+          "summary": "The paper reports Butina splits reduce train-neighbor Tanimoto similarity more than random or scaffold splits but less than UMAP splits."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Cluster quality can be poor with many singletons or weak separation.",
+    "A cluster split is not a continuous novelty curve unless paired with nearest-train similarity.",
+    "Threshold choices can materially change cluster membership."
+  ],
+  "quality_gates": [
+    "Report clustering threshold and fingerprint configuration.",
+    "Report cluster-size distribution and singleton rate.",
+    "Validate with max train-neighbor similarity, not only cluster labels."
+  ],
+  "tags": [
+    "molecules",
+    "butina",
+    "fingerprint",
+    "cluster"
+  ]
+}

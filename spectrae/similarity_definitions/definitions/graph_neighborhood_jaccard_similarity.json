@@ -1,0 +1,86 @@
+{
+  "id": "graph_neighborhood_jaccard_similarity",
+  "version": "0.1.0",
+  "status": "seed_mined",
+  "data_type": "graph_node_or_graph_sample",
+  "scientific_unit": "node_or_entity_in_graph",
+  "task_family": [
+    "graph machine learning",
+    "node classification",
+    "knowledge graph prediction"
+  ],
+  "similarity_name": "k-hop neighborhood overlap",
+  "similarity_kind": "graph_topology_similarity",
+  "definition": "For node-level graph tasks, represent each sample by its k-hop neighborhood and compute Jaccard overlap between evaluation and training neighborhoods. This audits whether performance depends on local graph topology or train-neighbor proximity rather than transferable features.",
+  "spectra_axis": {
+    "name": "max_train_graph_neighborhood_overlap",
+    "axis_type": "similarity",
+    "aggregation": "max_train_khop_jaccard",
+    "preferred_mode": "pairwise"
+  },
+  "required_inputs": [
+    "sample_id",
+    "train_id",
+    "node_id",
+    "edge_list"
+  ],
+  "outputs": {
+    "mode": "pairwise",
+    "columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ]
+  },
+  "python_example": "similarity_definitions/examples/graph_neighborhood_similarity.py",
+  "example_usage": "python graph_neighborhood_similarity.py --edges edges.csv --train train_nodes.csv --eval eval_nodes.csv --out pairwise_similarity.csv --k 2",
+  "citations": [
+    {
+      "paper_id": "arx_2212.13202",
+      "title": "2-hop Neighbor Class Similarity (2NCS): A graph structural metric indicative of graph neural network performance",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/arx_2212.13202/content.lines",
+          "lines": "L8-L12",
+          "summary": "The paper introduces a 2-hop neighborhood metric that correlates with GNN performance."
+        },
+        {
+          "path": "/papers/arx_2212.13202/content.lines",
+          "lines": "L42-L47",
+          "summary": "The metric is motivated by one-hop and two-hop label propagation behavior."
+        }
+      ]
+    },
+    {
+      "paper_id": "arx_2206.08452",
+      "title": "GOOD: A Graph Out-of-Distribution Benchmark",
+      "source": "Paperclip",
+      "evidence": [
+        {
+          "path": "/papers/arx_2206.08452/content.lines",
+          "lines": "L7-L18",
+          "summary": "GOOD defines graph OOD splits and shows performance gaps under covariate and concept shifts."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Neighborhood overlap is node-level and may not apply to whole-graph similarity without graph kernels or graph embeddings.",
+    "High overlap can reflect leakage in transductive graphs rather than meaningful scientific similarity.",
+    "The choice of k changes the locality and sparsity of the axis."
+  ],
+  "quality_gates": [
+    "Report whether the graph is directed, whether edges are temporal, and which k is used.",
+    "Avoid using test labels or post-split edges unavailable at training time.",
+    "Compare topology similarity against feature or embedding similarity when node attributes exist."
+  ],
+  "tags": [
+    "graph",
+    "gnn",
+    "neighborhood",
+    "jaccard",
+    "2hop",
+    "good"
+  ]
+}

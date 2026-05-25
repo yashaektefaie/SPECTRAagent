@@ -1,0 +1,103 @@
+{
+  "id": "gpu_accelerated_similarity_join",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "GPU-Accelerated Similarity Join and Top-k Search",
+  "strategy_family": "gpu_similarity_acceleration",
+  "exactness": "hybrid_exact_after_candidate_generation",
+  "applies_to_similarity_kinds": [
+    "cosine_similarity",
+    "euclidean_distance",
+    "inner_product_similarity",
+    "binary_quantized_similarity",
+    "set_similarity",
+    "vector_similarity_join"
+  ],
+  "compatible_data_shapes": [
+    "dense_vector",
+    "binary_quantized_vector",
+    "multidimensional_point",
+    "set_features",
+    "embedding",
+    "large_vector_join"
+  ],
+  "definition": "Use GPU kernels for matrix multiplication, top-k selection, binary quantized comparisons, grid indexes, verification phases, or graph construction to accelerate exact or approximate similarity joins. This is an execution strategy for cases where the similarity definition is already fixed but CPU all-pairs search is too slow.",
+  "scale_profile": {
+    "best_for": "Large dense or low-to-moderate dimensional joins where GPU memory, batching, or CPU-GPU overlap can remove the bottleneck.",
+    "typical_upper_bound": "Millions to billions of comparisons per batch depending on vector dimension, GPU memory, and whether the method is exact or quantized.",
+    "avoid_when": "Candidate generation, I/O, or data conversion dominates runtime more than numerical comparison."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "gpu_device",
+      "batch_size",
+      "quantized",
+      "exact_reference_error"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "features or vectors",
+    "gpu execution configuration"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "batch_size",
+      "purpose": "Controls GPU memory use and host-device transfer overhead."
+    },
+    {
+      "name": "top_k",
+      "purpose": "Controls row-wise selection output size."
+    },
+    {
+      "name": "quantization",
+      "purpose": "Declares whether similarity is exact or accelerated by binary/product quantization."
+    }
+  ],
+  "quality_gates": [
+    "Compare GPU output with a CPU exact reference on a deterministic subset.",
+    "Report precision, quantization, batching, and GPU model.",
+    "Check that sparse SPECTRA outputs are deterministic under parallel top-k tie handling."
+  ],
+  "failure_modes": [
+    "GPU memory limits can silently force different batching or candidate truncation.",
+    "Quantized GPU search may distort similarities near bin thresholds.",
+    "Non-deterministic tie ordering can affect reproducibility when many pairs have equal scores."
+  ],
+  "python_example": "dense_vector_topk_similarity.py",
+  "example_usage": "Use dense_vector_topk_similarity.py as a CPU exact reference, then replace the scorer with a GPU implementation while preserving output columns and reporting any quantization.",
+  "citations": [
+    {
+      "paper_id": "arx_1702.08734",
+      "title": "Billion-scale similarity search with GPUs",
+      "evidence": "Uses GPU-optimized k-selection and vector search to scale similarity search to billion-scale data."
+    },
+    {
+      "paper_id": "arx_2008.02002",
+      "title": "Fast top-K Cosine Similarity Search through XOR-Friendly Binary Quantization on GPUs",
+      "evidence": "Accelerates top-k cosine search with GPU-friendly binary quantization."
+    },
+    {
+      "paper_id": "arx_1809.09930",
+      "title": "GPU Accelerated Similarity Self-Join for Multi-Dimensional Data",
+      "evidence": "Uses a GPU grid-based index to accelerate multidimensional similarity self-joins."
+    }
+  ],
+  "tags": [
+    "gpu",
+    "top_k",
+    "similarity_join",
+    "tensor_core",
+    "binary_quantization",
+    "large_scale"
+  ]
+}

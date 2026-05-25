@@ -1,0 +1,92 @@
+{
+  "id": "minhash_lsh_jaccard_candidates",
+  "version": "0.1.0",
+  "status": "human_reviewed",
+  "computation_name": "MinHash LSH Candidate Generation for Jaccard Similarity",
+  "strategy_family": "hashing_sketch_lsh",
+  "exactness": "hybrid_exact_after_candidate_generation",
+  "applies_to_similarity_kinds": [
+    "jaccard_similarity",
+    "tanimoto_similarity",
+    "set_overlap",
+    "shingle_similarity",
+    "kmer_similarity"
+  ],
+  "compatible_data_shapes": [
+    "set_features",
+    "token_bag",
+    "text_shingles",
+    "sequence_kmers",
+    "binary_fingerprint",
+    "ontology_terms"
+  ],
+  "definition": "Sketch each set with MinHash, use locality-sensitive hashing bands to propose candidate train neighbors, then compute exact Jaccard or Tanimoto only for candidates. This preserves a transparent set-overlap definition while reducing the pair count.",
+  "scale_profile": {
+    "best_for": "Large set-valued data where exact Jaccard over all train-eval pairs is too expensive.",
+    "typical_upper_bound": "Millions of sparse sets, depending on token count and banding choices.",
+    "avoid_when": "Low-similarity tails are scientifically important and LSH would intentionally drop them."
+  },
+  "output_contract": {
+    "mode": "sparse_pairwise_similarity",
+    "required_columns": [
+      "sample_id",
+      "train_id",
+      "similarity"
+    ],
+    "optional_columns": [
+      "rank",
+      "method",
+      "candidate_source"
+    ]
+  },
+  "required_inputs": [
+    "train identifiers",
+    "eval identifiers",
+    "set-valued features"
+  ],
+  "tunable_parameters": [
+    {
+      "name": "num_hashes",
+      "purpose": "Controls MinHash estimator variance."
+    },
+    {
+      "name": "rows_per_band",
+      "purpose": "Controls the LSH candidate threshold."
+    },
+    {
+      "name": "k",
+      "purpose": "Number of exact reranked candidates retained."
+    }
+  ],
+  "quality_gates": [
+    "Measure candidate recall against exact Jaccard on a subset.",
+    "Report banding parameters and tokenization.",
+    "Use exact reranking before emitting final similarity values."
+  ],
+  "failure_modes": [
+    "Banding can drop true moderate-similarity neighbors.",
+    "Tokenization choices can dominate the apparent spectral axis.",
+    "Empty or tiny sets can create unstable similarity estimates."
+  ],
+  "python_example": "minhash_lsh_jaccard.py",
+  "example_usage": "python minhash_lsh_jaccard.py --train train.csv --eval eval.csv --out pairwise_similarity.csv --set-col kmers --num-hashes 128 --rows-per-band 4 --top-k 50",
+  "citations": [
+    {
+      "paper_id": "arx_1706.05698",
+      "title": "SuperMinHash - A New Minwise Hashing Algorithm for Jaccard Similarity Estimation",
+      "evidence": "Discusses MinHash signatures for fast Jaccard estimation and the cost of direct pairwise Jaccard at scale."
+    },
+    {
+      "paper_id": "arx_2102.08942",
+      "title": "A Survey on Locality Sensitive Hashing Algorithms and their Applications",
+      "evidence": "Surveys LSH methods used to reduce candidate comparisons in similarity search."
+    }
+  ],
+  "tags": [
+    "minhash",
+    "lsh",
+    "jaccard",
+    "set_similarity",
+    "candidate_generation"
+  ]
+}
