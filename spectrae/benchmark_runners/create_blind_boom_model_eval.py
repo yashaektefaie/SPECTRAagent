@@ -13,11 +13,13 @@ from typing import Any, Dict, Iterable, List, Sequence
 import pandas as pd
 
 
+DEFAULT_CACHE_ROOT = os.environ.get(
+    "XDG_CACHE_HOME",
+    os.path.join(os.path.expanduser("~"), ".cache"),
+)
 DEFAULT_ASSET_DIR = os.environ.get(
     "SPECTRA_ASSET_DIR",
-    "/ewsc/yektefai/spectra_assets"
-    if os.path.isdir("/ewsc/yektefai")
-    else "spectra_assets",
+    os.path.join(DEFAULT_CACHE_ROOT, "spectra", "assets"),
 )
 DEFAULT_SOURCE_DIR = os.path.join(DEFAULT_ASSET_DIR, "boom_numeric_pilot")
 DEFAULT_OUTPUT_DIR = os.path.join(DEFAULT_ASSET_DIR, "blind_molecular_model_eval")

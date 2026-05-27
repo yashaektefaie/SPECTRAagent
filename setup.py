@@ -2,15 +2,15 @@ from setuptools import find_packages, setup
 
 setup(
     name='spectrae',
-    version='1.1.0',
-    description='SPECTRA: spectral model evaluation and agent-native generalization audits',
+    version='1.0.3',
+    description='SPECTRA: The spectral framework for model evaluation',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
-    url='https://github.com/yashaektefaie/SPECTRAagent/',
+    url='https://github.com/mims-harvard/SPECTRA/',
     author='Yasha Ektefaie',
     author_email='yasha_ektefaie@g.harvard.edu',
     license='MIT License',
-    packages=find_packages(),
+    packages=find_packages(include=["spectrae", "spectrae.*"]),
     package_data={
         'spectrae': [
             'procedures/*.md',
@@ -30,6 +30,7 @@ setup(
             'spectra_memory/entries/*.json',
             'dataset_catalog/*.json',
             'dataset_catalog/entries/*.json',
+            'agent_adapters/codex/*.md',
         ],
     },
     extras_require={
@@ -39,18 +40,18 @@ setup(
     entry_points={
         'console_scripts': [
             'spectra=spectrae.cli:main',
+            'spectra-mcp=spectrae.scientific_skill_mcp:main',
+            'spectra-doctor=spectrae.doctor:main',
         ],
     },
-    install_requires=[
-        'networkx',
-        'h5py',
-        'numpy',
-        'torch',
-        'scikit-learn',
-        'scipy',
-        'pandas',
-        'tqdm',
-    ],
+    install_requires=['networkx',
+                      'h5py',
+                      'numpy',
+                      'torch',
+                      'scikit-learn',
+                      'pandas',
+                      'tqdm',
+                      ],
 
     classifiers=[
         "Programming Language :: Python :: 3",

@@ -7,38 +7,68 @@
 
 # spectra: Python toolkit for the spectral framework for model evaluation
 
-## SPECTRA Agent Additions
+## Agent / MCP quickstart
 
-This private agent branch adds a package-backed `/spectra` workflow for Codex
-and other coding agents.
+SPECTRA can be installed as a local MCP server so AI agents can call SPECTRA
+tools when a user writes `/spectra ...`.
 
-The main entry point is:
+Install from PyPI, once released:
 
-```bash
-spectra ask "<question>" --dataset /path/to/dataset --out /path/to/run
+```sh
+pipx install "spectrae[mcp]"
 ```
 
-`spectra ask` now routes automatically:
+Install from GitHub:
 
-- Requests to construct or generate SPECTRA splits use focused split mode.
-- Requests to audit a model, checkpoint, paper, or foundation model use the
-  broader autonomous generalizability audit loop.
-
-For molecular CSV datasets with `SMILES` and binary `Y`, focused split mode
-uses RDKit canonical SMILES, Morgan fingerprints, Tanimoto similarity,
-thresholded property graphs, connected-component train/test assignment,
-train-test similarity diagnostics, and a fixed logistic-regression baseline.
-
-To reproduce the agent environment:
-
-```bash
-micromamba create -f environment.yml
-micromamba activate spectra-agent
-python -m unittest tests.test_agent_orchestrator tests.test_cli_ask_routing
+```sh
+pipx install "spectrae[mcp] @ git+https://github.com/mims-harvard/SPECTRA.git"
 ```
 
-Codex skill instructions live under `codex/skills/spectra/`. See
-`docs/reproducibility.md` for setup and smoke-test details.
+Check the install:
+
+```sh
+spectra-doctor
+```
+
+Register the local MCP server with an MCP-capable agent:
+
+```sh
+claude mcp add spectra -- spectra-mcp serve --transport stdio
+```
+
+Equivalent MCP client JSON:
+
+```json
+{
+  "mcpServers": {
+    "spectra": {
+      "command": "spectra-mcp",
+      "args": ["serve", "--transport", "stdio"]
+    }
+  }
+}
+```
+
+For Codex, install the packaged skill:
+
+```sh
+spectra install-codex-skill
+```
+
+The skill tells Codex to treat `/spectra ...` as a request to run the SPECTRA
+CLI/MCP workflow. The source copy is also available at
+`.agents/skills/spectra/SKILL.md`.
+
+SPECTRA supports three agent-facing modes:
+
+- **General SPECTRA mode:** compute a spectral performance curve from
+  predictions and a similarity/distance axis.
+- **Applicability mode:** answer whether a model should be used for a specific
+  dataset or task.
+- **Discovery mode:** investigate where and why a model generalizes or fails.
+
+See [docs/agent_installation.md](docs/agent_installation.md) for full agent
+setup instructions.
 
 ## What is the spectral framework for model evaluation?
 
@@ -274,4 +304,3 @@ Please cite this paper when referring to SPECTRA.
   language  = "en"
 }
 ```
-

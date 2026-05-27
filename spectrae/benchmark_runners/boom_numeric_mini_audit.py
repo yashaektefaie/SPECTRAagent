@@ -24,11 +24,13 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 
 
+DEFAULT_CACHE_ROOT = os.environ.get(
+    "XDG_CACHE_HOME",
+    os.path.join(os.path.expanduser("~"), ".cache"),
+)
 DEFAULT_ASSET_DIR = os.environ.get(
     "SPECTRA_ASSET_DIR",
-    "/ewsc/yektefai/spectra_assets"
-    if os.path.isdir("/ewsc/yektefai")
-    else "spectra_assets",
+    os.path.join(DEFAULT_CACHE_ROOT, "spectra", "assets"),
 )
 DEFAULT_OUTPUT_DIR = os.path.join(DEFAULT_ASSET_DIR, "boom_numeric_pilot")
 SPLIT_FILE_NAME = "10k_dft_data_with_ood_splits.csv"

@@ -3,6 +3,7 @@ import contextlib
 import io
 import json
 import shutil
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -11,14 +12,13 @@ from spectrae.cli import _infer_ask_mode, main
 
 class AskRoutingTests(unittest.TestCase):
     def setUp(self):
-        self.root = Path("/ewsc/yektefai/spectra_ask_routing_tests")
-        shutil.rmtree(self.root, ignore_errors=True)
-        self.root.mkdir(parents=True, exist_ok=True)
+        self.tmpdir = tempfile.TemporaryDirectory(prefix="spectra_ask_routing_tests_")
+        self.root = Path(self.tmpdir.name)
         self.dataset = self.root / "toy.csv"
         self.dataset.write_text("SMILES,Y\nCCO,0\nCCN,1\n", encoding="utf-8")
 
     def tearDown(self):
-        shutil.rmtree(self.root, ignore_errors=True)
+        self.tmpdir.cleanup()
 
     def _args(self, **overrides):
         values = {

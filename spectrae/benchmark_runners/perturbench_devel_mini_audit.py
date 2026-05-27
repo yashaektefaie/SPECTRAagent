@@ -30,17 +30,17 @@ from scipy.sparse import csr_matrix
 from spectrae.audit import PairwiseSimilarityAuditConfig, run_pairwise_similarity_audit
 
 
+DEFAULT_CACHE_ROOT = os.environ.get(
+    "XDG_CACHE_HOME",
+    os.path.join(os.path.expanduser("~"), ".cache"),
+)
 DEFAULT_REPO_DIR = os.environ.get(
     "PERTURBENCH_REPO_DIR",
-    "/ewsc/yektefai/spectra_depth_demos/repos/perturbench"
-    if os.path.isdir("/ewsc/yektefai")
-    else "perturbench",
+    os.path.join(DEFAULT_CACHE_ROOT, "spectra", "repos", "perturbench"),
 )
 DEFAULT_OUTPUT_DIR = os.environ.get(
     "SPECTRA_PERTURBENCH_OUTPUT_DIR",
-    "/ewsc/yektefai/spectra_depth_demos/perturbench_devel_mini_audit"
-    if os.path.isdir("/ewsc/yektefai")
-    else "perturbench_devel_mini_audit",
+    os.path.join(DEFAULT_CACHE_ROOT, "spectra", "runs", "perturbench_devel_mini_audit"),
 )
 
 

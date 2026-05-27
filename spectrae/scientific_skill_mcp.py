@@ -6636,8 +6636,18 @@ except ImportError:
     mcp = None
 
 
-def main() -> None:
+def main(argv: Optional[Sequence[str]] = None) -> None:
+    raw_args = list(argv) if argv is not None else None
+    if raw_args and raw_args[0] == "serve":
+        raw_args = raw_args[1:]
+
     parser = argparse.ArgumentParser(description="Run the SPECTRA scientific skills MCP server.")
+    parser.add_argument(
+        "command",
+        nargs="?",
+        choices=("serve",),
+        help="Optional subcommand. `serve` is accepted for readable MCP client configs.",
+    )
     parser.add_argument(
         "--transport",
         default="stdio",
@@ -6646,7 +6656,7 @@ def main() -> None:
     )
     parser.add_argument("--host", default="127.0.0.1", help="HTTP host.")
     parser.add_argument("--port", default=8000, type=int, help="HTTP port.")
-    args = parser.parse_args()
+    args = parser.parse_args(raw_args)
 
     server = create_mcp_server(host=args.host, port=args.port)
     server.run(transport=args.transport)

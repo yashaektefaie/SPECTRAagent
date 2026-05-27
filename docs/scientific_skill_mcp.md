@@ -8,23 +8,35 @@ This server exposes the generalizability analysis procedure as an MCP skill.
 pip install -e ".[mcp]"
 ```
 
+For an installed package, the portable server command is:
+
+```sh
+spectra-mcp serve --transport stdio
+```
+
+Run diagnostics with:
+
+```sh
+spectra-doctor
+```
+
 ## Run Over STDIO
 
 ```sh
-python -m spectrae.scientific_skill_mcp
+spectra-mcp serve --transport stdio
 ```
 
 When running directly from a checkout without installing the full SPECTRA
 package, use:
 
 ```sh
-python spectrae/scientific_skill_mcp.py
+python -m spectrae.scientific_skill_mcp
 ```
 
 ## Run Over Streamable HTTP
 
 ```sh
-python -m spectrae.scientific_skill_mcp \
+spectra-mcp serve \
   --transport streamable-http \
   --host 0.0.0.0 \
   --port 8000
@@ -41,7 +53,7 @@ docker run --rm -p 8000:8000 spectrae-scientific-skills
 
 Resources:
 
-- `procedure://generalizability_analysis/0.5.0`
+- `procedure://generalizability_analysis/0.5.1`
 - `procedure://generalizability_analysis/examples`
 - `benchmark://spectra/capsules`
 - `similarity-registry://spectra/definitions`
@@ -439,7 +451,7 @@ Fetch paper PDFs/pages for all capsules:
 
 ```sh
 python spectrae/spectra_benchmarks.py fetch \
-  --output-dir /ewsc/yektefai/spectra_assets
+  --output-dir "$SPECTRA_ASSET_DIR"
 ```
 
 Preview a safe fetch plan including shallow repo clones:
@@ -448,19 +460,18 @@ Preview a safe fetch plan including shallow repo clones:
 python spectrae/spectra_benchmarks.py fetch --include-repos --dry-run
 ```
 
-Set `SPECTRA_ASSET_DIR` to override the default asset location. On this
-workspace, prefer `/ewsc/yektefai/spectra_assets` and avoid `/tmp` for benchmark
-assets.
+Set `SPECTRA_ASSET_DIR` to a durable local scratch or project directory before
+fetching benchmark assets. Avoid `/tmp` for benchmark assets.
 
 ## BOOM Numeric Mini-Audit
 
 Run the first measured BOOM density audit:
 
 ```sh
-PYTHONPATH=/ewsc/yektefai/spectra_assets/boom_pilot/repos/boom \
+PYTHONPATH="$SPECTRA_ASSET_DIR/boom_pilot/repos/boom" \
 python -m spectrae.benchmark_runners.boom_numeric_mini_audit \
-  --output-dir /ewsc/yektefai/spectra_assets/boom_numeric_pilot \
-  --split-file /ewsc/yektefai/spectra_assets/boom_numeric_pilot/10k_dft_data_with_ood_splits.csv \
+  --output-dir "$SPECTRA_ASSET_DIR/boom_numeric_pilot" \
+  --split-file "$SPECTRA_ASSET_DIR/boom_numeric_pilot/10k_dft_data_with_ood_splits.csv" \
   --n-estimators 120
 ```
 

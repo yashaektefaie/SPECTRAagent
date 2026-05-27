@@ -1,29 +1,26 @@
 __pycache__/
 *.py[cod]
-*$py.class
-
+*.egg-info/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
 .coverage
 htmlcov/
 
-.venv/
-venv/
-env/
-.env
-
 build/
 dist/
-*.egg-info/
-
-*.log
-*.tmp
-*.bak
-
-spectra_runs/
-*_spectra_runs/
-SPECTRA_Andrew_Splits/
-SPECTRA_Andrew_Splits.zip
+*.whl
 
 .DS_Store
+.env
+.venv/
+venv/
+
+# Large/generated SPECTRA artifacts.
+spectra_runs/
+artifacts/
+model_cache/
+datasets/
+
+# Local notebooks frequently create checkpoints.
+.ipynb_checkpoints/

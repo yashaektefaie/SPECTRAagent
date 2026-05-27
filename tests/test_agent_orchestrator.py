@@ -1,6 +1,7 @@
 import json
 import os
 import shutil
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -18,12 +19,11 @@ from spectrae.scientific_skill_mcp import (
 
 class AgentOrchestratorTests(unittest.TestCase):
     def setUp(self):
-        self.root = Path("/ewsc/yektefai/spectra_agent_orchestrator_tests")
-        shutil.rmtree(self.root, ignore_errors=True)
-        self.root.mkdir(parents=True, exist_ok=True)
+        self.tmpdir = tempfile.TemporaryDirectory(prefix="spectra_agent_orchestrator_tests_")
+        self.root = Path(self.tmpdir.name)
 
     def tearDown(self):
-        shutil.rmtree(self.root, ignore_errors=True)
+        self.tmpdir.cleanup()
 
     def _config(self, name="session"):
         return SpectraAgentSessionConfig(

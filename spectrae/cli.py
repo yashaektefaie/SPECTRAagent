@@ -3,6 +3,7 @@
 import argparse
 import json
 import os
+import pkgutil
 import re
 import shlex
 import subprocess
@@ -216,6 +217,20 @@ def _add_dataset_catalog_parser(subparsers: argparse._SubParsersAction) -> None:
     validate_parser.set_defaults(func=_validate_dataset_catalog)
 
 
+def _add_install_codex_skill_parser(subparsers: argparse._SubParsersAction) -> None:
+    parser = subparsers.add_parser(
+        "install-codex-skill",
+        help="Install the packaged SPECTRA Codex skill into ~/.codex/skills/spectra.",
+    )
+    parser.add_argument(
+        "--target",
+        default="",
+        help="Target skill directory. Defaults to ~/.codex/skills/spectra.",
+    )
+    parser.add_argument("--force", action="store_true", help="Overwrite an existing SKILL.md.")
+    parser.set_defaults(func=_install_codex_skill)
+
+
 def _add_agent_parser(subparsers: argparse._SubParsersAction) -> None:
     parser = subparsers.add_parser(
         "agent",
@@ -324,12 +339,15 @@ def _add_ask_parser(subparsers: argparse._SubParsersAction) -> None:
         "--output-root",
         dest="output_root",
         default="",
-        help="Output root. Defaults to /ewsc/$USER/spectra_runs/<timestamp>_<slug>.",
+        help=(
+            "Output root. Defaults to SPECTRA_SCRATCH_ROOT when set, otherwise "
+            "XDG_CACHE_HOME/spectra/runs or ~/.cache/spectra/runs."
+        ),
     )
     parser.add_argument(
         "--scratch-root",
         default="",
-        help="Root used when --out is omitted. Defaults to /ewsc/$USER/spectra_runs.",
+        help="Root used when --out is omitted. Overrides the portable scratch-root default.",
     )
     parser.add_argument(
         "--agent-command-template",
@@ -386,8 +404,13 @@ def _infer_simple_domain(question: str, model_text: str, dataset_text: str) -> s
 
 
 def _default_scratch_root() -> Path:
-    user = os.environ.get("USER") or "user"
-    return Path("/ewsc") / user / "spectra_runs"
+    configured = os.environ.get("SPECTRA_SCRATCH_ROOT")
+    if configured:
+        return Path(configured).expanduser()
+    cache_root = os.environ.get("XDG_CACHE_HOME")
+    if cache_root:
+        return Path(cache_root).expanduser() / "spectra" / "runs"
+    return Path.home() / ".cache" / "spectra" / "runs"
 
 
 def _default_output_root(question: str, scratch_root: str) -> str:
@@ -434,6 +457,32 @@ def _write_json(path: Path, payload: dict) -> None:
     with path.open("w", encoding="utf-8") as handle:
         json.dump(payload, handle, indent=2, sort_keys=True, default=str)
         handle.write("\n")
+
+
+def _install_codex_skill(args: argparse.Namespace) -> int:
+    target_dir = Path(args.target).expanduser() if args.target else Path.home() / ".codex" / "skills" / "spectra"
+    target_path = target_dir / "SKILL.md"
+    if target_path.exists() and not args.force:
+        raise FileExistsError(
+            f"{target_path} already exists. Re-run with --force to overwrite it."
+        )
+    data = pkgutil.get_data("spectrae", "agent_adapters/codex/SKILL.md")
+    if data is None:
+        raise FileNotFoundError("Packaged Codex skill template is missing.")
+    target_dir.mkdir(parents=True, exist_ok=True)
+    target_path.write_text(data.decode("utf-8"), encoding="utf-8")
+    print(
+        json.dumps(
+            {
+                "status": "installed",
+                "target": str(target_path),
+                "next_step": "Start a fresh Codex session and ask `/spectra ...`.",
+            },
+            indent=2,
+            sort_keys=True,
+        )
+    )
+    return 0
 
 
 def _infer_ask_mode(args: argparse.Namespace, question: str) -> str:
@@ -670,7 +719,7 @@ def _build_default_constraints(args: argparse.Namespace, output_root: str) -> st
     parts = [
         "This is a human-friendly /spectra ask invocation. Infer the domain, audit scope, scientific unit, dataset schema, split strategy, and needed controls from the question and provided artifacts.",
         "Use the provided model/paper/dataset paths, this session root, and public/local resources acquired during this session when needed.",
-        "Do not use /tmp; use the session root or /ewsc scratch for caches, downloads, generated datasets, and model outputs.",
+        "Do not use /tmp; use the session root, SPECTRA_SCRATCH_ROOT, or another explicit scratch directory for caches, downloads, generated datasets, and model outputs.",
         "Do not use scripted applicability runners or prior generated reports/results as evidence.",
         "Use a cheap-first behavioral runtime policy: start with a bounded leakage-aware slice, simple controls, cached/chunked representations, and non-iterative probes or deterministic baselines before launching expensive optimized classifiers, fine-tuning, all-pairs graphs, or full-dataset runs.",
         "If a heavier solver, model fit, or full-scale computation is needed, declare the time/resource budget, fallback criterion, and cheaper fallback before launching; after one runtime failure or timeout, switch to the fallback rather than retrying the same slow method.",
@@ -694,7 +743,7 @@ def _build_split_default_constraints(args: argparse.Namespace, output_root: str)
     parts = [
         "This is a focused SPECTRA split-construction invocation, not a broad model-generalizability audit.",
         "Use the provided dataset path as the starting dataset and write generated split artifacts under the session root.",
-        "Do not use /tmp; use the session root or /ewsc scratch for caches, generated datasets, and temporary files.",
+        "Do not use /tmp; use the session root, SPECTRA_SCRATCH_ROOT, or another explicit scratch directory for caches, generated datasets, and temporary files.",
         "Do not read prior SPECTRA run artifacts as evidence unless the user explicitly supplies them as inputs.",
         "Begin by choosing and recording a similarity definition; prefer `spectra similarity-definitions suggest` before inventing a custom axis.",
         "Then choose and record a pairwise computation strategy; prefer `spectra similarity-computation suggest` before inventing a custom computation path.",
@@ -1259,6 +1308,7 @@ def build_parser() -> argparse.ArgumentParser:
     _add_operating_point_parser(subparsers)
     _add_memory_parser(subparsers)
     _add_dataset_catalog_parser(subparsers)
+    _add_install_codex_skill_parser(subparsers)
     return parser
 
 

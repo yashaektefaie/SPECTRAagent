@@ -24,17 +24,17 @@ from sklearn.pipeline import make_pipeline
 from spectrae.audit import PairwiseSimilarityAuditConfig, run_pairwise_similarity_audit
 
 
+DEFAULT_CACHE_ROOT = os.environ.get(
+    "XDG_CACHE_HOME",
+    os.path.join(os.path.expanduser("~"), ".cache"),
+)
 DEFAULT_REPO_DIR = os.environ.get(
     "NABENCH_REPO_DIR",
-    "/ewsc/yektefai/spectra_depth_demos/repos/nabench"
-    if os.path.isdir("/ewsc/yektefai")
-    else "nabench",
+    os.path.join(DEFAULT_CACHE_ROOT, "spectra", "repos", "nabench"),
 )
 DEFAULT_OUTPUT_DIR = os.environ.get(
     "SPECTRA_NABENCH_OUTPUT_DIR",
-    "/ewsc/yektefai/spectra_depth_demos/nabench_sequence_mini_audit"
-    if os.path.isdir("/ewsc/yektefai")
-    else "nabench_sequence_mini_audit",
+    os.path.join(DEFAULT_CACHE_ROOT, "spectra", "runs", "nabench_sequence_mini_audit"),
 )
 DEFAULT_DATASET = "Martin_2018_myc_enhancer.csv"
 DEFAULT_AXIS_ORDER = (

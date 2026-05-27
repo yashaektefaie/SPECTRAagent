@@ -1,29 +1,7 @@
 # /spectra Agent Instructions
 
-When using this repository as an agent, treat `/spectra` as an executable
-SPECTRA workflow, not merely as a request for an explanation.
-
-For human-friendly requests, prefer the CLI:
-
-```bash
-spectra ask "<question>" --dataset /path/to/data --out /path/to/run
-```
-
-The CLI automatically routes the request:
-
-- Split-only requests such as "construct SPECTRA splits" or "generate SPECTRA
-  splits" use focused SPECTRA split construction and must not launch the broad
-  Investigator/Distiller audit loop.
-- Model, paper, checkpoint, foundation-model, or broad generalizability
-  questions use the autonomous audit loop.
-- Use `--ask-mode splits` or `--ask-mode audit` only when an explicit override
-  is needed.
-
-Focused split construction must first choose and record a similarity definition,
-then choose and record a pairwise computation strategy, compute pairwise
-similarities or a property graph, generate split candidates, verify decreasing
-train-test similarity across spectral parameters, and validate with a fixed
-simple baseline when labels are available.
+When using this repository as an agent, treat `/spectra` as a generalization
+audit workflow, not only as a train-test splitter.
 
 If the user gives `/spectra` a question plus a model paper/reference, begin by
 calling `start_spectra_audit_session` through the MCP server. Use its returned
