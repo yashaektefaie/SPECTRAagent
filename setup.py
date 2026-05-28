@@ -6,7 +6,7 @@ setup(
     description='SPECTRA: The spectral framework for model evaluation',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
-    url='https://github.com/mims-harvard/SPECTRA/',
+    url='https://github.com/yashaektefaie/SPECTRAagent/',
     author='Yasha Ektefaie',
     author_email='yasha_ektefaie@g.harvard.edu',
     license='MIT License',

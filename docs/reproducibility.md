@@ -19,11 +19,10 @@ micromamba run -n pgt pip install -e .
 
 ## Codex Skill
 
-Install or symlink the SPECTRA skill into your Codex skill directory:
+Install the packaged SPECTRA skill into your Codex skill directory:
 
 ```bash
-mkdir -p "$CODEX_HOME/skills"
-ln -s "$(pwd)/codex/skills/spectra" "$CODEX_HOME/skills/spectra"
+spectra install-codex-skill
 ```
 
 The skill instructs Codex to call `spectra ask` for `/spectra` requests.
@@ -34,8 +33,8 @@ Routing only:
 
 ```bash
 spectra ask "construct SPECTRA splits for this molecular dataset" \
-  --dataset tutorials/example_mol.ipynb \
-  --out /ewsc/$USER/spectra_runs/smoke \
+  --dataset path/to/dataset.csv \
+  --out "${SPECTRA_SCRATCH_ROOT:-$HOME/.cache/spectra/runs}/smoke" \
   --dry-run
 ```
 

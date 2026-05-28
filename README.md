@@ -21,7 +21,7 @@ pipx install "spectrae[mcp]"
 Install from GitHub:
 
 ```sh
-pipx install "spectrae[mcp] @ git+https://github.com/mims-harvard/SPECTRA.git"
+pipx install "spectrae[mcp] @ git+https://github.com/yashaektefaie/SPECTRAagent.git"
 ```
 
 Check the install:
@@ -80,7 +80,6 @@ The spectral framework for model evaluation (SPECTRA) is a new framework for eva
 
 - [Getting started with SPECTRA](#getting-started-with-spectra)
 - [How to use SPECTRA](#how-to-use-spectra)
-- [SPECTRA tutorials](#spectra-tutorials)
 - [Background](#background)
 - [Discussion and Development](#discussion-and-development)
 - [Features to be released](#features-to-be-released)
@@ -102,7 +101,7 @@ pip install spectrae
 Or alternatively run this command:
 
 ```sh
- pip install git+https://github.com/mims-harvard/SPECTRA
+ pip install git+https://github.com/yashaektefaie/SPECTRAagent
 ```
 
 Please note there is another package called spectra which is not related to this tool. Spectrae (which stands for spectral evaluation) implements the spectral framework for model evaluation.
@@ -227,21 +226,11 @@ spectra.generate_spectra_split(spectra_param, degree_choosing = [True/False], nu
 
 ### Step 4: Investigate generated SPECTRA splits
 
-After SPECTRA has completed, the user should investigate the generated splits. Specifically ensuring that on average the cross-split overlap decreases as the spectral parameter increases. This can be achieved by using ```return_all_split_stats``` to gather the cross_split_overlap, train size, and test size of each generated split. Example outputs can be seen in the tutorials. The path_to_save should be the same path you used in the previous step.
+After SPECTRA has completed, the user should investigate the generated splits. Specifically ensuring that on average the cross-split overlap decreases as the spectral parameter increases. This can be achieved by using ```return_all_split_stats``` to gather the cross_split_overlap, train size, and test size of each generated split. The path_to_save should be the same path you used in the previous step.
 
 ```python
 spectra.return_all_split_stats(show_progress = True, path_to_save = save_path)
 ```
-
-## Spectra tutorials
-
-In the tutorial folder there are jupyter notebooks that outline how to run SPECTRA for the following datasets:
-1. [Deep mutational scan datasets](./tutorials/example_DMS.ipynb) from [ProteinGym](https://proteingym.org)
-2. [Sequence datasets](./tutorials/example_sequences.ipynb) from [PEER](https://torchprotein.ai/benchmark)
-3. [Single-cell perturb datasets](./tutorials/example_single_cell.ipynb) used in the [GEARS model](https://www.nature.com/articles/s41587-023-01905-6)
-4. [Small-molecule dataset](./tutorials/example_mol.ipynb) from [Therapeutic Data Commons](https://tdcommons.ai) 
-
-If there are any other tutorials of interest feel free to raise an issue!
 
 ## Background
 

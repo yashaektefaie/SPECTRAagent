@@ -15,7 +15,7 @@ pipx install "spectrae[mcp]"
 From GitHub:
 
 ```bash
-pipx install "spectrae[mcp] @ git+https://github.com/mims-harvard/SPECTRA.git"
+pipx install "spectrae[mcp] @ git+https://github.com/yashaektefaie/SPECTRAagent.git"
 ```
 
 For local development from a checkout:
