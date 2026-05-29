@@ -434,101 +434,79 @@ def start_spectra_audit_session(
     }
 
     investigator_prompt = (
-        "You are the SPECTRA Investigator. Read the model paper and local/public "
-        "artifacts relevant to the user's question. If the question is broad, first "
-        "extract the model paper's explicit and implicit generalization claims, "
-        "deployment settings, evaluation protocol, and claimed training/evaluation "
-        "coverage; turn those into competing hypotheses before choosing axes. "
-        "Before constructing a new dataset or repeating a prior axis search, use "
-        "the SPECTRA memory registry and portable dataset catalog only when the "
-        "user constraints permit prior-run reuse. If the user asks for a from-scratch "
-        "or leakage-isolated audit, skip prior-run memories and rely only on the "
-        "provided model, paper, dataset, and generic SPECTRA procedures. When reuse "
-        "is permitted, use matching memories and dataset entries as priors: reuse "
-        "useful resources and runnable-environment lessons, follow portable access "
-        "instructions, rerun only the validity checks needed for this question, and "
-        "explicitly avoid recorded dead ends. "
-        "If audit_scope is beyond_paper_discovery, treat the paper as context, not "
-        "as the boundary: after extracting the paper claims, identify scientifically "
-        "important external settings, public datasets, and representation-use cases "
-        "that could reveal unsupported generalization axes beyond the paper's own "
-        "benchmarks. "
-        "When target-model behavior is the missing evidence and a required runtime "
-        "or environment is solvable within the user's constraints, execute the "
-        "build/probe path rather than stopping at a dry-run plan; fallback baselines "
-        "are scaffolding and not terminal evidence. "
-        "Use the cheap-first behavioral runtime policy before expensive fitting or "
-        "full-scale computation: start with a bounded leakage-aware slice, simple "
-        "controls, cached/chunked representations, and deterministic non-iterative "
-        "probes such as nearest-centroid, prototype, kNN, or mean-difference linear "
-        "scores. Escalate to iterative logistic/SVM/ridge heads, fine-tuning, "
-        "all-pairs graphs, ANN indexes, or full-dataset jobs only when the cheap "
-        "probe is inconclusive or the stronger claim requires it. Before launching "
-        "a heavy step, declare its time/resource budget, success criterion, timeout "
-        "condition, and fallback. After one runtime failure or timeout from a solver "
-        "family, switch to the fallback or smaller slice rather than retrying the "
-        "same slow method. "
-        "Classify every supported axis by explanatory depth: surface/model-space "
-        "support, domain proxy, or mechanism/deployment axis with controls. A "
-        "surface or domain-proxy curve is not a completed investigation in "
-        "audit_depth={audit_depth}; it creates mechanism debt. Convert that debt "
-        "into the next discriminating experiment, public-resource acquisition, "
-        "mediation/control test, or constructed dataset. "
-        "Identify the scientific unit, "
-        "choose the next experiment because it distinguishes live hypotheses, run "
-        "fresh split-based behavioral tests whenever feasible, update the hypothesis "
-        "ledger, and write artifacts under {root}/investigator_round_<n>. Do not "
-        "stop at proxy axes, data-only overlap screens, or a representative task subset."
-    ).format(root=root, audit_depth=audit_depth)
+        "You are the SPECTRA Investigator. Execute the SPECTRA protocol for the "
+        "model, dataset, task, metric, and similarity axis supplied in the handoff. "
+        "Compute prospective similarities without using target-model errors, "
+        "held-out labels, post-hoc prediction/reference comparisons, confidence "
+        "scores derived from the target prediction, or any other outcome-dependent "
+        "quantity to define the axis or split membership. Construct at least three "
+        "nontrivial split levels or pretraining-test similarity bins when feasible. "
+        "Verify that train-test or pretraining-test similarity decreases across the "
+        "levels before trusting model metrics. If labels exist, run a simple fixed "
+        "baseline across the same levels before evaluating the model of interest. "
+        "Then evaluate the model of interest using the declared task metric. Return "
+        "the spectral performance curve, split assignments, split statistics, "
+        "similarity progression, baseline results, model results, exact commands, "
+        "runtime blockers, and a validity self-assessment under "
+        "{root}/investigator_round_<n>. If the requested axis cannot produce valid "
+        "decreasing-similarity levels, mark it invalid or exploratory and stop; do "
+        "not replace it with a post-hoc target-error axis."
+    ).format(root=root)
     distiller_prompt = (
-        "You are the SPECTRA Distiller. Read the Investigator artifacts, curve scores, "
-        "hypothesis ledger, and belief update. Do not run generic new experiments. "
-        "For broad audits, decide whether the Investigator has actually tested a "
-        "paper-relevant generalization claim or only an easy proxy. If audit_depth "
-        "is investigation, a supported proxy/model-space/domain-proxy axis creates "
-        "mechanism debt unless the Investigator has converted it into a mechanism "
-        "or deployment explanation with controls, mediation, or a documented "
-        "infeasibility proof plus launched continuation. "
-        "If audit_scope is beyond_paper_discovery, also reject checkpoints that "
-        "remain trapped inside the paper's benchmark suite when feasible external "
-        "or constructed datasets would better test model generalization. "
-        "Check whether the Investigator followed the cheap-first runtime policy: "
-        "a checkpoint that spent repeated attempts on the same slow solver family "
-        "without a cheap bounded probe, declared fallback, or useful partial result "
-        "should be routed back with a cheaper executable probe plan rather than "
-        "accepted as a compute blocker. "
-        "Narrow the scientific story, identify overclaim risks, and route to the "
-        "Investigator, Dataset Scout, Dataset Constructor, or final synthesis with a "
-        "specific handoff under {root}/distiller_round_<n>. The routing_decision.json "
-        "must include audit_depth, explanation_depth, mechanism_debt_pending, "
-        "mechanism_debt_satisfied, mechanism_debt_route, routing_artifact, and "
-        "allow_proxy_terminal=false unless the user explicitly requested screening."
+        "You are the SPECTRA Distiller. Turn user generalizability questions into "
+        "SPECTRA analyses. Your goal is to identify or validate a prospective "
+        "similarity axis that yields a meaningful spectral performance curve: model "
+        "performance as train-test or pretraining-test similarity decreases. Use "
+        "papers, claims, metadata, dataset schema, and domain knowledge to propose "
+        "candidate axes, tasks, metrics, split levels, and controls. Interpret "
+        "Investigator and Auditor results, distinguish valid curves from weak, "
+        "invalid, or exploratory axes, avoid overclaiming, and return a clear answer "
+        "about where the model generalizes or fails. Route to the Investigator with "
+        "a specific model/dataset/task/metric/axis handoff, to Dataset Scout when a "
+        "suitable dataset is missing, to Dataset Fetcher when a known dataset must "
+        "be retrieved and packaged, to Auditor when an SPC needs independent "
+        "validity review, or to final synthesis when the claim boundary is clear. "
+        "Do not add post-hoc failure-characterization tasks unless the user "
+        "explicitly requested them; the default SPECTRA product is a valid SPC "
+        "plus validity assessment."
     ).format(root=root)
     scout_prompt = (
-        "You are the SPECTRA Dataset Scout. Compare public/local candidate datasets or "
-        "resources only for a live hypothesis that current rows cannot test. Query "
-        "the portable dataset catalog before open-ended search, and use each entry's "
-        "access, authentication, expected fields, leakage risks, and scale guidance "
-        "to decide whether a bounded subset, manifest, precomputed representation, "
-        "or user-authorized data path is realistic. Return a ranked candidate table, "
-        "provenance risks, required fields, and the belief update each candidate could "
-        "support under {root}/dataset_scout_round_<n>."
+        "You are the SPECTRA Dataset Scout. Find datasets suitable for SPECTRA. "
+        "Prioritize datasets with labels, metadata, prospective similarity features, "
+        "enough examples for multiple split levels, clear access, and low leakage "
+        "risk. Query the portable dataset catalog before open-ended search. Return "
+        "candidate datasets, access routes, available fields, possible similarity "
+        "axes, leakage and scale risks, and suitability rankings under "
+        "{root}/dataset_scout_round_<n>."
     ).format(root=root)
-    constructor_prompt = (
-        "You are the SPECTRA Dataset Constructor. Build or recover a fit-for-purpose "
-        "dataset from public/local resources for the promoted hypothesis. Validate "
-        "provenance, mappings, leakage, labels, split candidates, and write a "
-        "SPECTRA-ready package under {root}/dataset_constructor_round_<n>."
+    fetcher_prompt = (
+        "You are the SPECTRA Dataset Fetcher. Retrieve and package datasets for "
+        "SPECTRA. Load data, inspect schema, retain inputs, labels, metadata, and "
+        "prospective similarity features, handle duplicates and missingness, and "
+        "create SPECTRA-ready artifacts under {root}/dataset_fetcher_round_<n>. "
+        "For very large pretraining datasets, use scalable filtering, approximate "
+        "nearest-neighbor retrieval, sketches, shards, manifests, or bounded samples "
+        "to estimate pretraining proximity rather than exhaustive comparison."
+    ).format(root=root)
+    auditor_prompt = (
+        "You are the SPECTRA Auditor. Check whether the spectral performance curve "
+        "supports the claim. Look for target-error leakage, test-label leakage, "
+        "tiny or degenerate splits, non-decreasing train-test or pretraining-test "
+        "similarity, unstable baselines, confounding, post-hoc axis selection, "
+        "missing split statistics, and metric direction errors. Mark each analysis "
+        "as valid, weak, invalid, or exploratory only. Write an audit report, "
+        "validity decision, detected risks, and required fixes under "
+        "{root}/auditor_round_<n>."
     ).format(root=root)
     synthesis_prompt = (
-        "You are the final SPECTRA Synthesis Distiller. Read the model paper and all "
-        "SPECTRA artifacts. Before writing a terminal claim, check for a stronger "
-        "unresolved alternative axis and unresolved mechanism debt from any supported "
-        "proxy/model-space/domain-proxy curve. If either exists in investigation mode, "
-        "do not write final synthesis; write routing_decision.json and route back to "
-        "the Investigator, Dataset Scout, or Dataset Constructor. Otherwise write a "
-        "bounded paper-ready finding, evidence-to-claim mapping, "
-        "claim boundary, and overclaim guardrails under {root}/final_synthesis."
+        "You are the final SPECTRA Synthesis Distiller. Read the model paper, "
+        "Distiller plans, Investigator SPC artifacts, Dataset Scout/Fetcher outputs, "
+        "and Auditor validity decisions. Write a bounded paper-ready finding only "
+        "when the SPC validity status and claim boundary are clear. Report which "
+        "axes are valid, weak, invalid, or exploratory; whether train-test or "
+        "pretraining-test similarity actually decreases; baseline behavior; target "
+        "model behavior; and what claim is supported. If the SPC is invalid or only "
+        "exploratory, say that directly and route back with specific fixes."
     ).format(root=root)
 
     role_specs = {
@@ -541,55 +519,75 @@ def start_spectra_audit_session(
             "writes": [f"{root}/session_state.json", f"{root}/routing_log.json"],
         },
         "investigator": {
-            "spawn_condition": "immediately after session bootstrap and after Distiller handoffs",
+            "spawn_condition": "after Distiller selects a model/dataset/task/metric/similarity-axis handoff",
             "prompt": investigator_prompt,
             "writes": [
-                "observations.md",
-                "hypothesis_ledger.json",
-                "belief_update.md",
-                "why_this_next_experiment.md",
+                "spectral_performance_curve.csv",
+                "split_assignments/",
+                "split_statistics.json",
+                "similarity_progression.csv",
+                "baseline_results.csv",
+                "model_results.csv",
+                "validity_self_assessment.json",
                 "runtime_budget_and_fallbacks.md",
-                "explanatory_depth_assessment.json",
-                "mechanism_debt_register.json",
-                "proxy_to_mechanism_plan.md",
-                "spectra_outputs/",
+                "commands_run.json",
                 "investigator_checkpoint.md",
+                "auditor_handoff.json",
             ],
         },
         "distiller": {
-            "spawn_condition": "after every Investigator checkpoint with enough artifacts to interpret",
+            "spawn_condition": "at session bootstrap and after Auditor/Scout/Fetcher handoffs",
             "prompt": distiller_prompt,
             "writes": [
+                "spectra_analysis_plan.json",
                 "distiller_report.md",
-                "distilled_hypotheses.json",
-                "explanation_depth_decision.json",
-                "mechanism_debt_decision.json",
                 "routing_decision.json",
                 "investigator_handoff.json",
+                "dataset_scout_handoff.json",
+                "dataset_fetcher_handoff.json",
+                "paper_ready_checkpoint.md",
+                "overclaim_guardrails.md",
             ],
         },
         "dataset_scout": {
-            "spawn_condition": "only when Distiller says current data cannot test a live hypothesis and the replacement dataset is not obvious",
+            "spawn_condition": "when Distiller needs candidate datasets for a SPECTRA axis or task",
             "prompt": scout_prompt,
             "writes": [
                 "candidate_resources.csv",
+                "candidate_resources.json",
                 "scout_decision.json",
                 "resource_risk_log.md",
+                "dataset_fetcher_handoff.json",
             ],
         },
-        "dataset_constructor": {
-            "spawn_condition": "when Distiller promotes a dataset/resource construction target",
-            "prompt": constructor_prompt,
+        "dataset_fetcher": {
+            "spawn_condition": "when Distiller or Dataset Scout selects a dataset to retrieve and package",
+            "prompt": fetcher_prompt,
             "writes": [
-                "constructed_dataset_manifest.json",
+                "dataset_manifest.json",
+                "schema_report.json",
+                "spectra_ready_schema.json",
                 "mapping_validation.json",
                 "leakage_audit.json",
-                "split_candidates/",
-                "constructor_handoff.json",
+                "deduplication_report.json",
+                "missingness_report.json",
+                "spectra_ready_dataset/",
+                "fetcher_handoff.json",
+            ],
+        },
+        "auditor": {
+            "spawn_condition": "after Investigator produces an SPC and split statistics",
+            "prompt": auditor_prompt,
+            "writes": [
+                "audit_report.md",
+                "validity_decision.json",
+                "risk_register.json",
+                "required_fixes.json",
+                "distiller_handoff.json",
             ],
         },
         "synthesis_distiller": {
-            "spawn_condition": "only after Distiller says a bounded finding appears resolved",
+            "spawn_condition": "only after Distiller says the SPC validity status and claim boundary are clear",
             "prompt": synthesis_prompt,
             "writes": [
                 "paper_ready_spectra_finding.md",
@@ -602,19 +600,27 @@ def start_spectra_audit_session(
 
     spawn_plan = [
         {
-            "role": "investigator",
-            "name": "SPECTRA Investigator",
-            "write_scope": f"{root}/investigator_round_001",
-            "initial_prompt": investigator_prompt,
-            "handoff_inputs": ["session_state.json", "model_paper", "question"],
-        },
-        {
             "role": "distiller",
             "name": "SPECTRA Distiller",
             "write_scope": f"{root}/distiller_round_001",
-            "spawn_after": "investigator_checkpoint.md",
             "initial_prompt": distiller_prompt,
-            "handoff_inputs": ["investigator artifacts", "hypothesis_ledger.json", "belief_update.md"],
+            "handoff_inputs": ["session_state.json", "model_paper", "question"],
+        },
+        {
+            "role": "investigator",
+            "name": "SPECTRA Investigator",
+            "write_scope": f"{root}/investigator_round_001",
+            "spawn_after": "investigator_handoff.json",
+            "initial_prompt": investigator_prompt,
+            "handoff_inputs": ["spectra_analysis_plan.json", "investigator_handoff.json"],
+        },
+        {
+            "role": "auditor",
+            "name": "SPECTRA Auditor",
+            "write_scope": f"{root}/auditor_round_001",
+            "spawn_after": "auditor_handoff.json",
+            "initial_prompt": auditor_prompt,
+            "handoff_inputs": ["investigator artifacts", "split statistics", "SPC outputs"],
         },
     ]
 
@@ -645,21 +651,21 @@ def start_spectra_audit_session(
             ),
             "paper_first_steps": [
                 "Extract the model paper's stated generalization claims, datasets, splits, and evaluation protocols.",
-                "Identify claims that are broad, underspecified, or only indirectly tested by the paper.",
-                "Map each claim to scientific units, plausible novelty axes, and feasible behavioral tests.",
-                "Prefer experiments that could reveal an unsupported or overbroad generalization claim.",
+                "Map each claim to a scientific unit, task, metric, prospective similarity axis, and feasible SPC design.",
+                "Reject post-hoc axes that require target-model errors or reference answers to define split membership.",
+                "Prefer analyses that can produce at least three decreasing-similarity split levels and baseline validation.",
             ],
             "beyond_paper_steps": [
-                "Identify scientifically important settings not directly evaluated in the paper.",
-                "Search for or construct public/local datasets that test those settings when current data are insufficient.",
-                "Prefer target-model representation or retraining experiments over paper-only reproduction when feasible.",
-                "Route to Dataset Scout or Dataset Constructor when the best external test requires new data assembly.",
+                "Identify scientifically important prospective axes not directly evaluated in the paper.",
+                "Search for or fetch public/local datasets when current data cannot support a valid SPC.",
+                "Prefer split-based or pretraining-proximity SPCs with fixed baselines over post-hoc failure characterization.",
+                "Route to Dataset Scout or Dataset Fetcher when a suitable SPECTRA-ready dataset is missing.",
             ] if normalized_audit_scope == "beyond_paper_discovery" else [],
             "desired_reference_behavior": [
-                "Start broad, then let Investigator evidence and Distiller critique narrow the question.",
-                "Move from post-hoc error patterns to prospective split or retraining evidence when feasible.",
-                "Use Dataset Scout or Dataset Constructor only when the current data cannot test the live hypothesis.",
-                "Return a bounded insight with a clear evidence-to-claim boundary.",
+                "Distiller plans the SPC before execution.",
+                "Investigator constructs and validates prospective decreasing-similarity levels before model evaluation.",
+                "Auditor marks the SPC valid, weak, invalid, or exploratory before final interpretation.",
+                "Return a bounded answer about where the model generalizes or fails.",
             ],
         },
         "supports": {
@@ -674,37 +680,40 @@ def start_spectra_audit_session(
             "suggest_reusable_spectra_memory",
             "suggest_dataset_catalog_entries",
             "start_generalizability_analysis",
-            "start_spectra_investigator",
             "select_spectra_execution_mode",
-            "plan_iterative_similarity_search",
+            "plan_spectral_performance_curve",
+            "suggest_similarity_definitions",
+            "suggest_similarity_computation_strategies",
         ],
         "role_graph": role_specs,
         "spawn_plan": spawn_plan if supports_subagents else [],
         "sequential_fallback_plan": [
-            "Run the Investigator role and persist artifacts.",
-            "Switch to the Distiller role and route the result.",
-            "If routed to Dataset Scout or Dataset Constructor, run that role, then Distiller again.",
-            "If routed back to Investigator, run the handoff experiment and repeat.",
-            "If routed to final synthesis, run synthesis_distiller and enforce the stronger-unresolved-axis gate.",
+            "Run the Distiller role to choose the SPC design.",
+            "Run Dataset Scout or Dataset Fetcher if the dataset is missing or not SPECTRA-ready.",
+            "Run the Investigator role to construct split levels, validate similarity decrease, run baselines, and evaluate the model.",
+            "Run the Auditor role to classify the SPC as valid, weak, invalid, or exploratory.",
+            "Return to Distiller for final interpretation or a corrected SPC handoff.",
+            "If routed to final synthesis, run synthesis_distiller with the Auditor decision.",
         ],
         "routing_policy": [
-            "Investigator checkpoints always go to Distiller before terminal reporting.",
-            "Distiller routes back to Investigator when a sharper executable experiment remains.",
-            "Distiller routes to Dataset Scout when the current benchmark cannot test the live hypothesis and the replacement dataset is not obvious.",
-            "Distiller routes to Dataset Constructor when a public/local construction target is justified.",
-            "Dataset Constructor output returns to Distiller for validation before Investigator use.",
-            "Distiller must route back when a supported axis is only surface/model-space/domain-proxy evidence and mechanism debt is pending.",
-            "Final synthesis is allowed only after synthesize_spectra_generalizability_finding returns analysis_complete=true and no stronger unresolved axis remains.",
+            "Distiller starts the session by defining the model, dataset, task, metric, prospective similarity axis, and SPC validity requirements.",
+            "Distiller routes to Dataset Scout when no suitable dataset is known.",
+            "Distiller routes to Dataset Fetcher when a known dataset must be retrieved or packaged.",
+            "Dataset Fetcher output returns to Investigator when a SPECTRA-ready package exists.",
+            "Investigator checkpoints always go to Auditor before final interpretation.",
+            "Auditor returns valid, weak, invalid, or exploratory decisions to Distiller.",
+            "Distiller routes back to Investigator when the SPC is fixable, or to final synthesis when the claim boundary is clear.",
         ],
         "terminal_gate": {
             "required_tool": "synthesize_spectra_generalizability_finding",
-            "terminal_condition": "analysis_complete is true, no stronger unresolved alternative axis is present, and no supported proxy/model-space/domain-proxy axis has unresolved mechanism debt",
+            "terminal_condition": "SPC validity status is valid, weak, invalid, or exploratory; train-test/pretraining-test similarity progression is reported; baseline behavior is reported when labels exist; and the claim boundary is explicit.",
             "not_terminal_conditions": [
-                "only proxy-level evidence without mechanism or controls",
-                "supported surface/model-space/domain-proxy axis without a proxy-to-mechanism experiment, mediation/control test, public-resource attempt, constructed dataset, or infeasibility proof",
-                "data-only overlap screen without behavioral follow-up",
-                "supported axis not replicated when replication inputs are available",
-                "current dataset cannot test the live hypothesis and no construction/acquisition attempt was made",
+                "target-model errors or post-hoc prediction/reference comparisons define the axis or split membership",
+                "held-out labels define split membership",
+                "fewer than three nontrivial split levels are used when more are feasible",
+                "train-test or pretraining-test similarity does not decrease across levels",
+                "labels exist but no fixed baseline was run or justified",
+                "split sizes are too small or degenerate for the claimed conclusion",
             ],
         },
         "artifact_tree": {
@@ -712,13 +721,14 @@ def start_spectra_audit_session(
             "investigator_rounds": f"{root}/investigator_round_<n>/",
             "distiller_rounds": f"{root}/distiller_round_<n>/",
             "dataset_scout_rounds": f"{root}/dataset_scout_round_<n>/",
-            "dataset_constructor_rounds": f"{root}/dataset_constructor_round_<n>/",
+            "dataset_fetcher_rounds": f"{root}/dataset_fetcher_round_<n>/",
+            "auditor_rounds": f"{root}/auditor_round_<n>/",
             "final_synthesis": f"{root}/final_synthesis/",
         },
         "claim_boundary_policy": [
-            "State whether evidence is benchmark-mode, diagnostic fallback, prospective split evidence, or post-hoc explanatory evidence.",
+            "State whether evidence is a valid SPC, weak SPC, invalid SPC, or exploratory-only analysis.",
             "Do not generalize from a frozen probe to full fine-tuning unless that protocol was tested.",
-            "Report failed similarity hypotheses and how they changed the next experiment.",
+            "Report failed or invalid similarity axes as findings instead of replacing them with post-hoc target-error axes.",
             "Separate what /spectra caused the agent to do from what the deterministic audit engine computed.",
         ],
     }
@@ -804,7 +814,7 @@ def start_generalizability_analysis(
     objective: str = "",
     constraints: str = "",
 ) -> Dict[str, Any]:
-    """Create an active exploration plan for a generalizability analysis."""
+    """Create an SPC-focused generalizability analysis plan."""
     missing = []
     if not dataset_description.strip():
         missing.append("dataset_description")
@@ -829,116 +839,148 @@ def start_generalizability_analysis(
         "execution_steps": [
             "Identify the dataset sample unit and prediction target.",
             "Decide the execution mode with select_spectra_execution_mode; benchmark mode is required when raw labels and a trainable model or baseline are available.",
-            "Start SPECTRA Investigator mode with start_spectra_investigator: the hypothesis ledger is the control state, not the axis checklist.",
-            "State the current scientific question about generalizability and keep a question trace.",
-            "Treat each spectral property as a similarity hypothesis, not as a fixed truth.",
-            "Plan an initial candidate set with plan_iterative_similarity_search.",
-            "Declare an initial axis-search scope and keep exploring until a supported target-model degradation axis is found; if the current scope is exhausted, escalate to additional data, features, tasks, model access, or compute rather than concluding the model is generally generalizable.",
-            "Declare a task-coverage plan before behavioral testing. Run all feasible tasks, or rank all available tasks by data-screen suspiciousness, scientific diversity, source family, feasibility, and prior/internal signals; a self-selected representative subset is not sufficient for a completed finding.",
-            "For each candidate, choose binary or weighted graph construction.",
-            "Plan exact, chunked, approximate, or indexed similarity computation.",
-            "If a data-level overlap screen finds a suspicious axis, treat it as a hypothesis and choose a targeted feasible behavioral follow-up.",
-            "In benchmark mode, generate similarity-controlled train/test splits across at least three measured overlap levels.",
-            "In benchmark mode, train a fresh model for each split using the same training recipe and evaluate only the corresponding held-out units.",
-            "In audit fallback mode, generate pairwise_similarity.csv, a measured axis, or fixed-prediction subsets only after recording why retraining is impossible.",
-            "Run run_spectra_audit or an equivalent benchmark-mode evaluator for the candidate axis.",
-            "Score the candidate curve with score_similarity_hypothesis_curve.",
-            "After each result, call update_hypothesis_ledger and choose_discriminating_experiment before selecting the next axis.",
-            "Call decide_next_spectra_experiment after each axis result to choose behavior test, refinement, replication, residual-axis reflection, mechanism-debt gating, task expansion, mechanism escalation, or continuation checkpoint.",
-            "If the candidate is non-explanatory, use that finding to choose the next similarity hypothesis from an untested axis class while scope remains.",
-            "If a candidate is replicated with mixed support, call reflect_on_replication_evidence and test a residual or composite axis that explains why the candidate works in some tasks but not others.",
-            "If a model-representation axis is supported, call translate_model_space_axis_to_domain_hypotheses and test a biological or domain axis that explains what the embedding-space signal means scientifically.",
-            "If tested tasks are negative or mixed and feasible tasks remain untested, expand task coverage before writing any checkpoint report.",
-            "If the domain axis is a shallow proxy such as k-mer support, GC/CpG content, length, entropy, crude word counts, metadata labels, or generic embedding distance, call assess_explanatory_depth and push toward a mechanistic axis or mediation test.",
-            "If any supported axis is proxy-level or model-space only, call enforce_mechanism_debt_gate. Local-derived mechanism tests are an intermediate tier, not a closure condition; the agent must continue to curated/public resources or constructed hypothesis-test data until the proxy is replaced by a mechanism-level explanation or a launched continuation records active execution evidence.",
-            "If the next mechanism test needs annotations, reference data, coordinates, ontologies, or other resources absent from the local bundle, call plan_public_resource_acquisition and attempt source-provenance recovery, public search/download/mapping, and mapping validation before reporting a resource blocker.",
-            "If the current benchmark cannot test the resulting mechanism hypothesis even after provenance recovery and resource acquisition, call plan_hypothesis_test_dataset_construction and construct a defensible dataset from public/local resources to test that hypothesis.",
-            "When the loop has produced a meaningful bounded insight, call synthesize_spectra_generalizability_finding with the model paper context and all final artifacts before writing the terminal manuscript-facing report.",
-            "Write only a checkpoint report unless the audit has full task coverage and a mechanism-level explanation with controls. A checkpoint is valid only if it launches the next executable experiment and records a log, PID, job id, or completed smaller fallback. A queued-only manifest is not sufficient.",
-            "Review checkpoints with review_investigator_checkpoint; reject reports that only list axes, mixed results, and mechanism debt without competing hypotheses and belief updates.",
+            "Use the Distiller role to map the question to a model, dataset, task, metric, prospective similarity axis, and SPC validity requirements.",
+            "Use Dataset Scout or Dataset Fetcher if a suitable labeled dataset or SPECTRA-ready package is missing.",
+            "Compute split or pretraining-proximity similarities from prospective inputs, metadata, provenance, or pretraining-reference features only.",
+            "Construct at least three nontrivial split levels or pretraining-test similarity bins when feasible.",
+            "Measure and report train-test or pretraining-test similarity progression before evaluating the model.",
+            "Mark the SPC invalid or exploratory when similarity does not decrease, split levels are tiny or degenerate, or the axis is post-hoc.",
+            "When labels exist, run a simple fixed baseline across the same levels before evaluating the target model.",
+            "Evaluate the target model only after the split contract is validated or explicitly labeled exploratory.",
+            "Send Investigator artifacts to the Auditor for leakage, split-statistic, baseline, metric-direction, and confounding review.",
+            "Return a bounded answer with the SPC status: valid, weak, invalid, or exploratory.",
         ],
         "required_artifacts": [
             "execution_mode_decision",
-            "question_trace",
-            "observations",
-            "hypothesis_ledger",
-            "competing_explanations",
-            "why_this_next_experiment",
-            "discriminating_experiment_plan",
-            "belief_update",
-            "falsifiable_predictions",
-            "spectral_property_rationale",
-            "task_coverage_plan",
-            "task_screen_ranking",
-            "task_selection_rationale",
-            "untested_task_blockers",
-            "similarity_hypothesis_order",
-            "axis_search_budget",
+            "spectra_analysis_plan",
+            "scientific_unit",
+            "task_and_metric",
+            "candidate_similarity_axes",
+            "axis_leakage_classification",
             "similarity_computation_plan",
-            "pairwise_similarity_or_axis_file",
-            "split_stats",
-            "retraining_manifest_or_audit_fallback_reason",
-            "model_metrics_by_split",
-            "similarity_hypothesis_scores",
-            "replication_evidence",
-            "replication_reflection",
-            "residual_axis_candidates",
-            "residual_axis_scores",
-            "model_space_biological_translation",
-            "embedding_support_biological_contrast",
-            "domain_hypothesis_axis_candidates",
-            "domain_hypothesis_scores",
-            "explanatory_depth_assessment",
-            "proxy_to_mechanism_plan",
-            "mechanism_debt_register",
-            "mechanism_execution_manifest",
-            "mechanism_infeasibility_proof",
-            "public_resource_acquisition_plan",
-            "public_resource_search_log",
-            "source_provenance_recovery_log",
-            "hypothesis_test_dataset_plan",
-            "hypothesis_driven_acquisition_plan",
-            "external_dataset_decision_log",
-            "constructed_dataset_manifest",
-            "constructed_dataset_provenance",
-            "constructed_dataset_schema",
-            "constructed_dataset_mapping_validation",
-            "constructed_dataset_leakage_audit",
-            "constructed_dataset_spectra_results",
-            "resource_manifest",
-            "resource_mapping_validation",
-            "mechanism_axis_scores",
-            "mediation_test_results",
-            "paper_ready_spectra_finding",
+            "split_assignments",
+            "split_statistics",
+            "similarity_progression",
+            "baseline_results",
+            "model_results",
+            "spectral_performance_curve",
+            "validity_self_assessment",
+            "auditor_validity_decision",
+            "risk_register",
+            "required_fixes",
             "claim_boundary",
-            "model_paper_context",
-            "evidence_to_claim_table",
             "overclaim_guardrails",
-            "next_experiment_decisions",
-            "continuation_launch_manifest",
-            "continuation_status_log",
+            "commands_run",
+            "retraining_manifest_or_audit_fallback_reason",
             "blockers",
             "generalizability_report",
         ],
         "quality_gates": [
-            "Each tested spectral property is scientifically relevant to a plausible failure mode.",
-            "The audit distinguishes prospective axes from post-hoc explanatory axes.",
-            "At least three usable split difficulty levels are present.",
-            "Cross-split overlap decreases as spectral parameter increases.",
-            "If benchmark mode is feasible, every curve point uses a fresh model trained only on that split's training units.",
-            "If audit fallback mode is used, the report states that fixed-prediction curves are diagnostic and not full SPECTRA benchmark evidence.",
-            "Data-only overlap screens are labeled pre-benchmark screening and trigger a behavioral follow-up unless a concrete blocker is reported.",
-            "Train and test sizes remain large enough for the evaluation metric.",
-            "The final report separates invalid split construction, non-explanatory similarity, and model failure.",
-            "The final report includes negative findings from failed similarity hypotheses.",
-            "A terminal SPECTRA finding contextualizes the result against the model paper and states the evidence boundary and overclaim guardrails.",
-            "Model-representation axes are translated into scientific/domain hypotheses before being treated as explanations.",
-            "Surface proxies and broad biological proxies are not treated as final explanations when curated annotations, mechanistic features, controls, or mediation tests are feasible.",
-            "Missing local mechanism resources trigger public-resource acquisition attempts before they become blockers.",
-            "Missing coordinates or stable IDs trigger upstream dataset source/provenance recovery before alignment attempts or coordinate-resource blockers.",
-            "A completed positive report requires full feasible task coverage, replicated support, replication reflection, explanatory-depth classification, and a mechanism-level explanation with controls.",
-            "If the current search scope is exhausted first, the run must emit a continuation checkpoint plus launch evidence for a scope-expansion job; current-scope exhaustion is not a terminal state and a queued-only plan fails this gate.",
+            "The declared similarity axis is prospective and does not use target-model errors, prediction/reference errors, held-out labels, or target confidence to define levels.",
+            "At least three usable split or similarity-bin levels are present when feasible.",
+            "Measured train-test or pretraining-test similarity decreases across levels.",
+            "Train and test sizes remain large enough for the intended metric.",
+            "Labels, if present, are used for evaluation and baselines only, not split membership.",
+            "A simple fixed baseline is run across the same levels when labels exist, or the omission is justified.",
+            "Benchmark-mode claims use fresh training per split when retraining is part of the model evaluation protocol.",
+            "Audit-fallback claims are labeled diagnostic or exploratory.",
+            "The Auditor classifies the SPC as valid, weak, invalid, or exploratory before final interpretation.",
+            "The final report separates invalid split construction, weak axis evidence, and target-model performance failure.",
         ],
+    }
+
+
+def plan_spectral_performance_curve(
+    model_description: str,
+    dataset_description: str,
+    task: str = "",
+    metric: str = "",
+    similarity_axis: str = "",
+    labels_available: bool = True,
+    retraining_feasible: bool = False,
+    min_levels: int = 3,
+) -> Dict[str, Any]:
+    """Return the minimal contract for a valid SPECTRA performance curve."""
+    blocked = []
+    if not model_description.strip():
+        blocked.append("model_description")
+    if not dataset_description.strip():
+        blocked.append("dataset_description")
+    if not task.strip():
+        blocked.append("task")
+    if not metric.strip():
+        blocked.append("metric")
+    if not similarity_axis.strip():
+        blocked.append("similarity_axis")
+
+    try:
+        requested_levels = max(2, int(min_levels))
+    except (TypeError, ValueError):
+        requested_levels = 3
+
+    return {
+        "mode": "spectral_performance_curve_plan",
+        "status": "blocked" if blocked else "ready",
+        "missing_inputs": blocked,
+        "model_description": model_description.strip(),
+        "dataset_description": dataset_description.strip(),
+        "task": task.strip(),
+        "metric": metric.strip(),
+        "similarity_axis": similarity_axis.strip(),
+        "minimum_nontrivial_levels": requested_levels,
+        "axis_contract": {
+            "must_be_prospective": True,
+            "forbidden_axis_inputs": [
+                "target-model errors",
+                "prediction/reference errors",
+                "held-out labels",
+                "target prediction confidence when derived from the evaluated model",
+                "any quantity computed after seeing target-model failures",
+            ],
+            "allowed_axis_inputs": [
+                "raw inputs",
+                "metadata available before prediction",
+                "training/pretraining provenance",
+                "domain annotations available before evaluation",
+                "precomputed features not derived from target-model errors",
+            ],
+        },
+        "investigator_requirements": [
+            "Compute train-test or pretraining-test similarities before model evaluation.",
+            "Construct split levels or similarity bins with nondegenerate sample counts.",
+            "Verify measured similarity decreases across levels.",
+            "Run a simple fixed baseline across the same levels when labels exist.",
+            "Evaluate the model of interest only after the split contract is valid or explicitly marked exploratory.",
+        ],
+        "auditor_requirements": [
+            "Check target-error leakage.",
+            "Check test-label leakage.",
+            "Check split sizes and level degeneracy.",
+            "Check that measured similarity decreases.",
+            "Check baseline stability and metric direction.",
+            "Check confounding and post-hoc axis selection.",
+            "Classify the SPC as valid, weak, invalid, or exploratory.",
+        ],
+        "expected_artifacts": [
+            "spectral_performance_curve.csv",
+            "split_assignments/",
+            "split_statistics.json",
+            "similarity_progression.csv",
+            "baseline_results.csv" if labels_available else "baseline_omission_reason.md",
+            "model_results.csv",
+            "validity_self_assessment.json",
+            "audit_report.md",
+            "validity_decision.json",
+        ],
+        "evaluation_protocol": (
+            "fresh_train_per_split" if retraining_feasible else "fixed_prediction_or_external_model_audit"
+        ),
+        "claim_boundary": (
+            "Benchmark-mode evidence requires fresh training per split when the target "
+            "claim is about train-test generalization. Fixed predictions or external "
+            "model calls can support a diagnostic/applicability SPC only when that "
+            "limitation is reported."
+        ),
     }
 
 
@@ -6352,50 +6394,34 @@ def create_mcp_server(host: str = "127.0.0.1", port: int = 8000) -> Any:
     """Create the FastMCP server instance."""
     FastMCP = _load_fastmcp_class()
     server_instructions = (
-            "Use this server to run versioned scientific procedure skills. "
-            "When the user gives a question plus a model paper/reference, call "
-            "start_spectra_audit_session first to create the role graph, spawn "
-            "plan, routing policy, and artifact tree. For one-command autonomous "
-            "runs, use prepare_spectra_audit_session or run_spectra_audit_session; "
+            "Use this server to run SPECTRA as a spectral performance curve "
+            "construction and validation workflow. When the user gives a "
+            "generalizability question plus a model paper/reference, call "
+            "start_spectra_audit_session first to create the Distiller, "
+            "Investigator, Dataset Scout, Dataset Fetcher, Auditor, and final "
+            "synthesis contract. For one-command autonomous runs, use "
+            "prepare_spectra_audit_session or run_spectra_audit_session; "
             "run_spectra_audit_session only executes roles when execute_roles=true "
-            "and an agent command template is supplied. "
-            "Fetch the procedure, inspect examples, retrieve reusable prior-run "
-            "memories, portable dataset catalog entries, similarity definitions, and similarity computation strategies, "
-            "choose targeted operating points when needed, then run SPECTRA as an investigator, not a procedural "
-            "walker. The hypothesis ledger is the control state: observe, interpret, "
-            "hypothesize, discriminate, update, and continue. First choose the execution mode: benchmark "
-            "mode is required whenever raw labeled data and a trainable model or "
-            "baseline are available, and requires fresh retraining per split. Fixed "
-            "prediction binning is an audit fallback only. Do not stop at data-only "
-            "overlap screening when behavior can be tested; exact duplicates or high "
-            "train-test support are hypotheses that require behavioral follow-up. "
-            "Do not stop after one similarity axis; score each curve, record negative "
-            "findings, update competing hypotheses, and choose the next experiment by "
-            "discriminative value. Do not stop at "
-            "an arbitrary representative task subset; enumerate available tasks, "
-            "rank them by all-task screens, scientific diversity, feasibility, and "
-            "prior/internal signals, then run all feasible tasks or launch continuation jobs/fallback slices "
-            "for omitted tasks before reporting a checkpoint. Do not stop at "
-            "shallow proxies such as k-mers, GC/CpG, length, crude word counts, "
-            "metadata labels, or embedding distance when mechanism-level annotations, "
-            "context interactions, or mediation tests are feasible. A supported "
-            "proxy/model-space axis creates mechanism debt: local mechanism tests "
-            "are only the first tier and do not close the audit while the explanation "
-            "remains proxy-level. Continue to source-provenance, public-resource, "
-            "constructed-dataset, residual-axis, and broader-task experiments. Missing local "
-            "resources are not final blockers; try public resource acquisition, "
-            "mapping, and validation when those resources are plausibly public. "
-            "If the original benchmark still cannot test the mechanism question, "
-            "prepare a Dataset Constructor handoff, construct a defensible "
-            "hypothesis-test dataset from public/local resources, and run fresh "
-            "split-based SPECTRA experiments on it, or launch a bounded construction fallback. "
-            "When a meaningful bounded insight appears to exist, the final "
-            "Distiller step must first check for a stronger unresolved "
-            "alternative axis. If one exists, route back to the Investigator "
-            "with that axis as the new primary hypothesis. Otherwise synthesize "
-            "the model paper plus all SPECTRA findings into a paper-ready "
-            "generalizability claim, interpretation, evidence boundary, and "
-            "overclaim guardrails."
+            "and an agent command template is supplied. The primary output is "
+            "model performance as prospective train-test or pretraining-test "
+            "similarity decreases, plus a validity decision. Similarity axes and "
+            "split membership must not use target-model errors, prediction-vs-"
+            "reference errors, held-out labels, target confidence derived from the "
+            "evaluated model, or any post-hoc quantity selected because it tracks "
+            "model failure. Use get_procedure, dataset catalog tools, "
+            "start_generalizability_analysis, select_spectra_execution_mode, "
+            "plan_spectral_performance_curve, similarity definitions, similarity "
+            "computation strategies, and run_spectra_audit as needed. The "
+            "Investigator must construct at least three nontrivial split levels "
+            "when feasible, verify measured similarity decreases, run a simple "
+            "fixed baseline when labels exist, then evaluate the target model. "
+            "The Auditor must check leakage, split sizes, similarity progression, "
+            "baseline stability, confounding, metric direction, and post-hoc axis "
+            "selection, then classify each SPC as valid, weak, invalid, or "
+            "exploratory. Dataset Scout finds suitable datasets; Dataset Fetcher "
+            "retrieves and packages SPECTRA-ready artifacts. Final synthesis must "
+            "state the evidence boundary and avoid overclaiming beyond the "
+            "validated SPC."
     )
     try:
         mcp = FastMCP(
@@ -6460,101 +6486,34 @@ def create_mcp_server(host: str = "127.0.0.1", port: int = 8000) -> Any:
     ) -> str:
         """Prompt an agent to execute the generalizability analysis procedure."""
         return (
-            "Run the SPECTRA Investigator generalizability analysis.\n\n"
+            "Run the SPECTRA spectral performance curve analysis.\n\n"
             f"Dataset: {dataset_description}\n\n"
             f"Model: {model_description}\n\n"
             f"Domain: {domain}\n\n"
             "If the user supplied a model paper plus a generalization question, "
             "first call start_spectra_audit_session to create the role graph, "
-            "spawn plan, routing policy, and artifact tree. "
-            "First call get_procedure, get_procedure_examples, suggest_reusable_spectra_memory, suggest_dataset_catalog_entries, and start_spectra_investigator. "
-            "Use matching memory and dataset catalog entries as priors: reuse useful resources, repeat only required validity checks, follow portable access instructions, and avoid listed dead ends. "
-            "Then call select_spectra_execution_mode, plan_iterative_similarity_search, suggest_similarity_definitions, "
-            "suggest_similarity_computation_strategies, "
-            "suggest_operating_point_methods when a targeted deployment point is requested, "
-            "recommend_spectral_property, plan_similarity_computation, and run_spectra_audit. "
-            "Use enforce_mechanism_debt_gate whenever a supported axis is proxy-level, "
-            "model-space only, or mechanism-like but lacks mediation/controls. "
-            "Use plan_hypothesis_test_dataset_construction when provenance recovery "
-            "and resource acquisition show that the current benchmark cannot test "
-            "a mechanism hypothesis but a dataset from public/local resources can. "
-            "Use prepare_dataset_constructor_request when the Distiller concludes "
-            "that the current benchmark is insufficient and a separate Dataset "
-            "Constructor should recover or build the SPECTRA-ready dataset. "
-            "If the best replacement dataset is not obvious, first call "
-            "prepare_dataset_scout_request. The Dataset Scout must compare "
-            "multiple public/local candidates and preserve the inconsistency "
-            "ledger before any construction begins. After scouting, call "
-            "distill_dataset_scout_output to decide whether to continue scouting "
-            "or promote a candidate to Dataset Constructor. "
-            "After a Dataset Constructor returns a package, call "
-            "distill_dataset_constructor_output to decide whether the package is "
-            "ready for Investigator evaluation or needs another construction pass. "
-            "If benchmark mode is feasible, generate similarity-controlled splits and "
-            "train a fresh model per split before reporting the curve. "
-            "Before selecting behavioral tasks, enumerate all available tasks and "
-            "create a task-coverage plan. Run all feasible tasks, or rank tasks by "
-            "data-screen suspiciousness, scientific diversity, source family, "
-            "feasibility, sample size, and prior/internal signals; every omitted "
-            "feasible task needs a launched continuation job or launched smaller fallback. "
-            "After each candidate curve, call score_similarity_hypothesis_curve, "
-            "then update_hypothesis_ledger and choose_discriminating_experiment. "
-            "When an Investigator run produces many mixed or proxy-level results, "
-            "call distill_spectra_hypotheses to convert the artifact set into a "
-            "sharper scientific hypothesis and handoff experiment. "
-            "When the loop appears to have produced a meaningful bounded insight, "
-            "call synthesize_spectra_generalizability_finding with the model paper "
-            "context and all final artifacts. If it finds a stronger unresolved "
-            "alternative axis, route back to the Investigator with that axis as "
-            "the new primary hypothesis; otherwise write the paper-ready SPECTRA "
-            "finding, interpretation, evidence boundary, and overclaim guardrails. "
-            "Do not choose the next similarity axis merely because it is available; "
-            "choose the experiment that would most distinguish live hypotheses. "
-            "After each axis result or data-only screen, call decide_next_spectra_experiment, "
-            "including axis_depth_level and mechanism-debt status for supported axes. "
-            "A data-only overlap screen is pre-benchmark evidence and must trigger "
-            "a targeted feasible behavioral experiment unless a concrete blocker is present. "
-            "Before treating missing packages as a blocker, inspect the target repository, "
-            "dependency files, and available model artifacts, then attempt an allowed environment "
-            "repair or minimal install. "
-            "If an axis is non-explanatory, record that as a finding and try the next "
-            "similarity definition or computation method from an untested axis class while "
-            "the declared axis-search scope remains. If tested tasks are negative or mixed "
-            "and untested feasible tasks remain, expand task coverage before treating the "
-            "run as a negative SPECTRA result. If an axis is supported, immediately "
-            "replicate it on another available task, dataset, seed, model setting, or "
-            "stronger operating point before writing a checkpoint. If that scope is exhausted before a "
-            "supported degradation axis is found, launch additional data, features, "
-            "tasks, model access, compute, or a smaller executable fallback instead of claiming the model is generally "
-            "generalizable. After replicated support, compare supported and failed tasks, "
-            "call reflect_on_replication_evidence, and test residual or composite axes "
-            "when the support pattern is mixed. If the supported axis is model-space or "
-            "embedding-based, call translate_model_space_axis_to_domain_hypotheses and "
-            "test biological/domain interpretation axes, escalating to public resources or constructed data when local variables remain shallow. For supported "
-            "proxy or domain-interpretable axes, call assess_explanatory_depth and "
-            "enforce_mechanism_debt_gate, then continue from proxy to mechanism: "
-            "curated annotations, mechanism-level features, context interactions, "
-            "or mediation/residual tests. If local sequences, tables, features, or "
-            "metadata can support a mechanism/residual test, run that before calling "
-            "missing external annotations a blocker. If those "
-            "resources are absent locally, call plan_public_resource_acquisition, "
-            "recover upstream dataset provenance for coordinates or stable IDs, "
-            "search/download/map/validate public resources when feasible, and "
-            "call plan_hypothesis_test_dataset_construction if the current "
-            "benchmark still cannot test the mechanism hypothesis. "
-            "If a live hypothesis cannot be falsified with current rows, call "
-            "plan_hypothesis_driven_dataset_acquisition and acquire or construct "
-            "a fit-for-purpose public/local dataset that distinguishes the live hypotheses. "
-            "Local benchmark-mode proxy-audit feasibility does not waive mechanism debt. Do not stop; write checkpoints "
-            "only after launching the next executable mechanism, replication, task-coverage, "
-            "public-resource, constructed-dataset, or compute-expansion step and recording launch evidence. "
-            "Review checkpoints with review_investigator_checkpoint and reject "
-            "checklist-style reports that list axes, mixed results, and mechanism "
-            "debt without observations, competing explanations, falsifiable "
-            "predictions, and belief updates. "
-            "Distinguish prospective axes "
-            "from post-hoc explanatory axes. Validate split stats when split stats exist, "
-            "and review_generalizability_report when model metrics exist."
+            "spawn plan, routing policy, and artifact tree. Use get_procedure, "
+            "suggest_dataset_catalog_entries, start_generalizability_analysis, "
+            "select_spectra_execution_mode, plan_spectral_performance_curve, "
+            "suggest_similarity_definitions, suggest_similarity_computation_strategies, "
+            "plan_similarity_computation, and run_spectra_audit as needed. "
+            "The Distiller should choose a concrete model, dataset, task, metric, "
+            "prospective similarity axis, split/bin levels, and validity gates. "
+            "The Dataset Scout finds suitable datasets when one is missing. The "
+            "Dataset Fetcher retrieves and packages inputs, labels, metadata, and "
+            "prospective similarity features into SPECTRA-ready artifacts. The "
+            "Investigator computes prospective train-test or pretraining-test "
+            "similarities, constructs at least three nontrivial levels when feasible, "
+            "verifies measured similarity decreases, runs a simple fixed baseline "
+            "when labels exist, and then evaluates the target model. Do not use "
+            "target-model errors, prediction/reference errors, held-out labels, "
+            "target confidence derived from the evaluated model, or post-hoc "
+            "failure correlations to define the axis or split membership. The "
+            "Auditor checks target-error leakage, test-label leakage, tiny or "
+            "degenerate splits, non-decreasing similarity, unstable baselines, "
+            "confounding, metric direction, and post-hoc axis selection. The "
+            "final answer must classify the SPC as valid, weak, invalid, or "
+            "exploratory and state the claim boundary."
         )
 
     mcp.tool(name="list_procedures")(available_procedures)
@@ -6564,6 +6523,7 @@ def create_mcp_server(host: str = "127.0.0.1", port: int = 8000) -> Any:
     mcp.tool(name="prepare_spectra_audit_session")(prepare_spectra_audit_session)
     mcp.tool(name="run_spectra_audit_session")(run_spectra_audit_session)
     mcp.tool(name="start_generalizability_analysis")(start_generalizability_analysis)
+    mcp.tool(name="plan_spectral_performance_curve")(plan_spectral_performance_curve)
     mcp.tool(name="start_spectra_investigator")(start_spectra_investigator)
     mcp.tool(name="select_spectra_execution_mode")(select_spectra_execution_mode)
     mcp.tool(name="decide_next_spectra_experiment")(decide_next_spectra_experiment)

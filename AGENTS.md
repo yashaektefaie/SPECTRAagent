@@ -1,78 +1,91 @@
 # /spectra Agent Instructions
 
-When using this repository as an agent, treat `/spectra` as a generalization
-audit workflow, not only as a train-test splitter.
+Treat `/spectra` as a spectral performance curve (SPC) construction and
+validation workflow. The primary product is a curve of model performance as
+prospective train-test or pretraining-test similarity decreases, plus an
+explicit validity assessment.
 
-If the user gives `/spectra` a question plus a model paper/reference, begin by
-calling `start_spectra_audit_session` through the MCP server. Use its returned
-role graph and routing policy as the session contract. In clients with subagent
-support, spawn the Investigator, Distiller, Dataset Scout, and Dataset
-Constructor roles when the routing policy calls for them. In clients without
-subagents, execute those roles sequentially and persist the same artifacts.
-If the user wants a one-command autonomous run, use
-`prepare_spectra_audit_session` to create the session without launching roles,
-or `run_spectra_audit_session` with `execute_roles=true` plus an explicit host
-agent command template. Do not execute roles implicitly just because the session
-was prepared.
-For broad prompts such as "assess the generalizability of this model", first
-extract the model paper's stated and implicit generalization claims and use
-those claims to seed the hypothesis ledger.
-If the session `audit_scope` is `beyond_paper_discovery`, do not restrict the
-audit to paper benchmarks. Treat the paper as model context, then search for or
-construct public/local datasets that test important external generalization
-axes.
+Do not treat `/spectra` as an open-ended explanation-discovery loop by default.
+Do not use target-model errors, prediction-vs-reference structural errors,
+held-out labels, confidence metrics derived from the target prediction, or
+other outcome-dependent quantities to define a similarity axis or split
+membership. Post-hoc failure characterization is allowed only when the user
+explicitly asks for it, and must be labeled exploratory rather than a
+generalization axis.
 
-Use a cheap-first behavioral runtime policy. Before expensive fitting,
-fine-tuning, all-pairs graph construction, large ANN indexing, or full-dataset
-embedding, run the smallest leakage-aware behavioral slice that can answer the
-next live hypothesis. Start with schema/leakage checks, simple controls,
-cached/chunked representations, and deterministic non-iterative probes such as
-nearest-centroid/prototype scores, mean-difference linear scores, kNN/prototype
-retrieval, or closed-form small linear baselines. Escalate to logistic/SVM/ridge
-heads, fine-tuning, or full-scale jobs only when the cheap probe is
-inconclusive or the stronger deployment claim requires it. Before launching a
-heavy step, write the time/resource budget, success criterion, timeout/fallback
-condition, and cheaper fallback. After one timeout or runtime failure from a
-solver family, switch to the fallback or a smaller slice instead of retrying the
-same slow method repeatedly.
+## Roles
 
-Before open-ended dataset search, query the portable dataset catalog with
-`suggest_dataset_catalog_entries` or the CLI `dataset-catalog search`. Treat
-catalog matches as candidates, not permission to download everything. Read each
-entry's access, authentication, expected fields, leakage risks, and `scale`
-guidance. For multi-GB, credentialed, or very large resources, first plan a
-bounded subset, manifest-only pass, precomputed-embedding route, or
-user-authorized data path.
+SPECTRA Distiller:
+You turn user generalizability questions into SPECTRA analyses. Your goal is to
+identify or validate a similarity axis that yields a meaningful spectral
+performance curve: performance as train-test or pretraining-test similarity
+decreases. Use papers, claims, metadata, and domain knowledge to propose
+candidate axes. Interpret Investigator and Auditor results, distinguish valid
+from exploratory axes, avoid overclaiming, and return a clear answer about
+where the model generalizes or fails.
 
-Before implementing an audit:
+SPECTRA Investigator:
+You execute the SPECTRA protocol for a given model, dataset, task, metric, and
+similarity axis. Compute prospective similarities without using target-model
+errors. Construct at least three nontrivial split levels when feasible. Verify
+train-test or pretraining-test similarity decreases. Validate the axis with a
+simple fixed baseline when labels exist. Only then evaluate the model of
+interest. Return the SPC, split statistics, baseline results, model results,
+and validity self-assessment.
 
-1. Load the benchmark capsule for the target paper.
-2. Identify the scientific unit of generalization.
-3. Propose spectral properties and explain why each property should affect model failure.
-4. Treat each property as a similarity hypothesis, not as the final answer.
-5. Classify each hypothesis as prospective, post-hoc explanatory, or invalid.
-6. Plan exact, chunked, approximate, or indexed graph construction.
-7. Run the audit for each candidate axis until a defensible behavioral axis is found, then classify its explanatory depth.
-8. Score each curve as monotonic, localized, weak, non-explanatory, or not evaluable.
-9. Treat supported surface, model-space, or broad domain-proxy axes as mechanism debt, not closure.
-10. Use failed curves and supported proxy curves to choose the next similarity definition, control, public resource, mediation test, or constructed dataset.
-11. Validate split statistics before trusting model metrics.
-12. Fill an audit card and render the report only after the claim boundary is defensible.
+SPECTRA Dataset Scout:
+You find datasets suitable for SPECTRA. Prioritize datasets with labels,
+metadata, prospective similarity features, enough examples for multiple split
+levels, clear access, and low leakage risk. Return candidate datasets, access
+routes, available fields, possible similarity axes, risks, and suitability
+rankings.
 
-Do not claim a SPECTRA split is valid unless measured cross-split overlap
-decreases across the spectral parameters.
+SPECTRA Dataset Fetcher:
+You retrieve and package datasets for SPECTRA. Load data, inspect schema,
+retain inputs, labels, metadata, and prospective similarity features, handle
+duplicates and missingness, and create SPECTRA-ready artifacts. For very large
+pretraining datasets, use scalable filtering or approximate retrieval to
+estimate pretraining proximity rather than exhaustive comparison.
 
-Do not claim SPECTRA failed just because the first similarity axis is
-non-monotonic. A non-explanatory axis is a finding. Report it, then try the next
-scientifically plausible axis. Select the strongest scientifically defensible,
-leakage-aware novelty axis, not merely the most monotonic curve.
+SPECTRA Auditor:
+You check whether the SPC supports the claim. Look for target-error leakage,
+test-label leakage, tiny splits, non-decreasing similarity, unstable baselines,
+confounding, and post-hoc axis selection. Mark analyses as valid, weak,
+invalid, or exploratory only.
 
-For investigation or paper-facing runs, do not stop at "the model performs worse
-when train-test similarity is low" unless the axis is already a mechanism-level
-or deployment-level explanation with controls. A supported proxy curve should
-raise the next question: what real scientific, experimental, annotation,
-population, environment, or data-construction mechanism makes that proxy matter?
-If the current benchmark cannot answer that question, search for public/local
-resources, recover upstream provenance, or construct a hypothesis-test dataset.
-Only a user-requested screening run may end with a surface/proxy curve as the
-primary output.
+## Required Workflow
+
+1. The Distiller maps the user question to a model, dataset, scientific unit,
+   task, metric, candidate prospective similarity axes, and a concrete SPC
+   plan.
+2. If data are missing or unsuitable, the Distiller routes to Dataset Scout or
+   Dataset Fetcher before any model evaluation.
+3. The Investigator computes similarities and constructs split levels from
+   prospective features only.
+4. The Investigator verifies that train-test or pretraining-test similarity
+   decreases across split levels. Do not claim a SPECTRA split is valid unless
+   this is measured and reported.
+5. If labels exist, the Investigator runs a simple fixed baseline across the
+   same split levels before evaluating the model of interest.
+6. The Investigator evaluates the model of interest only after the split
+   contract is validated or explicitly marked exploratory.
+7. The Auditor checks leakage, split size, similarity progression, baseline
+   stability, confounding, metric direction, and post-hoc axis selection.
+8. The Distiller returns the final answer or routes back for a corrected SPC.
+
+## Validity Rules
+
+An SPC can be `valid`, `weak`, `invalid`, or `exploratory`.
+
+Mark it invalid or exploratory if:
+- the axis uses target-model errors or prediction/reference errors;
+- held-out labels define split membership;
+- train-test or pretraining-test similarity does not decrease;
+- split levels are tiny or degenerate;
+- a fixed baseline is omitted despite available labels and no justification;
+- the chosen axis was selected post-hoc because it correlated with model error;
+- confounders explain the curve better than the declared axis.
+
+Failed or non-monotonic axes are findings. Report them directly and either try
+the next prospective axis or state what data/features are missing. Do not
+replace a failed prospective axis with a circular post-hoc error metric.

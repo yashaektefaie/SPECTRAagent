@@ -1,12 +1,12 @@
 ---
 name: spectra
-description: Run SPECTRA agent-native generalization, applicability-domain, and spectral-curve audits. Use when the user invokes "/spectra", asks whether a model generalizes, asks whether a model should be used for a dataset/task, or asks to compute a SPECTRA curve from predictions and similarity.
+description: Run SPECTRA spectral performance curve construction and validation. Use when the user invokes "/spectra", asks whether a model generalizes, asks whether a model should be used for a dataset/task, or asks to compute a SPECTRA curve from predictions and prospective similarity.
 ---
 
 # SPECTRA
 
-Treat `/spectra ...` as an instruction to use the installed SPECTRA tools, not
-merely to explain the framework.
+Treat `/spectra ...` as an instruction to build and validate a spectral
+performance curve (SPC), not merely to explain the framework.
 
 ## Preferred Local Commands
 
@@ -19,7 +19,7 @@ spectra ask "<question>" \
   --dataset /path/to/raw_dataset_or_directory
 ```
 
-For core SPECTRA curve mode from predictions plus an existing axis:
+For core SPECTRA curve mode from predictions plus an existing prospective axis:
 
 ```bash
 spectra audit \
@@ -45,8 +45,10 @@ spectra-doctor
 
 ## Behavior
 
-- Let SPECTRA infer domain, scientific unit, similarity hypotheses, controls,
-  split strategy, and output location unless the user gives explicit
+- The primary output is model performance as prospective train-test or
+  pretraining-test similarity decreases, plus a validity decision.
+- Let SPECTRA infer domain, scientific unit, prospective similarity axes,
+  controls, split strategy, and output location unless the user gives explicit
   constraints.
 - Preserve user constraints in `--constraints`, especially isolation rules,
   compute limits, and prohibited prior artifacts.
@@ -55,6 +57,14 @@ spectra-doctor
 - Do not use prior SPECTRA run artifacts as evidence unless the user explicitly
   allows prior memory or those artifacts are part of the current session.
 - Do not pass `--max-rounds` unless the user asks for a bounded debug run.
+- Do not use target-model errors, prediction/reference errors, held-out labels,
+  or target confidence derived from the evaluated model to define the similarity
+  axis or split membership.
+- Require measured decreasing similarity across split levels before trusting
+  model metrics.
+- Run a simple fixed baseline when labels exist, then evaluate the target model.
+- Treat the Auditor decision as required: `valid`, `weak`, `invalid`, or
+  `exploratory`.
 
 ## Reporting Back
 
