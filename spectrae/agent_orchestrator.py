@@ -88,16 +88,20 @@ def _role_prompt(
     ]
     if role == "investigator":
         expected = [
-            "observations.md",
-            "hypothesis_ledger.json",
-            "why_this_next_experiment.md",
-            "runtime_budget_and_fallbacks.md",
-            "belief_update.md",
+            "spectral_performance_curve.csv",
+            "split_assignments/",
+            "split_statistics.json",
+            "similarity_progression.csv",
+            "baseline_results.csv",
+            "model_results.csv",
+            "validity_self_assessment.json",
+            "commands_run.json",
             "investigator_checkpoint.md",
-            "distiller_handoff.json",
+            "auditor_handoff.json",
         ]
     elif role == "distiller":
         expected = [
+            "spectra_analysis_plan.json",
             "distiller_report.md",
             "routing_decision.json",
             "investigator_handoff.json if routing back",
@@ -106,12 +110,22 @@ def _role_prompt(
         ]
     elif role == "dataset_scout":
         expected = ["candidate_resources.csv", "scout_decision.json", "resource_risk_log.md"]
-    elif role == "dataset_constructor":
+    elif role == "dataset_fetcher":
         expected = [
-            "constructed_dataset_manifest.json",
+            "dataset_manifest.json",
+            "schema_report.json",
+            "spectra_ready_schema.json",
             "mapping_validation.json",
             "leakage_audit.json",
-            "constructor_handoff.json",
+            "fetcher_handoff.json",
+        ]
+    elif role == "auditor":
+        expected = [
+            "audit_report.md",
+            "validity_decision.json",
+            "risk_register.json",
+            "required_fixes.json",
+            "distiller_handoff.json",
         ]
     else:
         expected = role_spec.get("writes", [])
@@ -181,7 +195,7 @@ def _initial_manifest(config: SpectraAgentSessionConfig, session_contract: Dict[
         "question_mode": session_contract.get("shared_context", {}).get("question_mode"),
         "audit_scope": session_contract.get("shared_context", {}).get("audit_scope"),
         "audit_depth": session_contract.get("shared_context", {}).get("audit_depth"),
-        "current_role": "investigator",
+        "current_role": "distiller",
         "current_round": 1,
     }
 
@@ -210,7 +224,7 @@ def prepare_agent_session(config: SpectraAgentSessionConfig) -> Dict[str, Any]:
     session_state = {
         "manifest": manifest,
         "session_contract": session_contract,
-        "role_counters": {"investigator": 1},
+        "role_counters": {"distiller": 1},
         "role_history": [],
         "routing_log": [],
     }
@@ -221,10 +235,10 @@ def prepare_agent_session(config: SpectraAgentSessionConfig) -> Dict[str, Any]:
     _write_json(manifest_path, manifest)
     _write_json(session_state_path, session_state)
 
-    first_write_scope = output_root / "investigator_round_001"
-    first_prompt_path = output_root / "role_prompts" / "investigator_round_001.md"
+    first_write_scope = output_root / "distiller_round_001"
+    first_prompt_path = output_root / "role_prompts" / "distiller_round_001.md"
     first_work_order = {
-        "role": "investigator",
+        "role": "distiller",
         "round": 1,
         "write_scope": str(first_write_scope),
         "prompt_path": str(first_prompt_path),
@@ -233,9 +247,9 @@ def prepare_agent_session(config: SpectraAgentSessionConfig) -> Dict[str, Any]:
     }
     _write_text(
         first_prompt_path,
-        _role_prompt("investigator", 1, first_write_scope, session_state_path, session_contract),
+        _role_prompt("distiller", 1, first_write_scope, session_state_path, session_contract),
     )
-    _write_json(output_root / "work_orders" / "investigator_round_001.json", first_work_order)
+    _write_json(output_root / "work_orders" / "distiller_round_001.json", first_work_order)
     _write_text(
         output_root / "README.md",
         "\n".join(
@@ -276,13 +290,13 @@ def _iteration_limit(max_rounds: Optional[int]) -> Optional[int]:
 def _resume_start(output_root: Path, session_state: Dict[str, Any]) -> Dict[str, Any]:
     routing_log = session_state.get("routing_log") or []
     if not routing_log:
-        return {"role": "investigator", "round": 1, "handoff": None}
+        return {"role": "distiller", "round": 1, "handoff": None}
 
     last_route = routing_log[-1]
     if last_route.get("terminal"):
         return {"terminal": True}
 
-    role = str(last_route.get("role") or "investigator")
+    role = str(last_route.get("role") or "distiller")
     handoff = last_route.get("handoff")
     counters = session_state.get("role_counters") or {}
     executed_rounds = [
@@ -358,12 +372,16 @@ def _route_role_from_token(value: Any) -> str:
         return "investigator"
     if token in {"dataset_scout", "scout"}:
         return "dataset_scout"
-    if token in {"dataset_constructor", "constructor"}:
-        return "dataset_constructor"
+    if token in {"dataset_fetcher", "fetcher", "dataset_constructor", "constructor"}:
+        return "dataset_fetcher"
+    if token in {"auditor", "spectra_auditor", "audit"}:
+        return "auditor"
     if "synthesis_distiller" in token or "final_synthesis" in token:
         return "synthesis_distiller"
-    if "dataset_constructor" in token or "constructor" in token:
-        return "dataset_constructor"
+    if "dataset_fetcher" in token or "fetcher" in token or "dataset_constructor" in token or "constructor" in token:
+        return "dataset_fetcher"
+    if "auditor" in token:
+        return "auditor"
     if "dataset_scout" in token or token.startswith("scout"):
         return "dataset_scout"
     if "investigator" in token:
@@ -377,14 +395,23 @@ def _explicit_role_token(value: Any) -> str:
         return "investigator"
     if token in {"dataset_scout", "scout"}:
         return "dataset_scout"
-    if token in {"dataset_constructor", "constructor"}:
-        return "dataset_constructor"
+    if token in {"dataset_fetcher", "fetcher", "dataset_constructor", "constructor"}:
+        return "dataset_fetcher"
+    if token in {"auditor", "spectra_auditor", "audit"}:
+        return "auditor"
     if token.startswith("investigator_for_"):
         return "investigator"
     if token.startswith("dataset_scout_for_") or token.startswith("scout_for_"):
         return "dataset_scout"
-    if token.startswith("dataset_constructor_for_") or token.startswith("constructor_for_"):
-        return "dataset_constructor"
+    if (
+        token.startswith("dataset_fetcher_for_")
+        or token.startswith("fetcher_for_")
+        or token.startswith("dataset_constructor_for_")
+        or token.startswith("constructor_for_")
+    ):
+        return "dataset_fetcher"
+    if token.startswith("auditor_for_"):
+        return "auditor"
     return ""
 
 
@@ -538,11 +565,13 @@ def _route_for_mechanism_debt(write_scope: Path, routing: Dict[str, Any]) -> Dic
 
 def _next_role_from_routing(write_scope: Path, current_role: str) -> Dict[str, Any]:
     if current_role == "investigator":
-        return {"role": "distiller", "terminal": False, "handoff": write_scope / "distiller_handoff.json"}
+        return {"role": "auditor", "terminal": False, "handoff": write_scope / "auditor_handoff.json"}
     if current_role == "dataset_scout":
         return {"role": "distiller", "terminal": False, "handoff": write_scope / "scout_decision.json"}
-    if current_role == "dataset_constructor":
-        return {"role": "distiller", "terminal": False, "handoff": write_scope / "constructor_handoff.json"}
+    if current_role == "dataset_fetcher":
+        return {"role": "investigator", "terminal": False, "handoff": write_scope / "fetcher_handoff.json"}
+    if current_role == "auditor":
+        return {"role": "distiller", "terminal": False, "handoff": write_scope / "distiller_handoff.json"}
     if current_role == "synthesis_distiller":
         return {"role": "", "terminal": True, "handoff": None}
 
@@ -566,25 +595,19 @@ def _next_role_from_routing(write_scope: Path, current_role: str) -> Dict[str, A
         or ""
     )
     route_role = _route_role_from_token(explicit_route)
-    requested_final = (
-        _truthy(routing.get("terminal"))
-        or _truthy(routing.get("analysis_complete_for_workflow_demonstration"))
-        or route_role in {"terminal", "synthesis_distiller"}
-        or "final_synthesis" in decision_text
-        or "synthesis_distiller" in decision_text
-    )
-    if requested_final and _mechanism_debt_blocks_final_synthesis(routing):
-        return _route_for_mechanism_debt(write_scope, routing)
     if routing.get("terminal") or routing.get("analysis_complete_for_workflow_demonstration") or route_role == "terminal":
         return {"role": "", "terminal": True, "handoff": None, "routing": routing}
     if route_role == "synthesis_distiller":
         return {"role": "synthesis_distiller", "terminal": False, "handoff": write_scope / "routing_decision.json", "routing": routing}
-    if route_role == "dataset_constructor":
-        handoff = routing_handoff or write_scope / "dataset_constructor_handoff.json"
-        return {"role": "dataset_constructor", "terminal": False, "handoff": handoff, "routing": routing}
+    if route_role == "dataset_fetcher":
+        handoff = routing_handoff or write_scope / "dataset_fetcher_handoff.json"
+        return {"role": "dataset_fetcher", "terminal": False, "handoff": handoff, "routing": routing}
     if route_role == "dataset_scout":
         handoff = routing_handoff or write_scope / "dataset_scout_handoff.json"
         return {"role": "dataset_scout", "terminal": False, "handoff": handoff, "routing": routing}
+    if route_role == "auditor":
+        handoff = routing_handoff or write_scope / "auditor_handoff.json"
+        return {"role": "auditor", "terminal": False, "handoff": handoff, "routing": routing}
     if route_role == "investigator":
         handoff = routing_handoff or write_scope / "investigator_handoff.json"
         return {"role": "investigator", "terminal": False, "handoff": handoff, "routing": routing}
@@ -592,12 +615,15 @@ def _next_role_from_routing(write_scope: Path, current_role: str) -> Dict[str, A
     # Compatibility fallback for older handoffs that only encode the route in prose.
     if "final_synthesis" in decision_text or "synthesis_distiller" in decision_text:
         return {"role": "synthesis_distiller", "terminal": False, "handoff": write_scope / "routing_decision.json", "routing": routing}
-    if "dataset_constructor" in decision_text:
-        handoff = routing_handoff or write_scope / "dataset_constructor_handoff.json"
-        return {"role": "dataset_constructor", "terminal": False, "handoff": handoff, "routing": routing}
+    if "dataset_fetcher" in decision_text or "dataset_constructor" in decision_text:
+        handoff = routing_handoff or write_scope / "dataset_fetcher_handoff.json"
+        return {"role": "dataset_fetcher", "terminal": False, "handoff": handoff, "routing": routing}
     if "dataset_scout" in decision_text:
         handoff = routing_handoff or write_scope / "dataset_scout_handoff.json"
         return {"role": "dataset_scout", "terminal": False, "handoff": handoff, "routing": routing}
+    if "auditor" in decision_text:
+        handoff = routing_handoff or write_scope / "auditor_handoff.json"
+        return {"role": "auditor", "terminal": False, "handoff": handoff, "routing": routing}
     return {"role": "investigator", "terminal": False, "handoff": write_scope / "investigator_handoff.json", "routing": routing}
 
 
@@ -641,11 +667,11 @@ def run_agent_session(config: SpectraAgentSessionConfig) -> Dict[str, Any]:
         round_index = int(resume_start["round"])
         handoff_path = resume_start.get("handoff")
     else:
-        role = "investigator"
+        role = "distiller"
         round_index = 1
         handoff_path = None
     role_history: List[Dict[str, Any]] = list(session_state.get("role_history") or [])
-    role_counters: Dict[str, int] = dict(session_state.get("role_counters") or {"investigator": 1})
+    role_counters: Dict[str, int] = dict(session_state.get("role_counters") or {"distiller": 1})
     iterations = 0
     round_limit = _iteration_limit(config.max_rounds)
     while round_limit is None or iterations < round_limit:

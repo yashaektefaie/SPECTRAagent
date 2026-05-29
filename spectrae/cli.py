@@ -542,7 +542,7 @@ def _build_split_construction_prompt(
         [
             "You are running focused SPECTRA split construction.",
             "",
-            "This is not a broad model-generalizability audit. Do not run the Investigator/Distiller loop, do not extract paper claims, and do not route to Dataset Scout or Dataset Constructor.",
+            "This is not a broad model-generalizability audit. Do not run the Distiller/Investigator/Auditor loop, do not extract paper claims, and do not route to Dataset Scout or Dataset Fetcher.",
             "",
             "User question:",
             question,
