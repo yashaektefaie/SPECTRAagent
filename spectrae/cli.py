@@ -234,7 +234,7 @@ def _add_install_codex_skill_parser(subparsers: argparse._SubParsersAction) -> N
 def _add_agent_parser(subparsers: argparse._SubParsersAction) -> None:
     parser = subparsers.add_parser(
         "agent",
-        help="Prepare or run an autonomous /spectra multi-role audit session.",
+        help="Prepare or launch a single-controller /spectra audit session.",
     )
     nested = parser.add_subparsers(dest="agent_command", required=True)
 
@@ -257,24 +257,12 @@ def _add_agent_parser(subparsers: argparse._SubParsersAction) -> None:
         )
         common.add_argument("--out", "--output-root", dest="output_root", required=True)
         common.add_argument("--client-capability", action="append", default=[])
-        common.add_argument(
-            "--max-rounds",
-            type=int,
-            default=8,
-            help="Maximum role executions before stopping. Use 0 with --execute for no fixed cap.",
-        )
-        common.add_argument(
-            "--no-max-rounds",
-            action="store_true",
-            help="Run until the terminal gate, role failure, or user interruption instead of a fixed round cap.",
-        )
-
     prepare_parser = nested.add_parser(
         "prepare",
-        help="Create session state and role prompts without executing any agent.",
+        help="Create a single controller prompt without executing any agent.",
     )
     add_common_arguments(prepare_parser)
-    prepare_parser.set_defaults(func=_prepare_agent_session)
+    prepare_parser.set_defaults(func=_prepare_controller_session_cli)
 
     run_parser = nested.add_parser(
         "run",
@@ -285,21 +273,16 @@ def _add_agent_parser(subparsers: argparse._SubParsersAction) -> None:
         "--agent-command-template",
         default="",
         help=(
-            "Shell command template used for each role. Available fields: "
+            "Shell command template used for the controller process. Available fields: "
             "{prompt_path}, {write_scope}, {role}, {round}."
         ),
     )
     run_parser.add_argument(
         "--execute",
         action="store_true",
-        help="Actually execute role commands. Without this flag, run prepares a dry-run session only.",
+        help="Actually launch the controller command. Without this flag, run prepares a dry-run session only.",
     )
-    run_parser.add_argument(
-        "--resume",
-        action="store_true",
-        help="Continue an existing session_state.json under --out instead of preparing a fresh session.",
-    )
-    run_parser.set_defaults(func=_run_agent_session_cli)
+    run_parser.set_defaults(func=_run_controller_session_cli)
 
 
 def _add_ask_parser(subparsers: argparse._SubParsersAction) -> None:
@@ -352,18 +335,12 @@ def _add_ask_parser(subparsers: argparse._SubParsersAction) -> None:
     parser.add_argument(
         "--agent-command-template",
         default="",
-        help="Advanced override for the role runner command. Defaults to codex exec.",
+        help="Advanced override for the controller command. Defaults to codex exec.",
     )
     parser.add_argument(
         "--dry-run",
         action="store_true",
         help="Prepare prompts only. By default, ask executes the autonomous run.",
-    )
-    parser.add_argument(
-        "--max-rounds",
-        type=int,
-        default=0,
-        help="Maximum role executions. Default 0 means no fixed cap.",
     )
     parser.add_argument(
         "--allow-prior-memory",
@@ -721,9 +698,18 @@ def _build_default_constraints(args: argparse.Namespace, output_root: str) -> st
         "Use the provided model/paper/dataset paths, this session root, and public/local resources acquired during this session when needed.",
         "Do not use /tmp; use the session root, SPECTRA_SCRATCH_ROOT, or another explicit scratch directory for caches, downloads, generated datasets, and model outputs.",
         "Do not use scripted applicability runners or prior generated reports/results as evidence.",
-        "Use a cheap-first behavioral runtime policy: start with a bounded leakage-aware slice, simple controls, cached/chunked representations, and non-iterative probes or deterministic baselines before launching expensive optimized classifiers, fine-tuning, all-pairs graphs, or full-dataset runs.",
+        "Use a cheap-first behavioral runtime policy: start with a bounded leakage-aware slice, simple controls, cached/chunked representations, and non-iterative probes or deterministic baselines before launching expensive optimized classifiers, fine-tuning, all-pairs graphs, or full-dataset runs. Treat tiny target-model slices, such as about 10 examples per split, as pilot-only; if a pilot shows degradation, expand the same frozen axis before final synthesis.",
+        "When a prospective axis shows no pattern, record it as a negative result and use observed successes/failures to discover new prospective similarity definitions; freeze and confirm any outcome-informed axis on fresh or expanded target-model evaluations before making a claim.",
         "If a heavier solver, model fit, or full-scale computation is needed, declare the time/resource budget, fallback criterion, and cheaper fallback before launching; after one runtime failure or timeout, switch to the fallback rather than retrying the same slow method.",
-        "Decide autonomously what to inspect and run, and continue until a bounded applicability recommendation is supported or a concrete blocker is documented.",
+        "Prefer a single persistent SPECTRA loop: construct/load the dataset once, maintain one reusable candidate/prospective-feature table, run or load target-model performance once for a useful evaluation pool, keep one axis ledger, and iterate over prospective axes from the same state.",
+        "Prefer manifest-first expansion before fresh external search: collect candidate metadata, compute cheap prospective features, deduplicate or cluster near-duplicates, then sample balanced split levels. Avoid blind rejection sampling against external APIs when a manifest or candidate table can be built first.",
+        "When target-model evaluation is needed repeatedly, keep a persistent evaluator/model process loaded when feasible and feed it queued evaluation pools instead of launching separate scripts that reload the model for each axis or confirmation set.",
+        "Do not stop because a weak bounded checkpoint, coarse localized signal, or no-axis search-budget summary is available. Negative, weak, non-monotonic, non-explanatory, coarse, localized, or shape-unstable axes should trigger outcome-informed prospective-axis discovery or densification of the same live axis, then frozen-axis confirmation.",
+        "Distinguish split validity from claim closure. In broad generalizability mode, a valid negative or non-explanatory SPC is not terminal merely because the split contract is valid; it only closes an explicitly axis-specific question. Otherwise, ledger it as a negative result and continue to the next prospective axis.",
+        "A promising axis is not complete after one coarse confirmation. Densify the same frozen SPC by increasing split resolution, adding examples per level, and sampling sparse or ambiguous regions until the trend shape is stable or the axis is invalidated.",
+        "Before final synthesis, apply a closure gate: the primary axis must be prospective, frozen before target scoring, measured in the intended order, adequately powered, densified enough to characterize monotone/threshold/U-shaped/localized/absent behavior, stable under expansion or explicitly reported as unstable, not materially explained by known confounders, and supported by fixed baselines when labels exist.",
+        "If success/failure analysis identifies an executable prospective follow-up hypothesis, that live hypothesis blocks final synthesis until it is frozen and confirmed, the user requests a checkpoint, or a concrete hard blocker prevents execution.",
+        "Decide autonomously what to inspect and run, and continue until the claim-closure gate passes, the user explicitly asks for a checkpoint, or a concrete hard blocker prevents further execution.",
     ]
     if args.allow_prior_memory:
         parts.append(
@@ -759,7 +745,7 @@ def _build_split_default_constraints(args: argparse.Namespace, output_root: str)
 
 
 def _ask_agent_session_cli(args: argparse.Namespace) -> int:
-    from .agent_orchestrator import SpectraAgentSessionConfig, run_agent_session
+    from .controller_session import SpectraControllerSessionConfig, run_controller_session
 
     question = (args.question_opt or " ".join(args.question_words)).strip()
     if not question:
@@ -803,7 +789,7 @@ def _ask_agent_session_cli(args: argparse.Namespace) -> int:
         output_root,
         [args.model_paper, args.model_artifact, args.dataset],
     )
-    config = SpectraAgentSessionConfig(
+    config = SpectraControllerSessionConfig(
         question=question,
         model_paper=model_paper,
         model_description=model_description,
@@ -813,12 +799,10 @@ def _ask_agent_session_cli(args: argparse.Namespace) -> int:
         audit_scope=args.audit_scope,
         output_root=output_root,
         client_capabilities=["filesystem", "network", "autonomous_runner"],
-        max_rounds=None if args.max_rounds == 0 else args.max_rounds,
         agent_command_template=command_template,
         dry_run=args.dry_run,
-        resume=False,
     )
-    result = run_agent_session(config)
+    result = run_controller_session(config)
     result["human_friendly_invocation"] = True
     result["ask_mode"] = ask_mode
     result["inferred_domain"] = domain
@@ -827,10 +811,10 @@ def _ask_agent_session_cli(args: argparse.Namespace) -> int:
     return 0
 
 
-def _agent_config_from_args(args: argparse.Namespace, dry_run: bool):
-    from .agent_orchestrator import SpectraAgentSessionConfig
+def _controller_config_from_args(args: argparse.Namespace, dry_run: bool):
+    from .controller_session import SpectraControllerSessionConfig
 
-    return SpectraAgentSessionConfig(
+    return SpectraControllerSessionConfig(
         question=args.question,
         model_paper=args.model_paper,
         model_description=args.model_description,
@@ -840,25 +824,23 @@ def _agent_config_from_args(args: argparse.Namespace, dry_run: bool):
         audit_scope=args.audit_scope,
         output_root=args.output_root,
         client_capabilities=args.client_capability,
-        max_rounds=None if getattr(args, "no_max_rounds", False) or args.max_rounds == 0 else args.max_rounds,
         agent_command_template=getattr(args, "agent_command_template", ""),
         dry_run=dry_run,
-        resume=getattr(args, "resume", False),
     )
 
 
-def _prepare_agent_session(args: argparse.Namespace) -> int:
-    from .agent_orchestrator import prepare_agent_session
+def _prepare_controller_session_cli(args: argparse.Namespace) -> int:
+    from .controller_session import prepare_controller_session
 
-    result = prepare_agent_session(_agent_config_from_args(args, dry_run=True))
+    result = prepare_controller_session(_controller_config_from_args(args, dry_run=True))
     print(json.dumps(result, indent=2, sort_keys=True))
     return 0
 
 
-def _run_agent_session_cli(args: argparse.Namespace) -> int:
-    from .agent_orchestrator import run_agent_session
+def _run_controller_session_cli(args: argparse.Namespace) -> int:
+    from .controller_session import run_controller_session
 
-    result = run_agent_session(_agent_config_from_args(args, dry_run=not args.execute))
+    result = run_controller_session(_controller_config_from_args(args, dry_run=not args.execute))
     print(json.dumps(result, indent=2, sort_keys=True))
     return 0
 

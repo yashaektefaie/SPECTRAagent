@@ -27,7 +27,7 @@ from spectrae.scientific_skill_mcp import (
 
 
 class ScientificSkillMcpIterativeTests(unittest.TestCase):
-    def test_start_spectra_audit_session_builds_multi_agent_spawn_plan(self):
+    def test_start_spectra_audit_session_builds_single_controller_plan(self):
         result = start_spectra_audit_session(
             question="Does Caduceus generalize to promoter-like cCRE negatives?",
             model_paper="Caduceus model paper text or PDF path",
@@ -40,19 +40,21 @@ class ScientificSkillMcpIterativeTests(unittest.TestCase):
 
         self.assertEqual(result["mode"], "spectra_audit_session")
         self.assertEqual(result["status"], "ready")
-        self.assertEqual(result["orchestration_mode"], "multi_agent_delegation")
-        self.assertTrue(result["supports"]["subagent_delegation"])
+        self.assertEqual(result["orchestration_mode"], "single_codex_controller_session")
+        self.assertFalse(result["supports"]["subagent_delegation"])
         self.assertTrue(result["spawn_plan"])
+        self.assertEqual([item["role"] for item in result["spawn_plan"]], ["controller"])
+        self.assertIn("controller", result["phase_graph"])
         self.assertIn("investigator", result["role_graph"])
         self.assertIn("distiller", result["role_graph"])
-        self.assertIn("dataset_constructor", result["role_graph"])
+        self.assertIn("dataset_fetcher", result["role_graph"])
         self.assertIn("synthesis_distiller", result["role_graph"])
         self.assertIn("synthesize_spectra_generalizability_finding", result["terminal_gate"]["required_tool"])
-        self.assertTrue(any("Dataset Constructor" in step for step in result["routing_policy"]))
+        self.assertTrue(any("internal controller phases" in step for step in result["routing_policy"]))
         self.assertIn("paper_ready_spectra_finding.md", result["role_graph"]["synthesis_distiller"]["writes"])
         self.assertFalse(result["broad_question_behavior"]["enabled"])
 
-    def test_start_spectra_audit_session_has_sequential_fallback(self):
+    def test_start_spectra_audit_session_uses_controller_for_single_agent_clients(self):
         result = start_spectra_audit_session(
             question="Use /spectra to assess the generalizability of this model.",
             model_paper="paper.pdf",
@@ -60,10 +62,11 @@ class ScientificSkillMcpIterativeTests(unittest.TestCase):
             client_capabilities=["filesystem"],
         )
 
-        self.assertEqual(result["orchestration_mode"], "sequential_role_emulation")
-        self.assertFalse(result["spawn_plan"])
+        self.assertEqual(result["orchestration_mode"], "single_codex_controller_session")
+        self.assertEqual([item["role"] for item in result["spawn_plan"]], ["controller"])
         self.assertTrue(result["sequential_fallback_plan"])
         self.assertFalse(result["supports"]["subagent_delegation"])
+        self.assertTrue(result["supports"]["single_controller_loop"])
         self.assertTrue(result["broad_question_behavior"]["enabled"])
         self.assertEqual(result["shared_context"]["question_mode"], "broad_model_generalizability_audit")
         self.assertEqual(result["shared_context"]["audit_scope"], "paper_claim_audit")
@@ -93,8 +96,8 @@ class ScientificSkillMcpIterativeTests(unittest.TestCase):
         )
         self.assertEqual(result["shared_context"]["audit_scope"], "beyond_paper_discovery")
         self.assertTrue(result["broad_question_behavior"]["beyond_paper_steps"])
-        self.assertIn("context, not as the boundary", result["role_graph"]["investigator"]["prompt"])
-        self.assertIn("external", result["role_graph"]["distiller"]["prompt"])
+        self.assertIn("do not restrict", result["broad_question_behavior"]["paper_context_policy"])
+        self.assertTrue(result["broad_question_behavior"]["beyond_paper_steps"])
 
     def test_start_spectra_audit_session_broad_detector_allows_named_model(self):
         result = start_spectra_audit_session(

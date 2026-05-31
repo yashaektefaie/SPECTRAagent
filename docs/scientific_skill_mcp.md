@@ -128,18 +128,19 @@ Tools:
 ## Recommended Agent Flow
 
 When a user gives `/spectra` a scientific question and a model paper, start
-with `start_spectra_audit_session`. This returns the role graph, artifact tree,
-routing policy, and spawn plan for a SPECTRA audit session. Clients with
-subagent/delegation support should launch the Investigator and Distiller roles
-from `spawn_plan`; clients without subagents should execute the same roles
-sequentially using `sequential_fallback_plan`.
+with `start_spectra_audit_session`. This returns the single-controller prompt,
+artifact tree, quality gates, and internal phase contract for a SPECTRA audit
+session. Distiller, Investigator, Dataset Scout, Dataset Fetcher, Auditor, and
+synthesis are phases inside the controller session, not separately routed
+agents.
 
 For the autonomous product path, use `prepare_spectra_audit_session` to create a
-session directory and initial role work order, or `run_spectra_audit_session` to
-let a configurable host-agent command execute each role. `run_spectra_audit_session`
-is safe by default: it only prepares the session unless `execute_roles=true` and
+session directory and one controller prompt, or `run_spectra_audit_session` to
+let a configurable host-agent command launch that controller. `run_spectra_audit_session`
+is safe by default: it only prepares the session unless `execute_controller=true` and
 `agent_command_template` is supplied. The command template can use
-`{prompt_path}`, `{write_scope}`, `{role}`, and `{round}`.
+`{prompt_path}`, `{write_scope}`, `{role}`, and `{round}`; `role` is always
+`controller`.
 
 Example invocation:
 
@@ -156,10 +157,10 @@ Example invocation:
 ```
 
 For broad questions like this, the session launcher marks the run as
-`broad_model_generalizability_audit`. The Investigator must first extract the
-model paper's stated and implicit generalization claims, then let experiments
-and Distiller critique narrow the live hypotheses. Users do not need to specify
-similarity metrics, novelty axes, or the multi-agent roles.
+`broad_model_generalizability_audit`. The controller first extracts the model
+paper's stated and implicit generalization claims, then lets experiments and
+internal critique narrow the live hypotheses. Users do not need to specify
+similarity metrics, novelty axes, or separate roles.
 
 When the desired behavior is discovery beyond the paper, set
 `audit_scope="beyond_paper_discovery"` or make the question explicit:
@@ -179,10 +180,9 @@ audit to the paper's benchmarks. The Investigator should search for public/local
 datasets or construct a dataset when needed to test a scientifically important
 external generalization axis.
 
-The MCP server does not force a host application to spawn workers. It supplies
-the prompts and routing contract. The host agent is responsible for spawning
-subagents when its environment supports that, or for running the same roles in
-sequence when it does not.
+The MCP server does not ask the host application to spawn workers or run a role
+router. It supplies one controller prompt and the gates that controller should
+use while it keeps thinking and iterating.
 
 CLI equivalents:
 

@@ -10,9 +10,11 @@ performance curve (SPC), split or similarity-bin statistics, baseline behavior,
 target-model behavior, and a validity decision.
 
 When the user supplies a generalization question and a model paper/reference,
-call `start_spectra_audit_session` first. The returned contract defines these
-roles:
+call `start_spectra_audit_session` first. The autonomous execution mode is a
+single persistent SPECTRA Controller that treats these roles as phases/functions
+inside one loop:
 
+- SPECTRA Controller
 - SPECTRA Distiller
 - SPECTRA Investigator
 - SPECTRA Dataset Scout
@@ -20,10 +22,10 @@ roles:
 - SPECTRA Auditor
 - final SPECTRA Synthesis Distiller
 
-Clients with subagent support should spawn the roles directed by the contract.
-Single-agent clients should execute the same role passes sequentially and
-persist the same artifacts. Do not execute roles implicitly just because a
-session was prepared.
+Do not run a Python role router for autonomous audits. Use one controller
+process so dataset construction, target-model results, axis discovery,
+validation, and auditing share state without repeated host-agent launches. Do
+not execute anything implicitly just because a session was prepared.
 
 ## Role Contract
 
@@ -65,6 +67,16 @@ test-label leakage, tiny splits, non-decreasing similarity, unstable baselines,
 confounding, metric-direction errors, and post-hoc axis selection. Mark analyses
 as valid, weak, invalid, or exploratory only.
 
+SPECTRA Controller:
+Keep the loop state in one process. Construct or load the dataset once, retain
+inputs, labels, metadata, and prospective features, and reuse the SPECTRA-ready
+table. Run or load target-model performance once for a useful evaluation pool,
+then reuse that table to score candidate axes. Maintain an axis ledger with
+positive, weak, negative, invalid, and exploratory axes. If an axis is weak,
+negative, non-monotonic, or non-explanatory, investigate the model successes and
+failures to propose candidate prospective axes, freeze one, and confirm it
+before making a claim.
+
 ## Required Workflow
 
 1. Identify the scientific unit, dataset, prediction target, model, task, and
@@ -85,12 +97,28 @@ as valid, weak, invalid, or exploratory only.
     explicitly labeled exploratory.
 11. Send the SPC, split statistics, baseline results, and model results to the
     Auditor.
-12. Return a final answer that states whether the SPC is valid, weak, invalid,
-    or exploratory and what claim boundary follows.
+12. If the result is weak, invalid, exploratory, negative, non-monotonic, or
+    non-explanatory, route back into prospective-axis discovery rather than
+    stopping at a bounded checkpoint.
+13. Return a final answer only when a claim-valid explanatory/degradation SPC is
+    supported, the user explicitly asks to stop at a checkpoint, or a hard
+    external blocker prevents further execution. In broad generalizability mode,
+    a split-valid negative or non-explanatory SPC is not terminal; it is a
+    ledgered negative result that must route back into prospective-axis
+    discovery.
 
 ## Validity Rules
 
 An SPC can be `valid`, `weak`, `invalid`, or `exploratory`.
+
+Distinguish split validity from claim closure. A split-valid SPC has a
+prospective axis, frozen split membership, decreasing measured similarity, and
+adequate evaluation. A claim-valid SPC additionally shows an interpretable
+degradation, threshold, localized failure, or robust boundary that answers the
+user's generalizability question. For broad generalizability audits, only a
+claim-valid explanatory/degradation SPC can close the loop. A valid negative or
+non-explanatory SPC only closes an explicitly axis-specific question, such as
+"test sequence-cluster proximity"; otherwise it seeds the next axis.
 
 Mark it invalid or exploratory if:
 
@@ -103,9 +131,38 @@ Mark it invalid or exploratory if:
 - the chosen axis was selected post-hoc because it correlated with model error;
 - confounders explain the curve better than the declared axis.
 
-Failed or non-monotonic prospective axes are findings. Report them directly and
-either try the next prospective axis or state what data/features are missing.
-Do not replace a failed prospective axis with a circular post-hoc error metric.
+Failed or non-monotonic prospective axes are findings. Report them directly,
+then use already-computed successes/failures to search for the next prospective
+axis when possible. Do not stop merely because there is a weak bounded
+checkpoint or because no valid axis was found after a search budget. Do not
+replace a failed prospective axis with a circular post-hoc error metric.
+
+A promising axis is not complete after one coarse confirmation. If an axis has a
+monotone, localized, or practically meaningful signal, continue on that same
+frozen prospective axis first: increase split resolution, add examples per
+level, and sample sparse or ambiguous regions until the curve shape is stable or
+the axis is invalidated. Three split levels are a minimum construction check,
+not sufficient closure for a continuous or localized signal.
+
+Before final synthesis, apply a closure gate. The primary axis must be
+prospective, frozen before target scoring, measured in the intended order,
+adequately powered, densified enough to characterize trend shape, stable under
+expansion or explicitly reported as unstable, not materially explained by known
+confounders, and supported by fixed baselines when labels exist. A coarse,
+localized, weak, source-confounded, proxy-only, or shape-unstable curve does not
+pass closure merely because it has three split levels and a visible signal.
+In broad generalizability mode, a valid negative or non-explanatory SPC also
+does not pass closure merely because the split contract is valid. If
+success/failure analysis identifies an executable prospective follow-up
+hypothesis, that live hypothesis blocks final synthesis until it is frozen and
+confirmed, the user requests a checkpoint, or a concrete hard blocker prevents
+execution.
+
+Maintain one reusable candidate/prospective-feature table for the session.
+Prefer manifest-first expansion, deduplicate or cluster near-duplicates before
+expensive evaluation, avoid blind rejection sampling against external APIs when
+a candidate table can be built first, and keep a persistent target-model
+evaluator loaded when repeated evaluation pools are needed and feasible.
 
 ## Required Artifacts
 
@@ -144,7 +201,8 @@ Do not replace a failed prospective axis with a circular post-hoc error metric.
 11. `score_similarity_hypothesis_curve`
 12. `validate_split_stats`
 13. Auditor review through the role contract
-14. final synthesis only after the validity decision is clear
+14. final synthesis only after a claim-valid explanatory/degradation SPC,
+    explicit user checkpoint request, or hard external blocker
 
 ## Reporting
 

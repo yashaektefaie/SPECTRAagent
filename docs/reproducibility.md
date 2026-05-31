@@ -41,7 +41,7 @@ spectra ask "construct SPECTRA splits for this molecular dataset" \
 Unit tests:
 
 ```bash
-python -m unittest tests.test_agent_orchestrator tests.test_cli_ask_routing
+python -m unittest tests.test_controller_session tests.test_cli_ask_routing
 ```
 
 ## Expected Routing
