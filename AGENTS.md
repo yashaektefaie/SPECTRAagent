@@ -79,6 +79,43 @@ Keep a compact state object, an axis ledger, commands, dataset artifacts when
 constructed, and target-model results. Avoid large handoff/report artifacts
 unless they directly support the final valid SPC or a hard blocker.
 
+## Plausible-Axis Confirmation Loop
+
+When SPECTRA finds a plausible axis from existing evaluated evidence, prior
+run artifacts, pilots, or outcome-informed success/failure analysis, that axis
+is not claim-valid yet. Treat it as a live hypothesis and execute this required
+state transition:
+
+1. Record the source of the hypothesis in the axis ledger as predeclared,
+   pilot-derived, prior-artifact-derived, or outcome-informed exploratory.
+2. Freeze the axis definition before any new target-model scoring: feature(s),
+   direction, thresholds or level-construction rule, metric, unit of analysis,
+   inclusion/exclusion criteria, deduplication rule, sample-size/power target,
+   confound controls, and success/failure criteria.
+3. Construct or select a confirmation set that is new evidence relative to the
+   discovery evidence whenever feasible. Exclude prior target IDs, exact inputs,
+   near-duplicates, or leakage-linked records unless the claim explicitly allows
+   within-pool expansion and the report labels that boundary.
+4. Validate the frozen split on the confirmation set before interpreting model
+   metrics: nontrivial levels, measured similarity or axis order, adequate and
+   balanced counts, duplicate/cluster diagnostics, label/baseline availability,
+   and confound coverage.
+5. Run or load the target model only after the confirmation panel is frozen.
+   Reuse a persistent evaluator when feasible and score all predeclared levels
+   in one run rather than iterating target-model calls per axis.
+6. Audit the confirmation result against the frozen success criteria. If the
+   confirmation supports the degradation/boundary after controls, then and only
+   then may the axis pass claim closure. If it fails, mark the axis downgraded
+   or not confirmed, preserve it as a negative result, and route back to
+   prospective-axis discovery using the combined discovery and confirmation
+   successes/failures.
+
+Do not stop at the moment a plausible axis is found in existing evidence. In
+broad generalizability mode, stop only after a plausible axis has been frozen,
+tested on new or explicitly adequate confirmation evidence, and still supports
+the claim; or after the user asks for a checkpoint; or after a concrete hard
+blocker prevents confirmation.
+
 ## Required Workflow
 
 1. The Distiller maps the user question to a model, dataset, scientific unit,
@@ -99,7 +136,8 @@ unless they directly support the final valid SPC or a hard blocker.
    stability, confounding, metric direction, and post-hoc axis selection.
 8. Weak, invalid, exploratory, negative, or non-explanatory results route back
    into prospective-axis discovery. Use already-computed successes/failures to
-   propose candidate axes, freeze one, and confirm it before making a claim.
+   propose candidate axes, freeze one, and confirm it on new or explicitly
+   adequate evidence before making a claim.
 9. The Distiller or Controller returns a final answer only when a claim-valid
    explanatory/degradation SPC is supported, the user explicitly asks for a
    checkpoint, or a hard external blocker prevents further execution. In broad
@@ -141,6 +179,30 @@ valid axis was found after a search budget. Do not replace a failed prospective
 axis with a circular post-hoc error metric, and do not treat outcome-informed
 similarity discovery as confirmatory until the axis is frozen and re-evaluated.
 
+After any failed confirmation, non-explanatory SPC, or invalidated live axis,
+run all-scored-evidence axis discovery before considering synthesis. Use every
+target-model-scored example accumulated in the session, including prior
+successes, failures, weak curves, and failed confirmation panels. Search for
+prospective features or feature composites that explain the good-versus-bad
+target-model behavior consistently across the accumulated evidence. Reject axes
+that reverse direction across meaningful evidence slices, depend on
+cherry-picked panels, require reference answers, or belong to a family already
+falsified by fresh confirmation. Do not require each historical panel to have
+been purpose-built for the new axis or to meet the final effect threshold; those
+panels are discovery evidence, not confirmation evidence. The output of this
+step is the best all-evidence-consistent prospective hypothesis and the data
+needed to test it.
+
+If the current evaluated table or unused candidate pool cannot validly confirm
+the best all-evidence-consistent hypothesis, that is a dataset-construction
+route, not a stopping condition. Freeze the hypothesis, then search for, fetch,
+or construct new data that spans the frozen axis with adequate levels and
+controls. If no current prospective feature explains the accumulated
+successes/failures, derive or acquire additional prospective features such as
+homology/family distance, MSA/search depth, fold/topology class, provenance,
+taxonomy, disorder/membrane annotations, or measured pretraining proximity, then
+repeat all-scored-evidence discovery.
+
 A promising axis is not complete after one coarse confirmation. If an axis has a
 monotone, localized, or practically meaningful signal, continue on that same
 frozen prospective axis first: increase split resolution, add examples per
@@ -157,10 +219,10 @@ localized, weak, source-confounded, proxy-only, or shape-unstable curve does not
 pass closure merely because it has three split levels and a visible signal.
 In broad generalizability mode, a valid negative or non-explanatory SPC also
 does not pass closure merely because the split contract is valid. If
-success/failure analysis identifies an executable prospective follow-up
+all-scored-evidence success/failure analysis identifies a prospective follow-up
 hypothesis, that live hypothesis blocks final synthesis until it is frozen and
-confirmed, the user requests a checkpoint, or a concrete hard blocker prevents
-execution.
+confirmed. If the hypothesis is not confirmable in the current pool, construct
+or acquire data that can test it. Current-pool exhaustion is not a hard blocker.
 
 Maintain one reusable candidate/prospective-feature table for the session.
 Prefer manifest-first expansion, deduplicate or cluster near-duplicates before

@@ -423,9 +423,15 @@ def start_spectra_audit_session(
             "If a pilot shows monotone, localized, or practically meaningful degradation, expand the same frozen axis before final synthesis using the full eligible split or a predeclared stratified and length-balanced confirmation sample with a justified minimum per split.",
             "A promising axis is not complete after one coarse confirmation. Continue on the same frozen prospective axis first: increase split resolution, add examples per level, and focus extra samples around sparse, ambiguous, or rapidly changing regions until the trend shape is stable or the axis is invalidated.",
             "If a prospective axis shows no pattern, record it as a negative axis result, then inspect the already-computed successes and failures to discover candidate prospective similarity definitions. Any outcome-informed axis is exploratory until frozen and confirmed on fresh or expanded target-model evaluations.",
+            "If a plausible axis is found from existing evaluated evidence, prior run artifacts, pilots, or outcome-informed success/failure analysis, do not treat that discovery-pool support as closure. Freeze the axis definition, construct or select new or explicitly adequate confirmation evidence, validate the frozen split before scoring, then run the target model and audit the confirmation against predeclared success criteria.",
+            "A discovery-derived axis passes claim closure only if the frozen axis still supports the degradation, threshold, localized failure, or robust boundary on the confirmation evidence after controls. If confirmation fails, downgrade the axis, ledger the negative confirmation, merge those successes/failures into the evidence table, and continue prospective-axis discovery.",
+            "After any failed confirmation, invalidated axis, weak axis, negative SPC, or non-explanatory SPC, run all-scored-evidence axis discovery before synthesis: use every target-model-scored example accumulated in the session, including successes, failures, weak curves, and failed confirmation panels, to identify the best prospectively definable axis or feature composite that consistently explains degradation.",
+            "Reject axes that reverse direction across meaningful evidence slices, depend on cherry-picked panels, require reference answers, or belong to a feature family already falsified by fresh confirmation. Do not require each historical panel to have been purpose-built for the new axis or to meet the final effect threshold; those panels are discovery evidence, not confirmation evidence.",
+            "If the current evaluated table or unused candidate pool cannot validly confirm the best all-scored-evidence hypothesis, freeze the hypothesis and route to dataset construction or acquisition. Current-pool exhaustion is not a stopping condition; construct or fetch data that spans the frozen axis with adequate levels and controls.",
+            "If no current prospective feature explains the accumulated successes/failures, derive or acquire additional prospective features such as homology/family distance, MSA/search depth, fold/topology class, provenance, taxonomy, disorder/membrane annotations, or measured pretraining proximity, then repeat all-scored-evidence discovery.",
             "Distinguish split validity from claim closure. In broad generalizability mode, a valid negative or non-explanatory SPC is not terminal merely because the split contract is valid; it only closes an explicitly axis-specific question. Otherwise, ledger it as a negative result and continue to the next prospective axis.",
             "Before final synthesis, run a closure gate: the primary axis must be prospective, split-frozen before target scoring, measured in the intended order, adequately powered, densified enough to characterize monotone/threshold/U-shaped/localized/absent behavior, stable under expansion or explicitly reported as unstable, not materially explained by known confounders, and supported by fixed baselines when labels exist.",
-            "If success/failure analysis identifies an executable prospective follow-up hypothesis, that live hypothesis blocks final synthesis until it is frozen and confirmed, the user requests a checkpoint, or a concrete hard blocker prevents execution.",
+            "If all-scored-evidence success/failure analysis identifies a prospective follow-up hypothesis, that live hypothesis blocks final synthesis until it is frozen and confirmed. If the hypothesis is not confirmable in the current pool, construct or acquire data that can test it; current-pool exhaustion is not a hard blocker.",
             "Do not stop at a weak bounded checkpoint, a coarse localized signal, or at 'no valid axis found after a search budget'. Continue by refining data, constructing missing prospective features, densifying the live axis, or freezing and confirming the next scientifically plausible axis unless the user stops the run or a hard external blocker prevents execution.",
         ],
     }
@@ -474,7 +480,48 @@ def start_spectra_audit_session(
         "Only move to a new axis after the current axis is stable enough to "
         "interpret, invalidated, or clearly confounded. Confirm the same axis using "
         "the full existing evaluated pool, a predeclared expanded sample, or "
-        "fresh/independent data as required by the claim. If an axis is negative, "
+        "fresh/independent data as required by the claim. When a plausible axis "
+        "is discovered from existing evaluated evidence, prior run artifacts, "
+        "pilot slices, or outcome-informed success/failure analysis, treat it as "
+        "a live hypothesis rather than a claim-valid result. Before any new "
+        "target-model scoring, freeze the axis definition: feature or composite "
+        "features, direction, thresholds or level rule, metric, unit of analysis, "
+        "inclusion/exclusion criteria, duplicate or cluster policy, sample-size "
+        "target, controls, and success/failure criteria. Then construct or select "
+        "confirmation evidence that is new relative to discovery whenever feasible: "
+        "exclude prior target IDs, exact inputs, near-duplicates, or leakage-linked "
+        "records unless the explicit claim boundary allows within-pool expansion. "
+        "Validate the frozen confirmation split before scoring: nontrivial levels, "
+        "measured similarity or axis order, adequate and balanced counts, duplicate "
+        "diagnostics, baseline availability, and confound coverage. Run or load "
+        "the target model only after the confirmation panel is frozen. The axis can "
+        "pass claim closure only if it still supports the degradation, threshold, "
+        "localized failure, or robust boundary on this confirmation evidence after "
+        "controls. If confirmation fails, downgrade or mark the axis not confirmed, "
+        "preserve it as a negative result, merge the discovery and confirmation "
+        "successes/failures into the evidence table, and continue prospective-axis "
+        "discovery. After any failed confirmation, invalidated axis, weak axis, "
+        "negative SPC, or non-explanatory SPC, run all-scored-evidence axis "
+        "discovery before synthesis: use every target-model-scored example "
+        "accumulated in the session, including successes, failures, weak curves, "
+        "and failed confirmation panels, to identify the best prospectively "
+        "definable axis or feature composite that consistently explains "
+        "degradation. Reject axes that reverse direction across meaningful "
+        "evidence slices, depend on cherry-picked panels, require reference "
+        "answers, or belong to a feature family already falsified by fresh "
+        "confirmation. Do not require each historical panel to have been "
+        "purpose-built for the new axis or to meet the final effect threshold; "
+        "those panels are discovery evidence, not confirmation evidence. If the "
+        "current evaluated table or unused candidate pool cannot validly confirm "
+        "the best all-scored-evidence hypothesis, freeze the hypothesis and route "
+        "to Dataset Scout, Dataset Fetcher, or direct dataset construction. "
+        "Current-pool exhaustion is not a stopping condition. Construct or fetch "
+        "data that spans the frozen axis with adequate levels and controls. If no "
+        "current prospective feature explains the accumulated successes/failures, "
+        "derive or acquire additional prospective features such as homology/family "
+        "distance, MSA/search depth, fold/topology class, provenance, taxonomy, "
+        "disorder/membrane annotations, or measured pretraining proximity, then "
+        "repeat all-scored-evidence discovery. If an axis is negative, "
         "weak, non-monotonic, or non-explanatory, do "
         "not stop. Investigate the negative result by comparing examples where the "
         "target model did well with examples where it failed, identify prospective "
@@ -482,10 +529,12 @@ def start_spectra_audit_session(
         "mark them outcome-informed/exploratory, freeze one before confirmation, and "
         "continue. A valid negative or non-explanatory SPC is not terminal in broad "
         "generalizability mode merely because the split contract is valid; it only "
-        "closes an explicitly axis-specific question. If success/failure analysis "
-        "identifies an executable prospective follow-up hypothesis, that live "
-        "hypothesis blocks final synthesis until it is frozen and confirmed, the "
-        "user requests a checkpoint, or a concrete hard blocker prevents execution. "
+        "closes an explicitly axis-specific question. If all-scored-evidence "
+        "success/failure analysis identifies a prospective follow-up hypothesis, "
+        "that live hypothesis blocks final synthesis until it is frozen and "
+        "confirmed. If the hypothesis is not confirmable in the current pool, "
+        "construct or acquire data that can test it; current-pool exhaustion is "
+        "not a hard blocker. "
         "Do not use target-model errors, prediction/reference errors, held-"
         "out labels, or target confidence to define final split membership. Do not "
         "terminate merely because a weak bounded result exists, because a coarse "
@@ -497,7 +546,8 @@ def start_spectra_audit_session(
         "before target scoring, measured in the intended order across split levels, "
         "resolved enough to characterize trend shape, densified after any promising "
         "signal, stable under expansion or explicitly reported as unstable, not "
-        "materially explained by known confounders, confirmed if outcome-informed, "
+        "materially explained by known confounders, confirmed on new or explicitly "
+        "adequate evidence if discovered from existing results or outcome mining, "
         "and supported by fixed baselines when labels exist. In broad generalizability "
         "mode, claim closure also requires an interpretable degradation, threshold, "
         "localized failure, or robust boundary that answers the user question. A "
@@ -525,11 +575,20 @@ def start_spectra_audit_session(
         "pilot probes, report signal/no-signal triage separately from SPC validity. "
         "If the pilot shows monotone, localized, or practically meaningful "
         "degradation, route to an expanded evaluation of the same frozen axis before "
-        "claiming a valid SPC. If the pilot or confirmed axis has mixed successes and failures but the "
+        "claiming a valid SPC. If an axis is discovered from existing evaluated "
+        "evidence, prior run artifacts, pilot slices, or success/failure mining, "
+        "freeze the complete axis contract and construct or select new or explicitly "
+        "adequate confirmation evidence before any new target-model scoring; report "
+        "discovery-pool support separately from confirmation evidence. If the pilot "
+        "or confirmed axis has mixed successes and failures but the "
         "current axis is non-explanatory, mine prospective metadata, sequence, family, "
         "homology, topology, MSA/search-depth, or provenance features to propose a new "
         "candidate similarity definition; mark that step exploratory and require a "
-        "fresh frozen-axis confirmation before final claims. Return "
+        "fresh frozen-axis confirmation before final claims. Use all target-model-scored "
+        "examples accumulated in the session when proposing that new axis, reject "
+        "directions that reverse across meaningful evidence slices, and treat "
+        "current-pool insufficiency as a dataset-construction handoff rather than "
+        "an invalid axis. Return "
         "the spectral performance curve, split assignments, split statistics, "
         "similarity progression, baseline results, model results, exact commands, "
         "runtime blockers, and a validity self-assessment under "
@@ -559,11 +618,18 @@ def start_spectra_audit_session(
         "has no pattern, preserve it as a negative result and optionally route to "
         "exploratory similarity discovery over the observed successes/failures, but "
         "only to propose prospective axes that must be frozen and confirmed on fresh "
-        "or expanded samples. Weak bounded summaries are checkpoints, not terminal "
+        "or expanded samples. When existing evaluated evidence produces a plausible "
+        "axis, route to frozen-axis confirmation on new or explicitly adequate "
+        "evidence before synthesis; do not treat discovery-pool support as a final "
+        "valid SPC. Weak bounded summaries are checkpoints, not terminal "
         "answers, unless the user explicitly asks to stop. Do not add post-hoc failure-characterization tasks as "
         "final SPECTRA axes unless the user explicitly requested them; the default "
         "SPECTRA product is a claim-valid explanatory/degradation SPC or a concrete hard blocker. Continue negative "
-        "and weak axes by searching for the next prospective similarity hypothesis."
+        "and weak axes by searching for the next prospective similarity hypothesis. "
+        "After a failed confirmation, select the best prospective axis that is "
+        "consistent with all scored evidence seen so far; if the current pool cannot "
+        "confirm it, route to dataset scouting, fetching, or construction instead of "
+        "ending."
     ).format(root=root)
     scout_prompt = (
         "You are the SPECTRA Dataset Scout. Find datasets suitable for SPECTRA. "
@@ -595,10 +661,17 @@ def start_spectra_audit_session(
         "signal, require an expanded same-axis confirmation before any valid SPC "
         "claim. If a new axis was discovered from target-model successes or failures, "
         "mark it exploratory until the axis is frozen and confirmed on fresh or "
-        "expanded target-model evaluations. Mark each analysis as valid, weak, "
+        "expanded target-model evaluations. If a plausible axis was found from "
+        "existing evaluated evidence or prior artifacts, mark it discovery-only until "
+        "a frozen confirmation panel is selected, split-valid before scoring, scored "
+        "by the target model, and audited against predeclared success criteria. Mark "
+        "each analysis as valid, weak, "
         "invalid, or exploratory only. Weak, invalid, exploratory, non-monotonic, or "
         "non-explanatory decisions must route back for outcome-informed prospective "
-        "axis discovery rather than terminal bounded synthesis. In broad generalizability mode, "
+        "axis discovery rather than terminal bounded synthesis. That discovery must "
+        "use all scored examples accumulated in the session and must not discard a "
+        "consistent prospective hypothesis merely because the current unused pool is "
+        "too small; route to dataset construction or acquisition when needed. In broad generalizability mode, "
         "a valid negative or non-explanatory SPC is a ledgered negative result, not a "
         "terminal claim-valid SPC. Write an audit report, validity decision, "
         "detected risks, and required fixes under "
@@ -613,7 +686,10 @@ def start_spectra_audit_session(
         "further execution. Report which "
         "axes are valid, weak, invalid, or exploratory; whether train-test or "
         "pretraining-test similarity actually decreases; baseline behavior; target "
-        "model behavior; and what claim is supported. If the SPC is weak, invalid, "
+        "model behavior; and what claim is supported. If the claimed axis was found "
+        "from existing evidence, verify that the report includes a frozen-axis "
+        "confirmation on new or explicitly adequate evidence; otherwise route back "
+        "instead of writing terminal synthesis. If the SPC is weak, invalid, "
         "non-explanatory, negative, or only exploratory, say that directly and route back with "
         "specific axis-discovery or dataset-construction fixes instead of ending."
     ).format(root=root)
@@ -764,6 +840,7 @@ def start_spectra_audit_session(
                 "Construct or load the dataset once, then reuse the SPECTRA-ready table.",
                 "Run or load target-model performance once for a useful evaluation pool, then reuse those results for axis discovery.",
                 "When an axis is weak, negative, non-monotonic, or non-explanatory, investigate the successes/failures to propose the next prospective axis instead of stopping.",
+                "When existing evidence produces a plausible axis, freeze the full axis contract, build or select new/adequate confirmation evidence before scoring, and close only if the frozen axis still holds.",
                 "Return a final answer only for a claim-valid explanatory/degradation SPC, explicit user-requested checkpoint, or hard external blocker.",
             ],
         },
@@ -797,6 +874,8 @@ def start_spectra_audit_session(
             "The controller owns all routing decisions internally.",
             "Distiller, Investigator, Dataset Scout, Dataset Fetcher, Auditor, and synthesis are internal controller phases, not separate launched roles.",
             "Weak, invalid, exploratory, negative, or non-explanatory decisions continue into outcome-informed prospective-axis discovery and then frozen-axis confirmation.",
+            "A plausible axis found in existing evaluated evidence is not terminal until it is frozen and confirmed on new or explicitly adequate evidence under predeclared success criteria.",
+            "After failed confirmation, the controller must mine all target-model-scored examples accumulated so far and select the best prospectively definable axis that is consistent across the combined evidence; current-pool insufficiency routes to dataset scouting/fetching/construction, not synthesis.",
             "A weak bounded result and a 'no valid axis after search budget' result are not terminal stop conditions.",
             "Final synthesis is terminal only for a claim-valid explanatory/degradation SPC, an explicit user-requested checkpoint, or a hard external blocker.",
         ],
@@ -808,7 +887,11 @@ def start_spectra_audit_session(
                 "no valid axis has been found after a search budget",
                 "the current axis is negative, non-monotonic, or non-explanatory and target-model successes/failures have not been mined for new prospective axes",
                 "the current axis is split-valid but negative or non-explanatory in broad generalizability mode",
-                "an executable outcome-informed prospective follow-up hypothesis exists but has not been frozen and confirmed",
+                "all target-model-scored examples accumulated so far have not been used to discover the best prospectively definable follow-up axis after a failed confirmation",
+                "an all-scored-evidence prospective follow-up hypothesis exists but has not been frozen and confirmed",
+                "the current evaluated table or unused candidate pool cannot confirm the best all-scored-evidence hypothesis but dataset scouting, fetching, or construction has not been attempted",
+                "a plausible axis is supported only in existing discovery evidence and has not yet been frozen, confirmed on new or explicitly adequate evidence, and audited against predeclared success criteria",
+                "fresh or expanded confirmation of a previously plausible axis failed and the combined successes/failures have not been routed back into prospective-axis discovery",
                 "target-model errors or post-hoc prediction/reference comparisons define the axis or split membership",
                 "held-out labels define split membership",
                 "fewer than three nontrivial split levels are used when more are feasible",
@@ -945,6 +1028,7 @@ def start_generalizability_analysis(
             "When labels exist, run a simple fixed baseline across the same levels before evaluating the target model.",
             "Evaluate the target model only after the split contract is validated or explicitly labeled exploratory.",
             "Send Investigator artifacts to the Auditor for leakage, split-statistic, baseline, metric-direction, and confounding review.",
+            "If a plausible axis is found from existing evaluated evidence, prior artifacts, pilots, or success/failure mining, freeze the full axis contract and confirm it on new or explicitly adequate evidence before claiming closure.",
             "If the axis is weak, invalid, exploratory, negative, non-monotonic, or non-explanatory, inspect target-model successes/failures to discover the next prospective axis, freeze it, and confirm it.",
             "Return a final answer only for a claim-valid explanatory/degradation SPC, an explicit user-requested checkpoint, or a hard external blocker.",
         ],

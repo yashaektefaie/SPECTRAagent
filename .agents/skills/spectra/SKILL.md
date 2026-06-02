@@ -91,6 +91,40 @@ spectra-doctor
   use already-computed successes/failures to discover candidate prospective
   similarity definitions, but that discovery is exploratory until the axis is
   frozen and confirmed on fresh or expanded target-model evaluations.
+- After any failed confirmation, invalidated axis, weak axis, negative SPC, or
+  non-explanatory SPC, run all-scored-evidence axis discovery before synthesis:
+  use every target-model-scored example accumulated in the session, including
+  successes, failures, weak curves, and failed confirmation panels, to identify
+  the best prospectively definable axis or feature composite that consistently
+  explains degradation. Reject axes that reverse direction across meaningful
+  evidence slices, depend on cherry-picked panels, require reference answers, or
+  belong to a family already falsified by fresh confirmation. Do not require
+  each historical panel to have been purpose-built for the new axis or to meet
+  the final confirmation effect threshold; those panels are discovery evidence,
+  not claim closure.
+- When an axis is found from existing evaluated evidence, prior run artifacts,
+  pilot slices, or outcome-informed success/failure mining, treat it as a live
+  hypothesis, not a valid claim. First freeze the axis definition before any new
+  target-model scoring: feature(s), direction, thresholds or level rule, metric,
+  unit, inclusion/exclusion criteria, deduplication rule, sample-size target,
+  controls, and success criteria. Then construct or select a confirmation panel
+  that is new evidence relative to discovery whenever feasible, excluding prior
+  target IDs, exact inputs, near-duplicates, or leakage-linked records unless the
+  claim boundary explicitly allows within-pool expansion. Validate split order,
+  counts, duplicates, baselines, and confound coverage before scoring. Only if
+  the frozen axis still supports the degradation/boundary on that confirmation
+  evidence may it pass claim closure. If it fails, downgrade it, ledger the
+  negative confirmation, and continue prospective-axis discovery using the
+  combined successes/failures.
+- If the current evaluated table or unused candidate pool cannot validly confirm
+  the best all-scored-evidence hypothesis, route to dataset construction or
+  acquisition instead of stopping. Freeze the hypothesis, then search for, fetch,
+  or construct data that spans the frozen axis with adequate levels and controls.
+  If no current prospective feature explains the accumulated successes/failures,
+  derive or acquire additional prospective features such as homology/family
+  distance, MSA/search depth, fold/topology class, provenance, taxonomy,
+  disorder/membrane annotations, or measured pretraining proximity, then repeat
+  all-scored-evidence discovery.
 - Do not stop because a weak bounded checkpoint is available or because no valid
   axis was found after a search budget. Weak, negative, non-monotonic,
   non-explanatory, coarse, localized, or shape-unstable axes should trigger
@@ -103,14 +137,17 @@ spectra-doctor
 - Before final synthesis, apply a closure gate: the primary axis must be
   prospective, frozen before target scoring, measured in the intended order,
   adequately powered, densified enough to characterize trend shape, stable under
-  expansion or explicitly reported as unstable, not materially explained by known
-  confounders, and supported by fixed baselines when labels exist. A coarse,
-  localized, weak, source-confounded, proxy-only, or shape-unstable curve does
-  not pass closure merely because it has three split levels and a visible signal.
-- If success/failure analysis identifies an executable prospective follow-up
-  hypothesis, that live hypothesis blocks final synthesis until it is frozen and
-  confirmed, the user requests a checkpoint, or a concrete hard blocker prevents
-  execution.
+  expansion or explicitly reported as unstable, confirmed on new or explicitly
+  adequate evidence if discovered from existing results or outcome mining, not
+  materially explained by known confounders, and supported by fixed baselines
+  when labels exist. A coarse, localized, weak, source-confounded, proxy-only,
+  shape-unstable, or discovery-only curve does not pass closure merely because
+  it has three split levels and a visible signal.
+- If all-scored-evidence success/failure analysis identifies a prospective
+  follow-up hypothesis, that live hypothesis blocks final synthesis until it is
+  frozen and confirmed. If the hypothesis is not confirmable in the current
+  pool, construct or acquire data that can test it. Current-pool exhaustion is
+  not a hard blocker.
 - Treat the Auditor decision as required: `valid`, `weak`, `invalid`, or
   `exploratory`.
 
