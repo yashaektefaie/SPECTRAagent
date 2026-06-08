@@ -1,0 +1,14 @@
+[Unit]
+Description=Read-only SPECTRA Knowledge MCP
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/yektefai/spectra-knowledge-mcp
+ExecStart=/home/yektefai/spectra-knowledge-mcp/.venv/bin/python /home/yektefai/spectra-knowledge-mcp/server.py --transport streamable-http --host 127.0.0.1 --port 8000
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

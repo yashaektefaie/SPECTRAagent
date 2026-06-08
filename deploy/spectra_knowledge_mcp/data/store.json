@@ -1,0 +1,693 @@
+{
+  "schema_version": "0.1.0",
+  "server_kind": "read_only_spectra_knowledge",
+  "description": "Structured SPECTRA protocol memory and prior SPECTRA findings. This store is evidence memory only; it must not be treated as permission to run an audit or claim closure for a new question.",
+  "models": [
+    {
+      "model": "CONCH",
+      "domain": "histopathology ROI classification",
+      "finding_ids": [
+        "conch_tum_tissue_stain_tail_20260603"
+      ],
+      "run_ids": [
+        "conch_generalizability_audit_20260603_unblocked"
+      ]
+    },
+    {
+      "model": "ESMFold2",
+      "domain": "protein structure prediction",
+      "finding_ids": [
+        "esmfold2_high_disulfide_boundary_20260602"
+      ],
+      "run_ids": [
+        "esmfold2_paper_ready_final_20260602"
+      ]
+    },
+    {
+      "model": "STATE",
+      "domain": "single-cell perturbation response prediction",
+      "finding_ids": [
+        "state_pathway_module_train_support_20260603"
+      ],
+      "run_ids": [
+        "state_generalizability_continued_20260603"
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "run_id": "conch_generalizability_audit_20260603_unblocked",
+      "model": "CONCH",
+      "date": "2026-06-03",
+      "source_root": "/home/unix/yektefai/.cache/spectra/runs/conch_generalizability_audit_20260603_unblocked",
+      "packaged_root": "data/artifacts/conch",
+      "summary": "SPECTRA audit of CONCH zero-shot CRC ROI classification. Found a localized TUM-class tissue/stain-fraction low-similarity tail where recall degrades; expanded evidence strengthened the bounded public CRC ROI claim, while independent-site/deployment generalization remains weak.",
+      "finding_ids": [
+        "conch_tum_tissue_stain_tail_20260603"
+      ],
+      "artifact_ids": [
+        "conch:README.md",
+        "conch:artifacts:spc_analysis:crc_val_tum_tissue_deciles.json",
+        "conch:artifacts:spc_analysis:nct_color_proximity_per_class_recalls.csv",
+        "conch:artifacts:spc_analysis:nct_color_texture_decile_assignments.csv",
+        "conch:artifacts:spc_analysis:nct_color_texture_proximity_per_class_recalls.csv",
+        "conch:artifacts:spc_analysis:nct_texture_complexity_proximity_per_class_recalls.csv",
+        "conch:artifacts:spc_analysis:nct_tissue_fraction_proximity_per_class_recalls.csv",
+        "conch:artifacts:spc_analysis:scored_table_with_axes_and_baselines.csv",
+        "conch:artifacts:spc_analysis:spc_summary.json",
+        "conch:artifacts:target_model_summary.json",
+        "conch:artifacts:tum_axis_feature_characterization.json",
+        "conch:artifacts:tum_confirmation:analysis.json",
+        "conch:artifacts:tum_confirmation:decile_densification.json",
+        "conch:artifacts:tum_confirmation:scored_tum_confirmation_with_baselines.csv",
+        "conch:artifacts:tum_confirmation:summary.json",
+        "conch:artifacts:tum_confirmation:target_model_results_tum_confirmation.csv",
+        "conch:artifacts:tum_expansion:analysis.json",
+        "conch:artifacts:tum_expansion:expanded_finding_report.md",
+        "conch:artifacts:tum_expansion:expanded_metrics.json",
+        "conch:artifacts:tum_expansion:panel_diagnostics.json",
+        "conch:artifacts:tum_expansion:scored_tum_confirmation_with_baselines.csv",
+        "conch:artifacts:tum_expansion:scored_tum_expansion_with_baselines.csv",
+        "conch:artifacts:tum_expansion:summary.json",
+        "conch:artifacts:tum_expansion:target_model_results_tum_expansion.csv",
+        "conch:axis_ledger.json",
+        "conch:commands_run.json",
+        "conch:final_report.md",
+        "conch:session_contract.json",
+        "conch:session_manifest.json",
+        "conch:spectra_loop_state.json",
+        "conch:spectra_ready_dataset:dataset_diagnostics.json",
+        "conch:spectra_ready_dataset:tum_confirmation_panel.csv",
+        "conch:spectra_ready_dataset:tum_expansion_panel.csv",
+        "conch:target_model_results.csv"
+      ]
+    },
+    {
+      "run_id": "esmfold2_paper_ready_final_20260602",
+      "model": "ESMFold2",
+      "date": "2026-06-02",
+      "source_root": "/ewsc/yektefai/spectra_runs/esmfold2_paper_ready_final_20260602",
+      "packaged_root": "data/artifacts/esmfold2",
+      "summary": "Paper-ready SPECTRA result bundle over CAMEO and multiple RCSB-derived panels. Primary non-MSA axis was high disulfide/cysteine capacity; strongest localized failure was class-II-like viral envelope E/E2/envelope protein E.",
+      "finding_ids": [
+        "esmfold2_high_disulfide_boundary_20260602"
+      ],
+      "artifact_ids": [
+        "esmfold2:FINAL_ESMFOLD2_RESULT.md",
+        "esmfold2:ARTIFACT_INDEX.md",
+        "esmfold2:data:primary_exact_sequence_dedup.csv",
+        "esmfold2:data:all_esmfold2_scored_evaluations.csv",
+        "esmfold2:tables:global_hypothesis_effects_primary_sequence.csv",
+        "esmfold2:tables:global_hypothesis_level_curves_primary_sequence.csv",
+        "esmfold2:tables:global_hypothesis_adjusted_effects_primary_sequence.csv",
+        "esmfold2:tables:per_source_high_disulfide_summary.csv",
+        "esmfold2:tables:cluster_aware_disulfide_effects.csv",
+        "esmfold2:tables:matched_control_summary.csv",
+        "esmfold2:tables:confidence_calibration_summary.csv",
+        "esmfold2:source_reports:reviewer_proofing_report.md",
+        "esmfold2:prior_axis_reports:01_cameo_msa_depth_final_report.md",
+        "esmfold2:prior_axis_reports:11_surface_lowhelical_and_classII_report.md"
+      ]
+    },
+    {
+      "run_id": "state_generalizability_continued_20260603",
+      "model": "STATE",
+      "date": "2026-06-03",
+      "source_root": "/ewsc/yektefai/spectra_runs/state_generalizability_continued_20260603",
+      "packaged_root": "data/artifacts/state",
+      "summary": "SPECTRA continuation run using official precomputed STATE scored CSVs. Found pathway/module training support as a confirmed current-pool axis across Replogle few-shot and zero-shot checks, with cross-ontology support.",
+      "finding_ids": [
+        "state_pathway_module_train_support_20260603"
+      ],
+      "artifact_ids": [
+        "state:state_spectra_report.md",
+        "state:target_model_results.csv",
+        "state:spectra_loop_state.json",
+        "state:axis_ledger_prior.json",
+        "state:artifacts:spc_replogle_best_refined_axis.csv",
+        "state:artifacts:spc_replogle_best_refined_axis_trends.csv",
+        "state:artifacts:spc_replogle_best_refined_axis_context_trends.csv",
+        "state:artifacts:spc_replogle_zeroshot_reactome_support_confirmation.csv",
+        "state:artifacts:spc_replogle_zeroshot_reactome_support_confirmation_trends.csv",
+        "state:artifacts:controls_replogle_best_axis_regression.json",
+        "state:artifacts:controls_replogle_best_axis_pathway_count_matched.csv",
+        "state:artifacts:multi_pathway_support_screen.csv",
+        "state:artifacts:multi_pathway_support_summary.json",
+        "state:artifacts:multi_pathway_top_features_by_support_level.json"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "finding_id": "conch_tum_tissue_stain_tail_20260603",
+      "model": "CONCH",
+      "domain": "histopathology ROI classification",
+      "task": "zero-shot colorectal cancer H&E ROI tile classification with the CONCH CRC prompt ensemble",
+      "metric": {
+        "primary": "TUM recall for true colorectal adenocarcinoma epithelium tiles",
+        "secondary": [
+          "accuracy",
+          "balanced accuracy",
+          "macro F1",
+          "fixed feature baseline TUM recall"
+        ],
+        "direction": "higher recall/accuracy is better"
+      },
+      "axis": {
+        "name": "TUM tissue/stain-fraction proximity tail",
+        "type": "prospective image-content/acquisition-quality proxy",
+        "definition": "Euclidean distance in tissue, white/background, dark, and high-saturation pixel fractions from the class-balanced NCT-CRC-HE-100K reference median. Higher numbered levels mean lower similarity; split membership is frozen before CONCH scoring.",
+        "unit": "224x224 public CRC H&E ROI tile",
+        "reference": "1,800 streamed NCT-CRC-HE-100K images, 200 per class, used only for fixed feature axes and baselines",
+        "localized_class": "TUM / colorectal adenocarcinoma epithelium",
+        "interpretation": "The low-similarity tail is mainly a dark/high-saturation stain tail in the expanded panel, not simply low tissue area."
+      },
+      "summary": "CONCH zero-shot CRC ROI classification shows a claim-valid but localized degradation boundary: true TUM recall falls in the low-similarity tail of a prospective tissue/stain-fraction axis. The result is bounded to public CRC ROI tiles and the CONCH CRC prompt ensemble. It is not an all-class, whole-slide, independent-site, non-CRC, or medical deployment claim.",
+      "claim_boundary": "Public CRC 224x224 H&E ROI tiles scored with the CONCH CRC prompt ensemble. Confirmation and expansion are fresh relative to CRC-VAL discovery but still from the public Kather/NCT source family, so independent-site or clinical deployment generalization remains weak.",
+      "evidence": {
+        "model": {
+          "name": "conch_ViT-B-16",
+          "source": "MahmoodLab/conch",
+          "source_commit_reported": "141cc09c7d4ff33d8eda562bd75169b457f71a62",
+          "checkpoint_bytes_reported": 802235437
+        },
+        "discovery_pool_crc_val": {
+          "n": 7180,
+          "dataset": "CRC-VAL-HE-7K from public NCT-CRC-HE mirror",
+          "exact_md5_duplicates": 0,
+          "dhash64_duplicates": 0,
+          "overall_accuracy": 0.7926183844011142,
+          "balanced_accuracy": 0.785362682130508,
+          "macro_f1": 0.7689030866654253,
+          "fixed_centroid_balanced_accuracy": 0.602,
+          "fixed_logistic_balanced_accuracy": 0.619,
+          "tum_recall_six_level_discovery": [
+            0.7785234899328859,
+            0.6521739130434783,
+            0.6296296296296297,
+            0.5741324921135647,
+            0.39037433155080214,
+            0.11428571428571428
+          ],
+          "lowest_similarity_level_characterization": {
+            "mean_tissue_fraction": 0.605,
+            "mean_white_fraction": 0.395,
+            "comparison_level_1_tissue_fraction": 0.969,
+            "comparison_level_1_white_fraction": 0.03
+          }
+        },
+        "fresh_nonorm_tum_confirmation": {
+          "n": 1800,
+          "levels": 6,
+          "images_per_level": 300,
+          "dataset": "NCT-CRC-HE-100K-NONORM TUM images, 600 from each of three public TUM shards",
+          "tum_recall_by_level": [
+            0.9033333333333333,
+            0.93,
+            0.93,
+            0.8833333333333333,
+            0.6966666666666667,
+            0.73
+          ],
+          "decile_tum_recall": [
+            0.8888888888888888,
+            0.9222222222222223,
+            0.9444444444444444,
+            0.9055555555555556,
+            0.9444444444444444,
+            0.8666666666666667,
+            0.85,
+            0.6777777777777778,
+            0.7333333333333333,
+            0.7222222222222222
+          ],
+          "centroid_baseline_tum_recall_by_level": [
+            0.53,
+            0.22333333333333333,
+            0.27,
+            0.19666666666666666,
+            0.056666666666666664,
+            0.0
+          ],
+          "logistic_baseline_tum_recall_by_level": [
+            0.35333333333333333,
+            0.15333333333333332,
+            0.14,
+            0.023333333333333334,
+            0.0,
+            0.0
+          ]
+        },
+        "expanded_nonorm_tum_panel": {
+          "n": 4000,
+          "levels": 10,
+          "images_per_level": 400,
+          "excluded_previous_panel_rows": 1800,
+          "exact_md5_duplicates_internal": 0,
+          "exact_md5_overlap_with_previous": 0,
+          "dhash64_overlap_with_previous": 0,
+          "measured_similarity_decreased_across_level_means": true,
+          "target_overall_tum_recall": 0.837,
+          "tum_recall_by_level": [
+            0.875,
+            0.95,
+            0.9425,
+            0.9275,
+            0.9125,
+            0.89,
+            0.83,
+            0.64,
+            0.7,
+            0.7025
+          ],
+          "levels_1_to_7_tum_recall": 0.904,
+          "levels_8_to_10_tum_recall": 0.681,
+          "levels_1_to_7_minus_8_to_10_gap": 0.223,
+          "gap_95_ci": [
+            0.195,
+            0.252
+          ],
+          "two_sided_normal_p_approx": 1.3e-68,
+          "spearman_level_vs_tum_recall": -0.7696969696969697,
+          "centroid_baseline_overall_tum_recall": 0.2145,
+          "logistic_baseline_overall_tum_recall": 0.11375,
+          "dark_fraction_level_1_to_10": [
+            0.004,
+            0.388
+          ],
+          "high_saturation_fraction_level_1_to_10": [
+            0.063,
+            0.799
+          ]
+        }
+      },
+      "negative_or_downgraded_axes": [
+        {
+          "axis": "broader NCT color/texture proximity",
+          "status": "split-valid but not claim-closing",
+          "reason": "Balanced accuracy fell in the low-similarity tail, but raw accuracy rose because low-similarity levels were dominated by easy ADI/BACK/DEB patches; class-adjusted and stable-class checks did not support it as a primary all-class claim."
+        },
+        {
+          "axis": "all-class CRC ROI generalizability",
+          "status": "not supported as broad closure",
+          "reason": "The strongest reproducible effect is localized to true TUM recall under the tissue/stain-fraction tail, not a stable all-class degradation curve."
+        }
+      ],
+      "validity": {
+        "decision": "valid_localized_public_crc_tum_tail_boundary__weak_independent_site_generalization",
+        "split_validity": "prospective image feature axis; frozen levels before target scoring; measured similarity decreased across expanded level means; exact and perceptual duplicate checks reported",
+        "claim_closure": "claim-valid for bounded public CRC ROI TUM low-similarity tail; weak for independent-site, WSI, non-CRC, all-class, or medical deployment generalization",
+        "limitations": [
+          "Confirmation and expansion are still from the public Kather/NCT source family rather than an independent site cohort.",
+          "The primary result is TUM-class localized, not an all-class or deployment-wide generalizability statement.",
+          "The expanded curve is threshold-shaped rather than strictly monotone; levels 8-10 are degraded but levels 9 and 10 rebound slightly relative to level 8.",
+          "Exploratory non-TUM prediction composition in the tail was computed after target scoring and should not define confirmatory split logic."
+        ]
+      },
+      "key_artifact_ids": [
+        "conch:final_report.md",
+        "conch:artifacts:tum_expansion:expanded_finding_report.md",
+        "conch:artifacts:tum_expansion:expanded_metrics.json",
+        "conch:artifacts:tum_expansion:analysis.json",
+        "conch:artifacts:tum_expansion:scored_tum_expansion_with_baselines.csv",
+        "conch:artifacts:tum_expansion:target_model_results_tum_expansion.csv",
+        "conch:artifacts:tum_confirmation:analysis.json",
+        "conch:artifacts:tum_confirmation:decile_densification.json",
+        "conch:artifacts:tum_confirmation:scored_tum_confirmation_with_baselines.csv",
+        "conch:artifacts:spc_analysis:spc_summary.json",
+        "conch:artifacts:spc_analysis:scored_table_with_axes_and_baselines.csv",
+        "conch:artifacts:target_model_summary.json",
+        "conch:artifacts:tum_axis_feature_characterization.json",
+        "conch:target_model_results.csv",
+        "conch:axis_ledger.json"
+      ]
+    },
+    {
+      "finding_id": "esmfold2_high_disulfide_boundary_20260602",
+      "model": "ESMFold2",
+      "domain": "protein structure prediction",
+      "task": "monomeric protein structure prediction against experimental structures",
+      "metric": {
+        "primary": "CA-lDDT",
+        "secondary": [
+          "CA-RMSD",
+          "pTM",
+          "pLDDT",
+          "failure rate CA-lDDT < 0.6"
+        ],
+        "direction": "higher CA-lDDT is better"
+      },
+      "axis": {
+        "name": "high disulfide/cysteine capacity",
+        "type": "prospective sequence-only proxy",
+        "definition": "disulfide_capacity_per100 = floor(number_of_cysteines / 2) / sequence_length * 100",
+        "threshold": "high_disulfide = disulfide_capacity_per100 >= 1.3193",
+        "interpretation": "The sequence has high capacity to form cysteine pairs per 100 residues. The feature does not use the reference structure and does not measure actual disulfide bonds."
+      },
+      "localized_axis": {
+        "name": "class-II-like viral envelope E/E2 / envelope protein E",
+        "type": "prospective metadata-defined localized subtype",
+        "interpretation": "Sharp localized failure subtype within metadata-evaluable viral/RCSB rows; not a global all-protein sequence axis."
+      },
+      "summary": "Across accumulated CAMEO and RCSB-derived ESMFold2 evaluations, high disulfide/cysteine capacity is a broad prospective risk proxy for reduced structural accuracy. Class-II-like viral E/E2/envelope-E proteins form a sharper localized failure mode. The failures are generally accompanied by low ESMFold2 confidence, so the result is a calibrated low-confidence generalization boundary rather than a hidden overconfident failure regime.",
+      "claim_boundary": "Supported for accumulated ESMFold2 target-level evaluations across CAMEO/CAMEO follow-up, external RCSB, fresh general RCSB, and viral RCSB panels. MSA depth was claim-valid in CAMEO but not globally comparable across later panels.",
+      "evidence": {
+        "unique_scored_rows_after_exact_result_dedup": 706,
+        "primary_exact_sequence_rows": 652,
+        "source_composition_primary": {
+          "CAMEO/CAMEO follow-up": 138,
+          "external RCSB": 128,
+          "fresh general RCSB": 267,
+          "viral RCSB": 119
+        },
+        "scaled_only_subset": {
+          "n": 557,
+          "setting": "10 loops, 68 sampling steps, 5 diffusion samples, seed 0, best-by-pTM selection",
+          "high_disulfide_top20_n": 112,
+          "ca_lddt_gap": -0.134
+        },
+        "global_high_disulfide_effect": {
+          "high_disulfide_n": 134,
+          "lower_disulfide_n": 518,
+          "high_mean_ca_lddt": 0.713,
+          "lower_mean_ca_lddt": 0.862,
+          "raw_ca_lddt_gap": -0.149,
+          "bootstrap_95_ci": [
+            -0.19,
+            -0.106
+          ],
+          "adjusted_coefficient": -0.081,
+          "failure_rate_high_ca_lddt_lt_0_6": 0.306,
+          "failure_rate_lower_ca_lddt_lt_0_6": 0.083
+        },
+        "source_slice_high_minus_lower_ca_lddt": {
+          "CAMEO/CAMEO follow-up": -0.132,
+          "external RCSB": -0.081,
+          "fresh general RCSB": -0.108,
+          "viral RCSB": -0.031
+        },
+        "cluster_aware_validation": {
+          "approximate_kmer_jaccard_thresholds": [
+            0.5,
+            0.35,
+            0.25
+          ],
+          "one_rep_per_cluster_effect_range": [
+            -0.121,
+            -0.117
+          ]
+        },
+        "matched_controls": {
+          "matched_pairs": 127,
+          "mean_high_minus_control_ca_lddt": -0.061,
+          "bootstrap_95_ci": [
+            -0.107,
+            -0.016
+          ],
+          "median_high_minus_control_ca_lddt": -0.034,
+          "high_worse_fraction": 0.638,
+          "matched_on": [
+            "source family",
+            "viral/nonviral status",
+            "log sequence length",
+            "TM/hydrophobic proxy"
+          ]
+        },
+        "localized_class_ii_effect": {
+          "class_ii_n": 11,
+          "other_metadata_evaluable_n": 278,
+          "class_ii_mean_ca_lddt": 0.396,
+          "other_mean_ca_lddt": 0.803,
+          "ca_lddt_gap": -0.407,
+          "bootstrap_95_ci": [
+            -0.489,
+            -0.322
+          ],
+          "adjusted_coefficient": -0.253,
+          "within_viral_rcsb_gap": -0.282,
+          "within_viral_rcsb_adjusted": -0.22
+        },
+        "confidence": {
+          "high_disulfide_top_mean_ptm": 0.638,
+          "high_disulfide_lower_mean_ptm": 0.77,
+          "high_disulfide_ptm_auc_for_ca_lddt_ge_0_6": 0.967,
+          "class_ii_top_mean_ptm": 0.287,
+          "class_ii_other_mean_ptm": 0.71,
+          "class_ii_ptm_auc_for_ca_lddt_ge_0_6": 0.953,
+          "top_overconfident_failure_rate": 0.0
+        }
+      },
+      "negative_or_downgraded_axes": [
+        {
+          "axis": "MSA depth",
+          "status": "CAMEO-claim-valid but not global",
+          "reason": "Low MSA support gave approximately -0.196 CA-lDDT in CAMEO, but comparable MSA-depth fields were unavailable across most RCSB panels."
+        },
+        {
+          "axis": "flexible/non-helical composition",
+          "status": "CAMEO-local, not broad portable",
+          "reason": "Strong in CAMEO and survived CAMEO inference-time scaling, but external RCSB expansion showed weak support and paired median delta near zero."
+        },
+        {
+          "axis": "reference geometry/topology",
+          "status": "invalid as deployment axis",
+          "reason": "Used reference-structure information and was therefore benchmark-only."
+        },
+        {
+          "axis": "charge and acidic composition",
+          "status": "failed confirmation",
+          "reason": "Fresh RCSB charge confirmation gave approximately +0.007 CA-lDDT for top charge, so the promising saved-output trend did not confirm."
+        }
+      ],
+      "validity": {
+        "decision": "valid_current_pool_confirmed",
+        "split_validity": "prospective sequence/metadata axis; exact-sequence deduplication; approximate cluster-aware downweighting; matched controls",
+        "claim_closure": "paper-ready within accumulated evidence, with explicit limitations",
+        "limitations": [
+          "Global table mixes scaled ESMFold2 inference with a smaller earlier CAMEO/default subset.",
+          "Cluster-aware validation used approximate k-mer clustering; publication could replace this with MMseqs2 or CD-HIT.",
+          "Class-II E/E2 is metadata-defined and localized, not a global all-protein sequence axis.",
+          "CA-only overlays are illustrative examples."
+        ]
+      },
+      "key_artifact_ids": [
+        "esmfold2:FINAL_ESMFOLD2_RESULT.md",
+        "esmfold2:data:primary_exact_sequence_dedup.csv",
+        "esmfold2:data:all_esmfold2_scored_evaluations.csv",
+        "esmfold2:tables:global_hypothesis_effects_primary_sequence.csv",
+        "esmfold2:tables:global_hypothesis_adjusted_effects_primary_sequence.csv",
+        "esmfold2:tables:global_hypothesis_level_curves_primary_sequence.csv",
+        "esmfold2:tables:per_source_high_disulfide_summary.csv",
+        "esmfold2:tables:cluster_aware_disulfide_effects.csv",
+        "esmfold2:tables:matched_control_summary.csv",
+        "esmfold2:tables:confidence_calibration_summary.csv",
+        "esmfold2:source_reports:reviewer_proofing_report.md",
+        "esmfold2:prior_axis_reports:01_cameo_msa_depth_final_report.md",
+        "esmfold2:prior_axis_reports:11_surface_lowhelical_and_classII_report.md"
+      ]
+    },
+    {
+      "finding_id": "state_pathway_module_train_support_20260603",
+      "model": "STATE",
+      "domain": "single-cell perturbation response prediction",
+      "task": "predict post-perturbation expression response for held-out gene perturbations",
+      "metric": {
+        "primary": "overlap@N",
+        "representations": [
+          "HVG",
+          "SE"
+        ],
+        "direction": "higher overlap@N is better"
+      },
+      "axis": {
+        "name": "pathway/module train-support density",
+        "type": "prospective gene-set train-support axis",
+        "definition": "For each held-out gene perturbation, support is the mean log(1 + number of same-context training genes sharing each pathway/module annotation of the target gene). Higher support means the target gene is closer to known training biology in that context.",
+        "primary_collection": "Reactome",
+        "independent_collections": [
+          "HGNC gene groups",
+          "GO Biological Process",
+          "GO Molecular Function",
+          "GO Cellular Component",
+          "WikiPathways",
+          "KEGG"
+        ]
+      },
+      "summary": "STATE generalizes worse for Replogle held-out gene perturbations whose pathways/modules are sparsely represented among training perturbations. The effect was discovered in hepg2 and k562, confirmed in jurkat and rpe1, checked in Replogle zero-shot, and extended beyond Reactome to independent gene-set systems.",
+      "claim_boundary": "Current-pool confirmed using official precomputed STATE scored CSVs and official split definitions, not fresh STATE inference or raw single-cell matrices. The main reviewer-facing gap is a fixed baseline/raw-label rerun.",
+      "evidence": {
+        "official_scored_rows_used": 39808,
+        "datasets": [
+          "Tahoe-100M",
+          "Replogle-Nadig",
+          "Parse-PBMC"
+        ],
+        "primary_replogle_fewshot_confirmation": {
+          "held_out_confirmation_rows_per_representation": 2145,
+          "hvg_low_no_support_mean_overlap": 0.2036,
+          "hvg_high_support_mean_overlap": 0.3313,
+          "hvg_high_low_gap": 0.1278,
+          "se_low_no_support_mean_overlap": 0.1576,
+          "se_high_support_mean_overlap": 0.267,
+          "se_high_low_gap": 0.1094,
+          "excluding_no_annotation_hvg_gap": 0.1482,
+          "excluding_no_annotation_se_gap": 0.128
+        },
+        "per_context_high_low_overlap_gaps": {
+          "hepg2": {
+            "HVG": 0.1949,
+            "SE": 0.1752
+          },
+          "k562": {
+            "HVG": 0.1275,
+            "SE": 0.0966
+          },
+          "jurkat": {
+            "HVG": 0.1372,
+            "SE": 0.0734
+          },
+          "rpe1": {
+            "HVG": 0.1233,
+            "SE": 0.1198
+          }
+        },
+        "replogle_zeroshot_confirmation": {
+          "rows_per_representation": 5759,
+          "HVG": {
+            "low_no_support_mean_overlap": 0.1095,
+            "high_support_mean_overlap": 0.1771,
+            "high_low_gap": 0.0676
+          },
+          "SE": {
+            "low_no_support_mean_overlap": 0.0563,
+            "high_support_mean_overlap": 0.0999,
+            "high_low_gap": 0.0437
+          }
+        },
+        "cross_ontology_high_low_gaps": {
+          "Reactome": {
+            "fewshot_HVG": 0.1144,
+            "fewshot_SE": 0.0853,
+            "zeroshot_HVG": 0.0676,
+            "zeroshot_SE": 0.0437
+          },
+          "HGNC gene group": {
+            "fewshot_HVG": 0.1144,
+            "fewshot_SE": 0.0935,
+            "zeroshot_HVG": 0.0678,
+            "zeroshot_SE": 0.0471
+          },
+          "GO Biological Process": {
+            "fewshot_HVG": 0.1614,
+            "fewshot_SE": 0.1345,
+            "zeroshot_HVG": 0.0873,
+            "zeroshot_SE": 0.0568
+          },
+          "GO Molecular Function": {
+            "fewshot_HVG": 0.0143,
+            "fewshot_SE": 0.0545,
+            "zeroshot_HVG": 0.0348,
+            "zeroshot_SE": 0.0484
+          },
+          "GO Cellular Component": {
+            "fewshot_HVG": 0.1215,
+            "fewshot_SE": 0.0901,
+            "zeroshot_HVG": 0.0812,
+            "zeroshot_SE": 0.0548
+          },
+          "WikiPathways": {
+            "fewshot_HVG": 0.1039,
+            "fewshot_SE": 0.1266,
+            "zeroshot_HVG": 0.0346,
+            "zeroshot_SE": 0.0344
+          },
+          "KEGG": {
+            "fewshot_HVG": 0.1415,
+            "fewshot_SE": 0.1278,
+            "zeroshot_HVG": 0.0664,
+            "zeroshot_SE": 0.0467
+          }
+        },
+        "confound_checks": {
+          "pathway_count_matched_bins": "trend remained",
+          "ols_support_coefficient_overlap_at_n": 0.0284,
+          "ols_support_t": 14.36,
+          "de_count_severity_coefficient": 0.1629,
+          "interpretation": "DE-count severity is an important outcome confound or mediator, but did not fully explain the support axis."
+        },
+        "dominant_high_support_modules": [
+          "translation",
+          "ribosome",
+          "RNA metabolism",
+          "mRNA splicing",
+          "rRNA processing",
+          "mitochondrial translation",
+          "cytoplasmic ribosomal proteins",
+          "spliceosome pathways"
+        ]
+      },
+      "negative_or_downgraded_axes": [
+        {
+          "axis": "Tahoe target-context chemical Tanimoto support",
+          "status": "split-valid but negative/weak",
+          "reason": "No meaningful degradation with lower chemical support."
+        },
+        {
+          "axis": "Parse-PBMC ligand-family training support",
+          "status": "reversed direction",
+          "reason": "Higher same-family support did not improve overlap@N in discovery or confirmation."
+        },
+        {
+          "axis": "GO Molecular Function support",
+          "status": "positive but weaker",
+          "reason": "Positive high-low gaps, but controlled few-shot coefficient was weak compared with other pathway/module systems."
+        }
+      ],
+      "validity": {
+        "decision": "valid_current_pool_confirmed",
+        "split_validity": "prospective gene/pathway metadata and official train/test split definitions; discovery and confirmation contexts separated",
+        "claim_closure": "current-pool confirmed, not yet raw-data reviewer-proofed",
+        "limitations": [
+          "Used official precomputed scored CSVs rather than fresh STATE inference.",
+          "Fixed baseline/raw-label rerun still needed for reviewer-facing closure.",
+          "Perturbation strength measured by DE-count severity is a strong mediator/confound and should remain in claim framing."
+        ]
+      },
+      "key_artifact_ids": [
+        "state:state_spectra_report.md",
+        "state:target_model_results.csv",
+        "state:spectra_loop_state.json",
+        "state:axis_ledger_prior.json",
+        "state:artifacts:spc_replogle_best_refined_axis.csv",
+        "state:artifacts:spc_replogle_best_refined_axis_trends.csv",
+        "state:artifacts:spc_replogle_best_refined_axis_context_trends.csv",
+        "state:artifacts:spc_replogle_zeroshot_reactome_support_confirmation.csv",
+        "state:artifacts:spc_replogle_zeroshot_reactome_support_confirmation_trends.csv",
+        "state:artifacts:controls_replogle_best_axis_regression.json",
+        "state:artifacts:controls_replogle_best_axis_pathway_count_matched.csv",
+        "state:artifacts:multi_pathway_support_screen.csv",
+        "state:artifacts:multi_pathway_support_summary.json",
+        "state:artifacts:multi_pathway_top_features_by_support_level.json"
+      ]
+    }
+  ],
+  "artifact_aliases": {
+    "esmfold2_final_result": "esmfold2:FINAL_ESMFOLD2_RESULT.md",
+    "esmfold2_primary_table": "esmfold2:data:primary_exact_sequence_dedup.csv",
+    "esmfold2_all_scored": "esmfold2:data:all_esmfold2_scored_evaluations.csv",
+    "esmfold2_disulfide_effects": "esmfold2:tables:global_hypothesis_effects_primary_sequence.csv",
+    "esmfold2_reviewer_proofing": "esmfold2:source_reports:reviewer_proofing_report.md",
+    "state_final_report": "state:state_spectra_report.md",
+    "state_target_model_results": "state:target_model_results.csv",
+    "state_multi_pathway_summary": "state:artifacts:multi_pathway_support_summary.json",
+    "state_reactome_spc": "state:artifacts:spc_replogle_best_refined_axis.csv",
+    "state_zeroshot_reactome_spc": "state:artifacts:spc_replogle_zeroshot_reactome_support_confirmation.csv",
+    "conch_final_report": "conch:final_report.md",
+    "conch_expanded_finding": "conch:artifacts:tum_expansion:expanded_finding_report.md",
+    "conch_expanded_metrics": "conch:artifacts:tum_expansion:expanded_metrics.json",
+    "conch_tum_expansion_scored": "conch:artifacts:tum_expansion:scored_tum_expansion_with_baselines.csv",
+    "conch_tum_confirmation_analysis": "conch:artifacts:tum_confirmation:analysis.json",
+    "conch_spc_summary": "conch:artifacts:spc_analysis:spc_summary.json",
+    "conch_target_model_results": "conch:target_model_results.csv"
+  }
+}

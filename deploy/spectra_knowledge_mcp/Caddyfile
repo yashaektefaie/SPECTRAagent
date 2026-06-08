@@ -1,0 +1,9 @@
+{
+    email yasha.ekt@gmail.com
+}
+
+spectra.yashaektefaie.com, mcp.spectra.yashaektefaie.com {
+	reverse_proxy 127.0.0.1:8000 {
+		header_up Host {upstream_hostport}
+	}
+}
