@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SPECTRA Knowledge MCP</title>
+  <meta name="description" content="SPECTRA generalizability audit protocol, current findings, and public MCP endpoint.">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>SPECTRA</span>
+    </a>
+    <nav aria-label="Primary">
+      <a href="#protocol">Protocol</a>
+      <a href="#findings">Findings</a>
+      <a href="#connect">Connect</a>
+      <a href="/mcp">MCP</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro-band">
+      <div class="intro-copy">
+        <p class="eyebrow">Generalizability audits for foundation models</p>
+        <h1>SPECTRA turns model generalization claims into validated spectral performance curves.</h1>
+        <p class="lede">This hosted knowledge server exposes the SPECTRA protocol, prior audit findings, and artifact references for agents and humans. Agents connect at <code>https://spectra.yashaektefaie.com/mcp</code>.</p>
+        <div class="quick-stats" aria-label="Current SPECTRA knowledge store counts">
+          <div><strong>3</strong><span>models</span></div>
+          <div><strong>3</strong><span>findings</span></div>
+          <div><strong>62</strong><span>artifact refs</span></div>
+        </div>
+      </div>
+      <div class="visual-panel">
+        <svg class="spc-graphic" viewBox="0 0 720 360" role="img" aria-label="Spectral performance curve diagram">
+  <defs>
+    <linearGradient id="curveFill" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#1f9d8a" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#d04735" stop-opacity="0.14"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0 0 L8 4 L0 8 Z" fill="#6c7783"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="720" height="360" rx="12" fill="#fbfcfd"/>
+  <line x1="84" y1="286" x2="654" y2="286" stroke="#2d3640" stroke-width="2"/>
+  <line x1="84" y1="286" x2="84" y2="54" stroke="#2d3640" stroke-width="2"/>
+  <g stroke="#d8dee4" stroke-width="1">
+    <line x1="84" y1="232" x2="654" y2="232"/>
+    <line x1="84" y1="178" x2="654" y2="178"/>
+    <line x1="84" y1="124" x2="654" y2="124"/>
+    <line x1="198" y1="54" x2="198" y2="286"/>
+    <line x1="312" y1="54" x2="312" y2="286"/>
+    <line x1="426" y1="54" x2="426" y2="286"/>
+    <line x1="540" y1="54" x2="540" y2="286"/>
+  </g>
+  <path d="M84 118 C170 116 210 126 270 145 S390 184 454 218 S570 259 654 264 L654 286 L84 286 Z" fill="url(#curveFill)"/>
+  <path d="M84 118 C170 116 210 126 270 145 S390 184 454 218 S570 259 654 264" fill="none" stroke="#1f6f68" stroke-width="5" stroke-linecap="round"/>
+  <g fill="#ffffff" stroke="#1f6f68" stroke-width="4">
+    <circle cx="84" cy="118" r="9"/>
+    <circle cx="198" cy="122" r="9"/>
+    <circle cx="312" cy="159" r="9"/>
+    <circle cx="426" cy="210" r="9"/>
+    <circle cx="540" cy="250" r="9"/>
+    <circle cx="654" cy="264" r="9"/>
+  </g>
+  <g fill="#4c5966" font-family="Inter, Arial, sans-serif" font-size="16">
+    <text x="80" y="326">high similarity</text>
+    <text x="514" y="326">low similarity</text>
+    <text x="18" y="72" transform="rotate(-90 18 72)">performance</text>
+  </g>
+  <g fill="#202831" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">
+    <text x="112" y="82">freeze prospective axis</text>
+    <text x="404" y="126">audit degradation</text>
+    <text x="484" y="240">confirm boundary</text>
+  </g>
+  <path d="M180 90 L126 112" stroke="#6c7783" stroke-width="2" marker-end="url(#arrow)"/>
+</svg>
+      </div>
+    </section>
+
+    <section id="protocol" class="section-grid">
+      <div>
+        <p class="eyebrow">Protocol</p>
+        <h2>What SPECTRA Requires</h2>
+      </div>
+      <div class="protocol-steps">
+        <div><span>01</span><strong>Define the scientific unit</strong><p>Choose the model, data, task, metric, and prospective novelty axis before target scoring.</p></div>
+        <div><span>02</span><strong>Freeze and validate the split</strong><p>Measure that train-test or pretraining-test similarity decreases across levels.</p></div>
+        <div><span>03</span><strong>Score baselines and model</strong><p>Run fixed baselines where labels exist, then evaluate the target model on frozen levels.</p></div>
+        <div><span>04</span><strong>Confirm live hypotheses</strong><p>Outcome-mined axes are exploratory until frozen and confirmed on fresh or adequate evidence.</p></div>
+        <div><span>05</span><strong>Ledger weak and negative axes</strong><p>Non-explanatory curves are findings that route back into prospective-axis discovery.</p></div>
+        <div><span>06</span><strong>State the claim boundary</strong><p>A valid SPC closes only the deployment or mechanism boundary it actually tested.</p></div>
+      </div>
+    </section>
+
+    <section class="model-strip" aria-label="Current finding navigation">
+      <a href="#conch-tum-tissue-stain-tail-20260603"><span>CONCH</span><strong>TUM tissue/stain-fraction proximity tail</strong></a>
+<a href="#esmfold2-high-disulfide-boundary-20260602"><span>ESMFold2</span><strong>high disulfide/cysteine capacity</strong></a>
+<a href="#state-pathway-module-train-support-20260603"><span>STATE</span><strong>pathway/module train-support density</strong></a>
+    </section>
+
+    <section id="findings" class="findings">
+      <div class="section-heading">
+        <p class="eyebrow">Current Evidence</p>
+        <h2>Stored SPECTRA Findings</h2>
+        <p>These summaries are human-readable views of the same structured records exposed through the MCP tools.</p>
+      </div>
+      <article class="finding-card" id="conch-tum-tissue-stain-tail-20260603">
+  <div class="finding-head">
+    <div>
+      <p class="eyebrow">CONCH</p>
+      <h3>conch_tum_tissue_stain_tail_20260603</h3>
+    </div>
+    <span class="decision-pill">valid localized public crc tum tail boundary / weak independent site generalization</span>
+  </div>
+  <p class="summary">CONCH zero-shot CRC ROI classification shows a claim-valid but localized degradation boundary: true TUM recall falls in the low-similarity tail of a prospective tissue/stain-fraction axis. The result is bounded to public CRC ROI tiles and the CONCH CRC prompt ensemble. It is not an all-class, whole-slide, independent-site, non-CRC, or medical deployment claim.</p>
+  <div class="axis-box">
+    <span>Primary Axis</span>
+    <strong>TUM tissue/stain-fraction proximity tail</strong>
+    <p>Euclidean distance in tissue, white/background, dark, and high-saturation pixel fractions from the class-balanced NCT-CRC-HE-100K reference median. Higher numbered levels mean lower similarity; split membership is frozen before CONCH scoring.</p>
+  </div>
+  <div class="metric-grid"><div class="metric"><span class="metric-label">Discovery tiles</span><strong>7,180</strong></div>
+<div class="metric"><span class="metric-label">CRC-VAL balanced accuracy</span><strong>0.785</strong></div>
+<div class="metric"><span class="metric-label">Confirmation TUM tiles</span><strong>1,800</strong></div>
+<div class="metric"><span class="metric-label">Expanded TUM tiles</span><strong>4,000</strong></div>
+<div class="metric"><span class="metric-label">Low-tail recall gap</span><strong>0.223</strong></div>
+<div class="metric"><span class="metric-label">Expanded Spearman</span><strong>-0.77</strong></div></div>
+  <div class="claim">
+    <h4>Claim Boundary</h4>
+    <p>Public CRC 224x224 H&amp;E ROI tiles scored with the CONCH CRC prompt ensemble. Confirmation and expansion are fresh relative to CRC-VAL discovery but still from the public Kather/NCT source family, so independent-site or clinical deployment generalization remains weak.</p>
+  </div>
+  <div class="two-col">
+    <div>
+      <h4>Limitations</h4>
+      <ul><li>Confirmation and expansion are still from the public Kather/NCT source family rather than an independent site cohort.</li>
+<li>The primary result is TUM-class localized, not an all-class or deployment-wide generalizability statement.</li>
+<li>The expanded curve is threshold-shaped rather than strictly monotone; levels 8-10 are degraded but levels 9 and 10 rebound slightly relative to level 8.</li></ul>
+    </div>
+    <div>
+      <h4>Downgraded Axes</h4>
+      <ul><li><strong>broader NCT color/texture proximity:</strong> split-valid but not claim-closing</li>
+<li><strong>all-class CRC ROI generalizability:</strong> not supported as broad closure</li></ul>
+    </div>
+  </div>
+  <details>
+    <summary>Key MCP artifact IDs</summary>
+    <ul class="artifact-list"><li><code>conch:final_report.md</code></li>
+<li><code>conch:artifacts:tum_expansion:expanded_finding_report.md</code></li>
+<li><code>conch:artifacts:tum_expansion:expanded_metrics.json</code></li>
+<li><code>conch:artifacts:tum_expansion:analysis.json</code></li>
+<li><code>conch:artifacts:tum_expansion:scored_tum_expansion_with_baselines.csv</code></li>
+<li><code>conch:artifacts:tum_expansion:target_model_results_tum_expansion.csv</code></li>
+<li><code>conch:artifacts:tum_confirmation:analysis.json</code></li>
+<li><code>conch:artifacts:tum_confirmation:decile_densification.json</code></li><li class="muted">and 7 more key artifacts in the MCP store</li></ul>
+  </details>
+</article>
+
+
+<article class="finding-card" id="esmfold2-high-disulfide-boundary-20260602">
+  <div class="finding-head">
+    <div>
+      <p class="eyebrow">ESMFold2</p>
+      <h3>esmfold2_high_disulfide_boundary_20260602</h3>
+    </div>
+    <span class="decision-pill">valid current pool confirmed</span>
+  </div>
+  <p class="summary">Across accumulated CAMEO and RCSB-derived ESMFold2 evaluations, high disulfide/cysteine capacity is a broad prospective risk proxy for reduced structural accuracy. Class-II-like viral E/E2/envelope-E proteins form a sharper localized failure mode. The failures are generally accompanied by low ESMFold2 confidence, so the result is a calibrated low-confidence generalization boundary rather than a hidden overconfident failure regime.</p>
+  <div class="axis-box">
+    <span>Primary Axis</span>
+    <strong>high disulfide/cysteine capacity</strong>
+    <p>disulfide_capacity_per100 = floor(number_of_cysteines / 2) / sequence_length * 100</p>
+  </div>
+  <div class="metric-grid"><div class="metric"><span class="metric-label">Primary rows</span><strong>652</strong></div>
+<div class="metric"><span class="metric-label">High-disulfide n</span><strong>134</strong></div>
+<div class="metric"><span class="metric-label">Lower-disulfide n</span><strong>518</strong></div>
+<div class="metric"><span class="metric-label">Raw CA-lDDT gap</span><strong>-0.149</strong></div>
+<div class="metric"><span class="metric-label">Matched-control gap</span><strong>-0.061</strong></div>
+<div class="metric"><span class="metric-label">Class-II CA-lDDT gap</span><strong>-0.407</strong></div></div>
+  <div class="claim">
+    <h4>Claim Boundary</h4>
+    <p>Supported for accumulated ESMFold2 target-level evaluations across CAMEO/CAMEO follow-up, external RCSB, fresh general RCSB, and viral RCSB panels. MSA depth was claim-valid in CAMEO but not globally comparable across later panels.</p>
+  </div>
+  <div class="two-col">
+    <div>
+      <h4>Limitations</h4>
+      <ul><li>Global table mixes scaled ESMFold2 inference with a smaller earlier CAMEO/default subset.</li>
+<li>Cluster-aware validation used approximate k-mer clustering; publication could replace this with MMseqs2 or CD-HIT.</li>
+<li>Class-II E/E2 is metadata-defined and localized, not a global all-protein sequence axis.</li></ul>
+    </div>
+    <div>
+      <h4>Downgraded Axes</h4>
+      <ul><li><strong>MSA depth:</strong> CAMEO-claim-valid but not global</li>
+<li><strong>flexible/non-helical composition:</strong> CAMEO-local, not broad portable</li>
+<li><strong>reference geometry/topology:</strong> invalid as deployment axis</li></ul>
+    </div>
+  </div>
+  <details>
+    <summary>Key MCP artifact IDs</summary>
+    <ul class="artifact-list"><li><code>esmfold2:FINAL_ESMFOLD2_RESULT.md</code></li>
+<li><code>esmfold2:data:primary_exact_sequence_dedup.csv</code></li>
+<li><code>esmfold2:data:all_esmfold2_scored_evaluations.csv</code></li>
+<li><code>esmfold2:tables:global_hypothesis_effects_primary_sequence.csv</code></li>
+<li><code>esmfold2:tables:global_hypothesis_adjusted_effects_primary_sequence.csv</code></li>
+<li><code>esmfold2:tables:global_hypothesis_level_curves_primary_sequence.csv</code></li>
+<li><code>esmfold2:tables:per_source_high_disulfide_summary.csv</code></li>
+<li><code>esmfold2:tables:cluster_aware_disulfide_effects.csv</code></li><li class="muted">and 5 more key artifacts in the MCP store</li></ul>
+  </details>
+</article>
+
+
+<article class="finding-card" id="state-pathway-module-train-support-20260603">
+  <div class="finding-head">
+    <div>
+      <p class="eyebrow">STATE</p>
+      <h3>state_pathway_module_train_support_20260603</h3>
+    </div>
+    <span class="decision-pill">valid current pool confirmed</span>
+  </div>
+  <p class="summary">STATE generalizes worse for Replogle held-out gene perturbations whose pathways/modules are sparsely represented among training perturbations. The effect was discovered in hepg2 and k562, confirmed in jurkat and rpe1, checked in Replogle zero-shot, and extended beyond Reactome to independent gene-set systems.</p>
+  <div class="axis-box">
+    <span>Primary Axis</span>
+    <strong>pathway/module train-support density</strong>
+    <p>For each held-out gene perturbation, support is the mean log(1 + number of same-context training genes sharing each pathway/module annotation of the target gene). Higher support means the target gene is closer to known training biology in that context.</p>
+  </div>
+  <div class="metric-grid"><div class="metric"><span class="metric-label">Scored rows</span><strong>39,808</strong></div>
+<div class="metric"><span class="metric-label">Few-shot HVG gap</span><strong>0.128</strong></div>
+<div class="metric"><span class="metric-label">Few-shot SE gap</span><strong>0.109</strong></div>
+<div class="metric"><span class="metric-label">Zero-shot HVG gap</span><strong>0.068</strong></div>
+<div class="metric"><span class="metric-label">Zero-shot SE gap</span><strong>0.044</strong></div>
+<div class="metric"><span class="metric-label">OLS support coefficient</span><strong>0.028</strong></div></div>
+  <div class="claim">
+    <h4>Claim Boundary</h4>
+    <p>Current-pool confirmed using official precomputed STATE scored CSVs and official split definitions, not fresh STATE inference or raw single-cell matrices. The main reviewer-facing gap is a fixed baseline/raw-label rerun.</p>
+  </div>
+  <div class="two-col">
+    <div>
+      <h4>Limitations</h4>
+      <ul><li>Used official precomputed scored CSVs rather than fresh STATE inference.</li>
+<li>Fixed baseline/raw-label rerun still needed for reviewer-facing closure.</li>
+<li>Perturbation strength measured by DE-count severity is a strong mediator/confound and should remain in claim framing.</li></ul>
+    </div>
+    <div>
+      <h4>Downgraded Axes</h4>
+      <ul><li><strong>Tahoe target-context chemical Tanimoto support:</strong> split-valid but negative/weak</li>
+<li><strong>Parse-PBMC ligand-family training support:</strong> reversed direction</li>
+<li><strong>GO Molecular Function support:</strong> positive but weaker</li></ul>
+    </div>
+  </div>
+  <details>
+    <summary>Key MCP artifact IDs</summary>
+    <ul class="artifact-list"><li><code>state:state_spectra_report.md</code></li>
+<li><code>state:target_model_results.csv</code></li>
+<li><code>state:spectra_loop_state.json</code></li>
+<li><code>state:axis_ledger_prior.json</code></li>
+<li><code>state:artifacts:spc_replogle_best_refined_axis.csv</code></li>
+<li><code>state:artifacts:spc_replogle_best_refined_axis_trends.csv</code></li>
+<li><code>state:artifacts:spc_replogle_best_refined_axis_context_trends.csv</code></li>
+<li><code>state:artifacts:spc_replogle_zeroshot_reactome_support_confirmation.csv</code></li><li class="muted">and 6 more key artifacts in the MCP store</li></ul>
+  </details>
+</article>
+    </section>
+
+    <section id="connect" class="connect-section">
+      <div>
+        <p class="eyebrow">Agent Access</p>
+        <h2>Connect Claude Code or another MCP client</h2>
+        <p>The server uses streamable HTTP and exposes read-only tools for listing models, retrieving findings, reading protocol sections, and fetching text artifacts.</p>
+      </div>
+      <pre><code>{
+  "mcpServers": {
+    "spectra": {
+      "type": "http",
+      "url": "https://spectra.yashaektefaie.com/mcp"
+    }
+  }
+}</code></pre>
+    </section>
+  </main>
+
+  <footer>
+    <span>SPECTRA Knowledge MCP</span>
+    <span>Read-only protocol and findings server</span>
+  </footer>
+</body>
+</html>

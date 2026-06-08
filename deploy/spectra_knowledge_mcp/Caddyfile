@@ -3,7 +3,14 @@
 }
 
 spectra.yashaektefaie.com, mcp.spectra.yashaektefaie.com {
-	reverse_proxy 127.0.0.1:8000 {
-		header_up Host {upstream_hostport}
+	handle /mcp* {
+		reverse_proxy 127.0.0.1:8000 {
+			header_up Host {upstream_hostport}
+		}
+	}
+
+	handle {
+		root * /home/yektefai/spectra-knowledge-mcp/site
+		file_server
 	}
 }

@@ -42,6 +42,18 @@ claim boundaries, and artifact ids. The actual curated run artifacts under
 `data/artifacts/` are not tracked in Git; they live on the hosted MCP instance
 or external storage. See `ARTIFACTS.md`.
 
+## Static Website
+
+The human-readable site at `/` is generated from `data/store.json`:
+
+```sh
+python build_site.py
+```
+
+The generated files live under `site/`. Caddy serves the website for normal
+browser paths and forwards `/mcp` to the private FastMCP process on
+`127.0.0.1:8000`.
+
 ## Run
 
 ```sh
