@@ -247,7 +247,8 @@ h2 {
 .claim p,
 .connect-section p,
 .section-heading p,
-.axis-box p {
+.axis-box p,
+.provenance-intro p {
   color: var(--muted);
 }
 
@@ -386,6 +387,131 @@ h2 {
   padding: 0.85rem 0;
 }
 
+.provenance-intro {
+  min-width: 0;
+}
+
+.provenance-intro pre {
+  margin-top: 1rem;
+}
+
+.provenance-box {
+  margin: 1rem 0;
+  border: 1px solid #bfd4d0;
+  border-radius: 8px;
+  background: #f6faf9;
+  padding: 0.95rem;
+}
+
+.provenance-box.missing {
+  border-color: #e0c88a;
+  background: #fffaf0;
+}
+
+.provenance-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.provenance-head span {
+  flex: 0 0 auto;
+  border: 1px solid #bfd4d0;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #1c625b;
+  font-size: 0.74rem;
+  font-weight: 850;
+  padding: 0.28rem 0.55rem;
+}
+
+.provenance-grid,
+.source-lists {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.provenance-grid {
+  margin: 0.6rem 0;
+}
+
+.provenance-grid div,
+.source-lists div {
+  min-width: 0;
+}
+
+.provenance-grid dt {
+  color: var(--muted);
+  font-size: 0.74rem;
+  font-weight: 800;
+}
+
+.provenance-grid dd {
+  margin: 0.18rem 0 0;
+  overflow-wrap: anywhere;
+  font-size: 0.88rem;
+}
+
+.source-lists {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.source-lists strong {
+  display: block;
+  font-size: 0.82rem;
+  margin-bottom: 0.25rem;
+}
+
+.source-lists li,
+.provenance-gaps li {
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.provenance-gaps {
+  margin-top: 0.75rem;
+}
+
+.download-box {
+  margin: 1rem 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfd;
+  padding: 0.85rem;
+}
+
+.download-box summary {
+  color: var(--blue);
+}
+
+.download-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.45rem 0.9rem;
+  margin-top: 0.7rem;
+  padding-left: 1rem;
+}
+
+.download-list li {
+  min-width: 0;
+}
+
+.download-list a {
+  display: block;
+  overflow-wrap: anywhere;
+  color: var(--ink);
+  font-size: 0.9rem;
+  font-weight: 750;
+}
+
+.download-list span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
 h4 {
   margin: 0 0 0.4rem;
   font-size: 0.95rem;
@@ -480,7 +606,10 @@ footer {
   .protocol-steps,
   .model-strip,
   .two-col,
-  .artifact-list {
+  .artifact-list,
+  .download-list,
+  .provenance-grid,
+  .source-lists {
     grid-template-columns: 1fr;
   }
 

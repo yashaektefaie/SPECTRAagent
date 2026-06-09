@@ -1,0 +1,2260 @@
+{
+  "base_url": "https://spectra.yashaektefaie.com/downloads",
+  "count": 137,
+  "description": "Curated public file downloads for SPECTRA result artifacts. MCP tools return this manifest; agents should use normal HTTPS download clients for bulk CSV/JSON/Markdown artifacts.",
+  "public_path_prefix": "/downloads",
+  "records": [
+    {
+      "artifact_id": "conch:README.md",
+      "bytes": 321,
+      "csv_header": null,
+      "download_id": "conch:README.md",
+      "download_path": "/downloads/conch/README.md",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/conch/README.md",
+      "finding_ids": [],
+      "format": "md",
+      "model": "conch",
+      "relative_path": "conch/README.md",
+      "rows": null,
+      "run_ids": [
+        "conch_generalizability_audit_20260603_unblocked"
+      ],
+      "sha256": "01171345d475ea2fb320a8bf3d5382c8038459bac6c1f4f12dc82996c49475ce"
+    },
+    {
+      "artifact_id": "conch:artifacts:spc_analysis:crc_val_tum_tissue_deciles.json",
+      "bytes": 2950,
+      "csv_header": null,
+      "download_id": "conch:artifacts:spc_analysis:crc_val_tum_tissue_deciles.json",
+      "download_path": "/downloads/conch/artifacts/spc_analysis/crc_val_tum_tissue_deciles.json",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/conch/artifacts/spc_analysis/crc_val_tum_tissue_deciles.json",
+      "finding_ids": [],
+      "format": "json",
+      "model": "conch",
+      "relative_path": "conch/artifacts/spc_analysis/crc_val_tum_tissue_deciles.json",
+      "rows": null,
+      "run_ids": [
+        "conch_generalizability_audit_20260603_unblocked"
+      ],
+      "sha256": "41ae84be90c60cc42143fa362dff6c6f5d4fbba07afd3fa7bb85526afd08ab12"
+    },
+    {
+      "artifact_id": "conch:artifacts:spc_analysis:nct_color_proximity_per_class_recalls.csv",
+      "bytes": 1463,
+      "csv_header": "level,label,label_name,n,recall",
+      "download_id": "conch:artifacts:spc_analysis:nct_color_proximity_per_class_recalls.csv",
+      "download_path": "/downloads/conch/artifacts/spc_analysis/nct_color_proximity_per_class_recalls.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/conch/artifacts/spc_analysis/nct_color_proximity_per_class_recalls.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "conch",
+      "relative_path": "conch/artifacts/spc_analysis/nct_color_proximity_per_class_recalls.csv",
+      "rows": 54,
+      "run_ids": [
+        "conch_generalizability_audit_20260603_unblocked"
+      ],
+      "sha256": "4e2afc04cfede9c442c1cf113ecb636a467f1ee6f23a977105550679bcce7ab0"
+    },
+    {
+      "artifact_id": "conch:artifacts:spc_analysis:nct_color_texture_decile_assignments.csv",
+      "bytes": 185009,
+      "csv_header": "sample_id,axis_nct_color_texture_similarity,level_nct_color_texture_decile",
+      "download_id": "conch:artifacts:spc_analysis:nct_color_texture_decile_assignments.csv",
+      "download_path": "/downloads/conch/artifacts/spc_analysis/nct_color_texture_decile_assignments.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/conch/artifacts/spc_analysis/nct_color_texture_decile_assignments.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "conch",
+      "relative_path": "conch/artifacts/spc_analysis/nct_color_texture_decile_assignments.csv",
+      "rows": 7180,
+      "run_ids": [
+        "conch_generalizability_audit_20260603_unblocked"
+      ],
+      "sha256": "8a3f50993b3444166008d1668a5f6567c2766210f896500f9a503b0df8677cbe"
+    },
+    {
+      "artifact_id": "conch:artifacts:spc_analysis:nct_color_texture_proximity_per_class_recalls.csv",
+      "bytes": 1425,
+      "csv_header": "level,label,label_name,n,recall",
+      "download_id": "conch:artifacts:spc_analysis:nct_color_texture_proximity_per_class_recalls.csv",
+      "download_path": "/downloads/conch/artifacts/spc_analysis/nct_color_texture_proximity_per_class_recalls.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/conch/artifacts/spc_analysis/nct_color_texture_proximity_per_class_recalls.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "conch",
+      "relative_path": "conch/artifacts/spc_analysis/nct_color_texture_proximity_per_class_recalls.csv",
+      "rows": 54,
+      "run_ids": [
+        "conch_generalizability_audit_20260603_unblocked"
+      ],
+      "sha256": "3ae707a78d9da63b9769f4aca02ef12245260c547bd8196dd032eb75032c8df1"
+    },
+    {
+      "artifact_id": "conch:artifacts:spc_analysis:nct_texture_complexity_proximity_per_class_recalls.csv",
+      "bytes": 1333,
+      "csv_header": "level,label,label_name,n,recall",
+      "download_id": "conch:artifacts:spc_analysis:nct_texture_complexity_proximity_per_class_recalls.csv",
+      "download_path": "/downloads/conch/artifacts/spc_analysis/nct_texture_complexity_proximity_per_class_recalls.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/conch/artifacts/spc_analysis/nct_texture_complexity_proximity_per_class_recalls.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "conch",
+      "relative_path": "conch/artifacts/spc_analysis/nct_texture_complexity_proximity_per_class_recalls.csv",
+      "rows": 54,
+      "run_ids": [
+        "conch_generalizability_audit_20260603_unblocked"
+      ],
+      "sha256": "4381b7f94a5b1dac96aa27ce0de386ed552c296347feb8d766728bc37358e063"
+    },
+    {
+      "artifact_id": "conch:artifacts:spc_analysis:nct_tissue_fraction_proximity_per_class_recalls.csv",
+      "bytes": 1435,
+      "csv_header": "level,label,label_name,n,recall",
+      "download_id": "conch:artifacts:spc_analysis:nct_tissue_fraction_proximity_per_class_recalls.csv",
+      "download_path": "/downloads/conch/artifacts/spc_analysis/nct_tissue_fraction_proximity_per_class_recalls.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/conch/artifacts/spc_analysis/nct_tissue_fraction_proximity_per_class_recalls.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "conch",
+      "relative_path": "conch/artifacts/spc_analysis/nct_tissue_fraction_proximity_per_class_recalls.csv",
+      "rows": 54,
+      "run_ids": [
+        "conch_generalizability_audit_20260603_unblocked"
+      ],
+      "sha256": "b6264ca1dd3e7830cef18d486fdef70863c4df01450832fc38111692f335b910"
+    },
+    {
+      "artifact_id": "conch:artifacts:spc_analysis:scored_table_with_axes_and_baselines.csv",
+      "bytes": 12604776,
+      "csv_header": "source_split,source_record_index_x,sample_id,image_path,label,label_name,image_md5,dhash64,r_mean,r_std,r_p05,r_p95,g_mean,g_std,g_p05,g_p95,b_mean,b_std,b_p05,b_p95,h_mean,h_std,s_mean,s_std,v_mean,v_std,h_hist_00,h_hist_01,h_hist_02,h_hist_03,h_hist_04,h_hist_05,h_hist_06,h_hist_07,s_hist_00,s_hist_01,s_hist_02,s_hist_03,s_hist_04,s_hist_05,s_hist_06,s_hist_07,v_hist_00,v_hist_01,v_hist_02,v_hist_03,v_hist_04,v_hist_05,v_hist_06,v_hist_07,gray_hist_00,gray_hist_01,gray_hist_02,gray_hist_03,gray_hist_04,gray_hist_05,gray_hist_06,gray_hist_07,gray_hist_08,gray_hist_09,gray_hist_10,gray_hist_11,gray_hist_12,gray_hist_13,gray_hist_14,gray_hist_15,gray_mean,gray_std,gray_entropy,edge_mean,edge_std,tissue_fraction,white_fraction,dark_fraction,saturation_high_fraction,reference_shard,axis_nct_color_texture_similarity,axis_nct_color_similarity,axis_nct_tissue_fraction_similarity,axis_nct_texture_complexity_similarity,level_nct_color_texture_proximity,level_nct_color_proximity,level_nct_tissue_fraction_proximity,level_nct_texture_complexity_proximity,source_record_index_y,pred,pred_label_name,correct,logit_ADI,prob_ADI,logit_BACK,prob_BACK,logit_DEB,prob_DEB,logit_LYM,prob_LYM,logit_MUC,prob_MUC,logit_MUS,prob_MUS,logit_NORM,prob_NORM,logit_STR,prob_STR,logit_TUM,prob_TUM,baseline_centroid_pred,baseline_logistic_pred,baseline_majority_pred",
+      "download_id": "conch:artifacts:spc_analysis:scored_table_with_axes_and_baselines.csv",
+      "download_path": "/downloads/conch/artifacts/spc_analysis/scored_table_with_axes_and_baselines.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/conch/artifacts/spc_analysis/scored_table_with_axes_and_baselines.csv",
+      "finding_ids": [
+        "conch_tum_tissue_stain_tail_20260603"
+      ],
+      "format": "csv",
+      "model": "conch",
+      "relative_path": "conch/artifacts/spc_analysis/scored_table_with_axes_and_baselines.csv",
+      "rows": 7180,
+      "run_ids": [
+        "conch_generalizability_audit_20260603_unblocked"
+      ],
+      "sha256": "a5d6cd24a529511234dd4202d8e40fe7881ce64f24ac506914c2a883573079bf"
+    },
+    {
+      "artifact_id": "conch:artifacts:spc_analysis:spc_summary.json",
+      "bytes": 64169,
+      "csv_header": null,
+      "download_id": "conch:artifacts:spc_analysis:spc_summary.json",
+      "download_path": "/downloads/conch/artifacts/spc_analysis/spc_summary.json",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/conch/artifacts/spc_analysis/spc_summary.json",
+      "finding_ids": [
+        "conch_tum_tissue_stain_tail_20260603"
+      ],
+      "format": "json",
+      "model": "conch",
+      "relative_path": "conch/artifacts/spc_analysis/spc_summary.json",
+      "rows": null,
+      "run_ids": [
+        "conch_generalizability_audit_20260603_unblocked"
+      ],
+      "sha256": "ca4b6d5822e5bb48dd7828b75d5a86dde4b0d4e56ca39311a3f529630565ffff"
+    },
+    {
+      "artifact_id": "conch:artifacts:target_model_summary.json",
+      "bytes": 2454,
+      "csv_header": null,
+      "download_id": "conch:artifacts:target_model_summary.json",
+      "download_path": "/downloads/conch/artifacts/target_model_summary.json",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/conch/artifacts/target_model_summary.json",
+      "finding_ids": [
+        "conch_tum_tissue_stain_tail_20260603"
+      ],
+      "format": "json",
+      "model": "conch",
+      "relative_path": "conch/artifacts/target_model_summary.json",
+      "rows": null,
+      "run_ids": [
+        "conch_generalizability_audit_20260603_unblocked"
+      ],
+      "sha256": "532b33cb003ccdd22adea04392d0574d043cbf07cc01e576ea3569dd6ad1c98c"
+    },
+    {
+      "artifact_id": "conch:artifacts:tum_axis_feature_characterization.json",
+      "bytes": 6196,
+      "csv_header": null,
+      "download_id": "conch:artifacts:tum_axis_feature_characterization.json",
+      "download_path": "/downloads/conch/artifacts/tum_axis_feature_characterization.json",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/conch/artifacts/tum_axis_feature_characterization.json",
+      "finding_ids": [
+        "conch_tum_tissue_stain_tail_20260603"
+      ],
+      "format": "json",
+      "model": "conch",
+      "relative_path": "conch/artifacts/tum_axis_feature_characterization.json",
+      "rows": null,
+      "run_ids": [
+        "conch_generalizability_audit_20260603_unblocked"
+      ],
+      "sha256": "b630e479c2ff8363eb8893e510693d24c539db06d34f6743a4346b747cb74c41"
+    },
+    {
+      "artifact_id": "conch:artifacts:tum_confirmation:analysis.json",
+      "bytes": 5293,
+      "csv_header": null,
+      "download_id": "conch:artifacts:tum_confirmation:analysis.json",
+      "download_path": "/downloads/conch/artifacts/tum_confirmation/analysis.json",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/conch/artifacts/tum_confirmation/analysis.json",
+      "finding_ids": [
+        "conch_tum_tissue_stain_tail_20260603"
+      ],
+      "format": "json",
+      "model": "conch",
+      "relative_path": "conch/artifacts/tum_confirmation/analysis.json",
+      "rows": null,
+      "run_ids": [
+        "conch_generalizability_audit_20260603_unblocked"
+      ],
+      "sha256": "56ff295d452e576494ec67099f8529eb288a4320926a3ce1a2b6b09194f35620"
+    },
+    {
+      "artifact_id": "conch:artifacts:tum_confirmation:decile_densification.json",
+      "bytes": 2623,
+      "csv_header": null,
+      "download_id": "conch:artifacts:tum_confirmation:decile_densification.json",
+      "download_path": "/downloads/conch/artifacts/tum_confirmation/decile_densification.json",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/conch/artifacts/tum_confirmation/decile_densification.json",
+      "finding_ids": [
+        "conch_tum_tissue_stain_tail_20260603"
+      ],
+      "format": "json",
+      "model": "conch",
+      "relative_path": "conch/artifacts/tum_confirmation/decile_densification.json",
+      "rows": null,
+      "run_ids": [
+        "conch_generalizability_audit_20260603_unblocked"
+      ],
+      "sha256": "05a845b90ffa2772a1cdc04f45c63d0f307913428a3d0f8f8e6434a2d76683ab"
+    },
+    {
+      "artifact_id": "conch:artifacts:tum_confirmation:scored_tum_confirmation_with_baselines.csv",
+      "bytes": 3241229,
+      "csv_header": "source_split,source_record_index,sample_id,stream_shard,stream_local_seen_index,image_path,label,label_name,image_md5,dhash64,r_mean,r_std,r_p05,r_p95,g_mean,g_std,g_p05,g_p95,b_mean,b_std,b_p05,b_p95,h_mean,h_std,s_mean,s_std,v_mean,v_std,h_hist_00,h_hist_01,h_hist_02,h_hist_03,h_hist_04,h_hist_05,h_hist_06,h_hist_07,s_hist_00,s_hist_01,s_hist_02,s_hist_03,s_hist_04,s_hist_05,s_hist_06,s_hist_07,v_hist_00,v_hist_01,v_hist_02,v_hist_03,v_hist_04,v_hist_05,v_hist_06,v_hist_07,gray_hist_00,gray_hist_01,gray_hist_02,gray_hist_03,gray_hist_04,gray_hist_05,gray_hist_06,gray_hist_07,gray_hist_08,gray_hist_09,gray_hist_10,gray_hist_11,gray_hist_12,gray_hist_13,gray_hist_14,gray_hist_15,gray_mean,gray_std,gray_entropy,edge_mean,edge_std,tissue_fraction,white_fraction,dark_fraction,saturation_high_fraction,axis_nct_tissue_fraction_similarity,level_nct_tissue_fraction_proximity,pred,pred_label_name,correct,logit_ADI,prob_ADI,logit_BACK,prob_BACK,logit_DEB,prob_DEB,logit_LYM,prob_LYM,logit_MUC,prob_MUC,logit_MUS,prob_MUS,logit_NORM,prob_NORM,logit_STR,prob_STR,logit_TUM,prob_TUM,baseline_centroid_pred,baseline_logistic_pred",
+      "download_id": "conch:artifacts:tum_confirmation:scored_tum_confirmation_with_baselines.csv",
+      "download_path": "/downloads/conch/artifacts/tum_confirmation/scored_tum_confirmation_with_baselines.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/conch/artifacts/tum_confirmation/scored_tum_confirmation_with_baselines.csv",
+      "finding_ids": [
+        "conch_tum_tissue_stain_tail_20260603"
+      ],
+      "format": "csv",
+      "model": "conch",
+      "relative_path": "conch/artifacts/tum_confirmation/scored_tum_confirmation_with_baselines.csv",
+      "rows": 1800,
+      "run_ids": [
+        "conch_generalizability_audit_20260603_unblocked"
+      ],
+      "sha256": "34491b8de5e7266b5765a8bd9cc68073de8ecdd8259d023facee69c146b32a03"
+    },
+    {
+      "artifact_id": "conch:artifacts:tum_confirmation:summary.json",
+      "bytes": 212,
+      "csv_header": null,
+      "download_id": "conch:artifacts:tum_confirmation:summary.json",
+      "download_path": "/downloads/conch/artifacts/tum_confirmation/summary.json",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/conch/artifacts/tum_confirmation/summary.json",
+      "finding_ids": [],
+      "format": "json",
+      "model": "conch",
+      "relative_path": "conch/artifacts/tum_confirmation/summary.json",
+      "rows": null,
+      "run_ids": [
+        "conch_generalizability_audit_20260603_unblocked"
+      ],
+      "sha256": "60678d755c66755caf80a6e994b00aaf3d65bfebcbdc4fa9924d6c39ed870772"
+    },
+    {
+      "artifact_id": "conch:artifacts:tum_confirmation:target_model_results_tum_confirmation.csv",
+      "bytes": 742776,
+      "csv_header": "sample_id,label,label_name,pred,pred_label_name,correct,logit_ADI,prob_ADI,logit_BACK,prob_BACK,logit_DEB,prob_DEB,logit_LYM,prob_LYM,logit_MUC,prob_MUC,logit_MUS,prob_MUS,logit_NORM,prob_NORM,logit_STR,prob_STR,logit_TUM,prob_TUM",
+      "download_id": "conch:artifacts:tum_confirmation:target_model_results_tum_confirmation.csv",
+      "download_path": "/downloads/conch/artifacts/tum_confirmation/target_model_results_tum_confirmation.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/conch/artifacts/tum_confirmation/target_model_results_tum_confirmation.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "conch",
+      "relative_path": "conch/artifacts/tum_confirmation/target_model_results_tum_confirmation.csv",
+      "rows": 1800,
+      "run_ids": [
+        "conch_generalizability_audit_20260603_unblocked"
+      ],
+      "sha256": "d1c716e383ea02247698f8095a1fcea7fe298e8ad1d89166c27e630e962bc02c"
+    },
+    {
+      "artifact_id": "conch:artifacts:tum_expansion:analysis.json",
+      "bytes": 8579,
+      "csv_header": null,
+      "download_id": "conch:artifacts:tum_expansion:analysis.json",
+      "download_path": "/downloads/conch/artifacts/tum_expansion/analysis.json",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/conch/artifacts/tum_expansion/analysis.json",
+      "finding_ids": [
+        "conch_tum_tissue_stain_tail_20260603"
+      ],
+      "format": "json",
+      "model": "conch",
+      "relative_path": "conch/artifacts/tum_expansion/analysis.json",
+      "rows": null,
+      "run_ids": [
+        "conch_generalizability_audit_20260603_unblocked"
+      ],
+      "sha256": "ba47addbc06325ff3a916b6c61d67f5fa19512b9a497ba8879a17550c9d53750"
+    },
+    {
+      "artifact_id": "conch:artifacts:tum_expansion:expanded_finding_report.md",
+      "bytes": 3890,
+      "csv_header": null,
+      "download_id": "conch:artifacts:tum_expansion:expanded_finding_report.md",
+      "download_path": "/downloads/conch/artifacts/tum_expansion/expanded_finding_report.md",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/conch/artifacts/tum_expansion/expanded_finding_report.md",
+      "finding_ids": [
+        "conch_tum_tissue_stain_tail_20260603"
+      ],
+      "format": "md",
+      "model": "conch",
+      "relative_path": "conch/artifacts/tum_expansion/expanded_finding_report.md",
+      "rows": null,
+      "run_ids": [
+        "conch_generalizability_audit_20260603_unblocked"
+      ],
+      "sha256": "38dc193722d1a479199feb5ca6cdde7060600bc86cf003e84b14c7b55fe6281c"
+    },
+    {
+      "artifact_id": "conch:artifacts:tum_expansion:expanded_metrics.json",
+      "bytes": 25289,
+      "csv_header": null,
+      "download_id": "conch:artifacts:tum_expansion:expanded_metrics.json",
+      "download_path": "/downloads/conch/artifacts/tum_expansion/expanded_metrics.json",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/conch/artifacts/tum_expansion/expanded_metrics.json",
+      "finding_ids": [
+        "conch_tum_tissue_stain_tail_20260603"
+      ],
+      "format": "json",
+      "model": "conch",
+      "relative_path": "conch/artifacts/tum_expansion/expanded_metrics.json",
+      "rows": null,
+      "run_ids": [
+        "conch_generalizability_audit_20260603_unblocked"
+      ],
+      "sha256": "3fa1a41e285b29992447796c1e53a65aea30518551cac6610445fa4b73a91419"
+    },
+    {
+      "artifact_id": "conch:artifacts:tum_expansion:panel_diagnostics.json",
+      "bytes": 6368,
+      "csv_header": null,
+      "download_id": "conch:artifacts:tum_expansion:panel_diagnostics.json",
+      "download_path": "/downloads/conch/artifacts/tum_expansion/panel_diagnostics.json",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/conch/artifacts/tum_expansion/panel_diagnostics.json",
+      "finding_ids": [],
+      "format": "json",
+      "model": "conch",
+      "relative_path": "conch/artifacts/tum_expansion/panel_diagnostics.json",
+      "rows": null,
+      "run_ids": [
+        "conch_generalizability_audit_20260603_unblocked"
+      ],
+      "sha256": "fe5ae6115760bea87c292befb3c6a71ea26f6efc4ec8c1c513b2fb7a07298fa3"
+    },
+    {
+      "artifact_id": "conch:artifacts:tum_expansion:scored_tum_confirmation_with_baselines.csv",
+      "bytes": 7210706,
+      "csv_header": "source_split,source_record_index,sample_id,stream_shard,stream_local_seen_index,image_path,label,label_name,image_md5,dhash64,r_mean,r_std,r_p05,r_p95,g_mean,g_std,g_p05,g_p95,b_mean,b_std,b_p05,b_p95,h_mean,h_std,s_mean,s_std,v_mean,v_std,h_hist_00,h_hist_01,h_hist_02,h_hist_03,h_hist_04,h_hist_05,h_hist_06,h_hist_07,s_hist_00,s_hist_01,s_hist_02,s_hist_03,s_hist_04,s_hist_05,s_hist_06,s_hist_07,v_hist_00,v_hist_01,v_hist_02,v_hist_03,v_hist_04,v_hist_05,v_hist_06,v_hist_07,gray_hist_00,gray_hist_01,gray_hist_02,gray_hist_03,gray_hist_04,gray_hist_05,gray_hist_06,gray_hist_07,gray_hist_08,gray_hist_09,gray_hist_10,gray_hist_11,gray_hist_12,gray_hist_13,gray_hist_14,gray_hist_15,gray_mean,gray_std,gray_entropy,edge_mean,edge_std,tissue_fraction,white_fraction,dark_fraction,saturation_high_fraction,axis_nct_tissue_fraction_similarity,level_nct_tissue_fraction_proximity,pred,pred_label_name,correct,logit_ADI,prob_ADI,logit_BACK,prob_BACK,logit_DEB,prob_DEB,logit_LYM,prob_LYM,logit_MUC,prob_MUC,logit_MUS,prob_MUS,logit_NORM,prob_NORM,logit_STR,prob_STR,logit_TUM,prob_TUM,baseline_centroid_pred,baseline_logistic_pred",
+      "download_id": "conch:artifacts:tum_expansion:scored_tum_confirmation_with_baselines.csv",
+      "download_path": "/downloads/conch/artifacts/tum_expansion/scored_tum_confirmation_with_baselines.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/conch/artifacts/tum_expansion/scored_tum_confirmation_with_baselines.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "conch",
+      "relative_path": "conch/artifacts/tum_expansion/scored_tum_confirmation_with_baselines.csv",
+      "rows": 4000,
+      "run_ids": [
+        "conch_generalizability_audit_20260603_unblocked"
+      ],
+      "sha256": "8841ea7c09cef30ae34e094326bb3b13fa8f5e1d39ef0c7b4c1fc9b76433abb4"
+    },
+    {
+      "artifact_id": "conch:artifacts:tum_expansion:scored_tum_expansion_with_baselines.csv",
+      "bytes": 7210706,
+      "csv_header": "source_split,source_record_index,sample_id,stream_shard,stream_local_seen_index,image_path,label,label_name,image_md5,dhash64,r_mean,r_std,r_p05,r_p95,g_mean,g_std,g_p05,g_p95,b_mean,b_std,b_p05,b_p95,h_mean,h_std,s_mean,s_std,v_mean,v_std,h_hist_00,h_hist_01,h_hist_02,h_hist_03,h_hist_04,h_hist_05,h_hist_06,h_hist_07,s_hist_00,s_hist_01,s_hist_02,s_hist_03,s_hist_04,s_hist_05,s_hist_06,s_hist_07,v_hist_00,v_hist_01,v_hist_02,v_hist_03,v_hist_04,v_hist_05,v_hist_06,v_hist_07,gray_hist_00,gray_hist_01,gray_hist_02,gray_hist_03,gray_hist_04,gray_hist_05,gray_hist_06,gray_hist_07,gray_hist_08,gray_hist_09,gray_hist_10,gray_hist_11,gray_hist_12,gray_hist_13,gray_hist_14,gray_hist_15,gray_mean,gray_std,gray_entropy,edge_mean,edge_std,tissue_fraction,white_fraction,dark_fraction,saturation_high_fraction,axis_nct_tissue_fraction_similarity,level_nct_tissue_fraction_proximity,pred,pred_label_name,correct,logit_ADI,prob_ADI,logit_BACK,prob_BACK,logit_DEB,prob_DEB,logit_LYM,prob_LYM,logit_MUC,prob_MUC,logit_MUS,prob_MUS,logit_NORM,prob_NORM,logit_STR,prob_STR,logit_TUM,prob_TUM,baseline_centroid_pred,baseline_logistic_pred",
+      "download_id": "conch:artifacts:tum_expansion:scored_tum_expansion_with_baselines.csv",
+      "download_path": "/downloads/conch/artifacts/tum_expansion/scored_tum_expansion_with_baselines.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/conch/artifacts/tum_expansion/scored_tum_expansion_with_baselines.csv",
+      "finding_ids": [
+        "conch_tum_tissue_stain_tail_20260603"
+      ],
+      "format": "csv",
+      "model": "conch",
+      "relative_path": "conch/artifacts/tum_expansion/scored_tum_expansion_with_baselines.csv",
+      "rows": 4000,
+      "run_ids": [
+        "conch_generalizability_audit_20260603_unblocked"
+      ],
+      "sha256": "8841ea7c09cef30ae34e094326bb3b13fa8f5e1d39ef0c7b4c1fc9b76433abb4"
+    },
+    {
+      "artifact_id": "conch:artifacts:tum_expansion:summary.json",
+      "bytes": 215,
+      "csv_header": null,
+      "download_id": "conch:artifacts:tum_expansion:summary.json",
+      "download_path": "/downloads/conch/artifacts/tum_expansion/summary.json",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/conch/artifacts/tum_expansion/summary.json",
+      "finding_ids": [],
+      "format": "json",
+      "model": "conch",
+      "relative_path": "conch/artifacts/tum_expansion/summary.json",
+      "rows": null,
+      "run_ids": [
+        "conch_generalizability_audit_20260603_unblocked"
+      ],
+      "sha256": "cc22df4832c6dd8837ef3e1c4a68b31420b2acb98d514573bd46dcaf7af43cb5"
+    },
+    {
+      "artifact_id": "conch:artifacts:tum_expansion:target_model_results_tum_expansion.csv",
+      "bytes": 1665908,
+      "csv_header": "sample_id,label,label_name,pred,pred_label_name,correct,logit_ADI,prob_ADI,logit_BACK,prob_BACK,logit_DEB,prob_DEB,logit_LYM,prob_LYM,logit_MUC,prob_MUC,logit_MUS,prob_MUS,logit_NORM,prob_NORM,logit_STR,prob_STR,logit_TUM,prob_TUM",
+      "download_id": "conch:artifacts:tum_expansion:target_model_results_tum_expansion.csv",
+      "download_path": "/downloads/conch/artifacts/tum_expansion/target_model_results_tum_expansion.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/conch/artifacts/tum_expansion/target_model_results_tum_expansion.csv",
+      "finding_ids": [
+        "conch_tum_tissue_stain_tail_20260603"
+      ],
+      "format": "csv",
+      "model": "conch",
+      "relative_path": "conch/artifacts/tum_expansion/target_model_results_tum_expansion.csv",
+      "rows": 4000,
+      "run_ids": [
+        "conch_generalizability_audit_20260603_unblocked"
+      ],
+      "sha256": "6c57186bb1aa9027a6f8e00ed5b56d7a6d74c00e6ccd17a7a494d25bc2c28bf5"
+    },
+    {
+      "artifact_id": "conch:axis_ledger.json",
+      "bytes": 33326,
+      "csv_header": null,
+      "download_id": "conch:axis_ledger.json",
+      "download_path": "/downloads/conch/axis_ledger.json",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/conch/axis_ledger.json",
+      "finding_ids": [
+        "conch_tum_tissue_stain_tail_20260603"
+      ],
+      "format": "json",
+      "model": "conch",
+      "relative_path": "conch/axis_ledger.json",
+      "rows": null,
+      "run_ids": [
+        "conch_generalizability_audit_20260603_unblocked"
+      ],
+      "sha256": "cd4e127b61583773e11e5101afee010888e08c83d88924e9f6aee18fad79ae40"
+    },
+    {
+      "artifact_id": "conch:final_report.md",
+      "bytes": 3145,
+      "csv_header": null,
+      "download_id": "conch:final_report.md",
+      "download_path": "/downloads/conch/final_report.md",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/conch/final_report.md",
+      "finding_ids": [
+        "conch_tum_tissue_stain_tail_20260603"
+      ],
+      "format": "md",
+      "model": "conch",
+      "relative_path": "conch/final_report.md",
+      "rows": null,
+      "run_ids": [
+        "conch_generalizability_audit_20260603_unblocked"
+      ],
+      "sha256": "cee67175c83fc70926991b0d4bc5d68c6410886f68e848c515cf15c45433b27e"
+    },
+    {
+      "artifact_id": "conch:spectra_ready_dataset:dataset_diagnostics.json",
+      "bytes": 1226,
+      "csv_header": null,
+      "download_id": "conch:spectra_ready_dataset:dataset_diagnostics.json",
+      "download_path": "/downloads/conch/spectra_ready_dataset/dataset_diagnostics.json",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/conch/spectra_ready_dataset/dataset_diagnostics.json",
+      "finding_ids": [],
+      "format": "json",
+      "model": "conch",
+      "relative_path": "conch/spectra_ready_dataset/dataset_diagnostics.json",
+      "rows": null,
+      "run_ids": [
+        "conch_generalizability_audit_20260603_unblocked"
+      ],
+      "sha256": "911155a0556255c51e97adbe74c7e9be91dfdda786270aa6daf58fe2e8bae599"
+    },
+    {
+      "artifact_id": "conch:spectra_ready_dataset:tum_confirmation_panel.csv",
+      "bytes": 2683798,
+      "csv_header": "source_split,source_record_index,sample_id,stream_shard,stream_local_seen_index,image_path,label,label_name,image_md5,dhash64,r_mean,r_std,r_p05,r_p95,g_mean,g_std,g_p05,g_p95,b_mean,b_std,b_p05,b_p95,h_mean,h_std,s_mean,s_std,v_mean,v_std,h_hist_00,h_hist_01,h_hist_02,h_hist_03,h_hist_04,h_hist_05,h_hist_06,h_hist_07,s_hist_00,s_hist_01,s_hist_02,s_hist_03,s_hist_04,s_hist_05,s_hist_06,s_hist_07,v_hist_00,v_hist_01,v_hist_02,v_hist_03,v_hist_04,v_hist_05,v_hist_06,v_hist_07,gray_hist_00,gray_hist_01,gray_hist_02,gray_hist_03,gray_hist_04,gray_hist_05,gray_hist_06,gray_hist_07,gray_hist_08,gray_hist_09,gray_hist_10,gray_hist_11,gray_hist_12,gray_hist_13,gray_hist_14,gray_hist_15,gray_mean,gray_std,gray_entropy,edge_mean,edge_std,tissue_fraction,white_fraction,dark_fraction,saturation_high_fraction,axis_nct_tissue_fraction_similarity,level_nct_tissue_fraction_proximity",
+      "download_id": "conch:spectra_ready_dataset:tum_confirmation_panel.csv",
+      "download_path": "/downloads/conch/spectra_ready_dataset/tum_confirmation_panel.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/conch/spectra_ready_dataset/tum_confirmation_panel.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "conch",
+      "relative_path": "conch/spectra_ready_dataset/tum_confirmation_panel.csv",
+      "rows": 1800,
+      "run_ids": [
+        "conch_generalizability_audit_20260603_unblocked"
+      ],
+      "sha256": "db7ba95bbd63a41ddad1fbec51c54645ed8044ed432e854d46fb4a03a014a35b"
+    },
+    {
+      "artifact_id": "conch:spectra_ready_dataset:tum_expansion_panel.csv",
+      "bytes": 5973060,
+      "csv_header": "source_split,source_record_index,sample_id,stream_shard,stream_local_seen_index,image_path,label,label_name,image_md5,dhash64,r_mean,r_std,r_p05,r_p95,g_mean,g_std,g_p05,g_p95,b_mean,b_std,b_p05,b_p95,h_mean,h_std,s_mean,s_std,v_mean,v_std,h_hist_00,h_hist_01,h_hist_02,h_hist_03,h_hist_04,h_hist_05,h_hist_06,h_hist_07,s_hist_00,s_hist_01,s_hist_02,s_hist_03,s_hist_04,s_hist_05,s_hist_06,s_hist_07,v_hist_00,v_hist_01,v_hist_02,v_hist_03,v_hist_04,v_hist_05,v_hist_06,v_hist_07,gray_hist_00,gray_hist_01,gray_hist_02,gray_hist_03,gray_hist_04,gray_hist_05,gray_hist_06,gray_hist_07,gray_hist_08,gray_hist_09,gray_hist_10,gray_hist_11,gray_hist_12,gray_hist_13,gray_hist_14,gray_hist_15,gray_mean,gray_std,gray_entropy,edge_mean,edge_std,tissue_fraction,white_fraction,dark_fraction,saturation_high_fraction,axis_nct_tissue_fraction_similarity,level_nct_tissue_fraction_proximity",
+      "download_id": "conch:spectra_ready_dataset:tum_expansion_panel.csv",
+      "download_path": "/downloads/conch/spectra_ready_dataset/tum_expansion_panel.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/conch/spectra_ready_dataset/tum_expansion_panel.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "conch",
+      "relative_path": "conch/spectra_ready_dataset/tum_expansion_panel.csv",
+      "rows": 4000,
+      "run_ids": [
+        "conch_generalizability_audit_20260603_unblocked"
+      ],
+      "sha256": "d7faa8239ba3eb32ab635478a0b54115e8ff44e56ca2c526a18f00dbacdb93d7"
+    },
+    {
+      "artifact_id": "conch:target_model_results.csv",
+      "bytes": 3063944,
+      "csv_header": "sample_id,source_record_index,image_path,label,label_name,pred,pred_label_name,correct,logit_ADI,prob_ADI,logit_BACK,prob_BACK,logit_DEB,prob_DEB,logit_LYM,prob_LYM,logit_MUC,prob_MUC,logit_MUS,prob_MUS,logit_NORM,prob_NORM,logit_STR,prob_STR,logit_TUM,prob_TUM",
+      "download_id": "conch:target_model_results.csv",
+      "download_path": "/downloads/conch/target_model_results.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/conch/target_model_results.csv",
+      "finding_ids": [
+        "conch_tum_tissue_stain_tail_20260603"
+      ],
+      "format": "csv",
+      "model": "conch",
+      "relative_path": "conch/target_model_results.csv",
+      "rows": 7180,
+      "run_ids": [
+        "conch_generalizability_audit_20260603_unblocked"
+      ],
+      "sha256": "d0f00ee3904e1f5191c75267c04c42fc3b23ffd7e8bd1a0c0c7185f3bdc19852"
+    },
+    {
+      "artifact_id": "esmfold2:ARTIFACT_INDEX.md",
+      "bytes": 4587,
+      "csv_header": null,
+      "download_id": "esmfold2:ARTIFACT_INDEX.md",
+      "download_path": "/downloads/esmfold2/ARTIFACT_INDEX.md",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/ARTIFACT_INDEX.md",
+      "finding_ids": [],
+      "format": "md",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/ARTIFACT_INDEX.md",
+      "rows": null,
+      "run_ids": [
+        "esmfold2_paper_ready_final_20260602"
+      ],
+      "sha256": "eb5056c62e4da1ffc7198b80aed1836e25397d9e6d760ae29b41b2298b099eaa"
+    },
+    {
+      "artifact_id": "esmfold2:FINAL_ESMFOLD2_RESULT.md",
+      "bytes": 9107,
+      "csv_header": null,
+      "download_id": "esmfold2:FINAL_ESMFOLD2_RESULT.md",
+      "download_path": "/downloads/esmfold2/FINAL_ESMFOLD2_RESULT.md",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/FINAL_ESMFOLD2_RESULT.md",
+      "finding_ids": [
+        "esmfold2_high_disulfide_boundary_20260602"
+      ],
+      "format": "md",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/FINAL_ESMFOLD2_RESULT.md",
+      "rows": null,
+      "run_ids": [
+        "esmfold2_paper_ready_final_20260602"
+      ],
+      "sha256": "51d9d2174b9e00d368e8a7a661f5baca7b2166e6bf2070f1cdc248fb2cec0429"
+    },
+    {
+      "artifact_id": "esmfold2:PAPER_FIGURE_GUIDE.md",
+      "bytes": 4678,
+      "csv_header": null,
+      "download_id": "esmfold2:PAPER_FIGURE_GUIDE.md",
+      "download_path": "/downloads/esmfold2/PAPER_FIGURE_GUIDE.md",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/PAPER_FIGURE_GUIDE.md",
+      "finding_ids": [],
+      "format": "md",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/PAPER_FIGURE_GUIDE.md",
+      "rows": null,
+      "run_ids": [],
+      "sha256": "c1efb6db22dd54d93d7cac3e7fb2cb399feb2617a08710c9c31f0892aa1e1c6f"
+    },
+    {
+      "artifact_id": "esmfold2:README.md",
+      "bytes": 2579,
+      "csv_header": null,
+      "download_id": "esmfold2:README.md",
+      "download_path": "/downloads/esmfold2/README.md",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/README.md",
+      "finding_ids": [],
+      "format": "md",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/README.md",
+      "rows": null,
+      "run_ids": [],
+      "sha256": "ae5e43784962184ef398822efc92e4ff4b25167b2fa9509180315314443b0775"
+    },
+    {
+      "artifact_id": "esmfold2:data:all_esmfold2_scored_evaluations.csv",
+      "bytes": 1830916,
+      "csv_header": "target_id,sample_index,status,error,wall_sec_target_all_samples,seed,num_loops,num_sampling_steps,num_diffusion_samples,ptm,plddt_mean,plddt_ca_mean,alignment_identity,alignment_coverage,aligned_ca,ca_lddt,ca_rmsd,gdt_ts,ca_median_error,ca_p90_error,baseline_ca_lddt,baseline_gdt_ts,baseline_ca_rmsd,_ptm_sort,_plddt_sort,selection,result_file,run_dir,run_name,sequence_clean,sequence_hash_calc,setting_label,budget_score,data_family,rcsb_instance_id,entry_id,entity_id,asym_id,auth_asym_id,sequence,seq_len,polymer_type,release_date,method,resolution,organism,aa20_fraction,kd_gravy,kd_window19_max,kd_window21_max,kd_window19_frac_gt_1_6,tm_helix_proxy,basic_fraction,acidic_fraction,net_charge_per_residue,abs_charge_per_residue,fraction_charged_residues_fcr,hydropathy_norm_uversky,uversky_disorder_score,charge_hydropathy_ratio,max_abs_charge_window31,max_positive_charge_window31,max_negative_charge_window31,charged_fraction,polar_fraction,aromatic_fraction,proline_fraction,cys_fraction,tiny_fraction,disorder_promoting_fraction,order_promoting_fraction,disorder_minus_order_fraction,max_homopolymer_run,max_homopolymer_run_norm,low_complexity_window30_max_fraction,dipeptide_repeat_fraction,heptad_hydrophobic_periodicity,coiled_coil_sequence_proxy,chou_fasman_helix_mean,chou_fasman_beta_mean,chou_fasman_turn_mean,chou_beta_minus_helix,chou_turn_minus_helix,proline_fraction_prior_pct,chou_beta_minus_helix_prior_pct,chou_turn_minus_helix_prior_pct,flexible_nonhelical_composite_rank,axis_flexible_nonhelical_composite_rank_q7_level,sequence_upper,sequence_hash,aa20_only,acidic_window_feature,acidic_window_stress,acidic_window_level,acidic_window_axis_feature,acidic_window_direction,pdb_download_ok,structure_format,eligible_reference,ref_chain,actual_ref_chain,pdb_path,cameo_target,submission_date,difficulty,quaternary_state,monomeric_model_count,ref_pdb_chain,ref_pdb_id,metadata_sequence_length,msa_rows,msa_nonquery_rows,msa_log10_nonquery_rows,msa_top_nonquery_identity,acidic_window_level_name,scaling_group,calc_seq_abs_charge_per_residue,combined_row_id,evidence_source,inference_setting,selection_policy,evidence_root,target_result_origin,seq_kmer4_richness,seq_nterm_hydrophobic_frac30,seq_hydrophobic_window21_max_frac,seq_polyhis_longest_run,seq_antibody_like_score,seq_gs_linker_fraction,seq_disorder_order_balance,seq_long_hydrophobic_segment_flag,seq_polyhis_tag_flag,seq_antibody_like_flag,tax_human,tax_mammal_nonhuman,tax_bacteria,tax_virus_or_phage,tax_fungi,tax_plant,tax_synthetic_or_metagenome,tax_nonhuman_nonmodel_stress,prov_method_xray,prov_method_em,prov_method_nmr,reference_quality_stress,rcsb_reference_quality_level,seq_kmer4_nearest_jaccard_to_scored,seq_kmer4_cluster_count_j025_to_scored,seq_kmer4_cluster_count_j040_to_scored,seq_kmer4_isolation_stress_to_scored,cys_level,cys_level_name,cys_axis_feature,cys_direction,cys_length_bin,_rank,wall_sec,rcsb_entity_id,entity_description,title,keywords,disulfide_capacity_per100,tm_helix_proxy_calc,nglyc_motif_count,hydrophobic_window21_max_frac_calc,strict_envelope_fusion_sequence_proxy,metadata_envelope_keyword,envelope_fusion_score,envelope_fusion_level_name,method_em,query_hits,surface_keyword,capsid_or_enzyme_keyword,surface_lowhelical_disulfide_dense,surface_lowhelical_low_tm_proxy,surface_lowhelical_score,surface_lowhelical_level_name,subtype_e2_e,subtype_e1_g,subtype_gp1,subtype_gp2,subtype_classII_virus,subtype_classII_e_or_e2,analysis_id,dataset,evaluation_pool,aggregation,scaled_mean_ca_lddt,scaled_sd_ca_lddt,scaled_n_samples,source,result_panel,viral_axis_virus_or_phage,viral_disulfide_capacity_per100,viral_axis_disulfide_dense,viral_disulfide_score,viral_disulfide_level_name,viral_length_bin,calc_seq_len,cys_fraction_calc,disulfide_capacity_per100_calc,cys_window30_max_fraction,proline_fraction_calc,gly_pro_fraction_calc,hydrophobic_fraction_calc,hydrophobic_window21_max_frac_calc2,tm_helix_proxy_calc2,acidic_fraction_calc,basic_fraction_calc,charged_fraction_calc,abs_charge_per_residue_calc,net_charge_per_residue_calc,low_complexity_window30_max_fraction_calc,nglyc_motif_count_calc,nglyc_motif_per100_calc,disorder_promoting_fraction_calc,order_promoting_fraction_calc,disorder_minus_order_fraction_calc,chou_helix_mean_calc,chou_beta_mean_calc,chou_turn_mean_calc,chou_beta_minus_helix_calc,chou_turn_minus_helix_calc,kd_gravy_calc,uversky_disorder_score_calc,proline_fraction_calc_pct,chou_beta_minus_helix_calc_pct,chou_turn_minus_helix_calc_pct,flexible_nonhelical_composite_calc,metadata_text,metadata_text_available,tax_virus_or_phage_calc,tax_parasite_or_nonhuman_surface_calc,surface_keyword_calc,capsid_or_enzyme_keyword_calc,classii_e_e2_envelopeE_calc,gp1_calc,gp2_calc,e1_or_g_surface_calc,disulfide_dense_calc,low_tm_proxy_calc,membrane_lowglyc_proxy_calc,viral_disulfide_score_calc,strict_envelope_fusion_score_calc,surface_lowhelical_score_calc,surface_disulfide_lowhelical_calc,classii_e_e2_lowhelical_calc",
+      "download_id": "esmfold2:data:all_esmfold2_scored_evaluations.csv",
+      "download_path": "/downloads/esmfold2/data/all_esmfold2_scored_evaluations.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/data/all_esmfold2_scored_evaluations.csv",
+      "finding_ids": [
+        "esmfold2_high_disulfide_boundary_20260602"
+      ],
+      "format": "csv",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/data/all_esmfold2_scored_evaluations.csv",
+      "rows": 706,
+      "run_ids": [
+        "esmfold2_paper_ready_final_20260602"
+      ],
+      "sha256": "d69ada693ae0daccc466ed4da38bf85a5e5a734621f79b370cfe53107b4db7fa"
+    },
+    {
+      "artifact_id": "esmfold2:data:primary_exact_sequence_dedup.csv",
+      "bytes": 1724488,
+      "csv_header": "target_id,sample_index,status,error,wall_sec_target_all_samples,seed,num_loops,num_sampling_steps,num_diffusion_samples,ptm,plddt_mean,plddt_ca_mean,alignment_identity,alignment_coverage,aligned_ca,ca_lddt,ca_rmsd,gdt_ts,ca_median_error,ca_p90_error,baseline_ca_lddt,baseline_gdt_ts,baseline_ca_rmsd,_ptm_sort,_plddt_sort,selection,result_file,run_dir,run_name,sequence_clean,sequence_hash_calc,setting_label,budget_score,data_family,rcsb_instance_id,entry_id,entity_id,asym_id,auth_asym_id,sequence,seq_len,polymer_type,release_date,method,resolution,organism,aa20_fraction,kd_gravy,kd_window19_max,kd_window21_max,kd_window19_frac_gt_1_6,tm_helix_proxy,basic_fraction,acidic_fraction,net_charge_per_residue,abs_charge_per_residue,fraction_charged_residues_fcr,hydropathy_norm_uversky,uversky_disorder_score,charge_hydropathy_ratio,max_abs_charge_window31,max_positive_charge_window31,max_negative_charge_window31,charged_fraction,polar_fraction,aromatic_fraction,proline_fraction,cys_fraction,tiny_fraction,disorder_promoting_fraction,order_promoting_fraction,disorder_minus_order_fraction,max_homopolymer_run,max_homopolymer_run_norm,low_complexity_window30_max_fraction,dipeptide_repeat_fraction,heptad_hydrophobic_periodicity,coiled_coil_sequence_proxy,chou_fasman_helix_mean,chou_fasman_beta_mean,chou_fasman_turn_mean,chou_beta_minus_helix,chou_turn_minus_helix,proline_fraction_prior_pct,chou_beta_minus_helix_prior_pct,chou_turn_minus_helix_prior_pct,flexible_nonhelical_composite_rank,axis_flexible_nonhelical_composite_rank_q7_level,sequence_upper,sequence_hash,aa20_only,acidic_window_feature,acidic_window_stress,acidic_window_level,acidic_window_axis_feature,acidic_window_direction,pdb_download_ok,structure_format,eligible_reference,ref_chain,actual_ref_chain,pdb_path,cameo_target,submission_date,difficulty,quaternary_state,monomeric_model_count,ref_pdb_chain,ref_pdb_id,metadata_sequence_length,msa_rows,msa_nonquery_rows,msa_log10_nonquery_rows,msa_top_nonquery_identity,acidic_window_level_name,scaling_group,calc_seq_abs_charge_per_residue,combined_row_id,evidence_source,inference_setting,selection_policy,evidence_root,target_result_origin,seq_kmer4_richness,seq_nterm_hydrophobic_frac30,seq_hydrophobic_window21_max_frac,seq_polyhis_longest_run,seq_antibody_like_score,seq_gs_linker_fraction,seq_disorder_order_balance,seq_long_hydrophobic_segment_flag,seq_polyhis_tag_flag,seq_antibody_like_flag,tax_human,tax_mammal_nonhuman,tax_bacteria,tax_virus_or_phage,tax_fungi,tax_plant,tax_synthetic_or_metagenome,tax_nonhuman_nonmodel_stress,prov_method_xray,prov_method_em,prov_method_nmr,reference_quality_stress,rcsb_reference_quality_level,seq_kmer4_nearest_jaccard_to_scored,seq_kmer4_cluster_count_j025_to_scored,seq_kmer4_cluster_count_j040_to_scored,seq_kmer4_isolation_stress_to_scored,cys_level,cys_level_name,cys_axis_feature,cys_direction,cys_length_bin,_rank,wall_sec,rcsb_entity_id,entity_description,title,keywords,disulfide_capacity_per100,tm_helix_proxy_calc,nglyc_motif_count,hydrophobic_window21_max_frac_calc,strict_envelope_fusion_sequence_proxy,metadata_envelope_keyword,envelope_fusion_score,envelope_fusion_level_name,method_em,query_hits,surface_keyword,capsid_or_enzyme_keyword,surface_lowhelical_disulfide_dense,surface_lowhelical_low_tm_proxy,surface_lowhelical_score,surface_lowhelical_level_name,subtype_e2_e,subtype_e1_g,subtype_gp1,subtype_gp2,subtype_classII_virus,subtype_classII_e_or_e2,analysis_id,dataset,evaluation_pool,aggregation,scaled_mean_ca_lddt,scaled_sd_ca_lddt,scaled_n_samples,source,result_panel,viral_axis_virus_or_phage,viral_disulfide_capacity_per100,viral_axis_disulfide_dense,viral_disulfide_score,viral_disulfide_level_name,viral_length_bin,calc_seq_len,cys_fraction_calc,disulfide_capacity_per100_calc,cys_window30_max_fraction,proline_fraction_calc,gly_pro_fraction_calc,hydrophobic_fraction_calc,hydrophobic_window21_max_frac_calc2,tm_helix_proxy_calc2,acidic_fraction_calc,basic_fraction_calc,charged_fraction_calc,abs_charge_per_residue_calc,net_charge_per_residue_calc,low_complexity_window30_max_fraction_calc,nglyc_motif_count_calc,nglyc_motif_per100_calc,disorder_promoting_fraction_calc,order_promoting_fraction_calc,disorder_minus_order_fraction_calc,chou_helix_mean_calc,chou_beta_mean_calc,chou_turn_mean_calc,chou_beta_minus_helix_calc,chou_turn_minus_helix_calc,kd_gravy_calc,uversky_disorder_score_calc,proline_fraction_calc_pct,chou_beta_minus_helix_calc_pct,chou_turn_minus_helix_calc_pct,flexible_nonhelical_composite_calc,metadata_text,metadata_text_available,tax_virus_or_phage_calc,tax_parasite_or_nonhuman_surface_calc,surface_keyword_calc,capsid_or_enzyme_keyword_calc,classii_e_e2_envelopeE_calc,gp1_calc,gp2_calc,e1_or_g_surface_calc,disulfide_dense_calc,low_tm_proxy_calc,membrane_lowglyc_proxy_calc,viral_disulfide_score_calc,strict_envelope_fusion_score_calc,surface_lowhelical_score_calc,surface_disulfide_lowhelical_calc,classii_e_e2_lowhelical_calc",
+      "download_id": "esmfold2:data:primary_exact_sequence_dedup.csv",
+      "download_path": "/downloads/esmfold2/data/primary_exact_sequence_dedup.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/data/primary_exact_sequence_dedup.csv",
+      "finding_ids": [
+        "esmfold2_high_disulfide_boundary_20260602"
+      ],
+      "format": "csv",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/data/primary_exact_sequence_dedup.csv",
+      "rows": 652,
+      "run_ids": [
+        "esmfold2_paper_ready_final_20260602"
+      ],
+      "sha256": "4f35b2fa090e619a75af641b0f76d211401e7a42f829032fa121e0255f20a11c"
+    },
+    {
+      "artifact_id": "esmfold2:example_structures:example_prediction_config.json",
+      "bytes": 217,
+      "csv_header": null,
+      "download_id": "esmfold2:example_structures:example_prediction_config.json",
+      "download_path": "/downloads/esmfold2/example_structures/example_prediction_config.json",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/example_structures/example_prediction_config.json",
+      "finding_ids": [],
+      "format": "json",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/example_structures/example_prediction_config.json",
+      "rows": null,
+      "run_ids": [],
+      "sha256": "43fc3d125f8fab7705b94ef39808e31f75f88c813a8468c953664c58cc271bd3"
+    },
+    {
+      "artifact_id": "esmfold2:example_structures:example_prediction_overlay_summary.csv",
+      "bytes": 1263,
+      "csv_header": "target_id,best_by_ptm_sample_index,ptm,plddt_mean,ca_lddt,gdt_ts,ca_rmsd,aligned_ca,wall_sec,ca_overlay_pdb,ca_overlay_png",
+      "download_id": "esmfold2:example_structures:example_prediction_overlay_summary.csv",
+      "download_path": "/downloads/esmfold2/example_structures/example_prediction_overlay_summary.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/example_structures/example_prediction_overlay_summary.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/example_structures/example_prediction_overlay_summary.csv",
+      "rows": 3,
+      "run_ids": [],
+      "sha256": "774036b42f4b912cb1fe31a2b8070aa23dfa242795ab7b09f78d935e8080b9fd"
+    },
+    {
+      "artifact_id": "esmfold2:example_structures:example_structure_targets.csv",
+      "bytes": 4421,
+      "csv_header": "target_id,data_family,ca_lddt,gdt_ts,ca_rmsd,ptm,plddt_mean,calc_seq_len,disulfide_capacity_per100_calc,cys_fraction_calc,classii,high_disulfide,organism,entity_description,pdb_path,actual_ref_chain,ref_chain,sequence,example_status",
+      "download_id": "esmfold2:example_structures:example_structure_targets.csv",
+      "download_path": "/downloads/esmfold2/example_structures/example_structure_targets.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/example_structures/example_structure_targets.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/example_structures/example_structure_targets.csv",
+      "rows": 5,
+      "run_ids": [],
+      "sha256": "02437ab6effa9b0a58cf918adaca99fc47da36633862b749d5bfa28374096be3"
+    },
+    {
+      "artifact_id": "esmfold2:prior_axis_reports:01_cameo_msa_depth_final_report.md",
+      "bytes": 4949,
+      "csv_header": null,
+      "download_id": "esmfold2:prior_axis_reports:01_cameo_msa_depth_final_report.md",
+      "download_path": "/downloads/esmfold2/prior_axis_reports/01_cameo_msa_depth_final_report.md",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/prior_axis_reports/01_cameo_msa_depth_final_report.md",
+      "finding_ids": [
+        "esmfold2_high_disulfide_boundary_20260602"
+      ],
+      "format": "md",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/prior_axis_reports/01_cameo_msa_depth_final_report.md",
+      "rows": null,
+      "run_ids": [
+        "esmfold2_paper_ready_final_20260602"
+      ],
+      "sha256": "8a436a590ebdaa363589d2b7e40027c9bb7f383f07c1a4049203d52b446bc715"
+    },
+    {
+      "artifact_id": "esmfold2:prior_axis_reports:02_beyond_msa_flexible_nonhelical_report.md",
+      "bytes": 6227,
+      "csv_header": null,
+      "download_id": "esmfold2:prior_axis_reports:02_beyond_msa_flexible_nonhelical_report.md",
+      "download_path": "/downloads/esmfold2/prior_axis_reports/02_beyond_msa_flexible_nonhelical_report.md",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/prior_axis_reports/02_beyond_msa_flexible_nonhelical_report.md",
+      "finding_ids": [],
+      "format": "md",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/prior_axis_reports/02_beyond_msa_flexible_nonhelical_report.md",
+      "rows": null,
+      "run_ids": [],
+      "sha256": "30172f8325660be421ca9a50dabc15dbc9569d403c6eda747b83acd3b438518b"
+    },
+    {
+      "artifact_id": "esmfold2:prior_axis_reports:03_flexible_nonhelical_external_rcsb_report.md",
+      "bytes": 1941,
+      "csv_header": null,
+      "download_id": "esmfold2:prior_axis_reports:03_flexible_nonhelical_external_rcsb_report.md",
+      "download_path": "/downloads/esmfold2/prior_axis_reports/03_flexible_nonhelical_external_rcsb_report.md",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/prior_axis_reports/03_flexible_nonhelical_external_rcsb_report.md",
+      "finding_ids": [],
+      "format": "md",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/prior_axis_reports/03_flexible_nonhelical_external_rcsb_report.md",
+      "rows": null,
+      "run_ids": [],
+      "sha256": "b504ef31feb6a9b22564f34c59a5e5bc8056bf16ef500f084854a5fc4fb6f2af"
+    },
+    {
+      "artifact_id": "esmfold2:prior_axis_reports:04_reference_geometry_benchmark_only_report.md",
+      "bytes": 3578,
+      "csv_header": null,
+      "download_id": "esmfold2:prior_axis_reports:04_reference_geometry_benchmark_only_report.md",
+      "download_path": "/downloads/esmfold2/prior_axis_reports/04_reference_geometry_benchmark_only_report.md",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/prior_axis_reports/04_reference_geometry_benchmark_only_report.md",
+      "finding_ids": [],
+      "format": "md",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/prior_axis_reports/04_reference_geometry_benchmark_only_report.md",
+      "rows": null,
+      "run_ids": [],
+      "sha256": "47cefd50ba44fd6d31c21153f8a1e9c7bbc8ef92ea8142d52f957ec615e07e92"
+    },
+    {
+      "artifact_id": "esmfold2:prior_axis_reports:05_shared_charge_saved_outputs_report.md",
+      "bytes": 1710,
+      "csv_header": null,
+      "download_id": "esmfold2:prior_axis_reports:05_shared_charge_saved_outputs_report.md",
+      "download_path": "/downloads/esmfold2/prior_axis_reports/05_shared_charge_saved_outputs_report.md",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/prior_axis_reports/05_shared_charge_saved_outputs_report.md",
+      "finding_ids": [],
+      "format": "md",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/prior_axis_reports/05_shared_charge_saved_outputs_report.md",
+      "rows": null,
+      "run_ids": [],
+      "sha256": "9aeb952cf84640b4093fa2a7f8efc0da8789b360d5eb9c2052370bf91bfb5de2"
+    },
+    {
+      "artifact_id": "esmfold2:prior_axis_reports:06_charge_fresh_confirmation_failed_report.md",
+      "bytes": 3864,
+      "csv_header": null,
+      "download_id": "esmfold2:prior_axis_reports:06_charge_fresh_confirmation_failed_report.md",
+      "download_path": "/downloads/esmfold2/prior_axis_reports/06_charge_fresh_confirmation_failed_report.md",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/prior_axis_reports/06_charge_fresh_confirmation_failed_report.md",
+      "finding_ids": [],
+      "format": "md",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/prior_axis_reports/06_charge_fresh_confirmation_failed_report.md",
+      "rows": null,
+      "run_ids": [],
+      "sha256": "49b9214355b2158205c284a120ce3ffa8525e472dbbd3f9a237541703006dfc6"
+    },
+    {
+      "artifact_id": "esmfold2:prior_axis_reports:07_high_cysteine_fresh_confirmation_report.md",
+      "bytes": 4025,
+      "csv_header": null,
+      "download_id": "esmfold2:prior_axis_reports:07_high_cysteine_fresh_confirmation_report.md",
+      "download_path": "/downloads/esmfold2/prior_axis_reports/07_high_cysteine_fresh_confirmation_report.md",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/prior_axis_reports/07_high_cysteine_fresh_confirmation_report.md",
+      "finding_ids": [],
+      "format": "md",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/prior_axis_reports/07_high_cysteine_fresh_confirmation_report.md",
+      "rows": null,
+      "run_ids": [],
+      "sha256": "119f592e8789400f64f5de749677421d6125b98a6fbad18a8b64fb3f2a13be9b"
+    },
+    {
+      "artifact_id": "esmfold2:prior_axis_reports:08_cysteine_proxy_investigation.md",
+      "bytes": 3217,
+      "csv_header": null,
+      "download_id": "esmfold2:prior_axis_reports:08_cysteine_proxy_investigation.md",
+      "download_path": "/downloads/esmfold2/prior_axis_reports/08_cysteine_proxy_investigation.md",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/prior_axis_reports/08_cysteine_proxy_investigation.md",
+      "finding_ids": [],
+      "format": "md",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/prior_axis_reports/08_cysteine_proxy_investigation.md",
+      "rows": null,
+      "run_ids": [],
+      "sha256": "f9f8cd9285024f0aeb365ad9d9cd9753b9c48d53b2c2e7ac6940a6cba69b6d6d"
+    },
+    {
+      "artifact_id": "esmfold2:prior_axis_reports:09_viral_disulfide_pilot_report.md",
+      "bytes": 1025,
+      "csv_header": null,
+      "download_id": "esmfold2:prior_axis_reports:09_viral_disulfide_pilot_report.md",
+      "download_path": "/downloads/esmfold2/prior_axis_reports/09_viral_disulfide_pilot_report.md",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/prior_axis_reports/09_viral_disulfide_pilot_report.md",
+      "finding_ids": [],
+      "format": "md",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/prior_axis_reports/09_viral_disulfide_pilot_report.md",
+      "rows": null,
+      "run_ids": [],
+      "sha256": "fa398c0310b95a82bbd3cdec11f98b2a556fb6eb070bdaa39450b5afe104144e"
+    },
+    {
+      "artifact_id": "esmfold2:prior_axis_reports:10_envelope_fusion_confirmation_failed_report.md",
+      "bytes": 2486,
+      "csv_header": null,
+      "download_id": "esmfold2:prior_axis_reports:10_envelope_fusion_confirmation_failed_report.md",
+      "download_path": "/downloads/esmfold2/prior_axis_reports/10_envelope_fusion_confirmation_failed_report.md",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/prior_axis_reports/10_envelope_fusion_confirmation_failed_report.md",
+      "finding_ids": [],
+      "format": "md",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/prior_axis_reports/10_envelope_fusion_confirmation_failed_report.md",
+      "rows": null,
+      "run_ids": [],
+      "sha256": "596be0cf56e4bd9470191bed710ecec65dd9fabc84143a3e6501ecf6a312d54c"
+    },
+    {
+      "artifact_id": "esmfold2:prior_axis_reports:11_surface_lowhelical_and_classII_report.md",
+      "bytes": 2624,
+      "csv_header": null,
+      "download_id": "esmfold2:prior_axis_reports:11_surface_lowhelical_and_classII_report.md",
+      "download_path": "/downloads/esmfold2/prior_axis_reports/11_surface_lowhelical_and_classII_report.md",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/prior_axis_reports/11_surface_lowhelical_and_classII_report.md",
+      "finding_ids": [
+        "esmfold2_high_disulfide_boundary_20260602"
+      ],
+      "format": "md",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/prior_axis_reports/11_surface_lowhelical_and_classII_report.md",
+      "rows": null,
+      "run_ids": [
+        "esmfold2_paper_ready_final_20260602"
+      ],
+      "sha256": "cc09a9b92cfcf27adfd058643dec7db0d295caebb4e6f437a6ad262bc8e420fb"
+    },
+    {
+      "artifact_id": "esmfold2:provenance:input_manifest.json",
+      "bytes": 6245,
+      "csv_header": null,
+      "download_id": "esmfold2:provenance:input_manifest.json",
+      "download_path": "/downloads/esmfold2/provenance/input_manifest.json",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/provenance/input_manifest.json",
+      "finding_ids": [],
+      "format": "json",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/provenance/input_manifest.json",
+      "rows": null,
+      "run_ids": [],
+      "sha256": "627b717332109c9cd57afb0527c19a2733d513f14b5ca601061aeb103d561d98"
+    },
+    {
+      "artifact_id": "esmfold2:provenance:summary.json",
+      "bytes": 6243,
+      "csv_header": null,
+      "download_id": "esmfold2:provenance:summary.json",
+      "download_path": "/downloads/esmfold2/provenance/summary.json",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/provenance/summary.json",
+      "finding_ids": [],
+      "format": "json",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/provenance/summary.json",
+      "rows": null,
+      "run_ids": [],
+      "sha256": "bce7b874781f2504930ccf2862ee517a7ea1e1e423f21f368692472b267d32ca"
+    },
+    {
+      "artifact_id": "esmfold2:source_reports:global_hypothesis_audit_report.md",
+      "bytes": 4574,
+      "csv_header": null,
+      "download_id": "esmfold2:source_reports:global_hypothesis_audit_report.md",
+      "download_path": "/downloads/esmfold2/source_reports/global_hypothesis_audit_report.md",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/source_reports/global_hypothesis_audit_report.md",
+      "finding_ids": [],
+      "format": "md",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/source_reports/global_hypothesis_audit_report.md",
+      "rows": null,
+      "run_ids": [],
+      "sha256": "d7913606134b87862ffc768723ebb1efcafd34cae9459ea07d959a7c58b427b5"
+    },
+    {
+      "artifact_id": "esmfold2:source_reports:global_hypothesis_interpretation.md",
+      "bytes": 4594,
+      "csv_header": null,
+      "download_id": "esmfold2:source_reports:global_hypothesis_interpretation.md",
+      "download_path": "/downloads/esmfold2/source_reports/global_hypothesis_interpretation.md",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/source_reports/global_hypothesis_interpretation.md",
+      "finding_ids": [],
+      "format": "md",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/source_reports/global_hypothesis_interpretation.md",
+      "rows": null,
+      "run_ids": [],
+      "sha256": "19d3b73e887ea45889228ab017a957de84fad7d3c222dae04f02ee47d8888e6f"
+    },
+    {
+      "artifact_id": "esmfold2:source_reports:reviewer_proofing_report.md",
+      "bytes": 3982,
+      "csv_header": null,
+      "download_id": "esmfold2:source_reports:reviewer_proofing_report.md",
+      "download_path": "/downloads/esmfold2/source_reports/reviewer_proofing_report.md",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/source_reports/reviewer_proofing_report.md",
+      "finding_ids": [
+        "esmfold2_high_disulfide_boundary_20260602"
+      ],
+      "format": "md",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/source_reports/reviewer_proofing_report.md",
+      "rows": null,
+      "run_ids": [
+        "esmfold2_paper_ready_final_20260602"
+      ],
+      "sha256": "433f8ca1de208bb20a06c235ffa09998b9c5b1b15fbebff4a6f7e7d57271c835"
+    },
+    {
+      "artifact_id": "esmfold2:tables:cluster_assignments.csv",
+      "bytes": 193459,
+      "csv_header": "target_id,sequence_hash_calc,cluster_id,high_disulfide,ca_lddt,data_family,cluster_threshold",
+      "download_id": "esmfold2:tables:cluster_assignments.csv",
+      "download_path": "/downloads/esmfold2/tables/cluster_assignments.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/tables/cluster_assignments.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/tables/cluster_assignments.csv",
+      "rows": 1956,
+      "run_ids": [],
+      "sha256": "8f3cbb70645860e91019c18a8e4327abb455cff4e2f007b6df231749c41d1cfd"
+    },
+    {
+      "artifact_id": "esmfold2:tables:cluster_aware_disulfide_effects.csv",
+      "bytes": 1019,
+      "csv_header": "cluster_jaccard_threshold,n_rows,n_clusters,largest_cluster,clusters_size_gt1,one_rep_top_n,one_rep_lower_n,one_rep_effect,one_rep_ci_low,one_rep_ci_high,cluster_mean_top_clusters,cluster_mean_lower_clusters,cluster_mean_effect,cluster_mean_ci_low,cluster_mean_ci_high,cluster_bootstrap_row_effect_mean,cluster_bootstrap_row_ci_low,cluster_bootstrap_row_ci_high",
+      "download_id": "esmfold2:tables:cluster_aware_disulfide_effects.csv",
+      "download_path": "/downloads/esmfold2/tables/cluster_aware_disulfide_effects.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/tables/cluster_aware_disulfide_effects.csv",
+      "finding_ids": [
+        "esmfold2_high_disulfide_boundary_20260602"
+      ],
+      "format": "csv",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/tables/cluster_aware_disulfide_effects.csv",
+      "rows": 3,
+      "run_ids": [
+        "esmfold2_paper_ready_final_20260602"
+      ],
+      "sha256": "3709a76563fea1a841106b1dc90201043124871655f8109bbfb2e9ab9c2dd01d"
+    },
+    {
+      "artifact_id": "esmfold2:tables:confidence_calibration_summary.csv",
+      "bytes": 1669,
+      "csv_header": "axis,n,n_top,n_lower,top_ca_lddt,lower_ca_lddt,top_failure_rate_ca_lddt_lt_0_6,lower_failure_rate_ca_lddt_lt_0_6,top_ptm,lower_ptm,ptm_diff_top_minus_lower,ptm_spearman_with_ca_lddt,ptm_auc_predict_good_ca_lddt_ge_0_6,overconfident_failure_rate_ptm_ge_median,top_overconfident_failure_rate_ptm_ge_median,top_plddt_mean,lower_plddt_mean,plddt_mean_diff_top_minus_lower,plddt_mean_spearman_with_ca_lddt,plddt_mean_auc_predict_good_ca_lddt_ge_0_6,overconfident_failure_rate_plddt_mean_ge_median,top_overconfident_failure_rate_plddt_mean_ge_median,top_plddt_ca_mean,lower_plddt_ca_mean,plddt_ca_mean_diff_top_minus_lower,plddt_ca_mean_spearman_with_ca_lddt,plddt_ca_mean_auc_predict_good_ca_lddt_ge_0_6,overconfident_failure_rate_plddt_ca_mean_ge_median,top_overconfident_failure_rate_plddt_ca_mean_ge_median",
+      "download_id": "esmfold2:tables:confidence_calibration_summary.csv",
+      "download_path": "/downloads/esmfold2/tables/confidence_calibration_summary.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/tables/confidence_calibration_summary.csv",
+      "finding_ids": [
+        "esmfold2_high_disulfide_boundary_20260602"
+      ],
+      "format": "csv",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/tables/confidence_calibration_summary.csv",
+      "rows": 2,
+      "run_ids": [
+        "esmfold2_paper_ready_final_20260602"
+      ],
+      "sha256": "fe639295cc71c4fb42d70d047fb3d4df9e4d5801afce659a66abf145d0f4b753"
+    },
+    {
+      "artifact_id": "esmfold2:tables:global_hypothesis_adjusted_effects_primary_sequence.csv",
+      "bytes": 1755,
+      "csv_header": "axis,n,top_n,adjusted_coef,se,t,controls",
+      "download_id": "esmfold2:tables:global_hypothesis_adjusted_effects_primary_sequence.csv",
+      "download_path": "/downloads/esmfold2/tables/global_hypothesis_adjusted_effects_primary_sequence.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/tables/global_hypothesis_adjusted_effects_primary_sequence.csv",
+      "finding_ids": [
+        "esmfold2_high_disulfide_boundary_20260602"
+      ],
+      "format": "csv",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/tables/global_hypothesis_adjusted_effects_primary_sequence.csv",
+      "rows": 14,
+      "run_ids": [
+        "esmfold2_paper_ready_final_20260602"
+      ],
+      "sha256": "e611f42b8d079da5c73bfae4823a0ae982f6e5c7e8a7e150a4ecd63d6ea22a40"
+    },
+    {
+      "artifact_id": "esmfold2:tables:global_hypothesis_effects_all_evaluations.csv",
+      "bytes": 10282,
+      "csv_header": "axis,status,n,n_top,n_lower,top_ca_lddt_mean,lower_ca_lddt_mean,top_minus_lower_ca_lddt,bootstrap_mean,ci_low,ci_high,top_minus_lower_baseline_ca_lddt,spearman_stress_vs_ca_lddt,data_families,settings,dataset,axis_kind,threshold",
+      "download_id": "esmfold2:tables:global_hypothesis_effects_all_evaluations.csv",
+      "download_path": "/downloads/esmfold2/tables/global_hypothesis_effects_all_evaluations.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/tables/global_hypothesis_effects_all_evaluations.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/tables/global_hypothesis_effects_all_evaluations.csv",
+      "rows": 28,
+      "run_ids": [],
+      "sha256": "b5c58a1c63339ac59caf98c753494c2d87208143ef757f2a5c41f5f555f4e09a"
+    },
+    {
+      "artifact_id": "esmfold2:tables:global_hypothesis_effects_primary_sequence.csv",
+      "bytes": 10244,
+      "csv_header": "axis,status,n,n_top,n_lower,top_ca_lddt_mean,lower_ca_lddt_mean,top_minus_lower_ca_lddt,bootstrap_mean,ci_low,ci_high,top_minus_lower_baseline_ca_lddt,spearman_stress_vs_ca_lddt,data_families,settings,dataset,axis_kind,threshold",
+      "download_id": "esmfold2:tables:global_hypothesis_effects_primary_sequence.csv",
+      "download_path": "/downloads/esmfold2/tables/global_hypothesis_effects_primary_sequence.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/tables/global_hypothesis_effects_primary_sequence.csv",
+      "finding_ids": [
+        "esmfold2_high_disulfide_boundary_20260602"
+      ],
+      "format": "csv",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/tables/global_hypothesis_effects_primary_sequence.csv",
+      "rows": 28,
+      "run_ids": [
+        "esmfold2_paper_ready_final_20260602"
+      ],
+      "sha256": "09288af08e0bef30fb567984778a9ae068505e39ad25159b78bfb01da199d5a2"
+    },
+    {
+      "artifact_id": "esmfold2:tables:global_hypothesis_level_curves_all_evaluations.csv",
+      "bytes": 12949,
+      "csv_header": "axis,level,n,stress_mean,ca_lddt_mean,ca_lddt_median,gdt_ts_mean,ca_rmsd_median,baseline_ca_lddt_mean",
+      "download_id": "esmfold2:tables:global_hypothesis_level_curves_all_evaluations.csv",
+      "download_path": "/downloads/esmfold2/tables/global_hypothesis_level_curves_all_evaluations.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/tables/global_hypothesis_level_curves_all_evaluations.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/tables/global_hypothesis_level_curves_all_evaluations.csv",
+      "rows": 99,
+      "run_ids": [],
+      "sha256": "55789677446db442223162b11475890a93f7cb409f5ebb3c29aef250793499eb"
+    },
+    {
+      "artifact_id": "esmfold2:tables:global_hypothesis_level_curves_primary_sequence.csv",
+      "bytes": 12951,
+      "csv_header": "axis,level,n,stress_mean,ca_lddt_mean,ca_lddt_median,gdt_ts_mean,ca_rmsd_median,baseline_ca_lddt_mean",
+      "download_id": "esmfold2:tables:global_hypothesis_level_curves_primary_sequence.csv",
+      "download_path": "/downloads/esmfold2/tables/global_hypothesis_level_curves_primary_sequence.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/tables/global_hypothesis_level_curves_primary_sequence.csv",
+      "finding_ids": [
+        "esmfold2_high_disulfide_boundary_20260602"
+      ],
+      "format": "csv",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/tables/global_hypothesis_level_curves_primary_sequence.csv",
+      "rows": 99,
+      "run_ids": [
+        "esmfold2_paper_ready_final_20260602"
+      ],
+      "sha256": "add3e02502d96c1543589fc30a65190bd7ea03cdf52577fbb3a451fd866428cc"
+    },
+    {
+      "artifact_id": "esmfold2:tables:global_hypothesis_slice_effects_all_evaluations.csv",
+      "bytes": 8297,
+      "csv_header": "axis,slice,n,n_top,n_lower,top_minus_lower_ca_lddt,top_mean,lower_mean",
+      "download_id": "esmfold2:tables:global_hypothesis_slice_effects_all_evaluations.csv",
+      "download_path": "/downloads/esmfold2/tables/global_hypothesis_slice_effects_all_evaluations.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/tables/global_hypothesis_slice_effects_all_evaluations.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/tables/global_hypothesis_slice_effects_all_evaluations.csv",
+      "rows": 76,
+      "run_ids": [],
+      "sha256": "cf751e5b5c22811532a99a6c40922b058944ed55d34d593d9cb7b524b56cc576"
+    },
+    {
+      "artifact_id": "esmfold2:tables:global_hypothesis_slice_effects_primary_sequence.csv",
+      "bytes": 8289,
+      "csv_header": "axis,slice,n,n_top,n_lower,top_minus_lower_ca_lddt,top_mean,lower_mean",
+      "download_id": "esmfold2:tables:global_hypothesis_slice_effects_primary_sequence.csv",
+      "download_path": "/downloads/esmfold2/tables/global_hypothesis_slice_effects_primary_sequence.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/tables/global_hypothesis_slice_effects_primary_sequence.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/tables/global_hypothesis_slice_effects_primary_sequence.csv",
+      "rows": 76,
+      "run_ids": [],
+      "sha256": "f1f137ff0be06d9b38653deabfbc27fe7d752b6321ad5c9265f1826d2ae1fda9"
+    },
+    {
+      "artifact_id": "esmfold2:tables:high_disulfide_quartile_curve.csv",
+      "bytes": 270,
+      "csv_header": "level,n,mean,lo,hi",
+      "download_id": "esmfold2:tables:high_disulfide_quartile_curve.csv",
+      "download_path": "/downloads/esmfold2/tables/high_disulfide_quartile_curve.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/tables/high_disulfide_quartile_curve.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/tables/high_disulfide_quartile_curve.csv",
+      "rows": 4,
+      "run_ids": [],
+      "sha256": "7876de30a8b5fa0e4b3ab27fb02193c8970f8a76592cc6ca23f47d0e36b54b58"
+    },
+    {
+      "artifact_id": "esmfold2:tables:matched_control_pairs.csv",
+      "bytes": 26962,
+      "csv_header": "pair_id,relax_stage,data_family,viral_status,high_target_id,control_target_id,high_ca_lddt,control_ca_lddt,delta_high_minus_control,high_disulfide_capacity,control_disulfide_capacity,high_len,control_len,high_tm_proxy,control_tm_proxy,match_distance",
+      "download_id": "esmfold2:tables:matched_control_pairs.csv",
+      "download_path": "/downloads/esmfold2/tables/matched_control_pairs.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/tables/matched_control_pairs.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/tables/matched_control_pairs.csv",
+      "rows": 127,
+      "run_ids": [],
+      "sha256": "ad4994ecc403197bbf495b67fe3f66294f33da509a1e1fb5c8888611ed204b7b"
+    },
+    {
+      "artifact_id": "esmfold2:tables:matched_control_summary.csv",
+      "bytes": 728,
+      "csv_header": "slice,n_pairs,mean_delta_high_minus_control,ci_low,ci_high,median_delta,high_worse_fraction,exact_source_viral_pairs",
+      "download_id": "esmfold2:tables:matched_control_summary.csv",
+      "download_path": "/downloads/esmfold2/tables/matched_control_summary.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/tables/matched_control_summary.csv",
+      "finding_ids": [
+        "esmfold2_high_disulfide_boundary_20260602"
+      ],
+      "format": "csv",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/tables/matched_control_summary.csv",
+      "rows": 5,
+      "run_ids": [
+        "esmfold2_paper_ready_final_20260602"
+      ],
+      "sha256": "5ddefb8a1b26023f1823f0d7cbce5032f2bf06d51cd4d0596aaeda28c1262254"
+    },
+    {
+      "artifact_id": "esmfold2:tables:per_source_high_disulfide_summary.csv",
+      "bytes": 881,
+      "csv_header": "data_family,high_disulfide,n,ca_lddt_mean,ci_low,ci_high,ca_lddt_median",
+      "download_id": "esmfold2:tables:per_source_high_disulfide_summary.csv",
+      "download_path": "/downloads/esmfold2/tables/per_source_high_disulfide_summary.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/tables/per_source_high_disulfide_summary.csv",
+      "finding_ids": [
+        "esmfold2_high_disulfide_boundary_20260602"
+      ],
+      "format": "csv",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/tables/per_source_high_disulfide_summary.csv",
+      "rows": 8,
+      "run_ids": [
+        "esmfold2_paper_ready_final_20260602"
+      ],
+      "sha256": "71b1b7d84d63c88561360be329cb8fb4d186b89f754c26bd9ede02617c1d7234"
+    },
+    {
+      "artifact_id": "esmfold2:tables:ptm_calibration_bins.csv",
+      "bytes": 680,
+      "csv_header": "ptm_bin,high_disulfide,n,ptm_mean,ca_lddt_mean,failure_rate_ca_lddt_lt_0_6",
+      "download_id": "esmfold2:tables:ptm_calibration_bins.csv",
+      "download_path": "/downloads/esmfold2/tables/ptm_calibration_bins.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/tables/ptm_calibration_bins.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/tables/ptm_calibration_bins.csv",
+      "rows": 10,
+      "run_ids": [],
+      "sha256": "688b7730930b09d2eef2c9772835d30bf4c30014119d8e561f0b018a2a7f0f3a"
+    },
+    {
+      "artifact_id": "state:README.md",
+      "bytes": 303,
+      "csv_header": null,
+      "download_id": "state:README.md",
+      "download_path": "/downloads/state/README.md",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/README.md",
+      "finding_ids": [],
+      "format": "md",
+      "model": "state",
+      "relative_path": "state/README.md",
+      "rows": null,
+      "run_ids": [],
+      "sha256": "6ce0f2db200af3d40b04cd7f4999c6e0bdf50c85a22dc2aace3728add4886b29"
+    },
+    {
+      "artifact_id": "state:artifacts:all_scored_axis_discovery_continued.csv",
+      "bytes": 5130,
+      "csv_header": "feature,value,n_rows,mean_overlap_at_N,mean_de_sig_genes_recall,mean_pearson_delta",
+      "download_id": "state:artifacts:all_scored_axis_discovery_continued.csv",
+      "download_path": "/downloads/state/artifacts/all_scored_axis_discovery_continued.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/all_scored_axis_discovery_continued.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/all_scored_axis_discovery_continued.csv",
+      "rows": 55,
+      "run_ids": [],
+      "sha256": "7240b916705e39b9ff038fa79145a237dd337ebc0f8531790566f79064986ab2"
+    },
+    {
+      "artifact_id": "state:artifacts:all_scored_axis_discovery_continued.json",
+      "bytes": 15193,
+      "csv_header": null,
+      "download_id": "state:artifacts:all_scored_axis_discovery_continued.json",
+      "download_path": "/downloads/state/artifacts/all_scored_axis_discovery_continued.json",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/all_scored_axis_discovery_continued.json",
+      "finding_ids": [],
+      "format": "json",
+      "model": "state",
+      "relative_path": "state/artifacts/all_scored_axis_discovery_continued.json",
+      "rows": null,
+      "run_ids": [],
+      "sha256": "59df6d57ec38c928a401cab46019fee7b673c4c47c85be0b99f81d45f2c3c5cd"
+    },
+    {
+      "artifact_id": "state:artifacts:auditor_decision_replogle_reactome_support.json",
+      "bytes": 465,
+      "csv_header": null,
+      "download_id": "state:artifacts:auditor_decision_replogle_reactome_support.json",
+      "download_path": "/downloads/state/artifacts/auditor_decision_replogle_reactome_support.json",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/auditor_decision_replogle_reactome_support.json",
+      "finding_ids": [],
+      "format": "json",
+      "model": "state",
+      "relative_path": "state/artifacts/auditor_decision_replogle_reactome_support.json",
+      "rows": null,
+      "run_ids": [],
+      "sha256": "c9a0f08f91ad801de27d617ad38fa8a3248248647360b5426dcdab4758b8234a"
+    },
+    {
+      "artifact_id": "state:artifacts:controls_replogle_best_axis_high_low_gaps.csv",
+      "bytes": 2877,
+      "csv_header": "spectra_subset,representation,include_l0,low_level,high_level,low_n,high_n,low_overlap_at_N_mean,high_overlap_at_N_mean,high_minus_low_overlap_at_N,context",
+      "download_id": "state:artifacts:controls_replogle_best_axis_high_low_gaps.csv",
+      "download_path": "/downloads/state/artifacts/controls_replogle_best_axis_high_low_gaps.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/controls_replogle_best_axis_high_low_gaps.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/controls_replogle_best_axis_high_low_gaps.csv",
+      "rows": 24,
+      "run_ids": [],
+      "sha256": "ce02aa26805f8c95f2a1bd09c0b463f510ecdb3919a1641ece4f03e3b0653066"
+    },
+    {
+      "artifact_id": "state:artifacts:controls_replogle_best_axis_level_summary_all.csv",
+      "bytes": 3372,
+      "csv_header": "spectra_subset,representation,level,level_order,n_rows,n_unique_contexts,n_unique_perturbations,support_mean,overlap_at_N_mean,de_sig_genes_recall_mean,pearson_delta_mean,de_nsig_counts_real_mean,reactome_pathway_count_mean",
+      "download_id": "state:artifacts:controls_replogle_best_axis_level_summary_all.csv",
+      "download_path": "/downloads/state/artifacts/controls_replogle_best_axis_level_summary_all.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/controls_replogle_best_axis_level_summary_all.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/controls_replogle_best_axis_level_summary_all.csv",
+      "rows": 20,
+      "run_ids": [],
+      "sha256": "8f58b3ccc164dc0da8f4feed00732c058c0676a65bf178b82e761274f92a8e68"
+    },
+    {
+      "artifact_id": "state:artifacts:controls_replogle_best_axis_level_summary_no_l0.csv",
+      "bytes": 2808,
+      "csv_header": "spectra_subset,representation,level,level_order,n_rows,n_unique_contexts,n_unique_perturbations,support_mean,overlap_at_N_mean,de_sig_genes_recall_mean,pearson_delta_mean,de_nsig_counts_real_mean,reactome_pathway_count_mean",
+      "download_id": "state:artifacts:controls_replogle_best_axis_level_summary_no_l0.csv",
+      "download_path": "/downloads/state/artifacts/controls_replogle_best_axis_level_summary_no_l0.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/controls_replogle_best_axis_level_summary_no_l0.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/controls_replogle_best_axis_level_summary_no_l0.csv",
+      "rows": 16,
+      "run_ids": [],
+      "sha256": "ad2b4614b7bbd65afe884d49408f56100a93eebe11f0143226baa719c9dad979"
+    },
+    {
+      "artifact_id": "state:artifacts:controls_replogle_best_axis_pathway_count_matched.csv",
+      "bytes": 2777,
+      "csv_header": "context,representation,pathway_count_bin,low_n,high_n,low_overlap_at_N_mean,high_overlap_at_N_mean,high_minus_low_overlap_at_N",
+      "download_id": "state:artifacts:controls_replogle_best_axis_pathway_count_matched.csv",
+      "download_path": "/downloads/state/artifacts/controls_replogle_best_axis_pathway_count_matched.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/controls_replogle_best_axis_pathway_count_matched.csv",
+      "finding_ids": [
+        "state_pathway_module_train_support_20260603"
+      ],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/controls_replogle_best_axis_pathway_count_matched.csv",
+      "rows": 30,
+      "run_ids": [
+        "state_generalizability_continued_20260603"
+      ],
+      "sha256": "c561cafce43df3f3669016a43e2b944a406ccc2be4ccebcc7e9b934c7d0484f2"
+    },
+    {
+      "artifact_id": "state:artifacts:controls_replogle_best_axis_regression.json",
+      "bytes": 6102,
+      "csv_header": null,
+      "download_id": "state:artifacts:controls_replogle_best_axis_regression.json",
+      "download_path": "/downloads/state/artifacts/controls_replogle_best_axis_regression.json",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/controls_replogle_best_axis_regression.json",
+      "finding_ids": [
+        "state_pathway_module_train_support_20260603"
+      ],
+      "format": "json",
+      "model": "state",
+      "relative_path": "state/artifacts/controls_replogle_best_axis_regression.json",
+      "rows": null,
+      "run_ids": [
+        "state_generalizability_continued_20260603"
+      ],
+      "sha256": "3d433f73e07f795cb37b73ae79172a3341ae16d77d062d5a313b1e5a586617a7"
+    },
+    {
+      "artifact_id": "state:artifacts:controls_replogle_best_axis_summary.json",
+      "bytes": 964,
+      "csv_header": null,
+      "download_id": "state:artifacts:controls_replogle_best_axis_summary.json",
+      "download_path": "/downloads/state/artifacts/controls_replogle_best_axis_summary.json",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/controls_replogle_best_axis_summary.json",
+      "finding_ids": [],
+      "format": "json",
+      "model": "state",
+      "relative_path": "state/artifacts/controls_replogle_best_axis_summary.json",
+      "rows": null,
+      "run_ids": [],
+      "sha256": "ecd996f4c226de821690f6ff7e4d9aa07b51de30a19e9402026c85f10effeb71"
+    },
+    {
+      "artifact_id": "state:artifacts:multi_pathway_source_manifest.json",
+      "bytes": 1002,
+      "csv_header": null,
+      "download_id": "state:artifacts:multi_pathway_source_manifest.json",
+      "download_path": "/downloads/state/artifacts/multi_pathway_source_manifest.json",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/multi_pathway_source_manifest.json",
+      "finding_ids": [],
+      "format": "json",
+      "model": "state",
+      "relative_path": "state/artifacts/multi_pathway_source_manifest.json",
+      "rows": null,
+      "run_ids": [],
+      "sha256": "f672092dcdc45e0a3cafba45127b05fb13c4b1efd69d1a0b5587a6b6fb80ed44"
+    },
+    {
+      "artifact_id": "state:artifacts:multi_pathway_support_screen.csv",
+      "bytes": 4062,
+      "csv_header": "collection,status,n_genes_with_features,n_unique_features,cutpoints_from_fewshot_discovery_norm_support,fewshot_confirmation_hvg_gap,fewshot_confirmation_se_gap,zeroshot_hvg_gap,zeroshot_se_gap,fewshot_support_coef_controlled,levels_artifact,trends_artifact",
+      "download_id": "state:artifacts:multi_pathway_support_screen.csv",
+      "download_path": "/downloads/state/artifacts/multi_pathway_support_screen.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/multi_pathway_support_screen.csv",
+      "finding_ids": [
+        "state_pathway_module_train_support_20260603"
+      ],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/multi_pathway_support_screen.csv",
+      "rows": 7,
+      "run_ids": [
+        "state_generalizability_continued_20260603"
+      ],
+      "sha256": "174d52df23caab212cf736739e073646b05c365a65249e89af67425ee1a3d3fe"
+    },
+    {
+      "artifact_id": "state:artifacts:multi_pathway_support_summary.json",
+      "bytes": 7692,
+      "csv_header": null,
+      "download_id": "state:artifacts:multi_pathway_support_summary.json",
+      "download_path": "/downloads/state/artifacts/multi_pathway_support_summary.json",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/multi_pathway_support_summary.json",
+      "finding_ids": [
+        "state_pathway_module_train_support_20260603"
+      ],
+      "format": "json",
+      "model": "state",
+      "relative_path": "state/artifacts/multi_pathway_support_summary.json",
+      "rows": null,
+      "run_ids": [
+        "state_generalizability_continued_20260603"
+      ],
+      "sha256": "6e64df5368cc9c527e02917ed3965d603af8e63a317e27d522cba9a31a0772a5"
+    },
+    {
+      "artifact_id": "state:artifacts:multi_pathway_top_features_by_support_level.json",
+      "bytes": 26648,
+      "csv_header": null,
+      "download_id": "state:artifacts:multi_pathway_top_features_by_support_level.json",
+      "download_path": "/downloads/state/artifacts/multi_pathway_top_features_by_support_level.json",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/multi_pathway_top_features_by_support_level.json",
+      "finding_ids": [
+        "state_pathway_module_train_support_20260603"
+      ],
+      "format": "json",
+      "model": "state",
+      "relative_path": "state/artifacts/multi_pathway_top_features_by_support_level.json",
+      "rows": null,
+      "run_ids": [
+        "state_generalizability_continued_20260603"
+      ],
+      "sha256": "d48317fccac2cebaf0f16337e742dd19464e56418e0b27052879ad1613537614"
+    },
+    {
+      "artifact_id": "state:artifacts:parse_ligand_family_axis_freeze.json",
+      "bytes": 684,
+      "csv_header": null,
+      "download_id": "state:artifacts:parse_ligand_family_axis_freeze.json",
+      "download_path": "/downloads/state/artifacts/parse_ligand_family_axis_freeze.json",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/parse_ligand_family_axis_freeze.json",
+      "finding_ids": [],
+      "format": "json",
+      "model": "state",
+      "relative_path": "state/artifacts/parse_ligand_family_axis_freeze.json",
+      "rows": null,
+      "run_ids": [],
+      "sha256": "d17fe8b7bdd3f4fcd4002e4cba869d092be096230cad2b4a653140e0caf4bb7f"
+    },
+    {
+      "artifact_id": "state:artifacts:replogle_reactome_axis_freeze.json",
+      "bytes": 1332,
+      "csv_header": null,
+      "download_id": "state:artifacts:replogle_reactome_axis_freeze.json",
+      "download_path": "/downloads/state/artifacts/replogle_reactome_axis_freeze.json",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/replogle_reactome_axis_freeze.json",
+      "finding_ids": [],
+      "format": "json",
+      "model": "state",
+      "relative_path": "state/artifacts/replogle_reactome_axis_freeze.json",
+      "rows": null,
+      "run_ids": [],
+      "sha256": "5ae4e39e393b73de229f6755450f5af47fb67fa00666c10598c90dcd7d1912c4"
+    },
+    {
+      "artifact_id": "state:artifacts:replogle_refined_axis_screen.csv",
+      "bytes": 1057,
+      "csv_header": "axis_id,feature,status,discovery_pass,confirmation_pass,all_context_pass,score_confirmation_mean_high_minus_low,n_confirmation_representations,discovery_high_minus_low_mean,confirmation_high_minus_low_mean",
+      "download_id": "state:artifacts:replogle_refined_axis_screen.csv",
+      "download_path": "/downloads/state/artifacts/replogle_refined_axis_screen.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/replogle_refined_axis_screen.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/replogle_refined_axis_screen.csv",
+      "rows": 5,
+      "run_ids": [],
+      "sha256": "869405acb9f7f297ea40cf75b3a2be4f0d4288ebe8793726c2d477dcb1440009"
+    },
+    {
+      "artifact_id": "state:artifacts:replogle_refined_axis_screen.json",
+      "bytes": 4986,
+      "csv_header": null,
+      "download_id": "state:artifacts:replogle_refined_axis_screen.json",
+      "download_path": "/downloads/state/artifacts/replogle_refined_axis_screen.json",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/replogle_refined_axis_screen.json",
+      "finding_ids": [],
+      "format": "json",
+      "model": "state",
+      "relative_path": "state/artifacts/replogle_refined_axis_screen.json",
+      "rows": null,
+      "run_ids": [],
+      "sha256": "d593d309cbb40a8e34021c67dbb7dedadeb19cdb2a1ed5a0fa0ddf5a771f6073"
+    },
+    {
+      "artifact_id": "state:artifacts:replogle_zeroshot_reactome_support_confirmation_decision.json",
+      "bytes": 1207,
+      "csv_header": null,
+      "download_id": "state:artifacts:replogle_zeroshot_reactome_support_confirmation_decision.json",
+      "download_path": "/downloads/state/artifacts/replogle_zeroshot_reactome_support_confirmation_decision.json",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/replogle_zeroshot_reactome_support_confirmation_decision.json",
+      "finding_ids": [],
+      "format": "json",
+      "model": "state",
+      "relative_path": "state/artifacts/replogle_zeroshot_reactome_support_confirmation_decision.json",
+      "rows": null,
+      "run_ids": [],
+      "sha256": "e083216a33c74011b8f9f3cb61f0cb6ce67b8ebb2da573cd786a4b2e57b42243"
+    },
+    {
+      "artifact_id": "state:artifacts:replogle_zeroshot_reactome_support_confirmation_freeze.json",
+      "bytes": 605,
+      "csv_header": null,
+      "download_id": "state:artifacts:replogle_zeroshot_reactome_support_confirmation_freeze.json",
+      "download_path": "/downloads/state/artifacts/replogle_zeroshot_reactome_support_confirmation_freeze.json",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/replogle_zeroshot_reactome_support_confirmation_freeze.json",
+      "finding_ids": [],
+      "format": "json",
+      "model": "state",
+      "relative_path": "state/artifacts/replogle_zeroshot_reactome_support_confirmation_freeze.json",
+      "rows": null,
+      "run_ids": [],
+      "sha256": "9a275cf3005f14aa715d9eebf6b00a91514ba9cba03e31f643d219f57ed7c775"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_multi_pathway_go_bp.csv",
+      "bytes": 4512,
+      "csv_header": "spectra_subset,representation,level,level_order,n_rows,n_unique_contexts,n_unique_perturbations,similarity_mean,feature_count_mean,overlap_at_N_mean,de_sig_genes_recall_mean,pearson_delta_mean",
+      "download_id": "state:artifacts:spc_multi_pathway_go_bp.csv",
+      "download_path": "/downloads/state/artifacts/spc_multi_pathway_go_bp.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_multi_pathway_go_bp.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_multi_pathway_go_bp.csv",
+      "rows": 30,
+      "run_ids": [],
+      "sha256": "dfc501af30522685e31b560e2f35217db1e3dc8e3e0bf573bc4217cfb7596ea6"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_multi_pathway_go_bp_trends.csv",
+      "bytes": 1079,
+      "csv_header": "spectra_subset,representation,n_levels,n_rows,similarity_monotone_increasing,spearman_level_vs_overlap_at_N,low_level,high_level,low_overlap_at_N_mean,high_overlap_at_N_mean,high_minus_low_overlap_at_N",
+      "download_id": "state:artifacts:spc_multi_pathway_go_bp_trends.csv",
+      "download_path": "/downloads/state/artifacts/spc_multi_pathway_go_bp_trends.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_multi_pathway_go_bp_trends.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_multi_pathway_go_bp_trends.csv",
+      "rows": 6,
+      "run_ids": [],
+      "sha256": "1ceba01e430a2e9199dcf0bfba5c2fffd8a1ced4d0406c860b00177a8228bf69"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_multi_pathway_go_cc.csv",
+      "bytes": 4502,
+      "csv_header": "spectra_subset,representation,level,level_order,n_rows,n_unique_contexts,n_unique_perturbations,similarity_mean,feature_count_mean,overlap_at_N_mean,de_sig_genes_recall_mean,pearson_delta_mean",
+      "download_id": "state:artifacts:spc_multi_pathway_go_cc.csv",
+      "download_path": "/downloads/state/artifacts/spc_multi_pathway_go_cc.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_multi_pathway_go_cc.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_multi_pathway_go_cc.csv",
+      "rows": 30,
+      "run_ids": [],
+      "sha256": "49d8a74d33629deb493aec6b2b7538670b25b223351cc2871f2c90a9479d4344"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_multi_pathway_go_cc_trends.csv",
+      "bytes": 1072,
+      "csv_header": "spectra_subset,representation,n_levels,n_rows,similarity_monotone_increasing,spearman_level_vs_overlap_at_N,low_level,high_level,low_overlap_at_N_mean,high_overlap_at_N_mean,high_minus_low_overlap_at_N",
+      "download_id": "state:artifacts:spc_multi_pathway_go_cc_trends.csv",
+      "download_path": "/downloads/state/artifacts/spc_multi_pathway_go_cc_trends.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_multi_pathway_go_cc_trends.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_multi_pathway_go_cc_trends.csv",
+      "rows": 6,
+      "run_ids": [],
+      "sha256": "50bfc09e5cfedc915d284e0ade07b037aa8235ce27153c6b3a1e97af85f009ff"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_multi_pathway_go_mf.csv",
+      "bytes": 4478,
+      "csv_header": "spectra_subset,representation,level,level_order,n_rows,n_unique_contexts,n_unique_perturbations,similarity_mean,feature_count_mean,overlap_at_N_mean,de_sig_genes_recall_mean,pearson_delta_mean",
+      "download_id": "state:artifacts:spc_multi_pathway_go_mf.csv",
+      "download_path": "/downloads/state/artifacts/spc_multi_pathway_go_mf.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_multi_pathway_go_mf.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_multi_pathway_go_mf.csv",
+      "rows": 30,
+      "run_ids": [],
+      "sha256": "e4a80cc56e4b79192a7a1a7466da1f9f9b85a592c33fffb5205cd3ecf76c3ba9"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_multi_pathway_go_mf_trends.csv",
+      "bytes": 1084,
+      "csv_header": "spectra_subset,representation,n_levels,n_rows,similarity_monotone_increasing,spearman_level_vs_overlap_at_N,low_level,high_level,low_overlap_at_N_mean,high_overlap_at_N_mean,high_minus_low_overlap_at_N",
+      "download_id": "state:artifacts:spc_multi_pathway_go_mf_trends.csv",
+      "download_path": "/downloads/state/artifacts/spc_multi_pathway_go_mf_trends.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_multi_pathway_go_mf_trends.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_multi_pathway_go_mf_trends.csv",
+      "rows": 6,
+      "run_ids": [],
+      "sha256": "a1f1a270c4c3aa173737b7bc5d770a9923a052361f1f2d10570b5b7a32019aab"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_multi_pathway_hgnc_gene_group.csv",
+      "bytes": 4513,
+      "csv_header": "spectra_subset,representation,level,level_order,n_rows,n_unique_contexts,n_unique_perturbations,similarity_mean,feature_count_mean,overlap_at_N_mean,de_sig_genes_recall_mean,pearson_delta_mean",
+      "download_id": "state:artifacts:spc_multi_pathway_hgnc_gene_group.csv",
+      "download_path": "/downloads/state/artifacts/spc_multi_pathway_hgnc_gene_group.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_multi_pathway_hgnc_gene_group.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_multi_pathway_hgnc_gene_group.csv",
+      "rows": 30,
+      "run_ids": [],
+      "sha256": "6dd149735f8516f6157fc7c5757cb0b8d0bddf8ae554e7100915c7be21cd012b"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_multi_pathway_hgnc_gene_group_trends.csv",
+      "bytes": 1108,
+      "csv_header": "spectra_subset,representation,n_levels,n_rows,similarity_monotone_increasing,spearman_level_vs_overlap_at_N,low_level,high_level,low_overlap_at_N_mean,high_overlap_at_N_mean,high_minus_low_overlap_at_N",
+      "download_id": "state:artifacts:spc_multi_pathway_hgnc_gene_group_trends.csv",
+      "download_path": "/downloads/state/artifacts/spc_multi_pathway_hgnc_gene_group_trends.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_multi_pathway_hgnc_gene_group_trends.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_multi_pathway_hgnc_gene_group_trends.csv",
+      "rows": 6,
+      "run_ids": [],
+      "sha256": "5d503c5b219bec12fa7a71c95decdfb690b6d20495a98f010f4c0ee9c7c819e1"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_multi_pathway_kegg.csv",
+      "bytes": 4519,
+      "csv_header": "spectra_subset,representation,level,level_order,n_rows,n_unique_contexts,n_unique_perturbations,similarity_mean,feature_count_mean,overlap_at_N_mean,de_sig_genes_recall_mean,pearson_delta_mean",
+      "download_id": "state:artifacts:spc_multi_pathway_kegg.csv",
+      "download_path": "/downloads/state/artifacts/spc_multi_pathway_kegg.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_multi_pathway_kegg.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_multi_pathway_kegg.csv",
+      "rows": 30,
+      "run_ids": [],
+      "sha256": "7cdddb3373873dd7463f582b60663aa3197af61bca1f823291841557ee80c7aa"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_multi_pathway_kegg_trends.csv",
+      "bytes": 1098,
+      "csv_header": "spectra_subset,representation,n_levels,n_rows,similarity_monotone_increasing,spearman_level_vs_overlap_at_N,low_level,high_level,low_overlap_at_N_mean,high_overlap_at_N_mean,high_minus_low_overlap_at_N",
+      "download_id": "state:artifacts:spc_multi_pathway_kegg_trends.csv",
+      "download_path": "/downloads/state/artifacts/spc_multi_pathway_kegg_trends.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_multi_pathway_kegg_trends.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_multi_pathway_kegg_trends.csv",
+      "rows": 6,
+      "run_ids": [],
+      "sha256": "7b6895dcaf50cd53bcea3337829b4daac56a9125d12af202b2bed293d1f2db44"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_multi_pathway_reactome.csv",
+      "bytes": 4507,
+      "csv_header": "spectra_subset,representation,level,level_order,n_rows,n_unique_contexts,n_unique_perturbations,similarity_mean,feature_count_mean,overlap_at_N_mean,de_sig_genes_recall_mean,pearson_delta_mean",
+      "download_id": "state:artifacts:spc_multi_pathway_reactome.csv",
+      "download_path": "/downloads/state/artifacts/spc_multi_pathway_reactome.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_multi_pathway_reactome.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_multi_pathway_reactome.csv",
+      "rows": 30,
+      "run_ids": [],
+      "sha256": "a27288a5c84fa16ce50968d2d5081c8e93e8a3e2c48c55ceae9bd310159e1e23"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_multi_pathway_reactome_trends.csv",
+      "bytes": 1048,
+      "csv_header": "spectra_subset,representation,n_levels,n_rows,similarity_monotone_increasing,spearman_level_vs_overlap_at_N,low_level,high_level,low_overlap_at_N_mean,high_overlap_at_N_mean,high_minus_low_overlap_at_N",
+      "download_id": "state:artifacts:spc_multi_pathway_reactome_trends.csv",
+      "download_path": "/downloads/state/artifacts/spc_multi_pathway_reactome_trends.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_multi_pathway_reactome_trends.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_multi_pathway_reactome_trends.csv",
+      "rows": 6,
+      "run_ids": [],
+      "sha256": "4704b6c8d56a33796682cc94e99937dd59ff819c601a9dab9be412b02c110c58"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_multi_pathway_wikipathways.csv",
+      "bytes": 4500,
+      "csv_header": "spectra_subset,representation,level,level_order,n_rows,n_unique_contexts,n_unique_perturbations,similarity_mean,feature_count_mean,overlap_at_N_mean,de_sig_genes_recall_mean,pearson_delta_mean",
+      "download_id": "state:artifacts:spc_multi_pathway_wikipathways.csv",
+      "download_path": "/downloads/state/artifacts/spc_multi_pathway_wikipathways.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_multi_pathway_wikipathways.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_multi_pathway_wikipathways.csv",
+      "rows": 30,
+      "run_ids": [],
+      "sha256": "9aa4ec84480b808dbf98fa5ca78b29896e768b245aa5051f2f82d47906d3166c"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_multi_pathway_wikipathways_trends.csv",
+      "bytes": 1057,
+      "csv_header": "spectra_subset,representation,n_levels,n_rows,similarity_monotone_increasing,spearman_level_vs_overlap_at_N,low_level,high_level,low_overlap_at_N_mean,high_overlap_at_N_mean,high_minus_low_overlap_at_N",
+      "download_id": "state:artifacts:spc_multi_pathway_wikipathways_trends.csv",
+      "download_path": "/downloads/state/artifacts/spc_multi_pathway_wikipathways_trends.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_multi_pathway_wikipathways_trends.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_multi_pathway_wikipathways_trends.csv",
+      "rows": 6,
+      "run_ids": [],
+      "sha256": "e38517bbbb58963f14c848b2cb1e56386f7d2d55979ebdb20497a779783a90dd"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_parse_fewshot_ligand_family_support.csv",
+      "bytes": 2152,
+      "csv_header": "spectra_subset,representation,level,level_order,n_rows,n_unique_contexts,n_unique_perturbations,similarity_mean,similarity_min,similarity_max,overlap_at_N_mean,overlap_at_N_median,overlap_at_N_std,de_sig_genes_recall_mean,de_sig_genes_recall_median,de_sig_genes_recall_std,pearson_delta_mean,pearson_delta_median,pearson_delta_std",
+      "download_id": "state:artifacts:spc_parse_fewshot_ligand_family_support.csv",
+      "download_path": "/downloads/state/artifacts/spc_parse_fewshot_ligand_family_support.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_parse_fewshot_ligand_family_support.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_parse_fewshot_ligand_family_support.csv",
+      "rows": 8,
+      "run_ids": [],
+      "sha256": "9cc5751beb02656034577e21febf71e9a6d251218ddf1453acbafc0738c7894f"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_parse_fewshot_ligand_family_support_trends.csv",
+      "bytes": 680,
+      "csv_header": "spectra_subset,representation,n_levels,n_rows,similarity_monotone_decreasing_when_order_increases,spearman_level_vs_metric,low_similarity_metric_mean,high_similarity_metric_mean,high_minus_low_metric",
+      "download_id": "state:artifacts:spc_parse_fewshot_ligand_family_support_trends.csv",
+      "download_path": "/downloads/state/artifacts/spc_parse_fewshot_ligand_family_support_trends.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_parse_fewshot_ligand_family_support_trends.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_parse_fewshot_ligand_family_support_trends.csv",
+      "rows": 4,
+      "run_ids": [],
+      "sha256": "4930c8e6fb0610add6a75e5cba7ebec5a24057537bd34de901ca7be7692a4a7f"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_replogle_best_refined_axis.csv",
+      "bytes": 5680,
+      "csv_header": "spectra_subset,representation,level,level_order,n_rows,n_unique_contexts,n_unique_perturbations,similarity_mean,similarity_min,similarity_max,overlap_at_N_mean,overlap_at_N_median,overlap_at_N_std,de_sig_genes_recall_mean,de_sig_genes_recall_median,de_sig_genes_recall_std,pearson_delta_mean,pearson_delta_median,pearson_delta_std",
+      "download_id": "state:artifacts:spc_replogle_best_refined_axis.csv",
+      "download_path": "/downloads/state/artifacts/spc_replogle_best_refined_axis.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_replogle_best_refined_axis.csv",
+      "finding_ids": [
+        "state_pathway_module_train_support_20260603"
+      ],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_replogle_best_refined_axis.csv",
+      "rows": 20,
+      "run_ids": [
+        "state_generalizability_continued_20260603"
+      ],
+      "sha256": "69d7afe059ff71f05d70bb10111c502fcf3edb28b441473fd52730309187bb8f"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_replogle_best_refined_axis_context_trends.csv",
+      "bytes": 984,
+      "csv_header": "spectra_subset,representation,n_levels,n_rows,similarity_monotone_decreasing_when_order_increases,spearman_level_vs_metric,low_similarity_metric_mean,high_similarity_metric_mean,high_minus_low_metric,context",
+      "download_id": "state:artifacts:spc_replogle_best_refined_axis_context_trends.csv",
+      "download_path": "/downloads/state/artifacts/spc_replogle_best_refined_axis_context_trends.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_replogle_best_refined_axis_context_trends.csv",
+      "finding_ids": [
+        "state_pathway_module_train_support_20260603"
+      ],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_replogle_best_refined_axis_context_trends.csv",
+      "rows": 8,
+      "run_ids": [
+        "state_generalizability_continued_20260603"
+      ],
+      "sha256": "5a0062685b3aef69b85e63acc68299bc5288543383e40e25e91590296ed72ba7"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_replogle_best_refined_axis_trends.csv",
+      "bytes": 621,
+      "csv_header": "spectra_subset,representation,n_levels,n_rows,similarity_monotone_decreasing_when_order_increases,spearman_level_vs_metric,low_similarity_metric_mean,high_similarity_metric_mean,high_minus_low_metric",
+      "download_id": "state:artifacts:spc_replogle_best_refined_axis_trends.csv",
+      "download_path": "/downloads/state/artifacts/spc_replogle_best_refined_axis_trends.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_replogle_best_refined_axis_trends.csv",
+      "finding_ids": [
+        "state_pathway_module_train_support_20260603"
+      ],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_replogle_best_refined_axis_trends.csv",
+      "rows": 4,
+      "run_ids": [
+        "state_generalizability_continued_20260603"
+      ],
+      "sha256": "135c147c621af7f0ca7775820f743cf6aaabad838a494cbb66662c8816184dd5"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_replogle_fewshot_reactome_support.csv",
+      "bytes": 3353,
+      "csv_header": "spectra_subset,representation,level,level_order,n_rows,n_unique_contexts,n_unique_perturbations,similarity_mean,similarity_min,similarity_max,overlap_at_N_mean,overlap_at_N_median,overlap_at_N_std,de_sig_genes_recall_mean,de_sig_genes_recall_median,de_sig_genes_recall_std,pearson_delta_mean,pearson_delta_median,pearson_delta_std",
+      "download_id": "state:artifacts:spc_replogle_fewshot_reactome_support.csv",
+      "download_path": "/downloads/state/artifacts/spc_replogle_fewshot_reactome_support.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_replogle_fewshot_reactome_support.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_replogle_fewshot_reactome_support.csv",
+      "rows": 12,
+      "run_ids": [],
+      "sha256": "8ef290f069f5182e16382c852bdd6ca4f91bb43a16f14dad1e7485bbf3034b16"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_replogle_fewshot_reactome_support_trends.csv",
+      "bytes": 606,
+      "csv_header": "spectra_subset,representation,n_levels,n_rows,similarity_monotone_decreasing_when_order_increases,spearman_level_vs_metric,low_similarity_metric_mean,high_similarity_metric_mean,high_minus_low_metric",
+      "download_id": "state:artifacts:spc_replogle_fewshot_reactome_support_trends.csv",
+      "download_path": "/downloads/state/artifacts/spc_replogle_fewshot_reactome_support_trends.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_replogle_fewshot_reactome_support_trends.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_replogle_fewshot_reactome_support_trends.csv",
+      "rows": 4,
+      "run_ids": [],
+      "sha256": "f7d02dde98588018eeef7f331d0c0eca28b732c6d7fb73841ed70c8a7af5368b"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_replogle_reactome_support_bootstrap.csv",
+      "bytes": 182,
+      "csv_header": "gap_high_minus_low,ci_low,ci_high,spectra_subset,representation",
+      "download_id": "state:artifacts:spc_replogle_reactome_support_bootstrap.csv",
+      "download_path": "/downloads/state/artifacts/spc_replogle_reactome_support_bootstrap.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_replogle_reactome_support_bootstrap.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_replogle_reactome_support_bootstrap.csv",
+      "rows": 4,
+      "run_ids": [],
+      "sha256": "8780e74f5024b468e9e7268496212777f20765edcc39d6dc11bbb239d45db6ec"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_replogle_zeroshot_reactome_support_confirmation.csv",
+      "bytes": 1562,
+      "csv_header": "spectra_subset,representation,level,level_order,n_rows,n_unique_contexts,n_unique_perturbations,similarity_mean,overlap_at_N_mean,de_sig_genes_recall_mean,pearson_delta_mean",
+      "download_id": "state:artifacts:spc_replogle_zeroshot_reactome_support_confirmation.csv",
+      "download_path": "/downloads/state/artifacts/spc_replogle_zeroshot_reactome_support_confirmation.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_replogle_zeroshot_reactome_support_confirmation.csv",
+      "finding_ids": [
+        "state_pathway_module_train_support_20260603"
+      ],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_replogle_zeroshot_reactome_support_confirmation.csv",
+      "rows": 10,
+      "run_ids": [
+        "state_generalizability_continued_20260603"
+      ],
+      "sha256": "943baa81027c471dc44b2c56b9fade4c3157ad4938e72c6b9dd91c8135c7aa49"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_replogle_zeroshot_reactome_support_confirmation_trends.csv",
+      "bytes": 495,
+      "csv_header": "spectra_subset,representation,n_levels,n_rows,similarity_monotone_increasing,spearman_level_vs_overlap_at_N,low_level,high_level,low_overlap_at_N_mean,high_overlap_at_N_mean,high_minus_low_overlap_at_N",
+      "download_id": "state:artifacts:spc_replogle_zeroshot_reactome_support_confirmation_trends.csv",
+      "download_path": "/downloads/state/artifacts/spc_replogle_zeroshot_reactome_support_confirmation_trends.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_replogle_zeroshot_reactome_support_confirmation_trends.csv",
+      "finding_ids": [
+        "state_pathway_module_train_support_20260603"
+      ],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_replogle_zeroshot_reactome_support_confirmation_trends.csv",
+      "rows": 2,
+      "run_ids": [
+        "state_generalizability_continued_20260603"
+      ],
+      "sha256": "8a60b116d90d8b20f4f1aa022f3325b3749c6360104b259a8d320ce04e081db9"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_state_replogle_hgnc_group_log_train_support_v2.csv",
+      "bytes": 5640,
+      "csv_header": "spectra_subset,representation,level,level_order,n_rows,n_unique_contexts,n_unique_perturbations,similarity_mean,similarity_min,similarity_max,overlap_at_N_mean,overlap_at_N_median,overlap_at_N_std,de_sig_genes_recall_mean,de_sig_genes_recall_median,de_sig_genes_recall_std,pearson_delta_mean,pearson_delta_median,pearson_delta_std",
+      "download_id": "state:artifacts:spc_state_replogle_hgnc_group_log_train_support_v2.csv",
+      "download_path": "/downloads/state/artifacts/spc_state_replogle_hgnc_group_log_train_support_v2.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_state_replogle_hgnc_group_log_train_support_v2.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_state_replogle_hgnc_group_log_train_support_v2.csv",
+      "rows": 20,
+      "run_ids": [],
+      "sha256": "f7669d4cf20f400f7fd791305c9a5279862c5b345695153970add557c5b9f704"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_state_replogle_hgnc_group_log_train_support_v2_context_trends.csv",
+      "bytes": 1046,
+      "csv_header": "spectra_subset,representation,n_levels,n_rows,similarity_monotone_decreasing_when_order_increases,spearman_level_vs_metric,low_similarity_metric_mean,high_similarity_metric_mean,high_minus_low_metric,context",
+      "download_id": "state:artifacts:spc_state_replogle_hgnc_group_log_train_support_v2_context_trends.csv",
+      "download_path": "/downloads/state/artifacts/spc_state_replogle_hgnc_group_log_train_support_v2_context_trends.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_state_replogle_hgnc_group_log_train_support_v2_context_trends.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_state_replogle_hgnc_group_log_train_support_v2_context_trends.csv",
+      "rows": 8,
+      "run_ids": [],
+      "sha256": "b173a00ebfde66665d7960611efba8069294e16892a451acefabc085537e88a6"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_state_replogle_hgnc_group_log_train_support_v2_trends.csv",
+      "bytes": 663,
+      "csv_header": "spectra_subset,representation,n_levels,n_rows,similarity_monotone_decreasing_when_order_increases,spearman_level_vs_metric,low_similarity_metric_mean,high_similarity_metric_mean,high_minus_low_metric",
+      "download_id": "state:artifacts:spc_state_replogle_hgnc_group_log_train_support_v2_trends.csv",
+      "download_path": "/downloads/state/artifacts/spc_state_replogle_hgnc_group_log_train_support_v2_trends.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_state_replogle_hgnc_group_log_train_support_v2_trends.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_state_replogle_hgnc_group_log_train_support_v2_trends.csv",
+      "rows": 4,
+      "run_ids": [],
+      "sha256": "8da4825d9282ccce84b5665b8178ca58153eccec28fd624c3feb6abe716ea24f"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_state_replogle_reactome_pathway_log_train_support_v2.csv",
+      "bytes": 5680,
+      "csv_header": "spectra_subset,representation,level,level_order,n_rows,n_unique_contexts,n_unique_perturbations,similarity_mean,similarity_min,similarity_max,overlap_at_N_mean,overlap_at_N_median,overlap_at_N_std,de_sig_genes_recall_mean,de_sig_genes_recall_median,de_sig_genes_recall_std,pearson_delta_mean,pearson_delta_median,pearson_delta_std",
+      "download_id": "state:artifacts:spc_state_replogle_reactome_pathway_log_train_support_v2.csv",
+      "download_path": "/downloads/state/artifacts/spc_state_replogle_reactome_pathway_log_train_support_v2.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_state_replogle_reactome_pathway_log_train_support_v2.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_state_replogle_reactome_pathway_log_train_support_v2.csv",
+      "rows": 20,
+      "run_ids": [],
+      "sha256": "69d7afe059ff71f05d70bb10111c502fcf3edb28b441473fd52730309187bb8f"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_state_replogle_reactome_pathway_log_train_support_v2_context_trends.csv",
+      "bytes": 984,
+      "csv_header": "spectra_subset,representation,n_levels,n_rows,similarity_monotone_decreasing_when_order_increases,spearman_level_vs_metric,low_similarity_metric_mean,high_similarity_metric_mean,high_minus_low_metric,context",
+      "download_id": "state:artifacts:spc_state_replogle_reactome_pathway_log_train_support_v2_context_trends.csv",
+      "download_path": "/downloads/state/artifacts/spc_state_replogle_reactome_pathway_log_train_support_v2_context_trends.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_state_replogle_reactome_pathway_log_train_support_v2_context_trends.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_state_replogle_reactome_pathway_log_train_support_v2_context_trends.csv",
+      "rows": 8,
+      "run_ids": [],
+      "sha256": "5a0062685b3aef69b85e63acc68299bc5288543383e40e25e91590296ed72ba7"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_state_replogle_reactome_pathway_log_train_support_v2_trends.csv",
+      "bytes": 621,
+      "csv_header": "spectra_subset,representation,n_levels,n_rows,similarity_monotone_decreasing_when_order_increases,spearman_level_vs_metric,low_similarity_metric_mean,high_similarity_metric_mean,high_minus_low_metric",
+      "download_id": "state:artifacts:spc_state_replogle_reactome_pathway_log_train_support_v2_trends.csv",
+      "download_path": "/downloads/state/artifacts/spc_state_replogle_reactome_pathway_log_train_support_v2_trends.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_state_replogle_reactome_pathway_log_train_support_v2_trends.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_state_replogle_reactome_pathway_log_train_support_v2_trends.csv",
+      "rows": 4,
+      "run_ids": [],
+      "sha256": "135c147c621af7f0ca7775820f743cf6aaabad838a494cbb66662c8816184dd5"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_state_replogle_reactome_pathway_mean_train_support_v2.csv",
+      "bytes": 5469,
+      "csv_header": "spectra_subset,representation,level,level_order,n_rows,n_unique_contexts,n_unique_perturbations,similarity_mean,similarity_min,similarity_max,overlap_at_N_mean,overlap_at_N_median,overlap_at_N_std,de_sig_genes_recall_mean,de_sig_genes_recall_median,de_sig_genes_recall_std,pearson_delta_mean,pearson_delta_median,pearson_delta_std",
+      "download_id": "state:artifacts:spc_state_replogle_reactome_pathway_mean_train_support_v2.csv",
+      "download_path": "/downloads/state/artifacts/spc_state_replogle_reactome_pathway_mean_train_support_v2.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_state_replogle_reactome_pathway_mean_train_support_v2.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_state_replogle_reactome_pathway_mean_train_support_v2.csv",
+      "rows": 20,
+      "run_ids": [],
+      "sha256": "fb5af0d6306440b98a00083eae5539cfa59a9f67496e68b337ca661279aff74e"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_state_replogle_reactome_pathway_mean_train_support_v2_context_trends.csv",
+      "bytes": 973,
+      "csv_header": "spectra_subset,representation,n_levels,n_rows,similarity_monotone_decreasing_when_order_increases,spearman_level_vs_metric,low_similarity_metric_mean,high_similarity_metric_mean,high_minus_low_metric,context",
+      "download_id": "state:artifacts:spc_state_replogle_reactome_pathway_mean_train_support_v2_context_trends.csv",
+      "download_path": "/downloads/state/artifacts/spc_state_replogle_reactome_pathway_mean_train_support_v2_context_trends.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_state_replogle_reactome_pathway_mean_train_support_v2_context_trends.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_state_replogle_reactome_pathway_mean_train_support_v2_context_trends.csv",
+      "rows": 8,
+      "run_ids": [],
+      "sha256": "cfc6198be4a1278c6bb6493534280a4bd9638bc548434a7616eba007344e02ea"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_state_replogle_reactome_pathway_mean_train_support_v2_trends.csv",
+      "bytes": 634,
+      "csv_header": "spectra_subset,representation,n_levels,n_rows,similarity_monotone_decreasing_when_order_increases,spearman_level_vs_metric,low_similarity_metric_mean,high_similarity_metric_mean,high_minus_low_metric",
+      "download_id": "state:artifacts:spc_state_replogle_reactome_pathway_mean_train_support_v2_trends.csv",
+      "download_path": "/downloads/state/artifacts/spc_state_replogle_reactome_pathway_mean_train_support_v2_trends.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_state_replogle_reactome_pathway_mean_train_support_v2_trends.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_state_replogle_reactome_pathway_mean_train_support_v2_trends.csv",
+      "rows": 4,
+      "run_ids": [],
+      "sha256": "1dcb00024097233f00daa8dd1ede7e03305e9b778c914a74e0e9d0f1339b04a1"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_state_replogle_reactome_pathway_min_train_support_v2.csv",
+      "bytes": 5260,
+      "csv_header": "spectra_subset,representation,level,level_order,n_rows,n_unique_contexts,n_unique_perturbations,similarity_mean,similarity_min,similarity_max,overlap_at_N_mean,overlap_at_N_median,overlap_at_N_std,de_sig_genes_recall_mean,de_sig_genes_recall_median,de_sig_genes_recall_std,pearson_delta_mean,pearson_delta_median,pearson_delta_std",
+      "download_id": "state:artifacts:spc_state_replogle_reactome_pathway_min_train_support_v2.csv",
+      "download_path": "/downloads/state/artifacts/spc_state_replogle_reactome_pathway_min_train_support_v2.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_state_replogle_reactome_pathway_min_train_support_v2.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_state_replogle_reactome_pathway_min_train_support_v2.csv",
+      "rows": 20,
+      "run_ids": [],
+      "sha256": "957151bc54133531f7cc4c0762225cb1b9118686ca4a5bbf4725c8d90f60c533"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_state_replogle_reactome_pathway_min_train_support_v2_context_trends.csv",
+      "bytes": 957,
+      "csv_header": "spectra_subset,representation,n_levels,n_rows,similarity_monotone_decreasing_when_order_increases,spearman_level_vs_metric,low_similarity_metric_mean,high_similarity_metric_mean,high_minus_low_metric,context",
+      "download_id": "state:artifacts:spc_state_replogle_reactome_pathway_min_train_support_v2_context_trends.csv",
+      "download_path": "/downloads/state/artifacts/spc_state_replogle_reactome_pathway_min_train_support_v2_context_trends.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_state_replogle_reactome_pathway_min_train_support_v2_context_trends.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_state_replogle_reactome_pathway_min_train_support_v2_context_trends.csv",
+      "rows": 8,
+      "run_ids": [],
+      "sha256": "f00647cde4ed06c60a0620b924f8377deccbee69b9de1cb0a6b14386b09224dc"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_state_replogle_reactome_pathway_min_train_support_v2_trends.csv",
+      "bytes": 650,
+      "csv_header": "spectra_subset,representation,n_levels,n_rows,similarity_monotone_decreasing_when_order_increases,spearman_level_vs_metric,low_similarity_metric_mean,high_similarity_metric_mean,high_minus_low_metric",
+      "download_id": "state:artifacts:spc_state_replogle_reactome_pathway_min_train_support_v2_trends.csv",
+      "download_path": "/downloads/state/artifacts/spc_state_replogle_reactome_pathway_min_train_support_v2_trends.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_state_replogle_reactome_pathway_min_train_support_v2_trends.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_state_replogle_reactome_pathway_min_train_support_v2_trends.csv",
+      "rows": 4,
+      "run_ids": [],
+      "sha256": "74600ae4ea48105fd8ae1f8836037f4c0f489034e3e403db9c54bc463d55aeab"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_state_replogle_symbol_family_support_control.csv",
+      "bytes": 5103,
+      "csv_header": "spectra_subset,representation,level,level_order,n_rows,n_unique_contexts,n_unique_perturbations,similarity_mean,similarity_min,similarity_max,overlap_at_N_mean,overlap_at_N_median,overlap_at_N_std,de_sig_genes_recall_mean,de_sig_genes_recall_median,de_sig_genes_recall_std,pearson_delta_mean,pearson_delta_median,pearson_delta_std",
+      "download_id": "state:artifacts:spc_state_replogle_symbol_family_support_control.csv",
+      "download_path": "/downloads/state/artifacts/spc_state_replogle_symbol_family_support_control.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_state_replogle_symbol_family_support_control.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_state_replogle_symbol_family_support_control.csv",
+      "rows": 20,
+      "run_ids": [],
+      "sha256": "bf969051fb8e63193ff90595ad8466b083cf1b734bd3c9476678ae449d72d3a4"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_state_replogle_symbol_family_support_control_context_trends.csv",
+      "bytes": 1049,
+      "csv_header": "spectra_subset,representation,n_levels,n_rows,similarity_monotone_decreasing_when_order_increases,spearman_level_vs_metric,low_similarity_metric_mean,high_similarity_metric_mean,high_minus_low_metric,context",
+      "download_id": "state:artifacts:spc_state_replogle_symbol_family_support_control_context_trends.csv",
+      "download_path": "/downloads/state/artifacts/spc_state_replogle_symbol_family_support_control_context_trends.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_state_replogle_symbol_family_support_control_context_trends.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_state_replogle_symbol_family_support_control_context_trends.csv",
+      "rows": 8,
+      "run_ids": [],
+      "sha256": "24823b37af38c92dd068ccdda91fc1e097413ab5d7745ccf0f8ae305702d7131"
+    },
+    {
+      "artifact_id": "state:artifacts:spc_state_replogle_symbol_family_support_control_trends.csv",
+      "bytes": 664,
+      "csv_header": "spectra_subset,representation,n_levels,n_rows,similarity_monotone_decreasing_when_order_increases,spearman_level_vs_metric,low_similarity_metric_mean,high_similarity_metric_mean,high_minus_low_metric",
+      "download_id": "state:artifacts:spc_state_replogle_symbol_family_support_control_trends.csv",
+      "download_path": "/downloads/state/artifacts/spc_state_replogle_symbol_family_support_control_trends.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_state_replogle_symbol_family_support_control_trends.csv",
+      "finding_ids": [],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/artifacts/spc_state_replogle_symbol_family_support_control_trends.csv",
+      "rows": 4,
+      "run_ids": [],
+      "sha256": "be63d6684cfb67df158e529b4ed2b44afd5843b994cc140b03a1a0bd4710b07f"
+    },
+    {
+      "artifact_id": "state:artifacts:state_replogle_hgnc_group_log_train_support_v2_freeze.json",
+      "bytes": 1391,
+      "csv_header": null,
+      "download_id": "state:artifacts:state_replogle_hgnc_group_log_train_support_v2_freeze.json",
+      "download_path": "/downloads/state/artifacts/state_replogle_hgnc_group_log_train_support_v2_freeze.json",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/state_replogle_hgnc_group_log_train_support_v2_freeze.json",
+      "finding_ids": [],
+      "format": "json",
+      "model": "state",
+      "relative_path": "state/artifacts/state_replogle_hgnc_group_log_train_support_v2_freeze.json",
+      "rows": null,
+      "run_ids": [],
+      "sha256": "39c93647f5571566e407f134bd19db2c5a4e892143514dde70ac46b23d875cde"
+    },
+    {
+      "artifact_id": "state:artifacts:state_replogle_reactome_pathway_log_train_support_v2_freeze.json",
+      "bytes": 1429,
+      "csv_header": null,
+      "download_id": "state:artifacts:state_replogle_reactome_pathway_log_train_support_v2_freeze.json",
+      "download_path": "/downloads/state/artifacts/state_replogle_reactome_pathway_log_train_support_v2_freeze.json",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/state_replogle_reactome_pathway_log_train_support_v2_freeze.json",
+      "finding_ids": [],
+      "format": "json",
+      "model": "state",
+      "relative_path": "state/artifacts/state_replogle_reactome_pathway_log_train_support_v2_freeze.json",
+      "rows": null,
+      "run_ids": [],
+      "sha256": "cb9892c3fc19acc7e18ef81bba1935acfcadb391216d11dfc5699917520a3091"
+    },
+    {
+      "artifact_id": "state:artifacts:state_replogle_reactome_pathway_mean_train_support_v2_freeze.json",
+      "bytes": 1408,
+      "csv_header": null,
+      "download_id": "state:artifacts:state_replogle_reactome_pathway_mean_train_support_v2_freeze.json",
+      "download_path": "/downloads/state/artifacts/state_replogle_reactome_pathway_mean_train_support_v2_freeze.json",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/state_replogle_reactome_pathway_mean_train_support_v2_freeze.json",
+      "finding_ids": [],
+      "format": "json",
+      "model": "state",
+      "relative_path": "state/artifacts/state_replogle_reactome_pathway_mean_train_support_v2_freeze.json",
+      "rows": null,
+      "run_ids": [],
+      "sha256": "6017826fe9a0ba590fed7c89b92b8bef8a20949cecf9935ce372a62fda150a88"
+    },
+    {
+      "artifact_id": "state:artifacts:state_replogle_reactome_pathway_min_train_support_v2_freeze.json",
+      "bytes": 1369,
+      "csv_header": null,
+      "download_id": "state:artifacts:state_replogle_reactome_pathway_min_train_support_v2_freeze.json",
+      "download_path": "/downloads/state/artifacts/state_replogle_reactome_pathway_min_train_support_v2_freeze.json",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/state_replogle_reactome_pathway_min_train_support_v2_freeze.json",
+      "finding_ids": [],
+      "format": "json",
+      "model": "state",
+      "relative_path": "state/artifacts/state_replogle_reactome_pathway_min_train_support_v2_freeze.json",
+      "rows": null,
+      "run_ids": [],
+      "sha256": "6910a2e1325bebcab5d44a65e4129d5f68fba603d82979b5c633b21f0c176d43"
+    },
+    {
+      "artifact_id": "state:artifacts:state_replogle_symbol_family_support_control_freeze.json",
+      "bytes": 1314,
+      "csv_header": null,
+      "download_id": "state:artifacts:state_replogle_symbol_family_support_control_freeze.json",
+      "download_path": "/downloads/state/artifacts/state_replogle_symbol_family_support_control_freeze.json",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/artifacts/state_replogle_symbol_family_support_control_freeze.json",
+      "finding_ids": [],
+      "format": "json",
+      "model": "state",
+      "relative_path": "state/artifacts/state_replogle_symbol_family_support_control_freeze.json",
+      "rows": null,
+      "run_ids": [],
+      "sha256": "2e8a149417589a7ae9456508d1111e7584a05978b5c7a15622f18a494639227c"
+    },
+    {
+      "artifact_id": "state:axis_ledger_prior.json",
+      "bytes": 2809,
+      "csv_header": null,
+      "download_id": "state:axis_ledger_prior.json",
+      "download_path": "/downloads/state/axis_ledger_prior.json",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/axis_ledger_prior.json",
+      "finding_ids": [
+        "state_pathway_module_train_support_20260603"
+      ],
+      "format": "json",
+      "model": "state",
+      "relative_path": "state/axis_ledger_prior.json",
+      "rows": null,
+      "run_ids": [
+        "state_generalizability_continued_20260603"
+      ],
+      "sha256": "82f43588b334aacb0fabb83ae0e9974071fb21869aaef745e1c1828592c476bb"
+    },
+    {
+      "artifact_id": "state:state_spectra_report.md",
+      "bytes": 6008,
+      "csv_header": null,
+      "download_id": "state:state_spectra_report.md",
+      "download_path": "/downloads/state/state_spectra_report.md",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/state_spectra_report.md",
+      "finding_ids": [
+        "state_pathway_module_train_support_20260603"
+      ],
+      "format": "md",
+      "model": "state",
+      "relative_path": "state/state_spectra_report.md",
+      "rows": null,
+      "run_ids": [
+        "state_generalizability_continued_20260603"
+      ],
+      "sha256": "03e667f05d932b7d6bba28ef77468cbaa06c48d0fa54cff3c1446df27118c9f8"
+    },
+    {
+      "artifact_id": "state:target_model_results.csv",
+      "bytes": 26605492,
+      "csv_header": "source_repo,source_path,dataset_family,protocol,context,split_id,representation,perturbation,overlap_at_N,overlap_at_50,overlap_at_100,overlap_at_200,overlap_at_500,precision_at_N,precision_at_50,precision_at_100,precision_at_200,precision_at_500,de_spearman_sig,de_direction_match,de_spearman_lfc_sig,de_sig_genes_recall,de_nsig_counts_real,de_nsig_counts_pred,pr_auc,roc_auc,pearson_delta,mse,mae,mse_delta,mae_delta,discrimination_score_l1,discrimination_score_l2,discrimination_score_cosine,perturbation_name,dose,dose_unit,perturbation_norm,perturbation_loose,row_key,drugmeta_drug,drugmeta_targets,drugmeta_moa-broad,drugmeta_moa-fine,drugmeta_human-approved,drugmeta_clinical-trials,drugmeta_gpt-notes-approval,drugmeta_canonical_smiles,drugmeta_pubchem_cid,drug_metadata_match,target_context_train_drug_count,target_context_val_drug_count,target_context_test_drug_count,max_tanimoto_to_target_context_train_drug,nearest_target_context_train_drug,chem_support_level",
+      "download_id": "state:target_model_results.csv",
+      "download_path": "/downloads/state/target_model_results.csv",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/state/target_model_results.csv",
+      "finding_ids": [
+        "state_pathway_module_train_support_20260603"
+      ],
+      "format": "csv",
+      "model": "state",
+      "relative_path": "state/target_model_results.csv",
+      "rows": 39808,
+      "run_ids": [
+        "state_generalizability_continued_20260603"
+      ],
+      "sha256": "1d64a06067e25cee6f52e77114cf7e31359319708b11b0e46c80ba20863829cf"
+    }
+  ],
+  "schema_version": "0.1.0"
+}

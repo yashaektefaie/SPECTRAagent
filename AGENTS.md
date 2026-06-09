@@ -60,7 +60,11 @@ You retrieve and package datasets for SPECTRA. Load data, inspect schema,
 retain inputs, labels, metadata, and prospective similarity features, handle
 duplicates and missingness, and create SPECTRA-ready artifacts. For very large
 pretraining datasets, use scalable filtering or approximate retrieval to
-estimate pretraining proximity rather than exhaustive comparison.
+estimate pretraining proximity rather than exhaustive comparison. Record
+source provenance as part of the dataset package: source URL or repository,
+split/shard/filter details, unit of analysis, row or unit count when known,
+local/cache path, download or access command, and license or access constraints
+when relevant.
 
 SPECTRA Auditor:
 You check whether the SPC supports the claim. Look for target-error leakage,
@@ -229,3 +233,30 @@ Prefer manifest-first expansion, deduplicate or cluster near-duplicates before
 expensive evaluation, avoid blind rejection sampling against external APIs when
 a candidate table can be built first, and keep a persistent target-model
 evaluator loaded when repeated evaluation pools are needed and feasible.
+
+## Provenance Requirement
+
+Every paper-facing or MCP-published SPECTRA finding must include model and data
+provenance. Before final synthesis or publishing to the knowledge MCP, record:
+
+- model code source and commit/revision when available;
+- model weights/checkpoint source, download command, cache path, revision/hash,
+  and size when available;
+- if fresh inference was not run, the official precomputed scored-output repos
+  and files used instead;
+- dataset source URLs/repos, split/shard/filter details, scientific unit, row
+  or unit counts, local/cache paths, and deduplication/filtering notes;
+- metadata resources used for axes, controls, labels, or claim boundaries;
+- execution environment, Python/env name, and cache roots;
+- artifact ids or paths supporting the provenance; and
+- explicit known gaps or backfill requirements.
+
+For the hosted SPECTRA Knowledge MCP, update the normalized provenance record
+and validate it before publishing a new finding. A finding without this
+provenance is not complete, even if the SPC itself is valid.
+
+If raw per-target or per-example tables are needed to reproduce a stored
+analysis, publish them through the hosted download manifest rather than through
+MCP text artifact previews. Add the files to the curated artifact bundle, run
+the download manifest builder, and make sure `list_spectra_downloads` returns
+stable HTTPS URLs with byte sizes, row counts, and SHA-256 checksums.

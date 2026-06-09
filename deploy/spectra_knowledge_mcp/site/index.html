@@ -15,6 +15,8 @@
     </a>
     <nav aria-label="Primary">
       <a href="#protocol">Protocol</a>
+      <a href="#provenance">Provenance</a>
+      <a href="#downloads">Downloads</a>
       <a href="#findings">Findings</a>
       <a href="#connect">Connect</a>
       <a href="/mcp">MCP</a>
@@ -93,6 +95,40 @@
         <div><span>04</span><strong>Confirm live hypotheses</strong><p>Outcome-mined axes are exploratory until frozen and confirmed on fresh or adequate evidence.</p></div>
         <div><span>05</span><strong>Ledger weak and negative axes</strong><p>Non-explanatory curves are findings that route back into prospective-axis discovery.</p></div>
         <div><span>06</span><strong>State the claim boundary</strong><p>A valid SPC closes only the deployment or mechanism boundary it actually tested.</p></div>
+        <div><span>07</span><strong>Record provenance</strong><p>Publish model, weight, dataset, metadata, download, cache, and known-gap records with every stored finding.</p></div>
+      </div>
+    </section>
+
+    <section id="provenance" class="section-grid">
+      <div>
+        <p class="eyebrow">Provenance</p>
+        <h2>Where the evidence came from</h2>
+      </div>
+      <div class="provenance-intro">
+        <p>Agents should call <code>get_spectra_provenance</code> or <code>list_spectra_sources</code> before using a stored finding. New findings are incomplete unless they include source repositories, checkpoint or score provenance, dataset access routes, metadata resources, cache roots, and explicit known gaps.</p>
+        <pre><code>{
+  "tool": "get_spectra_provenance",
+  "arguments": {
+    "model": "ESMFold2"
+  }
+}</code></pre>
+      </div>
+    </section>
+
+    <section id="downloads" class="section-grid">
+      <div>
+        <p class="eyebrow">Downloads</p>
+        <h2>Raw tables leave MCP as files</h2>
+      </div>
+      <div class="provenance-intro">
+        <p>Large CSVs and reproducibility-critical artifacts are published as normal HTTPS downloads with row counts and SHA-256 checksums. Agents should call <code>list_spectra_downloads</code>, then use <code>curl</code>, <code>wget</code>, or a dataframe loader on the returned URL.</p>
+        <pre><code>{
+  "tool": "list_spectra_downloads",
+  "arguments": {
+    "model": "STATE",
+    "query": "target_model_results"
+  }
+}</code></pre>
       </div>
     </section>
 
@@ -132,6 +168,40 @@
     <h4>Claim Boundary</h4>
     <p>Public CRC 224x224 H&amp;E ROI tiles scored with the CONCH CRC prompt ensemble. Confirmation and expansion are fresh relative to CRC-VAL discovery but still from the public Kather/NCT source family, so independent-site or clinical deployment generalization remains weak.</p>
   </div>
+
+  <div class="provenance-box">
+    <div class="provenance-head">
+      <h4>Source Provenance</h4>
+      <span>complete</span>
+    </div>
+    <dl class="provenance-grid">
+      <div><dt>Model</dt><dd>MahmoodLab/conch</dd></div>
+      <div><dt>Weights / Scores</dt><dd>https://huggingface.co/MahmoodLab/conch</dd></div>
+      <div><dt>Execution</dt><dd>fresh_zero_shot_inference</dd></div>
+    </dl>
+    <div class="source-lists">
+      <div><strong>Data</strong><ul><li>CRC-VAL-HE-7K</li>
+<li>NCT-CRC-HE-100K reference stream</li>
+<li>NCT-CRC-HE-100K-NONORM TUM confirmation and expansion panels</li></ul></div>
+      <div><strong>Metadata</strong><ul><li>Zenodo API record 1214456 and Hugging Face dataset README/API</li></ul></div>
+    </div>
+
+  </div>
+
+
+  <details class="download-box" open>
+    <summary>Public downloads</summary>
+    <ul class="download-list"><li><a href="https://spectra.yashaektefaie.com/downloads/conch/artifacts/spc_analysis/scored_table_with_axes_and_baselines.csv">conch/artifacts/spc_analysis/scored_table_with_axes_and_baselines.csv</a><span>7,180 rows · 12,604,776 bytes</span></li>
+<li><a href="https://spectra.yashaektefaie.com/downloads/conch/artifacts/tum_expansion/scored_tum_expansion_with_baselines.csv">conch/artifacts/tum_expansion/scored_tum_expansion_with_baselines.csv</a><span>4,000 rows · 7,210,706 bytes</span></li>
+<li><a href="https://spectra.yashaektefaie.com/downloads/conch/artifacts/tum_confirmation/scored_tum_confirmation_with_baselines.csv">conch/artifacts/tum_confirmation/scored_tum_confirmation_with_baselines.csv</a><span>1,800 rows · 3,241,229 bytes</span></li>
+<li><a href="https://spectra.yashaektefaie.com/downloads/conch/target_model_results.csv">conch/target_model_results.csv</a><span>7,180 rows · 3,063,944 bytes</span></li>
+<li><a href="https://spectra.yashaektefaie.com/downloads/conch/artifacts/tum_expansion/target_model_results_tum_expansion.csv">conch/artifacts/tum_expansion/target_model_results_tum_expansion.csv</a><span>4,000 rows · 1,665,908 bytes</span></li>
+<li><a href="https://spectra.yashaektefaie.com/downloads/conch/artifacts/spc_analysis/spc_summary.json">conch/artifacts/spc_analysis/spc_summary.json</a><span>64,169 bytes</span></li>
+<li><a href="https://spectra.yashaektefaie.com/downloads/conch/axis_ledger.json">conch/axis_ledger.json</a><span>33,326 bytes</span></li>
+<li><a href="https://spectra.yashaektefaie.com/downloads/conch/artifacts/tum_expansion/expanded_metrics.json">conch/artifacts/tum_expansion/expanded_metrics.json</a><span>25,289 bytes</span></li>
+<li class="muted">and 7 more downloadable artifacts</li></ul>
+  </details>
+
   <div class="two-col">
     <div>
       <h4>Limitations</h4>
@@ -183,6 +253,41 @@
     <h4>Claim Boundary</h4>
     <p>Supported for accumulated ESMFold2 target-level evaluations across CAMEO/CAMEO follow-up, external RCSB, fresh general RCSB, and viral RCSB panels. MSA depth was claim-valid in CAMEO but not globally comparable across later panels.</p>
   </div>
+
+  <div class="provenance-box">
+    <div class="provenance-head">
+      <h4>Source Provenance</h4>
+      <span>partial_explicit</span>
+    </div>
+    <dl class="provenance-grid">
+      <div><dt>Model</dt><dd>https://github.com/Biohub/esm#esmfold2</dd></div>
+      <div><dt>Weights / Scores</dt><dd>biohub/ESMFold2</dd></div>
+      <div><dt>Execution</dt><dd>fresh_structure_inference_for saved target-result panels; consolidated final bundle reuses those scored outputs</dd></div>
+    </dl>
+    <div class="source-lists">
+      <div><strong>Data</strong><ul><li>CAMEO 2025 protein chains</li>
+<li>RCSB PDB recent protein-chain panels</li></ul></div>
+      <div><strong>Metadata</strong><ul><li>CAMEO metadata and precomputed MSA fields</li>
+<li>RCSB PDB metadata</li></ul></div>
+    </div>
+    <details class="provenance-gaps"><summary>Known provenance gaps</summary><ul><li>Legacy ESMFold2 runs did not record the exact Hugging Face model cache revision/hash or original online download command. Future ESMFold2 entries must record this before target scoring.</li>
+<li>The final bundle consolidates multiple scored source runs; some RCSB candidate-generation scripts and raw downloaded structures remain in source roots rather than tracked MCP artifacts.</li></ul></details>
+  </div>
+
+
+  <details class="download-box" open>
+    <summary>Public downloads</summary>
+    <ul class="download-list"><li><a href="https://spectra.yashaektefaie.com/downloads/esmfold2/data/all_esmfold2_scored_evaluations.csv">esmfold2/data/all_esmfold2_scored_evaluations.csv</a><span>706 rows · 1,830,916 bytes</span></li>
+<li><a href="https://spectra.yashaektefaie.com/downloads/esmfold2/data/primary_exact_sequence_dedup.csv">esmfold2/data/primary_exact_sequence_dedup.csv</a><span>652 rows · 1,724,488 bytes</span></li>
+<li><a href="https://spectra.yashaektefaie.com/downloads/esmfold2/tables/global_hypothesis_level_curves_primary_sequence.csv">esmfold2/tables/global_hypothesis_level_curves_primary_sequence.csv</a><span>99 rows · 12,951 bytes</span></li>
+<li><a href="https://spectra.yashaektefaie.com/downloads/esmfold2/tables/global_hypothesis_effects_primary_sequence.csv">esmfold2/tables/global_hypothesis_effects_primary_sequence.csv</a><span>28 rows · 10,244 bytes</span></li>
+<li><a href="https://spectra.yashaektefaie.com/downloads/esmfold2/FINAL_ESMFOLD2_RESULT.md">esmfold2/FINAL_ESMFOLD2_RESULT.md</a><span>9,107 bytes</span></li>
+<li><a href="https://spectra.yashaektefaie.com/downloads/esmfold2/prior_axis_reports/01_cameo_msa_depth_final_report.md">esmfold2/prior_axis_reports/01_cameo_msa_depth_final_report.md</a><span>4,949 bytes</span></li>
+<li><a href="https://spectra.yashaektefaie.com/downloads/esmfold2/source_reports/reviewer_proofing_report.md">esmfold2/source_reports/reviewer_proofing_report.md</a><span>3,982 bytes</span></li>
+<li><a href="https://spectra.yashaektefaie.com/downloads/esmfold2/prior_axis_reports/11_surface_lowhelical_and_classII_report.md">esmfold2/prior_axis_reports/11_surface_lowhelical_and_classII_report.md</a><span>2,624 bytes</span></li>
+<li class="muted">and 5 more downloadable artifacts</li></ul>
+  </details>
+
   <div class="two-col">
     <div>
       <h4>Limitations</h4>
@@ -235,6 +340,45 @@
     <h4>Claim Boundary</h4>
     <p>Current-pool confirmed using official precomputed STATE scored CSVs and official split definitions, not fresh STATE inference or raw single-cell matrices. The main reviewer-facing gap is a fixed baseline/raw-label rerun.</p>
   </div>
+
+  <div class="provenance-box">
+    <div class="provenance-head">
+      <h4>Source Provenance</h4>
+      <span>not_applicable_precomputed</span>
+    </div>
+    <dl class="provenance-grid">
+      <div><dt>Model</dt><dd>https://huggingface.co/arcinstitute</dd></div>
+      <div><dt>Weights / Scores</dt><dd>arcinstitute/ST-HVG-Tahoe, arcinstitute/ST-SE-Tahoe, arcinstitute/ST-HVG-Replogle, arcinstitute/ST-SE-Replogle, arcinstitute/ST-HVG-Parse, arcinstitute/ST-SE-Parse</dd></div>
+      <div><dt>Execution</dt><dd>official_precomputed_scores_loaded; no fresh STATE inference in this continuation run</dd></div>
+    </dl>
+    <div class="source-lists">
+      <div><strong>Data</strong><ul><li>Tahoe-100M official STATE scored outputs</li>
+<li>Replogle-Nadig official STATE scored outputs</li>
+<li>Parse-PBMC official STATE scored outputs</li></ul></div>
+      <div><strong>Metadata</strong><ul><li>Official STATE split TOMLs</li>
+<li>HGNC complete set</li>
+<li>Reactome Ensembl2Reactome</li>
+<li>GO, GOA, WikiPathways, and KEGG public resources</li></ul></div>
+    </div>
+    <details class="provenance-gaps"><summary>Known provenance gaps</summary><ul><li>This finding did not run fresh STATE inference; it is intentionally based on official precomputed scored CSVs.</li>
+<li>The full Hugging Face file manifest from the prior source run is not packaged as a tracked artifact in this repository; compact repo-level provenance is recorded here.</li>
+<li>Exact HF snapshot revisions for each STATE model repository should be backfilled before using this as a fully reproducible checkpoint-download recipe.</li></ul></details>
+  </div>
+
+
+  <details class="download-box" open>
+    <summary>Public downloads</summary>
+    <ul class="download-list"><li><a href="https://spectra.yashaektefaie.com/downloads/state/target_model_results.csv">state/target_model_results.csv</a><span>39,808 rows · 26,605,492 bytes</span></li>
+<li><a href="https://spectra.yashaektefaie.com/downloads/state/artifacts/multi_pathway_top_features_by_support_level.json">state/artifacts/multi_pathway_top_features_by_support_level.json</a><span>26,648 bytes</span></li>
+<li><a href="https://spectra.yashaektefaie.com/downloads/state/artifacts/multi_pathway_support_summary.json">state/artifacts/multi_pathway_support_summary.json</a><span>7,692 bytes</span></li>
+<li><a href="https://spectra.yashaektefaie.com/downloads/state/artifacts/controls_replogle_best_axis_regression.json">state/artifacts/controls_replogle_best_axis_regression.json</a><span>6,102 bytes</span></li>
+<li><a href="https://spectra.yashaektefaie.com/downloads/state/state_spectra_report.md">state/state_spectra_report.md</a><span>6,008 bytes</span></li>
+<li><a href="https://spectra.yashaektefaie.com/downloads/state/artifacts/spc_replogle_best_refined_axis.csv">state/artifacts/spc_replogle_best_refined_axis.csv</a><span>20 rows · 5,680 bytes</span></li>
+<li><a href="https://spectra.yashaektefaie.com/downloads/state/artifacts/multi_pathway_support_screen.csv">state/artifacts/multi_pathway_support_screen.csv</a><span>7 rows · 4,062 bytes</span></li>
+<li><a href="https://spectra.yashaektefaie.com/downloads/state/axis_ledger_prior.json">state/axis_ledger_prior.json</a><span>2,809 bytes</span></li>
+<li class="muted">and 5 more downloadable artifacts</li></ul>
+  </details>
+
   <div class="two-col">
     <div>
       <h4>Limitations</h4>
@@ -267,7 +411,7 @@
       <div>
         <p class="eyebrow">Agent Access</p>
         <h2>Connect Claude Code or another MCP client</h2>
-        <p>The server uses streamable HTTP and exposes read-only tools for listing models, retrieving findings, reading protocol sections, and fetching text artifacts.</p>
+        <p>The server uses streamable HTTP and exposes read-only tools for listing models, retrieving findings, reading protocol sections, fetching text previews, retrieving model/data provenance, and returning public download URLs.</p>
       </div>
       <pre><code>{
   "mcpServers": {

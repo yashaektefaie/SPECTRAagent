@@ -18,6 +18,9 @@ Resources:
 - `spectra://models/index`
 - `spectra://runs/index`
 - `spectra://artifacts/index`
+- `spectra://downloads/index`
+- `spectra://provenance/index`
+- `spectra://provenance/schema`
 
 Tools:
 
@@ -27,6 +30,13 @@ Tools:
 - `get_spectra_finding`
 - `list_spectra_runs`
 - `get_spectra_run`
+- `list_spectra_provenance`
+- `get_spectra_provenance`
+- `list_spectra_sources`
+- `validate_spectra_provenance`
+- `get_spectra_provenance_schema`
+- `list_spectra_downloads`
+- `get_spectra_download`
 - `list_spectra_artifacts`
 - `get_spectra_artifact`
 - `get_spectra_protocol`
@@ -34,6 +44,31 @@ Tools:
 
 There are no tools that run audits, launch agents, call models, download
 datasets, mutate artifacts, or prepare sessions.
+
+`get_spectra_artifact` is a preview path and intentionally truncates large
+files. Agents that need raw per-target tables should call
+`list_spectra_downloads` or `get_spectra_download`, then use normal HTTPS
+download tooling against the returned `download_url`.
+
+## Provenance Contract
+
+Every stored finding must have a normalized provenance record in
+`data/provenance.json`. New findings are incomplete until they identify:
+
+- model code/source and execution mode;
+- model weights/checkpoints, official precomputed score source, or an explicit
+  not-applicable reason;
+- dataset names, URLs/repos, split/shard/filter details, units, row counts, and
+  local or artifact paths;
+- metadata resources used to define axes or controls;
+- download/access commands or methods;
+- Python/environment and cache roots;
+- artifact ids supporting the provenance; and
+- explicit known gaps.
+
+Agents should call `get_spectra_provenance` or `list_spectra_sources` before
+using a stored finding, and `validate_spectra_provenance` before publishing a
+new one.
 
 ## Artifact Policy
 
@@ -52,7 +87,27 @@ python build_site.py
 
 The generated files live under `site/`. Caddy serves the website for normal
 browser paths and forwards `/mcp` to the private FastMCP process on
-`127.0.0.1:8000`.
+`127.0.0.1:8000`. Caddy also serves curated artifact files from
+`data/public_downloads/` at `/downloads/...`.
+
+## Public Downloads
+
+Build the download manifest and materialized public file tree from curated
+runtime artifacts:
+
+```sh
+python build_download_manifest.py --materialize --clean
+```
+
+This writes:
+
+- `data/downloads.json`: tracked manifest with URLs, sizes, row counts, and
+  SHA-256 checksums.
+- `data/public_downloads/`: ignored deployment tree served by Caddy.
+
+The builder excludes internal session contracts, controller logs/prompts, and
+command logs. It publishes result CSVs, reports, figures, compact JSON outputs,
+and provenance artifacts.
 
 ## Run
 

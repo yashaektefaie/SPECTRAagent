@@ -66,7 +66,10 @@ SPECTRA Dataset Fetcher retrieves and packages datasets for SPECTRA. It retains
 inputs, labels, metadata, and prospective features, handles duplicates and
 missingness, and creates SPECTRA-ready artifacts. For very large pretraining
 datasets, it should use bounded filtering or approximate retrieval rather than
-exhaustive comparison.
+exhaustive comparison. It must also record source provenance: data source URL
+or repository, split/shard/filter details, unit of analysis, row or unit count
+when known, local/cache path, download or access command, and license or access
+constraints when relevant.
 
 SPECTRA Auditor checks whether the SPC supports the claim. It looks for
 target-error leakage, test-label leakage, tiny splits, non-decreasing
@@ -139,6 +142,38 @@ manifest-first expansion, deduplicate or cluster near-duplicates before
 expensive evaluation, avoid blind rejection sampling against external APIs, and
 keep a persistent target-model evaluator loaded when feasible.
 
+## Provenance Contract
+
+Every paper-facing or MCP-published SPECTRA finding must include normalized
+provenance. A stored finding is incomplete unless an agent can answer:
+
+1. Where did the model code come from?
+2. Where did the model weights, checkpoint, or official precomputed scored
+   outputs come from?
+3. How were those weights or scored outputs downloaded, cached, or loaded?
+4. Where did each dataset, split, shard, or candidate panel come from?
+5. How was each dataset downloaded, filtered, deduplicated, or bounded?
+6. Which metadata resources defined similarity axes, controls, labels, or
+   claim boundaries?
+7. Which local paths and MCP artifact ids support the record?
+8. What exact gaps remain, such as missing checkpoint revisions or legacy
+   cache hashes?
+
+For hosted knowledge-server findings, add or update the normalized provenance
+record and validate it before publishing. If fresh inference was not run, say
+so directly and record the official scored-result repositories/files instead
+of pretending model weights were evaluated locally. If a legacy run lacks exact
+download hashes or cache revisions, mark the gap explicitly and route to
+backfill before claiming full reproducibility.
+
+If a paper-facing or reviewer-facing claim requires re-running the analysis
+from per-target or per-example rows, the raw scored tables must be published as
+normal HTTPS downloads with byte size, row count, and SHA-256 checksum. MCP
+artifact preview tools may truncate large files and should not be treated as a
+bulk transport mechanism. Hosted knowledge-server entries should expose such
+files through the download manifest and direct agents to `list_spectra_downloads`
+or `get_spectra_download`.
+
 ## Closure Gate
 
 Before final synthesis, the primary axis must be prospective, frozen before
@@ -146,7 +181,9 @@ target scoring, measured in the intended order, adequately powered, densified
 enough to characterize trend shape, stable under expansion or explicitly
 reported as unstable, confirmed on new or explicitly adequate evidence if
 discovered from existing results, not materially explained by known confounders,
-and supported by fixed baselines when labels exist.
+supported by fixed baselines when labels exist, and accompanied by model,
+weights/checkpoint or official-score, dataset, metadata, download, cache, and
+known-gap provenance.
 
 A coarse, localized, weak, source-confounded, proxy-only, shape-unstable, or
 discovery-only curve does not pass closure merely because it has three split

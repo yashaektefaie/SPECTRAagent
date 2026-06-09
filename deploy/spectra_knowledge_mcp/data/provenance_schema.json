@@ -1,0 +1,59 @@
+{
+  "schema_version": "0.2.0",
+  "purpose": "Normalize model, weight, dataset, metadata, download, cache, and execution provenance for stored SPECTRA findings.",
+  "status_values": [
+    "complete",
+    "partial_explicit",
+    "not_applicable_precomputed",
+    "backfill_needed"
+  ],
+  "required_for_new_findings": {
+    "model_source": [
+      "name",
+      "execution_mode",
+      "source_url_or_repo",
+      "weights_or_checkpoint"
+    ],
+    "dataset_sources": [
+      "name",
+      "source_url_or_repo",
+      "access_route",
+      "unit",
+      "rows_or_units",
+      "local_or_artifact_path"
+    ],
+    "metadata_sources": [
+      "name",
+      "source_url_or_repo",
+      "access_route",
+      "used_for"
+    ],
+    "retrieval_and_download": [
+      "phase",
+      "command_or_method",
+      "purpose"
+    ],
+    "execution_environment": [
+      "python_or_env",
+      "cache_roots"
+    ],
+    "provenance_artifact_ids": [
+      "artifact ids in this MCP store that support the provenance record"
+    ],
+    "download_ids": [
+      "public download ids for raw per-target/per-example tables needed to reproduce the analysis"
+    ],
+    "known_gaps": [
+      "explicit reason for any unavailable, not-applicable, or backfill-needed field"
+    ]
+  },
+  "policy": [
+    "Every new SPECTRA finding added to this MCP store must include a provenance record.",
+    "A record may use not_applicable_precomputed when the audit loads official precomputed scores instead of running model weights, but it must still name the model/result repositories and retrieval route.",
+    "A record may use backfill_needed only for legacy findings or for a concrete externally blocked field; the gap must be explicit and should route to backfill before paper-facing reproduction claims.",
+    "Dataset source records must identify the scientific unit, public source or local/private source, split/shard/filter, row or unit count when known, and download/access method.",
+    "Model source records must identify where code and weights/checkpoints came from, how they were downloaded or loaded, revision/commit/hash when available, local cache path when available, and whether fresh inference or official precomputed outputs were used."
+    ,
+    "When a claim depends on raw per-target or per-example scored rows, publish those tables through the download manifest with stable HTTPS URLs, byte sizes, row counts, and SHA-256 checksums."
+  ]
+}

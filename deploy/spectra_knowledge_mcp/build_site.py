@@ -8,6 +8,8 @@ from typing import Any, Dict, Iterable, List
 
 ROOT = Path(__file__).resolve().parent
 STORE_PATH = ROOT / "data" / "store.json"
+PROVENANCE_PATH = ROOT / "data" / "provenance.json"
+DOWNLOADS_PATH = ROOT / "data" / "downloads.json"
 SITE_ROOT = ROOT / "site"
 
 
@@ -152,7 +154,87 @@ def render_artifacts(ids: List[str]) -> str:
     return "<ul class=\"artifact-list\">%s</ul>" % items
 
 
-def render_finding_card(finding: Dict[str, Any]) -> str:
+def render_downloads(downloads: List[Dict[str, Any]]) -> str:
+    if not downloads:
+        return ""
+    ordered = sorted(downloads, key=lambda item: int(item.get("bytes") or 0), reverse=True)
+    items = []
+    for item in ordered[:8]:
+        label = item.get("relative_path", item.get("artifact_id", "download"))
+        details = []
+        if item.get("rows") is not None:
+            details.append("%s rows" % metric_value(item.get("rows")))
+        if item.get("bytes") is not None:
+            details.append("%s bytes" % metric_value(item.get("bytes")))
+        detail = " · ".join(details)
+        items.append(
+            '<li><a href="%s">%s</a><span>%s</span></li>'
+            % (esc(item.get("download_url", "")), esc(label), esc(detail))
+        )
+    if len(ordered) > 8:
+        items.append('<li class="muted">and %d more downloadable artifacts</li>' % (len(ordered) - 8))
+    return """
+  <details class="download-box" open>
+    <summary>Public downloads</summary>
+    <ul class="download-list">%s</ul>
+  </details>
+""" % "\n".join(items)
+
+
+def render_provenance(provenance: Dict[str, Any]) -> str:
+    if not provenance:
+        return """
+  <div class="provenance-box missing">
+    <h4>Source Provenance</h4>
+    <p>No normalized provenance record is currently linked to this finding.</p>
+  </div>
+"""
+    model_source = provenance.get("model_source", {})
+    weights = model_source.get("weights_or_checkpoint", {})
+    dataset_names = [item.get("name", "") for item in provenance.get("dataset_sources", [])[:4]]
+    metadata_names = [item.get("name", "") for item in provenance.get("metadata_sources", [])[:4]]
+    gaps = provenance.get("known_gaps", [])
+    gap_items = "\n".join("<li>%s</li>" % esc(item) for item in gaps[:3])
+    dataset_items = "\n".join("<li>%s</li>" % esc(item) for item in dataset_names if item)
+    metadata_items = "\n".join("<li>%s</li>" % esc(item) for item in metadata_names if item)
+    return """
+  <div class="provenance-box">
+    <div class="provenance-head">
+      <h4>Source Provenance</h4>
+      <span>%s</span>
+    </div>
+    <dl class="provenance-grid">
+      <div><dt>Model</dt><dd>%s</dd></div>
+      <div><dt>Weights / Scores</dt><dd>%s</dd></div>
+      <div><dt>Execution</dt><dd>%s</dd></div>
+    </dl>
+    <div class="source-lists">
+      <div><strong>Data</strong><ul>%s</ul></div>
+      <div><strong>Metadata</strong><ul>%s</ul></div>
+    </div>
+    %s
+  </div>
+""" % (
+        esc(provenance.get("status", "unknown")),
+        esc(model_source.get("source_url_or_repo", "")),
+        esc(weights.get("source_url_or_repo", weights.get("filename", ""))),
+        esc(model_source.get("execution_mode", "")),
+        dataset_items or "<li>No dataset sources recorded.</li>",
+        metadata_items or "<li>No metadata sources recorded.</li>",
+        (
+            '<details class="provenance-gaps"><summary>Known provenance gaps</summary><ul>%s</ul></details>'
+            % gap_items
+            if gap_items
+            else ""
+        ),
+    )
+
+
+def render_finding_card(
+    finding: Dict[str, Any],
+    provenance: Dict[str, Any],
+    downloads: List[Dict[str, Any]],
+) -> str:
     model = finding.get("model", "")
     decision = finding.get("validity", {}).get("decision", "")
     limitations = finding.get("validity", {}).get("limitations", [])
@@ -182,6 +264,8 @@ def render_finding_card(finding: Dict[str, Any]) -> str:
     <h4>Claim Boundary</h4>
     <p>%s</p>
   </div>
+  %s
+  %s
   <div class="two-col">
     <div>
       <h4>Limitations</h4>
@@ -207,6 +291,8 @@ def render_finding_card(finding: Dict[str, Any]) -> str:
         esc(finding.get("axis", {}).get("definition", finding.get("axis", {}).get("interpretation", ""))),
         render_metrics(finding),
         esc(finding.get("claim_boundary", "")),
+        render_provenance(provenance),
+        render_downloads(downloads),
         limit_items or "<li>No explicit limitations recorded.</li>",
         nonprimary_items or "<li>No downgraded axes recorded.</li>",
         render_artifacts(finding.get("key_artifact_ids", [])),
@@ -229,11 +315,31 @@ def render_model_links(findings: List[Dict[str, Any]]) -> str:
 
 def build() -> None:
     store = json.loads(STORE_PATH.read_text())
+    provenance_records = []
+    if PROVENANCE_PATH.exists():
+        provenance_records = json.loads(PROVENANCE_PATH.read_text()).get("records", [])
+    download_records = []
+    if DOWNLOADS_PATH.exists():
+        download_records = json.loads(DOWNLOADS_PATH.read_text()).get("records", [])
+    provenance_by_finding = {
+        item.get("finding_id"): item for item in provenance_records if item.get("finding_id")
+    }
+    downloads_by_finding: Dict[str, List[Dict[str, Any]]] = {}
+    for item in download_records:
+        for finding_id in item.get("finding_ids", []):
+            downloads_by_finding.setdefault(finding_id, []).append(item)
     findings = store.get("findings", [])
     SITE_ROOT.mkdir(parents=True, exist_ok=True)
     (SITE_ROOT / "assets").mkdir(parents=True, exist_ok=True)
 
-    finding_cards = "\n".join(render_finding_card(finding) for finding in findings)
+    finding_cards = "\n".join(
+        render_finding_card(
+            finding,
+            provenance_by_finding.get(finding.get("finding_id"), {}),
+            downloads_by_finding.get(finding.get("finding_id"), []),
+        )
+        for finding in findings
+    )
     model_links = render_model_links(findings)
     model_count = len(store.get("models", []))
     finding_count = len(findings)
@@ -256,6 +362,8 @@ def build() -> None:
     </a>
     <nav aria-label="Primary">
       <a href="#protocol">Protocol</a>
+      <a href="#provenance">Provenance</a>
+      <a href="#downloads">Downloads</a>
       <a href="#findings">Findings</a>
       <a href="#connect">Connect</a>
       <a href="/mcp">MCP</a>
@@ -291,6 +399,40 @@ def build() -> None:
         <div><span>04</span><strong>Confirm live hypotheses</strong><p>Outcome-mined axes are exploratory until frozen and confirmed on fresh or adequate evidence.</p></div>
         <div><span>05</span><strong>Ledger weak and negative axes</strong><p>Non-explanatory curves are findings that route back into prospective-axis discovery.</p></div>
         <div><span>06</span><strong>State the claim boundary</strong><p>A valid SPC closes only the deployment or mechanism boundary it actually tested.</p></div>
+        <div><span>07</span><strong>Record provenance</strong><p>Publish model, weight, dataset, metadata, download, cache, and known-gap records with every stored finding.</p></div>
+      </div>
+    </section>
+
+    <section id="provenance" class="section-grid">
+      <div>
+        <p class="eyebrow">Provenance</p>
+        <h2>Where the evidence came from</h2>
+      </div>
+      <div class="provenance-intro">
+        <p>Agents should call <code>get_spectra_provenance</code> or <code>list_spectra_sources</code> before using a stored finding. New findings are incomplete unless they include source repositories, checkpoint or score provenance, dataset access routes, metadata resources, cache roots, and explicit known gaps.</p>
+        <pre><code>{
+  "tool": "get_spectra_provenance",
+  "arguments": {
+    "model": "ESMFold2"
+  }
+}</code></pre>
+      </div>
+    </section>
+
+    <section id="downloads" class="section-grid">
+      <div>
+        <p class="eyebrow">Downloads</p>
+        <h2>Raw tables leave MCP as files</h2>
+      </div>
+      <div class="provenance-intro">
+        <p>Large CSVs and reproducibility-critical artifacts are published as normal HTTPS downloads with row counts and SHA-256 checksums. Agents should call <code>list_spectra_downloads</code>, then use <code>curl</code>, <code>wget</code>, or a dataframe loader on the returned URL.</p>
+        <pre><code>{
+  "tool": "list_spectra_downloads",
+  "arguments": {
+    "model": "STATE",
+    "query": "target_model_results"
+  }
+}</code></pre>
       </div>
     </section>
 
@@ -311,7 +453,7 @@ def build() -> None:
       <div>
         <p class="eyebrow">Agent Access</p>
         <h2>Connect Claude Code or another MCP client</h2>
-        <p>The server uses streamable HTTP and exposes read-only tools for listing models, retrieving findings, reading protocol sections, and fetching text artifacts.</p>
+        <p>The server uses streamable HTTP and exposes read-only tools for listing models, retrieving findings, reading protocol sections, fetching text previews, retrieving model/data provenance, and returning public download URLs.</p>
       </div>
       <pre><code>{
   "mcpServers": {
@@ -338,6 +480,7 @@ def build() -> None:
         model_links.strip(),
         finding_cards.strip(),
     )
+    html_text = "\n".join(line.rstrip() for line in html_text.splitlines()) + "\n"
     (SITE_ROOT / "index.html").write_text(html_text, encoding="utf-8")
 
 

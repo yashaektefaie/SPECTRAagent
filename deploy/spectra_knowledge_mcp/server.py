@@ -17,6 +17,9 @@ ROOT = Path(__file__).resolve().parent
 DATA_ROOT = Path(os.environ.get("SPECTRA_KNOWLEDGE_DATA_ROOT", ROOT / "data")).resolve()
 STORE_PATH = DATA_ROOT / "store.json"
 PROTOCOL_PATH = DATA_ROOT / "protocol" / "current.md"
+PROVENANCE_PATH = DATA_ROOT / "provenance.json"
+PROVENANCE_SCHEMA_PATH = DATA_ROOT / "provenance_schema.json"
+DOWNLOADS_PATH = DATA_ROOT / "downloads.json"
 ARTIFACT_ROOT = DATA_ROOT / "artifacts"
 
 
@@ -27,6 +30,24 @@ def _load_json(path: Path) -> Dict[str, Any]:
 
 def _load_store() -> Dict[str, Any]:
     return _load_json(STORE_PATH)
+
+
+def _load_json_if_exists(path: Path, default: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+    if not path.exists():
+        return {} if default is None else default
+    return _load_json(path)
+
+
+def _load_provenance() -> Dict[str, Any]:
+    return _load_json_if_exists(PROVENANCE_PATH, {"schema_version": "missing", "records": []})
+
+
+def _load_provenance_schema() -> Dict[str, Any]:
+    return _load_json_if_exists(PROVENANCE_SCHEMA_PATH, {"schema_version": "missing"})
+
+
+def _load_downloads() -> Dict[str, Any]:
+    return _load_json_if_exists(DOWNLOADS_PATH, {"schema_version": "missing", "records": []})
 
 
 def _read_text(path: Path, max_chars: Optional[int] = None) -> Dict[str, Any]:
@@ -123,6 +144,214 @@ def _filter_findings(
             continue
         results.append(finding)
     return results
+
+
+def _filter_provenance_records(
+    records: Iterable[Dict[str, Any]],
+    model: str = "",
+    finding_id: str = "",
+    run_id: str = "",
+    status: str = "",
+) -> List[Dict[str, Any]]:
+    results = []
+    for record in records:
+        if model and not _matches_filter(record.get("model", ""), model):
+            continue
+        if finding_id and record.get("finding_id") != finding_id:
+            continue
+        if run_id and record.get("run_id") != run_id:
+            continue
+        if status and not _matches_filter(record.get("status", ""), status):
+            continue
+        results.append(record)
+    return results
+
+
+def _summary_provenance_record(record: Dict[str, Any]) -> Dict[str, Any]:
+    datasets = record.get("dataset_sources", [])
+    metadata = record.get("metadata_sources", [])
+    model_source = record.get("model_source", {})
+    return {
+        "finding_id": record.get("finding_id"),
+        "run_id": record.get("run_id"),
+        "model": record.get("model"),
+        "status": record.get("status"),
+        "model_source": model_source.get("name"),
+        "execution_mode": model_source.get("execution_mode"),
+        "dataset_source_count": len(datasets),
+        "metadata_source_count": len(metadata),
+        "download_count": len(record.get("download_ids", [])),
+        "known_gap_count": len(record.get("known_gaps", [])),
+        "provenance_artifact_ids": record.get("provenance_artifact_ids", []),
+        "download_ids": record.get("download_ids", []),
+    }
+
+
+def _source_rows(record: Dict[str, Any]) -> List[Dict[str, Any]]:
+    rows: List[Dict[str, Any]] = []
+    model_source = record.get("model_source", {})
+    if model_source:
+        rows.append(
+            {
+                "source_type": "model",
+                "finding_id": record.get("finding_id"),
+                "run_id": record.get("run_id"),
+                "model": record.get("model"),
+                "name": model_source.get("name"),
+                "source_url_or_repo": model_source.get("source_url_or_repo"),
+                "access_route": model_source.get("execution_mode"),
+                "used_for": "target model",
+            }
+        )
+        weights = model_source.get("weights_or_checkpoint", {})
+        if weights:
+            rows.append(
+                {
+                    "source_type": "weights_or_checkpoint",
+                    "finding_id": record.get("finding_id"),
+                    "run_id": record.get("run_id"),
+                    "model": record.get("model"),
+                    "name": weights.get("filename") or model_source.get("name"),
+                    "source_url_or_repo": weights.get("source_url_or_repo"),
+                    "access_route": weights.get("download_command_or_method") or weights.get("load_call"),
+                    "used_for": "model weights/checkpoint or official precomputed score provenance",
+                }
+            )
+    for source_type, key in (("dataset", "dataset_sources"), ("metadata", "metadata_sources")):
+        for item in record.get(key, []):
+            rows.append(
+                {
+                    "source_type": source_type,
+                    "finding_id": record.get("finding_id"),
+                    "run_id": record.get("run_id"),
+                    "model": record.get("model"),
+                    "name": item.get("name"),
+                    "source_url_or_repo": item.get("source_url_or_repo"),
+                    "access_route": item.get("access_route"),
+                    "unit": item.get("unit"),
+                    "rows_or_units": item.get("rows_or_units"),
+                    "used_for": item.get("used_for"),
+                    "local_or_artifact_path": item.get("local_or_artifact_path"),
+                }
+            )
+    for item in record.get("retrieval_and_download", []):
+        rows.append(
+            {
+                "source_type": "retrieval",
+                "finding_id": record.get("finding_id"),
+                "run_id": record.get("run_id"),
+                "model": record.get("model"),
+                "name": item.get("phase"),
+                "source_url_or_repo": "",
+                "access_route": item.get("command_or_method"),
+                "used_for": item.get("purpose"),
+            }
+        )
+    return rows
+
+
+def _validation_status(record: Dict[str, Any]) -> Dict[str, Any]:
+    missing: List[str] = []
+    warnings: List[str] = []
+    if not record.get("finding_id"):
+        missing.append("finding_id")
+    if not record.get("run_id"):
+        missing.append("run_id")
+    if not record.get("model"):
+        missing.append("model")
+    model_source = record.get("model_source")
+    if not isinstance(model_source, dict) or not model_source:
+        missing.append("model_source")
+    else:
+        for field in ("name", "execution_mode", "source_url_or_repo", "weights_or_checkpoint"):
+            if not model_source.get(field):
+                missing.append("model_source.%s" % field)
+        weights = model_source.get("weights_or_checkpoint", {})
+        if isinstance(weights, dict):
+            if not weights.get("source_url_or_repo"):
+                missing.append("model_source.weights_or_checkpoint.source_url_or_repo")
+            if not (weights.get("download_command_or_method") or weights.get("load_call")):
+                missing.append("model_source.weights_or_checkpoint.download_command_or_method")
+    if not record.get("dataset_sources"):
+        missing.append("dataset_sources")
+    for idx, item in enumerate(record.get("dataset_sources", [])):
+        for field in ("name", "source_url_or_repo", "access_route", "unit", "local_or_artifact_path"):
+            if not item.get(field):
+                missing.append("dataset_sources[%d].%s" % (idx, field))
+    if not record.get("retrieval_and_download"):
+        missing.append("retrieval_and_download")
+    if not record.get("execution_environment"):
+        missing.append("execution_environment")
+    if not record.get("provenance_artifact_ids"):
+        missing.append("provenance_artifact_ids")
+    if not record.get("download_ids"):
+        missing.append("download_ids")
+    else:
+        downloads = _load_downloads()
+        known_downloads = {
+            item.get("download_id") for item in downloads.get("records", []) if item.get("download_id")
+        }
+        for download_id in record.get("download_ids", []):
+            if download_id not in known_downloads:
+                missing.append("download_ids.%s" % download_id)
+    if record.get("status") in {"partial_explicit", "backfill_needed"} and not record.get("known_gaps"):
+        warnings.append("partial/backfill records should explain known_gaps")
+    if record.get("known_gaps"):
+        warnings.extend(record.get("known_gaps", []))
+    return {
+        "finding_id": record.get("finding_id"),
+        "run_id": record.get("run_id"),
+        "model": record.get("model"),
+        "status": record.get("status"),
+        "passes_contract": not missing,
+        "missing": missing,
+        "warnings": warnings,
+    }
+
+
+def _filter_download_records(
+    records: Iterable[Dict[str, Any]],
+    model: str = "",
+    finding_id: str = "",
+    run_id: str = "",
+    artifact_id: str = "",
+    query: str = "",
+    format: str = "",
+) -> List[Dict[str, Any]]:
+    tokens = [token for token in _normalize(query).split() if token]
+    results = []
+    for record in records:
+        if model and not _matches_filter(record.get("model", ""), model):
+            continue
+        if artifact_id and record.get("artifact_id") != artifact_id and record.get("download_id") != artifact_id:
+            continue
+        if finding_id and finding_id not in record.get("finding_ids", []):
+            continue
+        if run_id and run_id not in record.get("run_ids", []):
+            continue
+        if format and not _matches_filter(record.get("format", ""), format):
+            continue
+        haystack = _normalize(_stringify_record(record))
+        if tokens and not all(token in haystack for token in tokens):
+            continue
+        results.append(record)
+    return results
+
+
+def _summary_download_record(record: Dict[str, Any]) -> Dict[str, Any]:
+    return {
+        "download_id": record.get("download_id"),
+        "artifact_id": record.get("artifact_id"),
+        "model": record.get("model"),
+        "relative_path": record.get("relative_path"),
+        "format": record.get("format"),
+        "bytes": record.get("bytes"),
+        "rows": record.get("rows"),
+        "sha256": record.get("sha256"),
+        "download_url": record.get("download_url"),
+        "finding_ids": record.get("finding_ids", []),
+        "run_ids": record.get("run_ids", []),
+    }
 
 
 def _summary_finding(finding: Dict[str, Any]) -> Dict[str, Any]:
@@ -243,6 +472,138 @@ def get_spectra_run(run_id: str) -> Dict[str, Any]:
     raise ValueError("Unknown run_id '%s'" % run_id)
 
 
+def list_spectra_provenance(
+    model: str = "",
+    finding_id: str = "",
+    run_id: str = "",
+    status: str = "",
+) -> Dict[str, Any]:
+    """List compact provenance summaries for stored SPECTRA findings."""
+    provenance = _load_provenance()
+    records = _filter_provenance_records(
+        provenance.get("records", []),
+        model=model,
+        finding_id=finding_id,
+        run_id=run_id,
+        status=status,
+    )
+    return {
+        "schema_version": provenance.get("schema_version"),
+        "count": len(records),
+        "provenance": [_summary_provenance_record(item) for item in records],
+    }
+
+
+def get_spectra_provenance(
+    model: str = "",
+    finding_id: str = "",
+    run_id: str = "",
+    status: str = "",
+) -> Dict[str, Any]:
+    """Return normalized model/data/download provenance records."""
+    provenance = _load_provenance()
+    records = _filter_provenance_records(
+        provenance.get("records", []),
+        model=model,
+        finding_id=finding_id,
+        run_id=run_id,
+        status=status,
+    )
+    return {
+        "schema_version": provenance.get("schema_version"),
+        "count": len(records),
+        "records": records,
+    }
+
+
+def list_spectra_sources(
+    model: str = "",
+    finding_id: str = "",
+    run_id: str = "",
+    source_type: str = "",
+) -> Dict[str, Any]:
+    """Flatten model, weight, dataset, metadata, and retrieval sources."""
+    provenance = _load_provenance()
+    records = _filter_provenance_records(
+        provenance.get("records", []),
+        model=model,
+        finding_id=finding_id,
+        run_id=run_id,
+    )
+    rows: List[Dict[str, Any]] = []
+    for record in records:
+        for row in _source_rows(record):
+            if source_type and not _matches_filter(row.get("source_type", ""), source_type):
+                continue
+            rows.append(row)
+    return {"count": len(rows), "sources": rows}
+
+
+def validate_spectra_provenance(
+    model: str = "",
+    finding_id: str = "",
+    run_id: str = "",
+) -> Dict[str, Any]:
+    """Check stored provenance records against the current provenance contract."""
+    provenance = _load_provenance()
+    records = _filter_provenance_records(
+        provenance.get("records", []),
+        model=model,
+        finding_id=finding_id,
+        run_id=run_id,
+    )
+    validations = [_validation_status(item) for item in records]
+    return {
+        "schema_version": provenance.get("schema_version"),
+        "count": len(validations),
+        "all_pass": all(item["passes_contract"] for item in validations),
+        "validations": validations,
+    }
+
+
+def get_spectra_provenance_schema() -> Dict[str, Any]:
+    """Return the provenance schema and policy for future stored findings."""
+    return _load_provenance_schema()
+
+
+def list_spectra_downloads(
+    model: str = "",
+    finding_id: str = "",
+    run_id: str = "",
+    query: str = "",
+    format: str = "",
+    top_k: int = 100,
+) -> Dict[str, Any]:
+    """List public HTTPS downloads for curated result artifacts."""
+    downloads = _load_downloads()
+    records = _filter_download_records(
+        downloads.get("records", []),
+        model=model,
+        finding_id=finding_id,
+        run_id=run_id,
+        query=query,
+        format=format,
+    )
+    records.sort(key=lambda item: (-int(item.get("bytes") or 0), item.get("relative_path", "")))
+    limit = max(1, min(int(top_k), 500))
+    return {
+        "schema_version": downloads.get("schema_version"),
+        "base_url": downloads.get("base_url"),
+        "count": len(records[:limit]),
+        "total_matches": len(records),
+        "downloads": [_summary_download_record(item) for item in records[:limit]],
+    }
+
+
+def get_spectra_download(artifact_id: str) -> Dict[str, Any]:
+    """Return one public download record by artifact/download id."""
+    downloads = _load_downloads()
+    records = _filter_download_records(downloads.get("records", []), artifact_id=artifact_id)
+    if not records:
+        raise ValueError("Unknown download artifact_id '%s'" % artifact_id)
+    return records[0]
+
+
 def list_spectra_artifacts(
     model: str = "",
     finding_id: str = "",
@@ -339,8 +700,10 @@ def create_mcp_server(host: str = "127.0.0.1", port: int = 8000) -> Any:
     instructions = (
         "Read-only SPECTRA knowledge server. Exposes the current SPECTRA "
         "single-controller protocol, stored finding records, run summaries, and "
-        "saved text/CSV/JSON artifacts. It must not run audits, launch agents, "
-        "download datasets, call models, or mutate artifacts."
+        "saved text/CSV/JSON artifacts. It also exposes normalized provenance "
+        "for model code/weights, datasets, metadata, download routes, cache "
+        "roots, and known gaps. It must not run audits, launch agents, download "
+        "datasets, call models, or mutate artifacts."
     )
     try:
         mcp = FastMCP(name=SERVER_NAME, instructions=instructions, host=host, port=port)
@@ -377,12 +740,34 @@ def create_mcp_server(host: str = "127.0.0.1", port: int = 8000) -> Any:
         """Index of readable saved SPECTRA artifacts."""
         return list_spectra_artifacts()
 
+    @mcp.resource("spectra://downloads/index")
+    def downloads_index_resource() -> Dict[str, Any]:
+        """Index of public download URLs for curated result artifacts."""
+        return list_spectra_downloads()
+
+    @mcp.resource("spectra://provenance/index")
+    def provenance_index_resource() -> Dict[str, Any]:
+        """Index of normalized model/data/download provenance records."""
+        return list_spectra_provenance()
+
+    @mcp.resource("spectra://provenance/schema")
+    def provenance_schema_resource() -> Dict[str, Any]:
+        """Current provenance schema and policy for stored findings."""
+        return get_spectra_provenance_schema()
+
     mcp.tool(name="list_spectra_models")(list_spectra_models)
     mcp.tool(name="list_spectra_findings")(list_spectra_findings)
     mcp.tool(name="search_spectra_findings")(search_spectra_findings)
     mcp.tool(name="get_spectra_finding")(get_spectra_finding)
     mcp.tool(name="list_spectra_runs")(list_spectra_runs)
     mcp.tool(name="get_spectra_run")(get_spectra_run)
+    mcp.tool(name="list_spectra_provenance")(list_spectra_provenance)
+    mcp.tool(name="get_spectra_provenance")(get_spectra_provenance)
+    mcp.tool(name="list_spectra_sources")(list_spectra_sources)
+    mcp.tool(name="validate_spectra_provenance")(validate_spectra_provenance)
+    mcp.tool(name="get_spectra_provenance_schema")(get_spectra_provenance_schema)
+    mcp.tool(name="list_spectra_downloads")(list_spectra_downloads)
+    mcp.tool(name="get_spectra_download")(get_spectra_download)
     mcp.tool(name="list_spectra_artifacts")(list_spectra_artifacts)
     mcp.tool(name="get_spectra_artifact")(get_spectra_artifact)
     mcp.tool(name="get_spectra_protocol")(get_spectra_protocol)

@@ -1,0 +1,336 @@
+{
+  "schema_version": "0.2.0",
+  "records": [
+    {
+      "finding_id": "conch_tum_tissue_stain_tail_20260603",
+      "run_id": "conch_generalizability_audit_20260603_unblocked",
+      "model": "CONCH",
+      "status": "complete",
+      "model_source": {
+        "name": "conch_ViT-B-16",
+        "execution_mode": "fresh_zero_shot_inference",
+        "source_url_or_repo": "MahmoodLab/conch",
+        "source_commit_reported": "141cc09c7d4ff33d8eda562bd75169b457f71a62",
+        "weights_or_checkpoint": {
+          "source_url_or_repo": "https://huggingface.co/MahmoodLab/conch",
+          "filename": "pytorch_model.bin",
+          "download_command_or_method": "huggingface_hub.hf_hub_download('MahmoodLab/conch', 'pytorch_model.bin', cache_dir='model_cache')",
+          "local_or_artifact_path": "model_cache/ under the source run root",
+          "bytes_reported": 802235437
+        },
+        "inference_command_or_method": "CUDA_VISIBLE_DEVICES=7 python scripts/score_conch_crc_val.py --batch-size 128; confirmation and expansion used scripts/score_tum_confirmation.py and scripts/score_tum_panel_generic.py"
+      },
+      "dataset_sources": [
+        {
+          "name": "CRC-VAL-HE-7K",
+          "source_url_or_repo": "https://huggingface.co/datasets/1aurent/NCT-CRC-HE",
+          "upstream_reference": "Zenodo 10.5281/zenodo.1214456",
+          "access_route": "direct Hugging Face resolve URLs for 3 CRC_VAL_HE_7K parquet shards",
+          "unit": "224x224 public CRC H&E ROI tile",
+          "rows_or_units": 7180,
+          "local_or_artifact_path": "conch:target_model_results.csv and conch:artifacts:spc_analysis:scored_table_with_axes_and_baselines.csv",
+          "used_for": "discovery pool and all-class/TUM target-model scoring"
+        },
+        {
+          "name": "NCT-CRC-HE-100K reference stream",
+          "source_url_or_repo": "https://huggingface.co/datasets/1aurent/NCT-CRC-HE",
+          "upstream_reference": "Zenodo 10.5281/zenodo.1214456",
+          "access_route": "streamed public NCT-CRC-HE-100K images, 200 per class",
+          "unit": "224x224 public CRC H&E ROI tile",
+          "rows_or_units": 1800,
+          "local_or_artifact_path": "features summarized in conch:artifacts:spc_analysis:spc_summary.json",
+          "used_for": "fixed prospective reference features and baselines only"
+        },
+        {
+          "name": "NCT-CRC-HE-100K-NONORM TUM confirmation and expansion panels",
+          "source_url_or_repo": "https://huggingface.co/datasets/1aurent/NCT-CRC-HE",
+          "upstream_reference": "Zenodo 10.5281/zenodo.1214456",
+          "access_route": "streamed public NONORM TUM shards; prior rows and exact/perceptual duplicates excluded before expansion scoring",
+          "unit": "224x224 public CRC H&E ROI tile",
+          "rows_or_units": 5800,
+          "local_or_artifact_path": "conch:artifacts:tum_confirmation:* and conch:artifacts:tum_expansion:*",
+          "used_for": "fresh confirmation and larger same-family expansion"
+        }
+      ],
+      "metadata_sources": [
+        {
+          "name": "Zenodo API record 1214456 and Hugging Face dataset README/API",
+          "source_url_or_repo": "https://doi.org/10.5281/zenodo.1214456",
+          "access_route": "curl Zenodo API record and Hugging Face dataset metadata",
+          "used_for": "file sizes, split definitions, patient non-overlap note, shard layout"
+        }
+      ],
+      "retrieval_and_download": [
+        {
+          "phase": "data_metadata",
+          "command_or_method": "curl Zenodo API record 1214456 and Hugging Face dataset README/API",
+          "purpose": "manifest-first source inspection"
+        },
+        {
+          "phase": "data_fetch",
+          "command_or_method": "curl direct Hugging Face resolve URLs for 3 CRC_VAL_HE_7K parquet shards",
+          "purpose": "fetch 7,180 CRC-VAL images without extracting ZIP archives"
+        },
+        {
+          "phase": "model_download",
+          "command_or_method": "huggingface_hub.hf_hub_download MahmoodLab/conch pytorch_model.bin cache_dir=model_cache",
+          "purpose": "cache CONCH checkpoint under the session root"
+        }
+      ],
+      "execution_environment": {
+        "python_or_env": "session Python environment with torch/torchvision/timm; timm==0.9.16 and torchvision==0.20.0 installed for CONCH imports",
+        "cache_roots": [
+          "/home/unix/yektefai/.cache/spectra/runs/conch_generalizability_audit_20260603_unblocked/model_cache"
+        ],
+        "source_root": "/home/unix/yektefai/.cache/spectra/runs/conch_generalizability_audit_20260603_unblocked"
+      },
+      "provenance_artifact_ids": [
+        "conch:final_report.md",
+        "conch:commands_run.json",
+        "conch:session_manifest.json",
+        "conch:axis_ledger.json",
+        "conch:artifacts:target_model_summary.json",
+        "conch:artifacts:spc_analysis:spc_summary.json",
+        "conch:spectra_ready_dataset:dataset_diagnostics.json"
+      ],
+      "download_ids": [
+        "conch:target_model_results.csv",
+        "conch:artifacts:spc_analysis:scored_table_with_axes_and_baselines.csv",
+        "conch:artifacts:tum_confirmation:target_model_results_tum_confirmation.csv",
+        "conch:artifacts:tum_confirmation:scored_tum_confirmation_with_baselines.csv",
+        "conch:artifacts:tum_expansion:target_model_results_tum_expansion.csv",
+        "conch:artifacts:tum_expansion:scored_tum_expansion_with_baselines.csv",
+        "conch:spectra_ready_dataset:tum_confirmation_panel.csv",
+        "conch:spectra_ready_dataset:tum_expansion_panel.csv"
+      ],
+      "known_gaps": []
+    },
+    {
+      "finding_id": "esmfold2_high_disulfide_boundary_20260602",
+      "run_id": "esmfold2_paper_ready_final_20260602",
+      "model": "ESMFold2",
+      "status": "partial_explicit",
+      "model_source": {
+        "name": "Biohub ESMFold2",
+        "execution_mode": "fresh_structure_inference_for saved target-result panels; consolidated final bundle reuses those scored outputs",
+        "source_url_or_repo": "https://github.com/Biohub/esm#esmfold2",
+        "weights_or_checkpoint": {
+          "source_url_or_repo": "biohub/ESMFold2",
+          "load_call": "transformers.models.esmfold2.modeling_esmfold2.ESMFold2Model.from_pretrained('biohub/ESMFold2', local_files_only=True)",
+          "download_command_or_method": "not captured in the legacy run; future runs must record the exact Hugging Face download command, revision, and cache path before scoring",
+          "local_or_artifact_path": "local Hugging Face cache visible to the pgt environment during scoring",
+          "revision_or_hash": "backfill_needed"
+        },
+        "inference_command_or_method": "Default CAMEO run used TORCH_CUDNN_SDPA_ENABLED=0 CUDA_VISIBLE_DEVICES=3 /ewsc/yektefai/envs/envs/pgt/bin/python scripts/evaluate_esmfold2_cameo.py --max-len 650 --num-loops 3 --num-sampling-steps 14 --num-diffusion-samples 1. Scaled panels used num_loops=10, num_sampling_steps=68, num_diffusion_samples=5, seed 0, best-by-pTM target summaries."
+      },
+      "dataset_sources": [
+        {
+          "name": "CAMEO 2025 protein chains",
+          "source_url_or_repo": "https://huggingface.co/datasets/THU-ATOM/cameo_data",
+          "access_route": "snapshot_download(repo_id='THU-ATOM/cameo_data', repo_type='dataset', local_dir='spectra_ready_dataset/raw_cameo_hf')",
+          "unit": "single protein chain target with sequence and experimental PDB-chain coordinates",
+          "rows_or_units": 138,
+          "local_or_artifact_path": "esmfold2:data:primary_exact_sequence_dedup.csv and esmfold2:prior_axis_reports:01_cameo_msa_depth_final_report.md",
+          "used_for": "initial CAMEO audit, MSA-depth axis, and part of pooled high-disulfide evidence"
+        },
+        {
+          "name": "RCSB PDB recent protein-chain panels",
+          "source_url_or_repo": "https://www.rcsb.org/docs/programmatic-access",
+          "access_route": "RCSB Search/Data/Download APIs with manifest-first candidate filtering; example external filter initial_release_date >= 2025-01-01",
+          "unit": "single polymer entity or chain with sequence, metadata, and experimental structure",
+          "rows_or_units": 514,
+          "local_or_artifact_path": "esmfold2:data:all_esmfold2_scored_evaluations.csv and esmfold2:provenance:input_manifest.json",
+          "used_for": "external RCSB, fresh general RCSB, viral RCSB, scaling, and confirmation panels"
+        }
+      ],
+      "metadata_sources": [
+        {
+          "name": "CAMEO metadata and precomputed MSA fields",
+          "source_url_or_repo": "https://huggingface.co/datasets/THU-ATOM/cameo_data",
+          "access_route": "dataset snapshot under spectra_ready_dataset/raw_cameo_hf",
+          "used_for": "submission date, difficulty, reference metadata, MSA depth, and sequence metadata"
+        },
+        {
+          "name": "RCSB PDB metadata",
+          "source_url_or_repo": "https://data.rcsb.org and https://search.rcsb.org",
+          "access_route": "RCSB APIs and downloaded PDB/mmCIF structures from the source runs",
+          "used_for": "release date, experimental method/resolution, organism, polymer/entity identifiers, viral/envelope metadata, and reference coordinates"
+        }
+      ],
+      "retrieval_and_download": [
+        {
+          "phase": "dataset_snapshot",
+          "command_or_method": "snapshot_download(repo_id='THU-ATOM/cameo_data', repo_type='dataset', local_dir='spectra_ready_dataset/raw_cameo_hf')",
+          "purpose": "fetch CAMEO sequences, metadata, MSA files, and reference structure inputs"
+        },
+        {
+          "phase": "model_load",
+          "command_or_method": "ESMFold2Model.from_pretrained('biohub/ESMFold2', local_files_only=True)",
+          "purpose": "load already-cached ESMFold2 weights in the pgt environment"
+        },
+        {
+          "phase": "external_panel_fetch",
+          "command_or_method": "RCSB PDB Search/Data/Download APIs; release and metadata filters recorded in panel manifests/reports",
+          "purpose": "construct external, fresh, and viral confirmation panels without target-error membership"
+        }
+      ],
+      "execution_environment": {
+        "python_or_env": "/ewsc/yektefai/envs/envs/pgt/bin/python with Hugging Face Transformers ESMFold2 support",
+        "cache_roots": [
+          "/ewsc/yektefai/hf_cache",
+          "local Hugging Face cache used by from_pretrained(local_files_only=True)"
+        ],
+        "source_root": "/ewsc/yektefai/spectra_runs/esmfold2_paper_ready_final_20260602"
+      },
+      "provenance_artifact_ids": [
+        "esmfold2:FINAL_ESMFOLD2_RESULT.md",
+        "esmfold2:ARTIFACT_INDEX.md",
+        "esmfold2:provenance:input_manifest.json",
+        "esmfold2:provenance:summary.json",
+        "esmfold2:prior_axis_reports:01_cameo_msa_depth_final_report.md",
+        "esmfold2:prior_axis_reports:03_flexible_nonhelical_external_rcsb_report.md",
+        "esmfold2:prior_axis_reports:07_high_cysteine_fresh_confirmation_report.md",
+        "esmfold2:source_reports:reviewer_proofing_report.md"
+      ],
+      "download_ids": [
+        "esmfold2:data:all_esmfold2_scored_evaluations.csv",
+        "esmfold2:data:primary_exact_sequence_dedup.csv",
+        "esmfold2:tables:global_hypothesis_effects_primary_sequence.csv",
+        "esmfold2:tables:global_hypothesis_adjusted_effects_primary_sequence.csv",
+        "esmfold2:tables:global_hypothesis_level_curves_primary_sequence.csv",
+        "esmfold2:tables:per_source_high_disulfide_summary.csv",
+        "esmfold2:tables:cluster_aware_disulfide_effects.csv",
+        "esmfold2:tables:matched_control_summary.csv",
+        "esmfold2:tables:confidence_calibration_summary.csv"
+      ],
+      "known_gaps": [
+        "Legacy ESMFold2 runs did not record the exact Hugging Face model cache revision/hash or original online download command. Future ESMFold2 entries must record this before target scoring.",
+        "The final bundle consolidates multiple scored source runs; some RCSB candidate-generation scripts and raw downloaded structures remain in source roots rather than tracked MCP artifacts."
+      ]
+    },
+    {
+      "finding_id": "state_pathway_module_train_support_20260603",
+      "run_id": "state_generalizability_continued_20260603",
+      "model": "STATE",
+      "status": "not_applicable_precomputed",
+      "model_source": {
+        "name": "Arc Institute STATE / State Transition model",
+        "execution_mode": "official_precomputed_scores_loaded; no fresh STATE inference in this continuation run",
+        "source_url_or_repo": "https://huggingface.co/arcinstitute",
+        "source_commit_reported": "bf4fbc9ea35bf4d1e91afe201b663dec5d8bdd48",
+        "weights_or_checkpoint": {
+          "source_url_or_repo": "arcinstitute/ST-HVG-Tahoe, arcinstitute/ST-SE-Tahoe, arcinstitute/ST-HVG-Replogle, arcinstitute/ST-SE-Replogle, arcinstitute/ST-HVG-Parse, arcinstitute/ST-SE-Parse",
+          "download_command_or_method": "prior SPECTRA run inspected/downloaded Hugging Face model repositories and official eval_best.ckpt result CSVs; continuation loaded the consolidated target_model_results.csv",
+          "local_or_artifact_path": "/ewsc/yektefai/spectra_runs/state_generalizability_20260602_single_controller/hf_cache and /ewsc/yektefai/spectra_runs/state_generalizability_continued_20260603/target_model_results.csv",
+          "revision_or_hash": "backfill_needed for exact HF snapshot revisions; source commit recorded from prior loop state"
+        },
+        "inference_command_or_method": "No fresh model inference. The audit evaluated official precomputed result CSVs referenced by source_repo/source_path columns."
+      },
+      "dataset_sources": [
+        {
+          "name": "Tahoe-100M official STATE scored outputs",
+          "source_url_or_repo": "arcinstitute/ST-HVG-Tahoe and arcinstitute/ST-SE-Tahoe; upstream dataset tahoebio/Tahoe-100M",
+          "access_route": "official precomputed result CSVs under fewshot/zeroshot eval_best.ckpt paths",
+          "unit": "perturbation by cell-context by dose scored result row",
+          "rows_or_units": 18716,
+          "local_or_artifact_path": "state:target_model_results.csv",
+          "used_for": "prior negative/weak chemical-support axis and all-scored evidence"
+        },
+        {
+          "name": "Replogle-Nadig official STATE scored outputs",
+          "source_url_or_repo": "arcinstitute/ST-HVG-Replogle and arcinstitute/ST-SE-Replogle; upstream dataset arcinstitute/Replogle-Nadig-Preprint",
+          "access_route": "official precomputed result CSVs under fewshot/zeroshot eval_best.ckpt paths",
+          "unit": "held-out gene perturbation by context and representation scored result row",
+          "rows_or_units": 19634,
+          "local_or_artifact_path": "state:target_model_results.csv",
+          "used_for": "primary Reactome/pathway-module train-support axis and confirmations"
+        },
+        {
+          "name": "Parse-PBMC official STATE scored outputs",
+          "source_url_or_repo": "arcinstitute/ST-HVG-Parse and arcinstitute/ST-SE-Parse; upstream dataset arcinstitute/State-Parse-Filtered",
+          "access_route": "official precomputed result CSVs under fewshot/zeroshot eval_best.ckpt paths",
+          "unit": "ligand perturbation by context and representation scored result row",
+          "rows_or_units": 1458,
+          "local_or_artifact_path": "state:target_model_results.csv",
+          "used_for": "negative/reversed ligand-family support axis and all-scored evidence"
+        }
+      ],
+      "metadata_sources": [
+        {
+          "name": "Official STATE split TOMLs",
+          "source_url_or_repo": "prior run local path external/state/state_preprint_toml_files",
+          "access_route": "loaded from /ewsc/yektefai/spectra_runs/state_generalizability_20260602_single_controller/external/state/state_preprint_toml_files",
+          "used_for": "official train/val/test definitions and same-context train support"
+        },
+        {
+          "name": "HGNC complete set",
+          "source_url_or_repo": "https://storage.googleapis.com/public-download-files/hgnc/tsv/tsv/hgnc_complete_set.txt",
+          "access_route": "curl -L --fail --max-time 60 -o external/hgnc_complete_set.txt",
+          "used_for": "gene symbol normalization, Ensembl mapping, and HGNC gene groups"
+        },
+        {
+          "name": "Reactome Ensembl2Reactome",
+          "source_url_or_repo": "https://reactome.org/download/current/Ensembl2Reactome_All_Levels.txt",
+          "access_route": "curl then awk filter to Homo sapiens into external/Ensembl2Reactome_Homo_sapiens.txt",
+          "used_for": "Reactome pathway membership and train-support density"
+        },
+        {
+          "name": "GO, GOA, WikiPathways, and KEGG public resources",
+          "source_url_or_repo": "current.geneontology.org, data.wikipathways.org, rest.kegg.jp",
+          "access_route": "urllib/curl fetches recorded in state:artifacts:multi_pathway_source_manifest.json",
+          "used_for": "cross-ontology confirmation of pathway/module support"
+        }
+      ],
+      "retrieval_and_download": [
+        {
+          "phase": "precomputed_scores",
+          "command_or_method": "load /ewsc/yektefai/spectra_runs/state_generalizability_20260602_single_controller/target_model_results.csv",
+          "purpose": "reuse 39,808 official precomputed STATE result rows"
+        },
+        {
+          "phase": "hf_resource_manifest",
+          "command_or_method": "prior run Hugging Face resource manifest over STATE model and dataset repositories",
+          "purpose": "record official model/result/dataset repositories and file layout"
+        },
+        {
+          "phase": "gene_metadata_fetch",
+          "command_or_method": "curl HGNC complete set and Reactome Ensembl2Reactome files; urllib/curl GO/WikiPathways/KEGG resources",
+          "purpose": "construct prospective gene-set train-support features"
+        }
+      ],
+      "execution_environment": {
+        "python_or_env": "SPECTRA continuation Python environment; pandas/numpy/tomllib scripts, no fresh STATE model runtime",
+        "cache_roots": [
+          "/ewsc/yektefai/spectra_runs/state_generalizability_20260602_single_controller/hf_cache",
+          "/ewsc/yektefai/spectra_runs/state_generalizability_continued_20260603/external"
+        ],
+        "source_root": "/ewsc/yektefai/spectra_runs/state_generalizability_continued_20260603"
+      },
+      "provenance_artifact_ids": [
+        "state:state_spectra_report.md",
+        "state:target_model_results.csv",
+        "state:session_manifest.json",
+        "state:artifacts:multi_pathway_source_manifest.json",
+        "state:spectra_loop_state.json",
+        "state:axis_ledger_prior.json"
+      ],
+      "download_ids": [
+        "state:target_model_results.csv",
+        "state:artifacts:spc_replogle_best_refined_axis.csv",
+        "state:artifacts:spc_replogle_best_refined_axis_trends.csv",
+        "state:artifacts:spc_replogle_best_refined_axis_context_trends.csv",
+        "state:artifacts:spc_replogle_zeroshot_reactome_support_confirmation.csv",
+        "state:artifacts:spc_replogle_zeroshot_reactome_support_confirmation_trends.csv",
+        "state:artifacts:controls_replogle_best_axis_regression.json",
+        "state:artifacts:controls_replogle_best_axis_pathway_count_matched.csv",
+        "state:artifacts:multi_pathway_support_screen.csv",
+        "state:artifacts:multi_pathway_support_summary.json"
+      ],
+      "known_gaps": [
+        "This finding did not run fresh STATE inference; it is intentionally based on official precomputed scored CSVs.",
+        "The full Hugging Face file manifest from the prior source run is not packaged as a tracked artifact in this repository; compact repo-level provenance is recorded here.",
+        "Exact HF snapshot revisions for each STATE model repository should be backfilled before using this as a fully reproducible checkpoint-download recipe."
+      ]
+    }
+  ]
+}

@@ -9,6 +9,15 @@ spectra.yashaektefaie.com, mcp.spectra.yashaektefaie.com {
 		}
 	}
 
+	handle_path /downloads/* {
+		root * /home/yektefai/spectra-knowledge-mcp/data/public_downloads
+		header {
+			Access-Control-Allow-Origin "*"
+			X-Content-Type-Options "nosniff"
+		}
+		file_server
+	}
+
 	handle {
 		root * /home/yektefai/spectra-knowledge-mcp/site
 		file_server
