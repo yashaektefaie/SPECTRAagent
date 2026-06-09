@@ -1,13 +1,17 @@
-"""Read-only SPECTRA knowledge MCP server.
+"""SPECTRA knowledge MCP server.
 
-This server intentionally exposes SPECTRA protocol guidance, prior findings,
-and saved artifacts only. It does not prepare, launch, or execute audits.
+This server exposes SPECTRA protocol guidance, prior findings, saved artifacts,
+and an authenticated pending-submission queue. It does not prepare, launch, or
+execute audits, and submitted findings do not mutate the canonical store until
+they are reviewed outside this server.
 """
 
 import argparse
+import hashlib
 import json
 import os
 import re
+from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional
 
@@ -20,7 +24,12 @@ PROTOCOL_PATH = DATA_ROOT / "protocol" / "current.md"
 PROVENANCE_PATH = DATA_ROOT / "provenance.json"
 PROVENANCE_SCHEMA_PATH = DATA_ROOT / "provenance_schema.json"
 DOWNLOADS_PATH = DATA_ROOT / "downloads.json"
+SUBMISSION_SCHEMA_PATH = DATA_ROOT / "submission_schema.json"
 ARTIFACT_ROOT = DATA_ROOT / "artifacts"
+SUBMISSION_ROOT = DATA_ROOT / "submissions"
+SUBMISSION_PENDING_ROOT = SUBMISSION_ROOT / "pending"
+MAX_SUBMISSION_JSON_BYTES = int(os.environ.get("SPECTRA_MAX_SUBMISSION_JSON_BYTES", "1000000"))
+SUBMISSION_STATUS_VALUES = ("pending_review", "accepted", "rejected", "needs_revision")
 
 
 def _load_json(path: Path) -> Dict[str, Any]:
@@ -50,6 +59,17 @@ def _load_downloads() -> Dict[str, Any]:
     return _load_json_if_exists(DOWNLOADS_PATH, {"schema_version": "missing", "records": []})
 
 
+def _load_submission_schema() -> Dict[str, Any]:
+    return _load_json_if_exists(
+        SUBMISSION_SCHEMA_PATH,
+        {
+            "schema_version": "missing",
+            "purpose": "Schema for pending SPECTRA finding submissions.",
+            "status_values": list(SUBMISSION_STATUS_VALUES),
+        },
+    )
+
+
 def _read_text(path: Path, max_chars: Optional[int] = None) -> Dict[str, Any]:
     text = path.read_text(encoding="utf-8", errors="replace")
     truncated = False
@@ -76,6 +96,95 @@ def _matches_filter(value: str, requested: str) -> bool:
 
 def _stringify_record(record: Dict[str, Any]) -> str:
     return json.dumps(record, sort_keys=True, ensure_ascii=False)
+
+
+def _utc_timestamp() -> str:
+    return datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def _slugify(value: str, fallback: str = "unknown") -> str:
+    slug = re.sub(r"[^a-zA-Z0-9_.-]+", "-", value.strip()).strip("-._").lower()
+    return slug[:64] if slug else fallback
+
+
+def _write_json(path: Path, payload: Dict[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp_path = path.with_suffix(path.suffix + ".tmp")
+    tmp_path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    tmp_path.replace(path)
+
+
+def _coerce_json_object(payload: Any, name: str) -> Dict[str, Any]:
+    if isinstance(payload, str):
+        try:
+            payload = json.loads(payload)
+        except json.JSONDecodeError as exc:
+            raise ValueError("%s must be a JSON object or JSON object string: %s" % (name, exc)) from exc
+    if not isinstance(payload, dict):
+        raise ValueError("%s must be a JSON object" % name)
+    encoded = json.dumps(payload, ensure_ascii=False, sort_keys=True)
+    if len(encoded.encode("utf-8")) > MAX_SUBMISSION_JSON_BYTES:
+        raise ValueError(
+            "%s is too large for MCP submission (%d byte limit). "
+            "Reference large artifacts by URL instead."
+            % (name, MAX_SUBMISSION_JSON_BYTES)
+        )
+    return json.loads(encoded)
+
+
+def _record_list(value: Any) -> List[Dict[str, Any]]:
+    if isinstance(value, dict):
+        records = value.get("records")
+        if records is None:
+            return [value]
+    else:
+        records = value
+    if not isinstance(records, list):
+        return []
+    return [item for item in records if isinstance(item, dict)]
+
+
+def _require_fields(record: Dict[str, Any], fields: Iterable[str], prefix: str, errors: List[str]) -> None:
+    for field in fields:
+        if not record.get(field):
+            errors.append("%s.%s is required" % (prefix, field))
+
+
+def _submission_queue_enabled() -> bool:
+    return bool(os.environ.get("SPECTRA_SUBMISSION_TOKEN"))
+
+
+def _require_submission_auth(auth_token: str) -> None:
+    expected = os.environ.get("SPECTRA_SUBMISSION_TOKEN")
+    if not expected:
+        raise PermissionError(
+            "SPECTRA submission queue is disabled. Set SPECTRA_SUBMISSION_TOKEN on the MCP host."
+        )
+    if not auth_token or auth_token != expected:
+        raise PermissionError("Invalid SPECTRA submission auth token")
+
+
+def _submission_id_is_safe(submission_id: str) -> bool:
+    return bool(re.match(r"^[A-Za-z0-9_.-]{8,180}$", submission_id or ""))
+
+
+def _pending_submission_path(submission_id: str) -> Path:
+    if not _submission_id_is_safe(submission_id):
+        raise ValueError("Invalid submission_id '%s'" % submission_id)
+    root = SUBMISSION_PENDING_ROOT.resolve()
+    path = (root / submission_id).resolve()
+    if root != path.parent:
+        raise ValueError("Submission path escapes pending queue")
+    return path
+
+
+def _generate_submission_id(submission: Dict[str, Any]) -> str:
+    finding = submission.get("finding", {})
+    model_slug = _slugify(str(finding.get("model") or "unknown"))
+    finding_slug = _slugify(str(finding.get("finding_id") or submission.get("title") or "finding"))
+    digest = hashlib.sha256(_stringify_record(submission).encode("utf-8")).hexdigest()[:10]
+    timestamp = datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
+    return "sub_%s_%s_%s_%s" % (timestamp, model_slug, finding_slug[:40], digest)
 
 
 def _artifact_id_for(path: Path) -> str:
@@ -354,6 +463,168 @@ def _summary_download_record(record: Dict[str, Any]) -> Dict[str, Any]:
     }
 
 
+def _submission_validation(submission: Dict[str, Any]) -> Dict[str, Any]:
+    errors: List[str] = []
+    warnings: List[str] = []
+
+    _require_fields(submission, ("title", "submitter", "finding", "provenance"), "submission", errors)
+
+    submitter = submission.get("submitter", {})
+    if not isinstance(submitter, dict):
+        errors.append("submission.submitter must be an object")
+    else:
+        _require_fields(submitter, ("name", "contact"), "submitter", errors)
+        if not submitter.get("agent"):
+            warnings.append("submitter.agent is recommended so reviewers know which client produced the bundle")
+
+    finding = submission.get("finding", {})
+    if not isinstance(finding, dict):
+        errors.append("submission.finding must be an object")
+        finding = {}
+    else:
+        _require_fields(
+            finding,
+            ("finding_id", "model", "domain", "task", "summary", "claim_boundary"),
+            "finding",
+            errors,
+        )
+        metric = finding.get("metric", {})
+        if not isinstance(metric, dict) or not metric.get("primary"):
+            errors.append("finding.metric.primary is required")
+        axis = finding.get("axis", {})
+        if not isinstance(axis, dict):
+            errors.append("finding.axis must be an object")
+        else:
+            _require_fields(axis, ("name", "definition", "unit"), "finding.axis", errors)
+        validity = finding.get("validity", {})
+        if not isinstance(validity, dict) or not validity.get("decision"):
+            errors.append("finding.validity.decision is required")
+        if not (finding.get("evidence") or finding.get("spc") or finding.get("results")):
+            warnings.append("finding should include evidence, spc, or results with per-level performance")
+
+    provenance_records = _record_list(submission.get("provenance"))
+    if not provenance_records:
+        errors.append("submission.provenance must contain at least one provenance record")
+    for idx, record in enumerate(provenance_records):
+        prefix = "provenance[%d]" % idx
+        _require_fields(record, ("finding_id", "run_id", "model"), prefix, errors)
+        model_source = record.get("model_source", {})
+        if not isinstance(model_source, dict) or not model_source:
+            errors.append("%s.model_source is required" % prefix)
+        else:
+            _require_fields(
+                model_source,
+                ("name", "execution_mode", "source_url_or_repo", "weights_or_checkpoint"),
+                "%s.model_source" % prefix,
+                errors,
+            )
+            weights = model_source.get("weights_or_checkpoint", {})
+            if isinstance(weights, dict):
+                if not weights.get("source_url_or_repo"):
+                    errors.append("%s.model_source.weights_or_checkpoint.source_url_or_repo is required" % prefix)
+                if not (weights.get("download_command_or_method") or weights.get("load_call")):
+                    errors.append(
+                        "%s.model_source.weights_or_checkpoint.download_command_or_method or load_call is required"
+                        % prefix
+                    )
+        dataset_sources = record.get("dataset_sources", [])
+        if not isinstance(dataset_sources, list) or not dataset_sources:
+            errors.append("%s.dataset_sources must contain at least one dataset source" % prefix)
+        else:
+            for source_idx, source in enumerate(dataset_sources):
+                if not isinstance(source, dict):
+                    errors.append("%s.dataset_sources[%d] must be an object" % (prefix, source_idx))
+                    continue
+                _require_fields(
+                    source,
+                    ("name", "source_url_or_repo", "access_route", "unit", "rows_or_units"),
+                    "%s.dataset_sources[%d]" % (prefix, source_idx),
+                    errors,
+                )
+        if not record.get("retrieval_and_download"):
+            errors.append("%s.retrieval_and_download is required" % prefix)
+        if not record.get("execution_environment"):
+            errors.append("%s.execution_environment is required" % prefix)
+        if not record.get("known_gaps"):
+            warnings.append("%s.known_gaps should explicitly say none or list remaining gaps" % prefix)
+
+    download_records = _record_list(submission.get("downloads"))
+    download_ids = {item.get("download_id") for item in download_records if item.get("download_id")}
+    if not download_records:
+        errors.append("submission.downloads.records must list externally downloadable result artifacts")
+    for idx, record in enumerate(download_records):
+        prefix = "downloads[%d]" % idx
+        _require_fields(record, ("download_id", "download_url", "sha256"), prefix, errors)
+        url = str(record.get("download_url") or "")
+        if url and not re.match(r"^https?://", url):
+            errors.append("%s.download_url must be http(s)" % prefix)
+        checksum = str(record.get("sha256") or "")
+        if checksum and not re.match(r"^[a-fA-F0-9]{64}$", checksum):
+            errors.append("%s.sha256 must be a 64-character hex SHA-256 checksum" % prefix)
+        if "bytes" not in record:
+            warnings.append("%s.bytes is recommended for reproducibility checks" % prefix)
+        if "rows" not in record:
+            warnings.append("%s.rows is recommended for per-target or per-example tables" % prefix)
+
+    for idx, record in enumerate(provenance_records):
+        for download_id in record.get("download_ids", []):
+            if download_id not in download_ids:
+                warnings.append("provenance[%d].download_ids.%s is not present in submission downloads" % (idx, download_id))
+
+    artifact_records = _record_list(submission.get("artifact_manifest"))
+    if not artifact_records:
+        errors.append("submission.artifact_manifest.records must list referenced artifacts")
+    forbidden_inline_fields = {"content", "content_base64", "file_bytes", "table_rows"}
+    for idx, record in enumerate(artifact_records):
+        prefix = "artifact_manifest[%d]" % idx
+        _require_fields(record, ("artifact_id", "role"), prefix, errors)
+        if not (
+            record.get("download_id")
+            or record.get("download_url")
+            or record.get("url")
+            or record.get("external_url")
+            or record.get("sha256")
+        ):
+            errors.append("%s must reference an external URL, download_id, or checksum" % prefix)
+        for field in forbidden_inline_fields:
+            if field in record:
+                errors.append("%s.%s is not allowed; submit large artifacts by URL and checksum" % (prefix, field))
+
+    audit_card = submission.get("audit_card_markdown", "")
+    if audit_card and not isinstance(audit_card, str):
+        errors.append("submission.audit_card_markdown must be a string")
+    if not audit_card:
+        warnings.append("audit_card_markdown is recommended for reviewer triage")
+
+    return {
+        "passes_contract": not errors,
+        "errors": errors,
+        "warnings": warnings,
+        "summary": {
+            "model": finding.get("model"),
+            "finding_id": finding.get("finding_id"),
+            "download_count": len(download_records),
+            "artifact_count": len(artifact_records),
+            "provenance_record_count": len(provenance_records),
+        },
+    }
+
+
+def _submission_summary_from_manifest(manifest: Dict[str, Any]) -> Dict[str, Any]:
+    return {
+        "submission_id": manifest.get("submission_id"),
+        "status": manifest.get("status"),
+        "created_at": manifest.get("created_at"),
+        "updated_at": manifest.get("updated_at"),
+        "model": manifest.get("model"),
+        "finding_id": manifest.get("finding_id"),
+        "title": manifest.get("title"),
+        "submitter": manifest.get("submitter"),
+        "passes_contract": manifest.get("validation", {}).get("passes_contract"),
+        "warning_count": len(manifest.get("validation", {}).get("warnings", [])),
+    }
+
+
 def _summary_finding(finding: Dict[str, Any]) -> Dict[str, Any]:
     return {
         "finding_id": finding.get("finding_id"),
@@ -604,6 +875,152 @@ def get_spectra_download(artifact_id: str) -> Dict[str, Any]:
     return records[0]
 
 
+def get_spectra_submission_schema() -> Dict[str, Any]:
+    """Return the schema and policy for pending contributed findings."""
+    schema = _load_submission_schema()
+    return {
+        "schema": schema,
+        "queue": {
+            "enabled": _submission_queue_enabled(),
+            "status_values": list(SUBMISSION_STATUS_VALUES),
+            "max_submission_json_bytes": MAX_SUBMISSION_JSON_BYTES,
+            "persistence": "data/submissions/pending/<submission_id>/",
+            "canonical_store_mutation": False,
+            "artifact_policy": (
+                "Do not upload large raw tables through MCP. Reference artifacts "
+                "by stable http(s) URL, SHA-256 checksum, byte size, and row count."
+            ),
+        },
+    }
+
+
+def validate_spectra_submission(submission: Dict[str, Any]) -> Dict[str, Any]:
+    """Validate a proposed contributed SPECTRA finding without writing it."""
+    try:
+        payload = _coerce_json_object(submission, "submission")
+    except ValueError as exc:
+        return {
+            "passes_contract": False,
+            "errors": [str(exc)],
+            "warnings": [],
+            "summary": {},
+        }
+    return _submission_validation(payload)
+
+
+def submit_spectra_finding(
+    submission: Dict[str, Any],
+    auth_token: str = "",
+) -> Dict[str, Any]:
+    """Submit a SPECTRA finding bundle to the pending review queue.
+
+    This never mutates the canonical finding/provenance/download manifests.
+    The MCP host must set SPECTRA_SUBMISSION_TOKEN and clients must pass that
+    shared token as auth_token.
+    """
+    _require_submission_auth(auth_token)
+    payload = _coerce_json_object(submission, "submission")
+    validation = _submission_validation(payload)
+    if not validation["passes_contract"]:
+        return {
+            "accepted": False,
+            "status": "rejected_by_schema",
+            "validation": validation,
+        }
+
+    submission_id = _generate_submission_id(payload)
+    queue_path = _pending_submission_path(submission_id)
+    counter = 2
+    while queue_path.exists():
+        suffix = "-%d" % counter
+        queue_path = _pending_submission_path(submission_id + suffix)
+        counter += 1
+    submission_id = queue_path.name
+    queue_path.mkdir(parents=True, exist_ok=False)
+
+    finding = payload.get("finding", {})
+    manifest = {
+        "submission_id": submission_id,
+        "status": "pending_review",
+        "created_at": _utc_timestamp(),
+        "updated_at": _utc_timestamp(),
+        "title": payload.get("title"),
+        "model": finding.get("model"),
+        "finding_id": finding.get("finding_id"),
+        "submitter": payload.get("submitter", {}),
+        "validation": validation,
+        "files": {
+            "submission": "submission.json",
+            "finding": "finding.json",
+            "provenance": "provenance.json",
+            "downloads": "downloads.json",
+            "artifact_manifest": "artifact_manifest.json",
+            "audit_card": "audit_card.md" if payload.get("audit_card_markdown") else "",
+        },
+    }
+
+    _write_json(queue_path / "submission.json", payload)
+    _write_json(queue_path / "finding.json", payload.get("finding", {}))
+    _write_json(queue_path / "provenance.json", {"records": _record_list(payload.get("provenance"))})
+    _write_json(queue_path / "downloads.json", {"records": _record_list(payload.get("downloads"))})
+    _write_json(queue_path / "artifact_manifest.json", {"records": _record_list(payload.get("artifact_manifest"))})
+    if payload.get("audit_card_markdown"):
+        (queue_path / "audit_card.md").write_text(payload["audit_card_markdown"], encoding="utf-8")
+    _write_json(queue_path / "manifest.json", manifest)
+
+    return {
+        "accepted": True,
+        "status": "pending_review",
+        "submission_id": submission_id,
+        "validation": validation,
+        "review_queue": "data/submissions/pending/%s" % submission_id,
+        "canonical_store_mutated": False,
+    }
+
+
+def get_spectra_submission_status(
+    submission_id: str,
+    auth_token: str = "",
+) -> Dict[str, Any]:
+    """Return pending-review status for one contributed finding submission."""
+    _require_submission_auth(auth_token)
+    path = _pending_submission_path(submission_id)
+    manifest_path = path / "manifest.json"
+    if not manifest_path.exists():
+        raise ValueError("Unknown pending submission_id '%s'" % submission_id)
+    manifest = _load_json(manifest_path)
+    return {
+        "submission": _submission_summary_from_manifest(manifest),
+        "manifest": manifest,
+    }
+
+
+def list_spectra_submissions(
+    status: str = "",
+    model: str = "",
+    auth_token: str = "",
+    top_k: int = 100,
+) -> Dict[str, Any]:
+    """List pending-review contributed finding submissions for maintainers."""
+    _require_submission_auth(auth_token)
+    results = []
+    if SUBMISSION_PENDING_ROOT.exists():
+        for manifest_path in sorted(SUBMISSION_PENDING_ROOT.glob("*/manifest.json")):
+            manifest = _load_json(manifest_path)
+            if status and not _matches_filter(manifest.get("status", ""), status):
+                continue
+            if model and not _matches_filter(manifest.get("model", ""), model):
+                continue
+            results.append(manifest)
+    results.sort(key=lambda item: item.get("created_at", ""), reverse=True)
+    limit = max(1, min(int(top_k), 500))
+    return {
+        "count": len(results[:limit]),
+        "total_matches": len(results),
+        "submissions": [_submission_summary_from_manifest(item) for item in results[:limit]],
+    }
+
+
 def list_spectra_artifacts(
     model: str = "",
     finding_id: str = "",
@@ -689,7 +1106,7 @@ def suggest_next_spectra_move(model: str, question: str = "") -> Dict[str, Any]:
 
 
 def create_mcp_server(host: str = "127.0.0.1", port: int = 8000) -> Any:
-    """Create the read-only MCP server."""
+    """Create the SPECTRA knowledge MCP server."""
     try:
         from mcp.server.fastmcp import FastMCP
     except ImportError as exc:
@@ -698,12 +1115,14 @@ def create_mcp_server(host: str = "127.0.0.1", port: int = 8000) -> Any:
         ) from exc
 
     instructions = (
-        "Read-only SPECTRA knowledge server. Exposes the current SPECTRA "
+        "SPECTRA knowledge server. Exposes the current SPECTRA "
         "single-controller protocol, stored finding records, run summaries, and "
         "saved text/CSV/JSON artifacts. It also exposes normalized provenance "
         "for model code/weights, datasets, metadata, download routes, cache "
-        "roots, and known gaps. It must not run audits, launch agents, download "
-        "datasets, call models, or mutate artifacts."
+        "roots, and known gaps. It can accept authenticated contributed finding "
+        "bundles into a pending review queue, but those submissions do not mutate "
+        "canonical findings until separately reviewed. It must not run audits, "
+        "launch agents, download datasets, or call models."
     )
     try:
         mcp = FastMCP(name=SERVER_NAME, instructions=instructions, host=host, port=port)
@@ -755,6 +1174,11 @@ def create_mcp_server(host: str = "127.0.0.1", port: int = 8000) -> Any:
         """Current provenance schema and policy for stored findings."""
         return get_spectra_provenance_schema()
 
+    @mcp.resource("spectra://submissions/schema")
+    def submission_schema_resource() -> Dict[str, Any]:
+        """Schema and policy for pending contributed finding submissions."""
+        return get_spectra_submission_schema()
+
     mcp.tool(name="list_spectra_models")(list_spectra_models)
     mcp.tool(name="list_spectra_findings")(list_spectra_findings)
     mcp.tool(name="search_spectra_findings")(search_spectra_findings)
@@ -768,6 +1192,11 @@ def create_mcp_server(host: str = "127.0.0.1", port: int = 8000) -> Any:
     mcp.tool(name="get_spectra_provenance_schema")(get_spectra_provenance_schema)
     mcp.tool(name="list_spectra_downloads")(list_spectra_downloads)
     mcp.tool(name="get_spectra_download")(get_spectra_download)
+    mcp.tool(name="get_spectra_submission_schema")(get_spectra_submission_schema)
+    mcp.tool(name="validate_spectra_submission")(validate_spectra_submission)
+    mcp.tool(name="submit_spectra_finding")(submit_spectra_finding)
+    mcp.tool(name="get_spectra_submission_status")(get_spectra_submission_status)
+    mcp.tool(name="list_spectra_submissions")(list_spectra_submissions)
     mcp.tool(name="list_spectra_artifacts")(list_spectra_artifacts)
     mcp.tool(name="get_spectra_artifact")(get_spectra_artifact)
     mcp.tool(name="get_spectra_protocol")(get_spectra_protocol)

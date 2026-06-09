@@ -260,3 +260,14 @@ analysis, publish them through the hosted download manifest rather than through
 MCP text artifact previews. Add the files to the curated artifact bundle, run
 the download manifest builder, and make sure `list_spectra_downloads` returns
 stable HTTPS URLs with byte sizes, row counts, and SHA-256 checksums.
+
+## Hosted Finding Contributions
+
+Agents contributing new SPECTRA analyses to the hosted knowledge MCP should not
+edit the canonical finding store directly. First call
+`get_spectra_submission_schema`, validate the bundle with
+`validate_spectra_submission`, and submit it with `submit_spectra_finding` only
+when an authorized submission token is available. Submitted bundles must include
+the finding, provenance, external download records with checksums, and an
+artifact manifest. They land in `data/submissions/pending/<submission_id>/`
+until reviewed and promoted by a maintainer or CI job.

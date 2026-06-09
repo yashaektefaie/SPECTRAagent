@@ -1,7 +1,9 @@
 # SPECTRA Knowledge MCP
 
-This is a read-only MCP server for SPECTRA protocol memory and saved findings.
-It is deliberately separate from the SPECTRA audit/executor MCP.
+This is an MCP server for SPECTRA protocol memory, saved findings, and
+authenticated contributed-finding submissions. Canonical findings remain
+reviewed knowledge; submissions land in a pending queue and do not mutate the
+canonical store.
 
 Hosted endpoint:
 
@@ -21,6 +23,7 @@ Resources:
 - `spectra://downloads/index`
 - `spectra://provenance/index`
 - `spectra://provenance/schema`
+- `spectra://submissions/schema`
 
 Tools:
 
@@ -37,13 +40,19 @@ Tools:
 - `get_spectra_provenance_schema`
 - `list_spectra_downloads`
 - `get_spectra_download`
+- `get_spectra_submission_schema`
+- `validate_spectra_submission`
+- `submit_spectra_finding`
+- `get_spectra_submission_status`
+- `list_spectra_submissions`
 - `list_spectra_artifacts`
 - `get_spectra_artifact`
 - `get_spectra_protocol`
 - `suggest_next_spectra_move`
 
 There are no tools that run audits, launch agents, call models, download
-datasets, mutate artifacts, or prepare sessions.
+datasets, prepare sessions, or mutate canonical finding artifacts. The only
+write path is the authenticated pending-submission queue.
 
 `get_spectra_artifact` is a preview path and intentionally truncates large
 files. Agents that need raw per-target tables should call
@@ -69,6 +78,78 @@ Every stored finding must have a normalized provenance record in
 Agents should call `get_spectra_provenance` or `list_spectra_sources` before
 using a stored finding, and `validate_spectra_provenance` before publishing a
 new one.
+
+## Contributed Finding Queue
+
+External agents can prepare a SPECTRA finding bundle, validate it, and submit it
+for review. Submission creates:
+
+```text
+data/submissions/pending/<submission_id>/
+  manifest.json
+  submission.json
+  finding.json
+  provenance.json
+  downloads.json
+  artifact_manifest.json
+  audit_card.md
+```
+
+Submission does not update `data/store.json`, `data/provenance.json`, or
+`data/downloads.json`. A maintainer or CI process must review and promote the
+bundle before it becomes canonical.
+
+Unauthenticated clients may inspect the schema and validate a bundle:
+
+```json
+{
+  "tool": "get_spectra_submission_schema",
+  "arguments": {}
+}
+```
+
+```json
+{
+  "tool": "validate_spectra_submission",
+  "arguments": {
+    "submission": {
+      "title": "Example finding",
+      "submitter": {
+        "name": "Agent name",
+        "contact": "email-or-handle",
+        "agent": "Claude Code / Codex / other MCP client"
+      },
+      "finding": {},
+      "provenance": {},
+      "downloads": {
+        "records": []
+      },
+      "artifact_manifest": {
+        "records": []
+      }
+    }
+  }
+}
+```
+
+Submitting requires `SPECTRA_SUBMISSION_TOKEN` on the server and the same token
+as the `auth_token` tool argument:
+
+```json
+{
+  "tool": "submit_spectra_finding",
+  "arguments": {
+    "auth_token": "<shared submission token>",
+    "submission": {
+      "...": "full validated submission bundle"
+    }
+  }
+}
+```
+
+Large scored CSVs, figures, and result bundles should not be uploaded through
+MCP. Put them somewhere retrievable and include `download_url`, `sha256`,
+`bytes`, and `rows` in the submission.
 
 ## Artifact Policy
 
@@ -108,6 +189,19 @@ This writes:
 The builder excludes internal session contracts, controller logs/prompts, and
 command logs. It publishes result CSVs, reports, figures, compact JSON outputs,
 and provenance artifacts.
+
+## Submission Token
+
+Create a deployment-local `.env` file:
+
+```sh
+SPECTRA_SUBMISSION_TOKEN=<long-random-token>
+```
+
+The tracked systemd unit reads this file through `EnvironmentFile=-.../.env`.
+The file is ignored by Git. If the token is absent, `submit_spectra_finding`,
+`get_spectra_submission_status`, and `list_spectra_submissions` are disabled,
+while schema and validation remain available.
 
 ## Run
 

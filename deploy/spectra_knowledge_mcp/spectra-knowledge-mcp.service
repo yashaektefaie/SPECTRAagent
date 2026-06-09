@@ -6,6 +6,7 @@ Wants=network-online.target
 [Service]
 Type=simple
 WorkingDirectory=/home/yektefai/spectra-knowledge-mcp
+EnvironmentFile=-/home/yektefai/spectra-knowledge-mcp/.env
 ExecStart=/home/yektefai/spectra-knowledge-mcp/.venv/bin/python /home/yektefai/spectra-knowledge-mcp/server.py --transport streamable-http --host 127.0.0.1 --port 8000
 Restart=on-failure
 RestartSec=5

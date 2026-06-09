@@ -1,0 +1,170 @@
+{
+  "schema_version": "0.1.0",
+  "purpose": "Accepted shape for contributed SPECTRA findings submitted to the pending review queue.",
+  "status_values": [
+    "pending_review",
+    "accepted",
+    "rejected",
+    "needs_revision"
+  ],
+  "top_level_required": [
+    "title",
+    "submitter",
+    "finding",
+    "provenance",
+    "downloads",
+    "artifact_manifest"
+  ],
+  "submitter_required": [
+    "name",
+    "contact"
+  ],
+  "finding_required": [
+    "finding_id",
+    "model",
+    "domain",
+    "task",
+    "summary",
+    "claim_boundary",
+    "metric.primary",
+    "axis.name",
+    "axis.definition",
+    "axis.unit",
+    "validity.decision"
+  ],
+  "provenance_required": [
+    "finding_id",
+    "run_id",
+    "model",
+    "model_source.name",
+    "model_source.execution_mode",
+    "model_source.source_url_or_repo",
+    "model_source.weights_or_checkpoint",
+    "dataset_sources[].name",
+    "dataset_sources[].source_url_or_repo",
+    "dataset_sources[].access_route",
+    "dataset_sources[].unit",
+    "dataset_sources[].rows_or_units",
+    "retrieval_and_download",
+    "execution_environment"
+  ],
+  "downloads_required": [
+    "download_id",
+    "download_url",
+    "sha256"
+  ],
+  "artifact_manifest_required": [
+    "artifact_id",
+    "role",
+    "download_id or download_url or url or external_url or sha256"
+  ],
+  "recommended_optional": [
+    "submitter.agent",
+    "audit_card_markdown",
+    "downloads[].bytes",
+    "downloads[].rows",
+    "provenance[].known_gaps"
+  ],
+  "artifact_policy": [
+    "Submitted artifacts remain external until review.",
+    "Do not inline large scored tables, figures, or model outputs through MCP.",
+    "Reference result tables and figures by stable http(s) URL, SHA-256 checksum, byte size, and row count when applicable.",
+    "Accepted submissions can later be mirrored into the canonical /downloads tree by a maintainer."
+  ],
+  "review_policy": [
+    "Submission creates data/submissions/pending/<submission_id>/ only.",
+    "Submission does not mutate data/store.json, data/provenance.json, or data/downloads.json.",
+    "A maintainer or CI job must review and promote a submission before it becomes a canonical hosted finding."
+  ],
+  "minimal_example": {
+    "title": "Example model SPECTRA finding",
+    "submitter": {
+      "name": "Agent or person name",
+      "contact": "email-or-handle",
+      "agent": "Claude Code / Codex / other client"
+    },
+    "finding": {
+      "finding_id": "example_axis_20260609",
+      "model": "ExampleModel",
+      "domain": "example domain",
+      "task": "task audited",
+      "metric": {
+        "primary": "primary metric and direction"
+      },
+      "axis": {
+        "name": "prospective similarity axis",
+        "definition": "how levels were assigned without target-model error leakage",
+        "unit": "scientific unit"
+      },
+      "summary": "One-paragraph finding summary.",
+      "claim_boundary": "What this supports and does not support.",
+      "validity": {
+        "decision": "pending_review"
+      },
+      "evidence": {
+        "levels": []
+      }
+    },
+    "provenance": {
+      "finding_id": "example_axis_20260609",
+      "run_id": "example_run_20260609",
+      "model": "ExampleModel",
+      "model_source": {
+        "name": "ExampleModel",
+        "execution_mode": "fresh_inference_or_precomputed_outputs",
+        "source_url_or_repo": "https://example.org/model",
+        "weights_or_checkpoint": {
+          "source_url_or_repo": "https://example.org/checkpoint",
+          "download_command_or_method": "documented command or loading method"
+        }
+      },
+      "dataset_sources": [
+        {
+          "name": "Example dataset",
+          "source_url_or_repo": "https://example.org/data",
+          "access_route": "download or API route",
+          "unit": "example",
+          "rows_or_units": 0
+        }
+      ],
+      "retrieval_and_download": [
+        {
+          "phase": "data retrieval",
+          "command_or_method": "documented command",
+          "purpose": "reproduce the submitted analysis"
+        }
+      ],
+      "execution_environment": {
+        "python_or_env": "environment name or image",
+        "cache_roots": []
+      },
+      "known_gaps": [
+        "none"
+      ],
+      "download_ids": [
+        "example:target_model_results"
+      ]
+    },
+    "downloads": {
+      "records": [
+        {
+          "download_id": "example:target_model_results",
+          "download_url": "https://example.org/target_model_results.csv",
+          "sha256": "64-character sha256 checksum",
+          "bytes": 0,
+          "rows": 0
+        }
+      ]
+    },
+    "artifact_manifest": {
+      "records": [
+        {
+          "artifact_id": "example:target_model_results.csv",
+          "role": "raw per-target scored table",
+          "download_id": "example:target_model_results"
+        }
+      ]
+    },
+    "audit_card_markdown": "# Audit Card\n\nReviewer-facing summary."
+  }
+}

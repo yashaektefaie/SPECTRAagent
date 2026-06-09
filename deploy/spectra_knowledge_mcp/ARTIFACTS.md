@@ -46,3 +46,13 @@ not ready for the hosted knowledge server.
 Also update `data/downloads.json` and materialize public downloads for any raw
 tables required to reproduce the reported analysis from per-target or
 per-example rows.
+
+## Pending Submissions
+
+Contributor bundles submitted through `submit_spectra_finding` are runtime
+state under `data/submissions/pending/<submission_id>/`. That directory is not
+tracked in Git and is not canonical evidence. A maintainer or CI job should
+review the bundle, mirror approved artifacts into the curated artifact/download
+trees, update `data/store.json`, `data/provenance.json`, and
+`data/downloads.json`, then rebuild the site before a submission becomes a
+hosted SPECTRA finding.

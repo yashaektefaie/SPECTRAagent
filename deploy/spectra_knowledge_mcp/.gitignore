@@ -1,7 +1,9 @@
 __pycache__/
 .venv/
+.env
 
 # Curated run artifacts are deployed to the MCP host, not tracked in Git.
 # Keep structured summaries and artifact ids in data/store.json.
 data/artifacts/
 data/public_downloads/
+data/submissions/
