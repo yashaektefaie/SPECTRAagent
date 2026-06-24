@@ -94,6 +94,7 @@
       ],
       "artifact_ids": [
         "esmfold2:FINAL_ESMFOLD2_RESULT.md",
+        "esmfold2:ESMFOLD2_SPECTRA_ANALYSIS_TRACE.md",
         "esmfold2:ARTIFACT_INDEX.md",
         "esmfold2:data:primary_exact_sequence_dedup.csv",
         "esmfold2:data:all_esmfold2_scored_evaluations.csv",
@@ -472,6 +473,7 @@
       },
       "key_artifact_ids": [
         "esmfold2:FINAL_ESMFOLD2_RESULT.md",
+        "esmfold2:ESMFOLD2_SPECTRA_ANALYSIS_TRACE.md",
         "esmfold2:data:primary_exact_sequence_dedup.csv",
         "esmfold2:data:all_esmfold2_scored_evaluations.csv",
         "esmfold2:tables:global_hypothesis_effects_primary_sequence.csv",

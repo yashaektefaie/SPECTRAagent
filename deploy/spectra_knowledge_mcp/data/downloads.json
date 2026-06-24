@@ -1,6 +1,6 @@
 {
   "base_url": "https://spectra.yashaektefaie.com/downloads",
-  "count": 137,
+  "count": 138,
   "description": "Curated public file downloads for SPECTRA result artifacts. MCP tools return this manifest; agents should use normal HTTPS download clients for bulk CSV/JSON/Markdown artifacts.",
   "public_path_prefix": "/downloads",
   "records": [
@@ -546,7 +546,7 @@
     },
     {
       "artifact_id": "esmfold2:ARTIFACT_INDEX.md",
-      "bytes": 4587,
+      "bytes": 4742,
       "csv_header": null,
       "download_id": "esmfold2:ARTIFACT_INDEX.md",
       "download_path": "/downloads/esmfold2/ARTIFACT_INDEX.md",
@@ -559,7 +559,26 @@
       "run_ids": [
         "esmfold2_paper_ready_final_20260602"
       ],
-      "sha256": "eb5056c62e4da1ffc7198b80aed1836e25397d9e6d760ae29b41b2298b099eaa"
+      "sha256": "6f736c16b882870d9ed251b4670dcdaf9cfe38a157385d111a7fafd8106ef5b1"
+    },
+    {
+      "artifact_id": "esmfold2:ESMFOLD2_SPECTRA_ANALYSIS_TRACE.md",
+      "bytes": 4743,
+      "csv_header": null,
+      "download_id": "esmfold2:ESMFOLD2_SPECTRA_ANALYSIS_TRACE.md",
+      "download_path": "/downloads/esmfold2/ESMFOLD2_SPECTRA_ANALYSIS_TRACE.md",
+      "download_url": "https://spectra.yashaektefaie.com/downloads/esmfold2/ESMFOLD2_SPECTRA_ANALYSIS_TRACE.md",
+      "finding_ids": [
+        "esmfold2_high_disulfide_boundary_20260602"
+      ],
+      "format": "md",
+      "model": "esmfold2",
+      "relative_path": "esmfold2/ESMFOLD2_SPECTRA_ANALYSIS_TRACE.md",
+      "rows": null,
+      "run_ids": [
+        "esmfold2_paper_ready_final_20260602"
+      ],
+      "sha256": "b92d69eb5a1ae533624761b06784be20240f87b1818f3fd409603eba86d73051"
     },
     {
       "artifact_id": "esmfold2:FINAL_ESMFOLD2_RESULT.md",
