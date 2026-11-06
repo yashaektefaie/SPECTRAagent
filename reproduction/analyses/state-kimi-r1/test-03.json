@@ -1,0 +1,289 @@
+{
+  "id": "state-kimi-r1/test-03",
+  "investigation": "state-kimi-r1",
+  "model": "STATE",
+  "axis": "Embedding-norm proximity",
+  "dataset_split": {
+    "description": "Exact gene/context units and cell counts verified; the individual cell-ID list is missing.",
+    "input_inventory": "inputs/state.json",
+    "public_sources": [
+      "state-score-001",
+      "state-score-002",
+      "state-score-003",
+      "state-score-004",
+      "state-score-005",
+      "state-score-006",
+      "state-score-007",
+      "state-score-008",
+      "state-score-009",
+      "state-score-010",
+      "state-score-011",
+      "state-score-012",
+      "state-score-013",
+      "state-score-014",
+      "state-score-015",
+      "state-score-016",
+      "state-score-017",
+      "state-score-018",
+      "state-score-019",
+      "state-score-020",
+      "state-score-021",
+      "state-score-022",
+      "state-score-023",
+      "state-score-024",
+      "state-score-025",
+      "state-score-026",
+      "state-score-027",
+      "state-score-028",
+      "state-score-029",
+      "state-score-030",
+      "state-score-031",
+      "state-score-032",
+      "state-score-033",
+      "state-score-034",
+      "state-score-035",
+      "state-score-036",
+      "state-score-037",
+      "state-score-038",
+      "state-score-039",
+      "state-score-040",
+      "state-score-041",
+      "state-score-042",
+      "state-score-043",
+      "state-score-044",
+      "state-score-045",
+      "state-score-046",
+      "state-score-047",
+      "state-score-048",
+      "state-score-049",
+      "state-score-050",
+      "state-score-051",
+      "state-score-052",
+      "state-score-053",
+      "state-score-054",
+      "state-score-055",
+      "state-code",
+      "reactome",
+      "hgnc",
+      "go-annotations",
+      "go-ontology",
+      "wikipathways",
+      "kegg"
+    ],
+    "sample_tables": [
+      {
+        "source_file": "assets/state-kimi-r1/results/axis_manifest.csv",
+        "source_sha256": "11862830c7d2ab6eda0128d13f8e1d87899fcff629fccd4ab0448a84b740aeed",
+        "path": "samples/state/dd7041b9579aa5a6.json.gz",
+        "sha256": "59be5656da31973a33a04b2712e2df4f34936167b0154ff2fd1ef7b1b815bba1",
+        "rows": 1383,
+        "columns": [
+          "gene",
+          "level"
+        ]
+      },
+      {
+        "source_file": "assets/state-kimi-r1/results/axis_manifest_hepg2.csv",
+        "source_sha256": "c5314cd478c9adc6dd7e593fc6e7528f1045069c87ab0699a59bea7b679f3784",
+        "path": "samples/state/b8a6ff4cf1d90b0f.json.gz",
+        "sha256": "89a77071c1206d8e9b1598a32ebe1841c4ef5a9400d56a547836428a5c4ed311",
+        "rows": 1340,
+        "columns": [
+          "gene",
+          "level"
+        ]
+      },
+      {
+        "source_file": "assets/state-kimi-r1/results/axis_manifest_jurkat.csv",
+        "source_sha256": "a20ba9a4e79532963be56535a1bdc64e483f2a6e8813e9ecea9e3f2cfb3a323a",
+        "path": "samples/state/da840d8d53161b98.json.gz",
+        "sha256": "e3197efd870660f9aba622aff6278de84817201a4cad3ef0fb0a6c433abdd640",
+        "rows": 1537,
+        "columns": [
+          "gene",
+          "level"
+        ]
+      },
+      {
+        "source_file": "assets/state-kimi-r1/results/axis_manifest_rpe1.csv",
+        "source_sha256": "1e2cf1c025ce324d98b0c180cdcef2b4f42eac380814a4efe61377e64b80f5a6",
+        "path": "samples/state/a8bb9d274f4caa56.json.gz",
+        "sha256": "9e2dd6882bf04cd4b0b81ef2dd590f576eda39d80f7da76e927825ae8ec3de77",
+        "rows": 1499,
+        "columns": [
+          "gene",
+          "level"
+        ]
+      },
+      {
+        "source_file": "assets/state-kimi-r1/results/crosscheck_pearson_delta.csv",
+        "source_sha256": "cbad7ed0179ffacb0c053e667da26740177eab943831718062c8f3b98f272585",
+        "path": "samples/state/e916f6ec500b5cf0.json.gz",
+        "sha256": "1966823421d5c524926a35f7e4d5fdfb783fb5374609dd4fcb12133631efee40",
+        "rows": 968,
+        "columns": [
+          "gene"
+        ]
+      },
+      {
+        "source_file": "assets/state-kimi-r1/results/per_unit_scores.csv",
+        "source_sha256": "0c6c5a8d5ccd19ff877bb7271aaaeed7d841641d260e15864a4a68d609df3594",
+        "path": "samples/state/da67b0a72295da9a.json.gz",
+        "sha256": "1a4e59f239c9a185dcca077a8995bc3bf741d0f3e7750ffad002ecaaf690d215",
+        "rows": 1383,
+        "columns": [
+          "gene",
+          "level"
+        ]
+      },
+      {
+        "source_file": "assets/state-kimi-r1/results/per_unit_scores_hepg2.csv",
+        "source_sha256": "f0576bf4caebe52aac70fbbefc323756dea7859ee01c771e6805ed32cfd03f9d",
+        "path": "samples/state/88d3d13033631106.json.gz",
+        "sha256": "96e0871b1072fe5683e2c6c8e63de657b333a77649f1b084bb713c5f892a5823",
+        "rows": 1340,
+        "columns": [
+          "gene",
+          "level"
+        ]
+      },
+      {
+        "source_file": "assets/state-kimi-r1/results/per_unit_scores_jurkat.csv",
+        "source_sha256": "d635f83beae6fa8bd146420eb3de0e4be551b76ddd28eeba18ce5aac4f9c7cb8",
+        "path": "samples/state/5868898f45b2326f.json.gz",
+        "sha256": "6e9a51570e6f55051452fce0c5378a9a9d3ca42ad75863a73d5925b4cdc69ab5",
+        "rows": 1537,
+        "columns": [
+          "gene",
+          "level"
+        ]
+      },
+      {
+        "source_file": "assets/state-kimi-r1/results/per_unit_scores_rpe1.csv",
+        "source_sha256": "3f747d8b2107cffe0c608d022fead3ea717b567673c02925f6e7e4a9786ac3ad",
+        "path": "samples/state/d4db0e2c7465e4c1.json.gz",
+        "sha256": "0d38c26d2d0b0d9c7dbc90dd6771b4363a73426d0a67db6dd14096f22f14622c",
+        "rows": 1499,
+        "columns": [
+          "gene",
+          "level"
+        ]
+      },
+      {
+        "source_file": "assets/state-kimi-r1/results/proximity_embedding_norms.csv",
+        "source_sha256": "538907bd95331c9885d13998a867e259900ed2ba1df30be8d8c58cc5d1a25918",
+        "path": "samples/state/a1589413cf19be80.json.gz",
+        "sha256": "fb5af05e151732d8dd81b55825affad6cb5e74cf1dcbfc4b98c23e6dce44b014",
+        "rows": 1383,
+        "columns": [
+          "gene",
+          "level"
+        ]
+      },
+      {
+        "source_file": "assets/state-kimi-r1/results/proximity_embedding_norms_hepg2.csv",
+        "source_sha256": "60122f79ef1f2800126f52bf92356c55c3dc32259a82834f47022a24b0324573",
+        "path": "samples/state/994ca7b613c87beb.json.gz",
+        "sha256": "1e60026bf4a54ea35d9f69c28488395078c699be72fcd5008649898925dae353",
+        "rows": 1340,
+        "columns": [
+          "gene",
+          "level"
+        ]
+      },
+      {
+        "source_file": "assets/state-kimi-r1/results/proximity_embedding_norms_jurkat.csv",
+        "source_sha256": "450bb5b30cb9f4dc91970dce7aa669470d7c7e3f410428b77b8b3fca56e5e3c8",
+        "path": "samples/state/a1188ad657bed52c.json.gz",
+        "sha256": "25d91f698616b290910644b6d84c0b2a3070fc37dca6116aeaf215b76f575ef9",
+        "rows": 1537,
+        "columns": [
+          "gene",
+          "level"
+        ]
+      },
+      {
+        "source_file": "assets/state-kimi-r1/results/proximity_embedding_norms_rpe1.csv",
+        "source_sha256": "d3dbd5ed9ce532050a68d971c5bdcc9e09749e1c1dfd493651174cfac2eed2a8",
+        "path": "samples/state/1a9af9c6c0e8e682.json.gz",
+        "sha256": "c90acd3daf4b8e288896970f621b474d002b1b3bf6d2f1226f5555ffd8c09876",
+        "rows": 1499,
+        "columns": [
+          "gene",
+          "level"
+        ]
+      }
+    ]
+  },
+  "axis_levels": {
+    "definition": "Norm of the learned perturbation embedding in unseen units.",
+    "calculation": "Saved embedding norms are joined to re-scored performance; checkpoints required to recompute those norms are absent.",
+    "code": "materials/state/notebooks/state-kimi-r1/test-03.py"
+  },
+  "model_evaluation": {
+    "measurements": "Target/reference measurements recalculated from preserved predicted/observed vectors.",
+    "fine_tuning": {
+      "target_weight_updates_in_replay": false,
+      "target_fine_tuning_during_original_audit": null,
+      "original_training_evidence": "The exported reconstruction code does not update target-model weights. Original checkpoint training or audit-specific adaptation was not established by the retained execution evidence.",
+      "comparators": []
+    },
+    "code": "materials/state/notebooks/state-kimi-r1/test-03.py"
+  },
+  "curve": {
+    "aggregation_and_uncertainty": "Computed from individual observations; uncertainty is labeled by resampling unit.",
+    "code": "materials/state/notebooks/state-kimi-r1/test-03.py"
+  },
+  "insight": {
+    "comparison_controls_confirmation": "Replays retained controls and separate context slices; no new independent cohort is claimed.",
+    "code": "materials/state/notebooks/state-kimi-r1/test-03.py"
+  },
+  "reconstruction_notes": [
+    "Individual cell-ID lists, raw single-cell inputs and frozen checkpoints for fresh model inference.",
+    "Exact trained embedding weights and perturbation index map.",
+    "Exact retained audit inputs are identified by relative filename and hash in the input inventory. A null download_source means no matching anonymous download has been established. Public upstream datasets do not substitute for missing original splits, predictions or annotations."
+  ],
+  "implementation": {
+    "notebook": "materials/state/notebooks/state-kimi-r1/test-03.ipynb",
+    "script": "materials/state/notebooks/state-kimi-r1/test-03.py",
+    "supporting_code": "code/state.json",
+    "cell_locations": [
+      {
+        "notebook_cell": 2,
+        "start_line": 1,
+        "end_line": 18
+      },
+      {
+        "notebook_cell": 3,
+        "start_line": 19,
+        "end_line": 34
+      },
+      {
+        "notebook_cell": 5,
+        "start_line": 35,
+        "end_line": 39
+      },
+      {
+        "notebook_cell": 6,
+        "start_line": 40,
+        "end_line": 50
+      },
+      {
+        "notebook_cell": 7,
+        "start_line": 51,
+        "end_line": 61
+      }
+    ],
+    "original_notebook_sha256": "502ecaabd1d0e2ee227cdf47435ac94002ec4f3f29551ae4f5414c37a90cdd95",
+    "published_notebook_sha256": "d913a5db94e16c819d7ffaa42ab249d044a83d314d827cc5ccbf3d18b824623f",
+    "changes": [
+      "Code-only export; Markdown verdicts and saved outputs omitted.",
+      "Machine-specific home paths replaced with /path/to/audit-home where present.",
+      "Python export converts notebook magic syntax using IPython; notebook retains its original code syntax.",
+      "Python exports remove trailing whitespace only after checking that the parsed syntax tree is unchanged."
+    ],
+    "saved_code_cells": 5,
+    "saved_error_outputs": 0
+  },
+  "requested_model": "STATE"
+}

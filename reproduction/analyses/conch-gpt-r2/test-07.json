@@ -1,0 +1,80 @@
+{
+  "id": "conch-gpt-r2/test-07",
+  "investigation": "conch-gpt-r2",
+  "model": "CONCH",
+  "axis": "external cohort/site",
+  "dataset_split": {
+    "description": "Incomplete original samples.",
+    "input_inventory": "inputs/conch.json",
+    "public_sources": [
+      "nct-images",
+      "crcval-images",
+      "kather-images",
+      "nct-mirror",
+      "conch-code"
+    ],
+    "sample_tables": []
+  },
+  "axis_levels": {
+    "definition": "cohort/site indicator plus continuous reference distance",
+    "calculation": "Specification or code only.",
+    "code": "materials/conch/notebooks/conch-gpt-r2-07.py"
+  },
+  "model_evaluation": {
+    "measurements": "Missing individual predictions.",
+    "fine_tuning": {
+      "target_weight_updates_in_replay": false,
+      "target_fine_tuning_during_original_audit": null,
+      "original_training_evidence": "The exported reconstruction code does not update target-model weights. Original checkpoint training or audit-specific adaptation was not established by the retained execution evidence.",
+      "comparators": []
+    },
+    "code": "materials/conch/notebooks/conch-gpt-r2-07.py"
+  },
+  "curve": {
+    "aggregation_and_uncertainty": "Not reproducible from retained inputs.",
+    "code": "materials/conch/notebooks/conch-gpt-r2-07.py"
+  },
+  "insight": {
+    "comparison_controls_confirmation": "Reported conclusion only.",
+    "code": "materials/conch/notebooks/conch-gpt-r2-07.py"
+  },
+  "reconstruction_notes": [
+    "The original individual image feature matrices, level assignments and target/baseline predictions are missing from the retained July Codex bundle.",
+    "Frozen specifications, cohort metadata, aggregate statistics and available recovered code are preserved. They cannot establish end-to-end reproduction without the missing records.",
+    "No original analysis script or native transcript was recovered for this r2 run; do not invent source code and attribute it to the original audit.",
+    "Exact retained audit inputs are identified by relative filename and hash in the input inventory. A null download_source means no matching anonymous download has been established. Public upstream datasets do not substitute for missing original splits, predictions or annotations."
+  ],
+  "implementation": {
+    "notebook": "materials/conch/notebooks/conch-gpt-r2-07.ipynb",
+    "script": "materials/conch/notebooks/conch-gpt-r2-07.py",
+    "supporting_code": "code/conch.json",
+    "cell_locations": [
+      {
+        "notebook_cell": 1,
+        "start_line": 1,
+        "end_line": 30
+      },
+      {
+        "notebook_cell": 4,
+        "start_line": 31,
+        "end_line": 34
+      },
+      {
+        "notebook_cell": 10,
+        "start_line": 35,
+        "end_line": 36
+      }
+    ],
+    "original_notebook_sha256": "c47deca469ec5dbdf7629bfbda3ca9bebfb752ab052b1e897bccbc97bd9f857b",
+    "published_notebook_sha256": "49a4c0c660d0d23c628aa8b789b20fa3099dabd7d2c34f62c9aab80e95502d3d",
+    "changes": [
+      "Code-only export; Markdown verdicts and saved outputs omitted.",
+      "Machine-specific home paths replaced with /path/to/audit-home where present.",
+      "Python export converts notebook magic syntax using IPython; notebook retains its original code syntax.",
+      "Python exports remove trailing whitespace only after checking that the parsed syntax tree is unchanged."
+    ],
+    "saved_code_cells": 3,
+    "saved_error_outputs": 0
+  },
+  "requested_model": "CONCH"
+}

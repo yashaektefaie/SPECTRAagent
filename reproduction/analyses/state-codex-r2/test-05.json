@@ -1,0 +1,137 @@
+{
+  "id": "state-codex-r2/test-05",
+  "investigation": "state-codex-r2",
+  "model": "STATE",
+  "axis": "Perturbation modality",
+  "dataset_split": {
+    "description": "The report survives, but the exact sample-level table needed for this test was not recovered.",
+    "input_inventory": "inputs/state.json",
+    "public_sources": [
+      "state-score-001",
+      "state-score-002",
+      "state-score-003",
+      "state-score-004",
+      "state-score-005",
+      "state-score-006",
+      "state-score-007",
+      "state-score-008",
+      "state-score-009",
+      "state-score-010",
+      "state-score-011",
+      "state-score-012",
+      "state-score-013",
+      "state-score-014",
+      "state-score-015",
+      "state-score-016",
+      "state-score-017",
+      "state-score-018",
+      "state-score-019",
+      "state-score-020",
+      "state-score-021",
+      "state-score-022",
+      "state-score-023",
+      "state-score-024",
+      "state-score-025",
+      "state-score-026",
+      "state-score-027",
+      "state-score-028",
+      "state-score-029",
+      "state-score-030",
+      "state-score-031",
+      "state-score-032",
+      "state-score-033",
+      "state-score-034",
+      "state-score-035",
+      "state-score-036",
+      "state-score-037",
+      "state-score-038",
+      "state-score-039",
+      "state-score-040",
+      "state-score-041",
+      "state-score-042",
+      "state-score-043",
+      "state-score-044",
+      "state-score-045",
+      "state-score-046",
+      "state-score-047",
+      "state-score-048",
+      "state-score-049",
+      "state-score-050",
+      "state-score-051",
+      "state-score-052",
+      "state-score-053",
+      "state-score-054",
+      "state-score-055",
+      "state-code",
+      "reactome",
+      "hgnc",
+      "go-annotations",
+      "go-ontology",
+      "wikipathways",
+      "kegg"
+    ],
+    "sample_tables": []
+  },
+  "axis_levels": {
+    "definition": "Genetic versus chemical perturbations.",
+    "calculation": "Any retained script is available in the input bundle; missing source arrays prevent a full replay.",
+    "code": "materials/state/notebooks/state-codex-r2/test-05.py"
+  },
+  "model_evaluation": {
+    "measurements": "Original per-record predictions and outcomes missing.",
+    "fine_tuning": {
+      "target_weight_updates_in_replay": false,
+      "target_fine_tuning_during_original_audit": null,
+      "original_training_evidence": "The exported reconstruction code does not update target-model weights. Original checkpoint training or audit-specific adaptation was not established by the retained execution evidence.",
+      "comparators": []
+    },
+    "code": "materials/state/notebooks/state-codex-r2/test-05.py"
+  },
+  "curve": {
+    "aggregation_and_uncertainty": "Cannot compute a curve from missing individual observations.",
+    "code": "materials/state/notebooks/state-codex-r2/test-05.py"
+  },
+  "insight": {
+    "comparison_controls_confirmation": "Original report remains a historical record; its checks cannot be rerun from summaries.",
+    "code": "materials/state/notebooks/state-codex-r2/test-05.py"
+  },
+  "reconstruction_notes": [
+    "Pre-cleanup workspace /path/to/audit-home/codex_spectra_audits_v2/STATE, including per-sample data and exact analysis scripts.",
+    "Original axis input features and level-assignment outputs.",
+    "Original individual predictions/observations and matched reference outputs.",
+    "Exact retained audit inputs are identified by relative filename and hash in the input inventory. A null download_source means no matching anonymous download has been established. Public upstream datasets do not substitute for missing original splits, predictions or annotations."
+  ],
+  "implementation": {
+    "notebook": "materials/state/notebooks/state-codex-r2/test-05.ipynb",
+    "script": "materials/state/notebooks/state-codex-r2/test-05.py",
+    "supporting_code": "code/state.json",
+    "cell_locations": [
+      {
+        "notebook_cell": 2,
+        "start_line": 1,
+        "end_line": 18
+      },
+      {
+        "notebook_cell": 3,
+        "start_line": 19,
+        "end_line": 34
+      },
+      {
+        "notebook_cell": 5,
+        "start_line": 35,
+        "end_line": 38
+      }
+    ],
+    "original_notebook_sha256": "bb0178de44fa831202b677315ef249388b370b87c849b5f92cde360f462193e6",
+    "published_notebook_sha256": "4feb576322fa4c935144b6e4803486b1b28e44d628a172f2233a23cf53df8deb",
+    "changes": [
+      "Code-only export; Markdown verdicts and saved outputs omitted.",
+      "Machine-specific home paths replaced with /path/to/audit-home where present.",
+      "Python export converts notebook magic syntax using IPython; notebook retains its original code syntax.",
+      "Python exports remove trailing whitespace only after checking that the parsed syntax tree is unchanged."
+    ],
+    "saved_code_cells": 3,
+    "saved_error_outputs": 0
+  },
+  "requested_model": "STATE"
+}

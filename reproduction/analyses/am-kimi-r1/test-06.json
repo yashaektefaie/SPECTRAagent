@@ -1,0 +1,77 @@
+{
+  "id": "am-kimi-r1/test-06",
+  "investigation": "am-kimi-r1",
+  "model": "AlphaMissense",
+  "axis": "population observability (AF tiers: unobserved / rare / common)",
+  "dataset_split": {
+    "description": "Exact individual input panel unavailable",
+    "input_inventory": "inputs/alphamissense.json",
+    "public_sources": [
+      "alphamissense-scores",
+      "alphamissense-genomic",
+      "proteingym-assays",
+      "proteingym-alignments",
+      "proteingym-metadata",
+      "clinvar",
+      "gencode32",
+      "gencode50",
+      "alphafold-example"
+    ],
+    "sample_tables": []
+  },
+  "axis_levels": {
+    "definition": "AM degrades for population-observed variants",
+    "calculation": "Original analysis programs retained; not executable without original inputs",
+    "code": "materials/alphamissense/am-kimi-r1/axis-6.py"
+  },
+  "model_evaluation": {
+    "measurements": "Individual prediction / label pairs unavailable",
+    "fine_tuning": {
+      "target_weight_updates_in_replay": false,
+      "target_fine_tuning_during_original_audit": null,
+      "original_training_evidence": "The exported reconstruction code does not update target-model weights. Original checkpoint training or audit-specific adaptation was not established by the retained execution evidence.",
+      "comparators": []
+    },
+    "code": "materials/alphamissense/am-kimi-r1/axis-6.py"
+  },
+  "curve": {
+    "aggregation_and_uncertainty": "Only archived summaries retained; no recomputation claimed",
+    "code": "materials/alphamissense/am-kimi-r1/axis-6.py"
+  },
+  "insight": {
+    "comparison_controls_confirmation": "Historical claim retained; original controls cannot be fully rerun",
+    "code": "materials/alphamissense/am-kimi-r1/axis-6.py"
+  },
+  "reconstruction_notes": [
+    "data/processed/panel_frozen.tsv",
+    "data/processed/am_matched.tsv",
+    "data/raw/uniprot_human_proteome.fasta.gz",
+    "data/raw/clinvar.vcf.gz",
+    "data/raw/gencode.v50.basic.annotation.gtf.gz",
+    "The original homology/ortholog annotations and population-frequency annotations consumed by the supplementary scripts",
+    "Exact retained audit inputs are identified by relative filename and hash in the input inventory. A null download_source means no matching anonymous download has been established. Public upstream datasets do not substitute for missing original splits, predictions or annotations."
+  ],
+  "implementation": {
+    "notebook": "materials/alphamissense/am-kimi-r1/axis-6.ipynb",
+    "script": "materials/alphamissense/am-kimi-r1/axis-6.py",
+    "supporting_code": "code/alphamissense.json",
+    "cell_locations": [
+      {
+        "notebook_cell": 2,
+        "start_line": 1,
+        "end_line": 10
+      }
+    ],
+    "original_notebook_sha256": "550084aa5c7c7f292dee1f73de1a13a6e0dcaf602ef23ee27450b19e6ce1c470",
+    "published_notebook_sha256": "41b1aafa19b5a892e63d16b0df20bd30ed1e560d820b9ac9e277eadbb69c501a",
+    "changes": [
+      "Code-only export; Markdown verdicts and saved outputs omitted.",
+      "Machine-specific home paths replaced with /path/to/audit-home where present.",
+      "Python export converts notebook magic syntax using IPython; notebook retains its original code syntax.",
+      "Python exports remove trailing whitespace only after checking that the parsed syntax tree is unchanged."
+    ],
+    "saved_code_cells": 1,
+    "saved_error_outputs": 0
+  },
+  "requested_model": "AlphaMissense"
+}

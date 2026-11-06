@@ -1,0 +1,155 @@
+[
+  {
+    "source_file": "source/conch-opus-r1/crcval_features.csv",
+    "source_sha256": "cc302d0bbf94e67928b370988a8191256b0e6a68d5c1e78708aabd1badad3e1b",
+    "path": "samples/conch/7ba2dda96f0ce863.json.gz",
+    "sha256": "1eba920c0680b618aa4b8f076cab2a09c6aa7bee8909b2ef50b31162c2b6258c",
+    "rows": 7180,
+    "columns": [
+      "id",
+      "cls"
+    ]
+  },
+  {
+    "source_file": "source/conch-opus-r1/crcval_manifest.csv",
+    "source_sha256": "1c0818beea271d75aea4d5633586c5e6dfe7db24fa42ae7426c04ff2fbc2f8a9",
+    "path": "samples/conch/c9220cdcdf8a6d3d.json.gz",
+    "sha256": "e5c82e4480ce6fa386fdb56fa29a85485efab8b2457bb0ff5db378dc0c240286",
+    "rows": 7180,
+    "columns": [
+      "id",
+      "cls"
+    ]
+  },
+  {
+    "source_file": "source/conch-opus-r1/crcval_scored.csv",
+    "source_sha256": "c15738a42af5cbf57d0621b10a34fc964022eb7dde1e74b4980594cdb30b8057",
+    "path": "samples/conch/975daa9deb0cbac9.json.gz",
+    "sha256": "b57657d5646ae8f206589222406daa9d20e1978c0981f7c01e4d50ebdfcb8816",
+    "rows": 7180,
+    "columns": [
+      "id",
+      "cls",
+      "image_path",
+      "label_name",
+      "level"
+    ]
+  },
+  {
+    "source_file": "source/conch-opus-r1/nct_features.csv",
+    "source_sha256": "2069e3a0ccac6efe734bf858792f48870cb7d3404de667b6d4a7e13c7510f886",
+    "path": "samples/conch/9ffc7b7384288ab7.json.gz",
+    "sha256": "df9fbbc05636807b7c8127fd050f5107dbd25b9a460d12bf051e928c8d9794b6",
+    "rows": 2700,
+    "columns": [
+      "id",
+      "cls"
+    ]
+  },
+  {
+    "source_file": "source/conch-opus-r1/nct_manifest.csv",
+    "source_sha256": "38267bc77567f13df7a3eca64c37d418ef2662018a7a05c7a470f0a3f5d1eaf0",
+    "path": "samples/conch/b6cbb7ca6da61523.json.gz",
+    "sha256": "a10a4bc0bfef090d12cd99e3e6fe76b7c656849328cd615cc34be4de40438488",
+    "rows": 2700,
+    "columns": [
+      "id",
+      "cls"
+    ]
+  },
+  {
+    "source_file": "source/conch-opus-r2/confirmation_manifest.csv",
+    "source_sha256": "c59961830524f56c33d512b26bc07f43e9008c57d79b95a5f9023ebcbf9fceea",
+    "path": "samples/conch/5c77da8845d07022.json.gz",
+    "sha256": "51fed1ab00a372143e5b7dd2a53d157c6e9de1135e118418a6300117248d807e",
+    "rows": 1080,
+    "columns": [
+      "label_name",
+      "sample_id"
+    ]
+  },
+  {
+    "source_file": "source/conch-opus-r2/confirmation_per_tile.csv",
+    "source_sha256": "5aa18fcf0ec17d2730c19ab71d3b6758931467b857413b75d4e1ead08e0f4630",
+    "path": "samples/conch/800fa17c66382007.json.gz",
+    "sha256": "a329bc2966d0574d18bf9569ab9b6738592eebefaec6ddbb3c085799cd1e6a12",
+    "rows": 4320,
+    "columns": [
+      "sample_id",
+      "label_name",
+      "label"
+    ]
+  },
+  {
+    "source_file": "source/conch-opus-r2/dev_features.csv",
+    "source_sha256": "f0ce3035c6a72e1d125561b77177596b29a243e8b536ab01ba8fb8583f6b4854",
+    "path": "samples/conch/91bad89cc4e2c076.json.gz",
+    "sha256": "0169164b33fddd6a6ebb7fe8013fa4f0290602393ab65e11b4923f6eb9faf30b",
+    "rows": 7180,
+    "columns": [
+      "label_name",
+      "sample_id",
+      "image_path"
+    ]
+  },
+  {
+    "source_file": "source/conch-opus-r2/dev_manifest.csv",
+    "source_sha256": "b2440dc277e9264ed0c0f7b1660e9101598fe69c3987fd953ce00a3fda2ff0be",
+    "path": "samples/conch/8ecabe5d4634b80e.json.gz",
+    "sha256": "aa0f1b6017d2766175775238ca5bce6b1ba30a55d368220e9c8eedc46478cc27",
+    "rows": 7180,
+    "columns": [
+      "label_name",
+      "sample_id",
+      "image_path"
+    ]
+  },
+  {
+    "source_file": "source/conch-opus-r2/reference_manifest.csv",
+    "source_sha256": "4f542bdfc11fa6232ca41c601f88d52ab2730fe76f23de2478c72205dceaadaf",
+    "path": "samples/conch/440ccfdc632b2c89.json.gz",
+    "sha256": "38c6d0c9bdb7143d87dec49413b4e386d60d99a086bb33ac3a4d16e7d6675f81",
+    "rows": 2700,
+    "columns": [
+      "label_name",
+      "sample_id"
+    ]
+  },
+  {
+    "source_file": "source/conch-primary/confirmation.csv",
+    "source_sha256": "61bb1f4a5ddecca7f513f36181fd3fa58b01aa9985d0c1f523ff2f20a50a8829",
+    "path": "samples/conch/8ada4d43f40036a3.json.gz",
+    "sha256": "ecbe999d2ae87bbc6a544a6090d36049fda753c3c52d4bbbf1cc5864e646be20",
+    "rows": 1800,
+    "columns": [
+      "sample_id",
+      "label",
+      "label_name"
+    ]
+  },
+  {
+    "source_file": "source/conch-primary/discovery.csv",
+    "source_sha256": "e319ab919e3f0142a6e919b9d5521d784922accdf8f740b744e3f3d446307ed3",
+    "path": "samples/conch/f8987009a90dbeb6.json.gz",
+    "sha256": "eed108af9c0a0ff973e6fd3b664edd60b74d9f1ee30b976bed8634af1add5d99",
+    "rows": 7180,
+    "columns": [
+      "sample_id",
+      "label",
+      "label_name"
+    ]
+  },
+  {
+    "source_file": "source/shared/crcval_predictions.csv",
+    "source_sha256": "d0f00ee3904e1f5191c75267c04c42fc3b23ffd7e8bd1a0c0c7185f3bdc19852",
+    "path": "samples/conch/22b80e675660a6f9.json.gz",
+    "sha256": "5d13dcfd57b1baa3980b48ecfb7b964048c304655973dd7ca42e8ed2ef2b0093",
+    "rows": 7180,
+    "columns": [
+      "sample_id",
+      "image_path",
+      "label",
+      "label_name"
+    ]
+  }
+]

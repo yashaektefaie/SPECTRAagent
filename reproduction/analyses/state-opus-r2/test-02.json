@@ -1,0 +1,194 @@
+{
+  "id": "state-opus-r2/test-02",
+  "investigation": "state-opus-r2",
+  "model": "STATE",
+  "axis": "Chemical structure and mechanism coverage",
+  "dataset_split": {
+    "description": "Original sample identities retained.",
+    "input_inventory": "inputs/state.json",
+    "public_sources": [
+      "state-score-001",
+      "state-score-002",
+      "state-score-003",
+      "state-score-004",
+      "state-score-005",
+      "state-score-006",
+      "state-score-007",
+      "state-score-008",
+      "state-score-009",
+      "state-score-010",
+      "state-score-011",
+      "state-score-012",
+      "state-score-013",
+      "state-score-014",
+      "state-score-015",
+      "state-score-016",
+      "state-score-017",
+      "state-score-018",
+      "state-score-019",
+      "state-score-020",
+      "state-score-021",
+      "state-score-022",
+      "state-score-023",
+      "state-score-024",
+      "state-score-025",
+      "state-score-026",
+      "state-score-027",
+      "state-score-028",
+      "state-score-029",
+      "state-score-030",
+      "state-score-031",
+      "state-score-032",
+      "state-score-033",
+      "state-score-034",
+      "state-score-035",
+      "state-score-036",
+      "state-score-037",
+      "state-score-038",
+      "state-score-039",
+      "state-score-040",
+      "state-score-041",
+      "state-score-042",
+      "state-score-043",
+      "state-score-044",
+      "state-score-045",
+      "state-score-046",
+      "state-score-047",
+      "state-score-048",
+      "state-score-049",
+      "state-score-050",
+      "state-score-051",
+      "state-score-052",
+      "state-score-053",
+      "state-score-054",
+      "state-score-055",
+      "state-code",
+      "reactome",
+      "hgnc",
+      "go-annotations",
+      "go-ontology",
+      "wikipathways",
+      "kegg"
+    ],
+    "sample_tables": [
+      {
+        "source_file": "assets/state-opus-r2/data/predictions.csv",
+        "source_sha256": "28dbbc22f7482a8f720f096de47eb83a20e84f2dbf7656d5a8a019a7e7d08bc1",
+        "path": "samples/state/1e0c50980ebae0ab.json.gz",
+        "sha256": "1c7913025c6658fe14d4ac98b6e8ac3aefcea2a1ab4059c6606b3f3950f8ef9c",
+        "rows": 39808,
+        "columns": [
+          "source_repo",
+          "source_path",
+          "dataset_family",
+          "protocol",
+          "context",
+          "split_id",
+          "representation",
+          "perturbation",
+          "perturbation_name",
+          "dose",
+          "dose_unit",
+          "perturbation_norm",
+          "row_key"
+        ]
+      },
+      {
+        "source_file": "assets/state-opus-r2/spectra_run/artifacts/replogle_go_features.csv",
+        "source_sha256": "cd9202c48a6b4cd61d3581a2f456b31c94d666abf6bedebcc6dc3828e4a201d8",
+        "path": "samples/state/ab70480bcd508c39.json.gz",
+        "sha256": "bd71a593e0e2f3a9ffccaabc6b64d3bc4b67111b73849e571b752becd0d9b1d5",
+        "rows": 1911,
+        "columns": [
+          "perturbation_name"
+        ]
+      },
+      {
+        "source_file": "assets/state-opus-r2/spectra_run/artifacts/tahoe_drug_features.csv",
+        "source_sha256": "f264074500d103d405d7f2165aa5dfca7c6587935b67fd897c5b0874af8eac57",
+        "path": "samples/state/0491be307fe6332a.json.gz",
+        "sha256": "3eaf48ab5eaa6a556dddcf522b285a944c6b49e59b7ebb33bde30ffec855a15c",
+        "rows": 379,
+        "columns": [
+          "perturbation_name"
+        ]
+      }
+    ]
+  },
+  "axis_levels": {
+    "definition": "Drug Tanimoto similarity, mechanism-of-action coverage and target coverage.",
+    "calculation": "Chemical Tanimoto and pilot correlations rerun. Original mechanism and target-coverage analyses are not independently replayed here.",
+    "code": "materials/state/notebooks/state-opus-r2/test-02.py"
+  },
+  "model_evaluation": {
+    "measurements": "Saved per-record model scores are used; raw prediction-level recalculation is unavailable.",
+    "fine_tuning": {
+      "target_weight_updates_in_replay": false,
+      "target_fine_tuning_during_original_audit": null,
+      "original_training_evidence": "The exported reconstruction code does not update target-model weights. Original checkpoint training or audit-specific adaptation was not established by the retained execution evidence.",
+      "comparators": []
+    },
+    "code": "materials/state/notebooks/state-opus-r2/test-02.py"
+  },
+  "curve": {
+    "aggregation_and_uncertainty": "Retained individual scores are used to recompute the displayed contrasts, correlations or controls. No additional bootstrap interval is claimed.",
+    "code": "materials/state/notebooks/state-opus-r2/test-02.py"
+  },
+  "insight": {
+    "comparison_controls_confirmation": "Replays retained controls and separate context slices; no new independent cohort is claimed.",
+    "code": "materials/state/notebooks/state-opus-r2/test-02.py"
+  },
+  "reconstruction_notes": [
+    "Predicted and observed expression matrices for independent metric calculation; original model checkpoint provenance.",
+    "Original calculation chain for the mechanism and target-coverage components beyond the recovered chemical-similarity pilot.",
+    "Exact retained audit inputs are identified by relative filename and hash in the input inventory. A null download_source means no matching anonymous download has been established. Public upstream datasets do not substitute for missing original splits, predictions or annotations."
+  ],
+  "implementation": {
+    "notebook": "materials/state/notebooks/state-opus-r2/test-02.ipynb",
+    "script": "materials/state/notebooks/state-opus-r2/test-02.py",
+    "supporting_code": "code/state.json",
+    "cell_locations": [
+      {
+        "notebook_cell": 2,
+        "start_line": 1,
+        "end_line": 18
+      },
+      {
+        "notebook_cell": 3,
+        "start_line": 19,
+        "end_line": 34
+      },
+      {
+        "notebook_cell": 4,
+        "start_line": 35,
+        "end_line": 40
+      },
+      {
+        "notebook_cell": 5,
+        "start_line": 41,
+        "end_line": 85
+      },
+      {
+        "notebook_cell": 6,
+        "start_line": 86,
+        "end_line": 140
+      },
+      {
+        "notebook_cell": 7,
+        "start_line": 141,
+        "end_line": 142
+      }
+    ],
+    "original_notebook_sha256": "939cac5c46a9666c4f8e4d581457a9092b7c033f08b0c5dc9708da4e35eee5ef",
+    "published_notebook_sha256": "28f6511c797834d884df23b7a5c57567d853ea85c1c46e6248f64abd3511c7f4",
+    "changes": [
+      "Code-only export; Markdown verdicts and saved outputs omitted.",
+      "Machine-specific home paths replaced with /path/to/audit-home where present.",
+      "Python export converts notebook magic syntax using IPython; notebook retains its original code syntax.",
+      "Python exports remove trailing whitespace only after checking that the parsed syntax tree is unchanged."
+    ],
+    "saved_code_cells": 6,
+    "saved_error_outputs": 0
+  },
+  "requested_model": "STATE"
+}

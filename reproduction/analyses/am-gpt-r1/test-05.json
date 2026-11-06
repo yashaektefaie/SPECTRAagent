@@ -1,0 +1,77 @@
+{
+  "id": "am-gpt-r1/test-05",
+  "investigation": "am-gpt-r1",
+  "model": "AlphaMissense",
+  "axis": "Protein-function mechanism check",
+  "dataset_split": {
+    "description": "Exact individual input panel unavailable",
+    "input_inventory": "inputs/alphamissense.json",
+    "public_sources": [
+      "alphamissense-scores",
+      "alphamissense-genomic",
+      "proteingym-assays",
+      "proteingym-alignments",
+      "proteingym-metadata",
+      "clinvar",
+      "gencode32",
+      "gencode50",
+      "alphafold-example"
+    ],
+    "sample_tables": []
+  },
+  "axis_levels": {
+    "definition": "Evaluate substitution effects on ProteinGym DMS as a control for a possible splicing mechanism.",
+    "calculation": "Original analysis programs retained; not executable without original inputs",
+    "code": "materials/alphamissense/am-gpt-r1/axis-5.py"
+  },
+  "model_evaluation": {
+    "measurements": "Individual prediction / label pairs unavailable",
+    "fine_tuning": {
+      "target_weight_updates_in_replay": false,
+      "target_fine_tuning_during_original_audit": null,
+      "original_training_evidence": "The exported reconstruction code does not update target-model weights. Original checkpoint training or audit-specific adaptation was not established by the retained execution evidence.",
+      "comparators": []
+    },
+    "code": "materials/alphamissense/am-gpt-r1/axis-5.py"
+  },
+  "curve": {
+    "aggregation_and_uncertainty": "Only archived summaries retained; no recomputation claimed",
+    "code": "materials/alphamissense/am-gpt-r1/axis-5.py"
+  },
+  "insight": {
+    "comparison_controls_confirmation": "Historical claim retained; original controls cannot be fully rerun",
+    "code": "materials/alphamissense/am-gpt-r1/axis-5.py"
+  },
+  "reconstruction_notes": [
+    "data/processed/clinvar_discovery_scored.parquet",
+    "data/processed/clinvar_confirmation_outcomes_sealed.parquet",
+    "data/processed/proteingym_dms_discovery_scored.parquet",
+    "data/processed/proteingym_dms_confirmation_scored.parquet",
+    "The July 7 2026 ClinVar snapshot, SHA256 5fe4fe10783391d01dc414dc5583a3e63487b67f8cd3c8429d59227cd5f4f37f, plus pinned AlphaMissense, GENCODE v32 and ProteinGym v1.3 inputs listed in retained/provenance/manifest.md",
+    "controller/state.json from the original run; the frozen axis specification is retained in retained/config/frozen_axis.json",
+    "Exact retained audit inputs are identified by relative filename and hash in the input inventory. A null download_source means no matching anonymous download has been established. Public upstream datasets do not substitute for missing original splits, predictions or annotations."
+  ],
+  "implementation": {
+    "notebook": "materials/alphamissense/am-gpt-r1/axis-5.ipynb",
+    "script": "materials/alphamissense/am-gpt-r1/axis-5.py",
+    "supporting_code": "code/alphamissense.json",
+    "cell_locations": [
+      {
+        "notebook_cell": 2,
+        "start_line": 1,
+        "end_line": 10
+      }
+    ],
+    "original_notebook_sha256": "a438923b92bebeee0ec0328bcb7dba58e53f64165f05ac26df464163ffaecb2b",
+    "published_notebook_sha256": "f8e76088f56d4361f770f1fde45981c77d0a75b533cb3028e4170be4e0fb45d6",
+    "changes": [
+      "Code-only export; Markdown verdicts and saved outputs omitted.",
+      "Machine-specific home paths replaced with /path/to/audit-home where present.",
+      "Python export converts notebook magic syntax using IPython; notebook retains its original code syntax.",
+      "Python exports remove trailing whitespace only after checking that the parsed syntax tree is unchanged."
+    ],
+    "saved_code_cells": 1,
+    "saved_error_outputs": 0
+  },
+  "requested_model": "AlphaMissense"
+}

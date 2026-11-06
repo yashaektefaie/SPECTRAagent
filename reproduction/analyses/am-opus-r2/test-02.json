@@ -1,0 +1,379 @@
+{
+  "id": "am-opus-r2/test-02",
+  "investigation": "am-opus-r2",
+  "model": "AlphaMissense",
+  "axis": "Whole-protein alignment depth",
+  "dataset_split": {
+    "description": "Original 271,201 rows and saved protein split reproduced; original lookup omitted 1,934 source variants",
+    "input_inventory": "inputs/alphamissense.json",
+    "public_sources": [
+      "alphamissense-scores",
+      "alphamissense-genomic",
+      "proteingym-assays",
+      "proteingym-alignments",
+      "proteingym-metadata",
+      "clinvar",
+      "gencode32",
+      "gencode50",
+      "alphafold-example"
+    ],
+    "sample_tables": [
+      {
+        "source_file": "am-opus-r2/inputs/assay_meta.csv",
+        "source_sha256": "1a6d5daf107eaf17577e286b94278beef61e6f07689ef8e93e2c706cc62ddc4d",
+        "path": "samples/alphamissense/4ae0fec495384f21.json.gz",
+        "sha256": "28768bed449b492d00a20885c296244bc4d2585bec6d620f113962086956cced",
+        "rows": 73,
+        "columns": [
+          "assay",
+          "acc"
+        ]
+      },
+      {
+        "source_file": "am-opus-r2/inputs/assay_msa_map.csv",
+        "source_sha256": "cc6bf1a5316fc82a0aa29b2fc99c0f120021860caf2ef35b1534bbb7039688c8",
+        "path": "samples/alphamissense/dd2e3ca9a9c4c074.json.gz",
+        "sha256": "6a21833f991f66569a8d0126307185fbf992d1e0afba9db8170f2f9dd643e45f",
+        "rows": 73,
+        "columns": [
+          "assay",
+          "acc"
+        ]
+      },
+      {
+        "source_file": "am-opus-r2/inputs/master.parquet",
+        "source_sha256": "fc45ecf15bc1bc52198b7ae994233c1d5976bcd7ffbcda9e6e4d284bc6583899",
+        "path": "samples/alphamissense/011beafcb4a4bbc8.json.gz",
+        "sha256": "f1a2643f3ea861c8dae7228e2dbe7324e49c2870352301038719af25c368f8f7",
+        "rows": 271201,
+        "columns": [
+          "assay",
+          "acc",
+          "position",
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-opus-r2/inputs/master_plddt.parquet",
+        "source_sha256": "09d3141ce6eb6d28b02ac28514ec1a25dac6bf4c5898a8d3e1e8019ae437a778",
+        "path": "samples/alphamissense/dcda850d2d422241.json.gz",
+        "sha256": "98de714db014a18e4a81fad5ee51ef7f9be273ddcc63269815ab9e66cfee909c",
+        "rows": 271201,
+        "columns": [
+          "assay",
+          "acc",
+          "position",
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-opus-r2/inputs/needed_msas.csv",
+        "source_sha256": "a06d36cd5b3d9852ddc8a54f732c1c8c9c21aba86415f2890df23c97b39de15e",
+        "path": "samples/alphamissense/3f3801aff8ac7aac.json.gz",
+        "sha256": "e0621170747c2ecac4a8e44ed68813ce4200b2d978eaaa1d922e062321613562",
+        "rows": 66,
+        "columns": [
+          "acc",
+          "assay"
+        ]
+      },
+      {
+        "source_file": "am-opus-r2/inputs/per_assay_accuracy.csv",
+        "source_sha256": "6ff85dcf83f876dc74cf0e2bb258319ae592bd09fe59f6643cc9f013b5ab4f3a",
+        "path": "samples/alphamissense/2ad2e624e9cde42d.json.gz",
+        "sha256": "8996f8187dbc64368f21acc3fc7dd0829ee3da17ccc7bdfd5c92022311bb75af",
+        "rows": 73,
+        "columns": [
+          "assay",
+          "acc"
+        ]
+      },
+      {
+        "source_file": "am-opus-r2/inputs/plddt_mapping_diag.csv",
+        "source_sha256": "c55db7586b5a3c8c368628837491b0edac491c2fdf70594d55223f41edd24b27",
+        "path": "samples/alphamissense/2610f7047a57c651.json.gz",
+        "sha256": "41084b7fc63c838f2ef3247e37c3379d114d23ea6089a4d9f88c67d026f0137f",
+        "rows": 73,
+        "columns": [
+          "assay",
+          "acc"
+        ]
+      },
+      {
+        "source_file": "am-opus-r2/inputs/predictions.csv",
+        "source_sha256": "6c458fc263b7c90db7cc84e48662425c540b6f6f85a52d9a7cb2cfad15d8cc9d",
+        "path": "samples/alphamissense/56cc536592a40397.json.gz",
+        "sha256": "b594d6dbf968591722c2f0ba54bf1f7aa90ae7acc6502ff87c727b3e72b8b0b0",
+        "rows": 271201,
+        "columns": [
+          "assay",
+          "acc",
+          "position",
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-opus-r2/recomputed/assay_meta.csv",
+        "source_sha256": "1a6d5daf107eaf17577e286b94278beef61e6f07689ef8e93e2c706cc62ddc4d",
+        "path": "samples/alphamissense/f1e17dea899ed454.json.gz",
+        "sha256": "ec770ea8e8fd9f4e36c04726f4b97af09526d69b15676140917195326342f187",
+        "rows": 73,
+        "columns": [
+          "assay",
+          "acc"
+        ]
+      },
+      {
+        "source_file": "am-opus-r2/recomputed/assay_msa_map.csv",
+        "source_sha256": "cc6bf1a5316fc82a0aa29b2fc99c0f120021860caf2ef35b1534bbb7039688c8",
+        "path": "samples/alphamissense/44bf8c28d19ad11d.json.gz",
+        "sha256": "3e42b6969fae04ca91582392d98555667f280cdef0b5dfd0e421ddb08341102c",
+        "rows": 73,
+        "columns": [
+          "assay",
+          "acc"
+        ]
+      },
+      {
+        "source_file": "am-opus-r2/recomputed/axis_specific_sample_splits.csv.gz",
+        "source_sha256": "cfce150496831d9196a0472adc525f7adb1e8ae5e617644f0cc8362e809ce242",
+        "path": "samples/alphamissense/6b79ce33037cb0f1.json.gz",
+        "sha256": "45ad0ff291c57453abc2942837550f17c654a56296df86934d84b7085c10b62f",
+        "rows": 271201,
+        "columns": [
+          "assay",
+          "acc",
+          "position",
+          "mutant",
+          "split"
+        ]
+      },
+      {
+        "source_file": "am-opus-r2/recomputed/coverage_sample_measurements.csv.gz",
+        "source_sha256": "d5cf993be70eba9c86c66504ed8c98d8e3a313fae5040122f0adc1e9d2b61a70",
+        "path": "samples/alphamissense/e01a8cef12a6740d.json.gz",
+        "sha256": "6eea5ea1046e78de636656efb68fb78cabe934c13ae6f7df5c1ffc61ea6dd58f",
+        "rows": 271201,
+        "columns": [
+          "assay",
+          "acc",
+          "position",
+          "mutant",
+          "level"
+        ]
+      },
+      {
+        "source_file": "am-opus-r2/recomputed/master.parquet",
+        "source_sha256": "d539e67ef5467a6f4e908b3af92af03f5a081b34698b8978ab91d44be04432a7",
+        "path": "samples/alphamissense/930febf2916603bb.json.gz",
+        "sha256": "60de71fb69e8f9e3e399cef71bf77318b02f2a2ebf58291d796888ed2441b0bf",
+        "rows": 271201,
+        "columns": [
+          "assay",
+          "acc",
+          "position",
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-opus-r2/recomputed/master_plddt.parquet",
+        "source_sha256": "f325ce0a9a47f5d09e636d2f057b360768affdfa9ae51018c2e3ed459219f748",
+        "path": "samples/alphamissense/51f0dca1a60f307c.json.gz",
+        "sha256": "360831d52c1921c0f37e13854344ae2b372b23bee6aaa3879ca7d85993c9b839",
+        "rows": 271201,
+        "columns": [
+          "assay",
+          "acc",
+          "position",
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-opus-r2/recomputed/plddt_assay_scores.csv",
+        "source_sha256": "113a63ddbe4ef561fcebeea2bb33c270ec0c2e3cda010d75be623d6e62ac36a3",
+        "path": "samples/alphamissense/924eec18f42402d4.json.gz",
+        "sha256": "5a6b55b0ee89ac2025ee1aed1e8e95aaea7985379990a5d47f3aef111960d7d5",
+        "rows": 230,
+        "columns": [
+          "assay",
+          "level",
+          "acc",
+          "split"
+        ]
+      },
+      {
+        "source_file": "am-opus-r2/recomputed/plddt_mapping_diag.csv",
+        "source_sha256": "c55db7586b5a3c8c368628837491b0edac491c2fdf70594d55223f41edd24b27",
+        "path": "samples/alphamissense/6f20b9159ee26e36.json.gz",
+        "sha256": "981a6c6d43f5e1fe2e8e0230e1d3673ed1e5338b32a66a1cbda7a2107c0244be",
+        "rows": 73,
+        "columns": [
+          "assay",
+          "acc"
+        ]
+      },
+      {
+        "source_file": "am-opus-r2/recomputed/plddt_sample_measurements.csv.gz",
+        "source_sha256": "f500801b887d2900474b8719940ffc4e908d237d0ffeb65404e6bdc79a07ed6b",
+        "path": "samples/alphamissense/2e9ddf6a5ee27eec.json.gz",
+        "sha256": "6480e9b3f379e47142026ecbce414cc2932fd38d1c26e0cd1b301cd8f365e5d6",
+        "rows": 268742,
+        "columns": [
+          "assay",
+          "acc",
+          "position",
+          "mutant",
+          "split",
+          "level"
+        ]
+      },
+      {
+        "source_file": "am-opus-r2/recomputed/sample_split.csv.gz",
+        "source_sha256": "5310aee2a529447ef74e64033623e89c6c7cda32fe68d94f775a8ca4ac8c6e50",
+        "path": "samples/alphamissense/a68aed680d7b665e.json.gz",
+        "sha256": "673655927b1930a6cf07b7360c56ccf9f48676e038412df143a1883b1098432c",
+        "rows": 271201,
+        "columns": [
+          "assay",
+          "acc",
+          "position",
+          "mutant",
+          "split"
+        ]
+      },
+      {
+        "source_file": "am-opus-r2/recomputed/variant_scores_and_features.parquet",
+        "source_sha256": "8f7aa9c5f8067271260393614ceb34137ede8d6464c1183cca87f73db65a5f98",
+        "path": "samples/alphamissense/2f30f3ae54632b65.json.gz",
+        "sha256": "aefe05ec11d7470f8c1178371958d6bf4543acfb38067819bf7e367c14df3826",
+        "rows": 271201,
+        "columns": [
+          "assay",
+          "acc",
+          "position",
+          "mutant",
+          "split"
+        ]
+      }
+    ]
+  },
+  "axis_levels": {
+    "definition": "Compare agreement across proteins using effective alignment depth; inspect assay type.",
+    "calculation": "Coverage/PSSM regenerated from 66 alignments; pLDDT mapped from 61 PDBs; exact original levels and axis-specific protein splits reconstructed.",
+    "code": "materials/alphamissense/am-opus-r2/axis-2.py"
+  },
+  "model_evaluation": {
+    "measurements": "Scientific input error: fragment coordinates give 37,014 incorrect AlphaMissense scores; historical replay and separate corrected-score sensitivity are both preserved",
+    "fine_tuning": {
+      "target_weight_updates_in_replay": false,
+      "target_fine_tuning_during_original_audit": null,
+      "original_training_evidence": "These calculations reuse released AlphaMissense scores without updating model weights. Upstream checkpoint training is separate from this audit.",
+      "comparators": []
+    },
+    "code": "materials/alphamissense/am-opus-r2/axis-2.py"
+  },
+  "curve": {
+    "aggregation_and_uncertainty": "Original individual-measurement curve/paired effects reproduced; bootstrap calculated from assay-level observations, not summary inputs",
+    "code": "materials/alphamissense/am-opus-r2/axis-2.py"
+  },
+  "insight": {
+    "comparison_controls_confirmation": "Original split and stated controls replayed; timing of independent selection is unproven. Corrected-score check is post hoc, not new confirmation",
+    "code": "materials/alphamissense/am-opus-r2/axis-2.py"
+  },
+  "reconstruction_notes": [
+    "Original preprocessing command that generated supplied predictions.csv",
+    "A full cohort repair restoring the 1,934 originally omitted fragment variants, followed by scientific review",
+    "Independent evidence establishing original split timing relative to axis selection",
+    "Exact upstream weighting procedure for ProteinGym whole-protein MSA_Neff_L metadata",
+    "The original fragment-coordinate lookup changes 37,014 scores when corrected and omits 1,934 variants. The full corrected cohort has not been reconstructed; a same-panel sensitivity is a separate analysis.",
+    "Exact retained audit inputs are identified by relative filename and hash in the input inventory. A null download_source means no matching anonymous download has been established. Public upstream datasets do not substitute for missing original splits, predictions or annotations."
+  ],
+  "implementation": {
+    "notebook": "materials/alphamissense/am-opus-r2/axis-2.ipynb",
+    "script": "materials/alphamissense/am-opus-r2/axis-2.py",
+    "supporting_code": "code/alphamissense.json",
+    "cell_locations": [
+      {
+        "notebook_cell": 3,
+        "start_line": 1,
+        "end_line": 23
+      },
+      {
+        "notebook_cell": 5,
+        "start_line": 24,
+        "end_line": 34
+      },
+      {
+        "notebook_cell": 7,
+        "start_line": 35,
+        "end_line": 95
+      },
+      {
+        "notebook_cell": 8,
+        "start_line": 96,
+        "end_line": 101
+      },
+      {
+        "notebook_cell": 10,
+        "start_line": 102,
+        "end_line": 146
+      },
+      {
+        "notebook_cell": 11,
+        "start_line": 147,
+        "end_line": 151
+      },
+      {
+        "notebook_cell": 13,
+        "start_line": 152,
+        "end_line": 210
+      },
+      {
+        "notebook_cell": 14,
+        "start_line": 211,
+        "end_line": 230
+      },
+      {
+        "notebook_cell": 16,
+        "start_line": 231,
+        "end_line": 256
+      },
+      {
+        "notebook_cell": 18,
+        "start_line": 257,
+        "end_line": 273
+      },
+      {
+        "notebook_cell": 20,
+        "start_line": 274,
+        "end_line": 295
+      },
+      {
+        "notebook_cell": 22,
+        "start_line": 296,
+        "end_line": 313
+      },
+      {
+        "notebook_cell": 24,
+        "start_line": 314,
+        "end_line": 346
+      },
+      {
+        "notebook_cell": 26,
+        "start_line": 347,
+        "end_line": 352
+      }
+    ],
+    "original_notebook_sha256": "596eccbf02d49f7c2408b1917c559d70a48c8f7e849e9ec65d15fc50fe9c79ac",
+    "published_notebook_sha256": "656152fe29d9779846969520536843aa54be85e29f1f943900579e225d836ac3",
+    "changes": [
+      "Code-only export; Markdown verdicts and saved outputs omitted.",
+      "Machine-specific home paths replaced with /path/to/audit-home where present.",
+      "Python export converts notebook magic syntax using IPython; notebook retains its original code syntax.",
+      "Python exports remove trailing whitespace only after checking that the parsed syntax tree is unchanged."
+    ],
+    "saved_code_cells": 14,
+    "saved_error_outputs": 0
+  },
+  "requested_model": "AlphaMissense"
+}

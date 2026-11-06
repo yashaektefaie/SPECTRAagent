@@ -1,0 +1,183 @@
+{
+  "id": "state-opus-r1/test-04",
+  "investigation": "state-opus-r1",
+  "model": "STATE",
+  "axis": "Intrinsic perturbation strength",
+  "dataset_split": {
+    "description": "Original sample identities retained.",
+    "input_inventory": "inputs/state.json",
+    "public_sources": [
+      "state-score-001",
+      "state-score-002",
+      "state-score-003",
+      "state-score-004",
+      "state-score-005",
+      "state-score-006",
+      "state-score-007",
+      "state-score-008",
+      "state-score-009",
+      "state-score-010",
+      "state-score-011",
+      "state-score-012",
+      "state-score-013",
+      "state-score-014",
+      "state-score-015",
+      "state-score-016",
+      "state-score-017",
+      "state-score-018",
+      "state-score-019",
+      "state-score-020",
+      "state-score-021",
+      "state-score-022",
+      "state-score-023",
+      "state-score-024",
+      "state-score-025",
+      "state-score-026",
+      "state-score-027",
+      "state-score-028",
+      "state-score-029",
+      "state-score-030",
+      "state-score-031",
+      "state-score-032",
+      "state-score-033",
+      "state-score-034",
+      "state-score-035",
+      "state-score-036",
+      "state-score-037",
+      "state-score-038",
+      "state-score-039",
+      "state-score-040",
+      "state-score-041",
+      "state-score-042",
+      "state-score-043",
+      "state-score-044",
+      "state-score-045",
+      "state-score-046",
+      "state-score-047",
+      "state-score-048",
+      "state-score-049",
+      "state-score-050",
+      "state-score-051",
+      "state-score-052",
+      "state-score-053",
+      "state-score-054",
+      "state-score-055",
+      "state-code",
+      "reactome",
+      "hgnc",
+      "go-annotations",
+      "go-ontology",
+      "wikipathways",
+      "kegg"
+    ],
+    "sample_tables": [
+      {
+        "source_file": "assets/state-opus-r1/PRIMARY_axis_drug_target_coverage.csv",
+        "source_sha256": "d262b8109ca2a10234b326fba45feadcaee672293f022dd890a7db1f1d5194b6",
+        "path": "samples/state/73cbecc12f54df10.json.gz",
+        "sha256": "232cb3ee459460e663cd42137b18632aa2dfd00cc6bb8bd6d34b8b8a96cb3bf6",
+        "rows": 264,
+        "columns": [
+          "perturbation_norm"
+        ]
+      },
+      {
+        "source_file": "assets/state-opus-r1/data/predictions.csv",
+        "source_sha256": "28dbbc22f7482a8f720f096de47eb83a20e84f2dbf7656d5a8a019a7e7d08bc1",
+        "path": "samples/state/6ca96b1b4d1236a6.json.gz",
+        "sha256": "fa0618c9411c8dc98abc56a851baf7ff64566870ffcc07e00f4be687f0c54953",
+        "rows": 39808,
+        "columns": [
+          "source_repo",
+          "source_path",
+          "dataset_family",
+          "protocol",
+          "context",
+          "split_id",
+          "representation",
+          "perturbation",
+          "perturbation_name",
+          "dose",
+          "dose_unit",
+          "perturbation_norm",
+          "row_key"
+        ]
+      },
+      {
+        "source_file": "assets/state-opus-r1/drug_chem_novelty.csv",
+        "source_sha256": "3502e89eb9ae934e0d7572cd4cc77c7dc4670f8c5fb697924bf07f66f51cc10e",
+        "path": "samples/state/f16ff535f901dde1.json.gz",
+        "sha256": "5ca901e602027df088caa23e0d2149d84fb3cabdb14fb4efabbc953b4586ad1c",
+        "rows": 377,
+        "columns": [
+          "perturbation_norm"
+        ]
+      }
+    ]
+  },
+  "axis_levels": {
+    "definition": "Number of truly differentially expressed genes, used as an outcome-derived control.",
+    "calculation": "DE counts are read from the original scored records; they are outcome-derived annotations, not newly generated prospective features.",
+    "code": "materials/state/notebooks/state-opus-r1/test-04.py"
+  },
+  "model_evaluation": {
+    "measurements": "Saved per-record model scores are used; raw prediction-level recalculation is unavailable.",
+    "fine_tuning": {
+      "target_weight_updates_in_replay": false,
+      "target_fine_tuning_during_original_audit": null,
+      "original_training_evidence": "The exported reconstruction code does not update target-model weights. Original checkpoint training or audit-specific adaptation was not established by the retained execution evidence.",
+      "comparators": []
+    },
+    "code": "materials/state/notebooks/state-opus-r1/test-04.py"
+  },
+  "curve": {
+    "aggregation_and_uncertainty": "Retained individual scores are used to recompute the displayed contrasts, correlations or controls. No additional bootstrap interval is claimed.",
+    "code": "materials/state/notebooks/state-opus-r1/test-04.py"
+  },
+  "insight": {
+    "comparison_controls_confirmation": "Replays retained controls and separate context slices; no new independent cohort is claimed.",
+    "code": "materials/state/notebooks/state-opus-r1/test-04.py"
+  },
+  "reconstruction_notes": [
+    "Original expression predictions and observed matrices; actual genetic training gene lists (the audit used an evaluation-panel proxy).",
+    "Exact retained audit inputs are identified by relative filename and hash in the input inventory. A null download_source means no matching anonymous download has been established. Public upstream datasets do not substitute for missing original splits, predictions or annotations."
+  ],
+  "implementation": {
+    "notebook": "materials/state/notebooks/state-opus-r1/test-04.ipynb",
+    "script": "materials/state/notebooks/state-opus-r1/test-04.py",
+    "supporting_code": "code/state.json",
+    "cell_locations": [
+      {
+        "notebook_cell": 2,
+        "start_line": 1,
+        "end_line": 18
+      },
+      {
+        "notebook_cell": 3,
+        "start_line": 19,
+        "end_line": 34
+      },
+      {
+        "notebook_cell": 4,
+        "start_line": 35,
+        "end_line": 41
+      },
+      {
+        "notebook_cell": 5,
+        "start_line": 42,
+        "end_line": 46
+      }
+    ],
+    "original_notebook_sha256": "1c084bace5643241b9b204d631bcdf95a1abaa641fe55b2291f73da11e1f4645",
+    "published_notebook_sha256": "e9bb0e4609a468d2d8f2920ee34ba608f81586e84ac10e905d5cb266adb7f3d7",
+    "changes": [
+      "Code-only export; Markdown verdicts and saved outputs omitted.",
+      "Machine-specific home paths replaced with /path/to/audit-home where present.",
+      "Python export converts notebook magic syntax using IPython; notebook retains its original code syntax.",
+      "Python exports remove trailing whitespace only after checking that the parsed syntax tree is unchanged."
+    ],
+    "saved_code_cells": 4,
+    "saved_error_outputs": 0
+  },
+  "requested_model": "STATE"
+}

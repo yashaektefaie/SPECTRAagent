@@ -1,0 +1,159 @@
+{
+  "id": "conch-opus-r2/test-01",
+  "investigation": "conch-opus-r2",
+  "model": "CONCH",
+  "axis": "Controlled Gaussian blur",
+  "dataset_split": {
+    "description": "Exact manifest and original images.",
+    "input_inventory": "inputs/conch.json",
+    "public_sources": [
+      "nct-images",
+      "crcval-images",
+      "kather-images",
+      "nct-mirror",
+      "conch-code"
+    ],
+    "sample_tables": [
+      {
+        "source_file": "source/conch-opus-r2/confirmation_manifest.csv",
+        "source_sha256": "c59961830524f56c33d512b26bc07f43e9008c57d79b95a5f9023ebcbf9fceea",
+        "path": "samples/conch/5c77da8845d07022.json.gz",
+        "sha256": "51fed1ab00a372143e5b7dd2a53d157c6e9de1135e118418a6300117248d807e",
+        "rows": 1080,
+        "columns": [
+          "label_name",
+          "sample_id"
+        ]
+      },
+      {
+        "source_file": "source/conch-opus-r2/confirmation_per_tile.csv",
+        "source_sha256": "5aa18fcf0ec17d2730c19ab71d3b6758931467b857413b75d4e1ead08e0f4630",
+        "path": "samples/conch/800fa17c66382007.json.gz",
+        "sha256": "a329bc2966d0574d18bf9569ab9b6738592eebefaec6ddbb3c085799cd1e6a12",
+        "rows": 4320,
+        "columns": [
+          "sample_id",
+          "label_name",
+          "label"
+        ]
+      },
+      {
+        "source_file": "source/conch-opus-r2/dev_features.csv",
+        "source_sha256": "f0ce3035c6a72e1d125561b77177596b29a243e8b536ab01ba8fb8583f6b4854",
+        "path": "samples/conch/91bad89cc4e2c076.json.gz",
+        "sha256": "0169164b33fddd6a6ebb7fe8013fa4f0290602393ab65e11b4923f6eb9faf30b",
+        "rows": 7180,
+        "columns": [
+          "label_name",
+          "sample_id",
+          "image_path"
+        ]
+      },
+      {
+        "source_file": "source/conch-opus-r2/dev_manifest.csv",
+        "source_sha256": "b2440dc277e9264ed0c0f7b1660e9101598fe69c3987fd953ce00a3fda2ff0be",
+        "path": "samples/conch/8ecabe5d4634b80e.json.gz",
+        "sha256": "aa0f1b6017d2766175775238ca5bce6b1ba30a55d368220e9c8eedc46478cc27",
+        "rows": 7180,
+        "columns": [
+          "label_name",
+          "sample_id",
+          "image_path"
+        ]
+      },
+      {
+        "source_file": "source/conch-opus-r2/reference_manifest.csv",
+        "source_sha256": "4f542bdfc11fa6232ca41c601f88d52ab2730fe76f23de2478c72205dceaadaf",
+        "path": "samples/conch/440ccfdc632b2c89.json.gz",
+        "sha256": "38c6d0c9bdb7143d87dec49413b4e386d60d99a086bb33ac3a4d16e7d6675f81",
+        "rows": 2700,
+        "columns": [
+          "label_name",
+          "sample_id"
+        ]
+      }
+    ]
+  },
+  "axis_levels": {
+    "definition": "Convolve each tile with a Gaussian kernel with σ = 0, 1, 2 or 3 pixels. Score all conditions on the same tiles.",
+    "calculation": "Recomputed from all original images.",
+    "code": "materials/conch/notebooks/conch-opus-r2-01.py"
+  },
+  "model_evaluation": {
+    "measurements": "Rescored saved predictions.",
+    "fine_tuning": {
+      "target_weight_updates_in_replay": false,
+      "target_fine_tuning_during_original_audit": false,
+      "original_training_evidence": "CONCH was evaluated with the fixed checkpoint. The reference uses frozen ImageNet ResNet50 features and a fitted logistic-regression head.",
+      "comparators": [
+        {
+          "model": "ImageNet ResNet50 + logistic regression",
+          "procedure": "The neural feature extractor is frozen; the classification head was trained on sharp reference tiles. Replay rescores saved predictions.",
+          "evidence": "materials/conch/source/conch-opus-r2/code/baseline_model.py"
+        }
+      ]
+    },
+    "code": "materials/conch/notebooks/conch-opus-r2-01.py"
+  },
+  "curve": {
+    "aggregation_and_uncertainty": "Original bootstrap exactly reproduced.",
+    "code": "materials/conch/notebooks/conch-opus-r2-01.py"
+  },
+  "insight": {
+    "comparison_controls_confirmation": "Paired comparator and pixel controls recomputed.",
+    "code": "materials/conch/notebooks/conch-opus-r2-01.py"
+  },
+  "reconstruction_notes": [
+    "Fresh CONCH and ResNet inference was not rerun; original predicted labels are rescored.",
+    "Cross-site independence remains unresolved; do not relabel this controlled blur experiment as a natural training-distance shift.",
+    "Exact retained audit inputs are identified by relative filename and hash in the input inventory. A null download_source means no matching anonymous download has been established. Public upstream datasets do not substitute for missing original splits, predictions or annotations."
+  ],
+  "implementation": {
+    "notebook": "materials/conch/notebooks/conch-opus-r2-01.ipynb",
+    "script": "materials/conch/notebooks/conch-opus-r2-01.py",
+    "supporting_code": "code/conch.json",
+    "cell_locations": [
+      {
+        "notebook_cell": 1,
+        "start_line": 1,
+        "end_line": 30
+      },
+      {
+        "notebook_cell": 3,
+        "start_line": 31,
+        "end_line": 42
+      },
+      {
+        "notebook_cell": 6,
+        "start_line": 43,
+        "end_line": 70
+      },
+      {
+        "notebook_cell": 9,
+        "start_line": 71,
+        "end_line": 80
+      },
+      {
+        "notebook_cell": 11,
+        "start_line": 81,
+        "end_line": 94
+      },
+      {
+        "notebook_cell": 13,
+        "start_line": 95,
+        "end_line": 109
+      }
+    ],
+    "original_notebook_sha256": "8d3b2fe38c4b1c80b923ab830b6ce7efd7bf581e018b086e3bc1acaf6e7f0b57",
+    "published_notebook_sha256": "f1b2a53496a36384c0735708bcf55f5ae023849b651c715d5d12b96c982549f1",
+    "changes": [
+      "Code-only export; Markdown verdicts and saved outputs omitted.",
+      "Machine-specific home paths replaced with /path/to/audit-home where present.",
+      "Python export converts notebook magic syntax using IPython; notebook retains its original code syntax.",
+      "Python exports remove trailing whitespace only after checking that the parsed syntax tree is unchanged."
+    ],
+    "saved_code_cells": 6,
+    "saved_error_outputs": 0
+  },
+  "requested_model": "CONCH"
+}

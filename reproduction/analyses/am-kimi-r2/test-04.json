@@ -1,0 +1,78 @@
+{
+  "id": "am-kimi-r2/test-04",
+  "investigation": "am-kimi-r2",
+  "model": "AlphaMissense",
+  "axis": "gene-level mean CDS phyloP (quintiles)",
+  "dataset_split": {
+    "description": "Exact individual input panel unavailable",
+    "input_inventory": "inputs/alphamissense.json",
+    "public_sources": [
+      "alphamissense-scores",
+      "alphamissense-genomic",
+      "proteingym-assays",
+      "proteingym-alignments",
+      "proteingym-metadata",
+      "clinvar",
+      "gencode32",
+      "gencode50",
+      "alphafold-example"
+    ],
+    "sample_tables": []
+  },
+  "axis_levels": {
+    "definition": "B2 gene-level mean CDS phyloP (quintiles)",
+    "calculation": "Original analysis programs retained; not executable without original inputs",
+    "code": "materials/alphamissense/am-kimi-r2/axis-4.py"
+  },
+  "model_evaluation": {
+    "measurements": "Individual prediction / label pairs unavailable",
+    "fine_tuning": {
+      "target_weight_updates_in_replay": false,
+      "target_fine_tuning_during_original_audit": null,
+      "original_training_evidence": "The exported reconstruction code does not update target-model weights. Original checkpoint training or audit-specific adaptation was not established by the retained execution evidence.",
+      "comparators": []
+    },
+    "code": "materials/alphamissense/am-kimi-r2/axis-4.py"
+  },
+  "curve": {
+    "aggregation_and_uncertainty": "Only archived summaries retained; no recomputation claimed",
+    "code": "materials/alphamissense/am-kimi-r2/axis-4.py"
+  },
+  "insight": {
+    "comparison_controls_confirmation": "Historical claim retained; original controls cannot be fully rerun",
+    "code": "materials/alphamissense/am-kimi-r2/axis-4.py"
+  },
+  "reconstruction_notes": [
+    "tables/r2_eval_table.tsv",
+    "tables/r2_eval_table2.tsv",
+    "tables/r2_am_hits.tsv and tables/r2_am_hits2.tsv",
+    "tables/r2_clinvar_missense.tsv and tables/r2_gene_phyloP.tsv",
+    "data/hg38.phyloP100way.bw",
+    "data/af/*.json (the original per-residue AlphaFold confidence records)",
+    "The original ClinVar, AlphaMissense, reference genome and exon/CDS inputs used by the preserved scripts",
+    "Exact retained audit inputs are identified by relative filename and hash in the input inventory. A null download_source means no matching anonymous download has been established. Public upstream datasets do not substitute for missing original splits, predictions or annotations."
+  ],
+  "implementation": {
+    "notebook": "materials/alphamissense/am-kimi-r2/axis-4.ipynb",
+    "script": "materials/alphamissense/am-kimi-r2/axis-4.py",
+    "supporting_code": "code/alphamissense.json",
+    "cell_locations": [
+      {
+        "notebook_cell": 2,
+        "start_line": 1,
+        "end_line": 10
+      }
+    ],
+    "original_notebook_sha256": "f8eaf7c9aa5d94a9788a2d2991bdbb057134c47d4ed6265c7be579e3885cd61a",
+    "published_notebook_sha256": "4e418e34c4b3ed5eaa8a4de033408ffd6af765edf8686b970bddaad1eb4bd3c7",
+    "changes": [
+      "Code-only export; Markdown verdicts and saved outputs omitted.",
+      "Machine-specific home paths replaced with /path/to/audit-home where present.",
+      "Python export converts notebook magic syntax using IPython; notebook retains its original code syntax.",
+      "Python exports remove trailing whitespace only after checking that the parsed syntax tree is unchanged."
+    ],
+    "saved_code_cells": 1,
+    "saved_error_outputs": 0
+  },
+  "requested_model": "AlphaMissense"
+}

@@ -1,0 +1,68 @@
+{
+  "id": "esmfold2-codex-r1/test-01",
+  "investigation": "esmfold2-codex-r1",
+  "model": "ESMFold2",
+  "axis": "Pfam domain-repertoire similarity",
+  "dataset_split": {
+    "description": "Original sample-level evidence for this stage was not recovered.",
+    "input_inventory": "inputs/esmfold2.json",
+    "public_sources": [
+      "rcsb-example",
+      "rcsb-entity",
+      "esm-code"
+    ],
+    "sample_tables": []
+  },
+  "axis_levels": {
+    "definition": "maximum Jaccard similarity between a post-cutoff chain's distinct Pfam-A accession set and the repertoire of any PDB chain released on or before 2021-09-30 (SIFTS pdb_chain_pfam release 2026-07-05, SHA-256 0c3151b51c1ce34a45c8a8860c527ed9d761ee0025a0797090819bb1a562275b)",
+    "calculation": "Original sample-level evidence for this stage was not recovered.",
+    "code": "materials/esmfold2/notebooks/esmfold2-codex-r1/test-01.py"
+  },
+  "model_evaluation": {
+    "measurements": "Original sample-level evidence for this stage was not recovered.",
+    "fine_tuning": {
+      "target_weight_updates_in_replay": false,
+      "target_fine_tuning_during_original_audit": null,
+      "original_training_evidence": "The exported reconstruction code does not update target-model weights. Original checkpoint training or audit-specific adaptation was not established by the retained execution evidence.",
+      "comparators": []
+    },
+    "code": "materials/esmfold2/notebooks/esmfold2-codex-r1/test-01.py"
+  },
+  "curve": {
+    "aggregation_and_uncertainty": "Original sample-level evidence for this stage was not recovered.",
+    "code": "materials/esmfold2/notebooks/esmfold2-codex-r1/test-01.py"
+  },
+  "insight": {
+    "comparison_controls_confirmation": "Original sample-level evidence for this stage was not recovered.",
+    "code": "materials/esmfold2/notebooks/esmfold2-codex-r1/test-01.py"
+  },
+  "reconstruction_notes": [
+    "Original exact target split manifest, sequences/alignments and feature-generation inputs.",
+    "Original predicted and reference structures or per-target metric table for this audit.",
+    "Original per-target comparator and confirmation records.",
+    "Exact retained audit inputs are identified by relative filename and hash in the input inventory. A null download_source means no matching anonymous download has been established. Public upstream datasets do not substitute for missing original splits, predictions or annotations."
+  ],
+  "implementation": {
+    "notebook": "materials/esmfold2/notebooks/esmfold2-codex-r1/test-01.ipynb",
+    "script": "materials/esmfold2/notebooks/esmfold2-codex-r1/test-01.py",
+    "supporting_code": "code/esmfold2.json",
+    "cell_locations": [
+      {
+        "notebook_cell": 2,
+        "start_line": 1,
+        "end_line": 4
+      }
+    ],
+    "original_notebook_sha256": "618192d90218c10017cf4e4a9d5d9000df0f7814d97a892b1ee3e1bab166cc51",
+    "published_notebook_sha256": "19193d2bde3afdd5ff17c397fd91fa2231fd9e9f3a699739337a96814765c75f",
+    "changes": [
+      "Code-only export; Markdown verdicts and saved outputs omitted.",
+      "Machine-specific home paths replaced with /path/to/audit-home where present.",
+      "Python export converts notebook magic syntax using IPython; notebook retains its original code syntax.",
+      "Python exports remove trailing whitespace only after checking that the parsed syntax tree is unchanged."
+    ],
+    "saved_code_cells": 1,
+    "saved_error_outputs": 0
+  },
+  "requested_model": "ESMFold2"
+}

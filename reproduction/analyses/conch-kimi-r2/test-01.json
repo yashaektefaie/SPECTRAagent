@@ -1,0 +1,106 @@
+{
+  "id": "conch-kimi-r2/test-01",
+  "investigation": "conch-kimi-r2",
+  "model": "CONCH",
+  "axis": "Effective spatial resolution",
+  "dataset_split": {
+    "description": "Exact manifest and hashes.",
+    "input_inventory": "inputs/conch.json",
+    "public_sources": [
+      "nct-images",
+      "crcval-images",
+      "kather-images",
+      "nct-mirror",
+      "conch-code"
+    ],
+    "sample_tables": []
+  },
+  "axis_levels": {
+    "definition": "Effective spatial resolution, six levels from 0.5 to 4.0 micrometre per pixel, fixed after a pilot and confirmed on images not used in the pilot",
+    "calculation": "Original image hashes ssim transforms and saved embedding cosines recomputed.",
+    "code": "materials/conch/notebooks/conch-kimi-r2-01.py"
+  },
+  "model_evaluation": {
+    "measurements": "Rescored target and openclip arrays.",
+    "fine_tuning": {
+      "target_weight_updates_in_replay": false,
+      "target_fine_tuning_during_original_audit": null,
+      "original_training_evidence": "The exported reconstruction code does not update target-model weights. Original checkpoint training or audit-specific adaptation was not established by the retained execution evidence.",
+      "comparators": [
+        {
+          "model": "DINO features + logistic regression",
+          "procedure": "A classification head is fitted in the retained resolution evaluation code. This is separate from CONCH.",
+          "evidence": "materials/conch/source/conch-kimi-r2/code/run_axisA_confirm.py"
+        },
+        {
+          "model": "ImageNet ResNet18",
+          "procedure": "An additional retained script fine-tunes all network parameters. Its existence does not establish that this checkpoint produced the reported comparison; corresponding execution/checkpoint evidence is not recovered.",
+          "evidence": "materials/conch/source/conch-kimi-r2/native/scripts/train_resnet.py"
+        }
+      ]
+    },
+    "code": "materials/conch/notebooks/conch-kimi-r2-01.py"
+  },
+  "curve": {
+    "aggregation_and_uncertainty": "Original means exact new labeled intervals.",
+    "code": "materials/conch/notebooks/conch-kimi-r2-01.py"
+  },
+  "insight": {
+    "comparison_controls_confirmation": "Original paired tests exact.",
+    "code": "materials/conch/notebooks/conch-kimi-r2-01.py"
+  },
+  "reconstruction_notes": [
+    "Fresh target and baseline image inference were not rerun. Original images and all scored class arrays are supplied; model predictions are rescored.",
+    "Original SSIM check is recalculated from raw pixels; proximity is recalculated from saved DINOv2 embeddings, without rerunning that backbone.",
+    "Wilson bands are newly added display diagnostics; original significance comes from reproduced paired McNemar tests.",
+    "Exact retained audit inputs are identified by relative filename and hash in the input inventory. A null download_source means no matching anonymous download has been established. Public upstream datasets do not substitute for missing original splits, predictions or annotations."
+  ],
+  "implementation": {
+    "notebook": "materials/conch/notebooks/conch-kimi-r2-01.ipynb",
+    "script": "materials/conch/notebooks/conch-kimi-r2-01.py",
+    "supporting_code": "code/conch.json",
+    "cell_locations": [
+      {
+        "notebook_cell": 1,
+        "start_line": 1,
+        "end_line": 30
+      },
+      {
+        "notebook_cell": 3,
+        "start_line": 31,
+        "end_line": 42
+      },
+      {
+        "notebook_cell": 5,
+        "start_line": 43,
+        "end_line": 86
+      },
+      {
+        "notebook_cell": 7,
+        "start_line": 87,
+        "end_line": 100
+      },
+      {
+        "notebook_cell": 9,
+        "start_line": 101,
+        "end_line": 116
+      },
+      {
+        "notebook_cell": 11,
+        "start_line": 117,
+        "end_line": 133
+      }
+    ],
+    "original_notebook_sha256": "bd8ec31d1d32d12045508ce5e9d3f6b870ec57169cdd1556ae3ede3a0563892c",
+    "published_notebook_sha256": "c4c739521d2bc9d79efc833f7ab15c6d6ba07e46e6a2c136ac2ed61b5c8528ce",
+    "changes": [
+      "Code-only export; Markdown verdicts and saved outputs omitted.",
+      "Machine-specific home paths replaced with /path/to/audit-home where present.",
+      "Python export converts notebook magic syntax using IPython; notebook retains its original code syntax.",
+      "Python exports remove trailing whitespace only after checking that the parsed syntax tree is unchanged."
+    ],
+    "saved_code_cells": 6,
+    "saved_error_outputs": 0
+  },
+  "requested_model": "CONCH"
+}

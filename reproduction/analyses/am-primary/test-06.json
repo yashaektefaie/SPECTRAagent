@@ -1,0 +1,1000 @@
+{
+  "id": "am-primary/test-06",
+  "investigation": "am-primary",
+  "model": "AlphaMissense",
+  "axis": "Position-specific and substitution-score references",
+  "dataset_split": {
+    "description": "73 raw assay files; 273,135 single-mutant records; original offset/WT checks reproduce 270,572 scored variants in 72 assays and 63 proteins. No independent split recorded.",
+    "input_inventory": "inputs/alphamissense.json",
+    "public_sources": [
+      "alphamissense-scores",
+      "alphamissense-genomic",
+      "proteingym-assays",
+      "proteingym-alignments",
+      "proteingym-metadata",
+      "clinvar",
+      "gencode32",
+      "gencode50",
+      "alphafold-example"
+    ],
+    "sample_tables": [
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/A4_HUMAN_Seuma_2022.csv",
+        "source_sha256": "40cfab98f3e3f8531421d54e625e01e22ef449faa22cd3004926f663ad7da932",
+        "path": "samples/alphamissense/3b142c4e0bb9137e.json.gz",
+        "sha256": "2fcc3edb3220dcb058145b851d051b466c32f5604b508411ba938e2e86962d36",
+        "rows": 14811,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/ACE2_HUMAN_Chan_2020.csv",
+        "source_sha256": "419c9c9182a722d5b2d653d5a40d1ef8b74b970fbe7fe614c2d1231e58c6c30f",
+        "path": "samples/alphamissense/6b12052616b2b6ec.json.gz",
+        "sha256": "e33c292680e39b374091a17128aca31658cfe8e6a28274d6cfab9d1e7ec2ba1b",
+        "rows": 2223,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/ADRB2_HUMAN_Jones_2020.csv",
+        "source_sha256": "905941be7060b3ebf735d868327b34e1b7b9cbd47e87ee251c15e2328643a956",
+        "path": "samples/alphamissense/cc054c6210016b78.json.gz",
+        "sha256": "8fd1ce2312205e109c4d2c242e1503c23001144a214c97258f5a5fd3b8e206fa",
+        "rows": 7800,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/AICDA_HUMAN_Gajula_2014_3cycles.csv",
+        "source_sha256": "03e154dd4fe004b718cc3749b8c0c0c2e651c71f6a846c37c8b8565746ab31d1",
+        "path": "samples/alphamissense/fc84492a50c8a65b.json.gz",
+        "sha256": "d6068946dc11314ba60d5490b15519719bad272aa0e15ab13ca7a4653c564a80",
+        "rows": 209,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/B2L11_HUMAN_Dutta_2010_binding-Mcl-1.csv",
+        "source_sha256": "0768cc07f06ccfa28e20cfd2b1b0ffc60fbbb7d21174b5d2b3b780930c4b80be",
+        "path": "samples/alphamissense/c25d1f5f29a03022.json.gz",
+        "sha256": "421a8a55beaf0028d37355dee6c415d92a4dc21324c5a57ee7cd794d9e46af9b",
+        "rows": 170,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/BRCA1_HUMAN_Findlay_2018.csv",
+        "source_sha256": "abde5d47e84b1feeac6c32b60c1f3b5d2881accf3ceccfbadccceeea73e81c43",
+        "path": "samples/alphamissense/fe9c5a755ce096f1.json.gz",
+        "sha256": "6472edecce9c70888cd78e75334ed6b0fda6cbc26f139a1737a5f466724e14b5",
+        "rows": 1837,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/BRCA2_HUMAN_Erwood_2022_HEK293T.csv",
+        "source_sha256": "4fc00cf38e89679c11266fa651644c61297a3ac5eb36320fba3a715d5b64f8f2",
+        "path": "samples/alphamissense/18b5a2e2eed26d6f.json.gz",
+        "sha256": "53bf99defbb4280786eb26410b461fcf3bd5821570062c6acd48c90ff258fcd5",
+        "rows": 265,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/CALM1_HUMAN_Weile_2017.csv",
+        "source_sha256": "cadc19e35beab1051c08e2961f0d8b9e97f5c5c3cd627a73ebffd0ebeabbcf5d",
+        "path": "samples/alphamissense/0a080df592ee7030.json.gz",
+        "sha256": "123af52edd8ad047b027318d95cda23745ad64e638168c6b68be6043e5a8da27",
+        "rows": 1813,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/CAR11_HUMAN_Meitlis_2020_gof.csv",
+        "source_sha256": "8a900036b2fcdc98fe542d6f9762d74073ed6e808f59a698fcb709cc4748d7a3",
+        "path": "samples/alphamissense/fa3730cdc6e1bde4.json.gz",
+        "sha256": "fca45c2fa0abdb2227a8102dbbf3dcc321f82bb1e6ac92a5f18b8b85e5e46b5d",
+        "rows": 2374,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/CAR11_HUMAN_Meitlis_2020_lof.csv",
+        "source_sha256": "e4dd9b444028c7327b7498c590bf3c38aec5a4a81ded50adb396ec43980c78a1",
+        "path": "samples/alphamissense/ff324a021e83d8b1.json.gz",
+        "sha256": "a5f6f7ecc27fd2c45d48c5f04d1cd9e4a7dcdeab6e27ff9871cff003be2aaa07",
+        "rows": 2395,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/CBPA2_HUMAN_Tsuboyama_2023_1O6X.csv",
+        "source_sha256": "2b985cb6a9d2a06471acd4858487a772a53c887fc46045e56b73a43ecda4038d",
+        "path": "samples/alphamissense/db13daef4dbbc025.json.gz",
+        "sha256": "4c6a77691b95ac51768f0c206922e92b81632e70911e0336f764f60e10351b3b",
+        "rows": 2068,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/CBS_HUMAN_Sun_2020.csv",
+        "source_sha256": "557b2682b74aedef28f1179540892e17be52de650551c2c6058c00311073a0a1",
+        "path": "samples/alphamissense/db4be60f6213f4f7.json.gz",
+        "sha256": "bd7659a3f56f9de1279c5c4c33072849fdeac41b0dc6264b229b9266388d39c5",
+        "rows": 7217,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/CBX4_HUMAN_Tsuboyama_2023_2K28.csv",
+        "source_sha256": "3ffc9405e5f6e7467cedffb845e91f17baba09862dbb6d1750f54230c8ad3a0d",
+        "path": "samples/alphamissense/54a68cacf6d57c0f.json.gz",
+        "sha256": "bf82d4bd2cf76b2e83e0d4d59af9a5edf12e5e96718e658a5217fd76b3913e9b",
+        "rows": 2282,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/CCR5_HUMAN_Gill_2023.csv",
+        "source_sha256": "33f10e7e6552a017318b715ddb6936222375851639cd67093e7269fb1b5f97b3",
+        "path": "samples/alphamissense/7640c891ff195899.json.gz",
+        "sha256": "150db4fa0495ba5886fb54775a6c6ef6fd7ae9401044d4609e0033f3acf41d38",
+        "rows": 6137,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/CD19_HUMAN_Klesmith_2019_FMC_singles.csv",
+        "source_sha256": "c07f0c1001b4ba527affc7674274e116f8295d128a5e1896fb2f0fa15c25eaea",
+        "path": "samples/alphamissense/37c4ab815e567f92.json.gz",
+        "sha256": "6a21ff399641e5521a7bbceac25b6a23f2216f60b308e33d3b9f26978344feba",
+        "rows": 3761,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/CP2C9_HUMAN_Amorosi_2021_abundance.csv",
+        "source_sha256": "1f4ba7b86e88709783b2e68b04c82fe1f305181c164edfff6391369833ad62ad",
+        "path": "samples/alphamissense/31c2a62cad37f33e.json.gz",
+        "sha256": "76561473b44ab92444912066c5532554459488cbcf1f63b4434f32fcee3a0633",
+        "rows": 6370,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/CP2C9_HUMAN_Amorosi_2021_activity.csv",
+        "source_sha256": "2373e6a5aea9ae6431cbfd519733a3ccd5be2c109a60e5e2d59cc5ff39eb6b27",
+        "path": "samples/alphamissense/ba624cd8089ea0b9.json.gz",
+        "sha256": "7019b3c6d90d136070b1f52369685c00d10eb40819c7da4ce9fb656d25aa1919",
+        "rows": 6142,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/DLG4_HUMAN_Faure_2021.csv",
+        "source_sha256": "07d58d0222260ebc431f906a523cee11e5a0f90b020ecdbbc1c393e793053370",
+        "path": "samples/alphamissense/c8106b85cb904012.json.gz",
+        "sha256": "750c1a4092f85a628a0d1d7b54cd9b01a981d9f42d435d543cec905c437a8bc7",
+        "rows": 6976,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/DNJA1_HUMAN_Tsuboyama_2023_2LO1.csv",
+        "source_sha256": "15003de1e5af995bd284b0e4f02a4546f46211774727b4c9b988ee1f982bebe7",
+        "path": "samples/alphamissense/d8260f1103ea30f0.json.gz",
+        "sha256": "375dd889776e0cf76c971d0394fcf96a255d246c8d709a036b8dbde8507d06e0",
+        "rows": 2264,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/EPHB2_HUMAN_Tsuboyama_2023_1F0M.csv",
+        "source_sha256": "d00c87c40458e956d53a1ecf879ef845c5167a861aacfaa1fb74115efc831dfd",
+        "path": "samples/alphamissense/468c93c84a53d665.json.gz",
+        "sha256": "e36031ba07e69460c30098db56ef59786d2a1482f34a35fb5df4210d17545941",
+        "rows": 1960,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/ERBB2_HUMAN_Elazar_2016.csv",
+        "source_sha256": "e1190b949da4835344be4069c98b336825a6975e2f0f169221772070007bec0d",
+        "path": "samples/alphamissense/0e635201f31a064e.json.gz",
+        "sha256": "29d66073e4ab6cd25d2bdfca1b4e670e0056efe0f117e97ddcd14ade298dd0b6",
+        "rows": 326,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/FKBP3_HUMAN_Tsuboyama_2023_2KFV.csv",
+        "source_sha256": "7a6f0deb67126a95bd5ba22d51c4a3b90e3e209d6e68966e5cb22fa8d5118e94",
+        "path": "samples/alphamissense/37043083646b89c9.json.gz",
+        "sha256": "976040b16aea24b04bd769d7d9803c7925c3eae0147a8fc205c5b681f142a252",
+        "rows": 1237,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/GDIA_HUMAN_Silverstein_2021.csv",
+        "source_sha256": "5763703fa35d8be84d434cd930fa3d3b4471aee8e65e4064db85434d9fb63edb",
+        "path": "samples/alphamissense/ac895db0d0a7cc54.json.gz",
+        "sha256": "9049c313748cc818c1e5720a7f9577ca935b6f2fd9771ff824401bb8313a8368",
+        "rows": 1154,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/GRB2_HUMAN_Faure_2021.csv",
+        "source_sha256": "0a60d0e1855ebe79ad2d03aec5e4c5ae933f3f96d338d34c184ae7366fffc5e6",
+        "path": "samples/alphamissense/10a86a7ba15405b4.json.gz",
+        "sha256": "7d046386ed672c60a1ffa712a7186f24c5fd9f1c17ec50160c6f101a096970e3",
+        "rows": 63366,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/HEM3_HUMAN_Loggerenberg_2023.csv",
+        "source_sha256": "0595215d5507a81c640743231413964505daba227f610b80da96a6b6ad2e7dbe",
+        "path": "samples/alphamissense/23ceda4889343c74.json.gz",
+        "sha256": "65c85c89efe99056c59245348f86176868c73230e77a3bd0754c33fac6e7e96f",
+        "rows": 5689,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/HMDH_HUMAN_Jiang_2019.csv",
+        "source_sha256": "4ad060808d1ba6f740428148afd230450662113f77292328f0a0d40d679b27c1",
+        "path": "samples/alphamissense/47153f9f47276000.json.gz",
+        "sha256": "d62747a2205e8c656e2c8f71ace74300bc39216f513180d72ad59679c127e515",
+        "rows": 16853,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/HXK4_HUMAN_Gersing_2022_activity.csv",
+        "source_sha256": "3cb5c29a2bdbc052601e6fc03f7f55ef33c6b0fedee808deff2e8aef79d17b69",
+        "path": "samples/alphamissense/968a93651c708e10.json.gz",
+        "sha256": "ae218d86f71fe6beeef9d876adaa9f8f96302229fb47a43a612499109b4ee0d7",
+        "rows": 8570,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/HXK4_HUMAN_Gersing_2023_abundance.csv",
+        "source_sha256": "90d7129bbbb67ad58765b3f7df06158344f33aff1f2ce1284ebb00a15fea2438",
+        "path": "samples/alphamissense/9fefb4bcf610c06c.json.gz",
+        "sha256": "8814399148e65de840d032f6b05555b9dbc5f83d6936006b9f884f9eda4242ec",
+        "rows": 8396,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/KCNH2_HUMAN_Kozek_2020.csv",
+        "source_sha256": "240011099f76ac97f9997e34bc6f27fb5c3ea030d56a9c77eb8057051ccf5b4c",
+        "path": "samples/alphamissense/89e0693d3ba74485.json.gz",
+        "sha256": "a35f3cc5040ff173835c7e7640f9cf93fe8d6ca90a69ea631aec9bd46b51a00d",
+        "rows": 200,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/LYAM1_HUMAN_Elazar_2016.csv",
+        "source_sha256": "147e6cd09ad0e23d228ab280a2cf16ca24dd2d3e0ade8efe4004ae8c2bcd2f1b",
+        "path": "samples/alphamissense/eecfbdaad84ba75a.json.gz",
+        "sha256": "a6d1ceff2aa748cebff479f87a596677a760c143de8b440504ad365442c1dcf9",
+        "rows": 359,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/MET_HUMAN_Estevam_2023.csv",
+        "source_sha256": "75d3a221eddf9fbb8cbb2236fe8f18fbfd05dc7e15e15fc1d2ebf67f29572578",
+        "path": "samples/alphamissense/75caff45ce2102b7.json.gz",
+        "sha256": "91396b59960f6e523aed00514bee647061e57b6e9d7510a29afb61ce6f389d04",
+        "rows": 5393,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/MK01_HUMAN_Brenan_2016.csv",
+        "source_sha256": "a668d66a330a9c3f8a3d15481907732b4d3b56d0107e3da31242e97211da84fd",
+        "path": "samples/alphamissense/cc0c09585509ca7a.json.gz",
+        "sha256": "08f7b3b5aea6c8c5ad8a1196d25834a9a10ad76165e26971a3002395300dde91",
+        "rows": 6809,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/MSH2_HUMAN_Jia_2020.csv",
+        "source_sha256": "00ac2d2b66ab786150025988ec8e9bb9570caa42ad5fcd0833a4eb5c0d1d58bc",
+        "path": "samples/alphamissense/2d211c38d0b61afc.json.gz",
+        "sha256": "ba1221542191bf5952bea96853e0b8af39e971057f73716919e43bd81528d4ac",
+        "rows": 16749,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/MTHR_HUMAN_Weile_2021.csv",
+        "source_sha256": "68653df3c7a35b3cb8a011b8a85e1dfcf52b55b619b65106342253972b869a71",
+        "path": "samples/alphamissense/f59bf09b70be7e24.json.gz",
+        "sha256": "72dbfbdebc1b30cbdb950c43f75f7fa511ad1837d2355520fbb29ab693e137bd",
+        "rows": 12464,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/NPC1_HUMAN_Erwood_2022_HEK293T.csv",
+        "source_sha256": "ecc2f47ab85326973e0797081d40fe88938a01f7d6128ab04c02ce6f495b7c3c",
+        "path": "samples/alphamissense/c578e0c5d8084932.json.gz",
+        "sha256": "223d821b519e4305108537176cae8f9d917f3f8ffb95fc54710113932425fe3f",
+        "rows": 637,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/NPC1_HUMAN_Erwood_2022_RPE1.csv",
+        "source_sha256": "75c21ccf623cff8b8a8f6b5b2c903f025efca5512c2c78889ccd9337df9975ca",
+        "path": "samples/alphamissense/14dfb5ca5ca9fafb.json.gz",
+        "sha256": "e84e35944c41f6853fc9bad764605eb020bed1e6eb143d9ca27adae664ad9a9e",
+        "rows": 63,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/NUD15_HUMAN_Suiter_2020.csv",
+        "source_sha256": "e7540f10fe0568c066edb0b996a8f908127dc37d2a6aebf232ef33f05ea25900",
+        "path": "samples/alphamissense/11d9f4d6ab1cb6fd.json.gz",
+        "sha256": "47391405410117889b4bb86c4cdb5259c07d105787e94492fea0badec9ebf978",
+        "rows": 2844,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/OBSCN_HUMAN_Tsuboyama_2023_1V1C.csv",
+        "source_sha256": "7f09d4f2c7d00854bd32dc5c502a640c01eadf3a66571680204237b8f9cb59e0",
+        "path": "samples/alphamissense/cc14b7b947611ecf.json.gz",
+        "sha256": "cc576fc64735484658e116d344269a6c0d57a4ff692562187a8efd386e225554",
+        "rows": 3197,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/OPSD_HUMAN_Wan_2019.csv",
+        "source_sha256": "926c0afdd6d0c07bf7170710535423c447215b07cccb46eec5dd5b22368d1a8d",
+        "path": "samples/alphamissense/699fd84bc6a94f80.json.gz",
+        "sha256": "e226c0ad14b01ce7cfe9f8dc2a423cbadc63a50ba68cf2c1aad1134d35e385ac",
+        "rows": 165,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/OTC_HUMAN_Lo_2023.csv",
+        "source_sha256": "0b149c8eeae4a695d5bbce6e0af456359656f476b7c1c3586d16f0ff78dba2f7",
+        "path": "samples/alphamissense/d078680371d96e71.json.gz",
+        "sha256": "fb9669825640b56082af219da184d638dc42d7536e02bb83d945a26c8f578899",
+        "rows": 1570,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/OTU7A_HUMAN_Tsuboyama_2023_2L2D.csv",
+        "source_sha256": "e46a6f57fa05d76f20e353536bebe956ef9392e880d890068eee103fa8c39cc4",
+        "path": "samples/alphamissense/9d38037a9ba314b3.json.gz",
+        "sha256": "b4cccc52e4b5605738a609ea5e51f913ddeb9b08208edd806d1eae37a7ddbdbd",
+        "rows": 635,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/P53_HUMAN_Kotler_2018.csv",
+        "source_sha256": "0e6fd5232d1a6893fb310fea7d433b11dc6d1be708bc430b00075e27e9ecf886",
+        "path": "samples/alphamissense/98a4d8a1a404a700.json.gz",
+        "sha256": "be77d20a83800155cc1c1c41197a16eddf93810381324e8fb84914a8789be5ac",
+        "rows": 1048,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/PAI1_HUMAN_Huttinger_2021.csv",
+        "source_sha256": "5e29eb12bf8977c232633897016fea00fa0f4ff61b73d058d1df01b84e1753ac",
+        "path": "samples/alphamissense/43b4377566a7b8b8.json.gz",
+        "sha256": "a543a0753de7ecd78c4a5ca1bdf545841c9fbaab3115bf3e9c90a41539e7b497",
+        "rows": 5345,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/PIN1_HUMAN_Tsuboyama_2023_1I6C.csv",
+        "source_sha256": "4b805e0a24543d68bb677230053c0c8548e93fae2ab4870a6c16fd13e170cc87",
+        "path": "samples/alphamissense/ec81fdb65e944d68.json.gz",
+        "sha256": "6d97339375af8ad3512ce2d3299618d84e97abf423bbc20cd32b9a0c7b8d3e0b",
+        "rows": 802,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/PPARG_HUMAN_Majithia_2016.csv",
+        "source_sha256": "807eb7547b62d44d39fb6d22310a6eac54a62ca6768edb46e47de03c93ae642a",
+        "path": "samples/alphamissense/4b1212a415d9b9a2.json.gz",
+        "sha256": "0a59ee48a9580fc581769e6d361b8bee5d34704f3d6358bc6e3de8b6ff8c3d85",
+        "rows": 9576,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/PPM1D_HUMAN_Miller_2022.csv",
+        "source_sha256": "4aaf327103807e81cf86aec13dc52a01c1eec91fa48e1f94f893f002656a1d60",
+        "path": "samples/alphamissense/e3689a1f979a27b4.json.gz",
+        "sha256": "edf7dc6816ead9dd6317a521afdc774aa0923fd26ffe2450b5871075f6d84085",
+        "rows": 7889,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/PR40A_HUMAN_Tsuboyama_2023_1UZC.csv",
+        "source_sha256": "db4e8f1a8bedef74a6add1846f44c1578f3c7abf17399487e29fa2d478fd40a2",
+        "path": "samples/alphamissense/28333e89886bea9a.json.gz",
+        "sha256": "57ec71bf7bbaffab6ecd2731d46d521f3c155e4a0be65fce0a7191112d9765ed",
+        "rows": 2033,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/PRKN_HUMAN_Clausen_2023.csv",
+        "source_sha256": "4adf616e5b72d7f4a25db0a91febb67ea91fb3301d0bd26f26dc67b1cabd27d2",
+        "path": "samples/alphamissense/81ee411f6baf9116.json.gz",
+        "sha256": "990b6f6c106c7356b881aeb982d488c89bc5660fdc6089b6476fdcdc139f58a0",
+        "rows": 8756,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/PTEN_HUMAN_Matreyek_2021.csv",
+        "source_sha256": "1c52aba95950c6d3b1ac8320df4cb99a79ae97353bd43e24c87ef78dbb02e636",
+        "path": "samples/alphamissense/e329e6896331011c.json.gz",
+        "sha256": "4856889edeb8baffe514c8d9ef696b4ed2c09c241f6a330c3e04fe8a896b944b",
+        "rows": 5083,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/PTEN_HUMAN_Mighell_2018.csv",
+        "source_sha256": "d532bed24c80449936dd61cf303225d78e6e9963a58165c1c36dff92c89557e1",
+        "path": "samples/alphamissense/b26d5b6eb074a334.json.gz",
+        "sha256": "25a7acfd7b1c25076106dabd7e475fac8a2501892bc67dfd3bdf2288a52faf5d",
+        "rows": 7260,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/RAF1_HUMAN_Zinkus-Boltz_2019.csv",
+        "source_sha256": "87a15083d06f33a9fd76884ee45f98e5f72db9b32f7718770586e9c9395c7238",
+        "path": "samples/alphamissense/6259c663cbbd0cf2.json.gz",
+        "sha256": "16e4d0d5cf493d074d736e17291e48208ce638ca19471ac434c7b6c2910f3f0c",
+        "rows": 297,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/RASH_HUMAN_Bandaru_2017.csv",
+        "source_sha256": "0704164d427ab68cfb8ac72fcbe438a819ad91b31f9fa4fcb1056690173a0736",
+        "path": "samples/alphamissense/fd66410e566ee12b.json.gz",
+        "sha256": "4956cfad00bf265961733bf30ed03900b5378dc793ecbd97b9f4394fb43b1b6e",
+        "rows": 3134,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/RD23A_HUMAN_Tsuboyama_2023_1IFY.csv",
+        "source_sha256": "41f6a378236f23bd42a2a0773545031996e15cdf8eb9347042178632eac8fbdc",
+        "path": "samples/alphamissense/5dad7d234d638e39.json.gz",
+        "sha256": "69988d3ddbaecb50c42179828b67675332dd8018ecb652b3deb4ffc10126ae52",
+        "rows": 1019,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/S22A1_HUMAN_Yee_2023_abundance.csv",
+        "source_sha256": "b8bfa31eae84d0e0bdfe40f0f2c5e58390c163d17e17b922f42f2992df1e196a",
+        "path": "samples/alphamissense/0039c86b92b7babc.json.gz",
+        "sha256": "fcbef54728e70901ca5b7924fad49277eed917a1451e8e82b6efe04a33afff2e",
+        "rows": 9803,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/S22A1_HUMAN_Yee_2023_activity.csv",
+        "source_sha256": "5b470a590da0b56e05b090b6a7aa4639956096117e562bf45eede43c94149152",
+        "path": "samples/alphamissense/c487f388cd9ac565.json.gz",
+        "sha256": "228a627338f2357148b8396dc3575e64616c47f6feaf51c59100dbbf165ec05e",
+        "rows": 10094,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/SC6A4_HUMAN_Young_2021.csv",
+        "source_sha256": "0ad59ccefda5ac0d808ee39ad873db63e4260b1dc6a463cfc52f16d5d3caf62e",
+        "path": "samples/alphamissense/c840d96a03cbee58.json.gz",
+        "sha256": "dcc1dfcf636a88ac41a5515f58d340e4f53cf8b181e0f888b9e4aa6627474217",
+        "rows": 11576,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/SCN5A_HUMAN_Glazer_2019.csv",
+        "source_sha256": "1b26c30f9f7eea00a751b78d534408b50e490d37988c482c413b66755a390450",
+        "path": "samples/alphamissense/ba7939144511b6ad.json.gz",
+        "sha256": "41e56473f02b4e9f58f0014131dc43d35a00931f68203afc20effa2293ad8c05",
+        "rows": 224,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/SERC_HUMAN_Xie_2023.csv",
+        "source_sha256": "6b8cc8fec82a7f6d4b00b65a0ced7a6b57a8d6f2639bd58e22ccc4d6774db873",
+        "path": "samples/alphamissense/3dff246b622f1e2c.json.gz",
+        "sha256": "44158c398f4f066135a24444466153a3e943b05cdf7be676a40936a45711b83e",
+        "rows": 1914,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/SHOC2_HUMAN_Kwon_2022.csv",
+        "source_sha256": "36e169325becc6589e6b1f715989f2fd56d51170031a8331479c68ddbbb49d56",
+        "path": "samples/alphamissense/0fabb27496d877bf.json.gz",
+        "sha256": "5972b5e45a07eb528d324bb0f0b507b3c502011e7e861932b1525b82126152c6",
+        "rows": 10972,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/SOX30_HUMAN_Tsuboyama_2023_7JJK.csv",
+        "source_sha256": "072f71cb9b083664a9b990b87f7387b3d676ef4da818fb33be04388d5e706958",
+        "path": "samples/alphamissense/d5eca92cb3b4dc30.json.gz",
+        "sha256": "d50fbb7aedba3bbc8999079bd0ffa693e4ee6f88c6ea64e026397d6fd3f12a76",
+        "rows": 1010,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/SRC_HUMAN_Ahler_2019.csv",
+        "source_sha256": "fe9b3eb54aa97892ece60cf167764277d248b3141e9fab6754efc7734a7b7cd7",
+        "path": "samples/alphamissense/770692715dd7e23a.json.gz",
+        "sha256": "c99efd7686c237a49b6fa602c416d46d8d18da653a4c8056dc5b742b0f38dd44",
+        "rows": 3372,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/SRC_HUMAN_Chakraborty_2023_binding-DAS_25uM.csv",
+        "source_sha256": "b6fbe12a4aea4cfec065e1ae21c096508d8c68b0d5a86c43fe85c25e86af6c52",
+        "path": "samples/alphamissense/e14712a614aebf44.json.gz",
+        "sha256": "63194774881eff9916ab7dd138af8e0342211d315bc627aa7e8001e874dbcc5d",
+        "rows": 3637,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/SRC_HUMAN_Nguyen_2022.csv",
+        "source_sha256": "f97271be317982c7f67e076e3f967bbc422156757a60c0f1981b597a284d438f",
+        "path": "samples/alphamissense/bb4edd4b3337e439.json.gz",
+        "sha256": "9552c8cbbc79475f6f6705a4f145313b56a763cd645364f2d1de87853c53235a",
+        "rows": 3366,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/SUMO1_HUMAN_Weile_2017.csv",
+        "source_sha256": "71fd17bba2e8a6cbca9ea051c29eebb055d27022b4b432aeb08271b9d4b63a0c",
+        "path": "samples/alphamissense/d8d65ffc05cfcb20.json.gz",
+        "sha256": "20c8b516a0664a99baa08c29d7d416f4ee777930e49e30442345a22aa530b308",
+        "rows": 1700,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/TADBP_HUMAN_Bolognesi_2019.csv",
+        "source_sha256": "22894a3fac10cc215bfc06f5d7798b83900608a7c6b7b557f342659e6f2bdced",
+        "path": "samples/alphamissense/00fdcac8dd38583f.json.gz",
+        "sha256": "cd4f3fbf40c6d81a1afded036207ad8d487fff9e2736e24e6f4da0c9641e481b",
+        "rows": 1196,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/TPK1_HUMAN_Weile_2017.csv",
+        "source_sha256": "b5b641b4186d42dd2ea4cc67205a50d7ceb2f747c0d3f985556f908309f9ce7e",
+        "path": "samples/alphamissense/6083fa8686dd4a7a.json.gz",
+        "sha256": "8585c1461d702dfa3c66595a3f358db5447afb61d99338f8c2d1124ac3a0088b",
+        "rows": 3181,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/TPMT_HUMAN_Matreyek_2018.csv",
+        "source_sha256": "bafd9deb8ccc5e0454b7222f0dcb03e4facc1ad949177a65292bded268084d39",
+        "path": "samples/alphamissense/5c67fa006d241877.json.gz",
+        "sha256": "6e811d17ee78475c76722bfcb84c47becf4d3681e3c232b32baa3a6cdc5565d1",
+        "rows": 3648,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/UBC9_HUMAN_Weile_2017.csv",
+        "source_sha256": "3906055fdcba1b05ea9c89708eacf5e666af6803ee46a6abc895396d4b072b06",
+        "path": "samples/alphamissense/871521aba3b5abe1.json.gz",
+        "sha256": "894d80c3007420f22ca53c6d0eead5497eb221e94a2dd86bd86870d2ec470a91",
+        "rows": 2563,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/UBE4B_HUMAN_Tsuboyama_2023_3L1X.csv",
+        "source_sha256": "840b65cb8566c8b6bea9ad87cdbf25d5ce9782daf690ed5f19fdb1ad9e0059d3",
+        "path": "samples/alphamissense/4e1fdb9dddead178.json.gz",
+        "sha256": "04f6bdac910330e3bd0bf541b5bb1de4aef116cdd5688f6d7864d3f68e2f0b0e",
+        "rows": 3622,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/UBR5_HUMAN_Tsuboyama_2023_1I2T.csv",
+        "source_sha256": "9989fd8fc7fb10ab4ff7db4f34ceee082927e83751acf4158e098411d3933201",
+        "path": "samples/alphamissense/19901a6e789ae1b7.json.gz",
+        "sha256": "9ee088bd2c0f89df971f1413193a2cdf41656f2575eca0d3de820fb08e689f50",
+        "rows": 1453,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/VKOR1_HUMAN_Chiasson_2020_abundance.csv",
+        "source_sha256": "04fc7a81a09c372ed14b9ad283c5da7ceed7d51c4d949a13e2c143b6c138a7d5",
+        "path": "samples/alphamissense/f1f871a3716688de.json.gz",
+        "sha256": "78bf80981d0cd3806062185c29025f1dcd61403987ed8bdc92838ff6a75af449",
+        "rows": 2695,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/VKOR1_HUMAN_Chiasson_2020_activity.csv",
+        "source_sha256": "1aebf00f05b72ade9aa8c6330a89318e3874ea855ae9bef080fe3437cd76729d",
+        "path": "samples/alphamissense/c3dbbbecf5be6d60.json.gz",
+        "sha256": "53d1abff0ace8d5500a0645201faeb98435a36e7d8cbb7830caecebe399b5e41",
+        "rows": 697,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/proteingym/dms_final_73/YAP1_HUMAN_Araya_2012.csv",
+        "source_sha256": "8e41f730c339fc341629eb37f4a3d481e35cf171308380b6bd4ac2656bb71258",
+        "path": "samples/alphamissense/65f7c6afd30da441.json.gz",
+        "sha256": "617a8e778a031635af937ecd198a04904252c34f29294f145a467cd67b2c1a1b",
+        "rows": 10075,
+        "columns": [
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/raw_dms_single_mutants.parquet",
+        "source_sha256": "fdc48e494b5f9c2a645d41989e89b80a5398f098b22d92c93ef785d47aef6358",
+        "path": "samples/alphamissense/f37b6217f82b8ae8.json.gz",
+        "sha256": "52ad53d0151a0e95dee888d053548864469c2601ae38e1eaaeb99b13fc3c6ee7",
+        "rows": 273135,
+        "columns": [
+          "assay",
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-primary/inputs/sequence_offsets_reconstructed.csv",
+        "source_sha256": "c5b1649e9b6665c0acb709875f59e1a332938e524557c32bdc51842779228ab9",
+        "path": "samples/alphamissense/cf133439979820da.json.gz",
+        "sha256": "094b51550f51af4cb0441992fb41a2701cc12d27329f1a9cfb5ec5bcbe735e23",
+        "rows": 73,
+        "columns": [
+          "assay",
+          "acc",
+          "offset"
+        ]
+      },
+      {
+        "source_file": "am-primary/recomputed/clinvar_depth/per_variant_scored.csv.gz",
+        "source_sha256": "8507b8610abb01aff6d43c204af26e711fb4c88481e79e82659dafd5c82b1f9b",
+        "path": "samples/alphamissense/51ca7bb6267649ee.json.gz",
+        "sha256": "05631eb2e1b792cc6f1ec3d86c865e2941c1174eb10d7993da31123ab4f3edf2",
+        "rows": 194379,
+        "columns": [
+          "uniprot_id",
+          "protein_variant",
+          "chrom",
+          "ref",
+          "alt",
+          "label",
+          "gene",
+          "level",
+          "cohort"
+        ]
+      },
+      {
+        "source_file": "am-primary/recomputed/clinvar_pop/gene_levels.csv",
+        "source_sha256": "cc2354d5eaec2219e0a21d8a09ba723e34031f0c597b1cd33c505bec71ff1493",
+        "path": "samples/alphamissense/6aae73c9432b6f0b.json.gz",
+        "sha256": "e48938cc479610272110f55ed31b5a5913115b0ea987cf272801b69740f342ba",
+        "rows": 13642,
+        "columns": [
+          "gene",
+          "level"
+        ]
+      },
+      {
+        "source_file": "am-primary/recomputed/clinvar_pop/per_variant_scored.csv.gz",
+        "source_sha256": "ec09f59271504a82316ed3509bef39370cde5ae2a3d56c615d0c6558cbe5ac3c",
+        "path": "samples/alphamissense/1ba8626ba11b1b64.json.gz",
+        "sha256": "44e774b7f486cf3890a226f81dc017a28e1e271d4573b22e086e6d6447cb4924",
+        "rows": 186514,
+        "columns": [
+          "uniprot_id",
+          "protein_variant",
+          "chrom",
+          "ref",
+          "alt",
+          "label",
+          "gene",
+          "level",
+          "cohort"
+        ]
+      },
+      {
+        "source_file": "am-primary/recomputed/individual_assay_bin_performance.csv",
+        "source_sha256": "349b32e0be6afe94c4dfbf301ef20c6e33cf392ace380dd608a2027223556617",
+        "path": "samples/alphamissense/95dce3cad6561516.json.gz",
+        "sha256": "73f1145de7ee76239ac34f509e703b5abe561d2297d14c4563911ed3bee4f778",
+        "rows": 1257,
+        "columns": [
+          "bin",
+          "assay",
+          "acc"
+        ]
+      },
+      {
+        "source_file": "am-primary/recomputed/individual_predictions_measurements_levels.parquet",
+        "source_sha256": "9a7568cce8ade7aa9ed65ed708fc9054e4ec9fee2c6efd94178bcc2018b42093",
+        "path": "samples/alphamissense/69e47ba1d810e2c0.json.gz",
+        "sha256": "21a95e2a1b4550ec41ff2da78b1dd0e55573286a9396717b95a641ca30962949",
+        "rows": 270572,
+        "columns": [
+          "assay",
+          "acc",
+          "mutant",
+          "target_pos",
+          "canonical_pos",
+          "offset",
+          "occupancy_bin",
+          "cohort"
+        ]
+      },
+      {
+        "source_file": "am-primary/recomputed/join_coverage.csv",
+        "source_sha256": "b687ddafcdb8591e46a2c02d13a9f2a6b32b5c966373e87853ffda1f033e1468",
+        "path": "samples/alphamissense/22884ed35906090e.json.gz",
+        "sha256": "33454fd2297adce2888b6dabda349d7755ac1d98b6b97096f4c3fb9a435c16b0",
+        "rows": 73,
+        "columns": [
+          "assay",
+          "acc"
+        ]
+      },
+      {
+        "source_file": "am-primary/recomputed/sample_membership.csv.gz",
+        "source_sha256": "e58d94f20d951f9ba8b967d142ab50e2cec57e37f14db5614247ade514f9ea86",
+        "path": "samples/alphamissense/92cf0dc9c5619fd1.json.gz",
+        "sha256": "85f59a77604c3178985cbaeb30c8f3e38506df24df8fe1a7b1cb6b16a247d374",
+        "rows": 270572,
+        "columns": [
+          "assay",
+          "acc",
+          "mutant",
+          "target_pos",
+          "canonical_pos",
+          "occupancy_bin",
+          "cohort"
+        ]
+      }
+    ]
+  },
+  "axis_levels": {
+    "definition": "Evaluate the position-specific scoring matrix and BLOSUM62 on the same variants and occupancy bins.",
+    "calculation": "All 66 exact original alignments reclustered with original MMseqs binary/parameters. All occupancy values, insert flags and depth bins match; 65 weighted-feature sets match exactly, while OTU7A differs at 37 positions. Original and rebuilt tracks are both evaluated.",
+    "code": "materials/alphamissense/am-primary/axis-6.py"
+  },
+  "model_evaluation": {
+    "measurements": "Original code correctly maps canonical fragment positions and evaluates hash-pinned public predictions; no fresh inference claimed",
+    "fine_tuning": {
+      "target_weight_updates_in_replay": false,
+      "target_fine_tuning_during_original_audit": null,
+      "original_training_evidence": "These calculations reuse released AlphaMissense scores without updating model weights. Upstream checkpoint training is separate from this audit.",
+      "comparators": []
+    },
+    "code": "materials/alphamissense/am-primary/axis-6.py"
+  },
+  "curve": {
+    "aggregation_and_uncertainty": "All 587 historical assay/bin rows and 24 predictor/bin rows reproduce from archived features. Rebuilt features preserve all AlphaMissense results; one PSSM interval bound shifts by 0.0001 at saved precision. Original 5,000-assay bootstrap rerun.",
+    "code": "materials/alphamissense/am-primary/axis-6.py"
+  },
+  "insight": {
+    "comparison_controls_confirmation": "High-depth subset, original PSSM/BLOSUM, dynamic range and paired sign checks reproduced; same-dataset controls, no independent confirmation cohort",
+    "code": "materials/alphamissense/am-primary/axis-6.py"
+  },
+  "reconstruction_notes": [
+    "The cause of the isolated original-versus-rebuilt OTU7A weighted-count difference remains unresolved.",
+    "Independent confirmation cohort was not part of the retained analysis.",
+    "Exact retained audit inputs are identified by relative filename and hash in the input inventory. A null download_source means no matching anonymous download has been established. Public upstream datasets do not substitute for missing original splits, predictions or annotations."
+  ],
+  "implementation": {
+    "notebook": "materials/alphamissense/am-primary/axis-6.ipynb",
+    "script": "materials/alphamissense/am-primary/axis-6.py",
+    "supporting_code": "code/alphamissense.json",
+    "cell_locations": [
+      {
+        "notebook_cell": 3,
+        "start_line": 1,
+        "end_line": 6
+      },
+      {
+        "notebook_cell": 5,
+        "start_line": 7,
+        "end_line": 39
+      },
+      {
+        "notebook_cell": 7,
+        "start_line": 40,
+        "end_line": 56
+      },
+      {
+        "notebook_cell": 9,
+        "start_line": 57,
+        "end_line": 320
+      },
+      {
+        "notebook_cell": 10,
+        "start_line": 321,
+        "end_line": 498
+      },
+      {
+        "notebook_cell": 11,
+        "start_line": 499,
+        "end_line": 517
+      },
+      {
+        "notebook_cell": 13,
+        "start_line": 518,
+        "end_line": 521
+      },
+      {
+        "notebook_cell": 14,
+        "start_line": 522,
+        "end_line": 538
+      },
+      {
+        "notebook_cell": 16,
+        "start_line": 539,
+        "end_line": 802
+      },
+      {
+        "notebook_cell": 17,
+        "start_line": 803,
+        "end_line": 814
+      },
+      {
+        "notebook_cell": 19,
+        "start_line": 815,
+        "end_line": 992
+      },
+      {
+        "notebook_cell": 20,
+        "start_line": 993,
+        "end_line": 1033
+      },
+      {
+        "notebook_cell": 21,
+        "start_line": 1034,
+        "end_line": 1047
+      },
+      {
+        "notebook_cell": 23,
+        "start_line": 1048,
+        "end_line": 1067
+      },
+      {
+        "notebook_cell": 25,
+        "start_line": 1068,
+        "end_line": 1073
+      }
+    ],
+    "original_notebook_sha256": "66581c8d21066f61c230a063ab6d99fcc4d705427dbe433cba1b5c9b54972b98",
+    "published_notebook_sha256": "5c11abaa975c70ef248ea4e2d97ec0b189eefa0ecee80f198a686aa05e1d0250",
+    "changes": [
+      "Code-only export; Markdown verdicts and saved outputs omitted.",
+      "Machine-specific home paths replaced with /path/to/audit-home where present.",
+      "Python export converts notebook magic syntax using IPython; notebook retains its original code syntax.",
+      "Python exports remove trailing whitespace only after checking that the parsed syntax tree is unchanged."
+    ],
+    "saved_code_cells": 15,
+    "saved_error_outputs": 0
+  },
+  "requested_model": "AlphaMissense"
+}

@@ -1,0 +1,1121 @@
+[
+  {
+    "id": "esmfold2-featured/test-01",
+    "notes": [
+      "The complete original predicted and experimental coordinate sets needed to recompute structural accuracy from coordinates. These notebooks use archived per-target/per-sample metrics, not fresh inference.",
+      "Alignment-depth counts and original CAMEO metadata are retained. The underlying alignment files are missing, so counting homologues from raw alignments cannot be repeated."
+    ]
+  },
+  {
+    "id": "esmfold2-featured/test-02",
+    "notes": [
+      "The complete original predicted and experimental coordinate sets needed to recompute structural accuracy from coordinates. These notebooks use archived per-target/per-sample metrics, not fresh inference."
+    ]
+  },
+  {
+    "id": "esmfold2-featured/test-03",
+    "notes": [
+      "The complete original predicted and experimental coordinate sets needed to recompute structural accuracy from coordinates. These notebooks use archived per-target/per-sample metrics, not fresh inference.",
+      "Sequence components are recalculated. Original percentile reference distributions are missing; recorded percentile components and frozen levels are retained."
+    ]
+  },
+  {
+    "id": "esmfold2-featured/test-04",
+    "notes": [
+      "The complete original predicted and experimental coordinate sets needed to recompute structural accuracy from coordinates. These notebooks use archived per-target/per-sample metrics, not fresh inference."
+    ]
+  },
+  {
+    "id": "esmfold2-featured/test-05",
+    "notes": [
+      "The complete original predicted and experimental coordinate sets needed to recompute structural accuracy from coordinates. These notebooks use archived per-target/per-sample metrics, not fresh inference.",
+      "Acidic-window features are retained per target, but the exact historical window-weighting implementation and frozen cutpoints are missing. This replay cannot establish the original five-bin curve.",
+      "Exact sample membership and frozen binning for the reported33- and77-target acidic-window cohorts."
+    ]
+  },
+  {
+    "id": "esmfold2-featured/test-06",
+    "notes": [
+      "The complete original predicted and experimental coordinate sets needed to recompute structural accuracy from coordinates. These notebooks use archived per-target/per-sample metrics, not fresh inference.",
+      "Cysteine content is recalculated. Original eligible-pool quantile boundaries are missing; frozen per-target levels are retained."
+    ]
+  },
+  {
+    "id": "esmfold2-featured/test-07",
+    "notes": [
+      "The complete original predicted and experimental coordinate sets needed to recompute structural accuracy from coordinates. These notebooks use archived per-target/per-sample metrics, not fresh inference."
+    ]
+  },
+  {
+    "id": "esmfold2-featured/test-08",
+    "notes": [
+      "The complete original predicted and experimental coordinate sets needed to recompute structural accuracy from coordinates. These notebooks use archived per-target/per-sample metrics, not fresh inference."
+    ]
+  },
+  {
+    "id": "esmfold2-featured/test-09",
+    "notes": [
+      "The complete original predicted and experimental coordinate sets needed to recompute structural accuracy from coordinates. These notebooks use archived per-target/per-sample metrics, not fresh inference.",
+      "The original discovery-only cutpoints and confirmation membership are reproduced. Raw experimental coordinates are missing; the retained geometry feature is reference-derived, not an input-only predictor."
+    ]
+  },
+  {
+    "id": "esmfold2-featured/test-10",
+    "notes": [
+      "The complete original predicted and experimental coordinate sets needed to recompute structural accuracy from coordinates. These notebooks use archived per-target/per-sample metrics, not fresh inference."
+    ]
+  },
+  {
+    "id": "esmfold2-featured/test-11",
+    "notes": [
+      "The complete original predicted and experimental coordinate sets needed to recompute structural accuracy from coordinates. These notebooks use archived per-target/per-sample metrics, not fresh inference."
+    ]
+  },
+  {
+    "id": "esmfold2-featured/test-12",
+    "notes": [
+      "The complete original predicted and experimental coordinate sets needed to recompute structural accuracy from coordinates. These notebooks use archived per-target/per-sample metrics, not fresh inference."
+    ]
+  },
+  {
+    "id": "esmfold2-codex-r1/test-01",
+    "notes": [
+      "Original exact target split manifest, sequences/alignments and feature-generation inputs.",
+      "Original predicted and reference structures or per-target metric table for this audit.",
+      "Original per-target comparator and confirmation records."
+    ]
+  },
+  {
+    "id": "esmfold2-codex-r1/test-02",
+    "notes": [
+      "Original exact target split manifest, sequences/alignments and feature-generation inputs.",
+      "Original predicted and reference structures or per-target metric table for this audit.",
+      "Original per-target comparator and confirmation records."
+    ]
+  },
+  {
+    "id": "esmfold2-codex-r1/test-03",
+    "notes": [
+      "Original exact target split manifest, sequences/alignments and feature-generation inputs.",
+      "Original predicted and reference structures or per-target metric table for this audit.",
+      "Original per-target comparator and confirmation records."
+    ]
+  },
+  {
+    "id": "esmfold2-codex-r1/test-04",
+    "notes": [
+      "Original exact target split manifest, sequences/alignments and feature-generation inputs.",
+      "Original predicted and reference structures or per-target metric table for this audit.",
+      "Original per-target comparator and confirmation records."
+    ]
+  },
+  {
+    "id": "esmfold2-codex-r2/test-01",
+    "notes": [
+      "Original exact target split manifest, sequences/alignments and feature-generation inputs.",
+      "Original predicted and reference structures or per-target metric table for this audit.",
+      "Original per-target comparator and confirmation records."
+    ]
+  },
+  {
+    "id": "esmfold2-codex-r2/test-02",
+    "notes": [
+      "Original exact target split manifest, sequences/alignments and feature-generation inputs.",
+      "Original predicted and reference structures or per-target metric table for this audit.",
+      "Original per-target comparator and confirmation records."
+    ]
+  },
+  {
+    "id": "esmfold2-codex-r2/test-03",
+    "notes": [
+      "Original exact target split manifest, sequences/alignments and feature-generation inputs.",
+      "Original predicted and reference structures or per-target metric table for this audit.",
+      "Original per-target comparator and confirmation records."
+    ]
+  },
+  {
+    "id": "esmfold2-codex-r2/test-04",
+    "notes": [
+      "Original exact target split manifest, sequences/alignments and feature-generation inputs.",
+      "Original predicted and reference structures or per-target metric table for this audit.",
+      "Original per-target comparator and confirmation records."
+    ]
+  },
+  {
+    "id": "esmfold2-codex-r2/test-05",
+    "notes": [
+      "Original exact target split manifest, sequences/alignments and feature-generation inputs.",
+      "Original predicted and reference structures or per-target metric table for this audit.",
+      "Original per-target comparator and confirmation records."
+    ]
+  },
+  {
+    "id": "esmfold2-codex-r2/test-06",
+    "notes": [
+      "Original exact target split manifest, sequences/alignments and feature-generation inputs.",
+      "Original predicted and reference structures or per-target metric table for this audit.",
+      "Original per-target comparator and confirmation records."
+    ]
+  },
+  {
+    "id": "esmfold2-opus-r1/test-01",
+    "notes": [
+      "Original exact target split manifest, sequences/alignments and feature-generation inputs.",
+      "Original predicted and reference structures or per-target metric table for this audit.",
+      "Original per-target comparator and confirmation records."
+    ]
+  },
+  {
+    "id": "esmfold2-opus-r1/test-02",
+    "notes": [
+      "Original exact target split manifest, sequences/alignments and feature-generation inputs.",
+      "Original predicted and reference structures or per-target metric table for this audit.",
+      "Original per-target comparator and confirmation records."
+    ]
+  },
+  {
+    "id": "esmfold2-opus-r1/test-03",
+    "notes": [
+      "Original exact target split manifest, sequences/alignments and feature-generation inputs.",
+      "Original predicted and reference structures or per-target metric table for this audit.",
+      "Original per-target comparator and confirmation records."
+    ]
+  },
+  {
+    "id": "esmfold2-opus-r1/test-04",
+    "notes": [
+      "Original exact target split manifest, sequences/alignments and feature-generation inputs.",
+      "Original predicted and reference structures or per-target metric table for this audit.",
+      "Original per-target comparator and confirmation records."
+    ]
+  },
+  {
+    "id": "esmfold2-opus-r2/test-01",
+    "notes": [
+      "Original exact target split manifest, sequences/alignments and feature-generation inputs.",
+      "Original predicted and reference structures or per-target metric table for this audit.",
+      "Original per-target comparator and confirmation records."
+    ]
+  },
+  {
+    "id": "esmfold2-opus-r2/test-02",
+    "notes": [
+      "Original exact target split manifest, sequences/alignments and feature-generation inputs.",
+      "Original predicted and reference structures or per-target metric table for this audit.",
+      "Original per-target comparator and confirmation records."
+    ]
+  },
+  {
+    "id": "esmfold2-opus-r2/test-03",
+    "notes": [
+      "Original exact target split manifest, sequences/alignments and feature-generation inputs.",
+      "Original predicted and reference structures or per-target metric table for this audit.",
+      "Original per-target comparator and confirmation records."
+    ]
+  },
+  {
+    "id": "esmfold2-opus-r2/test-04",
+    "notes": [
+      "Original exact target split manifest, sequences/alignments and feature-generation inputs.",
+      "Original predicted and reference structures or per-target metric table for this audit.",
+      "Original per-target comparator and confirmation records."
+    ]
+  },
+  {
+    "id": "esmfold2-kimi-r2/test-01",
+    "notes": [
+      "Underlying reference/test FASTA and original search executable/database are not included; original hit-table aggregation is replayed, not the MMseqs search.",
+      "Fresh ESMFold2 inference and template coordinate construction were not rerun. Original structures are supplied and rescored.",
+      "The original standalone TMalign20220412 binary is unavailable locally; tmtools0.3.0 rescoring agreement is reported per sample rather than assumed.",
+      "Template reference is undefined at lowest identity. Model means are nonmonotonic across middle levels.",
+      "New t-interval display bands and Welch confidence intervals are diagnostic recomputations.",
+      "The 128-target expansion has endpoint difference -0.0598103, interval [-0.141321, 0.0217004], p=0.146802. It must be kept separate from the pooled 160-target calculation."
+    ]
+  },
+  {
+    "id": "esmfold2-kimi-r2/test-02",
+    "notes": [
+      "Underlying reference/test FASTA and original search executable/database are not included; original hit-table aggregation is replayed, not the MMseqs search.",
+      "Fresh ESMFold2 inference and template coordinate construction were not rerun. Original structures are supplied and rescored.",
+      "The original standalone TMalign20220412 binary is unavailable locally; tmtools0.3.0 rescoring agreement is reported per sample rather than assumed.",
+      "Template reference is undefined at lowest identity. Model means are nonmonotonic across middle levels.",
+      "New t-interval display bands and Welch confidence intervals are diagnostic recomputations.",
+      "The 128-target expansion has endpoint difference -0.0598103, interval [-0.141321, 0.0217004], p=0.146802. It must be kept separate from the pooled 160-target calculation."
+    ]
+  },
+  {
+    "id": "esmfold2-kimi-r1/test-01",
+    "notes": [
+      "This original run evaluated ESMFold v1, not ESMFold2; it cannot support an ESMFold2 scientific result.",
+      "Original MMseqs hit table/reference sequences and baseline template coordinate-transfer inputs were not recovered.",
+      "Fresh model inference was not rerun. Original target structures were rescored; baseline per-unit scores are retained.",
+      "Display mean confidence intervals are new t-interval diagnostics, not the original reported standard deviations.",
+      "Template-reference means use only covered examples: 10/80 discovery A4 and 27/170 confirmation orphans. Missing baseline predictions are not zero, and their coverage differs from the target model.",
+      "The retained structures come from ESMFold v1; the intended target was ESMFold2."
+    ]
+  },
+  {
+    "id": "esmfold2-kimi-r1/test-02",
+    "notes": [
+      "This original run evaluated ESMFold v1, not ESMFold2; it cannot support an ESMFold2 scientific result.",
+      "Original MMseqs hit table/reference sequences and baseline template coordinate-transfer inputs were not recovered.",
+      "Fresh model inference was not rerun. Original target structures were rescored; baseline per-unit scores are retained.",
+      "Display mean confidence intervals are new t-interval diagnostics, not the original reported standard deviations.",
+      "Template-reference means use only covered examples: 10/80 discovery A4 and 27/170 confirmation orphans. Missing baseline predictions are not zero, and their coverage differs from the target model.",
+      "The retained structures come from ESMFold v1; the intended target was ESMFold2."
+    ]
+  },
+  {
+    "id": "esmfold2-kimi-r1/test-03",
+    "notes": [
+      "This original run evaluated ESMFold v1, not ESMFold2; it cannot support an ESMFold2 scientific result.",
+      "Original MMseqs hit table/reference sequences and baseline template coordinate-transfer inputs were not recovered.",
+      "Fresh model inference was not rerun. Original target structures were rescored; baseline per-unit scores are retained.",
+      "Display mean confidence intervals are new t-interval diagnostics, not the original reported standard deviations.",
+      "Template-reference means use only covered examples: 10/80 discovery A4 and 27/170 confirmation orphans. Missing baseline predictions are not zero, and their coverage differs from the target model.",
+      "The retained structures come from ESMFold v1; the intended target was ESMFold2."
+    ]
+  },
+  {
+    "id": "state-featured/test-01",
+    "notes": [
+      "Predicted expression vectors, observed matrices and checkpoint-linked evaluation code needed to independently recompute per-record model metrics.",
+      "Original Tahoe training drug identity lists and fingerprint-generation script."
+    ]
+  },
+  {
+    "id": "state-featured/test-02",
+    "notes": [
+      "Predicted expression vectors, observed matrices and checkpoint-linked evaluation code needed to independently recompute per-record model metrics."
+    ]
+  },
+  {
+    "id": "state-featured/test-03",
+    "notes": [
+      "Predicted expression vectors, observed matrices and checkpoint-linked evaluation code needed to independently recompute per-record model metrics."
+    ]
+  },
+  {
+    "id": "state-featured/test-04",
+    "notes": [
+      "Predicted expression vectors, observed matrices and checkpoint-linked evaluation code needed to independently recompute per-record model metrics."
+    ]
+  },
+  {
+    "id": "state-featured/test-05",
+    "notes": [
+      "Predicted expression vectors, observed matrices and checkpoint-linked evaluation code needed to independently recompute per-record model metrics."
+    ]
+  },
+  {
+    "id": "state-featured/test-06",
+    "notes": [
+      "Predicted expression vectors, observed matrices and checkpoint-linked evaluation code needed to independently recompute per-record model metrics."
+    ]
+  },
+  {
+    "id": "state-featured/test-07",
+    "notes": [
+      "Predicted expression vectors, observed matrices and checkpoint-linked evaluation code needed to independently recompute per-record model metrics.",
+      "Original HGNC annotation snapshot matching every archived group feature."
+    ]
+  },
+  {
+    "id": "state-featured/test-08",
+    "notes": [
+      "Predicted expression vectors, observed matrices and checkpoint-linked evaluation code needed to independently recompute per-record model metrics."
+    ]
+  },
+  {
+    "id": "state-featured/test-09",
+    "notes": [
+      "Predicted expression vectors, observed matrices and checkpoint-linked evaluation code needed to independently recompute per-record model metrics."
+    ]
+  },
+  {
+    "id": "state-featured/test-10",
+    "notes": [
+      "Predicted expression vectors, observed matrices and checkpoint-linked evaluation code needed to independently recompute per-record model metrics."
+    ]
+  },
+  {
+    "id": "state-featured/test-11",
+    "notes": [
+      "Predicted expression vectors, observed matrices and checkpoint-linked evaluation code needed to independently recompute per-record model metrics."
+    ]
+  },
+  {
+    "id": "state-featured/test-12",
+    "notes": [
+      "Predicted expression vectors, observed matrices and checkpoint-linked evaluation code needed to independently recompute per-record model metrics.",
+      "Original Parse training/validation TOML files for independent family support recomputation."
+    ]
+  },
+  {
+    "id": "state-featured/test-13",
+    "notes": [
+      "Predicted expression vectors, observed matrices and checkpoint-linked evaluation code needed to independently recompute per-record model metrics.",
+      "Exact original annotation membership snapshot for independent feature recomputation (reactome)."
+    ]
+  },
+  {
+    "id": "state-featured/test-14",
+    "notes": [
+      "Predicted expression vectors, observed matrices and checkpoint-linked evaluation code needed to independently recompute per-record model metrics.",
+      "Exact original annotation membership snapshot for independent feature recomputation (hgnc_gene_group)."
+    ]
+  },
+  {
+    "id": "state-featured/test-15",
+    "notes": [
+      "Predicted expression vectors, observed matrices and checkpoint-linked evaluation code needed to independently recompute per-record model metrics.",
+      "Exact original annotation membership snapshot for independent feature recomputation (go_bp)."
+    ]
+  },
+  {
+    "id": "state-featured/test-16",
+    "notes": [
+      "Predicted expression vectors, observed matrices and checkpoint-linked evaluation code needed to independently recompute per-record model metrics.",
+      "Exact original annotation membership snapshot for independent feature recomputation (go_mf)."
+    ]
+  },
+  {
+    "id": "state-featured/test-17",
+    "notes": [
+      "Predicted expression vectors, observed matrices and checkpoint-linked evaluation code needed to independently recompute per-record model metrics.",
+      "Exact original annotation membership snapshot for independent feature recomputation (go_cc)."
+    ]
+  },
+  {
+    "id": "state-featured/test-18",
+    "notes": [
+      "Predicted expression vectors, observed matrices and checkpoint-linked evaluation code needed to independently recompute per-record model metrics.",
+      "Exact original annotation membership snapshot for independent feature recomputation (wikipathways)."
+    ]
+  },
+  {
+    "id": "state-featured/test-19",
+    "notes": [
+      "Predicted expression vectors, observed matrices and checkpoint-linked evaluation code needed to independently recompute per-record model metrics.",
+      "Exact original annotation membership snapshot for independent feature recomputation (kegg)."
+    ]
+  },
+  {
+    "id": "state-codex-r1/test-01",
+    "notes": [
+      "Final continuation sample-level data from /path/to/audit-home/codex_spectra_audits/STATE; the saved aggregate tables and partial scripts are insufficient.",
+      "Original axis input features and level-assignment outputs.",
+      "Original individual predictions/observations and matched reference outputs."
+    ]
+  },
+  {
+    "id": "state-codex-r1/test-02",
+    "notes": [
+      "Final continuation sample-level data from /path/to/audit-home/codex_spectra_audits/STATE; the saved aggregate tables and partial scripts are insufficient.",
+      "Original axis input features and level-assignment outputs.",
+      "Original individual predictions/observations and matched reference outputs."
+    ]
+  },
+  {
+    "id": "state-codex-r1/test-03",
+    "notes": [
+      "Final continuation sample-level data from /path/to/audit-home/codex_spectra_audits/STATE; the saved aggregate tables and partial scripts are insufficient.",
+      "Original axis input features and level-assignment outputs.",
+      "Original individual predictions/observations and matched reference outputs."
+    ]
+  },
+  {
+    "id": "state-codex-r1/test-04",
+    "notes": [
+      "Final continuation sample-level data from /path/to/audit-home/codex_spectra_audits/STATE; the saved aggregate tables and partial scripts are insufficient.",
+      "Original axis input features and level-assignment outputs.",
+      "Original individual predictions/observations and matched reference outputs."
+    ]
+  },
+  {
+    "id": "state-codex-r2/test-01",
+    "notes": [
+      "Pre-cleanup workspace /path/to/audit-home/codex_spectra_audits_v2/STATE, including per-sample data and exact analysis scripts.",
+      "Original axis input features and level-assignment outputs.",
+      "Original individual predictions/observations and matched reference outputs."
+    ]
+  },
+  {
+    "id": "state-codex-r2/test-02",
+    "notes": [
+      "Pre-cleanup workspace /path/to/audit-home/codex_spectra_audits_v2/STATE, including per-sample data and exact analysis scripts.",
+      "Original axis input features and level-assignment outputs.",
+      "Original individual predictions/observations and matched reference outputs."
+    ]
+  },
+  {
+    "id": "state-codex-r2/test-03",
+    "notes": [
+      "Pre-cleanup workspace /path/to/audit-home/codex_spectra_audits_v2/STATE, including per-sample data and exact analysis scripts.",
+      "Original axis input features and level-assignment outputs.",
+      "Original individual predictions/observations and matched reference outputs."
+    ]
+  },
+  {
+    "id": "state-codex-r2/test-04",
+    "notes": [
+      "Pre-cleanup workspace /path/to/audit-home/codex_spectra_audits_v2/STATE, including per-sample data and exact analysis scripts.",
+      "Original axis input features and level-assignment outputs.",
+      "Original individual predictions/observations and matched reference outputs."
+    ]
+  },
+  {
+    "id": "state-codex-r2/test-05",
+    "notes": [
+      "Pre-cleanup workspace /path/to/audit-home/codex_spectra_audits_v2/STATE, including per-sample data and exact analysis scripts.",
+      "Original axis input features and level-assignment outputs.",
+      "Original individual predictions/observations and matched reference outputs."
+    ]
+  },
+  {
+    "id": "state-opus-r1/test-01",
+    "notes": [
+      "Original expression predictions and observed matrices; actual genetic training gene lists (the audit used an evaluation-panel proxy)."
+    ]
+  },
+  {
+    "id": "state-opus-r1/test-02",
+    "notes": [
+      "Original expression predictions and observed matrices; actual genetic training gene lists (the audit used an evaluation-panel proxy).",
+      "Original RDKit fingerprint/reference-selection script and software build."
+    ]
+  },
+  {
+    "id": "state-opus-r1/test-03",
+    "notes": [
+      "Original expression predictions and observed matrices; actual genetic training gene lists (the audit used an evaluation-panel proxy).",
+      "Original exact grouping script for the reported cell-context null contrast."
+    ]
+  },
+  {
+    "id": "state-opus-r1/test-04",
+    "notes": [
+      "Original expression predictions and observed matrices; actual genetic training gene lists (the audit used an evaluation-panel proxy)."
+    ]
+  },
+  {
+    "id": "state-opus-r2/test-01",
+    "notes": [
+      "Predicted and observed expression matrices for independent metric calculation; original model checkpoint provenance."
+    ]
+  },
+  {
+    "id": "state-opus-r2/test-02",
+    "notes": [
+      "Predicted and observed expression matrices for independent metric calculation; original model checkpoint provenance.",
+      "Original calculation chain for the mechanism and target-coverage components beyond the recovered chemical-similarity pilot."
+    ]
+  },
+  {
+    "id": "state-opus-r2/test-03",
+    "notes": [
+      "Predicted and observed expression matrices for independent metric calculation; original model checkpoint provenance."
+    ]
+  },
+  {
+    "id": "state-opus-r2/test-04",
+    "notes": [
+      "Predicted and observed expression matrices for independent metric calculation; original model checkpoint provenance."
+    ]
+  },
+  {
+    "id": "state-opus-r2/test-05",
+    "notes": [
+      "Predicted and observed expression matrices for independent metric calculation; original model checkpoint provenance.",
+      "Exact original gene-half membership and Python hash seed are missing. The historical hash(g)%2 split is not rerun or claimed independently reproduced."
+    ]
+  },
+  {
+    "id": "state-kimi-r1/test-01",
+    "notes": [
+      "Individual cell-ID lists, raw single-cell inputs and frozen checkpoints for fresh model inference."
+    ]
+  },
+  {
+    "id": "state-kimi-r1/test-02",
+    "notes": [
+      "Individual cell-ID lists, raw single-cell inputs and frozen checkpoints for fresh model inference."
+    ]
+  },
+  {
+    "id": "state-kimi-r1/test-03",
+    "notes": [
+      "Individual cell-ID lists, raw single-cell inputs and frozen checkpoints for fresh model inference.",
+      "Exact trained embedding weights and perturbation index map."
+    ]
+  },
+  {
+    "id": "state-kimi-r1/test-04",
+    "notes": [
+      "Individual cell-ID lists, raw single-cell inputs and frozen checkpoints for fresh model inference."
+    ]
+  },
+  {
+    "id": "state-kimi-r2/test-01",
+    "notes": [
+      "Original /path/to/audit-home/kimi/L4_STATE_r2 individual data, split manifests and inference outputs; the current VM folder retains only prompt/report/config.",
+      "Original axis input features and level-assignment outputs.",
+      "Original individual predictions/observations and matched reference outputs."
+    ]
+  },
+  {
+    "id": "state-kimi-r2/test-02",
+    "notes": [
+      "Original /path/to/audit-home/kimi/L4_STATE_r2 individual data, split manifests and inference outputs; the current VM folder retains only prompt/report/config.",
+      "Original axis input features and level-assignment outputs.",
+      "Original individual predictions/observations and matched reference outputs."
+    ]
+  },
+  {
+    "id": "state-kimi-r2/test-03",
+    "notes": [
+      "Original /path/to/audit-home/kimi/L4_STATE_r2 individual data, split manifests and inference outputs; the current VM folder retains only prompt/report/config.",
+      "Original axis input features and level-assignment outputs.",
+      "Original individual predictions/observations and matched reference outputs."
+    ]
+  },
+  {
+    "id": "conch-primary/test-01",
+    "notes": [
+      "Original prospective reference feature matrix and source code assigning axis values/levels were not recovered. Axis step is retained evidence, not recomputed.",
+      "Fresh inference and original raw-image feature extraction are not rerun. Original confirmation target predicted labels/logits and raw image identity mapping are missing; only per-image correctness remains.",
+      "The confidence intervals in this repair are newly recomputed diagnostics, clearly labeled."
+    ]
+  },
+  {
+    "id": "conch-primary/test-02",
+    "notes": [
+      "Original prospective reference feature matrix and source code assigning axis values/levels were not recovered. Axis step is retained evidence, not recomputed.",
+      "Fresh inference and original raw-image feature extraction are not rerun. Original confirmation target predicted labels/logits and raw image identity mapping are missing; only per-image correctness remains.",
+      "The confidence intervals in this repair are newly recomputed diagnostics, clearly labeled."
+    ]
+  },
+  {
+    "id": "conch-primary/test-03",
+    "notes": [
+      "Original prospective reference feature matrix and source code assigning axis values/levels were not recovered. Axis step is retained evidence, not recomputed.",
+      "Fresh inference and original raw-image feature extraction are not rerun. Original confirmation target predicted labels/logits and raw image identity mapping are missing; only per-image correctness remains.",
+      "The confidence intervals in this repair are newly recomputed diagnostics, clearly labeled."
+    ]
+  },
+  {
+    "id": "conch-primary/test-04",
+    "notes": [
+      "Original prospective reference feature matrix and source code assigning axis values/levels were not recovered. Axis step is retained evidence, not recomputed.",
+      "Fresh inference and original raw-image feature extraction are not rerun. Original confirmation target predicted labels/logits and raw image identity mapping are missing; only per-image correctness remains.",
+      "The confidence intervals in this repair are newly recomputed diagnostics, clearly labeled."
+    ]
+  },
+  {
+    "id": "conch-primary/test-05",
+    "notes": [
+      "Original prospective reference feature matrix and source code assigning axis values/levels were not recovered. Axis step is retained evidence, not recomputed.",
+      "Fresh inference and original raw-image feature extraction are not rerun. Original confirmation target predicted labels/logits and raw image identity mapping are missing; only per-image correctness remains.",
+      "The confidence intervals in this repair are newly recomputed diagnostics, clearly labeled."
+    ]
+  },
+  {
+    "id": "conch-primary/test-06",
+    "notes": [
+      "Original prospective reference feature matrix and source code assigning axis values/levels were not recovered. Axis step is retained evidence, not recomputed.",
+      "Fresh inference and original raw-image feature extraction are not rerun. Original confirmation target predicted labels/logits and raw image identity mapping are missing; only per-image correctness remains.",
+      "The confidence intervals in this repair are newly recomputed diagnostics, clearly labeled."
+    ]
+  },
+  {
+    "id": "conch-gpt-r1/test-01",
+    "notes": [
+      "The original individual image feature matrices, level assignments and target/baseline predictions are missing from the retained July Codex bundle.",
+      "Frozen specifications, cohort metadata, aggregate statistics and available recovered code are preserved. They cannot establish end-to-end reproduction without the missing records."
+    ]
+  },
+  {
+    "id": "conch-gpt-r1/test-02",
+    "notes": [
+      "The original individual image feature matrices, level assignments and target/baseline predictions are missing from the retained July Codex bundle.",
+      "Frozen specifications, cohort metadata, aggregate statistics and available recovered code are preserved. They cannot establish end-to-end reproduction without the missing records."
+    ]
+  },
+  {
+    "id": "conch-gpt-r1/test-03",
+    "notes": [
+      "The original individual image feature matrices, level assignments and target/baseline predictions are missing from the retained July Codex bundle.",
+      "Frozen specifications, cohort metadata, aggregate statistics and available recovered code are preserved. They cannot establish end-to-end reproduction without the missing records."
+    ]
+  },
+  {
+    "id": "conch-gpt-r1/test-04",
+    "notes": [
+      "The original individual image feature matrices, level assignments and target/baseline predictions are missing from the retained July Codex bundle.",
+      "Frozen specifications, cohort metadata, aggregate statistics and available recovered code are preserved. They cannot establish end-to-end reproduction without the missing records."
+    ]
+  },
+  {
+    "id": "conch-gpt-r1/test-05",
+    "notes": [
+      "The original individual image feature matrices, level assignments and target/baseline predictions are missing from the retained July Codex bundle.",
+      "Frozen specifications, cohort metadata, aggregate statistics and available recovered code are preserved. They cannot establish end-to-end reproduction without the missing records."
+    ]
+  },
+  {
+    "id": "conch-gpt-r1/test-06",
+    "notes": [
+      "The original individual image feature matrices, level assignments and target/baseline predictions are missing from the retained July Codex bundle.",
+      "Frozen specifications, cohort metadata, aggregate statistics and available recovered code are preserved. They cannot establish end-to-end reproduction without the missing records."
+    ]
+  },
+  {
+    "id": "conch-gpt-r1/test-07",
+    "notes": [
+      "The original individual image feature matrices, level assignments and target/baseline predictions are missing from the retained July Codex bundle.",
+      "Frozen specifications, cohort metadata, aggregate statistics and available recovered code are preserved. They cannot establish end-to-end reproduction without the missing records."
+    ]
+  },
+  {
+    "id": "conch-gpt-r2/test-01",
+    "notes": [
+      "The original individual image feature matrices, level assignments and target/baseline predictions are missing from the retained July Codex bundle.",
+      "Frozen specifications, cohort metadata, aggregate statistics and available recovered code are preserved. They cannot establish end-to-end reproduction without the missing records.",
+      "No original analysis script or native transcript was recovered for this r2 run; do not invent source code and attribute it to the original audit."
+    ]
+  },
+  {
+    "id": "conch-gpt-r2/test-02",
+    "notes": [
+      "The original individual image feature matrices, level assignments and target/baseline predictions are missing from the retained July Codex bundle.",
+      "Frozen specifications, cohort metadata, aggregate statistics and available recovered code are preserved. They cannot establish end-to-end reproduction without the missing records.",
+      "No original analysis script or native transcript was recovered for this r2 run; do not invent source code and attribute it to the original audit."
+    ]
+  },
+  {
+    "id": "conch-gpt-r2/test-03",
+    "notes": [
+      "The original individual image feature matrices, level assignments and target/baseline predictions are missing from the retained July Codex bundle.",
+      "Frozen specifications, cohort metadata, aggregate statistics and available recovered code are preserved. They cannot establish end-to-end reproduction without the missing records.",
+      "No original analysis script or native transcript was recovered for this r2 run; do not invent source code and attribute it to the original audit."
+    ]
+  },
+  {
+    "id": "conch-gpt-r2/test-04",
+    "notes": [
+      "The original individual image feature matrices, level assignments and target/baseline predictions are missing from the retained July Codex bundle.",
+      "Frozen specifications, cohort metadata, aggregate statistics and available recovered code are preserved. They cannot establish end-to-end reproduction without the missing records.",
+      "No original analysis script or native transcript was recovered for this r2 run; do not invent source code and attribute it to the original audit."
+    ]
+  },
+  {
+    "id": "conch-gpt-r2/test-05",
+    "notes": [
+      "The original individual image feature matrices, level assignments and target/baseline predictions are missing from the retained July Codex bundle.",
+      "Frozen specifications, cohort metadata, aggregate statistics and available recovered code are preserved. They cannot establish end-to-end reproduction without the missing records.",
+      "No original analysis script or native transcript was recovered for this r2 run; do not invent source code and attribute it to the original audit."
+    ]
+  },
+  {
+    "id": "conch-gpt-r2/test-06",
+    "notes": [
+      "The original individual image feature matrices, level assignments and target/baseline predictions are missing from the retained July Codex bundle.",
+      "Frozen specifications, cohort metadata, aggregate statistics and available recovered code are preserved. They cannot establish end-to-end reproduction without the missing records.",
+      "No original analysis script or native transcript was recovered for this r2 run; do not invent source code and attribute it to the original audit."
+    ]
+  },
+  {
+    "id": "conch-gpt-r2/test-07",
+    "notes": [
+      "The original individual image feature matrices, level assignments and target/baseline predictions are missing from the retained July Codex bundle.",
+      "Frozen specifications, cohort metadata, aggregate statistics and available recovered code are preserved. They cannot establish end-to-end reproduction without the missing records.",
+      "No original analysis script or native transcript was recovered for this r2 run; do not invent source code and attribute it to the original audit."
+    ]
+  },
+  {
+    "id": "conch-opus-r1/test-01",
+    "notes": [
+      "Fresh CONCH inference was not rerun; complete archived target logits are rescored.",
+      "New bootstrap bands are notebook diagnostics, not original reported confidence intervals.",
+      "Full-cohort axis exploration preceded the within-cohort split; independent external confirmation was not established."
+    ]
+  },
+  {
+    "id": "conch-opus-r1/test-02",
+    "notes": [
+      "Fresh CONCH inference was not rerun; complete archived target logits are rescored.",
+      "New bootstrap bands are notebook diagnostics, not original reported confidence intervals.",
+      "Full-cohort axis exploration preceded the within-cohort split; independent external confirmation was not established."
+    ]
+  },
+  {
+    "id": "conch-opus-r1/test-03",
+    "notes": [
+      "Fresh CONCH inference was not rerun; complete archived target logits are rescored.",
+      "New bootstrap bands are notebook diagnostics, not original reported confidence intervals.",
+      "Full-cohort axis exploration preceded the within-cohort split; independent external confirmation was not established."
+    ]
+  },
+  {
+    "id": "conch-opus-r2/test-01",
+    "notes": [
+      "Fresh CONCH and ResNet inference was not rerun; original predicted labels are rescored.",
+      "Cross-site independence remains unresolved; do not relabel this controlled blur experiment as a natural training-distance shift."
+    ]
+  },
+  {
+    "id": "conch-opus-r2/test-02",
+    "notes": [
+      "Development feature extraction and fresh inference were not rerun.",
+      "No independent stain confirmation exists in this investigation; exploratory output cannot substitute for it."
+    ]
+  },
+  {
+    "id": "conch-opus-r2/test-03",
+    "notes": [
+      "Fresh CONCH and ResNet inference was not rerun; original predicted labels are rescored.",
+      "Cross-site independence remains unresolved; do not relabel this controlled blur experiment as a natural training-distance shift."
+    ]
+  },
+  {
+    "id": "conch-kimi-r1/test-01",
+    "notes": [
+      "The original VM workspace now retains REPORT.md and PROMPT.md only. Original sample manifests, target/reference individual predictions and per-level probabilities were not recovered.",
+      "Recovered scripts specify the computation, but cannot reproduce the original curve without those inputs."
+    ]
+  },
+  {
+    "id": "conch-kimi-r2/test-01",
+    "notes": [
+      "Fresh target and baseline image inference were not rerun. Original images and all scored class arrays are supplied; model predictions are rescored.",
+      "Original SSIM check is recalculated from raw pixels; proximity is recalculated from saved DINOv2 embeddings, without rerunning that backbone.",
+      "Wilson bands are newly added display diagnostics; original significance comes from reproduced paired McNemar tests."
+    ]
+  },
+  {
+    "id": "conch-kimi-r2/test-02",
+    "notes": [
+      "Original per-image predictions at each stain factor were not retained; only the pilot aggregate table and transformation/scoring scripts remain.",
+      "No frozen stain confirmation was performed."
+    ]
+  },
+  {
+    "id": "conch-kimi-r2/test-03",
+    "notes": [
+      "Fresh target inference was not rerun. NCT target logits/probabilities are rescored; CRC-VAL retains predicted labels but native class-score arrays were not recovered.",
+      "The two-cohort comparison was not a separately frozen site-specific confirmation and cannot isolate a causal site effect.",
+      "New class-stratified bootstrap bands are diagnostic recalculations, not historical reported intervals."
+    ]
+  },
+  {
+    "id": "am-primary/test-01",
+    "notes": [
+      "Original UniRef50 database snapshot and search invocation are not bundled; the complete original search-hit file is provided.",
+      "Raw ClinVar VCF and AlphaMissense hg38 files were recovered and their constructor rerun, but are not duplicated in this package; exact source hashes and the constructor are included.",
+      "Independent confirmation was not part of the retained screen."
+    ]
+  },
+  {
+    "id": "am-primary/test-02",
+    "notes": [
+      "Raw ClinVar VCF and AlphaMissense hg38 files were recovered and their constructor rerun, but are not duplicated in this package; exact source hashes and the constructor are included.",
+      "Independent confirmation was not part of the retained screen."
+    ]
+  },
+  {
+    "id": "am-primary/test-03",
+    "notes": [
+      "The cause of the isolated original-versus-rebuilt OTU7A weighted-count difference remains unresolved.",
+      "Independent confirmation cohort was not part of the retained analysis."
+    ]
+  },
+  {
+    "id": "am-primary/test-04",
+    "notes": [
+      "The cause of the isolated original-versus-rebuilt OTU7A weighted-count difference remains unresolved.",
+      "Independent confirmation cohort was not part of the retained analysis."
+    ]
+  },
+  {
+    "id": "am-primary/test-05",
+    "notes": [
+      "The cause of the isolated original-versus-rebuilt OTU7A weighted-count difference remains unresolved.",
+      "Independent confirmation cohort was not part of the retained analysis."
+    ]
+  },
+  {
+    "id": "am-primary/test-06",
+    "notes": [
+      "The cause of the isolated original-versus-rebuilt OTU7A weighted-count difference remains unresolved.",
+      "Independent confirmation cohort was not part of the retained analysis."
+    ]
+  },
+  {
+    "id": "am-primary/test-07",
+    "notes": [
+      "The cause of the isolated original-versus-rebuilt OTU7A weighted-count difference remains unresolved.",
+      "Independent confirmation cohort was not part of the retained analysis."
+    ]
+  },
+  {
+    "id": "am-gpt-r1/test-01",
+    "notes": [
+      "data/processed/clinvar_discovery_scored.parquet",
+      "data/processed/clinvar_confirmation_outcomes_sealed.parquet",
+      "data/processed/proteingym_dms_discovery_scored.parquet",
+      "data/processed/proteingym_dms_confirmation_scored.parquet",
+      "The July 7 2026 ClinVar snapshot, SHA256 5fe4fe10783391d01dc414dc5583a3e63487b67f8cd3c8429d59227cd5f4f37f, plus pinned AlphaMissense, GENCODE v32 and ProteinGym v1.3 inputs listed in retained/provenance/manifest.md",
+      "controller/state.json from the original run; the frozen axis specification is retained in retained/config/frozen_axis.json"
+    ]
+  },
+  {
+    "id": "am-gpt-r1/test-02",
+    "notes": []
+  },
+  {
+    "id": "am-gpt-r1/test-03",
+    "notes": []
+  },
+  {
+    "id": "am-gpt-r1/test-04",
+    "notes": []
+  },
+  {
+    "id": "am-gpt-r1/test-05",
+    "notes": [
+      "data/processed/clinvar_discovery_scored.parquet",
+      "data/processed/clinvar_confirmation_outcomes_sealed.parquet",
+      "data/processed/proteingym_dms_discovery_scored.parquet",
+      "data/processed/proteingym_dms_confirmation_scored.parquet",
+      "The July 7 2026 ClinVar snapshot, SHA256 5fe4fe10783391d01dc414dc5583a3e63487b67f8cd3c8429d59227cd5f4f37f, plus pinned AlphaMissense, GENCODE v32 and ProteinGym v1.3 inputs listed in retained/provenance/manifest.md",
+      "controller/state.json from the original run; the frozen axis specification is retained in retained/config/frozen_axis.json"
+    ]
+  },
+  {
+    "id": "am-gpt-r2/test-01",
+    "notes": [
+      "data/processed/clinvar_am_splice_panel.csv.gz (expected SHA256 fcdd80ab5f6bf1e7f271d17a5f6cad54089f3b48746d335d6fc80edd7edd3936)",
+      "data/processed/proteingym_human_am_panel.csv.gz (expected SHA256 ce7b82a1e7c801b7a6b3e77e6c1bac90ae0d30ba0ea4e5b01688056edb54b2a4)",
+      "The original code calculating exon-boundary distances, splitting genes, scoring predictions and constructing the bootstrap",
+      "The frozen raw source versions and split manifests used to create those two panels"
+    ]
+  },
+  {
+    "id": "am-gpt-r2/test-02",
+    "notes": [
+      "data/processed/clinvar_am_splice_panel.csv.gz (expected SHA256 fcdd80ab5f6bf1e7f271d17a5f6cad54089f3b48746d335d6fc80edd7edd3936)",
+      "data/processed/proteingym_human_am_panel.csv.gz (expected SHA256 ce7b82a1e7c801b7a6b3e77e6c1bac90ae0d30ba0ea4e5b01688056edb54b2a4)",
+      "The original code calculating exon-boundary distances, splitting genes, scoring predictions and constructing the bootstrap",
+      "The frozen raw source versions and split manifests used to create those two panels"
+    ]
+  },
+  {
+    "id": "am-gpt-r2/test-03",
+    "notes": []
+  },
+  {
+    "id": "am-gpt-r2/test-04",
+    "notes": []
+  },
+  {
+    "id": "am-opus-r1/test-01",
+    "notes": [
+      "Original preprocessing command that generated supplied predictions.csv",
+      "A full cohort repair restoring the 1,934 originally omitted fragment variants, followed by scientific review",
+      "Independent evidence establishing original split timing relative to axis selection",
+      "Exact upstream weighting procedure for ProteinGym whole-protein MSA_Neff_L metadata",
+      "Original PSSM score-construction command; retained per-variant comparator scores are used",
+      "The original fragment-coordinate lookup changes 37,014 scores when corrected and omits 1,934 variants. The full corrected cohort has not been reconstructed; a same-panel sensitivity is a separate analysis."
+    ]
+  },
+  {
+    "id": "am-opus-r1/test-02",
+    "notes": [
+      "Original preprocessing command that generated supplied predictions.csv",
+      "A full cohort repair restoring the 1,934 originally omitted fragment variants, followed by scientific review",
+      "Independent evidence establishing original split timing relative to axis selection",
+      "Exact upstream weighting procedure for ProteinGym whole-protein MSA_Neff_L metadata",
+      "Original PSSM score-construction command; retained per-variant comparator scores are used",
+      "The original fragment-coordinate lookup changes 37,014 scores when corrected and omits 1,934 variants. The full corrected cohort has not been reconstructed; a same-panel sensitivity is a separate analysis."
+    ]
+  },
+  {
+    "id": "am-opus-r1/test-03",
+    "notes": [
+      "Original preprocessing command that generated supplied predictions.csv",
+      "A full cohort repair restoring the 1,934 originally omitted fragment variants, followed by scientific review",
+      "Independent evidence establishing original split timing relative to axis selection",
+      "Exact upstream weighting procedure for ProteinGym whole-protein MSA_Neff_L metadata",
+      "Original PSSM score-construction command; retained per-variant comparator scores are used",
+      "The original fragment-coordinate lookup changes 37,014 scores when corrected and omits 1,934 variants. The full corrected cohort has not been reconstructed; a same-panel sensitivity is a separate analysis."
+    ]
+  },
+  {
+    "id": "am-opus-r2/test-01",
+    "notes": [
+      "Original preprocessing command that generated supplied predictions.csv",
+      "A full cohort repair restoring the 1,934 originally omitted fragment variants, followed by scientific review",
+      "Independent evidence establishing original split timing relative to axis selection",
+      "Exact upstream weighting procedure for ProteinGym whole-protein MSA_Neff_L metadata",
+      "The original fragment-coordinate lookup changes 37,014 scores when corrected and omits 1,934 variants. The full corrected cohort has not been reconstructed; a same-panel sensitivity is a separate analysis."
+    ]
+  },
+  {
+    "id": "am-opus-r2/test-02",
+    "notes": [
+      "Original preprocessing command that generated supplied predictions.csv",
+      "A full cohort repair restoring the 1,934 originally omitted fragment variants, followed by scientific review",
+      "Independent evidence establishing original split timing relative to axis selection",
+      "Exact upstream weighting procedure for ProteinGym whole-protein MSA_Neff_L metadata",
+      "The original fragment-coordinate lookup changes 37,014 scores when corrected and omits 1,934 variants. The full corrected cohort has not been reconstructed; a same-panel sensitivity is a separate analysis."
+    ]
+  },
+  {
+    "id": "am-opus-r2/test-03",
+    "notes": [
+      "Original preprocessing command that generated supplied predictions.csv",
+      "A full cohort repair restoring the 1,934 originally omitted fragment variants, followed by scientific review",
+      "Independent evidence establishing original split timing relative to axis selection",
+      "Exact upstream weighting procedure for ProteinGym whole-protein MSA_Neff_L metadata",
+      "The original fragment-coordinate lookup changes 37,014 scores when corrected and omits 1,934 variants. The full corrected cohort has not been reconstructed; a same-panel sensitivity is a separate analysis."
+    ]
+  },
+  {
+    "id": "am-kimi-r1/test-01",
+    "notes": [
+      "data/processed/panel_frozen.tsv",
+      "data/processed/am_matched.tsv",
+      "data/raw/uniprot_human_proteome.fasta.gz",
+      "data/raw/clinvar.vcf.gz",
+      "data/raw/gencode.v50.basic.annotation.gtf.gz",
+      "The original homology/ortholog annotations and population-frequency annotations consumed by the supplementary scripts"
+    ]
+  },
+  {
+    "id": "am-kimi-r1/test-02",
+    "notes": [
+      "data/processed/panel_frozen.tsv",
+      "data/processed/am_matched.tsv",
+      "data/raw/uniprot_human_proteome.fasta.gz",
+      "data/raw/clinvar.vcf.gz",
+      "data/raw/gencode.v50.basic.annotation.gtf.gz",
+      "The original homology/ortholog annotations and population-frequency annotations consumed by the supplementary scripts"
+    ]
+  },
+  {
+    "id": "am-kimi-r1/test-03",
+    "notes": [
+      "data/processed/panel_frozen.tsv",
+      "data/processed/am_matched.tsv",
+      "data/raw/uniprot_human_proteome.fasta.gz",
+      "data/raw/clinvar.vcf.gz",
+      "data/raw/gencode.v50.basic.annotation.gtf.gz",
+      "The original homology/ortholog annotations and population-frequency annotations consumed by the supplementary scripts"
+    ]
+  },
+  {
+    "id": "am-kimi-r1/test-04",
+    "notes": [
+      "data/processed/panel_frozen.tsv",
+      "data/processed/am_matched.tsv",
+      "data/raw/uniprot_human_proteome.fasta.gz",
+      "data/raw/clinvar.vcf.gz",
+      "data/raw/gencode.v50.basic.annotation.gtf.gz",
+      "The original homology/ortholog annotations and population-frequency annotations consumed by the supplementary scripts"
+    ]
+  },
+  {
+    "id": "am-kimi-r1/test-05",
+    "notes": [
+      "data/processed/panel_frozen.tsv",
+      "data/processed/am_matched.tsv",
+      "data/raw/uniprot_human_proteome.fasta.gz",
+      "data/raw/clinvar.vcf.gz",
+      "data/raw/gencode.v50.basic.annotation.gtf.gz",
+      "The original homology/ortholog annotations and population-frequency annotations consumed by the supplementary scripts"
+    ]
+  },
+  {
+    "id": "am-kimi-r1/test-06",
+    "notes": [
+      "data/processed/panel_frozen.tsv",
+      "data/processed/am_matched.tsv",
+      "data/raw/uniprot_human_proteome.fasta.gz",
+      "data/raw/clinvar.vcf.gz",
+      "data/raw/gencode.v50.basic.annotation.gtf.gz",
+      "The original homology/ortholog annotations and population-frequency annotations consumed by the supplementary scripts"
+    ]
+  },
+  {
+    "id": "am-kimi-r2/test-01",
+    "notes": [
+      "tables/r2_eval_table.tsv",
+      "tables/r2_eval_table2.tsv",
+      "tables/r2_am_hits.tsv and tables/r2_am_hits2.tsv",
+      "tables/r2_clinvar_missense.tsv and tables/r2_gene_phyloP.tsv",
+      "data/hg38.phyloP100way.bw",
+      "data/af/*.json (the original per-residue AlphaFold confidence records)",
+      "The original ClinVar, AlphaMissense, reference genome and exon/CDS inputs used by the preserved scripts"
+    ]
+  },
+  {
+    "id": "am-kimi-r2/test-02",
+    "notes": [
+      "tables/r2_eval_table.tsv",
+      "tables/r2_eval_table2.tsv",
+      "tables/r2_am_hits.tsv and tables/r2_am_hits2.tsv",
+      "tables/r2_clinvar_missense.tsv and tables/r2_gene_phyloP.tsv",
+      "data/hg38.phyloP100way.bw",
+      "data/af/*.json (the original per-residue AlphaFold confidence records)",
+      "The original ClinVar, AlphaMissense, reference genome and exon/CDS inputs used by the preserved scripts"
+    ]
+  },
+  {
+    "id": "am-kimi-r2/test-03",
+    "notes": [
+      "tables/r2_eval_table.tsv",
+      "tables/r2_eval_table2.tsv",
+      "tables/r2_am_hits.tsv and tables/r2_am_hits2.tsv",
+      "tables/r2_clinvar_missense.tsv and tables/r2_gene_phyloP.tsv",
+      "data/hg38.phyloP100way.bw",
+      "data/af/*.json (the original per-residue AlphaFold confidence records)",
+      "The original ClinVar, AlphaMissense, reference genome and exon/CDS inputs used by the preserved scripts"
+    ]
+  },
+  {
+    "id": "am-kimi-r2/test-04",
+    "notes": [
+      "tables/r2_eval_table.tsv",
+      "tables/r2_eval_table2.tsv",
+      "tables/r2_am_hits.tsv and tables/r2_am_hits2.tsv",
+      "tables/r2_clinvar_missense.tsv and tables/r2_gene_phyloP.tsv",
+      "data/hg38.phyloP100way.bw",
+      "data/af/*.json (the original per-residue AlphaFold confidence records)",
+      "The original ClinVar, AlphaMissense, reference genome and exon/CDS inputs used by the preserved scripts"
+    ]
+  },
+  {
+    "id": "am-kimi-r2/test-05",
+    "notes": [
+      "tables/r2_eval_table.tsv",
+      "tables/r2_eval_table2.tsv",
+      "tables/r2_am_hits.tsv and tables/r2_am_hits2.tsv",
+      "tables/r2_clinvar_missense.tsv and tables/r2_gene_phyloP.tsv",
+      "data/hg38.phyloP100way.bw",
+      "data/af/*.json (the original per-residue AlphaFold confidence records)",
+      "The original ClinVar, AlphaMissense, reference genome and exon/CDS inputs used by the preserved scripts"
+    ]
+  },
+  {
+    "id": "am-kimi-r2/test-06",
+    "notes": [
+      "tables/r2_eval_table.tsv",
+      "tables/r2_eval_table2.tsv",
+      "tables/r2_am_hits.tsv and tables/r2_am_hits2.tsv",
+      "tables/r2_clinvar_missense.tsv and tables/r2_gene_phyloP.tsv",
+      "data/hg38.phyloP100way.bw",
+      "data/af/*.json (the original per-residue AlphaFold confidence records)",
+      "The original ClinVar, AlphaMissense, reference genome and exon/CDS inputs used by the preserved scripts"
+    ]
+  }
+]

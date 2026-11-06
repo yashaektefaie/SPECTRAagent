@@ -1,0 +1,71 @@
+{
+  "id": "am-gpt-r1/test-02",
+  "investigation": "am-gpt-r1",
+  "model": "AlphaMissense",
+  "axis": "Intrinsic disorder",
+  "dataset_split": {
+    "description": "Not evaluated",
+    "input_inventory": "inputs/alphamissense.json",
+    "public_sources": [
+      "alphamissense-scores",
+      "alphamissense-genomic",
+      "proteingym-assays",
+      "proteingym-alignments",
+      "proteingym-metadata",
+      "clinvar",
+      "gencode32",
+      "gencode50",
+      "alphafold-example"
+    ],
+    "sample_tables": []
+  },
+  "axis_levels": {
+    "definition": "Candidate in the pre-outcome ledger. Deprioritized because prior work reported this regime.",
+    "calculation": "Candidate description only",
+    "code": "materials/alphamissense/am-gpt-r1/axis-2.py"
+  },
+  "model_evaluation": {
+    "measurements": "Not evaluated",
+    "fine_tuning": {
+      "target_weight_updates_in_replay": false,
+      "target_fine_tuning_during_original_audit": null,
+      "original_training_evidence": "The exported reconstruction code does not update target-model weights. Original checkpoint training or audit-specific adaptation was not established by the retained execution evidence.",
+      "comparators": []
+    },
+    "code": "materials/alphamissense/am-gpt-r1/axis-2.py"
+  },
+  "curve": {
+    "aggregation_and_uncertainty": "No curve was computed",
+    "code": "materials/alphamissense/am-gpt-r1/axis-2.py"
+  },
+  "insight": {
+    "comparison_controls_confirmation": "No empirical conclusion",
+    "code": "materials/alphamissense/am-gpt-r1/axis-2.py"
+  },
+  "reconstruction_notes": [
+    "Exact retained audit inputs are identified by relative filename and hash in the input inventory. A null download_source means no matching anonymous download has been established. Public upstream datasets do not substitute for missing original splits, predictions or annotations."
+  ],
+  "implementation": {
+    "notebook": "materials/alphamissense/am-gpt-r1/axis-2.ipynb",
+    "script": "materials/alphamissense/am-gpt-r1/axis-2.py",
+    "supporting_code": "code/alphamissense.json",
+    "cell_locations": [
+      {
+        "notebook_cell": 2,
+        "start_line": 1,
+        "end_line": 10
+      }
+    ],
+    "original_notebook_sha256": "ba98aa68e32b62b315c968c7c8ec3cfd69b52316d8dfde9192b2526f17777bb1",
+    "published_notebook_sha256": "ea4802024bf10d2575dae29881c7fb9929947efb915c45385da7c326f895b2e4",
+    "changes": [
+      "Code-only export; Markdown verdicts and saved outputs omitted.",
+      "Machine-specific home paths replaced with /path/to/audit-home where present.",
+      "Python export converts notebook magic syntax using IPython; notebook retains its original code syntax.",
+      "Python exports remove trailing whitespace only after checking that the parsed syntax tree is unchanged."
+    ],
+    "saved_code_cells": 1,
+    "saved_error_outputs": 0
+  },
+  "requested_model": "AlphaMissense"
+}

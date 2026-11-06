@@ -1,0 +1,90 @@
+{
+  "id": "conch-kimi-r2/test-02",
+  "investigation": "conch-kimi-r2",
+  "model": "CONCH",
+  "axis": "Stain shift",
+  "dataset_split": {
+    "description": "Incomplete original samples.",
+    "input_inventory": "inputs/conch.json",
+    "public_sources": [
+      "nct-images",
+      "crcval-images",
+      "kather-images",
+      "nct-mirror",
+      "conch-code"
+    ],
+    "sample_tables": []
+  },
+  "axis_levels": {
+    "definition": "Stain change evaluated in the pilot.",
+    "calculation": "Specification or code only.",
+    "code": "materials/conch/notebooks/conch-kimi-r2-02.py"
+  },
+  "model_evaluation": {
+    "measurements": "Missing individual predictions.",
+    "fine_tuning": {
+      "target_weight_updates_in_replay": false,
+      "target_fine_tuning_during_original_audit": null,
+      "original_training_evidence": "The exported reconstruction code does not update target-model weights. Original checkpoint training or audit-specific adaptation was not established by the retained execution evidence.",
+      "comparators": [
+        {
+          "model": "DINO features + logistic regression",
+          "procedure": "A classification head is fitted in the retained resolution evaluation code. This is separate from CONCH.",
+          "evidence": "materials/conch/source/conch-kimi-r2/code/run_axisA_confirm.py"
+        },
+        {
+          "model": "ImageNet ResNet18",
+          "procedure": "An additional retained script fine-tunes all network parameters. Its existence does not establish that this checkpoint produced the reported comparison; corresponding execution/checkpoint evidence is not recovered.",
+          "evidence": "materials/conch/source/conch-kimi-r2/native/scripts/train_resnet.py"
+        }
+      ]
+    },
+    "code": "materials/conch/notebooks/conch-kimi-r2-02.py"
+  },
+  "curve": {
+    "aggregation_and_uncertainty": "Not reproducible from retained inputs.",
+    "code": "materials/conch/notebooks/conch-kimi-r2-02.py"
+  },
+  "insight": {
+    "comparison_controls_confirmation": "Reported conclusion only.",
+    "code": "materials/conch/notebooks/conch-kimi-r2-02.py"
+  },
+  "reconstruction_notes": [
+    "Original per-image predictions at each stain factor were not retained; only the pilot aggregate table and transformation/scoring scripts remain.",
+    "No frozen stain confirmation was performed.",
+    "Exact retained audit inputs are identified by relative filename and hash in the input inventory. A null download_source means no matching anonymous download has been established. Public upstream datasets do not substitute for missing original splits, predictions or annotations."
+  ],
+  "implementation": {
+    "notebook": "materials/conch/notebooks/conch-kimi-r2-02.ipynb",
+    "script": "materials/conch/notebooks/conch-kimi-r2-02.py",
+    "supporting_code": "code/conch.json",
+    "cell_locations": [
+      {
+        "notebook_cell": 1,
+        "start_line": 1,
+        "end_line": 30
+      },
+      {
+        "notebook_cell": 4,
+        "start_line": 31,
+        "end_line": 34
+      },
+      {
+        "notebook_cell": 10,
+        "start_line": 35,
+        "end_line": 36
+      }
+    ],
+    "original_notebook_sha256": "6182165e3a6cf3a342634824035200917a338569076a26d2c613efe047274a7b",
+    "published_notebook_sha256": "ba70c10c954fa0854211b01e1338b79a7da5d718d9651c2ec36d755d69b832af",
+    "changes": [
+      "Code-only export; Markdown verdicts and saved outputs omitted.",
+      "Machine-specific home paths replaced with /path/to/audit-home where present.",
+      "Python export converts notebook magic syntax using IPython; notebook retains its original code syntax.",
+      "Python exports remove trailing whitespace only after checking that the parsed syntax tree is unchanged."
+    ],
+    "saved_code_cells": 3,
+    "saved_error_outputs": 0
+  },
+  "requested_model": "CONCH"
+}

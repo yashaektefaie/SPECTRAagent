@@ -1,0 +1,96 @@
+{
+  "id": "esmfold2-kimi-r1/test-02",
+  "investigation": "esmfold2-kimi-r1",
+  "model": "ESMFold v1",
+  "axis": "Graded identity and orphan threshold (v1)",
+  "dataset_split": {
+    "description": "Exact discovery confirmation ids and cluster separation verified.",
+    "input_inventory": "inputs/esmfold2.json",
+    "public_sources": [
+      "rcsb-example",
+      "rcsb-entity",
+      "esm-code"
+    ],
+    "sample_tables": []
+  },
+  "axis_levels": {
+    "definition": "Four training-identity levels followed by an orphan threshold, evaluated using ESMFold v1.",
+    "calculation": "Low complexity from original sequences; identity levels from retained values.",
+    "code": "materials/esmfold2/notebooks/esmfold2-kimi-r1/test-02.py"
+  },
+  "model_evaluation": {
+    "measurements": "All660 target structures rescored with original function; baseline scores retained.",
+    "fine_tuning": {
+      "target_weight_updates_in_replay": false,
+      "target_fine_tuning_during_original_audit": null,
+      "original_training_evidence": "The exported reconstruction code does not update target-model weights. Original checkpoint training or audit-specific adaptation was not established by the retained execution evidence.",
+      "comparators": []
+    },
+    "code": "materials/esmfold2/notebooks/esmfold2-kimi-r1/test-02.py"
+  },
+  "curve": {
+    "aggregation_and_uncertainty": "Individual scores and endpoint recomputed.",
+    "code": "materials/esmfold2/notebooks/esmfold2-kimi-r1/test-02.py"
+  },
+  "insight": {
+    "comparison_controls_confirmation": "Original confirmation and length checks replayed; off target esmfold v1.",
+    "code": "materials/esmfold2/notebooks/esmfold2-kimi-r1/test-02.py"
+  },
+  "reconstruction_notes": [
+    "This original run evaluated ESMFold v1, not ESMFold2; it cannot support an ESMFold2 scientific result.",
+    "Original MMseqs hit table/reference sequences and baseline template coordinate-transfer inputs were not recovered.",
+    "Fresh model inference was not rerun. Original target structures were rescored; baseline per-unit scores are retained.",
+    "Display mean confidence intervals are new t-interval diagnostics, not the original reported standard deviations.",
+    "Template-reference means use only covered examples: 10/80 discovery A4 and 27/170 confirmation orphans. Missing baseline predictions are not zero, and their coverage differs from the target model.",
+    "The retained structures come from ESMFold v1; the intended target was ESMFold2.",
+    "Exact retained audit inputs are identified by relative filename and hash in the input inventory. A null download_source means no matching anonymous download has been established. Public upstream datasets do not substitute for missing original splits, predictions or annotations."
+  ],
+  "implementation": {
+    "notebook": "materials/esmfold2/notebooks/esmfold2-kimi-r1/test-02.ipynb",
+    "script": "materials/esmfold2/notebooks/esmfold2-kimi-r1/test-02.py",
+    "supporting_code": "code/esmfold2.json",
+    "cell_locations": [
+      {
+        "notebook_cell": 2,
+        "start_line": 1,
+        "end_line": 35
+      },
+      {
+        "notebook_cell": 4,
+        "start_line": 36,
+        "end_line": 52
+      },
+      {
+        "notebook_cell": 6,
+        "start_line": 53,
+        "end_line": 73
+      },
+      {
+        "notebook_cell": 8,
+        "start_line": 74,
+        "end_line": 92
+      },
+      {
+        "notebook_cell": 10,
+        "start_line": 93,
+        "end_line": 99
+      },
+      {
+        "notebook_cell": 12,
+        "start_line": 100,
+        "end_line": 115
+      }
+    ],
+    "original_notebook_sha256": "ca76d0ca9410a00fbdf22950da9ef888cd1a7d9f93bf1ba4d086d66223d823a5",
+    "published_notebook_sha256": "6fbff7c69c9bd9cd9c1f1c697035ab8eaf0f1ec11c34dd0434a56f848bf65459",
+    "changes": [
+      "Code-only export; Markdown verdicts and saved outputs omitted.",
+      "Machine-specific home paths replaced with /path/to/audit-home where present.",
+      "Python export converts notebook magic syntax using IPython; notebook retains its original code syntax.",
+      "Python exports remove trailing whitespace only after checking that the parsed syntax tree is unchanged."
+    ],
+    "saved_code_cells": 6,
+    "saved_error_outputs": 0
+  },
+  "requested_model": "ESMFold2"
+}

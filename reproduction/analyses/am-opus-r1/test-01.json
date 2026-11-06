@@ -1,0 +1,283 @@
+{
+  "id": "am-opus-r1/test-01",
+  "investigation": "am-opus-r1",
+  "model": "AlphaMissense",
+  "axis": "Evolutionary constraint at the variant position",
+  "dataset_split": {
+    "description": "Original 271,201 rows and saved protein split reproduced; original lookup omitted 1,934 source variants",
+    "input_inventory": "inputs/alphamissense.json",
+    "public_sources": [
+      "alphamissense-scores",
+      "alphamissense-genomic",
+      "proteingym-assays",
+      "proteingym-alignments",
+      "proteingym-metadata",
+      "clinvar",
+      "gencode32",
+      "gencode50",
+      "alphafold-example"
+    ],
+    "sample_tables": [
+      {
+        "source_file": "am-opus-r1/data/assay_full.csv",
+        "source_sha256": "b828a664811cc009fbdaf811d3c548213d5231f3e09ed1fed8439d5e86f1c775",
+        "path": "samples/alphamissense/2cf51dd15d1de74a.json.gz",
+        "sha256": "be0941a351ca11e9e662a1697fc6cf61cd2b4eff3f980cea8454b8c438a00f71",
+        "rows": 73,
+        "columns": [
+          "assay",
+          "acc",
+          "UniProt_ID"
+        ]
+      },
+      {
+        "source_file": "am-opus-r1/data/assay_split.csv",
+        "source_sha256": "90265489072e69c9bb26fc1e97e7d3425e59dd371f01d01bf19fe4ca3c66f959",
+        "path": "samples/alphamissense/f1d7192d6d0ef7d4.json.gz",
+        "sha256": "28059957068e6f130e28955bc863e6924895f355cd34740da564970b5c8012c9",
+        "rows": 73,
+        "columns": [
+          "assay",
+          "acc",
+          "split"
+        ]
+      },
+      {
+        "source_file": "am-opus-r1/data/original_variant_baseline_scores.parquet",
+        "source_sha256": "f86a1575d8b4d6c209cd48fcc1b25c0964f2bf55bbd53ce8ad8b2d9f87238156",
+        "path": "samples/alphamissense/bc23335e31d1183f.json.gz",
+        "sha256": "1c5724aa3466b7068712963b810ea112811a1b4127f62e6339f0c561e6dfb35f",
+        "rows": 271201,
+        "columns": [
+          "assay",
+          "acc",
+          "position",
+          "mutant",
+          "UniProt_ID",
+          "split"
+        ]
+      },
+      {
+        "source_file": "am-opus-r1/data/predictions.csv",
+        "source_sha256": "6c458fc263b7c90db7cc84e48662425c540b6f6f85a52d9a7cb2cfad15d8cc9d",
+        "path": "samples/alphamissense/71e4d16326bb50f7.json.gz",
+        "sha256": "0c30992b5d72672492e6d4c20b673f7b32b085d2ad45ffb520499e85f8809d1c",
+        "rows": 271201,
+        "columns": [
+          "assay",
+          "acc",
+          "position",
+          "mutant"
+        ]
+      },
+      {
+        "source_file": "am-opus-r1/recomputed/constraint_3_assay_scores.csv",
+        "source_sha256": "54b8ee50a977f66ec9d8a7748d14c33c7cb6819a03fc5e1c0d223a7afce10156",
+        "path": "samples/alphamissense/b46153c7d526137a.json.gz",
+        "sha256": "3d2baf0a2f43a134236b94f65391c93f7594f138159ad9a60a6bcac8e7dbdcf3",
+        "rows": 210,
+        "columns": [
+          "assay",
+          "level",
+          "split",
+          "acc"
+        ]
+      },
+      {
+        "source_file": "am-opus-r1/recomputed/constraint_3_membership.csv.gz",
+        "source_sha256": "476e59970ace5faba1f5ccd2e098bf099e2adf36dd06ee3d2fc6ea5c7e36d3b0",
+        "path": "samples/alphamissense/fdbceb2ab2b26ede.json.gz",
+        "sha256": "a9680fcc135204110eeae14ba65e3cda22b1b020a624a125866f9132a7cdb75b",
+        "rows": 270803,
+        "columns": [
+          "assay",
+          "acc",
+          "position",
+          "mutant",
+          "split",
+          "level"
+        ]
+      },
+      {
+        "source_file": "am-opus-r1/recomputed/constraint_5_assay_scores.csv",
+        "source_sha256": "59eef4b4a8920683c35825960e5e81753acd9c9db2e62dd15bc23f9d8729d91c",
+        "path": "samples/alphamissense/bc744bae3e49e7bf.json.gz",
+        "sha256": "392520f8b516961549a12ed8d463879fd95b5c42356f032d55e79b348b4c9c77",
+        "rows": 325,
+        "columns": [
+          "assay",
+          "level",
+          "split",
+          "acc"
+        ]
+      },
+      {
+        "source_file": "am-opus-r1/recomputed/constraint_5_membership.csv.gz",
+        "source_sha256": "864c950523148ee26c9d30037e58d72bb21fbb264acd5dd5ebc7e51608891620",
+        "path": "samples/alphamissense/ef4d3a62daa4a47b.json.gz",
+        "sha256": "48c99cbb7993be38972c5cd5bdd691c19826131f180de3e05c91fbdf0f71da37",
+        "rows": 269543,
+        "columns": [
+          "assay",
+          "acc",
+          "position",
+          "mutant",
+          "split",
+          "level"
+        ]
+      },
+      {
+        "source_file": "am-opus-r1/recomputed/cov_frac_3_assay_scores.csv",
+        "source_sha256": "ec6e2afbe0828cbcd42f3a91f926151d7ba7c83603b58ee2be4ae35012e9e1aa",
+        "path": "samples/alphamissense/70a681883831b709.json.gz",
+        "sha256": "b1e45ebef308a3da94055e59f38c2c7f4005ec6ef318ff9d5c731343058ac412",
+        "rows": 213,
+        "columns": [
+          "assay",
+          "level",
+          "split",
+          "acc"
+        ]
+      },
+      {
+        "source_file": "am-opus-r1/recomputed/cov_frac_3_membership.csv.gz",
+        "source_sha256": "f7852765b80b4b7c9f8fb11bd15c0d93d06cb57a6b0bbb8bddd3ecbe4788e0d0",
+        "path": "samples/alphamissense/62224db1cde16ae5.json.gz",
+        "sha256": "d957993dff1a698adc58e82ce79c7827b3df5ef24d07c575c73548de356b3d7f",
+        "rows": 270968,
+        "columns": [
+          "assay",
+          "acc",
+          "position",
+          "mutant",
+          "split",
+          "level"
+        ]
+      },
+      {
+        "source_file": "am-opus-r1/recomputed/sample_split.csv.gz",
+        "source_sha256": "4e32b11e478f408ae6c869351aadf5e0a532dda1b4922c93c3cdc93c285759c5",
+        "path": "samples/alphamissense/d323a853fc4c532a.json.gz",
+        "sha256": "e7ee790312b70ca9f53b5ae383be4e7b554f48cf9b46fefd44e72227631b8c81",
+        "rows": 271201,
+        "columns": [
+          "assay",
+          "acc",
+          "position",
+          "mutant",
+          "split"
+        ]
+      },
+      {
+        "source_file": "am-opus-r1/recomputed/variant_scores_and_features.parquet",
+        "source_sha256": "d5240c40c8956449466923553e09e93c43662ad00cf27aeac509f89c87e54f94",
+        "path": "samples/alphamissense/c804dd6939901b0c.json.gz",
+        "sha256": "f2e79fcbbc5a0c3c701a036f9a544f522f6d8fc8c057cdc9ec6d68cd44b77add",
+        "rows": 271201,
+        "columns": [
+          "assay",
+          "acc",
+          "position",
+          "mutant",
+          "UniProt_ID",
+          "split"
+        ]
+      }
+    ]
+  },
+  "axis_levels": {
+    "definition": "Evolutionary constraint at the variant position, defined as negative alignment-column entropy and compared within each assay; verified ordering 2.92, 2.17, 1.08 bits",
+    "calculation": "Residue entropy/coverage regenerated from original SwissProt; original level rules executed. Whole-protein depth remains retained metadata.",
+    "code": "materials/alphamissense/am-opus-r1/axis-1.py"
+  },
+  "model_evaluation": {
+    "measurements": "Scientific input error: fragment coordinates give 37,014 incorrect AlphaMissense scores; historical replay and separate corrected-score sensitivity are both preserved",
+    "fine_tuning": {
+      "target_weight_updates_in_replay": false,
+      "target_fine_tuning_during_original_audit": null,
+      "original_training_evidence": "These calculations reuse released AlphaMissense scores without updating model weights. Upstream checkpoint training is separate from this audit.",
+      "comparators": []
+    },
+    "code": "materials/alphamissense/am-opus-r1/axis-1.py"
+  },
+  "curve": {
+    "aggregation_and_uncertainty": "Original individual-measurement curve/paired effects reproduced; bootstrap calculated from assay-level observations, not summary inputs",
+    "code": "materials/alphamissense/am-opus-r1/axis-1.py"
+  },
+  "insight": {
+    "comparison_controls_confirmation": "Original split and stated controls replayed; timing of independent selection is unproven. Corrected-score check is post hoc, not new confirmation",
+    "code": "materials/alphamissense/am-opus-r1/axis-1.py"
+  },
+  "reconstruction_notes": [
+    "Original preprocessing command that generated supplied predictions.csv",
+    "A full cohort repair restoring the 1,934 originally omitted fragment variants, followed by scientific review",
+    "Independent evidence establishing original split timing relative to axis selection",
+    "Exact upstream weighting procedure for ProteinGym whole-protein MSA_Neff_L metadata",
+    "Original PSSM score-construction command; retained per-variant comparator scores are used",
+    "The original fragment-coordinate lookup changes 37,014 scores when corrected and omits 1,934 variants. The full corrected cohort has not been reconstructed; a same-panel sensitivity is a separate analysis.",
+    "Exact retained audit inputs are identified by relative filename and hash in the input inventory. A null download_source means no matching anonymous download has been established. Public upstream datasets do not substitute for missing original splits, predictions or annotations."
+  ],
+  "implementation": {
+    "notebook": "materials/alphamissense/am-opus-r1/axis-1.ipynb",
+    "script": "materials/alphamissense/am-opus-r1/axis-1.py",
+    "supporting_code": "code/alphamissense.json",
+    "cell_locations": [
+      {
+        "notebook_cell": 3,
+        "start_line": 1,
+        "end_line": 18
+      },
+      {
+        "notebook_cell": 5,
+        "start_line": 19,
+        "end_line": 33
+      },
+      {
+        "notebook_cell": 7,
+        "start_line": 34,
+        "end_line": 81
+      },
+      {
+        "notebook_cell": 8,
+        "start_line": 82,
+        "end_line": 104
+      },
+      {
+        "notebook_cell": 10,
+        "start_line": 105,
+        "end_line": 118
+      },
+      {
+        "notebook_cell": 12,
+        "start_line": 119,
+        "end_line": 180
+      },
+      {
+        "notebook_cell": 14,
+        "start_line": 181,
+        "end_line": 205
+      },
+      {
+        "notebook_cell": 16,
+        "start_line": 206,
+        "end_line": 217
+      },
+      {
+        "notebook_cell": 18,
+        "start_line": 218,
+        "end_line": 223
+      }
+    ],
+    "original_notebook_sha256": "37f88d225eb141cc158b56debd9ef3a61547352267b0bc045c6e97c54a697193",
+    "published_notebook_sha256": "8327634d8d6938e95a6f26ca38d98dc8a7b67b03a5a21cd1326ce59319bd08a9",
+    "changes": [
+      "Code-only export; Markdown verdicts and saved outputs omitted.",
+      "Machine-specific home paths replaced with /path/to/audit-home where present.",
+      "Python export converts notebook magic syntax using IPython; notebook retains its original code syntax.",
+      "Python exports remove trailing whitespace only after checking that the parsed syntax tree is unchanged."
+    ],
+    "saved_code_cells": 9,
+    "saved_error_outputs": 0
+  },
+  "requested_model": "AlphaMissense"
+}

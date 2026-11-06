@@ -1,0 +1,827 @@
+[
+  {
+    "source_file": "assets/primary/spectra_ready_dataset/multi_pathway_go_bp_fewshot_examples.csv",
+    "source_sha256": "0ea0caf1a23f3b8abaadda0fe5a99cec3079b86c58965d7d5ac2796148f6eb93",
+    "path": "samples/state/2c6b5107ee5b6878.json.gz",
+    "sha256": "3c436ee5c9faace6a6478b7c67858c7d8a50947334f2fa674ae1fb83353ce083",
+    "rows": 8116,
+    "columns": [
+      "source_repo",
+      "source_path",
+      "dataset_family",
+      "protocol",
+      "context",
+      "split_id",
+      "representation",
+      "perturbation",
+      "perturbation_name",
+      "dose",
+      "dose_unit",
+      "perturbation_norm",
+      "row_key",
+      "chem_support_level",
+      "gene_symbol",
+      "spectra_subset",
+      "support_level"
+    ]
+  },
+  {
+    "source_file": "assets/primary/spectra_ready_dataset/multi_pathway_go_bp_zeroshot_examples.csv",
+    "source_sha256": "22421708f29a74baa97dadbd47646528f5f03a9fcb149837d8ee058416ccba8d",
+    "path": "samples/state/66d6f31a6ed85bb7.json.gz",
+    "sha256": "f4276244ee7436233fb5502dbf99ca5d134399c0f81322ae7475c4b693e98287",
+    "rows": 11518,
+    "columns": [
+      "source_repo",
+      "source_path",
+      "dataset_family",
+      "protocol",
+      "context",
+      "split_id",
+      "representation",
+      "perturbation",
+      "perturbation_name",
+      "dose",
+      "dose_unit",
+      "perturbation_norm",
+      "row_key",
+      "chem_support_level",
+      "gene_symbol",
+      "spectra_subset",
+      "support_level"
+    ]
+  },
+  {
+    "source_file": "assets/primary/spectra_ready_dataset/multi_pathway_go_cc_fewshot_examples.csv",
+    "source_sha256": "fdd413530510ae1d187336a5c9d608595e8874c5eee830f4282c66bbcd15a62e",
+    "path": "samples/state/4b8ce419c38ba9a7.json.gz",
+    "sha256": "b40f31dceb5c31decf522b9b8a0452f71bb1af04a43536637df6f6effb60e965",
+    "rows": 8116,
+    "columns": [
+      "source_repo",
+      "source_path",
+      "dataset_family",
+      "protocol",
+      "context",
+      "split_id",
+      "representation",
+      "perturbation",
+      "perturbation_name",
+      "dose",
+      "dose_unit",
+      "perturbation_norm",
+      "row_key",
+      "chem_support_level",
+      "gene_symbol",
+      "spectra_subset",
+      "support_level"
+    ]
+  },
+  {
+    "source_file": "assets/primary/spectra_ready_dataset/multi_pathway_go_cc_zeroshot_examples.csv",
+    "source_sha256": "96269a1466b88f90794e58e2310498b24b1aa516304c863611e81928d81ea228",
+    "path": "samples/state/f5f13321b17ea1be.json.gz",
+    "sha256": "96bef2d3b119c97db46bc57a60d5b0774325d855a5cc1b5c27162b6c1217ed3a",
+    "rows": 11518,
+    "columns": [
+      "source_repo",
+      "source_path",
+      "dataset_family",
+      "protocol",
+      "context",
+      "split_id",
+      "representation",
+      "perturbation",
+      "perturbation_name",
+      "dose",
+      "dose_unit",
+      "perturbation_norm",
+      "row_key",
+      "chem_support_level",
+      "gene_symbol",
+      "spectra_subset",
+      "support_level"
+    ]
+  },
+  {
+    "source_file": "assets/primary/spectra_ready_dataset/multi_pathway_go_mf_fewshot_examples.csv",
+    "source_sha256": "25f3d33bed2724f87cd30c32333022fe0cdc47d77665da038bfc19decbdd380c",
+    "path": "samples/state/7d558e0a8fe7029a.json.gz",
+    "sha256": "fff760490fbf8451cad1a03ef6d3e6fc599417627b026143ae450c69bfe426a6",
+    "rows": 8116,
+    "columns": [
+      "source_repo",
+      "source_path",
+      "dataset_family",
+      "protocol",
+      "context",
+      "split_id",
+      "representation",
+      "perturbation",
+      "perturbation_name",
+      "dose",
+      "dose_unit",
+      "perturbation_norm",
+      "row_key",
+      "chem_support_level",
+      "gene_symbol",
+      "spectra_subset",
+      "support_level"
+    ]
+  },
+  {
+    "source_file": "assets/primary/spectra_ready_dataset/multi_pathway_go_mf_zeroshot_examples.csv",
+    "source_sha256": "2fc59c9db1c24ca4f9d18630d1336dd305e2d85b40a431f901d91dc99d5c7435",
+    "path": "samples/state/27279d5a327f6326.json.gz",
+    "sha256": "3bda4d66ca02a227ada803e10b61c80ef181ea793257e238f3997141cb9a3b78",
+    "rows": 11518,
+    "columns": [
+      "source_repo",
+      "source_path",
+      "dataset_family",
+      "protocol",
+      "context",
+      "split_id",
+      "representation",
+      "perturbation",
+      "perturbation_name",
+      "dose",
+      "dose_unit",
+      "perturbation_norm",
+      "row_key",
+      "chem_support_level",
+      "gene_symbol",
+      "spectra_subset",
+      "support_level"
+    ]
+  },
+  {
+    "source_file": "assets/primary/spectra_ready_dataset/multi_pathway_hgnc_gene_group_fewshot_examples.csv",
+    "source_sha256": "be087681129d898f9c45bbf78d878a1e5b45c3d6762daddd771110de9aa4f1c6",
+    "path": "samples/state/619b0472ce3f4082.json.gz",
+    "sha256": "0f1fd763b6260c021b6f0862698ddd257c57668009b740de55bca6431952b824",
+    "rows": 8116,
+    "columns": [
+      "source_repo",
+      "source_path",
+      "dataset_family",
+      "protocol",
+      "context",
+      "split_id",
+      "representation",
+      "perturbation",
+      "perturbation_name",
+      "dose",
+      "dose_unit",
+      "perturbation_norm",
+      "row_key",
+      "chem_support_level",
+      "gene_symbol",
+      "spectra_subset",
+      "support_level"
+    ]
+  },
+  {
+    "source_file": "assets/primary/spectra_ready_dataset/multi_pathway_hgnc_gene_group_zeroshot_examples.csv",
+    "source_sha256": "cae33ad8951c1dd9892ae427ebc67adedea4f391f4d9550c356de92fde6da1e3",
+    "path": "samples/state/10dd28106049b4be.json.gz",
+    "sha256": "05eca68d4a5676c552f87deab589c5ee5c56aa130a9e7f727c7bddbac3abb2fa",
+    "rows": 11518,
+    "columns": [
+      "source_repo",
+      "source_path",
+      "dataset_family",
+      "protocol",
+      "context",
+      "split_id",
+      "representation",
+      "perturbation",
+      "perturbation_name",
+      "dose",
+      "dose_unit",
+      "perturbation_norm",
+      "row_key",
+      "chem_support_level",
+      "gene_symbol",
+      "spectra_subset",
+      "support_level"
+    ]
+  },
+  {
+    "source_file": "assets/primary/spectra_ready_dataset/multi_pathway_kegg_fewshot_examples.csv",
+    "source_sha256": "10e986f30a74026f7189932441c5246291f54300b711eb77626c57c50930948d",
+    "path": "samples/state/cba4cf2035122569.json.gz",
+    "sha256": "13d05d4a2bae7e273ae60cbd1af098c7fc3fd7e518e27aa6a2dcfbe93a2e37d1",
+    "rows": 8116,
+    "columns": [
+      "source_repo",
+      "source_path",
+      "dataset_family",
+      "protocol",
+      "context",
+      "split_id",
+      "representation",
+      "perturbation",
+      "perturbation_name",
+      "dose",
+      "dose_unit",
+      "perturbation_norm",
+      "row_key",
+      "chem_support_level",
+      "gene_symbol",
+      "spectra_subset",
+      "support_level"
+    ]
+  },
+  {
+    "source_file": "assets/primary/spectra_ready_dataset/multi_pathway_kegg_zeroshot_examples.csv",
+    "source_sha256": "4376f12e26088ad9bda462b4937ea881a76e5675c23e35666ce4e7ee45447972",
+    "path": "samples/state/049887f57c08b206.json.gz",
+    "sha256": "8033240e48a67c8db108d2f660e5d4d271d08a3b975483d049c5a203fc84873e",
+    "rows": 11518,
+    "columns": [
+      "source_repo",
+      "source_path",
+      "dataset_family",
+      "protocol",
+      "context",
+      "split_id",
+      "representation",
+      "perturbation",
+      "perturbation_name",
+      "dose",
+      "dose_unit",
+      "perturbation_norm",
+      "row_key",
+      "chem_support_level",
+      "gene_symbol",
+      "spectra_subset",
+      "support_level"
+    ]
+  },
+  {
+    "source_file": "assets/primary/spectra_ready_dataset/multi_pathway_reactome_fewshot_examples.csv",
+    "source_sha256": "f147bdde6ed1aaaa53d874c3b775b4ef4cd33ed4e0d29c75c4659cfaf3a85e05",
+    "path": "samples/state/1a55bcc03b6314b1.json.gz",
+    "sha256": "68a7f1cc4cd9b5571b33b9fabfb6e562759f22cec9d9eeef8a1ebb58dc2cab99",
+    "rows": 8116,
+    "columns": [
+      "source_repo",
+      "source_path",
+      "dataset_family",
+      "protocol",
+      "context",
+      "split_id",
+      "representation",
+      "perturbation",
+      "perturbation_name",
+      "dose",
+      "dose_unit",
+      "perturbation_norm",
+      "row_key",
+      "chem_support_level",
+      "gene_symbol",
+      "spectra_subset",
+      "support_level"
+    ]
+  },
+  {
+    "source_file": "assets/primary/spectra_ready_dataset/multi_pathway_reactome_zeroshot_examples.csv",
+    "source_sha256": "ae2fdace9bac5df6bda37725a933bc7c66bc696a5291254db6a18963b40f3c60",
+    "path": "samples/state/c7ab34e9325f652a.json.gz",
+    "sha256": "2cdb72d7fc10046b2fb1d925c798573118ca757898060ac60d3261086678f4be",
+    "rows": 11518,
+    "columns": [
+      "source_repo",
+      "source_path",
+      "dataset_family",
+      "protocol",
+      "context",
+      "split_id",
+      "representation",
+      "perturbation",
+      "perturbation_name",
+      "dose",
+      "dose_unit",
+      "perturbation_norm",
+      "row_key",
+      "chem_support_level",
+      "gene_symbol",
+      "spectra_subset",
+      "support_level"
+    ]
+  },
+  {
+    "source_file": "assets/primary/spectra_ready_dataset/multi_pathway_wikipathways_fewshot_examples.csv",
+    "source_sha256": "998dec96d3b5a2447e05ee1787d8555fc16608b4e82807b3b774e777b5b47cf3",
+    "path": "samples/state/3cc95c5a0f2a37a0.json.gz",
+    "sha256": "3166e7a711a13e54846f74668aace415f72736f4429251cf48dd254713cc8093",
+    "rows": 8116,
+    "columns": [
+      "source_repo",
+      "source_path",
+      "dataset_family",
+      "protocol",
+      "context",
+      "split_id",
+      "representation",
+      "perturbation",
+      "perturbation_name",
+      "dose",
+      "dose_unit",
+      "perturbation_norm",
+      "row_key",
+      "chem_support_level",
+      "gene_symbol",
+      "spectra_subset",
+      "support_level"
+    ]
+  },
+  {
+    "source_file": "assets/primary/spectra_ready_dataset/multi_pathway_wikipathways_zeroshot_examples.csv",
+    "source_sha256": "f93007a032359fcbb4fd3758f2d5552df75bc7798692dbbda197d78e12906cbb",
+    "path": "samples/state/292da948c67593ea.json.gz",
+    "sha256": "ba507a10c304457c270f813eb5689ce958201ad0f22b3817fe414c9c5316ba00",
+    "rows": 11518,
+    "columns": [
+      "source_repo",
+      "source_path",
+      "dataset_family",
+      "protocol",
+      "context",
+      "split_id",
+      "representation",
+      "perturbation",
+      "perturbation_name",
+      "dose",
+      "dose_unit",
+      "perturbation_norm",
+      "row_key",
+      "chem_support_level",
+      "gene_symbol",
+      "spectra_subset",
+      "support_level"
+    ]
+  },
+  {
+    "source_file": "assets/primary/spectra_ready_dataset/parse_fewshot_ligand_family_support_examples.csv",
+    "source_sha256": "2da5dea2afef9cd54c7ed4944839a10f5a3ebcc3f6e45baf34a27779016cd02e",
+    "path": "samples/state/4205ff538f6b7112.json.gz",
+    "sha256": "00e5b8ac64a92d4a04fa9fbe4e759e254ed730312427627ac7b94e6a4d077666",
+    "rows": 558,
+    "columns": [
+      "source_repo",
+      "source_path",
+      "dataset_family",
+      "protocol",
+      "context",
+      "split_id",
+      "representation",
+      "perturbation",
+      "perturbation_name",
+      "dose",
+      "dose_unit",
+      "perturbation_norm",
+      "row_key",
+      "chem_support_level",
+      "gene_symbol",
+      "spectra_subset",
+      "parse_family_support_level"
+    ]
+  },
+  {
+    "source_file": "assets/primary/spectra_ready_dataset/replogle_fewshot_reactome_support_examples.csv",
+    "source_sha256": "9c45b147e68451191a4f21ea9ca25625df52b397d237e421bae24d74147fe2ba",
+    "path": "samples/state/973eda2f24da9735.json.gz",
+    "sha256": "ad4abe53b8e9dfe73ae140450c348d082083855a37c7e65e2b392a978416768d",
+    "rows": 8116,
+    "columns": [
+      "source_repo",
+      "source_path",
+      "dataset_family",
+      "protocol",
+      "context",
+      "split_id",
+      "representation",
+      "perturbation",
+      "perturbation_name",
+      "dose",
+      "dose_unit",
+      "perturbation_norm",
+      "row_key",
+      "chem_support_level",
+      "gene_symbol",
+      "spectra_subset",
+      "reactome_support_level"
+    ]
+  },
+  {
+    "source_file": "assets/primary/spectra_ready_dataset/replogle_zeroshot_reactome_support_confirmation_examples.csv",
+    "source_sha256": "8eb48c71be3879310f3aaf78ad8a8d649d5806010c55a9ef67df350e62ee53cf",
+    "path": "samples/state/738dc3c4efdaa841.json.gz",
+    "sha256": "597fc5c1c916b4e1405fea71aaf9c772218a9bd2a9950f93a5450c3059bc9946",
+    "rows": 11518,
+    "columns": [
+      "source_repo",
+      "source_path",
+      "dataset_family",
+      "protocol",
+      "context",
+      "split_id",
+      "representation",
+      "perturbation",
+      "perturbation_name",
+      "dose",
+      "dose_unit",
+      "perturbation_norm",
+      "row_key",
+      "chem_support_level",
+      "gene_symbol",
+      "spectra_subset"
+    ]
+  },
+  {
+    "source_file": "assets/primary/spectra_ready_dataset/state_replogle_hgnc_group_log_train_support_v2_examples.csv",
+    "source_sha256": "1a143e8a068bc80865a111895425afb00340f36f8e57d4d1dc18388928eccbd1",
+    "path": "samples/state/bac7c87dccd85354.json.gz",
+    "sha256": "42ff6fe93be99dc6e9234d1952d4476d2512791ac9c896c944b0f7877439fa30",
+    "rows": 8116,
+    "columns": [
+      "source_repo",
+      "source_path",
+      "dataset_family",
+      "protocol",
+      "context",
+      "split_id",
+      "representation",
+      "perturbation",
+      "perturbation_name",
+      "dose",
+      "dose_unit",
+      "perturbation_norm",
+      "row_key",
+      "chem_support_level",
+      "gene_symbol",
+      "spectra_subset",
+      "reactome_support_level",
+      "hgnc_group_train_support_log_mean_level"
+    ]
+  },
+  {
+    "source_file": "assets/primary/spectra_ready_dataset/state_replogle_reactome_pathway_log_train_support_v2_examples.csv",
+    "source_sha256": "aa3b9541552cfb0f62c363837f1767c6ccf262b49bcc8b4f82d2efe9a8414362",
+    "path": "samples/state/caff025e2c82ca75.json.gz",
+    "sha256": "eb59410ef80ecb7dcafb7a3ae57f1cab5487717048113a2f6636e0828a0d1afb",
+    "rows": 8116,
+    "columns": [
+      "source_repo",
+      "source_path",
+      "dataset_family",
+      "protocol",
+      "context",
+      "split_id",
+      "representation",
+      "perturbation",
+      "perturbation_name",
+      "dose",
+      "dose_unit",
+      "perturbation_norm",
+      "row_key",
+      "chem_support_level",
+      "gene_symbol",
+      "spectra_subset",
+      "reactome_support_level",
+      "reactome_pathway_train_support_log_mean_level"
+    ]
+  },
+  {
+    "source_file": "assets/primary/spectra_ready_dataset/state_replogle_reactome_pathway_mean_train_support_v2_examples.csv",
+    "source_sha256": "767068225877354a80b34ed12ee95c8317e3578181fb75c90709f31e0efb3abf",
+    "path": "samples/state/d8444f432234ad45.json.gz",
+    "sha256": "81e66826a85849736c01f3cd1355a77b755d7117f5ed13a0c0288936925e630b",
+    "rows": 8116,
+    "columns": [
+      "source_repo",
+      "source_path",
+      "dataset_family",
+      "protocol",
+      "context",
+      "split_id",
+      "representation",
+      "perturbation",
+      "perturbation_name",
+      "dose",
+      "dose_unit",
+      "perturbation_norm",
+      "row_key",
+      "chem_support_level",
+      "gene_symbol",
+      "spectra_subset",
+      "reactome_support_level",
+      "reactome_pathway_train_support_mean_level"
+    ]
+  },
+  {
+    "source_file": "assets/primary/spectra_ready_dataset/state_replogle_reactome_pathway_min_train_support_v2_examples.csv",
+    "source_sha256": "1d57e29587e046f7ad6b900d6e7330075c342a0e0de71268510a81824786b50d",
+    "path": "samples/state/92ccca5147a35831.json.gz",
+    "sha256": "2fa3769136f5eec1f6c4072382e3d04259c2e24abedd34c5806bcb6d88ea62ed",
+    "rows": 8116,
+    "columns": [
+      "source_repo",
+      "source_path",
+      "dataset_family",
+      "protocol",
+      "context",
+      "split_id",
+      "representation",
+      "perturbation",
+      "perturbation_name",
+      "dose",
+      "dose_unit",
+      "perturbation_norm",
+      "row_key",
+      "chem_support_level",
+      "gene_symbol",
+      "spectra_subset",
+      "reactome_support_level",
+      "reactome_pathway_train_support_min_level"
+    ]
+  },
+  {
+    "source_file": "assets/primary/spectra_ready_dataset/state_replogle_symbol_family_support_control_examples.csv",
+    "source_sha256": "6e4532f2f0f864eee1198007170d3fd35eaccce6264cbbf2abc68a74f6716aba",
+    "path": "samples/state/ac4949a2e04b4e63.json.gz",
+    "sha256": "f5ed95fc7fb5fe43bc6d2b0f256467eb8544cb7047a29152e54b8dd49784b316",
+    "rows": 8116,
+    "columns": [
+      "source_repo",
+      "source_path",
+      "dataset_family",
+      "protocol",
+      "context",
+      "split_id",
+      "representation",
+      "perturbation",
+      "perturbation_name",
+      "dose",
+      "dose_unit",
+      "perturbation_norm",
+      "row_key",
+      "chem_support_level",
+      "gene_symbol",
+      "spectra_subset",
+      "reactome_support_level",
+      "symbol_family_candidate_train_count_level"
+    ]
+  },
+  {
+    "source_file": "assets/primary/target_model_results.csv",
+    "source_sha256": "1d64a06067e25cee6f52e77114cf7e31359319708b11b0e46c80ba20863829cf",
+    "path": "samples/state/948611abc84119af.json.gz",
+    "sha256": "dcba424718853e5ea3f6068b608edb10b6df85893581e4d86a7adabb47c92863",
+    "rows": 39808,
+    "columns": [
+      "source_repo",
+      "source_path",
+      "dataset_family",
+      "protocol",
+      "context",
+      "split_id",
+      "representation",
+      "perturbation",
+      "perturbation_name",
+      "dose",
+      "dose_unit",
+      "perturbation_norm",
+      "row_key",
+      "chem_support_level"
+    ]
+  },
+  {
+    "source_file": "assets/state-kimi-r1/results/axis_manifest.csv",
+    "source_sha256": "11862830c7d2ab6eda0128d13f8e1d87899fcff629fccd4ab0448a84b740aeed",
+    "path": "samples/state/dd7041b9579aa5a6.json.gz",
+    "sha256": "59be5656da31973a33a04b2712e2df4f34936167b0154ff2fd1ef7b1b815bba1",
+    "rows": 1383,
+    "columns": [
+      "gene",
+      "level"
+    ]
+  },
+  {
+    "source_file": "assets/state-kimi-r1/results/axis_manifest_hepg2.csv",
+    "source_sha256": "c5314cd478c9adc6dd7e593fc6e7528f1045069c87ab0699a59bea7b679f3784",
+    "path": "samples/state/b8a6ff4cf1d90b0f.json.gz",
+    "sha256": "89a77071c1206d8e9b1598a32ebe1841c4ef5a9400d56a547836428a5c4ed311",
+    "rows": 1340,
+    "columns": [
+      "gene",
+      "level"
+    ]
+  },
+  {
+    "source_file": "assets/state-kimi-r1/results/axis_manifest_jurkat.csv",
+    "source_sha256": "a20ba9a4e79532963be56535a1bdc64e483f2a6e8813e9ecea9e3f2cfb3a323a",
+    "path": "samples/state/da840d8d53161b98.json.gz",
+    "sha256": "e3197efd870660f9aba622aff6278de84817201a4cad3ef0fb0a6c433abdd640",
+    "rows": 1537,
+    "columns": [
+      "gene",
+      "level"
+    ]
+  },
+  {
+    "source_file": "assets/state-kimi-r1/results/axis_manifest_rpe1.csv",
+    "source_sha256": "1e2cf1c025ce324d98b0c180cdcef2b4f42eac380814a4efe61377e64b80f5a6",
+    "path": "samples/state/a8bb9d274f4caa56.json.gz",
+    "sha256": "9e2dd6882bf04cd4b0b81ef2dd590f576eda39d80f7da76e927825ae8ec3de77",
+    "rows": 1499,
+    "columns": [
+      "gene",
+      "level"
+    ]
+  },
+  {
+    "source_file": "assets/state-kimi-r1/results/crosscheck_pearson_delta.csv",
+    "source_sha256": "cbad7ed0179ffacb0c053e667da26740177eab943831718062c8f3b98f272585",
+    "path": "samples/state/e916f6ec500b5cf0.json.gz",
+    "sha256": "1966823421d5c524926a35f7e4d5fdfb783fb5374609dd4fcb12133631efee40",
+    "rows": 968,
+    "columns": [
+      "gene"
+    ]
+  },
+  {
+    "source_file": "assets/state-kimi-r1/results/per_unit_scores.csv",
+    "source_sha256": "0c6c5a8d5ccd19ff877bb7271aaaeed7d841641d260e15864a4a68d609df3594",
+    "path": "samples/state/da67b0a72295da9a.json.gz",
+    "sha256": "1a4e59f239c9a185dcca077a8995bc3bf741d0f3e7750ffad002ecaaf690d215",
+    "rows": 1383,
+    "columns": [
+      "gene",
+      "level"
+    ]
+  },
+  {
+    "source_file": "assets/state-kimi-r1/results/per_unit_scores_hepg2.csv",
+    "source_sha256": "f0576bf4caebe52aac70fbbefc323756dea7859ee01c771e6805ed32cfd03f9d",
+    "path": "samples/state/88d3d13033631106.json.gz",
+    "sha256": "96e0871b1072fe5683e2c6c8e63de657b333a77649f1b084bb713c5f892a5823",
+    "rows": 1340,
+    "columns": [
+      "gene",
+      "level"
+    ]
+  },
+  {
+    "source_file": "assets/state-kimi-r1/results/per_unit_scores_jurkat.csv",
+    "source_sha256": "d635f83beae6fa8bd146420eb3de0e4be551b76ddd28eeba18ce5aac4f9c7cb8",
+    "path": "samples/state/5868898f45b2326f.json.gz",
+    "sha256": "6e9a51570e6f55051452fce0c5378a9a9d3ca42ad75863a73d5925b4cdc69ab5",
+    "rows": 1537,
+    "columns": [
+      "gene",
+      "level"
+    ]
+  },
+  {
+    "source_file": "assets/state-kimi-r1/results/per_unit_scores_rpe1.csv",
+    "source_sha256": "3f747d8b2107cffe0c608d022fead3ea717b567673c02925f6e7e4a9786ac3ad",
+    "path": "samples/state/d4db0e2c7465e4c1.json.gz",
+    "sha256": "0d38c26d2d0b0d9c7dbc90dd6771b4363a73426d0a67db6dd14096f22f14622c",
+    "rows": 1499,
+    "columns": [
+      "gene",
+      "level"
+    ]
+  },
+  {
+    "source_file": "assets/state-kimi-r1/results/proximity_embedding_norms.csv",
+    "source_sha256": "538907bd95331c9885d13998a867e259900ed2ba1df30be8d8c58cc5d1a25918",
+    "path": "samples/state/a1589413cf19be80.json.gz",
+    "sha256": "fb5af05e151732d8dd81b55825affad6cb5e74cf1dcbfc4b98c23e6dce44b014",
+    "rows": 1383,
+    "columns": [
+      "gene",
+      "level"
+    ]
+  },
+  {
+    "source_file": "assets/state-kimi-r1/results/proximity_embedding_norms_hepg2.csv",
+    "source_sha256": "60122f79ef1f2800126f52bf92356c55c3dc32259a82834f47022a24b0324573",
+    "path": "samples/state/994ca7b613c87beb.json.gz",
+    "sha256": "1e60026bf4a54ea35d9f69c28488395078c699be72fcd5008649898925dae353",
+    "rows": 1340,
+    "columns": [
+      "gene",
+      "level"
+    ]
+  },
+  {
+    "source_file": "assets/state-kimi-r1/results/proximity_embedding_norms_jurkat.csv",
+    "source_sha256": "450bb5b30cb9f4dc91970dce7aa669470d7c7e3f410428b77b8b3fca56e5e3c8",
+    "path": "samples/state/a1188ad657bed52c.json.gz",
+    "sha256": "25d91f698616b290910644b6d84c0b2a3070fc37dca6116aeaf215b76f575ef9",
+    "rows": 1537,
+    "columns": [
+      "gene",
+      "level"
+    ]
+  },
+  {
+    "source_file": "assets/state-kimi-r1/results/proximity_embedding_norms_rpe1.csv",
+    "source_sha256": "d3dbd5ed9ce532050a68d971c5bdcc9e09749e1c1dfd493651174cfac2eed2a8",
+    "path": "samples/state/1a9af9c6c0e8e682.json.gz",
+    "sha256": "c90acd3daf4b8e288896970f621b474d002b1b3bf6d2f1226f5555ffd8c09876",
+    "rows": 1499,
+    "columns": [
+      "gene",
+      "level"
+    ]
+  },
+  {
+    "source_file": "assets/state-opus-r1/PRIMARY_axis_drug_target_coverage.csv",
+    "source_sha256": "d262b8109ca2a10234b326fba45feadcaee672293f022dd890a7db1f1d5194b6",
+    "path": "samples/state/73cbecc12f54df10.json.gz",
+    "sha256": "232cb3ee459460e663cd42137b18632aa2dfd00cc6bb8bd6d34b8b8a96cb3bf6",
+    "rows": 264,
+    "columns": [
+      "perturbation_norm"
+    ]
+  },
+  {
+    "source_file": "assets/state-opus-r1/data/predictions.csv",
+    "source_sha256": "28dbbc22f7482a8f720f096de47eb83a20e84f2dbf7656d5a8a019a7e7d08bc1",
+    "path": "samples/state/6ca96b1b4d1236a6.json.gz",
+    "sha256": "fa0618c9411c8dc98abc56a851baf7ff64566870ffcc07e00f4be687f0c54953",
+    "rows": 39808,
+    "columns": [
+      "source_repo",
+      "source_path",
+      "dataset_family",
+      "protocol",
+      "context",
+      "split_id",
+      "representation",
+      "perturbation",
+      "perturbation_name",
+      "dose",
+      "dose_unit",
+      "perturbation_norm",
+      "row_key"
+    ]
+  },
+  {
+    "source_file": "assets/state-opus-r1/drug_chem_novelty.csv",
+    "source_sha256": "3502e89eb9ae934e0d7572cd4cc77c7dc4670f8c5fb697924bf07f66f51cc10e",
+    "path": "samples/state/f16ff535f901dde1.json.gz",
+    "sha256": "5ca901e602027df088caa23e0d2149d84fb3cabdb14fb4efabbc953b4586ad1c",
+    "rows": 377,
+    "columns": [
+      "perturbation_norm"
+    ]
+  },
+  {
+    "source_file": "assets/state-opus-r2/data/predictions.csv",
+    "source_sha256": "28dbbc22f7482a8f720f096de47eb83a20e84f2dbf7656d5a8a019a7e7d08bc1",
+    "path": "samples/state/1e0c50980ebae0ab.json.gz",
+    "sha256": "1c7913025c6658fe14d4ac98b6e8ac3aefcea2a1ab4059c6606b3f3950f8ef9c",
+    "rows": 39808,
+    "columns": [
+      "source_repo",
+      "source_path",
+      "dataset_family",
+      "protocol",
+      "context",
+      "split_id",
+      "representation",
+      "perturbation",
+      "perturbation_name",
+      "dose",
+      "dose_unit",
+      "perturbation_norm",
+      "row_key"
+    ]
+  },
+  {
+    "source_file": "assets/state-opus-r2/spectra_run/artifacts/replogle_go_features.csv",
+    "source_sha256": "cd9202c48a6b4cd61d3581a2f456b31c94d666abf6bedebcc6dc3828e4a201d8",
+    "path": "samples/state/ab70480bcd508c39.json.gz",
+    "sha256": "bd71a593e0e2f3a9ffccaabc6b64d3bc4b67111b73849e571b752becd0d9b1d5",
+    "rows": 1911,
+    "columns": [
+      "perturbation_name"
+    ]
+  },
+  {
+    "source_file": "assets/state-opus-r2/spectra_run/artifacts/tahoe_drug_features.csv",
+    "source_sha256": "f264074500d103d405d7f2165aa5dfca7c6587935b67fd897c5b0874af8eac57",
+    "path": "samples/state/0491be307fe6332a.json.gz",
+    "sha256": "3eaf48ab5eaa6a556dddcf522b285a944c6b49e59b7ebb33bde30ffec855a15c",
+    "rows": 379,
+    "columns": [
+      "perturbation_name"
+    ]
+  }
+]

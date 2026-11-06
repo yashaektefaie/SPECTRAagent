@@ -1,0 +1,163 @@
+{
+  "id": "esmfold2-kimi-r2/test-02",
+  "investigation": "esmfold2-kimi-r2",
+  "model": "ESMFold2",
+  "axis": "Missing-density and complex-context restrictions",
+  "dataset_split": {
+    "description": "Exact160 plan ids and cluster membership verified.",
+    "input_inventory": "inputs/esmfold2.json",
+    "public_sources": [
+      "rcsb-example",
+      "rcsb-entity",
+      "esm-code"
+    ],
+    "sample_tables": [
+      {
+        "source_file": "assets/kimi-r2/audit/data/axis_table.csv",
+        "source_sha256": "845c963357632a529468bd4682ec01d4800b8382ac7bbe5f2c77aac13936a85d",
+        "path": "samples/esmfold2/0fe47b948dee0c69.json.gz",
+        "sha256": "b6d32c63110656b1d33f9fbabab3df62e951e6616434238d65abb2f7fd44d79d",
+        "rows": 3000,
+        "columns": [
+          "entity",
+          "bin"
+        ]
+      },
+      {
+        "source_file": "assets/kimi-r2/audit/data/sample_plan.csv",
+        "source_sha256": "d5a98bebc9f35dbe80056c11b792830c315d70dff3039ff2bdb8a5b297d64a59",
+        "path": "samples/esmfold2/34b3f619e22bf1e7.json.gz",
+        "sha256": "57fea0aa8b0ea89f3b7d0a8351b87c737182c1a65394dc38975d3dfd3fd93f13",
+        "rows": 32,
+        "columns": [
+          "bin",
+          "entity"
+        ]
+      },
+      {
+        "source_file": "assets/kimi-r2/audit/data/sample_plan_expansion.csv",
+        "source_sha256": "cf86cf7e0033cad98908082dab59fcc01cd1b3c9be0f49d814ed80fd54508f44",
+        "path": "samples/esmfold2/e1d13f6661bbd686.json.gz",
+        "sha256": "da280c4959263074d7e8bc8bd8ccccaae46c30e07d00f340666f2bda2500110e",
+        "rows": 128,
+        "columns": [
+          "bin",
+          "entity"
+        ]
+      },
+      {
+        "source_file": "assets/kimi-r2/audit/data/sample_plan_full.csv",
+        "source_sha256": "61962a720e442c12d8dff546ca8aa299cef36bcf0f10b28a23e789efe6d851ac",
+        "path": "samples/esmfold2/17db9eb0feaa5c8b.json.gz",
+        "sha256": "16d06cf7d760df806740a6a42b35b5cd36e629b477ea911b15066f647db69805",
+        "rows": 160,
+        "columns": [
+          "bin",
+          "entity"
+        ]
+      },
+      {
+        "source_file": "assets/kimi-r2/audit/results/per_unit_enriched.csv",
+        "source_sha256": "f1f9ba81f5aff5b3bd80d763a323ab8cca8d3e34dad21738b7cf487d5ae920e5",
+        "path": "samples/esmfold2/ce723f373214d010.json.gz",
+        "sha256": "57554d57c2acd32e78f57aaf677a164010034724fce07b1ea6ff61b76c9555be",
+        "rows": 160,
+        "columns": [
+          "bin",
+          "entity"
+        ]
+      },
+      {
+        "source_file": "assets/kimi-r2/audit/results/scores.csv",
+        "source_sha256": "c6c795e793c03a0994ece579cd0efcf24927338d6ffec9d013530ecac8db918e",
+        "path": "samples/esmfold2/d880f0c1d2deb890.json.gz",
+        "sha256": "9c546269ffc9aa45561abf1b54f1a79044bd92b6ab1c737ae06f1c7abca8e86a",
+        "rows": 160,
+        "columns": [
+          "bin",
+          "entity"
+        ]
+      }
+    ]
+  },
+  "axis_levels": {
+    "definition": "Sensitivity subsets prespecified by experimental metadata and missing coordinate density.",
+    "calculation": "Max identity and levels recomputed from original mmseqs hits.",
+    "code": "materials/esmfold2/notebooks/esmfold2-kimi-r2/test-02.py"
+  },
+  "model_evaluation": {
+    "measurements": "All160 target and120 template structures rescored exact original rounding.",
+    "fine_tuning": {
+      "target_weight_updates_in_replay": false,
+      "target_fine_tuning_during_original_audit": null,
+      "original_training_evidence": "The exported reconstruction code does not update target-model weights. Original checkpoint training or audit-specific adaptation was not established by the retained execution evidence.",
+      "comparators": []
+    },
+    "code": "materials/esmfold2/notebooks/esmfold2-kimi-r2/test-02.py"
+  },
+  "curve": {
+    "aggregation_and_uncertainty": "Coordinate rescores aggregated with original rounding.",
+    "code": "materials/esmfold2/notebooks/esmfold2-kimi-r2/test-02.py"
+  },
+  "insight": {
+    "comparison_controls_confirmation": "Observed density from coords and single entity controls recomputed; expansion checked.",
+    "code": "materials/esmfold2/notebooks/esmfold2-kimi-r2/test-02.py"
+  },
+  "reconstruction_notes": [
+    "Underlying reference/test FASTA and original search executable/database are not included; original hit-table aggregation is replayed, not the MMseqs search.",
+    "Fresh ESMFold2 inference and template coordinate construction were not rerun. Original structures are supplied and rescored.",
+    "The original standalone TMalign20220412 binary is unavailable locally; tmtools0.3.0 rescoring agreement is reported per sample rather than assumed.",
+    "Template reference is undefined at lowest identity. Model means are nonmonotonic across middle levels.",
+    "New t-interval display bands and Welch confidence intervals are diagnostic recomputations.",
+    "The 128-target expansion has endpoint difference -0.0598103, interval [-0.141321, 0.0217004], p=0.146802. It must be kept separate from the pooled 160-target calculation.",
+    "Exact retained audit inputs are identified by relative filename and hash in the input inventory. A null download_source means no matching anonymous download has been established. Public upstream datasets do not substitute for missing original splits, predictions or annotations."
+  ],
+  "implementation": {
+    "notebook": "materials/esmfold2/notebooks/esmfold2-kimi-r2/test-02.ipynb",
+    "script": "materials/esmfold2/notebooks/esmfold2-kimi-r2/test-02.py",
+    "supporting_code": "code/esmfold2.json",
+    "cell_locations": [
+      {
+        "notebook_cell": 1,
+        "start_line": 1,
+        "end_line": 35
+      },
+      {
+        "notebook_cell": 3,
+        "start_line": 36,
+        "end_line": 51
+      },
+      {
+        "notebook_cell": 5,
+        "start_line": 52,
+        "end_line": 66
+      },
+      {
+        "notebook_cell": 7,
+        "start_line": 67,
+        "end_line": 98
+      },
+      {
+        "notebook_cell": 9,
+        "start_line": 99,
+        "end_line": 106
+      },
+      {
+        "notebook_cell": 11,
+        "start_line": 107,
+        "end_line": 123
+      }
+    ],
+    "original_notebook_sha256": "44412cf33fc104904dba56a925f6f887987fa8e19704db8fbf9b3a52b4df340b",
+    "published_notebook_sha256": "7f05ce92de85b9e4dc5e2f23ed826775171fa0d5c42cab0e8351b3e32ea21c4f",
+    "changes": [
+      "Code-only export; Markdown verdicts and saved outputs omitted.",
+      "Machine-specific home paths replaced with /path/to/audit-home where present.",
+      "Python export converts notebook magic syntax using IPython; notebook retains its original code syntax.",
+      "Python exports remove trailing whitespace only after checking that the parsed syntax tree is unchanged."
+    ],
+    "saved_code_cells": 6,
+    "saved_error_outputs": 0
+  },
+  "requested_model": "ESMFold2"
+}

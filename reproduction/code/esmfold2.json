@@ -1,0 +1,377 @@
+[
+  {
+    "path": "materials/esmfold2/assets/kimi-r1/scripts/01_fetch_rcsb.py",
+    "sha256": "f85109e3009c20fa39860ee14a7e6a7e429705216bc0efcc7ac9cf080c3345c1",
+    "original_sha256": "f85109e3009c20fa39860ee14a7e6a7e429705216bc0efcc7ac9cf080c3345c1"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r1/scripts/02_build_pools.py",
+    "sha256": "b29dc68fbee4bf41b381971a0239a9949b30cea78cace2966a89a7bfa77be86e",
+    "original_sha256": "b29dc68fbee4bf41b381971a0239a9949b30cea78cace2966a89a7bfa77be86e"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r1/scripts/03_one_chain_per_entry.py",
+    "sha256": "1e348264029d17593ed2fdcc85a9bbaf43a7d9a63677f2ed49253ce856a5c113",
+    "original_sha256": "1e348264029d17593ed2fdcc85a9bbaf43a7d9a63677f2ed49253ce856a5c113"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r1/scripts/04_select_panel.py",
+    "sha256": "1222ff6d096437ed3a0e380b1fc6c5ca2d14c33ee69f8e48de857dca5dd9a8b6",
+    "original_sha256": "1222ff6d096437ed3a0e380b1fc6c5ca2d14c33ee69f8e48de857dca5dd9a8b6"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r1/scripts/05_download_parse.py",
+    "sha256": "63e0c40d5fc73cc5acc2dd5a9e646920a7fb0048b0670e47b53a5e0ea5be99f5",
+    "original_sha256": "63e0c40d5fc73cc5acc2dd5a9e646920a7fb0048b0670e47b53a5e0ea5be99f5"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r1/scripts/06_finalize_panel.py",
+    "sha256": "d156f15dd770cdc0c9e41650af32ec215c4177079f7fcfcb49f5710e1633ae0a",
+    "original_sha256": "d156f15dd770cdc0c9e41650af32ec215c4177079f7fcfcb49f5710e1633ae0a"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r1/scripts/07_run_esmfold.py",
+    "sha256": "13144faa59716099c07e982efa320616b2d48ad693dd5292ea78c88192386269",
+    "original_sha256": "13144faa59716099c07e982efa320616b2d48ad693dd5292ea78c88192386269"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r1/scripts/07b_run_esmfold_confirm.py",
+    "sha256": "35ca645c0c1a2d5aed3a513125358adb38179a00d84a49d26bac2a9f48134acd",
+    "original_sha256": "35ca645c0c1a2d5aed3a513125358adb38179a00d84a49d26bac2a9f48134acd"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r1/scripts/08_score.py",
+    "sha256": "a4aea6f803e099b69fc15c13f64e827ffdc65ab6af0745cb9c2adc6ac7ae947c",
+    "original_sha256": "a4aea6f803e099b69fc15c13f64e827ffdc65ab6af0745cb9c2adc6ac7ae947c"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r1/scripts/08b_score_confirm.py",
+    "sha256": "9badebd7b7091ee7810f63f3d4ecdb133f4969e1fa9a602eea413ca2e8576ba7",
+    "original_sha256": "9badebd7b7091ee7810f63f3d4ecdb133f4969e1fa9a602eea413ca2e8576ba7"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r1/scripts/09_baseline.py",
+    "sha256": "c840265fd06ec95c5052cb4c5d59a6151e1a27c4d6c0b3b31152da012db1c082",
+    "original_sha256": "c840265fd06ec95c5052cb4c5d59a6151e1a27c4d6c0b3b31152da012db1c082"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r1/scripts/09b_baseline_confirm.py",
+    "sha256": "dc09aed13e5ce83b77a813e0be81afe9a429f9ddb554abca8c9e01972871752e",
+    "original_sha256": "dc09aed13e5ce83b77a813e0be81afe9a429f9ddb554abca8c9e01972871752e"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r1/scripts/10_analyze.py",
+    "sha256": "fda4214ea03c7ad12d1b0bb759b4ab9e836f4969a10d8dfe6cc3906e8b5251fe",
+    "original_sha256": "fda4214ea03c7ad12d1b0bb759b4ab9e836f4969a10d8dfe6cc3906e8b5251fe"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r1/scripts/11_figure.py",
+    "sha256": "3158b4b57c4574fb821b47127c62140550de7d656fb2318fe7e43ab13bd95ff6",
+    "original_sha256": "3158b4b57c4574fb821b47127c62140550de7d656fb2318fe7e43ab13bd95ff6"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r1/scripts/12_select_confirmation.py",
+    "sha256": "375c0c7f20503f2a31e8a95abe339b03ac7716558c352d93af340cde83cec891",
+    "original_sha256": "375c0c7f20503f2a31e8a95abe339b03ac7716558c352d93af340cde83cec891"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r1/scripts/13_confirm_fetch.py",
+    "sha256": "8e3d171206dc325fd934a223d1640b8e2df4daa19061cf9afc8e7a0967938d8f",
+    "original_sha256": "8e3d171206dc325fd934a223d1640b8e2df4daa19061cf9afc8e7a0967938d8f"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r1/scripts/14_confirm_finalize.py",
+    "sha256": "f239ed972098f4a8a1916b13330ac8ad08579321d0c9abb61b3ea99e7af32fb9",
+    "original_sha256": "f239ed972098f4a8a1916b13330ac8ad08579321d0c9abb61b3ea99e7af32fb9"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r1/scripts/15_confirm_analyze.py",
+    "sha256": "9074f340af155ffe96d01c33cdc29aa21418324ce7671b5b93d3ae0c8cd9b51a",
+    "original_sha256": "9074f340af155ffe96d01c33cdc29aa21418324ce7671b5b93d3ae0c8cd9b51a"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r1/scripts/analyze.py",
+    "sha256": "b28f5d8b2263df797228d8b637fcd30e6994698e3e3bc426801dcb3c2732a132",
+    "original_sha256": "b28f5d8b2263df797228d8b637fcd30e6994698e3e3bc426801dcb3c2732a132"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r1/scripts/assign_axis.py",
+    "sha256": "64a7f298e5daa379b9f3897d1b9df60ced31ea9936d83ba688e60846bb403f09",
+    "original_sha256": "64a7f298e5daa379b9f3897d1b9df60ced31ea9936d83ba688e60846bb403f09"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r1/scripts/build_pool.py",
+    "sha256": "2ffe745398c511470df6c70aeb45df9b328082a618514712eb14fe72e1eb2231",
+    "original_sha256": "2ffe745398c511470df6c70aeb45df9b328082a618514712eb14fe72e1eb2231"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r1/scripts/download_structures.py",
+    "sha256": "6b7f8b63616334c8bb16a3f8f12ccbf90887f690e7f9ad5bbed4ae41ee45d0a7",
+    "original_sha256": "6b7f8b63616334c8bb16a3f8f12ccbf90887f690e7f9ad5bbed4ae41ee45d0a7"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r1/scripts/download_templates_all.py",
+    "sha256": "b4d356f16c960ffed50675ca4082a38e451d11e59fa54802925a502afbddb75c",
+    "original_sha256": "b4d356f16c960ffed50675ca4082a38e451d11e59fa54802925a502afbddb75c"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r1/scripts/extract_native.py",
+    "sha256": "62415ee3625867f0a9f8248e71164b7b6c271005607fe92f1c4f3dfa8fe19fa1",
+    "original_sha256": "62415ee3625867f0a9f8248e71164b7b6c271005607fe92f1c4f3dfa8fe19fa1"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r1/scripts/fetch_rcsb_metadata.py",
+    "sha256": "a24866425d8f015045fcc663b1250e70474a80e4a2b7aa9cca63b2f79d34ddf6",
+    "original_sha256": "a24866425d8f015045fcc663b1250e70474a80e4a2b7aa9cca63b2f79d34ddf6"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r1/scripts/run_baseline.py",
+    "sha256": "d4488c3fe44384d690272ca925351fa7d884e1531ce2e0b8d886a3cef303fcb5",
+    "original_sha256": "d4488c3fe44384d690272ca925351fa7d884e1531ce2e0b8d886a3cef303fcb5"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r1/scripts/run_esmfold.py",
+    "sha256": "6edda00e8876db6b6c152cdcb6156e7b2c3755b8502c7b23573a1de92f25dc27",
+    "original_sha256": "6edda00e8876db6b6c152cdcb6156e7b2c3755b8502c7b23573a1de92f25dc27"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r1/scripts/score.py",
+    "sha256": "ed62f4ac9a54faf543b1e68d6861ddc6f01b42aedff6f18a38b9a4de775636b3",
+    "original_sha256": "ed62f4ac9a54faf543b1e68d6861ddc6f01b42aedff6f18a38b9a4de775636b3"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r2/audit/scripts/analyze.py",
+    "sha256": "b63d49ad5542d5ea0990bbe5d38d72f168f4419cbc31cf831d6ebbfa8f2f2a50",
+    "original_sha256": "b63d49ad5542d5ea0990bbe5d38d72f168f4419cbc31cf831d6ebbfa8f2f2a50"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r2/audit/scripts/build_axis_table.py",
+    "sha256": "4c292a5d50525b81774ceafe01831d9077d722625090cc8764e66023e3faec17",
+    "original_sha256": "4c292a5d50525b81774ceafe01831d9077d722625090cc8764e66023e3faec17"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r2/audit/scripts/convert_esmc.py",
+    "sha256": "bc6a5534e0275a9937f7c5af405ac16fb85ee2790fe93188139309d45f2c05f8",
+    "original_sha256": "bc6a5534e0275a9937f7c5af405ac16fb85ee2790fe93188139309d45f2c05f8"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r2/audit/scripts/convert_esmc_watch.py",
+    "sha256": "208c34991936e5259ceb31e8b6a0d48e32c532ea21e7feefef81bb77b3bfc8ad",
+    "original_sha256": "208c34991936e5259ceb31e8b6a0d48e32c532ea21e7feefef81bb77b3bfc8ad"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r2/audit/scripts/download_trunk.py",
+    "sha256": "52273fe3321af069ed7652ca5700956b90bfc3de52e63bf23d7777c6be29212e",
+    "original_sha256": "52273fe3321af069ed7652ca5700956b90bfc3de52e63bf23d7777c6be29212e"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r2/audit/scripts/expand_sample.py",
+    "sha256": "b9f885f115a08e8619f502b4b2e6649334f1aee2ca194a3eca1240c5172d1587",
+    "original_sha256": "b9f885f115a08e8619f502b4b2e6649334f1aee2ca194a3eca1240c5172d1587"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r2/audit/scripts/fetch_cifs.py",
+    "sha256": "c16e5fa261c870df495bfb9116944e8f6a6917428825ec3fc22f46caee09c91f",
+    "original_sha256": "c16e5fa261c870df495bfb9116944e8f6a6917428825ec3fc22f46caee09c91f"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r2/audit/scripts/fetch_confounds.py",
+    "sha256": "6a72fac37091503e81835f402329b59c6127e247025ebc21b6be26b8a078dcbb",
+    "original_sha256": "6a72fac37091503e81835f402329b59c6127e247025ebc21b6be26b8a078dcbb"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r2/audit/scripts/fetch_dataset.py",
+    "sha256": "66d5311f07c0c9d2af9e9673fa2371f7f80be5ee7b95dc55fb33c58d61d40479",
+    "original_sha256": "66d5311f07c0c9d2af9e9673fa2371f7f80be5ee7b95dc55fb33c58d61d40479"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r2/audit/scripts/fetch_test_seqs.py",
+    "sha256": "f0031831dd6f64e9267eba0faa00261ec297faffe6b639ef8b745bf606a7aa8c",
+    "original_sha256": "f0031831dd6f64e9267eba0faa00261ec297faffe6b639ef8b745bf606a7aa8c"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r2/audit/scripts/run_model.py",
+    "sha256": "7e318e0af953ffdbea055bc8500c6e9752b0d74044cd1d7be397d56833cc027c",
+    "original_sha256": "7e318e0af953ffdbea055bc8500c6e9752b0d74044cd1d7be397d56833cc027c"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r2/audit/scripts/score.py",
+    "sha256": "6d197980e51cc503f0a1513068701a10348345bbba81196d898c4b736fff1549",
+    "original_sha256": "6d197980e51cc503f0a1513068701a10348345bbba81196d898c4b736fff1549"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r2/audit/scripts/smoke_ubq.py",
+    "sha256": "b8d23b3d9712392941be9fa3f2d588b120c7531b217aec6800be95fd2d495d2b",
+    "original_sha256": "b8d23b3d9712392941be9fa3f2d588b120c7531b217aec6800be95fd2d495d2b"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r2/audit/scripts/struct_utils.py",
+    "sha256": "91308e5f86f99642dafe1139085a652a38868b05e12c65ab8a77f575e7cf1669",
+    "original_sha256": "91308e5f86f99642dafe1139085a652a38868b05e12c65ab8a77f575e7cf1669"
+  },
+  {
+    "path": "materials/esmfold2/assets/kimi-r2/audit/scripts/test_rcsb.py",
+    "sha256": "3b1e68f39dbfc4cd6cc95a4c53470c8426a96d61ee81bcebef3b6503ccbcc814",
+    "original_sha256": "3b1e68f39dbfc4cd6cc95a4c53470c8426a96d61ee81bcebef3b6503ccbcc814"
+  },
+  {
+    "path": "materials/esmfold2/requirements.txt",
+    "sha256": "5e0df8fae478cc63b3368ea21ab10887428a366e1cc264b6ee61a650216f0d25",
+    "original_sha256": "5e0df8fae478cc63b3368ea21ab10887428a366e1cc264b6ee61a650216f0d25"
+  },
+  {
+    "path": "materials/esmfold2/source/esmfold2/reconstruction/prior_axes/01_cameo_msa_depth/scripts/analyze_spectra_axes.py",
+    "sha256": "761029bf3eb09b4e2eb3df9bb43aa31a2294ebf3acfae3459544578694cfdd74",
+    "original_sha256": "761029bf3eb09b4e2eb3df9bb43aa31a2294ebf3acfae3459544578694cfdd74"
+  },
+  {
+    "path": "materials/esmfold2/source/esmfold2/reconstruction/prior_axes/01_cameo_msa_depth/scripts/finalize_spectra_outputs.py",
+    "sha256": "58c7af3ca9da71fdd9a798115524afd4e7ae7bd7d3151e95ffa862e757e65e29",
+    "original_sha256": "58c7af3ca9da71fdd9a798115524afd4e7ae7bd7d3151e95ffa862e757e65e29"
+  },
+  {
+    "path": "materials/esmfold2/source/esmfold2/reconstruction/prior_axes/02_flexible_nonhelical/scripts/densify_primary_axis.py",
+    "sha256": "3d757a96f65129e6167af7d1e7ed9b7fc19f7232c1758a4a1a3a1aa44f0eedaf",
+    "original_sha256": "3d757a96f65129e6167af7d1e7ed9b7fc19f7232c1758a4a1a3a1aa44f0eedaf"
+  },
+  {
+    "path": "materials/esmfold2/source/esmfold2/reconstruction/prior_axes/02_flexible_nonhelical/scripts/finalize_spectra_outputs.py",
+    "sha256": "d201a61a8c7c19082f75546c456af59f09e908338488d3d67bcf07d5ea0c72fb",
+    "original_sha256": "d201a61a8c7c19082f75546c456af59f09e908338488d3d67bcf07d5ea0c72fb"
+  },
+  {
+    "path": "materials/esmfold2/source/esmfold2/reconstruction/prior_axes/02_flexible_nonhelical/scripts/score_axes.py",
+    "sha256": "f23feb8dd6cf32570886d2f24aeb04e04efb5a4771c257efe50a940bfab416e4",
+    "original_sha256": "f23feb8dd6cf32570886d2f24aeb04e04efb5a4771c257efe50a940bfab416e4"
+  },
+  {
+    "path": "materials/esmfold2/source/esmfold2/reconstruction/prior_axes/02_flexible_nonhelical/scripts/score_followup_axes.py",
+    "sha256": "aa9f921172e092cda948bf494ae30f7ab29b09fcfde04203486013c04560a68b",
+    "original_sha256": "aa9f921172e092cda948bf494ae30f7ab29b09fcfde04203486013c04560a68b"
+  },
+  {
+    "path": "materials/esmfold2/source/esmfold2/reconstruction/prior_axes/03_external_flexible/scripts/build_expanded_external_panel.py",
+    "sha256": "201c5ec2727ea579496f7ccea517e7a84b5dfbc3e19dda11b81a43fc1131e993",
+    "original_sha256": "201c5ec2727ea579496f7ccea517e7a84b5dfbc3e19dda11b81a43fc1131e993"
+  },
+  {
+    "path": "materials/esmfold2/source/esmfold2/reconstruction/prior_axes/03_external_flexible/scripts/summarize_expanded_external_spc.py",
+    "sha256": "624774da83a8066e3ec0ca690586a684526b6e897aec78749d0718ebdce9e66b",
+    "original_sha256": "624774da83a8066e3ec0ca690586a684526b6e897aec78749d0718ebdce9e66b"
+  },
+  {
+    "path": "materials/esmfold2/source/esmfold2/reconstruction/prior_axes/04_reference_geometry_and_new_axes/scripts/audit_frozen_charge_axis.py",
+    "sha256": "3f6e882c8968d89de333b05932f0aaf404a7d579c4efbc24d03b64437bc3b529",
+    "original_sha256": "3f6e882c8968d89de333b05932f0aaf404a7d579c4efbc24d03b64437bc3b529"
+  },
+  {
+    "path": "materials/esmfold2/source/esmfold2/reconstruction/prior_axes/04_reference_geometry_and_new_axes/scripts/audit_frozen_charge_hydropathy_axis.py",
+    "sha256": "fb4e228fb5913ec3c275759a6c85563c57a2f2aa12e837dc36564f8f0a90d7bd",
+    "original_sha256": "fb4e228fb5913ec3c275759a6c85563c57a2f2aa12e837dc36564f8f0a90d7bd"
+  },
+  {
+    "path": "materials/esmfold2/source/esmfold2/reconstruction/prior_axes/04_reference_geometry_and_new_axes/scripts/audit_frozen_reference_topology_axes.py",
+    "sha256": "3e1341449b25fffe52cd0b99c8ecafc03a4e539119a7de8a0b549c5964b1f424",
+    "original_sha256": "3e1341449b25fffe52cd0b99c8ecafc03a4e539119a7de8a0b549c5964b1f424"
+  },
+  {
+    "path": "materials/esmfold2/source/esmfold2/reconstruction/prior_axes/04_reference_geometry_and_new_axes/scripts/build_combined_and_score_axes.py",
+    "sha256": "92389054913b0ef149119a4f8a2a4f294b6030c70867ec14c0509e844e924d10",
+    "original_sha256": "92389054913b0ef149119a4f8a2a4f294b6030c70867ec14c0509e844e924d10"
+  },
+  {
+    "path": "materials/esmfold2/source/esmfold2/reconstruction/prior_axes/05_shared_charge/scripts/analyze_shared_axes.py",
+    "sha256": "5799fc908939ad53215486a59ad945a5c1305495543f50d0f45e501ead776785",
+    "original_sha256": "5799fc908939ad53215486a59ad945a5c1305495543f50d0f45e501ead776785"
+  },
+  {
+    "path": "materials/esmfold2/source/esmfold2/reconstruction/prior_axes/06_charge_confirmation/scripts/build_fresh_charge_panel.py",
+    "sha256": "85b7de25380dd7fc6eac479479b9453cf82ef4443e3636aa7aa6792f79e3e788",
+    "original_sha256": "85b7de25380dd7fc6eac479479b9453cf82ef4443e3636aa7aa6792f79e3e788"
+  },
+  {
+    "path": "materials/esmfold2/source/esmfold2/reconstruction/prior_axes/06_charge_confirmation/scripts/summarize_charge_confirmation.py",
+    "sha256": "75de1fa1aa9ec52d63c6ef3ce1538dec2fea0e83bd84007be299214e445368a7",
+    "original_sha256": "75de1fa1aa9ec52d63c6ef3ce1538dec2fea0e83bd84007be299214e445368a7"
+  },
+  {
+    "path": "materials/esmfold2/source/esmfold2/reconstruction/prior_axes/07_cysteine_confirmation/scripts/build_cys_confirmation_panel.py",
+    "sha256": "692cec0b068736164e8f27e771b875b7ec2a60ecdb86f9f16f2dcd43642aae2b",
+    "original_sha256": "692cec0b068736164e8f27e771b875b7ec2a60ecdb86f9f16f2dcd43642aae2b"
+  },
+  {
+    "path": "materials/esmfold2/source/esmfold2/reconstruction/prior_axes/07_cysteine_confirmation/scripts/expand_all_scored_features.py",
+    "sha256": "c8205dde602e76daade46eb647e413955dfc0d70ff3f8154f055ad36718aee98",
+    "original_sha256": "c8205dde602e76daade46eb647e413955dfc0d70ff3f8154f055ad36718aee98"
+  },
+  {
+    "path": "materials/esmfold2/source/esmfold2/reconstruction/prior_axes/07_cysteine_confirmation/scripts/summarize_cys_confirmation.py",
+    "sha256": "bdb12c546883b13720f4efa0dd68f756cf9dbf95f221fcab2ee001a708fd4f12",
+    "original_sha256": "bdb12c546883b13720f4efa0dd68f756cf9dbf95f221fcab2ee001a708fd4f12"
+  },
+  {
+    "path": "materials/esmfold2/source/esmfold2/reconstruction/prior_axes/08_cysteine_proxy/scripts/iterate_proxy_axes.py",
+    "sha256": "f2a4be625f3afe06ed9e668f1f93d5c3c0b69b6bbdbaf7207ab80a6e42ad85cc",
+    "original_sha256": "f2a4be625f3afe06ed9e668f1f93d5c3c0b69b6bbdbaf7207ab80a6e42ad85cc"
+  },
+  {
+    "path": "materials/esmfold2/source/esmfold2/reconstruction/prior_axes/09_viral_disulfide/scripts/build_viral_disulfide_pilot_panel.py",
+    "sha256": "ce9ec8855a1755b9ead5746aa14a1b8c11a28197eecc4a920f93d7ea54842f3d",
+    "original_sha256": "ce9ec8855a1755b9ead5746aa14a1b8c11a28197eecc4a920f93d7ea54842f3d"
+  },
+  {
+    "path": "materials/esmfold2/source/esmfold2/reconstruction/prior_axes/09_viral_disulfide/scripts/summarize_viral_disulfide_pilot.py",
+    "sha256": "04d2aa599c5a3c287f5838fb5503f255ceecf50cd4110bfbf8d7225a5f32877a",
+    "original_sha256": "04d2aa599c5a3c287f5838fb5503f255ceecf50cd4110bfbf8d7225a5f32877a"
+  },
+  {
+    "path": "materials/esmfold2/source/esmfold2/reconstruction/prior_axes/10_11_envelope_surface/scripts/build_envelope_fusion_confirmation_panel.py",
+    "sha256": "cba8516bb2cb94354ff3137875ded174f918e89442942e3bb398ee2c35590f6d",
+    "original_sha256": "cba8516bb2cb94354ff3137875ded174f918e89442942e3bb398ee2c35590f6d"
+  },
+  {
+    "path": "materials/esmfold2/source/esmfold2/reconstruction/prior_axes/10_11_envelope_surface/scripts/build_surface_lowhelical_confirmation_panel.py",
+    "sha256": "88eced581bea953adbac6351e534c2b2cca68c13c9bfe76ac6826c95a3f0ed03",
+    "original_sha256": "88eced581bea953adbac6351e534c2b2cca68c13c9bfe76ac6826c95a3f0ed03"
+  },
+  {
+    "path": "materials/esmfold2/source/esmfold2/reconstruction/prior_axes/10_11_envelope_surface/scripts/discover_envelope_subaxes.py",
+    "sha256": "b69e2f4c3527e1e1298a2742a8ef342d32032ec417490429875316ce06e6169d",
+    "original_sha256": "b69e2f4c3527e1e1298a2742a8ef342d32032ec417490429875316ce06e6169d"
+  },
+  {
+    "path": "materials/esmfold2/source/esmfold2/reconstruction/prior_axes/10_11_envelope_surface/scripts/summarize_envelope_fusion_confirmation.py",
+    "sha256": "186abf0b0bae89f7cd6f191a7d6bea22fe3ffc5707c0981d1f01e6c24398cbc0",
+    "original_sha256": "186abf0b0bae89f7cd6f191a7d6bea22fe3ffc5707c0981d1f01e6c24398cbc0"
+  },
+  {
+    "path": "materials/esmfold2/source/esmfold2/reconstruction/prior_axes/10_11_envelope_surface/scripts/summarize_surface_lowhelical_confirmation.py",
+    "sha256": "7ce35d80101a5ee2938ae48e63506c013a0e0044b1b3f2fb151bd1be2aa825f7",
+    "original_sha256": "7ce35d80101a5ee2938ae48e63506c013a0e0044b1b3f2fb151bd1be2aa825f7"
+  },
+  {
+    "path": "materials/esmfold2/source/esmfold2/scripts/global_hypothesis_audit.py",
+    "sha256": "f49f1fc1422542e7389f818728ee52c549f29be2c24e28aa002f9a9849590176",
+    "original_sha256": "f49f1fc1422542e7389f818728ee52c549f29be2c24e28aa002f9a9849590176"
+  },
+  {
+    "path": "materials/esmfold2/source/esmfold2/scripts/redraw_reported_curves.py",
+    "sha256": "57fc704c8b7b555f040c39c864c99ef7c52939c731eb0b7e12a793076f0bd295",
+    "original_sha256": "57fc704c8b7b555f040c39c864c99ef7c52939c731eb0b7e12a793076f0bd295"
+  },
+  {
+    "path": "materials/esmfold2/source/esmfold2/scripts/reviewer_proofing_analysis.py",
+    "sha256": "88eb0f5e2dd0098ff6e688ed7847269a17e6055d7f16e40e82fafe2aa40b83cf",
+    "original_sha256": "88eb0f5e2dd0098ff6e688ed7847269a17e6055d7f16e40e82fafe2aa40b83cf"
+  },
+  {
+    "path": "materials/esmfold2/source/esmfold2/scripts/save_example_predictions.py",
+    "sha256": "b13025f11dda4bf97cb671df9af96a66b71f8bb1ff64eb70b0f9d0d07c89a99e",
+    "original_sha256": "b13025f11dda4bf97cb671df9af96a66b71f8bb1ff64eb70b0f9d0d07c89a99e"
+  },
+  {
+    "path": "materials/esmfold2/source/esmfold2/scripts/validate_curve_reconstruction.py",
+    "sha256": "770c959e3b5c9fa1eccdf7fd8bb1fdc8df95b151048e5c5c2142a4413dc5cbcb",
+    "original_sha256": "770c959e3b5c9fa1eccdf7fd8bb1fdc8df95b151048e5c5c2142a4413dc5cbcb"
+  }
+]

@@ -1,0 +1,1082 @@
+[
+  {
+    "path": "STATE_INPUTS.json",
+    "bytes": 37538,
+    "sha256": "e3995396663cb791d3c5ebc54e8aa9cce0734830d5daa63beb82fa43f86936b6",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/CURVE_RECONSTRUCTION.md",
+    "bytes": 2243,
+    "sha256": "8ef457cd863690ab6c967229a24e671d173c3b83262724b1f28c390f5203d14b",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/all_scored_axis_discovery_continued.csv",
+    "bytes": 5130,
+    "sha256": "7240b916705e39b9ff038fa79145a237dd337ebc0f8531790566f79064986ab2",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/all_scored_axis_discovery_continued.json",
+    "bytes": 15193,
+    "sha256": "59df6d57ec38c928a401cab46019fee7b673c4c47c85be0b99f81d45f2c3c5cd",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/auditor_decision_replogle_reactome_support.json",
+    "bytes": 465,
+    "sha256": "c9a0f08f91ad801de27d617ad38fa8a3248248647360b5426dcdab4758b8234a",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/controls_replogle_best_axis_high_low_gaps.csv",
+    "bytes": 2877,
+    "sha256": "ce02aa26805f8c95f2a1bd09c0b463f510ecdb3919a1641ece4f03e3b0653066",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/controls_replogle_best_axis_level_summary_all.csv",
+    "bytes": 3372,
+    "sha256": "8f58b3ccc164dc0da8f4feed00732c058c0676a65bf178b82e761274f92a8e68",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/controls_replogle_best_axis_level_summary_no_l0.csv",
+    "bytes": 2808,
+    "sha256": "ad2b4614b7bbd65afe884d49408f56100a93eebe11f0143226baa719c9dad979",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/controls_replogle_best_axis_pathway_count_matched.csv",
+    "bytes": 2777,
+    "sha256": "c561cafce43df3f3669016a43e2b944a406ccc2be4ccebcc7e9b934c7d0484f2",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/controls_replogle_best_axis_regression.json",
+    "bytes": 6102,
+    "sha256": "3d433f73e07f795cb37b73ae79172a3341ae16d77d062d5a313b1e5a586617a7",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/controls_replogle_best_axis_summary.json",
+    "bytes": 964,
+    "sha256": "ecd996f4c226de821690f6ff7e4d9aa07b51de30a19e9402026c85f10effeb71",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/multi_pathway_source_manifest.json",
+    "bytes": 1002,
+    "sha256": "f672092dcdc45e0a3cafba45127b05fb13c4b1efd69d1a0b5587a6b6fb80ed44",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/multi_pathway_support_screen.csv",
+    "bytes": 4062,
+    "sha256": "174d52df23caab212cf736739e073646b05c365a65249e89af67425ee1a3d3fe",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/multi_pathway_support_summary.json",
+    "bytes": 7692,
+    "sha256": "6e64df5368cc9c527e02917ed3965d603af8e63a317e27d522cba9a31a0772a5",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/multi_pathway_top_features_by_support_level.json",
+    "bytes": 26648,
+    "sha256": "d48317fccac2cebaf0f16337e742dd19464e56418e0b27052879ad1613537614",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/parse_ligand_family_axis_freeze.json",
+    "bytes": 684,
+    "sha256": "d17fe8b7bdd3f4fcd4002e4cba869d092be096230cad2b4a653140e0caf4bb7f",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/replogle_reactome_axis_freeze.json",
+    "bytes": 1332,
+    "sha256": "5ae4e39e393b73de229f6755450f5af47fb67fa00666c10598c90dcd7d1912c4",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/replogle_refined_axis_screen.csv",
+    "bytes": 1057,
+    "sha256": "869405acb9f7f297ea40cf75b3a2be4f0d4288ebe8793726c2d477dcb1440009",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/replogle_refined_axis_screen.json",
+    "bytes": 4986,
+    "sha256": "d593d309cbb40a8e34021c67dbb7dedadeb19cdb2a1ed5a0fa0ddf5a771f6073",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/replogle_zeroshot_reactome_support_confirmation_decision.json",
+    "bytes": 1207,
+    "sha256": "e083216a33c74011b8f9f3cb61f0cb6ce67b8ebb2da573cd786a4b2e57b42243",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/replogle_zeroshot_reactome_support_confirmation_freeze.json",
+    "bytes": 605,
+    "sha256": "9a275cf3005f14aa715d9eebf6b00a91514ba9cba03e31f643d219f57ed7c775",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_multi_pathway_go_bp.csv",
+    "bytes": 4512,
+    "sha256": "dfc501af30522685e31b560e2f35217db1e3dc8e3e0bf573bc4217cfb7596ea6",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_multi_pathway_go_bp_trends.csv",
+    "bytes": 1079,
+    "sha256": "1ceba01e430a2e9199dcf0bfba5c2fffd8a1ced4d0406c860b00177a8228bf69",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_multi_pathway_go_cc.csv",
+    "bytes": 4502,
+    "sha256": "49d8a74d33629deb493aec6b2b7538670b25b223351cc2871f2c90a9479d4344",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_multi_pathway_go_cc_trends.csv",
+    "bytes": 1072,
+    "sha256": "50bfc09e5cfedc915d284e0ade07b037aa8235ce27153c6b3a1e97af85f009ff",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_multi_pathway_go_mf.csv",
+    "bytes": 4478,
+    "sha256": "e4a80cc56e4b79192a7a1a7466da1f9f9b85a592c33fffb5205cd3ecf76c3ba9",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_multi_pathway_go_mf_trends.csv",
+    "bytes": 1084,
+    "sha256": "a1f1a270c4c3aa173737b7bc5d770a9923a052361f1f2d10570b5b7a32019aab",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_multi_pathway_hgnc_gene_group.csv",
+    "bytes": 4513,
+    "sha256": "6dd149735f8516f6157fc7c5757cb0b8d0bddf8ae554e7100915c7be21cd012b",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_multi_pathway_hgnc_gene_group_trends.csv",
+    "bytes": 1108,
+    "sha256": "5d503c5b219bec12fa7a71c95decdfb690b6d20495a98f010f4c0ee9c7c819e1",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_multi_pathway_kegg.csv",
+    "bytes": 4519,
+    "sha256": "7cdddb3373873dd7463f582b60663aa3197af61bca1f823291841557ee80c7aa",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_multi_pathway_kegg_trends.csv",
+    "bytes": 1098,
+    "sha256": "7b6895dcaf50cd53bcea3337829b4daac56a9125d12af202b2bed293d1f2db44",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_multi_pathway_reactome.csv",
+    "bytes": 4507,
+    "sha256": "a27288a5c84fa16ce50968d2d5081c8e93e8a3e2c48c55ceae9bd310159e1e23",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_multi_pathway_reactome_trends.csv",
+    "bytes": 1048,
+    "sha256": "4704b6c8d56a33796682cc94e99937dd59ff819c601a9dab9be412b02c110c58",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_multi_pathway_wikipathways.csv",
+    "bytes": 4500,
+    "sha256": "9aa4ec84480b808dbf98fa5ca78b29896e768b245aa5051f2f82d47906d3166c",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_multi_pathway_wikipathways_trends.csv",
+    "bytes": 1057,
+    "sha256": "e38517bbbb58963f14c848b2cb1e56386f7d2d55979ebdb20497a779783a90dd",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_parse_fewshot_ligand_family_support.csv",
+    "bytes": 2152,
+    "sha256": "9cc5751beb02656034577e21febf71e9a6d251218ddf1453acbafc0738c7894f",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_parse_fewshot_ligand_family_support_trends.csv",
+    "bytes": 680,
+    "sha256": "4930c8e6fb0610add6a75e5cba7ebec5a24057537bd34de901ca7be7692a4a7f",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_replogle_best_refined_axis.csv",
+    "bytes": 5680,
+    "sha256": "69d7afe059ff71f05d70bb10111c502fcf3edb28b441473fd52730309187bb8f",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_replogle_best_refined_axis_context_trends.csv",
+    "bytes": 984,
+    "sha256": "5a0062685b3aef69b85e63acc68299bc5288543383e40e25e91590296ed72ba7",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_replogle_best_refined_axis_trends.csv",
+    "bytes": 621,
+    "sha256": "135c147c621af7f0ca7775820f743cf6aaabad838a494cbb66662c8816184dd5",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_replogle_fewshot_reactome_support.csv",
+    "bytes": 3353,
+    "sha256": "8ef290f069f5182e16382c852bdd6ca4f91bb43a16f14dad1e7485bbf3034b16",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_replogle_fewshot_reactome_support_trends.csv",
+    "bytes": 606,
+    "sha256": "f7d02dde98588018eeef7f331d0c0eca28b732c6d7fb73841ed70c8a7af5368b",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_replogle_reactome_support_bootstrap.csv",
+    "bytes": 182,
+    "sha256": "8780e74f5024b468e9e7268496212777f20765edcc39d6dc11bbb239d45db6ec",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_replogle_zeroshot_reactome_support_confirmation.csv",
+    "bytes": 1562,
+    "sha256": "943baa81027c471dc44b2c56b9fade4c3157ad4938e72c6b9dd91c8135c7aa49",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_replogle_zeroshot_reactome_support_confirmation_trends.csv",
+    "bytes": 495,
+    "sha256": "8a60b116d90d8b20f4f1aa022f3325b3749c6360104b259a8d320ce04e081db9",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_state_replogle_hgnc_group_log_train_support_v2.csv",
+    "bytes": 5640,
+    "sha256": "f7669d4cf20f400f7fd791305c9a5279862c5b345695153970add557c5b9f704",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_state_replogle_hgnc_group_log_train_support_v2_context_trends.csv",
+    "bytes": 1046,
+    "sha256": "b173a00ebfde66665d7960611efba8069294e16892a451acefabc085537e88a6",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_state_replogle_hgnc_group_log_train_support_v2_trends.csv",
+    "bytes": 663,
+    "sha256": "8da4825d9282ccce84b5665b8178ca58153eccec28fd624c3feb6abe716ea24f",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_state_replogle_reactome_pathway_log_train_support_v2.csv",
+    "bytes": 5680,
+    "sha256": "69d7afe059ff71f05d70bb10111c502fcf3edb28b441473fd52730309187bb8f",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_state_replogle_reactome_pathway_log_train_support_v2_context_trends.csv",
+    "bytes": 984,
+    "sha256": "5a0062685b3aef69b85e63acc68299bc5288543383e40e25e91590296ed72ba7",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_state_replogle_reactome_pathway_log_train_support_v2_trends.csv",
+    "bytes": 621,
+    "sha256": "135c147c621af7f0ca7775820f743cf6aaabad838a494cbb66662c8816184dd5",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_state_replogle_reactome_pathway_mean_train_support_v2.csv",
+    "bytes": 5469,
+    "sha256": "fb5af0d6306440b98a00083eae5539cfa59a9f67496e68b337ca661279aff74e",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_state_replogle_reactome_pathway_mean_train_support_v2_context_trends.csv",
+    "bytes": 973,
+    "sha256": "cfc6198be4a1278c6bb6493534280a4bd9638bc548434a7616eba007344e02ea",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_state_replogle_reactome_pathway_mean_train_support_v2_trends.csv",
+    "bytes": 634,
+    "sha256": "1dcb00024097233f00daa8dd1ede7e03305e9b778c914a74e0e9d0f1339b04a1",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_state_replogle_reactome_pathway_min_train_support_v2.csv",
+    "bytes": 5260,
+    "sha256": "957151bc54133531f7cc4c0762225cb1b9118686ca4a5bbf4725c8d90f60c533",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_state_replogle_reactome_pathway_min_train_support_v2_context_trends.csv",
+    "bytes": 957,
+    "sha256": "f00647cde4ed06c60a0620b924f8377deccbee69b9de1cb0a6b14386b09224dc",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_state_replogle_reactome_pathway_min_train_support_v2_trends.csv",
+    "bytes": 650,
+    "sha256": "74600ae4ea48105fd8ae1f8836037f4c0f489034e3e403db9c54bc463d55aeab",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_state_replogle_symbol_family_support_control.csv",
+    "bytes": 5103,
+    "sha256": "bf969051fb8e63193ff90595ad8466b083cf1b734bd3c9476678ae449d72d3a4",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_state_replogle_symbol_family_support_control_context_trends.csv",
+    "bytes": 1049,
+    "sha256": "24823b37af38c92dd068ccdda91fc1e097413ab5d7745ccf0f8ae305702d7131",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/spc_state_replogle_symbol_family_support_control_trends.csv",
+    "bytes": 664,
+    "sha256": "be63d6684cfb67df158e529b4ed2b44afd5843b994cc140b03a1a0bd4710b07f",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/state_replogle_hgnc_group_log_train_support_v2_freeze.json",
+    "bytes": 1391,
+    "sha256": "39c93647f5571566e407f134bd19db2c5a4e892143514dde70ac46b23d875cde",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/state_replogle_reactome_pathway_log_train_support_v2_freeze.json",
+    "bytes": 1429,
+    "sha256": "cb9892c3fc19acc7e18ef81bba1935acfcadb391216d11dfc5699917520a3091",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/state_replogle_reactome_pathway_mean_train_support_v2_freeze.json",
+    "bytes": 1408,
+    "sha256": "6017826fe9a0ba590fed7c89b92b8bef8a20949cecf9935ce372a62fda150a88",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/state_replogle_reactome_pathway_min_train_support_v2_freeze.json",
+    "bytes": 1369,
+    "sha256": "6910a2e1325bebcab5d44a65e4129d5f68fba603d82979b5c633b21f0c176d43",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/artifacts/state_replogle_symbol_family_support_control_freeze.json",
+    "bytes": 1314,
+    "sha256": "2e8a149417589a7ae9456508d1111e7584a05978b5c7a15622f18a494639227c",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/axis_ledger_prior.json",
+    "bytes": 2809,
+    "sha256": "82f43588b334aacb0fabb83ae0e9974071fb21869aaef745e1c1828592c476bb",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/external/Ensembl2Reactome_Homo_sapiens.txt",
+    "bytes": 488853346,
+    "sha256": "0ee93b64ab7145b1fece7fd271c84073baf4144c992ff8b7d63588ea888fb9ef",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/external/hepg2.toml",
+    "bytes": 9122,
+    "sha256": "7f8d5df29942f7532fef09b23a0a8deec7b8339bfe7817505b977bd894813962",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/external/hepg2_zeroshot.toml",
+    "bytes": 429,
+    "sha256": "2cc13dbc83b4afe44544eab8ee6277333eb020630d3e80644d514ec68bfceba0",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/external/hgnc_complete_set.txt",
+    "bytes": 16740441,
+    "sha256": "62e6f29f9249233a552f75ed2ede1522accce8715125b0b815115a8dab9af60b",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/external/jurkat.toml",
+    "bytes": 10393,
+    "sha256": "9606316c24dfd140bbfe7e252375c18283d4f4f10b5a4adcb463a87cd1472634",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/external/jurkat_zeroshot.toml",
+    "bytes": 430,
+    "sha256": "7ed319aac657bb54f403fc84770fcc4250cd7b99e5a12c84dbfcc6acdb06639c",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/external/k562.toml",
+    "bytes": 9333,
+    "sha256": "a794ae85cacbb8ae2ce59ad5ba0fb465f5be244950b84aea28c7fa29226597c3",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/external/k562_zeroshot.toml",
+    "bytes": 428,
+    "sha256": "76590c2a12fff844f54aad994607d8c366151be5d8b503114cf76b8b9d3e006e",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/external/rpe1.toml",
+    "bytes": 10158,
+    "sha256": "1681633c6b902933a8e83aae07d941ba2e63e5b968be0b80fea61a247308ecdc",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/external/rpe1_zeroshot.toml",
+    "bytes": 428,
+    "sha256": "a39a8ca7adcd3f5256546e3448ffcf8d829946f39189d1e65814581e55736467",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/spectra_loop_state_prior.json",
+    "bytes": 8956,
+    "sha256": "c6cffb51bf3c2b8a430e4ece4f24ceab1fd16b1a86c701bca26d92e8541863ad",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/spectra_ready_dataset/multi_pathway_go_bp_fewshot_examples.csv",
+    "bytes": 5139628,
+    "sha256": "0ea0caf1a23f3b8abaadda0fe5a99cec3079b86c58965d7d5ac2796148f6eb93",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/spectra_ready_dataset/multi_pathway_go_bp_zeroshot_examples.csv",
+    "bytes": 7409712,
+    "sha256": "22421708f29a74baa97dadbd47646528f5f03a9fcb149837d8ee058416ccba8d",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/spectra_ready_dataset/multi_pathway_go_cc_fewshot_examples.csv",
+    "bytes": 5136064,
+    "sha256": "fdd413530510ae1d187336a5c9d608595e8874c5eee830f4282c66bbcd15a62e",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/spectra_ready_dataset/multi_pathway_go_cc_zeroshot_examples.csv",
+    "bytes": 7395870,
+    "sha256": "96269a1466b88f90794e58e2310498b24b1aa516304c863611e81928d81ea228",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/spectra_ready_dataset/multi_pathway_go_mf_fewshot_examples.csv",
+    "bytes": 5130644,
+    "sha256": "25f3d33bed2724f87cd30c32333022fe0cdc47d77665da038bfc19decbdd380c",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/spectra_ready_dataset/multi_pathway_go_mf_zeroshot_examples.csv",
+    "bytes": 7388954,
+    "sha256": "2fc59c9db1c24ca4f9d18630d1336dd305e2d85b40a431f901d91dc99d5c7435",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/spectra_ready_dataset/multi_pathway_hgnc_gene_group_fewshot_examples.csv",
+    "bytes": 5120190,
+    "sha256": "be087681129d898f9c45bbf78d878a1e5b45c3d6762daddd771110de9aa4f1c6",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/spectra_ready_dataset/multi_pathway_hgnc_gene_group_zeroshot_examples.csv",
+    "bytes": 7481096,
+    "sha256": "cae33ad8951c1dd9892ae427ebc67adedea4f391f4d9550c356de92fde6da1e3",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/spectra_ready_dataset/multi_pathway_kegg_fewshot_examples.csv",
+    "bytes": 5029404,
+    "sha256": "10e986f30a74026f7189932441c5246291f54300b711eb77626c57c50930948d",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/spectra_ready_dataset/multi_pathway_kegg_zeroshot_examples.csv",
+    "bytes": 7281268,
+    "sha256": "4376f12e26088ad9bda462b4937ea881a76e5675c23e35666ce4e7ee45447972",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/spectra_ready_dataset/multi_pathway_reactome_fewshot_examples.csv",
+    "bytes": 5123102,
+    "sha256": "f147bdde6ed1aaaa53d874c3b775b4ef4cd33ed4e0d29c75c4659cfaf3a85e05",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/spectra_ready_dataset/multi_pathway_reactome_zeroshot_examples.csv",
+    "bytes": 7397730,
+    "sha256": "ae2fdace9bac5df6bda37725a933bc7c66bc696a5291254db6a18963b40f3c60",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/spectra_ready_dataset/multi_pathway_wikipathways_fewshot_examples.csv",
+    "bytes": 5094500,
+    "sha256": "998dec96d3b5a2447e05ee1787d8555fc16608b4e82807b3b774e777b5b47cf3",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/spectra_ready_dataset/multi_pathway_wikipathways_zeroshot_examples.csv",
+    "bytes": 7378238,
+    "sha256": "f93007a032359fcbb4fd3758f2d5552df75bc7798692dbbda197d78e12906cbb",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/spectra_ready_dataset/parse_fewshot_ligand_family_support_examples.csv",
+    "bytes": 334031,
+    "sha256": "2da5dea2afef9cd54c7ed4944839a10f5a3ebcc3f6e45baf34a27779016cd02e",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/spectra_ready_dataset/replogle_fewshot_reactome_support_examples.csv",
+    "bytes": 5727478,
+    "sha256": "9c45b147e68451191a4f21ea9ca25625df52b397d237e421bae24d74147fe2ba",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/spectra_ready_dataset/replogle_zeroshot_reactome_support_confirmation_examples.csv",
+    "bytes": 7515826,
+    "sha256": "8eb48c71be3879310f3aaf78ad8a8d649d5806010c55a9ef67df350e62ee53cf",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/spectra_ready_dataset/state_replogle_hgnc_group_log_train_support_v2_examples.csv",
+    "bytes": 5804952,
+    "sha256": "1a143e8a068bc80865a111895425afb00340f36f8e57d4d1dc18388928eccbd1",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/spectra_ready_dataset/state_replogle_reactome_pathway_log_train_support_v2_examples.csv",
+    "bytes": 5809464,
+    "sha256": "aa3b9541552cfb0f62c363837f1767c6ccf262b49bcc8b4f82d2efe9a8414362",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/spectra_ready_dataset/state_replogle_reactome_pathway_mean_train_support_v2_examples.csv",
+    "bytes": 5808788,
+    "sha256": "767068225877354a80b34ed12ee95c8317e3578181fb75c90709f31e0efb3abf",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/spectra_ready_dataset/state_replogle_reactome_pathway_min_train_support_v2_examples.csv",
+    "bytes": 5806715,
+    "sha256": "1d57e29587e046f7ad6b900d6e7330075c342a0e0de71268510a81824786b50d",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/spectra_ready_dataset/state_replogle_symbol_family_support_control_examples.csv",
+    "bytes": 5836194,
+    "sha256": "6e4532f2f0f864eee1198007170d3fd35eaccce6264cbbf2abc68a74f6716aba",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/state_spectra_report.md",
+    "bytes": 6008,
+    "sha256": "03e667f05d932b7d6bba28ef77468cbaa06c48d0fa54cff3c1446df27118c9f8",
+    "download_source": null
+  },
+  {
+    "path": "assets/primary/target_model_results.csv",
+    "bytes": 26605492,
+    "sha256": "1d64a06067e25cee6f52e77114cf7e31359319708b11b0e46c80ba20863829cf",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-codex-r1/REPORT.md",
+    "bytes": 13745,
+    "sha256": "39dcf22eaadbb5e57dc16ec2ac4790f8148695ef20abf09db31f15b59455510f",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-codex-r1/source-provenance.json",
+    "bytes": 5759,
+    "sha256": "69d569c2ae796677f764ec007afda8b62769d3e8c63ddd76814168cda122b14d",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-codex-r1/supporting/results/distance_closure_validation/closure_validation.json",
+    "bytes": 3183,
+    "sha256": "72159377a476b459853491f252f6232d6c6c6a2a8f6eb52bca6ef9935f336373",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-codex-r1/supporting/results/distance_closure_validation/control_sensitivities.csv",
+    "bytes": 1825,
+    "sha256": "161da1f82d4e276ec3ba41d288a17d5f6f3b6af0cfd9a6024567d9fb8bdcecf2",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-codex-r1/supporting/results/final_closure_verdict.json",
+    "bytes": 1086,
+    "sha256": "47a268cf28ccdf1c32a67d6c0d7b7e0517add788a9df259abd5757a0f7cce576",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-codex-r1/supporting/results/lineage_followup/spc_table.csv",
+    "bytes": 1124,
+    "sha256": "861c6253112e243ae01b0f8e542231abf61678565db40630dca60b98963bad17",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-codex-r1/supporting/results/spc_table.csv",
+    "bytes": 1231,
+    "sha256": "9fc6575477e123439d04a2e92382b42f1c4ca044f6002dc71dfc058afd87aa9e",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-codex-r1/supporting/results/st_se_confirmation/spc_table.csv",
+    "bytes": 997,
+    "sha256": "fce883b421dcffc44ad9b81e7efd5395d2fdbfbb3c26e690d10f9970134fdbcd",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-codex-r2/REPORT.md",
+    "bytes": 12903,
+    "sha256": "cc015176eb76ec2a6e9605fd509d9eba1431187f76a5559e43a703f1bbc45f7f",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-codex-r2/source-provenance.json",
+    "bytes": 3589,
+    "sha256": "db7567be120e247206964b595a12efe71b4841db0d9cb0769cdb18192a760071",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-codex-r2/supporting/audit/candidate_axis_ledger.csv",
+    "bytes": 5453,
+    "sha256": "10264b53a9ea2a92fa21ced27cd8a18b37c8dc75532fa9325668daacf7da4243",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-codex-r2/supporting/audit/results/A10R_reference_summary.json",
+    "bytes": 513,
+    "sha256": "5e9f3300b0927ee72f7675ff7aa126681db777df7376abbfd66c326f9b264002",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-codex-r2/supporting/audit/results/A10_dose_hvg_summary.json",
+    "bytes": 1526,
+    "sha256": "e7a29b7feb4a2957b3ed64f63273aa6add3eae060f57a96d799a500898a4a2a9",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-codex-r2/supporting/audit/results/A10_dose_spc.csv",
+    "bytes": 293,
+    "sha256": "ed36b24797d39bcdae303e3e893a4e512b198db0ae3440eaf1c1b6869b129e7e",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-codex-r2/supporting/audit/results/A2_confirmation_summary.json",
+    "bytes": 764,
+    "sha256": "0b970f5b13c451b9dc7eaed56e4e1a4f35e66a7e09dcfc037d58ad48c33349b4",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-codex-r2/supporting/audit/results/analysis_summary.json",
+    "bytes": 1830,
+    "sha256": "e33b9db14308219449db46ab968561d2cd48e75d06efb3951fffc5e4eda12229",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-codex-r2/supporting/audit/results/spc_table.csv",
+    "bytes": 1329,
+    "sha256": "808dce39f1d7194e021e4aeed2f094b36d2aeae8bfe35fdf04ff352dde9d920b",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-codex-r2/supporting/audit/results/tahoe_prospective_summary.json",
+    "bytes": 1130,
+    "sha256": "0b0f98211e29f7ae34017e99871f82dc648d098490612f5983d77d086363aa10",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/FROZEN_AXIS.md",
+    "bytes": 8056,
+    "sha256": "26bbc7e395e32928495b8f4a78a7ad8c3fb8141b7b16dae5aeb149f570169862",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/PROVENANCE.md",
+    "bytes": 5317,
+    "sha256": "123cb46aba4a0549fa551c7877fff86f0ea1a32ffb046901c8a17de9e0a813c2",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/REPORT.md",
+    "bytes": 10684,
+    "sha256": "59d14fc51ef2f618bb41f7643185ee4b0273656ab8e72af026a30a1cc048aea4",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/configs/run_hepg2_config.yaml",
+    "bytes": 2753,
+    "sha256": "5840985c4d23da9f3942960b919cb015c4bd5f307e10a90dcd15e0f3e0a9bc23",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/configs/run_jurkat_config.yaml",
+    "bytes": 2754,
+    "sha256": "e5f09613b0d64223bc34b989345d51bb82ab269541fcf8ab1f1d1ed6781619f5",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/configs/run_k562_config.yaml",
+    "bytes": 2752,
+    "sha256": "f99ed9287b229d592b771162080251e5c9976188b13ade4beceb6e7d0ab34072",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/configs/run_rpe1_config.yaml",
+    "bytes": 2752,
+    "sha256": "cd968ed963fd3c52d611faa8a385f4e0915dedebdb3e5e9b488d961e53b3e801",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/configs/sthvg_fewshot_k562_config.yaml",
+    "bytes": 2752,
+    "sha256": "f99ed9287b229d592b771162080251e5c9976188b13ade4beceb6e7d0ab34072",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/configs/sthvg_fewshot_k562_hparams.yaml",
+    "bytes": 18468,
+    "sha256": "ff7ab3a3d1a324986616ea6ccc16f633be220b32b0c01f642a71988787ae57f0",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/results/agg_train_hepg2.npz",
+    "bytes": 69471096,
+    "sha256": "0c4a35a5436e59ead264cd56aaa1eb5fe21d2f066ebc94158532dd532ca6088d",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/results/agg_train_hepg2.npz.meta.json",
+    "bytes": 149,
+    "sha256": "b13da8c5bbd54a306e0e62100dfb00abcf0dc49c7f1f6e966ea78cf1b39e11d5",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/results/agg_train_jurkat.npz",
+    "bytes": 67567593,
+    "sha256": "544cd35c5362bb4610ce5b25fc0eb6d7b7031e1f362b638c51364fd38f830ca6",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/results/agg_train_jurkat.npz.meta.json",
+    "bytes": 150,
+    "sha256": "2d186551259d3972e8f4369c8fe2e3d2d2c01e04a749601513f9a76c44db2eaa",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/results/agg_train_k562.npz",
+    "bytes": 69203786,
+    "sha256": "8a298e8453a8ac6bbcd1a0f2c48a0a5f40904820d4e4a18932b96a3dee61524b",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/results/agg_train_k562.npz.meta.json",
+    "bytes": 142,
+    "sha256": "3079a25894bedbcd6bd0ee5682bc66b8c3a4ebf53c8583a2c8ca4d29ba0104af",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/results/agg_train_rpe1.npz",
+    "bytes": 67830860,
+    "sha256": "9892bb4d74729777a236bb8e97a3f47904b5dcb052befd5c2c434a5d62bd59da",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/results/agg_train_rpe1.npz.meta.json",
+    "bytes": 148,
+    "sha256": "d50f40e9521fbca075c010c04350b909706151f4a8be72f8e47db91d469c0b93",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/results/analysis_summary.json",
+    "bytes": 2955,
+    "sha256": "b5348d2ac63c0ecbd92bf1e3dd93471b673ed850ae54a22e2410d8ea5e6c9d66",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/results/axis_manifest.csv",
+    "bytes": 32027,
+    "sha256": "11862830c7d2ab6eda0128d13f8e1d87899fcff629fccd4ab0448a84b740aeed",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/results/axis_manifest_hepg2.csv",
+    "bytes": 26999,
+    "sha256": "c5314cd478c9adc6dd7e593fc6e7528f1045069c87ab0699a59bea7b679f3784",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/results/axis_manifest_jurkat.csv",
+    "bytes": 30999,
+    "sha256": "a20ba9a4e79532963be56535a1bdc64e483f2a6e8813e9ecea9e3f2cfb3a323a",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/results/axis_manifest_rpe1.csv",
+    "bytes": 30199,
+    "sha256": "1e2cf1c025ce324d98b0c180cdcef2b4f42eac380814a4efe61377e64b80f5a6",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/results/confirm_summary.json",
+    "bytes": 2533,
+    "sha256": "32d566bb57f23a870fe8ffc74228f8873f32dcba0fe14324a3c47eac320106d5",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/results/crosscheck_pearson_delta.csv",
+    "bytes": 45709,
+    "sha256": "cbad7ed0179ffacb0c053e667da26740177eab943831718062c8f3b98f272585",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/results/per_unit_scores.csv",
+    "bytes": 231542,
+    "sha256": "0c6c5a8d5ccd19ff877bb7271aaaeed7d841641d260e15864a4a68d609df3594",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/results/per_unit_scores_hepg2.csv",
+    "bytes": 217679,
+    "sha256": "f0576bf4caebe52aac70fbbefc323756dea7859ee01c771e6805ed32cfd03f9d",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/results/per_unit_scores_jurkat.csv",
+    "bytes": 250824,
+    "sha256": "d635f83beae6fa8bd146420eb3de0e4be551b76ddd28eeba18ce5aac4f9c7cb8",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/results/per_unit_scores_rpe1.csv",
+    "bytes": 243549,
+    "sha256": "3f747d8b2107cffe0c608d022fead3ea717b567673c02925f6e7e4a9786ac3ad",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/results/proximity_embedding_norms.csv",
+    "bytes": 45063,
+    "sha256": "538907bd95331c9885d13998a867e259900ed2ba1df30be8d8c58cc5d1a25918",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/results/proximity_embedding_norms_hepg2.csv",
+    "bytes": 39598,
+    "sha256": "60122f79ef1f2800126f52bf92356c55c3dc32259a82834f47022a24b0324573",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/results/proximity_embedding_norms_jurkat.csv",
+    "bytes": 45463,
+    "sha256": "450bb5b30cb9f4dc91970dce7aa669470d7c7e3f410428b77b8b3fca56e5e3c8",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/results/proximity_embedding_norms_rpe1.csv",
+    "bytes": 44327,
+    "sha256": "d3dbd5ed9ce532050a68d971c5bdcc9e09749e1c1dfd493651174cfac2eed2a8",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/results/spc_table.csv",
+    "bytes": 952,
+    "sha256": "c729c8503403b829dae246874595250c0dfc591d7e7fa6288b376e920288de2a",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/results/spc_table_confirm.csv",
+    "bytes": 1456,
+    "sha256": "0a263e61dec36d238f5741d66f6dddf0b4749df5860172bcce2a88fc798a2020",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/results/unit_means_test_hepg2.npz",
+    "bytes": 13685017,
+    "sha256": "01f9cd31837dda01e07a54ffc2973bbbe7b0138fa00d4cbd8dcbbe42a58df881",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/results/unit_means_test_jurkat.npz",
+    "bytes": 15590158,
+    "sha256": "3b0df2ec65e9b754de5523a1c001e80881f97ea70d8c815e88c4ebd52a92c51c",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/results/unit_means_test_k562.npz",
+    "bytes": 13937193,
+    "sha256": "e1612044f75286a33dadffd3fa41a59ce50892406649173d775832934a306aac",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r1/results/unit_means_test_rpe1.npz",
+    "bytes": 15357220,
+    "sha256": "65e70446a187732d5109e1e04ae951c2d6e5d32548463e00b22ba2b9850745ba",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r2/REPORT.md",
+    "bytes": 11725,
+    "sha256": "3473cd7b00cdd93c739c4167b187566056af4f5a366f2df633504435fba0b22f",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-kimi-r2/source-provenance.json",
+    "bytes": 2586,
+    "sha256": "7f60bb3e4c12c60687784b0dfc7712e21aa5adf144858b547e6138aa28e5be85",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-opus-r1/AUDIT_SUMMARY.json",
+    "bytes": 642,
+    "sha256": "40acd0050f806348d5623ba04a85374acc94dd2465d888b936d17f8b95802328",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-opus-r1/AXIS_FREEZE.md",
+    "bytes": 2495,
+    "sha256": "40770543bf4aba6959c0348ef80f24c8ae7966c77a7b05e252ba7067316d9efb",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-opus-r1/PRIMARY_axis_drug_target_coverage.csv",
+    "bytes": 25360,
+    "sha256": "d262b8109ca2a10234b326fba45feadcaee672293f022dd890a7db1f1d5194b6",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-opus-r1/REPORT.md",
+    "bytes": 6544,
+    "sha256": "dcfedecea191e1207c34a2996555ee62265e31de4ea99a7672cf293e073aa97e",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-opus-r1/data/predictions.csv",
+    "bytes": 25494601,
+    "sha256": "28dbbc22f7482a8f720f096de47eb83a20e84f2dbf7656d5a8a019a7e7d08bc1",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-opus-r1/drug_chem_novelty.csv",
+    "bytes": 51815,
+    "sha256": "3502e89eb9ae934e0d7572cd4cc77c7dc4670f8c5fb697924bf07f66f51cc10e",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-opus-r2/.mcp.json",
+    "bytes": 100,
+    "sha256": "df952f61b7404ebf94dc757c3026de76676d6551950b8e9fc18ef3e292ff879c",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-opus-r2/data/predictions.csv",
+    "bytes": 25494601,
+    "sha256": "28dbbc22f7482a8f720f096de47eb83a20e84f2dbf7656d5a8a019a7e7d08bc1",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-opus-r2/spectra_run/FINDINGS.md",
+    "bytes": 4574,
+    "sha256": "b785483519e9017a435fd5d93a8808e1e28dc5bba4d7dffa11a87bc172848935",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-opus-r2/spectra_run/FROZEN_AXIS_SPEC.md",
+    "bytes": 4583,
+    "sha256": "c3fd4e345f8286a907c0ca108f7a732f0147ccf975c50805027f1dac6373904f",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-opus-r2/spectra_run/artifacts/PROVENANCE_MANIFEST.json",
+    "bytes": 3877,
+    "sha256": "55bac51c6db7325f7d171188441e7eca1d777e8c5fcda9ccbe0b766649d41b65",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-opus-r2/spectra_run/artifacts/SPC_replogle_deciles.csv",
+    "bytes": 968,
+    "sha256": "9cb0229e1b8e5db01c5744d693079ab6d9958befef3c0c9a164ada6efc1dba79",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-opus-r2/spectra_run/artifacts/SPC_replogle_quartiles.csv",
+    "bytes": 621,
+    "sha256": "e4352b6fb3d1dac200916fa72edabeea28d296b8d71b12e1859e14d8727b88e4",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-opus-r2/spectra_run/artifacts/go_terms.json",
+    "bytes": 585098,
+    "sha256": "46d2dfb54e52226ee3ea791b0a48a45fd80da7da6e8e2e15f070268c2d259616",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-opus-r2/spectra_run/artifacts/parse_gene_go.json",
+    "bytes": 33754,
+    "sha256": "223f9e4661803775e8f236829fc7d74f2310a3f7e3d1967a4c41c086a4b35e5a",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-opus-r2/spectra_run/artifacts/parse_ligand_map.json",
+    "bytes": 1617,
+    "sha256": "6236a4fdbe32fcae7f3ed79509ccc9766bfbb4b7cb5a83809baef3a63c0fd99b",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-opus-r2/spectra_run/artifacts/replogle_go_features.csv",
+    "bytes": 129202,
+    "sha256": "cd9202c48a6b4cd61d3581a2f456b31c94d666abf6bedebcc6dc3828e4a201d8",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-opus-r2/spectra_run/artifacts/replogle_pathways.json",
+    "bytes": 173106,
+    "sha256": "3d9683cd949ebd1dfc9651e942ef15d0147b16e2f8181ce31e8554cbab545d91",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-opus-r2/spectra_run/artifacts/summary_stats.json",
+    "bytes": 645,
+    "sha256": "db252af62b7c09d6a294c3c072a9ae480152300941b598df3b74e507a8e18be0",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-opus-r2/spectra_run/artifacts/tahoe_drug_features.csv",
+    "bytes": 61281,
+    "sha256": "f264074500d103d405d7f2165aa5dfca7c6587935b67fd897c5b0874af8eac57",
+    "download_source": null
+  },
+  {
+    "path": "assets/state-opus-r2/spectra_run/artifacts/tahoe_target_go.json",
+    "bytes": 98502,
+    "sha256": "5d0aca1a544ad17ff953f550c7a3be1f97de560969c67d8b7ae2846ee3ac25b9",
+    "download_source": null
+  }
+]

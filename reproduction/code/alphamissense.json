@@ -1,0 +1,277 @@
+[
+  {
+    "path": "materials/alphamissense/am-gpt-r1/retained/code/analyze_clinvar.py",
+    "sha256": "c3d535f8c54a850153aef91b19d86aaa0200119c003d5b2e01aa9419929b8797",
+    "original_sha256": "c3d535f8c54a850153aef91b19d86aaa0200119c003d5b2e01aa9419929b8797"
+  },
+  {
+    "path": "materials/alphamissense/am-gpt-r1/retained/code/analyze_dms.py",
+    "sha256": "b8b4a20560f28c690295d44f8af7d559aba44df5956ff044f71594291381252c",
+    "original_sha256": "b8b4a20560f28c690295d44f8af7d559aba44df5956ff044f71594291381252c"
+  },
+  {
+    "path": "materials/alphamissense/am-gpt-r1/retained/code/annotate_dms_structure.py",
+    "sha256": "b933299e6378a43796c587c85874f32ffb4751287b400ae43de11170d5715331",
+    "original_sha256": "b933299e6378a43796c587c85874f32ffb4751287b400ae43de11170d5715331"
+  },
+  {
+    "path": "materials/alphamissense/am-gpt-r1/retained/code/build_dms_panel.py",
+    "sha256": "0c38045c3a866020c3815d1eaed84adcfa338d8360db5334b9543f2d16d91a92",
+    "original_sha256": "0c38045c3a866020c3815d1eaed84adcfa338d8360db5334b9543f2d16d91a92"
+  },
+  {
+    "path": "materials/alphamissense/am-gpt-r1/retained/code/build_panels.py",
+    "sha256": "8101182fc1bae3a4e3d98737b8ca7bbf65da09992622b4ad0f50b6596df21a2d",
+    "original_sha256": "8101182fc1bae3a4e3d98737b8ca7bbf65da09992622b4ad0f50b6596df21a2d"
+  },
+  {
+    "path": "materials/alphamissense/am-gpt-r1/retained/code/fetch_uniprot_mapping.py",
+    "sha256": "8a9c1f7563540a9eae6ebfd71aec387029ca8efd4cb834fef7e76b53c142af4f",
+    "original_sha256": "8a9c1f7563540a9eae6ebfd71aec387029ca8efd4cb834fef7e76b53c142af4f"
+  },
+  {
+    "path": "materials/alphamissense/am-gpt-r1/retained/code/secondary_sensitivities.py",
+    "sha256": "b3d4f1e245f3b5c09b6115fcab66e0e182e962b170bc00933012287611934ae1",
+    "original_sha256": "b3d4f1e245f3b5c09b6115fcab66e0e182e962b170bc00933012287611934ae1"
+  },
+  {
+    "path": "materials/alphamissense/am-kimi-r1/retained/code/01_filter_clinvar.py",
+    "sha256": "b51b0c76ea5013cbc0383138bb34fbf3e344c2afec91182b4fc8f4fdd3864b60",
+    "original_sha256": "b51b0c76ea5013cbc0383138bb34fbf3e344c2afec91182b4fc8f4fdd3864b60"
+  },
+  {
+    "path": "materials/alphamissense/am-kimi-r1/retained/code/02_join_am.py",
+    "sha256": "0d6d997c6621b15570990a3da17a665309350f5e66acc58e64749d063aeb9fd8",
+    "original_sha256": "0d6d997c6621b15570990a3da17a665309350f5e66acc58e64749d063aeb9fd8"
+  },
+  {
+    "path": "materials/alphamissense/am-kimi-r1/retained/code/03_features.py",
+    "sha256": "a8a01ee9faf88eb50ee8eeba16d5b080a6d0a3a349f0ac164223cb2eacde833d",
+    "original_sha256": "a8a01ee9faf88eb50ee8eeba16d5b080a6d0a3a349f0ac164223cb2eacde833d"
+  },
+  {
+    "path": "materials/alphamissense/am-kimi-r1/retained/code/04_analyze.py",
+    "sha256": "f76963797d5cd3b2faabc80cc3c9d883d8b98a8f2854cf3c926f7696dddd0a46",
+    "original_sha256": "f76963797d5cd3b2faabc80cc3c9d883d8b98a8f2854cf3c926f7696dddd0a46"
+  },
+  {
+    "path": "materials/alphamissense/am-kimi-r1/retained/code/06_analyze_B1.py",
+    "sha256": "aae810337ef09a53e994f22b93f32264d4e5f965e2ca74e4901ff35e52fd0bea",
+    "original_sha256": "aae810337ef09a53e994f22b93f32264d4e5f965e2ca74e4901ff35e52fd0bea"
+  },
+  {
+    "path": "materials/alphamissense/am-kimi-r1/retained/code/07_analyze_C1C5.py",
+    "sha256": "a6ac1ec8a3806167a51033e8b64cfc53c83194a17c7c63da68f7719d378ea18a",
+    "original_sha256": "a6ac1ec8a3806167a51033e8b64cfc53c83194a17c7c63da68f7719d378ea18a"
+  },
+  {
+    "path": "materials/alphamissense/am-kimi-r1/retained/code/08_controls_C5.py",
+    "sha256": "57d3e5b5a8464fa7eb78a3eaadac2d5e51d5ecc7346ca941ad1cc8d8aa498c75",
+    "original_sha256": "57d3e5b5a8464fa7eb78a3eaadac2d5e51d5ecc7346ca941ad1cc8d8aa498c75"
+  },
+  {
+    "path": "materials/alphamissense/am-kimi-r2/retained/code/r2_01_parse_clinvar.py",
+    "sha256": "6e929a64502d6705c02d09385bf678c1c8704332b022bc71c773c9ea92acac8a",
+    "original_sha256": "6e929a64502d6705c02d09385bf678c1c8704332b022bc71c773c9ea92acac8a"
+  },
+  {
+    "path": "materials/alphamissense/am-kimi-r2/retained/code/r2_02_join.py",
+    "sha256": "39ab208c7a1e482856b0b5bafbf4c9ed6215af64850be01bc3d1d171f6739b3c",
+    "original_sha256": "39ab208c7a1e482856b0b5bafbf4c9ed6215af64850be01bc3d1d171f6739b3c"
+  },
+  {
+    "path": "materials/alphamissense/am-kimi-r2/retained/code/r2_03_gene_phylop.py",
+    "sha256": "401e87e16460611d5df7ba467faf825db035be9e24889d3498063395b0a4cc3a",
+    "original_sha256": "401e87e16460611d5df7ba467faf825db035be9e24889d3498063395b0a4cc3a"
+  },
+  {
+    "path": "materials/alphamissense/am-kimi-r2/retained/code/r2_04_build_table.py",
+    "sha256": "5df231f7ca21d0c7a0e51e2e5226683fbf9ab5646087383f1d440ef98d1c643d",
+    "original_sha256": "5df231f7ca21d0c7a0e51e2e5226683fbf9ab5646087383f1d440ef98d1c643d"
+  },
+  {
+    "path": "materials/alphamissense/am-kimi-r2/retained/code/r2_05_evaluate.py",
+    "sha256": "6de73c9cd89dd81844c43956e28411960b9717cf6da1e9b7af499cd7522670ea",
+    "original_sha256": "6de73c9cd89dd81844c43956e28411960b9717cf6da1e9b7af499cd7522670ea"
+  },
+  {
+    "path": "materials/alphamissense/am-kimi-r2/retained/code/r2_06_b1b2.py",
+    "sha256": "88d59c7595b6f4974c1025b35ea69da32c59411cc08b2dd4d82345e39aeb50be",
+    "original_sha256": "88d59c7595b6f4974c1025b35ea69da32c59411cc08b2dd4d82345e39aeb50be"
+  },
+  {
+    "path": "materials/alphamissense/am-kimi-r2/retained/code/r2_07_plddt.py",
+    "sha256": "bb24c566cad56145567bc61e7c341132522cc2ea7744ac242d01a7d4f4082b7b",
+    "original_sha256": "bb24c566cad56145567bc61e7c341132522cc2ea7744ac242d01a7d4f4082b7b"
+  },
+  {
+    "path": "materials/alphamissense/am-kimi-r2/retained/code/r2_08_c1.py",
+    "sha256": "71eddd1deaebb504278f5110cae31f1da230495524809d93e096a08a56bd36ba",
+    "original_sha256": "71eddd1deaebb504278f5110cae31f1da230495524809d93e096a08a56bd36ba"
+  },
+  {
+    "path": "materials/alphamissense/am-kimi-r2/retained/code/r2_09_a4.py",
+    "sha256": "742eed2a12106f15a6ae397bbaa4c959a547a0c1762188f62038742f6c4f541f",
+    "original_sha256": "742eed2a12106f15a6ae397bbaa4c959a547a0c1762188f62038742f6c4f541f"
+  },
+  {
+    "path": "materials/alphamissense/am-kimi-r2/retained/code/r2_10_robustness.py",
+    "sha256": "f4705102580cd3859b88acad21062b843a829dd723c3bf58e18701f35ee031b1",
+    "original_sha256": "f4705102580cd3859b88acad21062b843a829dd723c3bf58e18701f35ee031b1"
+  },
+  {
+    "path": "materials/alphamissense/am-kimi-r2/retained/code/r2_11_cpg.py",
+    "sha256": "6cad843617301962505266f44911878565226002cc545b0b5120b439e57dfd0a",
+    "original_sha256": "6cad843617301962505266f44911878565226002cc545b0b5120b439e57dfd0a"
+  },
+  {
+    "path": "materials/alphamissense/am-kimi-r2/retained/code/r2_12_d1_c1densify.py",
+    "sha256": "5daa7e3231dbd7b7a686e8e0eafd0d2536b1a2660ec6fb072e75d98c2a807518",
+    "original_sha256": "5daa7e3231dbd7b7a686e8e0eafd0d2536b1a2660ec6fb072e75d98c2a807518"
+  },
+  {
+    "path": "materials/alphamissense/am-opus-r1/code/build_all_msa.py",
+    "sha256": "51928a0625a762972dd1d7360fcc8465b1f7b66e93f8438c953c86533b9fa686",
+    "original_sha256": "51928a0625a762972dd1d7360fcc8465b1f7b66e93f8438c953c86533b9fa686"
+  },
+  {
+    "path": "materials/alphamissense/am-opus-r1/code/build_profiles.py",
+    "sha256": "0ec7686928c43fb2cf82cc8281ccc52ce08f3214a0e581bca07d9c660c6609c7",
+    "original_sha256": "0ec7686928c43fb2cf82cc8281ccc52ce08f3214a0e581bca07d9c660c6609c7"
+  },
+  {
+    "path": "materials/alphamissense/am-opus-r1/code/msa_features.py",
+    "sha256": "84dd79019234a18ddce24807b51f0c26afb65ad5f67ecd099b4aeaada33bcf17",
+    "original_sha256": "ac4166472c69c815e1c643ef8b39e9b9a6e545f01145135b1cf0bda27ac51deb"
+  },
+  {
+    "path": "materials/alphamissense/am-opus-r1/code/spc.py",
+    "sha256": "d41caf3d770427199b9459c216be9df86b4f45ba8e0f2f3cfb5cc3e0acadeda2",
+    "original_sha256": "d41caf3d770427199b9459c216be9df86b4f45ba8e0f2f3cfb5cc3e0acadeda2"
+  },
+  {
+    "path": "materials/alphamissense/am-opus-r2/code/analyze_frozen.py",
+    "sha256": "f1acee05ae7001eaaecee9ee394d78b2fa37d1a315b7af3650a0235c974289b9",
+    "original_sha256": "f1acee05ae7001eaaecee9ee394d78b2fa37d1a315b7af3650a0235c974289b9"
+  },
+  {
+    "path": "materials/alphamissense/am-opus-r2/code/build_master.py",
+    "sha256": "1fa2b9cfebbc7e11d8e7249a488ebce0d1afb585ce0f6dd5239d4d771532d052",
+    "original_sha256": "1fa2b9cfebbc7e11d8e7249a488ebce0d1afb585ce0f6dd5239d4d771532d052"
+  },
+  {
+    "path": "materials/alphamissense/am-opus-r2/code/compute_msa_features.py",
+    "sha256": "f5619d3360191c0084f2565b9d6d96b44551fdd6f118718ddd18831f7077e3b6",
+    "original_sha256": "f5619d3360191c0084f2565b9d6d96b44551fdd6f118718ddd18831f7077e3b6"
+  },
+  {
+    "path": "materials/alphamissense/am-opus-r2/code/confound_specificity.py",
+    "sha256": "8b0254d96fbfc0f53024b03d0ac5f5929f013a24821e6fea64d1ea5136878ed6",
+    "original_sha256": "8b0254d96fbfc0f53024b03d0ac5f5929f013a24821e6fea64d1ea5136878ed6"
+  },
+  {
+    "path": "materials/alphamissense/am-opus-r2/code/correct_plddt_mapping.py",
+    "sha256": "b0240091fdf8c0a758d9560568fa01081ca58e3f0c9eefcc1efa87d14559c4fb",
+    "original_sha256": "282589d8be9809b7c045831e6a6bd44fdf4dc5aaa5084bd412eac8a100755ded"
+  },
+  {
+    "path": "materials/alphamissense/am-opus-r2/code/densify_confirm.py",
+    "sha256": "4521e3fdd329accf32d64cce4dc78f3d34bac0a4e408f5ddf2973068b50cdeea",
+    "original_sha256": "4521e3fdd329accf32d64cce4dc78f3d34bac0a4e408f5ddf2973068b50cdeea"
+  },
+  {
+    "path": "materials/alphamissense/am-opus-r2/code/plddt_axis.py",
+    "sha256": "79e0dd6651cbf31bcc80f29d469edf191081ac5fdbbbddb4c5b773637126a8f4",
+    "original_sha256": "79e0dd6651cbf31bcc80f29d469edf191081ac5fdbbbddb4c5b773637126a8f4"
+  },
+  {
+    "path": "materials/alphamissense/am-opus-r2/code/plddt_confound.py",
+    "sha256": "492f484c67d4c8a32d227d657d3d8adf3af01da9009111f8088fd35ecf7e0539",
+    "original_sha256": "492f484c67d4c8a32d227d657d3d8adf3af01da9009111f8088fd35ecf7e0539"
+  },
+  {
+    "path": "materials/alphamissense/am-opus-r2/code/plddt_full.py",
+    "sha256": "1d2cece309a30b9e80583f0d151a2cc6aabd9599ded1318339c211d6b0addadc",
+    "original_sha256": "1d2cece309a30b9e80583f0d151a2cc6aabd9599ded1318339c211d6b0addadc"
+  },
+  {
+    "path": "materials/alphamissense/am-primary/code/build_benchmark.py",
+    "sha256": "900f8ddcac9c4c118ba38df02aa3df4b6fee92799e8b890ea6e3d59719af3ea6",
+    "original_sha256": "e7314473fef00fa840739e7a9d90437945ae39c36715bba6e3e03060861d852d"
+  },
+  {
+    "path": "materials/alphamissense/am-primary/code/build_pssm.py",
+    "sha256": "1c160cf42e5868b3f4418e315baffe530d1341c93697bfb90ee009acc5c1c301",
+    "original_sha256": "a567a9bc876eaf8deb219b6721fdcd39257b9d1706ea0b29e7401b31dc16c99b"
+  },
+  {
+    "path": "materials/alphamissense/am-primary/code/confounds_72.py",
+    "sha256": "1909a6cbd50810605e04c0f30ecb89a51f35ddfcf56c2399cc30658f3407cdcc",
+    "original_sha256": "2dc8d250088d839e8f698221fd07ca28a4a4ed5978d79edd80cdb7631e710ac5"
+  },
+  {
+    "path": "materials/alphamissense/am-primary/code/derived_stats.py",
+    "sha256": "e04088796a915b42de0dece3a22fcdc20d900e92f74a2ed3c46f4a0b55e10c9c",
+    "original_sha256": "3ed2515651067a2a5ef0c0286473c38d0de2ef6ddf177b210e96c99e2775100f"
+  },
+  {
+    "path": "materials/alphamissense/am-primary/code/pop_spc.py",
+    "sha256": "b929cea2533d6cdde55b0aa1012eb4c777d1e7a54f6f5b0912d891bc091049a2",
+    "original_sha256": "3a76490004eced79f206148becffd1dc8962d00dea30cb5d63305a38846ecf96"
+  },
+  {
+    "path": "materials/alphamissense/am-primary/code/score_axis3.py",
+    "sha256": "747b8c2443223c04f74df83a5cbcc597433488f8243e742e5db94c55346194ac",
+    "original_sha256": "781c7685f3670a1289154c85be014f5be4bed9de7225d4fcb33b9cfeb2c22608"
+  },
+  {
+    "path": "materials/alphamissense/am-primary/code/score_baselines.py",
+    "sha256": "fa92b4fc5f29f8c7b3d620b0ff0b0b724b9c77ec0a81b1789fae4ae0b93f2dd7",
+    "original_sha256": "5d3bc2ad562cffc192476f891a1312e5b8675ea06504965c98157e98f41e070e"
+  },
+  {
+    "path": "materials/alphamissense/am-primary/code/spc_analysis.py",
+    "sha256": "9cfad99eed58279c25ca28804b9da5a915cac986c2e1203ccf3be86cc7b44819",
+    "original_sha256": "f0af919716a90c4d59e8c1c9dfaed5fce162b0099911c44b9e31699bcb30bb2b"
+  },
+  {
+    "path": "materials/alphamissense/am-primary/retained/occupancy_curves.py",
+    "sha256": "bcdec0a99fb7df20fcfbc6224f88f379357bc63b3e73a5d792c544151033d909",
+    "original_sha256": "bcdec0a99fb7df20fcfbc6224f88f379357bc63b3e73a5d792c544151033d909"
+  },
+  {
+    "path": "materials/alphamissense/am-primary/retained/protein_screens.py",
+    "sha256": "8cf386212ef344aa836325df39a0c26cf4e0884bf61905b58bcd868c18c62bc9",
+    "original_sha256": "8cf386212ef344aa836325df39a0c26cf4e0884bf61905b58bcd868c18c62bc9"
+  },
+  {
+    "path": "materials/alphamissense/requirements.txt",
+    "sha256": "14ec06ce7e85e867be0c5439042ab9100a8994361ab674819b0304ef21f68d0d",
+    "original_sha256": "14ec06ce7e85e867be0c5439042ab9100a8994361ab674819b0304ef21f68d0d"
+  },
+  {
+    "path": "materials/alphamissense/upstream_checks/code/build_axes.py",
+    "sha256": "02ec022b9e20afaecf66c40b9199e9f30df92bd9a0420f11d78bc1b5797597b4",
+    "original_sha256": "293ed707521e86b252b5982288fa2ca80ad4a6b336fee1e05ca5af751921f028"
+  },
+  {
+    "path": "materials/alphamissense/upstream_checks/code/build_pssm.py",
+    "sha256": "1c160cf42e5868b3f4418e315baffe530d1341c93697bfb90ee009acc5c1c301",
+    "original_sha256": "a567a9bc876eaf8deb219b6721fdcd39257b9d1706ea0b29e7401b31dc16c99b"
+  },
+  {
+    "path": "materials/alphamissense/upstream_checks/code/executed_remote_runner.py",
+    "sha256": "c6fe69f9a8e73d7bc3240de6bd8c79833adfc01dda1c58567f4e2c8e75771d48",
+    "original_sha256": "876f725c43dba79ac1a595f083bef282f9f0aa51df7b6ad5fcd6ecc04475bfc0"
+  },
+  {
+    "path": "materials/alphamissense/upstream_checks/materialize_features.py",
+    "sha256": "7d4551821114f37997a32bc538ae9d53ee4e79cdb7f95998f3d5024113666d49",
+    "original_sha256": "7d4551821114f37997a32bc538ae9d53ee4e79cdb7f95998f3d5024113666d49"
+  },
+  {
+    "path": "materials/alphamissense/upstream_checks/run_upstream.py",
+    "sha256": "ecad0ab68f2c9e4004e065ae03090dc9ae57de3a13659c6aa9d758fc60f5d980",
+    "original_sha256": "3ef9aa8ce988a31da500b3481a4622a4fa4ef53ae1d5224970bda5863c264f00"
+  }
+]

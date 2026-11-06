@@ -1,0 +1,890 @@
+{
+  "schema_version": 1,
+  "sources": "sources.json",
+  "investigations": [
+    {
+      "id": "esmfold2-featured",
+      "model": "ESMFold2",
+      "analyses": [
+        {
+          "id": "esmfold2-featured/test-01",
+          "axis": "Evolutionary support",
+          "path": "analyses/esmfold2-featured/test-01.json"
+        },
+        {
+          "id": "esmfold2-featured/test-02",
+          "axis": "CAMEO difficulty, length and resolution",
+          "path": "analyses/esmfold2-featured/test-02.json"
+        },
+        {
+          "id": "esmfold2-featured/test-03",
+          "axis": "Flexible / non-helical composition",
+          "path": "analyses/esmfold2-featured/test-03.json"
+        },
+        {
+          "id": "esmfold2-featured/test-04",
+          "axis": "Absolute sequence charge",
+          "path": "analyses/esmfold2-featured/test-04.json"
+        },
+        {
+          "id": "esmfold2-featured/test-05",
+          "axis": "Acidic windows",
+          "path": "analyses/esmfold2-featured/test-05.json"
+        },
+        {
+          "id": "esmfold2-featured/test-06",
+          "axis": "Cysteine fraction",
+          "path": "analyses/esmfold2-featured/test-06.json"
+        },
+        {
+          "id": "esmfold2-featured/test-07",
+          "axis": "Viral envelope proteins",
+          "path": "analyses/esmfold2-featured/test-07.json"
+        },
+        {
+          "id": "esmfold2-featured/test-08",
+          "axis": "Potential disulfide capacity",
+          "path": "analyses/esmfold2-featured/test-08.json"
+        },
+        {
+          "id": "esmfold2-featured/test-09",
+          "axis": "Reference geometry",
+          "path": "analyses/esmfold2-featured/test-09.json"
+        },
+        {
+          "id": "esmfold2-featured/test-10",
+          "axis": "Viral-disulfide pilot",
+          "path": "analyses/esmfold2-featured/test-10.json"
+        },
+        {
+          "id": "esmfold2-featured/test-11",
+          "axis": "Envelope/fusion proxy",
+          "path": "analyses/esmfold2-featured/test-11.json"
+        },
+        {
+          "id": "esmfold2-featured/test-12",
+          "axis": "Viral surface / low-helical subtype",
+          "path": "analyses/esmfold2-featured/test-12.json"
+        }
+      ]
+    },
+    {
+      "id": "esmfold2-codex-r1",
+      "model": "ESMFold2",
+      "analyses": [
+        {
+          "id": "esmfold2-codex-r1/test-01",
+          "axis": "Pfam domain-repertoire similarity",
+          "path": "analyses/esmfold2-codex-r1/test-01.json"
+        },
+        {
+          "id": "esmfold2-codex-r1/test-02",
+          "axis": "Chain length and sequence homology",
+          "path": "analyses/esmfold2-codex-r1/test-02.json"
+        },
+        {
+          "id": "esmfold2-codex-r1/test-03",
+          "axis": "Disorder, coiled-coil and low complexity",
+          "path": "analyses/esmfold2-codex-r1/test-03.json"
+        },
+        {
+          "id": "esmfold2-codex-r1/test-04",
+          "axis": "Membrane topology",
+          "path": "analyses/esmfold2-codex-r1/test-04.json"
+        }
+      ]
+    },
+    {
+      "id": "esmfold2-codex-r2",
+      "model": "ESMFold2",
+      "analyses": [
+        {
+          "id": "esmfold2-codex-r2/test-01",
+          "axis": "Positive net charge on isolated cryo-EM chains",
+          "path": "analyses/esmfold2-codex-r2/test-01.json"
+        },
+        {
+          "id": "esmfold2-codex-r2/test-02",
+          "axis": "Internal sequence repeats",
+          "path": "analyses/esmfold2-codex-r2/test-02.json"
+        },
+        {
+          "id": "esmfold2-codex-r2/test-03",
+          "axis": "Low composition entropy",
+          "path": "analyses/esmfold2-codex-r2/test-03.json"
+        },
+        {
+          "id": "esmfold2-codex-r2/test-04",
+          "axis": "Isolated-chain oligomeric context",
+          "path": "analyses/esmfold2-codex-r2/test-04.json"
+        },
+        {
+          "id": "esmfold2-codex-r2/test-05",
+          "axis": "Dominant residue fraction",
+          "path": "analyses/esmfold2-codex-r2/test-05.json"
+        },
+        {
+          "id": "esmfold2-codex-r2/test-06",
+          "axis": "Cysteine, hydrophobic, glycine/proline and length screens",
+          "path": "analyses/esmfold2-codex-r2/test-06.json"
+        }
+      ]
+    },
+    {
+      "id": "esmfold2-opus-r1",
+      "model": "ESMFold2",
+      "analyses": [
+        {
+          "id": "esmfold2-opus-r1/test-01",
+          "axis": "Coverage-weighted sequence identity",
+          "path": "analyses/esmfold2-opus-r1/test-01.json"
+        },
+        {
+          "id": "esmfold2-opus-r1/test-02",
+          "axis": "Length",
+          "path": "analyses/esmfold2-opus-r1/test-02.json"
+        },
+        {
+          "id": "esmfold2-opus-r1/test-03",
+          "axis": "Predicted disorder",
+          "path": "analyses/esmfold2-opus-r1/test-03.json"
+        },
+        {
+          "id": "esmfold2-opus-r1/test-04",
+          "axis": "Coverage, resolution and sequence composition",
+          "path": "analyses/esmfold2-opus-r1/test-04.json"
+        }
+      ]
+    },
+    {
+      "id": "esmfold2-opus-r2",
+      "model": "ESMFold2",
+      "analyses": [
+        {
+          "id": "esmfold2-opus-r2/test-01",
+          "axis": "Sequence length",
+          "path": "analyses/esmfold2-opus-r2/test-01.json"
+        },
+        {
+          "id": "esmfold2-opus-r2/test-02",
+          "axis": "Training homology",
+          "path": "analyses/esmfold2-opus-r2/test-02.json"
+        },
+        {
+          "id": "esmfold2-opus-r2/test-03",
+          "axis": "Short-chain and long-chain failure tails",
+          "path": "analyses/esmfold2-opus-r2/test-03.json"
+        },
+        {
+          "id": "esmfold2-opus-r2/test-04",
+          "axis": "Resolution, composition and oligomeric state",
+          "path": "analyses/esmfold2-opus-r2/test-04.json"
+        }
+      ]
+    },
+    {
+      "id": "esmfold2-kimi-r2",
+      "model": "ESMFold2",
+      "analyses": [
+        {
+          "id": "esmfold2-kimi-r2/test-01",
+          "axis": "Maximum sequence identity",
+          "path": "analyses/esmfold2-kimi-r2/test-01.json"
+        },
+        {
+          "id": "esmfold2-kimi-r2/test-02",
+          "axis": "Missing-density and complex-context restrictions",
+          "path": "analyses/esmfold2-kimi-r2/test-02.json"
+        }
+      ]
+    },
+    {
+      "id": "esmfold2-kimi-r1",
+      "model": "ESMFold2",
+      "analyses": [
+        {
+          "id": "esmfold2-kimi-r1/test-01",
+          "axis": "Sequence identity and low complexity (ESMFold v1)",
+          "path": "analyses/esmfold2-kimi-r1/test-01.json"
+        },
+        {
+          "id": "esmfold2-kimi-r1/test-02",
+          "axis": "Graded identity and orphan threshold (v1)",
+          "path": "analyses/esmfold2-kimi-r1/test-02.json"
+        },
+        {
+          "id": "esmfold2-kimi-r1/test-03",
+          "axis": "Low-complexity fraction (v1)",
+          "path": "analyses/esmfold2-kimi-r1/test-03.json"
+        }
+      ]
+    },
+    {
+      "id": "state-featured",
+      "model": "STATE",
+      "analyses": [
+        {
+          "id": "state-featured/test-01",
+          "axis": "Chemical similarity to training drugs",
+          "path": "analyses/state-featured/test-01.json"
+        },
+        {
+          "id": "state-featured/test-02",
+          "axis": "Dose represented in training",
+          "path": "analyses/state-featured/test-02.json"
+        },
+        {
+          "id": "state-featured/test-03",
+          "axis": "Reactome pathway-set similarity",
+          "path": "analyses/state-featured/test-03.json"
+        },
+        {
+          "id": "state-featured/test-04",
+          "axis": "Reactome mean",
+          "path": "analyses/state-featured/test-04.json"
+        },
+        {
+          "id": "state-featured/test-05",
+          "axis": "Reactome log-mean (REP)",
+          "path": "analyses/state-featured/test-05.json"
+        },
+        {
+          "id": "state-featured/test-06",
+          "axis": "Reactome minimum",
+          "path": "analyses/state-featured/test-06.json"
+        },
+        {
+          "id": "state-featured/test-07",
+          "axis": "HGNC log-mean",
+          "path": "analyses/state-featured/test-07.json"
+        },
+        {
+          "id": "state-featured/test-08",
+          "axis": "Gene-symbol prefix",
+          "path": "analyses/state-featured/test-08.json"
+        },
+        {
+          "id": "state-featured/test-09",
+          "axis": "Cell context and annotation counts",
+          "path": "analyses/state-featured/test-09.json"
+        },
+        {
+          "id": "state-featured/test-10",
+          "axis": "Multivariable adjustment",
+          "path": "analyses/state-featured/test-10.json"
+        },
+        {
+          "id": "state-featured/test-11",
+          "axis": "Zero-shot pathway support",
+          "path": "analyses/state-featured/test-11.json"
+        },
+        {
+          "id": "state-featured/test-12",
+          "axis": "Ligand-family training support",
+          "path": "analyses/state-featured/test-12.json"
+        },
+        {
+          "id": "state-featured/test-13",
+          "axis": "Reactome cross-ontology check",
+          "path": "analyses/state-featured/test-13.json"
+        },
+        {
+          "id": "state-featured/test-14",
+          "axis": "HGNC_gene_group cross-ontology check",
+          "path": "analyses/state-featured/test-14.json"
+        },
+        {
+          "id": "state-featured/test-15",
+          "axis": "GO_BP cross-ontology check",
+          "path": "analyses/state-featured/test-15.json"
+        },
+        {
+          "id": "state-featured/test-16",
+          "axis": "GO_MF cross-ontology check",
+          "path": "analyses/state-featured/test-16.json"
+        },
+        {
+          "id": "state-featured/test-17",
+          "axis": "GO_CC cross-ontology check",
+          "path": "analyses/state-featured/test-17.json"
+        },
+        {
+          "id": "state-featured/test-18",
+          "axis": "WikiPathways cross-ontology check",
+          "path": "analyses/state-featured/test-18.json"
+        },
+        {
+          "id": "state-featured/test-19",
+          "axis": "KEGG cross-ontology check",
+          "path": "analyses/state-featured/test-19.json"
+        }
+      ]
+    },
+    {
+      "id": "state-codex-r1",
+      "model": "STATE",
+      "analyses": [
+        {
+          "id": "state-codex-r1/test-01",
+          "axis": "Basal transcriptomic distance",
+          "path": "analyses/state-codex-r1/test-01.json"
+        },
+        {
+          "id": "state-codex-r1/test-02",
+          "axis": "Baseline S-phase heterogeneity",
+          "path": "analyses/state-codex-r1/test-02.json"
+        },
+        {
+          "id": "state-codex-r1/test-03",
+          "axis": "Training-lineage scarcity",
+          "path": "analyses/state-codex-r1/test-03.json"
+        },
+        {
+          "id": "state-codex-r1/test-04",
+          "axis": "Perturbation magnitude, DE count, cell count and dose",
+          "path": "analyses/state-codex-r1/test-04.json"
+        }
+      ]
+    },
+    {
+      "id": "state-codex-r2",
+      "model": "STATE",
+      "analyses": [
+        {
+          "id": "state-codex-r2/test-01",
+          "axis": "Administered drug dose",
+          "path": "analyses/state-codex-r2/test-01.json"
+        },
+        {
+          "id": "state-codex-r2/test-02",
+          "axis": "Baseline cross-cell-line distance",
+          "path": "analyses/state-codex-r2/test-02.json"
+        },
+        {
+          "id": "state-codex-r2/test-03",
+          "axis": "Expected perturbation magnitude",
+          "path": "analyses/state-codex-r2/test-03.json"
+        },
+        {
+          "id": "state-codex-r2/test-04",
+          "axis": "Sampling support, prospective dose displacement and checkpoint sensitivity",
+          "path": "analyses/state-codex-r2/test-04.json"
+        },
+        {
+          "id": "state-codex-r2/test-05",
+          "axis": "Perturbation modality",
+          "path": "analyses/state-codex-r2/test-05.json"
+        }
+      ]
+    },
+    {
+      "id": "state-opus-r1",
+      "model": "STATE",
+      "analyses": [
+        {
+          "id": "state-opus-r1/test-01",
+          "axis": "Drug-target training coverage",
+          "path": "analyses/state-opus-r1/test-01.json"
+        },
+        {
+          "id": "state-opus-r1/test-02",
+          "axis": "Drug chemical novelty",
+          "path": "analyses/state-opus-r1/test-02.json"
+        },
+        {
+          "id": "state-opus-r1/test-03",
+          "axis": "Cell-context novelty",
+          "path": "analyses/state-opus-r1/test-03.json"
+        },
+        {
+          "id": "state-opus-r1/test-04",
+          "axis": "Intrinsic perturbation strength",
+          "path": "analyses/state-opus-r1/test-04.json"
+        }
+      ]
+    },
+    {
+      "id": "state-opus-r2",
+      "model": "STATE",
+      "analyses": [
+        {
+          "id": "state-opus-r2/test-01",
+          "axis": "Gene-neighborhood coverage",
+          "path": "analyses/state-opus-r2/test-01.json"
+        },
+        {
+          "id": "state-opus-r2/test-02",
+          "axis": "Chemical structure and mechanism coverage",
+          "path": "analyses/state-opus-r2/test-02.json"
+        },
+        {
+          "id": "state-opus-r2/test-03",
+          "axis": "Drug-target or ligand functional density",
+          "path": "analyses/state-opus-r2/test-03.json"
+        },
+        {
+          "id": "state-opus-r2/test-04",
+          "axis": "Cross-context screen coverage",
+          "path": "analyses/state-opus-r2/test-04.json"
+        },
+        {
+          "id": "state-opus-r2/test-05",
+          "axis": "GO annotation count and perturbation strength",
+          "path": "analyses/state-opus-r2/test-05.json"
+        }
+      ]
+    },
+    {
+      "id": "state-kimi-r1",
+      "model": "STATE",
+      "analyses": [
+        {
+          "id": "state-kimi-r1/test-01",
+          "axis": "Gene–cell-line pair exposure",
+          "path": "analyses/state-kimi-r1/test-01.json"
+        },
+        {
+          "id": "state-kimi-r1/test-02",
+          "axis": "Graded gene exposure",
+          "path": "analyses/state-kimi-r1/test-02.json"
+        },
+        {
+          "id": "state-kimi-r1/test-03",
+          "axis": "Embedding-norm proximity",
+          "path": "analyses/state-kimi-r1/test-03.json"
+        },
+        {
+          "id": "state-kimi-r1/test-04",
+          "axis": "Cell count per observation",
+          "path": "analyses/state-kimi-r1/test-04.json"
+        }
+      ]
+    },
+    {
+      "id": "state-kimi-r2",
+      "model": "STATE",
+      "analyses": [
+        {
+          "id": "state-kimi-r2/test-01",
+          "axis": "Perturbation exposure in any cell line",
+          "path": "analyses/state-kimi-r2/test-01.json"
+        },
+        {
+          "id": "state-kimi-r2/test-02",
+          "axis": "Graded training-support count",
+          "path": "analyses/state-kimi-r2/test-02.json"
+        },
+        {
+          "id": "state-kimi-r2/test-03",
+          "axis": "Fixed-reference and embedding checks",
+          "path": "analyses/state-kimi-r2/test-03.json"
+        }
+      ]
+    },
+    {
+      "id": "conch-primary",
+      "model": "CONCH",
+      "analyses": [
+        {
+          "id": "conch-primary/test-01",
+          "axis": "Pooled color–texture distance",
+          "path": "analyses/conch-primary/test-01.json"
+        },
+        {
+          "id": "conch-primary/test-02",
+          "axis": "Color-only reference distance",
+          "path": "analyses/conch-primary/test-02.json"
+        },
+        {
+          "id": "conch-primary/test-03",
+          "axis": "Texture-only reference distance",
+          "path": "analyses/conch-primary/test-03.json"
+        },
+        {
+          "id": "conch-primary/test-04",
+          "axis": "Within-tumor tissue/stain distance",
+          "path": "analyses/conch-primary/test-04.json"
+        },
+        {
+          "id": "conch-primary/test-05",
+          "axis": "Tissue-class composition",
+          "path": "analyses/conch-primary/test-05.json"
+        },
+        {
+          "id": "conch-primary/test-06",
+          "axis": "Fixed reference classifiers",
+          "path": "analyses/conch-primary/test-06.json"
+        }
+      ]
+    },
+    {
+      "id": "conch-gpt-r1",
+      "model": "CONCH",
+      "analyses": [
+        {
+          "id": "conch-gpt-r1/test-01",
+          "axis": "Texture-only distance from the NCT reference",
+          "path": "analyses/conch-gpt-r1/test-01.json"
+        },
+        {
+          "id": "conch-gpt-r1/test-02",
+          "axis": "joint reference-distribution color-texture distance",
+          "path": "analyses/conch-gpt-r1/test-02.json"
+        },
+        {
+          "id": "conch-gpt-r1/test-03",
+          "axis": "tissue-background fragmentation / low tissue fraction",
+          "path": "analyses/conch-gpt-r1/test-03.json"
+        },
+        {
+          "id": "conch-gpt-r1/test-04",
+          "axis": "stain optical-density departure",
+          "path": "analyses/conch-gpt-r1/test-04.json"
+        },
+        {
+          "id": "conch-gpt-r1/test-05",
+          "axis": "blur/sharpness departure",
+          "path": "analyses/conch-gpt-r1/test-05.json"
+        },
+        {
+          "id": "conch-gpt-r1/test-06",
+          "axis": "JPEG corruption",
+          "path": "analyses/conch-gpt-r1/test-06.json"
+        },
+        {
+          "id": "conch-gpt-r1/test-07",
+          "axis": "Kather-2016 external transport panel",
+          "path": "analyses/conch-gpt-r1/test-07.json"
+        }
+      ]
+    },
+    {
+      "id": "conch-gpt-r2",
+      "model": "CONCH",
+      "analyses": [
+        {
+          "id": "conch-gpt-r2/test-01",
+          "axis": "Joint colour-and-texture distance from NCT",
+          "path": "analyses/conch-gpt-r2/test-01.json"
+        },
+        {
+          "id": "conch-gpt-r2/test-02",
+          "axis": "stain drift",
+          "path": "analyses/conch-gpt-r2/test-02.json"
+        },
+        {
+          "id": "conch-gpt-r2/test-03",
+          "axis": "blur/sharpness",
+          "path": "analyses/conch-gpt-r2/test-03.json"
+        },
+        {
+          "id": "conch-gpt-r2/test-04",
+          "axis": "background/tissue fraction",
+          "path": "analyses/conch-gpt-r2/test-04.json"
+        },
+        {
+          "id": "conch-gpt-r2/test-05",
+          "axis": "compression artifacts",
+          "path": "analyses/conch-gpt-r2/test-05.json"
+        },
+        {
+          "id": "conch-gpt-r2/test-06",
+          "axis": "magnification/scale",
+          "path": "analyses/conch-gpt-r2/test-06.json"
+        },
+        {
+          "id": "conch-gpt-r2/test-07",
+          "axis": "external cohort/site",
+          "path": "analyses/conch-gpt-r2/test-07.json"
+        }
+      ]
+    },
+    {
+      "id": "conch-opus-r1",
+      "model": "CONCH",
+      "analyses": [
+        {
+          "id": "conch-opus-r1/test-01",
+          "axis": "Colour and stain distance, within tissue class",
+          "path": "analyses/conch-opus-r1/test-01.json"
+        },
+        {
+          "id": "conch-opus-r1/test-02",
+          "axis": "Pooled appearance distance",
+          "path": "analyses/conch-opus-r1/test-02.json"
+        },
+        {
+          "id": "conch-opus-r1/test-03",
+          "axis": "Image sharpness",
+          "path": "analyses/conch-opus-r1/test-03.json"
+        }
+      ]
+    },
+    {
+      "id": "conch-opus-r2",
+      "model": "CONCH",
+      "analyses": [
+        {
+          "id": "conch-opus-r2/test-01",
+          "axis": "Controlled Gaussian blur",
+          "path": "analyses/conch-opus-r2/test-01.json"
+        },
+        {
+          "id": "conch-opus-r2/test-02",
+          "axis": "Stain characteristics",
+          "path": "analyses/conch-opus-r2/test-02.json"
+        },
+        {
+          "id": "conch-opus-r2/test-03",
+          "axis": "Class composition and stain",
+          "path": "analyses/conch-opus-r2/test-03.json"
+        }
+      ]
+    },
+    {
+      "id": "conch-kimi-r1",
+      "model": "CONCH",
+      "analyses": [
+        {
+          "id": "conch-kimi-r1/test-01",
+          "axis": "Effective acquisition magnification",
+          "path": "analyses/conch-kimi-r1/test-01.json"
+        }
+      ]
+    },
+    {
+      "id": "conch-kimi-r2",
+      "model": "CONCH",
+      "analyses": [
+        {
+          "id": "conch-kimi-r2/test-01",
+          "axis": "Effective spatial resolution",
+          "path": "analyses/conch-kimi-r2/test-01.json"
+        },
+        {
+          "id": "conch-kimi-r2/test-02",
+          "axis": "Stain shift",
+          "path": "analyses/conch-kimi-r2/test-02.json"
+        },
+        {
+          "id": "conch-kimi-r2/test-03",
+          "axis": "Site shift at native resolution",
+          "path": "analyses/conch-kimi-r2/test-03.json"
+        }
+      ]
+    },
+    {
+      "id": "am-primary",
+      "model": "AlphaMissense",
+      "analyses": [
+        {
+          "id": "am-primary/test-01",
+          "axis": "UniRef50 homolog count",
+          "path": "analyses/am-primary/test-01.json"
+        },
+        {
+          "id": "am-primary/test-02",
+          "axis": "gnomAD missense-variation support",
+          "path": "analyses/am-primary/test-02.json"
+        },
+        {
+          "id": "am-primary/test-03",
+          "axis": "Effective alignment depth",
+          "path": "analyses/am-primary/test-03.json"
+        },
+        {
+          "id": "am-primary/test-04",
+          "axis": "Alignment occupancy",
+          "path": "analyses/am-primary/test-04.json"
+        },
+        {
+          "id": "am-primary/test-05",
+          "axis": "Occupancy at high effective depth",
+          "path": "analyses/am-primary/test-05.json"
+        },
+        {
+          "id": "am-primary/test-06",
+          "axis": "Position-specific and substitution-score references",
+          "path": "analyses/am-primary/test-06.json"
+        },
+        {
+          "id": "am-primary/test-07",
+          "axis": "Experimental dynamic range",
+          "path": "analyses/am-primary/test-07.json"
+        }
+      ]
+    },
+    {
+      "id": "am-gpt-r1",
+      "model": "AlphaMissense",
+      "analyses": [
+        {
+          "id": "am-gpt-r1/test-01",
+          "axis": "Distance to nearest internal exon boundary",
+          "path": "analyses/am-gpt-r1/test-01.json"
+        },
+        {
+          "id": "am-gpt-r1/test-02",
+          "axis": "Intrinsic disorder",
+          "path": "analyses/am-gpt-r1/test-02.json"
+        },
+        {
+          "id": "am-gpt-r1/test-03",
+          "axis": "Protein-interface context",
+          "path": "analyses/am-gpt-r1/test-03.json"
+        },
+        {
+          "id": "am-gpt-r1/test-04",
+          "axis": "Gene age",
+          "path": "analyses/am-gpt-r1/test-04.json"
+        },
+        {
+          "id": "am-gpt-r1/test-05",
+          "axis": "Protein-function mechanism check",
+          "path": "analyses/am-gpt-r1/test-05.json"
+        }
+      ]
+    },
+    {
+      "id": "am-gpt-r2",
+      "model": "AlphaMissense",
+      "analyses": [
+        {
+          "id": "am-gpt-r2/test-01",
+          "axis": "Minimum exonic distance to an exon boundary",
+          "path": "analyses/am-gpt-r2/test-01.json"
+        },
+        {
+          "id": "am-gpt-r2/test-02",
+          "axis": "protein-protein interface/binding context",
+          "path": "analyses/am-gpt-r2/test-02.json"
+        },
+        {
+          "id": "am-gpt-r2/test-03",
+          "axis": "gene evolutionary age",
+          "path": "analyses/am-gpt-r2/test-03.json"
+        },
+        {
+          "id": "am-gpt-r2/test-04",
+          "axis": "local disorder/low structural confidence",
+          "path": "analyses/am-gpt-r2/test-04.json"
+        }
+      ]
+    },
+    {
+      "id": "am-opus-r1",
+      "model": "AlphaMissense",
+      "analyses": [
+        {
+          "id": "am-opus-r1/test-01",
+          "axis": "Evolutionary constraint at the variant position",
+          "path": "analyses/am-opus-r1/test-01.json"
+        },
+        {
+          "id": "am-opus-r1/test-02",
+          "axis": "Whole-protein alignment depth",
+          "path": "analyses/am-opus-r1/test-02.json"
+        },
+        {
+          "id": "am-opus-r1/test-03",
+          "axis": "Per-position alignment coverage",
+          "path": "analyses/am-opus-r1/test-03.json"
+        }
+      ]
+    },
+    {
+      "id": "am-opus-r2",
+      "model": "AlphaMissense",
+      "analyses": [
+        {
+          "id": "am-opus-r2/test-01",
+          "axis": "AlphaFold residue-level confidence (pLDDT)",
+          "path": "analyses/am-opus-r2/test-01.json"
+        },
+        {
+          "id": "am-opus-r2/test-02",
+          "axis": "Whole-protein alignment depth",
+          "path": "analyses/am-opus-r2/test-02.json"
+        },
+        {
+          "id": "am-opus-r2/test-03",
+          "axis": "Within-assay alignment support",
+          "path": "analyses/am-opus-r2/test-03.json"
+        }
+      ]
+    },
+    {
+      "id": "am-kimi-r1",
+      "model": "AlphaMissense",
+      "analyses": [
+        {
+          "id": "am-kimi-r1/test-01",
+          "axis": "Nucleotide distance to the nearest exon boundary",
+          "path": "analyses/am-kimi-r1/test-01.json"
+        },
+        {
+          "id": "am-kimi-r1/test-02",
+          "axis": "local sequence complexity (21-aa windowed entropy, quartiles)",
+          "path": "analyses/am-kimi-r1/test-02.json"
+        },
+        {
+          "id": "am-kimi-r1/test-03",
+          "axis": "distance to nearest terminus (quartiles)",
+          "path": "analyses/am-kimi-r1/test-03.json"
+        },
+        {
+          "id": "am-kimi-r1/test-04",
+          "axis": "protein length (quartiles)",
+          "path": "analyses/am-kimi-r1/test-04.json"
+        },
+        {
+          "id": "am-kimi-r1/test-05",
+          "axis": "homology availability (ortholog count across 6 species; levels 6 / 4–5 / 0–3 after predeclared merge)",
+          "path": "analyses/am-kimi-r1/test-05.json"
+        },
+        {
+          "id": "am-kimi-r1/test-06",
+          "axis": "population observability (AF tiers: unobserved / rare / common)",
+          "path": "analyses/am-kimi-r1/test-06.json"
+        }
+      ]
+    },
+    {
+      "id": "am-kimi-r2",
+      "model": "AlphaMissense",
+      "analyses": [
+        {
+          "id": "am-kimi-r2/test-01",
+          "axis": "AlphaFold residue-level confidence, within gene",
+          "path": "analyses/am-kimi-r2/test-01.json"
+        },
+        {
+          "id": "am-kimi-r2/test-02",
+          "axis": "position phyloP (pooled)",
+          "path": "analyses/am-kimi-r2/test-02.json"
+        },
+        {
+          "id": "am-kimi-r2/test-03",
+          "axis": "position phyloP, paired within-gene",
+          "path": "analyses/am-kimi-r2/test-03.json"
+        },
+        {
+          "id": "am-kimi-r2/test-04",
+          "axis": "gene-level mean CDS phyloP (quintiles)",
+          "path": "analyses/am-kimi-r2/test-04.json"
+        },
+        {
+          "id": "am-kimi-r2/test-05",
+          "axis": "Grantham substitution severity (4 levels)",
+          "path": "analyses/am-kimi-r2/test-05.json"
+        },
+        {
+          "id": "am-kimi-r2/test-06",
+          "axis": "CpG mutational context (3 levels)",
+          "path": "analyses/am-kimi-r2/test-06.json"
+        }
+      ]
+    }
+  ],
+  "reconstruction_notes": "reconstruction.json"
+}

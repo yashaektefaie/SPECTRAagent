@@ -1,0 +1,128 @@
+{
+  "id": "conch-primary/test-01",
+  "investigation": "conch-primary",
+  "model": "CONCH",
+  "axis": "Pooled color–texture distance",
+  "dataset_split": {
+    "description": "Exact record ids missing confirmation image map.",
+    "input_inventory": "inputs/conch.json",
+    "public_sources": [
+      "nct-images",
+      "crcval-images",
+      "kather-images",
+      "nct-mirror",
+      "conch-code"
+    ],
+    "sample_tables": [
+      {
+        "source_file": "source/conch-primary/confirmation.csv",
+        "source_sha256": "61bb1f4a5ddecca7f513f36181fd3fa58b01aa9985d0c1f523ff2f20a50a8829",
+        "path": "samples/conch/8ada4d43f40036a3.json.gz",
+        "sha256": "ecbe999d2ae87bbc6a544a6090d36049fda753c3c52d4bbbf1cc5864e646be20",
+        "rows": 1800,
+        "columns": [
+          "sample_id",
+          "label",
+          "label_name"
+        ]
+      },
+      {
+        "source_file": "source/conch-primary/discovery.csv",
+        "source_sha256": "e319ab919e3f0142a6e919b9d5521d784922accdf8f740b744e3f3d446307ed3",
+        "path": "samples/conch/f8987009a90dbeb6.json.gz",
+        "sha256": "eed108af9c0a0ff973e6fd3b664edd60b74d9f1ee30b976bed8634af1add5d99",
+        "rows": 7180,
+        "columns": [
+          "sample_id",
+          "label",
+          "label_name"
+        ]
+      },
+      {
+        "source_file": "source/shared/crcval_predictions.csv",
+        "source_sha256": "d0f00ee3904e1f5191c75267c04c42fc3b23ffd7e8bd1a0c0c7185f3bdc19852",
+        "path": "samples/conch/22b80e675660a6f9.json.gz",
+        "sha256": "5d13dcfd57b1baa3980b48ecfb7b964048c304655973dd7ca42e8ed2ef2b0093",
+        "rows": 7180,
+        "columns": [
+          "sample_id",
+          "image_path",
+          "label",
+          "label_name"
+        ]
+      }
+    ]
+  },
+  "axis_levels": {
+    "definition": "Mean distance to the 20 nearest reference tiles in standardized RGB/HSV, intensity, edge, entropy and tissue features. Six groups ordered by decreasing similarity to a class-balanced reference of 1,800 NCT-CRC-HE-100K tiles (200 per class).",
+    "calculation": "Original values only missing reference.",
+    "code": "materials/conch/notebooks/conch-primary-01.py"
+  },
+  "model_evaluation": {
+    "measurements": "Discovery logits rescored confirmation correctness retained.",
+    "fine_tuning": {
+      "target_weight_updates_in_replay": false,
+      "target_fine_tuning_during_original_audit": null,
+      "original_training_evidence": "The exported reconstruction code does not update target-model weights. Original checkpoint training or audit-specific adaptation was not established by the retained execution evidence.",
+      "comparators": []
+    },
+    "code": "materials/conch/notebooks/conch-primary-01.py"
+  },
+  "curve": {
+    "aggregation_and_uncertainty": "Recomputed from individual records.",
+    "code": "materials/conch/notebooks/conch-primary-01.py"
+  },
+  "insight": {
+    "comparison_controls_confirmation": "Within class and fixed references replayed.",
+    "code": "materials/conch/notebooks/conch-primary-01.py"
+  },
+  "reconstruction_notes": [
+    "Original prospective reference feature matrix and source code assigning axis values/levels were not recovered. Axis step is retained evidence, not recomputed.",
+    "Fresh inference and original raw-image feature extraction are not rerun. Original confirmation target predicted labels/logits and raw image identity mapping are missing; only per-image correctness remains.",
+    "The confidence intervals in this repair are newly recomputed diagnostics, clearly labeled.",
+    "Exact retained audit inputs are identified by relative filename and hash in the input inventory. A null download_source means no matching anonymous download has been established. Public upstream datasets do not substitute for missing original splits, predictions or annotations."
+  ],
+  "implementation": {
+    "notebook": "materials/conch/notebooks/conch-primary-01.ipynb",
+    "script": "materials/conch/notebooks/conch-primary-01.py",
+    "supporting_code": "code/conch.json",
+    "cell_locations": [
+      {
+        "notebook_cell": 1,
+        "start_line": 1,
+        "end_line": 30
+      },
+      {
+        "notebook_cell": 3,
+        "start_line": 31,
+        "end_line": 42
+      },
+      {
+        "notebook_cell": 5,
+        "start_line": 43,
+        "end_line": 48
+      },
+      {
+        "notebook_cell": 7,
+        "start_line": 49,
+        "end_line": 60
+      },
+      {
+        "notebook_cell": 9,
+        "start_line": 61,
+        "end_line": 70
+      }
+    ],
+    "original_notebook_sha256": "bc7e9ab1786c1f75f25b773adc4d5e0ba2e30720c81de2bab6b8870e35fe68f6",
+    "published_notebook_sha256": "f2b943c817973e5cd8a1ae38a4754b509d23d4c46e55bf6c928d72bbc0472ab8",
+    "changes": [
+      "Code-only export; Markdown verdicts and saved outputs omitted.",
+      "Machine-specific home paths replaced with /path/to/audit-home where present.",
+      "Python export converts notebook magic syntax using IPython; notebook retains its original code syntax.",
+      "Python exports remove trailing whitespace only after checking that the parsed syntax tree is unchanged."
+    ],
+    "saved_code_cells": 5,
+    "saved_error_outputs": 0
+  },
+  "requested_model": "CONCH"
+}

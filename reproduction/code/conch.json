@@ -1,0 +1,292 @@
+[
+  {
+    "path": "materials/conch/requirements.txt",
+    "sha256": "32f102a53cccf7a7ad3988edc2da54048f236f7349c53858bb3a41dcb67f41ed",
+    "original_sha256": "32f102a53cccf7a7ad3988edc2da54048f236f7349c53858bb3a41dcb67f41ed"
+  },
+  {
+    "path": "materials/conch/source/conch-gpt-r1/code/analyze_spc.py",
+    "sha256": "ef585a1a9c08e304bbaef04a28c0cf41bbbf8b1fd687893602143bb8b47948e8",
+    "original_sha256": "ef585a1a9c08e304bbaef04a28c0cf41bbbf8b1fd687893602143bb8b47948e8"
+  },
+  {
+    "path": "materials/conch/source/conch-gpt-r1/code/blind_extract.py",
+    "sha256": "0b762e66483c2dc56649ade9112e84a70ecb823c01023cc3b3f26a870adbb3c7",
+    "original_sha256": "5abe0692a638745e8548dd834bf6b92c9dba117d7cd06d55e2aaa24fb879d4b4"
+  },
+  {
+    "path": "materials/conch/source/conch-gpt-r1/code/deduplicate.py",
+    "sha256": "026f5f55bd78f17676af9f6ea12bc34add55795e716b87954dcfd05d877b7554",
+    "original_sha256": "026f5f55bd78f17676af9f6ea12bc34add55795e716b87954dcfd05d877b7554"
+  },
+  {
+    "path": "materials/conch/source/conch-gpt-r1/code/derive_prospective_axis.py",
+    "sha256": "091e004728a5dc3a4f337902488c3770ff38123fd5d854fe7e543ac1f21cf1f5",
+    "original_sha256": "091e004728a5dc3a4f337902488c3770ff38123fd5d854fe7e543ac1f21cf1f5"
+  },
+  {
+    "path": "materials/conch/source/conch-gpt-r1/code/extract_imagenet_embeddings.py",
+    "sha256": "dedaf718daa4ae3c0e4f83fba1e8bd3022f13f04ae3c0358e9ad9904d966a3bc",
+    "original_sha256": "dedaf718daa4ae3c0e4f83fba1e8bd3022f13f04ae3c0358e9ad9904d966a3bc"
+  },
+  {
+    "path": "materials/conch/source/conch-gpt-r1/code/extract_prospective_features.py",
+    "sha256": "b9fbba68c743a0961ac727d83ba434a6950cc1697954c178b5e49e37dcb6a3d1",
+    "original_sha256": "b9fbba68c743a0961ac727d83ba434a6950cc1697954c178b5e49e37dcb6a3d1"
+  },
+  {
+    "path": "materials/conch/source/conch-gpt-r1/code/finalize_dedup.py",
+    "sha256": "915684365de0102a8fb3c9a0d4aad5632b4df76fbe1d9f70c72d0c0fe1aed42a",
+    "original_sha256": "915684365de0102a8fb3c9a0d4aad5632b4df76fbe1d9f70c72d0c0fe1aed42a"
+  },
+  {
+    "path": "materials/conch/source/conch-gpt-r1/code/finalize_population_gate.py",
+    "sha256": "ade165e92c2200f51d0df5de29aec92d1b2905f2a15b8eef38b989502f4b96e2",
+    "original_sha256": "ade165e92c2200f51d0df5de29aec92d1b2905f2a15b8eef38b989502f4b96e2"
+  },
+  {
+    "path": "materials/conch/source/conch-gpt-r1/code/fit_fixed_references.py",
+    "sha256": "9b46e9c2d8fffe4ffb41c6aafe50f337de5a5af3b03aa087c38c17cdb9bdce72",
+    "original_sha256": "9b46e9c2d8fffe4ffb41c6aafe50f337de5a5af3b03aa087c38c17cdb9bdce72"
+  },
+  {
+    "path": "materials/conch/source/conch-gpt-r1/code/recheck_population_after_dedup.py",
+    "sha256": "b396a64886b398401667d8b74f060a91d0eedbd429feda1c09cf61898c665aeb",
+    "original_sha256": "b396a64886b398401667d8b74f060a91d0eedbd429feda1c09cf61898c665aeb"
+  },
+  {
+    "path": "materials/conch/source/conch-gpt-r1/code/score_conch.py",
+    "sha256": "ffed11efb7faf8d03f56826d018bb0da0d3a19ab09912616c932049fe0e1e1f3",
+    "original_sha256": "ffed11efb7faf8d03f56826d018bb0da0d3a19ab09912616c932049fe0e1e1f3"
+  },
+  {
+    "path": "materials/conch/source/conch-gpt-r1/code/summarize_levels.py",
+    "sha256": "b06ea301e6e31a2c3eb475e8e4484a105949ab8cccc5801c504dd63ade4dfdc6",
+    "original_sha256": "b06ea301e6e31a2c3eb475e8e4484a105949ab8cccc5801c504dd63ade4dfdc6"
+  },
+  {
+    "path": "materials/conch/source/conch-kimi-r1/code/00_extract_train_subset.py",
+    "sha256": "1ef124f07de5e1bd61bbd0339f8d5b64beef29d2e16b1b0c69bd3ec2aab4268a",
+    "original_sha256": "1ef124f07de5e1bd61bbd0339f8d5b64beef29d2e16b1b0c69bd3ec2aab4268a"
+  },
+  {
+    "path": "materials/conch/source/conch-kimi-r1/code/01_index_data.py",
+    "sha256": "c4c2bfc451e0693404a81732b64915e071a48211cd6ce7c1f02f19919a67982b",
+    "original_sha256": "c4c2bfc451e0693404a81732b64915e071a48211cd6ce7c1f02f19919a67982b"
+  },
+  {
+    "path": "materials/conch/source/conch-kimi-r1/code/02_similarity_check.py",
+    "sha256": "93474b00d4217df8eaf6f4a8164dc8056b803849e43f777848d7965f17a66dfe",
+    "original_sha256": "93474b00d4217df8eaf6f4a8164dc8056b803849e43f777848d7965f17a66dfe"
+  },
+  {
+    "path": "materials/conch/source/conch-kimi-r1/code/03_reference.py",
+    "sha256": "74e55648e612edf9a37b066c2253452253b3123e6fabda8526b4690c9d66468e",
+    "original_sha256": "74e55648e612edf9a37b066c2253452253b3123e6fabda8526b4690c9d66468e"
+  },
+  {
+    "path": "materials/conch/source/conch-kimi-r1/code/04_conch_eval.py",
+    "sha256": "dab94e45f34d0ad3a0fbb1e3cb0d563a67f281d732d0451bd9d68e2134e0c16d",
+    "original_sha256": "dab94e45f34d0ad3a0fbb1e3cb0d563a67f281d732d0451bd9d68e2134e0c16d"
+  },
+  {
+    "path": "materials/conch/source/conch-kimi-r1/code/05_audit.py",
+    "sha256": "5048fdc95a1fc230878835e202ff3bb0b05ba93a3ded815357f9b878b377ce6a",
+    "original_sha256": "5048fdc95a1fc230878835e202ff3bb0b05ba93a3ded815357f9b878b377ce6a"
+  },
+  {
+    "path": "materials/conch/source/conch-kimi-r1/code/common.py",
+    "sha256": "e59c150575fedc933d5a2394d5532334199075931a677411e0c720edaa1e2450",
+    "original_sha256": "e59c150575fedc933d5a2394d5532334199075931a677411e0c720edaa1e2450"
+  },
+  {
+    "path": "materials/conch/source/conch-kimi-r2/code/build_nct_sample.py",
+    "sha256": "255bdade9f7dfe0b6083a7761f90bd77c861c24abe328212dd5cae24e16bf510",
+    "original_sha256": "255bdade9f7dfe0b6083a7761f90bd77c861c24abe328212dd5cae24e16bf510"
+  },
+  {
+    "path": "materials/conch/source/conch-kimi-r2/code/pilot_axisB_stain.py",
+    "sha256": "1ab8faa6646faa289c87d2e0e2b9d50de255dc4c7655baeab7e710c296321468",
+    "original_sha256": "1ab8faa6646faa289c87d2e0e2b9d50de255dc4c7655baeab7e710c296321468"
+  },
+  {
+    "path": "materials/conch/source/conch-kimi-r2/code/pilot_resolution.py",
+    "sha256": "20842c24006a73d27798aea52bf58e74a8c5dfbacfad15a7630329633f752d6f",
+    "original_sha256": "20842c24006a73d27798aea52bf58e74a8c5dfbacfad15a7630329633f752d6f"
+  },
+  {
+    "path": "materials/conch/source/conch-kimi-r2/code/run_axisA_confirm.py",
+    "sha256": "33a8010400537641f5a0e88e0b9db55d1ec3498cea96cd445d6c47c8e9f89707",
+    "original_sha256": "33a8010400537641f5a0e88e0b9db55d1ec3498cea96cd445d6c47c8e9f89707"
+  },
+  {
+    "path": "materials/conch/source/conch-kimi-r2/code/run_axisA_crcval.py",
+    "sha256": "cea2b066d624def84f4088f2da72a12bc79f6dec169477b9cde28b836e729e87",
+    "original_sha256": "cea2b066d624def84f4088f2da72a12bc79f6dec169477b9cde28b836e729e87"
+  },
+  {
+    "path": "materials/conch/source/conch-kimi-r2/code/stats_axisA_kimi.py",
+    "sha256": "6306cb7be95c551386e60546ef50122bfd76bf3a7618f672606ec6231a67e5e7",
+    "original_sha256": "6306cb7be95c551386e60546ef50122bfd76bf3a7618f672606ec6231a67e5e7"
+  },
+  {
+    "path": "materials/conch/source/conch-kimi-r2/code/zeroshot_common.py",
+    "sha256": "b15fc66825439399ca0945c70ee1254a8b16f5961d8b3bbcea2c8315e5fb9211",
+    "original_sha256": "b15fc66825439399ca0945c70ee1254a8b16f5961d8b3bbcea2c8315e5fb9211"
+  },
+  {
+    "path": "materials/conch/source/conch-kimi-r2/native/scripts/build_nct_sample.py",
+    "sha256": "255bdade9f7dfe0b6083a7761f90bd77c861c24abe328212dd5cae24e16bf510",
+    "original_sha256": "255bdade9f7dfe0b6083a7761f90bd77c861c24abe328212dd5cae24e16bf510"
+  },
+  {
+    "path": "materials/conch/source/conch-kimi-r2/native/scripts/eval_conch.py",
+    "sha256": "3d8137d61b2661d0a67f1c3b3b91adece0de997cc96f76666314dbfc588f9b90",
+    "original_sha256": "3d8137d61b2661d0a67f1c3b3b91adece0de997cc96f76666314dbfc588f9b90"
+  },
+  {
+    "path": "materials/conch/source/conch-kimi-r2/native/scripts/eval_resnet.py",
+    "sha256": "0a8e6bd1f600ffb28b92f0a3dab3a11be8f7c06053153a0e20af5167d3a7b4a2",
+    "original_sha256": "0a8e6bd1f600ffb28b92f0a3dab3a11be8f7c06053153a0e20af5167d3a7b4a2"
+  },
+  {
+    "path": "materials/conch/source/conch-kimi-r2/native/scripts/pilot_axisB_stain.py",
+    "sha256": "1ab8faa6646faa289c87d2e0e2b9d50de255dc4c7655baeab7e710c296321468",
+    "original_sha256": "1ab8faa6646faa289c87d2e0e2b9d50de255dc4c7655baeab7e710c296321468"
+  },
+  {
+    "path": "materials/conch/source/conch-kimi-r2/native/scripts/pilot_resolution.py",
+    "sha256": "20842c24006a73d27798aea52bf58e74a8c5dfbacfad15a7630329633f752d6f",
+    "original_sha256": "20842c24006a73d27798aea52bf58e74a8c5dfbacfad15a7630329633f752d6f"
+  },
+  {
+    "path": "materials/conch/source/conch-kimi-r2/native/scripts/run_axisA_confirm.py",
+    "sha256": "33a8010400537641f5a0e88e0b9db55d1ec3498cea96cd445d6c47c8e9f89707",
+    "original_sha256": "33a8010400537641f5a0e88e0b9db55d1ec3498cea96cd445d6c47c8e9f89707"
+  },
+  {
+    "path": "materials/conch/source/conch-kimi-r2/native/scripts/run_axisA_crcval.py",
+    "sha256": "cea2b066d624def84f4088f2da72a12bc79f6dec169477b9cde28b836e729e87",
+    "original_sha256": "cea2b066d624def84f4088f2da72a12bc79f6dec169477b9cde28b836e729e87"
+  },
+  {
+    "path": "materials/conch/source/conch-kimi-r2/native/scripts/stats_axisA.py",
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "materials/conch/source/conch-kimi-r2/native/scripts/stats_axisA_kimi.py",
+    "sha256": "6306cb7be95c551386e60546ef50122bfd76bf3a7618f672606ec6231a67e5e7",
+    "original_sha256": "6306cb7be95c551386e60546ef50122bfd76bf3a7618f672606ec6231a67e5e7"
+  },
+  {
+    "path": "materials/conch/source/conch-kimi-r2/native/scripts/train_resnet.py",
+    "sha256": "24e5496dada494c19e40334d6f6f9b231d82ec9163b5fe9cd65680569cee1ada",
+    "original_sha256": "24e5496dada494c19e40334d6f6f9b231d82ec9163b5fe9cd65680569cee1ada"
+  },
+  {
+    "path": "materials/conch/source/conch-kimi-r2/native/scripts/transforms_spec.py",
+    "sha256": "1e3dc5428a56087e4034165f2f50fae2b31551c682152febb1c11fb49df4a912",
+    "original_sha256": "1e3dc5428a56087e4034165f2f50fae2b31551c682152febb1c11fb49df4a912"
+  },
+  {
+    "path": "materials/conch/source/conch-kimi-r2/native/scripts/zeroshot_common.py",
+    "sha256": "b15fc66825439399ca0945c70ee1254a8b16f5961d8b3bbcea2c8315e5fb9211",
+    "original_sha256": "b15fc66825439399ca0945c70ee1254a8b16f5961d8b3bbcea2c8315e5fb9211"
+  },
+  {
+    "path": "materials/conch/source/conch-opus-r1/code/03_extract_features.py",
+    "sha256": "a9229f11f346dd978e832d18d3376fc43df2f51c8c2b2d83ca5414348c103382",
+    "original_sha256": "a9229f11f346dd978e832d18d3376fc43df2f51c8c2b2d83ca5414348c103382"
+  },
+  {
+    "path": "materials/conch/source/conch-opus-r1/code/04_axis_analysis.py",
+    "sha256": "0406bb39ae83730741d33733feb291baf9bba6f1178760f01b35b35691107720",
+    "original_sha256": "0406bb39ae83730741d33733feb291baf9bba6f1178760f01b35b35691107720"
+  },
+  {
+    "path": "materials/conch/source/conch-opus-r1/code/05_refine.py",
+    "sha256": "e493a7bb482b18a786cbf0ef6f0ad5aaa68fd6511ea4bb3b9be912776d61bf2c",
+    "original_sha256": "e493a7bb482b18a786cbf0ef6f0ad5aaa68fd6511ea4bb3b9be912776d61bf2c"
+  },
+  {
+    "path": "materials/conch/source/conch-opus-r1/code/06_disentangle.py",
+    "sha256": "4ae5196cc4c020894e712263fe416f6571ef66ff821806166a46d54d720d3840",
+    "original_sha256": "4ae5196cc4c020894e712263fe416f6571ef66ff821806166a46d54d720d3840"
+  },
+  {
+    "path": "materials/conch/source/conch-opus-r1/code/07_final.py",
+    "sha256": "6a0028ba4f40733eef5f82ac18940bd2269209650a6b95ba6718b3ca3bcbc1f5",
+    "original_sha256": "6a0028ba4f40733eef5f82ac18940bd2269209650a6b95ba6718b3ca3bcbc1f5"
+  },
+  {
+    "path": "materials/conch/source/conch-opus-r1/code/feats.py",
+    "sha256": "6ad34be502625035c137c29e366ec6513578519627a33efa9954e2bb75aea0d9",
+    "original_sha256": "6ad34be502625035c137c29e366ec6513578519627a33efa9954e2bb75aea0d9"
+  },
+  {
+    "path": "materials/conch/source/conch-opus-r2/code/analyze_confirmation.py",
+    "sha256": "fe52767a7cd65e4befaecfce6f5b2abba9a4b5bd572aa68fd88f83ee0dc9c1e4",
+    "original_sha256": "fe52767a7cd65e4befaecfce6f5b2abba9a4b5bd572aa68fd88f83ee0dc9c1e4"
+  },
+  {
+    "path": "materials/conch/source/conch-opus-r2/code/baseline_blur_sweep.py",
+    "sha256": "8567663e5ce1d529b331f112d6105eb8331fbe8668810c69a92a6766252478be",
+    "original_sha256": "8567663e5ce1d529b331f112d6105eb8331fbe8668810c69a92a6766252478be"
+  },
+  {
+    "path": "materials/conch/source/conch-opus-r2/code/baseline_model.py",
+    "sha256": "057a42729fe022b58ff39cb093619c0d55752974ef0dea7eff21a9b3b66f21ec",
+    "original_sha256": "057a42729fe022b58ff39cb093619c0d55752974ef0dea7eff21a9b3b66f21ec"
+  },
+  {
+    "path": "materials/conch/source/conch-opus-r2/code/blur_sweep_conch.py",
+    "sha256": "4b0cb730bff0b89ba3baced7bd0b20318391f7bdb6297fd941ceef301ce3bd68",
+    "original_sha256": "4b0cb730bff0b89ba3baced7bd0b20318391f7bdb6297fd941ceef301ce3bd68"
+  },
+  {
+    "path": "materials/conch/source/conch-opus-r2/code/conch_infer.py",
+    "sha256": "5925b0c74843ab441a65df36d9707f0ee3a1910c10d7c71b666d983f7910d8f7",
+    "original_sha256": "5925b0c74843ab441a65df36d9707f0ee3a1910c10d7c71b666d983f7910d8f7"
+  },
+  {
+    "path": "materials/conch/source/conch-opus-r2/code/dedup_check.py",
+    "sha256": "c27a4382926e039c6ad8198f6f15a13f36451cdffe03414a11a54aec98ed6b6b",
+    "original_sha256": "c27a4382926e039c6ad8198f6f15a13f36451cdffe03414a11a54aec98ed6b6b"
+  },
+  {
+    "path": "materials/conch/source/conch-opus-r2/code/discovery_screen.py",
+    "sha256": "9ee7627ed89139d68732a44b526c2f45a805a71280c1ca0b03fae7ba34de0990",
+    "original_sha256": "9ee7627ed89139d68732a44b526c2f45a805a71280c1ca0b03fae7ba34de0990"
+  },
+  {
+    "path": "materials/conch/source/conch-opus-r2/code/extract_features.py",
+    "sha256": "b665695c717171584a0b2a7f22adce8c3e926a347f390446c9fefd2d896520a3",
+    "original_sha256": "b665695c717171584a0b2a7f22adce8c3e926a347f390446c9fefd2d896520a3"
+  },
+  {
+    "path": "materials/conch/source/conch-opus-r2/code/make_figures.py",
+    "sha256": "a28a5f4ee18cbb252abd3334e42f90e0794684bc49225903a164de9ee5db728f",
+    "original_sha256": "a28a5f4ee18cbb252abd3334e42f90e0794684bc49225903a164de9ee5db728f"
+  },
+  {
+    "path": "materials/conch/source/conch-opus-r2/code/power_analysis.py",
+    "sha256": "3596c535593778e7fa75d51c7e1633417f583339fe42b04a0ac65649f87a9539",
+    "original_sha256": "3596c535593778e7fa75d51c7e1633417f583339fe42b04a0ac65649f87a9539"
+  },
+  {
+    "path": "materials/conch/source/conch-opus-r2/code/prep_reference.py",
+    "sha256": "1e15a31593052b245475723743d29650a70a33a19c597ee51778d8f91bc046a9",
+    "original_sha256": "1e15a31593052b245475723743d29650a70a33a19c597ee51778d8f91bc046a9"
+  },
+  {
+    "path": "materials/conch/source/conch-opus-r2/code/run_confirmation.py",
+    "sha256": "5cd0a74d182b9cdf53413b3d96351026f09889802487aac1903a9adfd47e7e27",
+    "original_sha256": "5cd0a74d182b9cdf53413b3d96351026f09889802487aac1903a9adfd47e7e27"
+  },
+  {
+    "path": "materials/conch/source/conch-primary/curves.py",
+    "sha256": "3a0e577affe77ef186c731ec533d55429999b9f2335d52e9f35ca61144cd094f",
+    "original_sha256": "3a0e577affe77ef186c731ec533d55429999b9f2335d52e9f35ca61144cd094f"
+  }
+]

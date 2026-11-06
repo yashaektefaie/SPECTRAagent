@@ -1,0 +1,217 @@
+[
+  {
+    "path": "materials/state/assets/primary/scripts/redraw_reported_curves.py",
+    "sha256": "57fc704c8b7b555f040c39c864c99ef7c52939c731eb0b7e12a793076f0bd295",
+    "original_sha256": "57fc704c8b7b555f040c39c864c99ef7c52939c731eb0b7e12a793076f0bd295"
+  },
+  {
+    "path": "materials/state/assets/primary/scripts/state_multi_pathway_support.py",
+    "sha256": "4534656d4401a7b2c983502db9fe3865ced967b19193d5e732faa07f22798266",
+    "original_sha256": "4534656d4401a7b2c983502db9fe3865ced967b19193d5e732faa07f22798266"
+  },
+  {
+    "path": "materials/state/assets/primary/scripts/state_replogle_controls.py",
+    "sha256": "f8325faea8baea6ca861b1e4cc16d803aaf405ebcc9fb26b010a7517ce355f13",
+    "original_sha256": "f8325faea8baea6ca861b1e4cc16d803aaf405ebcc9fb26b010a7517ce355f13"
+  },
+  {
+    "path": "materials/state/assets/primary/scripts/state_replogle_zeroshot_confirmation.py",
+    "sha256": "b1cee8849ae8874aa93231e3c52a59efb539410f8821c4ab2fbf6d6cff1b98c3",
+    "original_sha256": "b1cee8849ae8874aa93231e3c52a59efb539410f8821c4ab2fbf6d6cff1b98c3"
+  },
+  {
+    "path": "materials/state/assets/primary/scripts/state_spectra_loop.py",
+    "sha256": "3c776ab69bcce7ee657b6126345811a73c15e2b614d8f87c2ef92c1098561459",
+    "original_sha256": "3c776ab69bcce7ee657b6126345811a73c15e2b614d8f87c2ef92c1098561459"
+  },
+  {
+    "path": "materials/state/assets/primary/scripts/validate_curve_reconstruction.py",
+    "sha256": "0ad7c550cb87260ef6f6918bf374ff6f39e05d34842a331b5de3571064ab8e66",
+    "original_sha256": "0ad7c550cb87260ef6f6918bf374ff6f39e05d34842a331b5de3571064ab8e66"
+  },
+  {
+    "path": "materials/state/assets/state-codex-r1/code/01_build_prospective_axis.py",
+    "sha256": "6c1ab549ee43a81c6aa2a7d5c226670061543de3584731aa681dd1f4f50db7b2",
+    "original_sha256": "6c1ab549ee43a81c6aa2a7d5c226670061543de3584731aa681dd1f4f50db7b2"
+  },
+  {
+    "path": "materials/state/assets/state-codex-r1/code/02_power_plan.py",
+    "sha256": "9123285cde329440fdf67c3c55dc51585a2d5fc8cb6d2262c30d077be7b27c41",
+    "original_sha256": "9123285cde329440fdf67c3c55dc51585a2d5fc8cb6d2262c30d077be7b27c41"
+  },
+  {
+    "path": "materials/state/assets/state-codex-r1/code/03_fetch_official_scores.py",
+    "sha256": "1122c503b4d5c3e672144841dc11b3a6171c71a113f5fafa18d78c9b43079bbe",
+    "original_sha256": "1122c503b4d5c3e672144841dc11b3a6171c71a113f5fafa18d78c9b43079bbe"
+  },
+  {
+    "path": "materials/state/assets/state-codex-r1/code/04_analyze_frozen_axis.py",
+    "sha256": "d923071894cfe535728a42c62b283ea2f02453423b701d31654efc3d91aad484",
+    "original_sha256": "d923071894cfe535728a42c62b283ea2f02453423b701d31654efc3d91aad484"
+  },
+  {
+    "path": "materials/state/assets/state-kimi-r1/replay_metrics.py",
+    "sha256": "8388250b436f6982436abcb1353953174e4e730f7c37da45adbbf633484ae8d0",
+    "original_sha256": "8388250b436f6982436abcb1353953174e4e730f7c37da45adbbf633484ae8d0"
+  },
+  {
+    "path": "materials/state/assets/state-kimi-r1/scripts/00_crosscheck.py",
+    "sha256": "6d8e0cf7ab0d2173af00317490c01323dd3511974fc45473abb3f282ad728b3b",
+    "original_sha256": "6d8e0cf7ab0d2173af00317490c01323dd3511974fc45473abb3f282ad728b3b"
+  },
+  {
+    "path": "materials/state/assets/state-kimi-r1/scripts/01_manifest.py",
+    "sha256": "03bab3161c6b303917994401117b66aeb458f09f2c29a2e355fa2592ae2eec7c",
+    "original_sha256": "03bab3161c6b303917994401117b66aeb458f09f2c29a2e355fa2592ae2eec7c"
+  },
+  {
+    "path": "materials/state/assets/state-kimi-r1/scripts/02_infer.py",
+    "sha256": "54c8dbfe978b94e21ce20631607fb710ce4992af999fc9920b30af4367f16afe",
+    "original_sha256": "54c8dbfe978b94e21ce20631607fb710ce4992af999fc9920b30af4367f16afe"
+  },
+  {
+    "path": "materials/state/assets/state-kimi-r1/scripts/04_score.py",
+    "sha256": "d0e89c2072a568d64e1eba781720390321f2f2b144e905d2e8cd123cf94384b1",
+    "original_sha256": "d0e89c2072a568d64e1eba781720390321f2f2b144e905d2e8cd123cf94384b1"
+  },
+  {
+    "path": "materials/state/assets/state-kimi-r1/scripts/05_analyze.py",
+    "sha256": "f98fdacd784f1061efb3629b2ef3aad502d5bd1b9cbb925c3ad14509d3cc3b32",
+    "original_sha256": "f98fdacd784f1061efb3629b2ef3aad502d5bd1b9cbb925c3ad14509d3cc3b32"
+  },
+  {
+    "path": "materials/state/assets/state-kimi-r1/scripts/06_proximity_check.py",
+    "sha256": "1ee4edb9287a5676904f3458fa92c31b9f9256e718c673f1b9a6aec692f3a887",
+    "original_sha256": "1ee4edb9287a5676904f3458fa92c31b9f9256e718c673f1b9a6aec692f3a887"
+  },
+  {
+    "path": "materials/state/assets/state-kimi-r1/scripts/07_confirm_manifest.py",
+    "sha256": "7b2850bef86e6883d2771902954edfcdb6474b5212d9714470510b7f8710d9f8",
+    "original_sha256": "7b2850bef86e6883d2771902954edfcdb6474b5212d9714470510b7f8710d9f8"
+  },
+  {
+    "path": "materials/state/assets/state-kimi-r1/scripts/08_confirm_score.py",
+    "sha256": "125d3d637717904e54db7cb86234f4e8a12a557b17d8bfc9d618794e40939cdf",
+    "original_sha256": "125d3d637717904e54db7cb86234f4e8a12a557b17d8bfc9d618794e40939cdf"
+  },
+  {
+    "path": "materials/state/assets/state-kimi-r1/scripts/09_confirm_norms.py",
+    "sha256": "9c45e6ec9b0ef5ee204b16e78eadd44671d0068d4b18a3fcda225b2b26673c88",
+    "original_sha256": "9c45e6ec9b0ef5ee204b16e78eadd44671d0068d4b18a3fcda225b2b26673c88"
+  },
+  {
+    "path": "materials/state/assets/state-kimi-r1/scripts/10_confirm.py",
+    "sha256": "1baada2f0c52dec53ed3cd8fe4fe3614312bdf67b65a81dd05a7bfd1d597f819",
+    "original_sha256": "1baada2f0c52dec53ed3cd8fe4fe3614312bdf67b65a81dd05a7bfd1d597f819"
+  },
+  {
+    "path": "materials/state/assets/state-kimi-r2/code/audit_analysis.py",
+    "sha256": "30d81e0ed62e6e5c013c1c9354e59798d0fd707290d027f15eeb78ef3d893cf6",
+    "original_sha256": "30d81e0ed62e6e5c013c1c9354e59798d0fd707290d027f15eeb78ef3d893cf6"
+  },
+  {
+    "path": "materials/state/assets/state-kimi-r2/code/build_confirm_inputs.py",
+    "sha256": "40edaf75b9d86ce7a92250d755266a5f670589be979de8c06cafa8823b925c71",
+    "original_sha256": "40edaf75b9d86ce7a92250d755266a5f670589be979de8c06cafa8823b925c71"
+  },
+  {
+    "path": "materials/state/assets/state-kimi-r2/code/build_infer_input.py",
+    "sha256": "bcbeefb12e09cc94f86964650987028ad1878c3d1f68636a3df60fdda6bf668b",
+    "original_sha256": "bcbeefb12e09cc94f86964650987028ad1878c3d1f68636a3df60fdda6bf668b"
+  },
+  {
+    "path": "materials/state/assets/state-kimi-r2/code/compute_metrics.py",
+    "sha256": "091391559342a188edef9a7a20088e4b0045dd1c47f916848be660864b77c9b0",
+    "original_sha256": "091391559342a188edef9a7a20088e4b0045dd1c47f916848be660864b77c9b0"
+  },
+  {
+    "path": "materials/state/assets/state-kimi-r2/code/confirmation_analysis.py",
+    "sha256": "cd85559ba63f227bd8d1da5c76ffce82dc2ff973bddb69539cd09640aa7a74be",
+    "original_sha256": "cd85559ba63f227bd8d1da5c76ffce82dc2ff973bddb69539cd09640aa7a74be"
+  },
+  {
+    "path": "materials/state/assets/state-opus-r2/source/fetch_annotations.py",
+    "sha256": "0269f823701232b62948ecd34461864ffad1ecd0ef10398f5a8e67001a2ac4d1",
+    "original_sha256": "0269f823701232b62948ecd34461864ffad1ecd0ef10398f5a8e67001a2ac4d1"
+  },
+  {
+    "path": "materials/state/assets/state-opus-r2/source/fetch_pathways.py",
+    "sha256": "b10feb1577fb0b5370d54af5b8bd954cc4f59a987ebc865e56ee2dc52ae1ba86",
+    "original_sha256": "0eba30a8bf405122262004f91ec88c68fbe7db000996187aaa4c14916e70c5c3"
+  },
+  {
+    "path": "materials/state/assets/state-opus-r2/source/score_092_compute_drug_chemical_novelty_features_and_pilot_correlation.py",
+    "sha256": "3c521f1d9588676c2ee03865c23f68f98904c7f1cb19da5a80fea0c6ff842873",
+    "original_sha256": "dfbeb407bf894bb7bc4bf894752121442a9b501d45755f5fdb06851111223b15"
+  },
+  {
+    "path": "materials/state/assets/state-opus-r2/source/score_102_probe_cross_context_coverage_axis_on_genetic_data.py",
+    "sha256": "c58d9969899e44876c61b3fb2d9ea7d17cf4df7b43f6a0fa00f19ef2c6648d21",
+    "original_sha256": "c58d9969899e44876c61b3fb2d9ea7d17cf4df7b43f6a0fa00f19ef2c6648d21"
+  },
+  {
+    "path": "materials/state/assets/state-opus-r2/source/score_139_interaction_and_confound_tests_for_functional_density_axis.py",
+    "sha256": "50c0b5abdcbcc9a2681283a750b58221f9de9d565246466d969550db32bbca17",
+    "original_sha256": "ef1b365268e6e56a724fc6c91fc1c1b62ac744147a3a06abef5f0a50599e1147"
+  },
+  {
+    "path": "materials/state/assets/state-opus-r2/source/score_166_compute_spc_curve_and_held_out_context_confirmation.py",
+    "sha256": "18eb78cf7a5e25959b6d56e4ef88ea2476204085c4dc73d3aaa9f6a8b58a3311",
+    "original_sha256": "18eb78cf7a5e25959b6d56e4ef88ea2476204085c4dc73d3aaa9f6a8b58a3311"
+  },
+  {
+    "path": "materials/state/assets/state-opus-r2/source/score_176_validate_level_ordering_with_independent_similarity_sources.py",
+    "sha256": "d5d34beb4c665c797422393126d0b19512e532f2f17ebb4fd3cf9b314323b62d",
+    "original_sha256": "d5d34beb4c665c797422393126d0b19512e532f2f17ebb4fd3cf9b314323b62d"
+  },
+  {
+    "path": "materials/state/assets/state-opus-r2/source/score_187_tahoe_cross_family_confirmation_via_drug_target_functional_d.py",
+    "sha256": "818a9bd8ecd4360534a8bba9025ab0a216e1181aafcabc484382e4d62738b72a",
+    "original_sha256": "818a9bd8ecd4360534a8bba9025ab0a216e1181aafcabc484382e4d62738b72a"
+  },
+  {
+    "path": "materials/state/assets/state-opus-r2/source/score_193_parse_pbmc_fresh_family_confirmation.py",
+    "sha256": "b813b308b19b6270afa48811b76f73fb99cbd79d00a522126250b45e6b9e67c8",
+    "original_sha256": "b813b308b19b6270afa48811b76f73fb99cbd79d00a522126250b45e6b9e67c8"
+  },
+  {
+    "path": "materials/state/assets/state-opus-r2/source/score_203_rigorous_confound_battery_fixed_n_and_partial_correlations.py",
+    "sha256": "a9a8c60cc0d44eb89fdcca21f5ed13fe7cc6229f8134e5bf423bdac72395deac",
+    "original_sha256": "a9a8c60cc0d44eb89fdcca21f5ed13fe7cc6229f8134e5bf423bdac72395deac"
+  },
+  {
+    "path": "materials/state/assets/state-opus-r2/source/score_209_per_context_replication_module_robustness_gene_holdout.py",
+    "sha256": "96b25540b5ccafe614ec942e5d0567faa24aee1cfe8b333aac5398bbdbe01ae2",
+    "original_sha256": "96b25540b5ccafe614ec942e5d0567faa24aee1cfe8b333aac5398bbdbe01ae2"
+  },
+  {
+    "path": "materials/state/assets/state-opus-r2/source/score_215_densified_spc_and_effect_size_controlled_pure_curve.py",
+    "sha256": "0a9a34a329a920b38f4529789a4576bada8c1f482fa22bb771ba479d61e970ab",
+    "original_sha256": "0a9a34a329a920b38f4529789a4576bada8c1f482fa22bb771ba479d61e970ab"
+  },
+  {
+    "path": "materials/state/assets/state-opus-r2/spectra_run/fetch_annotations.py",
+    "sha256": "0269f823701232b62948ecd34461864ffad1ecd0ef10398f5a8e67001a2ac4d1",
+    "original_sha256": "0269f823701232b62948ecd34461864ffad1ecd0ef10398f5a8e67001a2ac4d1"
+  },
+  {
+    "path": "materials/state/assets/state-opus-r2/spectra_run/fetch_pathways.py",
+    "sha256": "b10feb1577fb0b5370d54af5b8bd954cc4f59a987ebc865e56ee2dc52ae1ba86",
+    "original_sha256": "0eba30a8bf405122262004f91ec88c68fbe7db000996187aaa4c14916e70c5c3"
+  },
+  {
+    "path": "materials/state/assets/state-opus-r2/spectra_run/fetch_string.py",
+    "sha256": "869ae6c82955b184d0059ed5d01aada06708f2a88241bc81c3e12e8bac909580",
+    "original_sha256": "869ae6c82955b184d0059ed5d01aada06708f2a88241bc81c3e12e8bac909580"
+  },
+  {
+    "path": "materials/state/assets/state-opus-r2/spectra_run/parse_map.py",
+    "sha256": "0d2fa8313ee7b2278fa62449565ade5bfa94bb3fb08553862e7b41fcb70e19df",
+    "original_sha256": "888b15e4184581ed1b9537c85f1ef58872d58543caec58384bb40a25c24ca188"
+  },
+  {
+    "path": "materials/state/requirements.txt",
+    "sha256": "e2fa2feda466914ebaded9b59cad7676cdb6913ab093fc545474a202c19ee02e",
+    "original_sha256": "e2fa2feda466914ebaded9b59cad7676cdb6913ab093fc545474a202c19ee02e"
+  }
+]

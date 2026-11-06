@@ -1,0 +1,576 @@
+{
+  "id": "esmfold2-featured/test-02",
+  "investigation": "esmfold2-featured",
+  "model": "ESMFold2",
+  "axis": "CAMEO difficulty, length and resolution",
+  "dataset_split": {
+    "description": "Exact target identities, sequences and archived evaluation setting are loaded and checked.",
+    "input_inventory": "inputs/esmfold2.json",
+    "public_sources": [
+      "rcsb-example",
+      "rcsb-entity",
+      "esm-code"
+    ],
+    "sample_tables": [
+      {
+        "source_file": "source/esmfold2/data/all_esmfold2_scored_evaluations.csv",
+        "source_sha256": "d69ada693ae0daccc466ed4da38bf85a5e5a734621f79b370cfe53107b4db7fa",
+        "path": "samples/esmfold2/943173b2dcb1ec09.json.gz",
+        "sha256": "0555c263be3fa44b167222909a0223a49748b415243540362cacfcac02a253cc",
+        "rows": 706,
+        "columns": [
+          "target_id",
+          "axis_flexible_nonhelical_composite_rank_q7_level",
+          "acidic_window_level",
+          "rcsb_reference_quality_level",
+          "cys_level"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/data/primary_exact_sequence_dedup.csv",
+        "source_sha256": "4f35b2fa090e619a75af641b0f76d211401e7a42f829032fa121e0255f20a11c",
+        "path": "samples/esmfold2/f49bd3d5595cc810.json.gz",
+        "sha256": "c143b69421f16b47ccc70902ebb4bab4c44ed6a009ca3e4bd838d235d305f1f2",
+        "rows": 652,
+        "columns": [
+          "target_id",
+          "axis_flexible_nonhelical_composite_rank_q7_level",
+          "acidic_window_level",
+          "rcsb_reference_quality_level",
+          "cys_level"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/example_structures/example_prediction_overlay_summary.csv",
+        "source_sha256": "774036b42f4b912cb1fe31a2b8070aa23dfa242795ab7b09f78d935e8080b9fd",
+        "path": "samples/esmfold2/b0713fbee84ba8f6.json.gz",
+        "sha256": "8f6755c9d2915df43c8fb633d032903eb2202cfffe2c189890f00109c12478ba",
+        "rows": 3,
+        "columns": [
+          "target_id"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/example_structures/example_structure_targets.csv",
+        "source_sha256": "02437ab6effa9b0a58cf918adaca99fc47da36633862b749d5bfa28374096be3",
+        "path": "samples/esmfold2/01926ab13b638b00.json.gz",
+        "sha256": "4aa70efb896b93a709f617892b75101938bf379ad35ccf91f4eab87fa577ed0b",
+        "rows": 5,
+        "columns": [
+          "target_id"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/reconstruction/prior_axes/01_cameo_msa_depth/spectra_ready_dataset/candidate_features.csv",
+        "source_sha256": "49925439e55c413f27d88fbe8e1972b5b7fe55df027494e2b8fea0022c40c638",
+        "path": "samples/esmfold2/1dcac2783f29908a.json.gz",
+        "sha256": "f81eafc5b37bd3d0e36463c58e5310a6c8c11c91623c8407e0c10dcdc01c1227",
+        "rows": 141,
+        "columns": [
+          "target_id"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/reconstruction/prior_axes/01_cameo_msa_depth/target_model_results.csv",
+        "source_sha256": "e46dc283557254f5fd987f2e213645e7d4f989dbef80d9dc559e5b627ec0938f",
+        "path": "samples/esmfold2/7603c7857a702440.json.gz",
+        "sha256": "eddc285a7c7357c2f2975cb8859a8a47fecd49435fc0568d95d365aef6b341b2",
+        "rows": 138,
+        "columns": [
+          "target_id"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/reconstruction/prior_axes/02_flexible_nonhelical/external_confirmation/target_model_results.scaled_samples.csv",
+        "source_sha256": "7f455e8c0efb2c03d2bb051cfbbe795dba8f42b0da3d89b3bb6875e53779e5c6",
+        "path": "samples/esmfold2/0495ac254f14add7.json.gz",
+        "sha256": "2122fafe71ebc04203ce29730754592dfa28830156aa6e94e852cc9e1e28ef9c",
+        "rows": 170,
+        "columns": [
+          "target_id"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/reconstruction/prior_axes/02_flexible_nonhelical/inference_time_scaling/target_model_results.scaled_samples.csv",
+        "source_sha256": "6fb22796f0280a727f885d239f9d19fe97358601031efb4c46980921af97e863",
+        "path": "samples/esmfold2/dd766895abfb95d0.json.gz",
+        "sha256": "659f3b3d0a38987cffb88fa42c4d0e9f8c3a623571fe04693d1cd649131374fd",
+        "rows": 200,
+        "columns": [
+          "target_id"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/reconstruction/prior_axes/02_flexible_nonhelical/primary_axis_membership.csv",
+        "source_sha256": "3d3aaf819167f3017b8aa1962f5908696c9f47f6f69ba36edfaf6b38bd55e50e",
+        "path": "samples/esmfold2/428487431ee14028.json.gz",
+        "sha256": "8e11e1b8fef283179fe653d83d461cbd2c4d1b8056d5dbe07535964aae47aadf",
+        "rows": 138,
+        "columns": [
+          "target_id",
+          "axis_flexible_nonhelical_composite_rank_q7_level"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/reconstruction/prior_axes/02_flexible_nonhelical/spectra_ready_dataset/prospective_features.followup.csv",
+        "source_sha256": "b099be56dab4c39d8c493ff783e96dbaf626ce98339b2b7ce63ed48cd2e902b8",
+        "path": "samples/esmfold2/ed09b2bf922deed4.json.gz",
+        "sha256": "86f8f4e3788ade8b787612d624f205c54045a18aeccbb8c7d6a961452460e0c4",
+        "rows": 141,
+        "columns": [
+          "target_id",
+          "axis_flexible_nonhelical_composite_rank_q7_level",
+          "axis_nonhelical_topology_composite_rank_q7_level",
+          "axis_chou_turn_minus_helix_q7_level",
+          "axis_chou_beta_minus_helix_q7_level",
+          "axis_proline_fraction_q5_level",
+          "axis_uversky_disorder_score_q7_level"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/reconstruction/prior_axes/02_flexible_nonhelical/target_model_results.csv",
+        "source_sha256": "e46dc283557254f5fd987f2e213645e7d4f989dbef80d9dc559e5b627ec0938f",
+        "path": "samples/esmfold2/5daa4616f1b0ce52.json.gz",
+        "sha256": "d3aa8f80242e2341889862cbe01dd49e8e34828c78df8124e40178613a55bdf2",
+        "rows": 138,
+        "columns": [
+          "target_id"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/reconstruction/prior_axes/03_external_flexible/spectra_ready_dataset/candidate_features.csv",
+        "source_sha256": "20b5183b2849ef843abd7d5c347fbcfb99a98c07a9cc9ad439c05ca834c07ed7",
+        "path": "samples/esmfold2/5e91afee1dc392da.json.gz",
+        "sha256": "b00d02372d4f499bf4deeb6534964c507929dab48108ee388d77c5ad66579038",
+        "rows": 107,
+        "columns": [
+          "target_id",
+          "axis_flexible_nonhelical_composite_rank_q7_level",
+          "external_axis_level"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/reconstruction/prior_axes/03_external_flexible/target_model_results.scaled_samples.csv",
+        "source_sha256": "3f1c0475b968a80f3e07f64eeab682b9355b04520d6192a0f4d94a27425b6e17",
+        "path": "samples/esmfold2/5ac3985f6a919a2b.json.gz",
+        "sha256": "f61c03ff40365e6258f933f2b2e029eef7b5c18fd5be86f10ac6e9f992080b0b",
+        "rows": 535,
+        "columns": [
+          "target_id"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/reconstruction/prior_axes/04_reference_geometry_and_new_axes/spectra_ready_dataset/combined_feature_outcome_table.csv",
+        "source_sha256": "cacdb585382e9a191b758a92094ed1a0475259586eb55e7bcbca25af2e444f27",
+        "path": "samples/esmfold2/22076abc20a98299.json.gz",
+        "sha256": "7fcfe724b86702761ac9904aa033fdd79556d3bb0578d80826406e8f2515bac7",
+        "rows": 212,
+        "columns": [
+          "target_id",
+          "axis_flexible_nonhelical_composite_rank_q7_level",
+          "axis_nonhelical_topology_composite_rank_q7_level",
+          "axis_chou_turn_minus_helix_q7_level",
+          "axis_chou_beta_minus_helix_q7_level",
+          "axis_proline_fraction_q5_level",
+          "axis_uversky_disorder_score_q7_level"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/reconstruction/prior_axes/04_reference_geometry_and_new_axes/spectra_ready_dataset/combined_prospective_features.csv",
+        "source_sha256": "5be4ad7c47b1dc15689ce9e0121678c4621f03d03ea4773bade461cb95cbdef6",
+        "path": "samples/esmfold2/13c54d75e1907f3b.json.gz",
+        "sha256": "4a868a3129feae13541a7821869ffb5466c51009ec788638ef8c3922d8509331",
+        "rows": 212,
+        "columns": [
+          "target_id",
+          "axis_flexible_nonhelical_composite_rank_q7_level",
+          "axis_nonhelical_topology_composite_rank_q7_level",
+          "axis_chou_turn_minus_helix_q7_level",
+          "axis_chou_beta_minus_helix_q7_level",
+          "axis_proline_fraction_q5_level",
+          "axis_uversky_disorder_score_q7_level"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/reconstruction/prior_axes/04_reference_geometry_and_new_axes/target_model_results.csv",
+        "source_sha256": "a5f75293e121a7ca99607112296ffadde7a36e12b6f21472373aefb830610ba7",
+        "path": "samples/esmfold2/773bbcde3ebf6961.json.gz",
+        "sha256": "dcce903b1d34a4177cd611afd6b4850b8d216b104031dd18dfb70320549f6693",
+        "rows": 212,
+        "columns": [
+          "target_id"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/reconstruction/prior_axes/05_shared_charge/spectra_ready_dataset/combined_prospective_performance.csv",
+        "source_sha256": "379cdb6a4c004d61215a43d0d351edb7c00b8c7941b6b20c348732e5983edf95",
+        "path": "samples/esmfold2/f4f82513bebf0bfa.json.gz",
+        "sha256": "3e268fbbca084f7155a3b5eb13e8015a43a6eb3d25b0b80e6127866ee22ed7a6",
+        "rows": 307,
+        "columns": [
+          "target_id",
+          "axis_flexible_nonhelical_composite_rank_q7_level",
+          "axis_nonhelical_topology_composite_rank_q7_level",
+          "axis_chou_turn_minus_helix_q7_level",
+          "axis_chou_beta_minus_helix_q7_level",
+          "axis_proline_fraction_q5_level",
+          "axis_uversky_disorder_score_q7_level",
+          "external_axis_level"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/reconstruction/prior_axes/05_shared_charge/target_model_results.csv",
+        "source_sha256": "3e3ddbc6f1c7dc928d8ae62b2a148f95ed349eef5fed6aa1fb464e131bafc721",
+        "path": "samples/esmfold2/b96821fa965b2cfe.json.gz",
+        "sha256": "0b799024896fbcc9d3959cbfec5ed4a4809b93267b4ccb5d06489f0ad7f45547",
+        "rows": 307,
+        "columns": [
+          "target_id"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/reconstruction/prior_axes/06_charge_confirmation/analysis_outputs/reference_parse_sanity.csv",
+        "source_sha256": "27a091029a38dcc98960124a579facf38bbb0875be968233e0525c48b6687ca2",
+        "path": "samples/esmfold2/7141a5a034a2e367.json.gz",
+        "sha256": "b34008d47242796cc9a675d3750dd762bc06e55361e7f018c0f2814aaeb1f4a5",
+        "rows": 97,
+        "columns": [
+          "target_id",
+          "chain"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/reconstruction/prior_axes/06_charge_confirmation/spectra_ready_dataset/candidate_features.csv",
+        "source_sha256": "bc1e893bd8834022c1e725b3ef6783e647ebdcbca885ec1b5c5638f57357bca7",
+        "path": "samples/esmfold2/844f4723641715fe.json.gz",
+        "sha256": "37e59b14acea0f7501567ae5ea9715ee87513eebc9509cd530e99d6030c4273c",
+        "rows": 97,
+        "columns": [
+          "target_id",
+          "axis_flexible_nonhelical_composite_rank_q7_level",
+          "charge_level"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/reconstruction/prior_axes/06_charge_confirmation/spectra_ready_dataset/eligible_unscored_charge_pool.csv",
+        "source_sha256": "9ed424a345eef5e70268ec6ac84fbba5fd10ad84be96e66e047720b80c03522c",
+        "path": "samples/esmfold2/8b1ee1b2d56a0fbc.json.gz",
+        "sha256": "fc472c6540b321013e29c8ef7d4549479834d111c2f36e6d7fcf3e9afd12d489",
+        "rows": 202,
+        "columns": [
+          "target_id",
+          "axis_flexible_nonhelical_composite_rank_q7_level",
+          "charge_level"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/reconstruction/prior_axes/06_charge_confirmation/target_model_results.scaled_samples.csv",
+        "source_sha256": "6ba62d54ae5c8afce08cabb712c02cde669cef3b397e3e2847476a6ef6b15c6d",
+        "path": "samples/esmfold2/c9f396598e72ead9.json.gz",
+        "sha256": "ae5d1f02268bc4ed3c4722909925c0b221f83259bd90941583071000d66282b1",
+        "rows": 485,
+        "columns": [
+          "target_id"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/reconstruction/prior_axes/07_cysteine_confirmation/spectra_ready_dataset/combined_evidence_with_cys_confirmation.csv",
+        "source_sha256": "f65509a08712767b61b89763297646264254e31c53ddce6f7fe16468fd08e1eb",
+        "path": "samples/esmfold2/e02b01d52f9631cc.json.gz",
+        "sha256": "6df24d7d5cf5037b18efd57680cce99a3935f9eed95aa6c868c4ed4255c90986",
+        "rows": 577,
+        "columns": [
+          "target_id",
+          "axis_flexible_nonhelical_composite_rank_q7_level",
+          "axis_nonhelical_topology_composite_rank_q7_level",
+          "axis_chou_turn_minus_helix_q7_level",
+          "axis_chou_beta_minus_helix_q7_level",
+          "axis_proline_fraction_q5_level",
+          "axis_uversky_disorder_score_q7_level",
+          "external_axis_level",
+          "charge_level",
+          "acidic_window_level",
+          "rcsb_reference_quality_level",
+          "cys_level"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/reconstruction/prior_axes/07_cysteine_confirmation/spectra_ready_dataset/cys_confirmation_candidate_features.csv",
+        "source_sha256": "1280435e6580ede8ec7a23d2bf7771a58ceb38f4baed095546d5fe61e8f8966f",
+        "path": "samples/esmfold2/6665603d838a3b25.json.gz",
+        "sha256": "0057c28a57833d0cdc00c578bfb7363e7252fc93be84f8d2d6eb3172082b2311",
+        "rows": 95,
+        "columns": [
+          "target_id",
+          "axis_flexible_nonhelical_composite_rank_q7_level",
+          "rcsb_reference_quality_level",
+          "cys_level"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/reconstruction/prior_axes/07_cysteine_confirmation/spectra_ready_dataset/expanded_all_scored_evidence_table.csv",
+        "source_sha256": "127c947a8df747d4abd20889e2bf8995a1ce1bf6e81c73d623561ae1732db000",
+        "path": "samples/esmfold2/365283b2b6f10ada.json.gz",
+        "sha256": "65a9da9c5de49e6c314074907de048ebdbbef5a57d2f70d8eddf3825eda6b5ea",
+        "rows": 482,
+        "columns": [
+          "target_id",
+          "axis_flexible_nonhelical_composite_rank_q7_level",
+          "axis_nonhelical_topology_composite_rank_q7_level",
+          "axis_chou_turn_minus_helix_q7_level",
+          "axis_chou_beta_minus_helix_q7_level",
+          "axis_proline_fraction_q5_level",
+          "axis_uversky_disorder_score_q7_level",
+          "external_axis_level",
+          "charge_level",
+          "acidic_window_level",
+          "rcsb_reference_quality_level"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/reconstruction/prior_axes/07_cysteine_confirmation/target_model_results.cys_confirmation.scaled_samples.csv",
+        "source_sha256": "ed37086bce8ed38386b76a0fde7fb3d0c4b239416df2ecf9fdd61ed0eeeacef7",
+        "path": "samples/esmfold2/754d658dbe03379e.json.gz",
+        "sha256": "0b70dc2e83cde09069af769f292a938d254c715d24f7ce2332d22ca01c81c36a",
+        "rows": 475,
+        "columns": [
+          "target_id"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/reconstruction/prior_axes/07_cysteine_confirmation/target_model_results.cys_confirmation.target_level.csv",
+        "source_sha256": "a2e6a324609b92b99411cabe7b0b338a21f522157f2b66610096bf3597a13ba4",
+        "path": "samples/esmfold2/61bffbb47ab394b9.json.gz",
+        "sha256": "297e10e7b11aad55631192d6b75baed73bbc397ed0b2a8d2ee5aaca3d1cfb7b7",
+        "rows": 95,
+        "columns": [
+          "target_id",
+          "axis_flexible_nonhelical_composite_rank_q7_level",
+          "rcsb_reference_quality_level",
+          "cys_level"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/reconstruction/prior_axes/08_cysteine_proxy/combined_proxy_cluster_table.csv",
+        "source_sha256": "6788ad0c2afc85f8a6893b99ba83d5f40fbcf4e83a512b2159c81abf4cee509e",
+        "path": "samples/esmfold2/14e204c7effb8ef3.json.gz",
+        "sha256": "52e0d551a94d1810948413af8fe6e1c9df3b53498a074c876322fb5d87b2e5a7",
+        "rows": 346,
+        "columns": [
+          "target_id",
+          "axis_flexible_nonhelical_composite_rank_q7_level",
+          "axis_nonhelical_topology_composite_rank_q7_level",
+          "axis_chou_turn_minus_helix_q7_level",
+          "axis_chou_beta_minus_helix_q7_level",
+          "axis_proline_fraction_q5_level",
+          "axis_uversky_disorder_score_q7_level",
+          "external_axis_level",
+          "charge_level",
+          "acidic_window_level",
+          "rcsb_reference_quality_level",
+          "cys_level"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/reconstruction/prior_axes/08_cysteine_proxy/combined_proxy_feature_table.csv",
+        "source_sha256": "bf72d2c9a429e2d167690a030bc92e109b7497cf5823377b5bd5ae67ba667983",
+        "path": "samples/esmfold2/4fac97488ddebf3a.json.gz",
+        "sha256": "bfdc5a8d8231f31b1ca23509b393a1b1e67e2cb7413a4e64fd7aa84704989b6e",
+        "rows": 573,
+        "columns": [
+          "target_id",
+          "axis_flexible_nonhelical_composite_rank_q7_level",
+          "axis_nonhelical_topology_composite_rank_q7_level",
+          "axis_chou_turn_minus_helix_q7_level",
+          "axis_chou_beta_minus_helix_q7_level",
+          "axis_proline_fraction_q5_level",
+          "axis_uversky_disorder_score_q7_level",
+          "external_axis_level",
+          "charge_level",
+          "acidic_window_level",
+          "rcsb_reference_quality_level",
+          "cys_level"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/reconstruction/prior_axes/09_viral_disulfide/spectra_ready_dataset/viral_disulfide_pilot_candidate_features.csv",
+        "source_sha256": "bc284b40022ea3eb9612d974bd0db521254e453cba7bf026341ea66221e22550",
+        "path": "samples/esmfold2/329a5728142c8773.json.gz",
+        "sha256": "ec24e6f7cde27040267fe5731a9e385be17f4d7639b7bf0b96f68ad8abf56753",
+        "rows": 36,
+        "columns": [
+          "target_id",
+          "axis_flexible_nonhelical_composite_rank_q7_level",
+          "rcsb_reference_quality_level"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/reconstruction/prior_axes/09_viral_disulfide/target_model_results.viral_disulfide_pilot.scaled_samples.csv",
+        "source_sha256": "06ac426660606dd72099bc8ec40d36a2a5685fa3469db6ed979ac471499500c0",
+        "path": "samples/esmfold2/1b7b0407c3c9cbec.json.gz",
+        "sha256": "5f53ef61013ade273072e6fa5970ecc2b5ecad7dea3ac05a8aab186adfb56f67",
+        "rows": 180,
+        "columns": [
+          "target_id"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/reconstruction/prior_axes/09_viral_disulfide/target_model_results.viral_disulfide_pilot.target_level.csv",
+        "source_sha256": "7bea940acb12fead997c29b4da8e18eedeef739ac370069e53b24f097f8857f4",
+        "path": "samples/esmfold2/447e57777c3dbdf6.json.gz",
+        "sha256": "38e34debdf1025846c78ca8d38e2e836ca9e8132376d95865150eee1cf8232af",
+        "rows": 144,
+        "columns": [
+          "target_id",
+          "axis_flexible_nonhelical_composite_rank_q7_level",
+          "rcsb_reference_quality_level"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/reconstruction/prior_axes/10_11_envelope_surface/analysis_outputs/envelope_subaxis_feature_table.csv",
+        "source_sha256": "920b1a23555071f66e0b01b1a6d316e1a2b653eae34426d340c92b735a9c3474",
+        "path": "samples/esmfold2/7dc4b50760f7c628.json.gz",
+        "sha256": "15f2f033b987985e925b8c48cf914a3f1fc5d3771c64a22156021077b1eb8be0",
+        "rows": 38,
+        "columns": [
+          "target_id"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/reconstruction/prior_axes/10_11_envelope_surface/spectra_ready_dataset/envelope_fusion_confirmation_candidate_features.csv",
+        "source_sha256": "3f8d1468b3c3f5ec3e07a629dea1a1cf34e8aa18b37a81ec80b2a4b3e2de670e",
+        "path": "samples/esmfold2/1bbfcd2c448375d8.json.gz",
+        "sha256": "777f1b18fb612aba2e6a35b817f08218bdf4e0fff28405cbe06a92096ba82c04",
+        "rows": 38,
+        "columns": [
+          "target_id"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/reconstruction/prior_axes/10_11_envelope_surface/spectra_ready_dataset/surface_lowhelical_confirmation_candidate_features.csv",
+        "source_sha256": "e5bfada29673c1d154dbf8c56272b64401fac4c00817093a5d93d7227806b079",
+        "path": "samples/esmfold2/355de6ee865ea33b.json.gz",
+        "sha256": "a4729235513c69cb153da590de860adabd0d721b4e60cd420d5e7afe944fd861",
+        "rows": 45,
+        "columns": [
+          "target_id"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/reconstruction/prior_axes/10_11_envelope_surface/target_model_results.envelope_fusion_confirmation.scaled_samples.csv",
+        "source_sha256": "85b354faa2fc859163b45671514bf090085c7a6db26fb780805dae11b715938e",
+        "path": "samples/esmfold2/76b3c1a5e06e481e.json.gz",
+        "sha256": "ef4a08f1972357292b69b2bf67833632dc2a4641feaa0430feb03a6d9a559d74",
+        "rows": 190,
+        "columns": [
+          "target_id"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/reconstruction/prior_axes/10_11_envelope_surface/target_model_results.envelope_fusion_confirmation.target_level.csv",
+        "source_sha256": "9c612734edce1392000d49475d937ae36e49a8a8fa7c234e6b8eaa68a375e4f5",
+        "path": "samples/esmfold2/be97d7ed97903ba5.json.gz",
+        "sha256": "0650de269b3495f3fcb3d5152437bf3b26255b346cb6e9ece1abd015444f9265",
+        "rows": 152,
+        "columns": [
+          "target_id"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/reconstruction/prior_axes/10_11_envelope_surface/target_model_results.surface_lowhelical_confirmation.scaled_samples.csv",
+        "source_sha256": "c36cefe233ae4ad996210bb6791db5ed539e1da9df0ee7b36ec3d4b41340d820",
+        "path": "samples/esmfold2/7ccab632c1128437.json.gz",
+        "sha256": "f85e8197cbf9e69506315a2bdec61ffeeba31e927eebf433891d09af0da809eb",
+        "rows": 225,
+        "columns": [
+          "target_id"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/reconstruction/prior_axes/10_11_envelope_surface/target_model_results.surface_lowhelical_confirmation.target_level.csv",
+        "source_sha256": "3305cd4dc06dd183e6fff3b627767eb587ab80a0c135e1d79d945d323255f421",
+        "path": "samples/esmfold2/f6ec909d81950c96.json.gz",
+        "sha256": "b0030ad654aaaeade829c5cdeb4664c5e8fe277480becaa21c312b68ad7f7605",
+        "rows": 180,
+        "columns": [
+          "target_id"
+        ]
+      },
+      {
+        "source_file": "source/esmfold2/tables/cluster_assignments.csv",
+        "source_sha256": "8f3cbb70645860e91019c18a8e4327abb455cff4e2f007b6df231749c41d1cfd",
+        "path": "samples/esmfold2/14534baea9467d84.json.gz",
+        "sha256": "66688c195abc07d14d5bdf68a8b771cd3c1d9ab618cd0ddf7da83a377607165f",
+        "rows": 1956,
+        "columns": [
+          "target_id"
+        ]
+      }
+    ]
+  },
+  "axis_levels": {
+    "definition": "Predefined CAMEO difficulty category, chain length and experimental resolution were assessed alongside MSA depth.",
+    "calculation": "CAMEO difficulty and resolution are retained benchmark annotations; sequence length is independently recalculated.",
+    "code": "materials/esmfold2/notebooks/esmfold2-featured/test-02.py"
+  },
+  "model_evaluation": {
+    "measurements": "Original per-target/per-sample accuracy retained; complete prediction/reference coordinates unavailable.",
+    "fine_tuning": {
+      "target_weight_updates_in_replay": false,
+      "target_fine_tuning_during_original_audit": null,
+      "original_training_evidence": "The exported reconstruction code does not update target-model weights. Original checkpoint training or audit-specific adaptation was not established by the retained execution evidence.",
+      "comparators": []
+    },
+    "code": "materials/esmfold2/notebooks/esmfold2-featured/test-02.py"
+  },
+  "curve": {
+    "aggregation_and_uncertainty": "Group statistics are recalculated from individual scores; original means checked where available.",
+    "code": "materials/esmfold2/notebooks/esmfold2-featured/test-02.py"
+  },
+  "insight": {
+    "comparison_controls_confirmation": "Original sample-selection policies, comparisons and control calculations are replayed below.",
+    "code": "materials/esmfold2/notebooks/esmfold2-featured/test-02.py"
+  },
+  "reconstruction_notes": [
+    "The complete original predicted and experimental coordinate sets needed to recompute structural accuracy from coordinates. These notebooks use archived per-target/per-sample metrics, not fresh inference.",
+    "Exact retained audit inputs are identified by relative filename and hash in the input inventory. A null download_source means no matching anonymous download has been established. Public upstream datasets do not substitute for missing original splits, predictions or annotations."
+  ],
+  "implementation": {
+    "notebook": "materials/esmfold2/notebooks/esmfold2-featured/test-02.ipynb",
+    "script": "materials/esmfold2/notebooks/esmfold2-featured/test-02.py",
+    "supporting_code": "code/esmfold2.json",
+    "cell_locations": [
+      {
+        "notebook_cell": 2,
+        "start_line": 1,
+        "end_line": 40
+      },
+      {
+        "notebook_cell": 3,
+        "start_line": 41,
+        "end_line": 50
+      },
+      {
+        "notebook_cell": 4,
+        "start_line": 51,
+        "end_line": 59
+      },
+      {
+        "notebook_cell": 5,
+        "start_line": 60,
+        "end_line": 66
+      }
+    ],
+    "original_notebook_sha256": "1a733330a6ee15c202891fede885cdc4ab99833c840f6a9a31e0e01d530107c9",
+    "published_notebook_sha256": "2c246dcec5ed8bd87576c7f177922203d6914421f75ea540a40cca73dc12d698",
+    "changes": [
+      "Code-only export; Markdown verdicts and saved outputs omitted.",
+      "Machine-specific home paths replaced with /path/to/audit-home where present.",
+      "Python export converts notebook magic syntax using IPython; notebook retains its original code syntax.",
+      "Python exports remove trailing whitespace only after checking that the parsed syntax tree is unchanged."
+    ],
+    "saved_code_cells": 4,
+    "saved_error_outputs": 0
+  },
+  "requested_model": "ESMFold2"
+}
